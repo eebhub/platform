@@ -1,4 +1,4 @@
-var mit = require("/lib/mit.js");
+var mit = require("../lib/mit.js");
 
 module.exports = {
     getIndex: function(request, response){

@@ -86,720 +86,755 @@
                     </ul>
                 </div>
                 <div class="span9">
-                    <section id="building">
-                        <div class="box-unit">
-                            <div class="page-header">
-                                <h2>Building</h2>
-                            </div>
-                            <div class="row">
-                                <div class="span4">
-                                    <h4>Building Name</h4>
-                                    <input class="span3" type="text" ng-model="buildingName"
-                                    name="building[building_name]">
-                                    <br/>
-                                    <h4>Year Built</h4>
-                                    <select class="span2" name="building[year_completed]">
-                                        <option>2013</option>
-                                        <option>2012</option>
-                                        <option>2011</option>
-                                        <option>2010</option>
-                                        <option>2009</option>
-                                        <option>2008</option>
-                                        <option>2007</option>
-                                        <option>2006</option>
-                                        <option>2005</option>
-                                        <option>2004</option>
-                                        <option>2003</option>
-                                        <option>2002</option>
-                                        <option>2001</option>
-                                        <option>2000</option>
-                                        <option>1999</option>
-                                        <option>1998</option>
-                                        <option>1997</option>
-                                        <option>1996</option>
-                                        <option>1995</option>
-                                        <option>1994</option>
-                                        <option>1993</option>
-                                        <option>1992</option>
-                                        <option>1991</option>
-                                        <option>1990</option>
-                                        <option>1989</option>
-                                        <option>1988</option>
-                                        <option>1987</option>
-                                        <option>1986</option>
-                                        <option>1985</option>
-                                        <option>1984</option>
-                                        <option>1983</option>
-                                        <option>1982</option>
-                                        <option>1981</option>
-                                        <option>1980</option>
-                                        <option>1979</option>
-                                        <option>1978</option>
-                                        <option>1977</option>
-                                        <option>1976</option>
-                                        <option>1974</option>
-                                        <option>1973</option>
-                                        <option>1972</option>
-                                        <option>1971</option>
-                                        <option>1970</option>
-                                    </select>
+                    <form action="/partialanalysis" method="post">
+                        <section id="building">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Building</h2>
                                 </div>
-                                <div class="span4">
-                                    <div>
-                                        <h4>Function</h4>
-                                        <select class="span3" name="building[activity_type]">
-                                            <option>Small Office</option>
-                                            <option>Medium Office</option>
-                                            <option>Large Office</option>
-                                            <option>Stand-alone Retail</option>
-                                            <option>Strip Mall</option>
-                                            <option>Primary School</option>
-                                            <option>Secondary School</option>
-                                            <option>Outpatient Healthcare</option>
-                                            <option>Hospital</option>
-                                            <option>Small hotel</option>
-                                            <option>Large Hotel</option>
-                                            <option>Warehouse (non-refrigerated)</option>
-                                            <option>Quick Service Restaurant</option>
-                                            <option>Full Service Restaurant</option>
-                                            <option>Mid-Rise Apartment</option>
-                                            <option>High-Rise Apartment</option>
+                                <div class="row">
+                                    <div class="span4">
+                                        <h4>Building Name</h4>
+                                        <input class="span3" type="text" ng-model="buildingName"
+                                        name="building[building_name]">
+                                        <br/>
+                                        <h4>Year Built</h4>
+                                        <select class="span2" name="building[year_completed]">
+                                            <option>2013</option>
+                                            <option>2012</option>
+                                            <option>2011</option>
+                                            <option>2010</option>
+                                            <option>2009</option>
+                                            <option>2008</option>
+                                            <option>2007</option>
+                                            <option>2006</option>
+                                            <option>2005</option>
+                                            <option>2004</option>
+                                            <option>2003</option>
+                                            <option>2002</option>
+                                            <option>2001</option>
+                                            <option>2000</option>
+                                            <option>1999</option>
+                                            <option>1998</option>
+                                            <option>1997</option>
+                                            <option>1996</option>
+                                            <option>1995</option>
+                                            <option>1994</option>
+                                            <option>1993</option>
+                                            <option>1992</option>
+                                            <option>1991</option>
+                                            <option>1990</option>
+                                            <option>1989</option>
+                                            <option>1988</option>
+                                            <option>1987</option>
+                                            <option>1986</option>
+                                            <option>1985</option>
+                                            <option>1984</option>
+                                            <option>1983</option>
+                                            <option>1982</option>
+                                            <option>1981</option>
+                                            <option>1980</option>
+                                            <option>1979</option>
+                                            <option>1978</option>
+                                            <option>1977</option>
+                                            <option>1976</option>
+                                            <option>1974</option>
+                                            <option>1973</option>
+                                            <option>1972</option>
+                                            <option>1971</option>
+                                            <option>1970</option>
                                         </select>
                                     </div>
-                                    <h4>City</h4>
-                                    <select class="span3" name="building[weather_epw_location]">
-                                        <option>Albuquerque, NM (4B)</option>
-                                        <option>Baltimore, MD (4A)</option>
-                                        <option>Boise, ID (5B)</option>
-                                        <option>Burlingotn, NH (6A)</option>
-                                        <option>Chicago, IL (5A)</option>
-                                        <option>Duluth, MN (7)</option>
-                                        <option>El Paso, TX (3B)</option>
-                                        <option>Fairbanks, AK (8)</option>
-                                        <option>Helena, MT (6B)</option>
-                                        <option>Houston, TX (2A)</option>
-                                        <option>Memphis, TN (3A)</option>
-                                        <option>Miami, FL (1A)</option>
-                                        <option>Pheonix, AZ (2B)</option>
-                                        <option>Philadelphia, PA (4A)</option>
-                                        <option>Riyadh, SAU (1B)</option>
-                                        <option>Salem, MA (4C)</option>
-                                        <option>San Francisco, CA (3C)</option>
-                                        <option>Vancouver, CAN (5C)</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section id="shape">
-                        <div class="box-unit">
-                            <div class="page-header">
-                                <h2>Shape/Size</h2>
-                            </div>
-                            <div class="row">
-                                <div class="span4">
-                                    <h4>Gross Floor Area</h4>
-                                    <div class="input-append">
-                                        <input type="number" min="0" step="0.1" name="size[gross_floor_area]"
-                                        />
-                                        <span class="add-on">m&#178;</span>
-                                    </div>
-                                    <h4>Number of Floors</h4>
-                                    <input type="number" name="size[number_of_floors]"
-                                    min="0" step="1" />
-                                </div>
-                                <div class="span4">
-                                    <h4>Length</h4>
-                                    <div class="input-append">
-                                        <input type="number" name="size[building_length]" min="0" step="0.01"
-                                        />
-                                        <span class="add-on">m</span>
-                                    </div>
-                                    <h4>Width</h4>
-                                    <div class="input-append">
-                                        <input type="number" name="size[building_width]" min="0" step="0.01" />
-                                        <span class="add-on">m</span>
-                                    </div>
-                                    <h4>Window/Wall Ratio</h4>
-                                    <form class="form-inline">
-                                        <input type="range" ng-model="winwall" name="size[window_to_wall_ratio]"
-                                        min="0" max="40" step="1" value=50/>
-                                        <div class="input-append">
-                                            <input class="span1" type="text" value={{winwall}} ng-model="winwall"
-                                            />
-                                            <span class="add-on">%</span>
+                                    <div class="span4">
+                                        <div>
+                                            <h4>Function</h4>
+                                            <select class="span3" name="building[activity_type]">
+                                                <option>Small Office</option>
+                                                <option>Medium Office</option>
+                                                <option>Large Office</option>
+                                                <option>Stand-alone Retail</option>
+                                                <option>Strip Mall</option>
+                                                <option>Primary School</option>
+                                                <option>Secondary School</option>
+                                                <option>Outpatient Healthcare</option>
+                                                <option>Hospital</option>
+                                                <option>Small hotel</option>
+                                                <option>Large Hotel</option>
+                                                <option>Warehouse (non-refrigerated)</option>
+                                                <option>Quick Service Restaurant</option>
+                                                <option>Full Service Restaurant</option>
+                                                <option>Mid-Rise Apartment</option>
+                                                <option>High-Rise Apartment</option>
+                                            </select>
                                         </div>
-                                    </form>
+                                        <h4>City</h4>
+                                        <select class="span3" name="building[weather_epw_location]">
+                                            <option>Albuquerque, NM (4B)</option>
+                                            <option>Baltimore, MD (4A)</option>
+                                            <option>Boise, ID (5B)</option>
+                                            <option>Burlingotn, NH (6A)</option>
+                                            <option>Chicago, IL (5A)</option>
+                                            <option>Duluth, MN (7)</option>
+                                            <option>El Paso, TX (3B)</option>
+                                            <option>Fairbanks, AK (8)</option>
+                                            <option>Helena, MT (6B)</option>
+                                            <option>Houston, TX (2A)</option>
+                                            <option>Memphis, TN (3A)</option>
+                                            <option>Miami, FL (1A)</option>
+                                            <option>Pheonix, AZ (2B)</option>
+                                            <option>Philadelphia, PA (4A)</option>
+                                            <option>Riyadh, SAU (1B)</option>
+                                            <option>Salem, MA (4C)</option>
+                                            <option>San Francisco, CA (3C)</option>
+                                            <option>Vancouver, CAN (5C)</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="span3">
-                                    <h4>Shape</h4>
-                                    <select name="" ng-model="shapeimage" name="shape[footprint_shape]">
-                                        <option value="img/basic_geometry/c_shape_min_zone.png" >C Shape</option>
-                                        <option value="img/basic_geometry/h_shape_min_zone.png">H Shape</option>
-                                        <option value="img/basic_geometry/l_shape_min_zone.png"
-                                        >L Shape</option>
-                                        <option value="img/basic_geometry/rect_min_zone.png">Rectangle</option>
-                                        <option value="img/basic_geometry/t_shape_min_zone.png"
-                                        >T Shaped</option>
-                                        <option value="img/basic_geometry/u_shape_min_zone.png"
-                                        >U Shaped</option>
-                                    </select>
-                                    <h4>Orientation</h4>
-                                    <table>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <button class="btn" type="button" ng-click="orientation='north'">North</button>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <button class="btn" type="button" ng-click="orientation='northwest'">NW</button>
-                                            </td>
-                                            <td></td>
-                                            <td>
-                                                <button class="btn" type="button" ng-click="orientation='northeast'">NE</button>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <button class="btn" type="button" ng-click="orientation='west'">West</button>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <button class="btn" type="button" ng-click="orientation='east'">East</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-
-                                                <button class="btn" type="button " ng-click="orientation='southwest' ">SW</button>
-                                            </td>
-                                            <td></td>
-                                            <td>
-                                                <button class="btn
+                        </section>
+                        <section id="shape">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Shape/Size</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="span4">
+                                        <h4>Gross Floor Area</h4>
+                                        <div class="input-append">
+                                            <input type="number" min="0" step="0.1" name="size[gross_floor_area]"
+                                            />
+                                            <span class="add-on">m&#178;</span>
+                                        </div>
+                                        <h4>Number of Floors</h4>
+                                        <input type="number" name="size[number_of_floors]"
+                                        min="0" step="1" />
+                                    </div>
+                                    <div class="span4">
+                                        <h4>Length</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="size[building_length]" min="0" step="0.01"
+                                            />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                        <h4>Width</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="size[building_width]" min="0" step="0.01" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                        <h4>Window/Wall Ratio</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="winwall" name="size[window_to_wall_ratio]"
+                                                min="0" max="40" step="1" value=50/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" type="text" value={{winwall}} ng-model="winwall"
+                                                    />
+                                                    <span class="add-on">%</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="span3">
+                                        <h4>Shape</h4>
+                                        <select name="" ng-model="shapeimage" name="shape[footprint_shape]">
+                                            <option value="img/basic_geometry/c_shape_min_zone.png">C Shape</option>
+                                            <option value="img/basic_geometry/h_shape_min_zone.png">H Shape</option>
+                                            <option value="img/basic_geometry/l_shape_min_zone.png">L Shape</option>
+                                            <option value="img/basic_geometry/rect_min_zone.png">Rectangle</option>
+                                            <option value="img/basic_geometry/t_shape_min_zone.png">T Shaped</option>
+                                            <option value="img/basic_geometry/u_shape_min_zone.png">U Shaped</option>
+                                        </select>
+                                        <h4>Orientation</h4>
+                                        <table>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <button class="btn" type="button" ng-click="orientation='north'">North</button>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <button class="btn" type="button" ng-click="orientation='northwest'">NW</button>
+                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    <button class="btn" type="button" ng-click="orientation='northeast'">NE</button>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <button class="btn" type="button" ng-click="orientation='west'">West</button>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <button class="btn" type="button" ng-click="orientation='east'">East</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <button class="btn" type="button " ng-click="orientation='southwest' ">SW</button>
+                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    <button class="btn
                                                 " type="button " ng-click="orientation='southeast' ">SE</button>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <button class="btn
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <button class="btn
                                                 " type="button " ng-click="orientation='south' ">South</button>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="span5 ">
+                                        <img ng-src="{{shapeimage}}" ng-class="orientation" ng-name="orientation"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="occupancy ">
+                            <div class="box-unit ">
+                                <div class="page-header ">
+                                    <h2>Occupancy</h2>
+                                </div>
+                                <div class="row ">
+                                    <div class="span4 ">
+                                        <h4>Weekday Occupancy Hours</h4>
+                                        <h5>Day Start</h5>
+                                        <input type="time" ng-model="weekdayStart
+                                                " name="occupancy[weekday_occupancy_start] "
+                                        />
+                                        <h5>Day End</h5>
+                                        <input type="time" value={{weekdayStart}} min={{weekdayStart}}
+                                        name="occupancy[weekday_occupancy_end]" />
+                                    </div>
+                                    <div class="span4 ">
+                                        <h4>Weekend Occupancy Hours</h4>
+                                        <h5>Day Start</h5>
+                                        <input type="time" ng-model="weekendStart" name="occupancy[weekend_occupancy_start] "
+                                        />
+                                        <h5>Day End</h5>
+                                        <input type="time" value={{weekendStart}} min={{weekendStart}}
+                                        name="occupancy[weekend_occupancy_end]" />
+                                        <h4>Number of Occupants</h4>
+                                        <input type="number" step="1" min="0 " name="occupancy[number_of_occupants] "
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="materials ">
+                            <div class="box-unit ">
+                                <div class="page-header ">
+                                    <h2>Materials</h2>
+                                </div>
+                                <div class="row ">
+                                    <div class="span4 ">
+                                        <h4>Walls</h4>
+                                        <select class="span3 " name="materials[exterior_wall_type
+                                                ] ">
+                                            <option>Concrete Mass</option>
+                                            <option>Metal</option>
+                                            <option>Steel Framed</option>
+                                            <option>Wood Framed and Other</option>
+                                        </select>
+                                        <h4>Windows</h4>
+                                        <select class="span3 " name="materials[window_glass_type] ">
+                                            <option>Multi-layer Glass</option>
+                                            <option>Single Layer Glass</option>
+                                            <option>Combination</option>
+                                            <option>No Windows</option>
+                                            <option>Unknown</option>
+                                        </select>
+                                        <h4>Thermal Mass</h4>
+                                        <select class="span3 " name="materials[thermal_mass] ">
+                                            <option>High</option>
+                                            <option>Low</option>
+                                            <option>None</option>
+                                            <option>Isolated in Floor</option>
+                                        </select>
+                                    </div>
+                                    <div class="span4 ">
+                                        <h4>Roof</h4>
+                                        <select class="span3 " name="materials[roof_type] ">
+                                            <option>Modified Bitumen Roof</option>
+                                            <option>Metal Roof</option>
+                                            <option>Green Roof</option>
+                                            <option>Cool Roof</option>
+                                        </select>
+                                        <h4>Roof Insulation Type</h4>
+                                        <select class="span3 " name="materials[roof_insulation_type] ">
+                                            <option>Wood Fiber</option>
+                                            <option>Perlite Lnsulation Board</option>
+                                            <option>Polyisocyanurate</option>
+                                            <option>Polystyrene</option>
+                                            <option>Extruded Polystyrene</option>
+                                            <option>Cellular Glass</option>
+                                            <option>Gypsum Board</option>
+                                        </select>
+                                        <h4>Roof Insulation R Value</h4>
+                                        <div class="input-append ">
+                                            <input class="span3 " id="appendedInput" type="text" name="materials[roof_insulation_r_value] "
+                                            />
+                                            <span class="add-on ">m
+                                                <sup>2</sup>C/W</span>
+                                        </div>
+                                        <h4>Roof Insulation Location</h4>
+                                        <select class="span3" name="materials[roof_insulation_location]">
+                                            <option>Top of Slab</option>
+                                            <option>Bottom of Slab</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="mechanical">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Mechanical</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="span4">
+                                        <h4>Ventilation System</h4>
+                                        <select name="mechanical[ventilation_system]">
+                                            <option>Mechanical Cooling & Heating</option>
+                                            <option>Natural ventilation cooling, Mechanical Heating</option>
+                                            <option>Joint natural ventilation cooling and mechanical heating</option>
+                                        </select>
+                                    </div>
+                                    <div class="span4">
+                                        <h4>Equipment Density</h4>
+                                        <div class="input-append">
+                                            <select class="span2" id="appendedInput" name="mechanical[equipment_power_density]">
+                                                <option>0.00 No Equipment</option>
+                                                <option>1.00</option>
+                                                <option>1.00 Office (Small)</option>
+                                                <option>5.00 Office (Medium)</option>
+                                                <option>10.00 Office (Large)</option>
+                                                <option>15</option>
+                                                <option>20</option>
+                                                <option>25</option>
+                                                <option>50</option>
+                                                <option>100</option>
+                                            </select>
+                                            <span class="add-on">W/m
+                                                <sup>2</sup>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="additional">
+                            <div class="box-unit" ng-controller="CollapseCtrl">
+                                <button class="btn btn-primary" ng-click="IBM = !IBM" type="button">Utility Data for IBM</button>
+                                <button class="btn btn-primary" ng-click="MIT = !MIT" type="button">Typical Room For MIT</button>
+                                <div collapse="IBM" id="utility">
+                                    <div class="page-header">
+                                        <h2>Utliity Data</h2>
+                                    </div>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox" ng-model="ng">Natural Gas&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox" ng-model="oil">Oil&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox" ng-model="steam">Steam</label>
+                                    <table class="table table-hover" id="utltable">
+                                        <thead>
+                                            <th class="span2">Billing Period Start Date</th>
+                                            <th class="span2">Electricity (kWh)</th>
+                                            <th class="span2" ng-show="ng">Gas (CCF)</th>
+                                            <th class="span2" ng-show="oil">Oil (Gallons)</th>
+                                            <th class="span2" ng-show="steam">Steam (CCF)</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date1"
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="Gallons" ng-show="oil"
+                                                    name="utility[utility_oil]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date2"
+                                                    min={{date1}}/>
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="Gallons" ng-show="oil"
+                                                    name="utility[utility_oil]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date3"
+                                                    min={{date2}}/>
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="Gallons" ng-show="oil"
+                                                    name="utility[utility_oil]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date4"
+                                                    value={{date3}} min={{date3}}/>
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="Gallons" ng-show="oil"
+                                                    name="utility[utility_oil]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date5"
+                                                    value={{date4}} min={{date4}}/>
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="Gallons" ng-show="oil"
+                                                    name="utility[utility_oil]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date6"
+                                                    value={{date5}} min={{date5}}/>
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="Gallons" ng-show="oil"
+                                                    name="utility[utility_oil]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date7"
+                                                    value={{date6}} min={{date6}}/>
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="Gallons" ng-show="oil"
+                                                    name="utility[utility_oil]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date8"
+                                                    value={{date7}} min={{date7}}/>
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="Gallons" ng-show="oil"
+                                                    name="utility[utility_oil]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date9"
+                                                    value={{date8}} min={{date8}}/>
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="Gallons" ng-show="oil"
+                                                    name="utility[utility_oil]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date10"
+                                                    value={{date9}} min={{date9}}/>
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="Gallons" ng-show="oil"
+                                                    name="utility[utility_oil]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date11"
+                                                    value={{date10}} min={{date10}}/>
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
+                                                </td>
+                                                <td>
+                                                    <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="Gallons" ng-show="oil"
+                                                    name="utility[utility_oil]">
+                                                </td>
+                                                <td>
+                                                    <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <thead>
+                                            <th class="span2">Billing Period End Date</th>
+                                            <th class="span2">Electricity (kWh)</th>
+                                            <th class="span2" ng-show="ng">Gas (CCF)</th>
+                                            <th class="span2" ng-show="oil">Oil (Gallons)</th>
+                                            <th class="span2" ng-show="steam">Steam (CCF)</th>
+                                        </thead>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date12"
+                                                min={{date11}}/>
                                             </td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>
+                                                <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
+                                            </td>
+                                            <td>
+                                                <input class="span1" type="number" placeholder="Gallons" ng-show="oil"
+                                                name="utility[utility_oil]">
+                                            </td>
+                                            <td>
+                                                <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
+                                            </td>
                                         </tr>
                                     </table>
+                                    <button class="btn" onclick="addRow('utltable')">
+                                        <i class="icon-plus"></i>
+                                    </button>
+                                    <button class="btn" onclick="deleteRow('utltable')">
+                                        <i class="icon-minus"></i>
+                                    </button>
+                                    <br />
+                                    <br />
+                                    <input class="btn-large btn-success right" type="submit" value="Run Inverse Model" />
+                                    <hr />
                                 </div>
-                                <div class="span5 ">
-                                    <img ng-src="{{shapeimage}}" ng-class="orientation" ng-name="orientation"/>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section id="occupancy ">
-                        <div class="box-unit ">
-                            <div class="page-header ">
-                                <h2>Occupancy</h2>
-                            </div>
-                            <div class="row ">
-                                <div class="span4 ">
-                                    <h4>Weekday Occupancy Hours</h4>
-                                    <h5>Day Start</h5>
-                                    <input type="time" ng-model="weekdayStart
-                                                " name="occupancy[weekday_occupancy_start] " />
-                                    <h5>Day End</h5>
-                                    <input type="time" value={{weekdayStart}} min={{weekdayStart}}
-                                    name="occupancy[weekday_occupancy_end]" />
-                                </div>
-                                <div class="span4 ">
-                                    <h4>Weekend Occupancy Hours</h4>
-                                    <h5>Day Start</h5>
-                                    <input type="time" ng-model="weekendStart" name="occupancy[weekend_occupancy_start] " />
-                                    <h5>Day End</h5>
-                                    <input type="time" value={{weekendStart}} min={{weekendStart}} name="occupancy[weekend_occupancy_end]" />
-                                    <h4>Number of Occupants</h4>
-                                    <input type="number" step="1" min="0 " name="occupancy[number_of_occupants] "
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section id="materials ">
-                        <div class="box-unit ">
-                            <div class="page-header ">
-                                <h2>Materials</h2>
-                            </div>
-                            <div class="row ">
-                                <div class="span4 ">
-                                    <h4>Walls</h4>
-                                    <select class="span3 " name="materials[exterior_wall_type
-                                                ] ">
-                                        <option>Concrete Mass</option>
-                                        <option>Metal</option>
-                                        <option>Steel Framed</option>
-                                        <option>Wood Framed and Other</option>
-                                    </select>
-                                    <h4>Windows</h4>
-                                    <select class="span3 " name="materials[window_glass_type] ">
-                                        <option>Multi-layer Glass</option>
-                                        <option>Single Layer Glass</option>
-                                        <option>Combination</option>
-                                        <option>No Windows</option>
-                                        <option>Unknown</option>
-                                    </select>
-                                    <h4>Thermal Mass</h4>
-                                    <select class="span3 " name="materials[thermal_mass] ">
-                                        <option>High</option>
-                                        <option>Low</option>
-                                        <option>None</option>
-                                        <option>Isolated in Floor</option>
-                                    </select>
-                                </div>
-                                <div class="span4 ">
-                                    <h4>Roof</h4>
-                                    <select class="span3 " name="materials[roof_type] ">
-                                        <option>Modified Bitumen Roof</option>
-                                        <option>Metal Roof</option>
-                                        <option>Green Roof</option>
-                                        <option>Cool Roof</option>
-                                    </select>
-                                    <h4>Roof Insulation Type</h4>
-                                    <select class="span3 " name="materials[roof_insulation_type] ">
-                                        <option>Wood Fiber</option>
-                                        <option>Perlite Lnsulation Board</option>
-                                        <option>Polyisocyanurate</option>
-                                        <option>Polystyrene</option>
-                                        <option>Extruded Polystyrene</option>
-                                        <option>Cellular Glass</option>
-                                        <option>Gypsum Board</option>
-                                    </select>
-                                    <h4>Roof Insulation R Value</h4>
-                                    <div class="input-append ">
-                                        <input class="span3 " id="appendedInput" type="text" name="materials[roof_insulation_r_value] " />
-                                        <span class="add-on ">m
-                                            <sup>2</sup>C/W</span>
+                                
+                                <div collapse="MIT" id="room">
+                                    <div class="page-header">
+                                        <h2>Typical Room</h2>
                                     </div>
-                                    <h4>Roof Insulation Location</h4>
-                                    <select class="span3" name="materials[roof_insulation_location]">
-                                                    <option>Top of Slab</option>
-                                                    <option>Bottom of Slab</option>
-                                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section id="mechanical">
-                        <div class="box-unit">
-                            <div class="page-header">
-                                <h2>Mechanical</h2>
-                            </div>
-                            <div class="row">
-                                <div class="span4">
-                                    <h4>Ventilation System</h4>
-                                    <select name="mechanical[ventilation_system]">
-                                        <option>Mechanical Cooling & Heating</option>
-                                        <option>Natural ventilation cooling, Mechanical Heating</option>
-                                        <option>Joint natural ventilation cooling and mechanical heating</option>
-                                    </select>
-                                </div>
-                                <div class="span4">
-                                    <h4>Equipment Density</h4>
-                                    <div class="input-append">
-                                        <select class="span2" id="appendedInput" name="mechanical[equipment_power_density]">
-                                            <option>0.00 No Equipment</option>
-                                            <option>1.00</option>
-                                            <option>1.00 Office (Small)</option>
-                                            <option>5.00 Office (Medium)</option>
-                                            <option>10.00 Office (Large)</option>
-                                            <option>15</option>
-                                            <option>20</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span class="add-on">W/m
-                                            <sup>2</sup>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section id="additional">
-                        <div class="box-unit" ng-controller="CollapseCtrl">
-                            <button class="btn btn-primary" ng-click="IBM = !IBM">Utility Data for IBM</button>
-                            <button class="btn btn-primary" ng-click="MIT = !MIT">Typical Room For MIT</button>
-                            <div collapse="IBM" id="utility">
-                                <div class="page-header">
-                                    <h2>Utliity Data</h2>
-                                </div>
-                                <form class="form-inline">
-                                    <label class="checkbox">
-                                        <input type="checkbox" ng-model="ng">Natural Gas&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <label class="checkbox">
-                                        <input type="checkbox" ng-model="oil">Oil&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <label class="checkbox">
-                                        <input type="checkbox" ng-model="steam">Steam</label>
-                                </form>
-                                <table class="table table-hover" id="utltable">
-                                    <thead>
-                                        <th class="span2">Billing Period Start Date</th>
-                                        <th class="span2">Electricity (kWh)</th>
-                                        <th class="span2" ng-show="ng">Gas (CCF)</th>
-                                        <th class="span2" ng-show="oil">Oil (Gallons)</th>
-                                        <th class="span2" ng-show="steam">Steam (CCF)</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date1" />
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="Gallons" ng-show="oil" name="utility[utility_oil]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date2" min={{date1}}/>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="Gallons" ng-show="oil" name="utility[utility_oil]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date3" min={{date2}}/>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="Gallons" ng-show="oil" name="utility[utility_oil]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date4" value={{date3}} min={{date3}}/>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="Gallons" ng-show="oil" name="utility[utility_oil]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date5" value={{date4}} min={{date4}}/>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="Gallons" ng-show="oil" name="utility[utility_oil]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date6" value={{date5}} min={{date5}}/>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="Gallons" ng-show="oil" name="utility[utility_oil]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date7" value={{date6}} min={{date6}}/>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="Gallons" ng-show="oil" name="utility[utility_oil]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date8" value={{date7}} min={{date7}}/>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="Gallons" ng-show="oil" name="utility[utility_oil]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date9" value={{date8}} min={{date8}}/>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="Gallons" ng-show="oil" name="utility[utility_oil]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date10" value={{date9}} min={{date9}}/>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="Gallons" ng-show="oil" name="utility[utility_oil]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date11" value={{date10}} min={{date10}}/>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="Gallons" ng-show="oil" name="utility[utility_oil]">
-                                            </td>
-                                            <td>
-                                                <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <thead>
-                                        <th class="span2">Billing Period End Date</th>
-                                        <th class="span2">Electricity (kWh)</th>
-                                        <th class="span2" ng-show="ng">Gas (CCF)</th>
-                                        <th class="span2" ng-show="oil">Oil (Gallons)</th>
-                                        <th class="span2" ng-show="steam">Steam (CCF)</th>
-                                    </thead>
-                                    <tr>
-                                        <td>
-                                            <input type="date" class="span2" name="utility[utility_startdate]" ng-model="date12" min={{date11}}/>
-                                        </td>
-                                        <td>
-                                            <input class="span2" type="number" placeholder="kWh" name="utility[utility_electric]">
-                                        </td>
-                                        <td>
-                                            <input class="span2" type="number" placeholder="CCF" ng-show="ng" name="utility[utility_gas]">
-                                        </td>
-                                        <td>
-                                            <input class="span1" type="number" placeholder="Gallons" ng-show="oil" name="utility[utility_oil]">
-                                        </td>
-                                        <td>
-                                            <input class="span1" type="number" placeholder="CCF" ng-show="steam" name="utility[utility_steam]">
-                                        </td>
-                                    </tr>
-                                </table>
-                                <button class="btn" onclick="addRow('utltable')">
-                                    <i class="icon-plus"></i>
-                                </button>
-                                <button class="btn" onclick="deleteRow('utltable')">
-                                    <i class="icon-minus"></i>
-                                </button>
-                                <br />
-                                <button class="btn-large btn-success right">Run Inverse Model</button>
-                                <br />
-                                <hr />
-                            </div>
-                            <div collapse="MIT" id="room">
-                                <div class="page-header">
-                                    <h2>Typical Room</h2>
-                                </div>
-                                <div class="row">
-                                    <div class="span3">
-                                        <h4>Room Width</h4>
-                                        <div class="input-append">
-                                            <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
-                                            name="room[room_width]" />
-                                            <span class="add-on">m</span>
-                                        </div>
-                                        <h4>Room Depth</h4>
-                                        <div class="input-append">
-                                            <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
-                                            name="room[room_depth]" />
-                                            <span class="add-on">m</span>
-                                        </div>
-                                        <h4>Room Height</h4>
-                                        <div class="input-append">
-                                            <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
-                                            name="room[room_height]" />
-                                            <span class="add-on">m</span>
-                                        </div>
-                                    </div>
-                                    <div class="span3">
-                                        <h4>Window/Primary Facade Orientation</h4>
-                                        <select name="room[exterior_shading_orientation]" class="span2">
-                                            <option>North</option>
-                                            <option>North-East</option>
-                                            <option>East</option>
-                                            <option>South-East</option>
-                                            <option>South</option>
-                                            <option>South-West</option>
-                                            <option>West</option>
-                                            <option>North-West</option>
-                                        </select>
-                                        <h4>Window Area</h4>
-                                        <form class="form-inline">
-                                            <input type="range" ng-model="winwalltyp" name="room[window_to_wall_ratio]" min="0" max="40" step="1"
-                                            value=50/>
+                                    <div class="row">
+                                        <div class="span3">
+                                            <h4>Room Width</h4>
                                             <div class="input-append">
-                                                <input class="span1" type="text" value={{winwalltyp}} ng-model="winwalltyp"
-                                                />
-                                                <span class="add-on">%</span>
+                                                <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                                name="room[room_width]" />
+                                                <span class="add-on">m</span>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="span2">
-                                        <img class="img-rounded" src="img/room_dimensions.png">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="span2">
-                                        <img class="img-polaroid" src="img/windows/dgu_nb_thumb_on.gif">
-                                        <img class="img-polaroid" src="img/windows/dgu_thumb_on.gif">
-                                    </div>
-                                    <div class="span2">
-                                        <img class="img-polaroid" src="img/windows/invent_thumb_on.gif">
-                                        <img class="img-polaroid" src="img/windows/outvent_thumb_on.gif">
-                                    </div>
-                                    <div class="span2">
-                                        <img class="img-polaroid" src="img/windows/sgu_nb_thumb_on.gif">
-                                        <img class="img-polaroid" src="img/windows/sgu_thumb_on.gif">
-                                    </div>
-                                    <div class="span2">
-                                        <img class="img-polaroid" src="img/windows/tgu_nb_thumb_on.gif">
-                                        <img class="img-polaroid" src="img/windows/tgu_thumb_on.gif">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="span4">
-                                        <h4>Glas Type</h4>
-                                        <select name="room[window_glass_type]">
-                                            <option>clear</option>
-                                            <option>low-e</option>
-                                            <option>High Performance</option>
-                                            <option>Blue</option>
-                                            <option>Bronze</option>
-                                            <option>Green</option>
-                                            <option>Grey</option>
-                                        </select>
-                                    </div>
-                                    <div class="span4">
-                                        <h4>Overhang Distance</h4>
-                                        <div class="input-append">
-                                            <input class="span2" id="appendedInput" type="number" name="room[overhang_depth]">
-                                            <span class="add-on">m</span>
+                                            <h4>Room Depth</h4>
+                                            <div class="input-append">
+                                                <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                                name="room[room_depth]" />
+                                                <span class="add-on">m</span>
+                                            </div>
+                                            <h4>Room Height</h4>
+                                            <div class="input-append">
+                                                <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                                name="room[room_height]" />
+                                                <span class="add-on">m</span>
+                                            </div>
                                         </div>
-                                        <h4>Lighting</h4>
-                                        <div class="input-append">
-                                            <select class="span2" id="appendedInput" name="room[illuminance]">
-                                                <option>0 (Darkness)</option>
-                                                <option>150 (Storage)</option>
-                                                <option>200 (Casual Work)</option>
-                                                <option>300 (Rough Work)</option>
-                                                <option>400 Office Work-EU)</option>
-                                                <option>500 (Office Work-US)</option>
-                                                <option>750 (Fine Work)</option>
-                                                <option>1000 (Fine Assembly)</option>
-                                                <option>1500 (Very Fine Work)</option>
+                                        <div class="span3">
+                                            <h4>Window/Primary Facade Orientation</h4>
+                                            <select name="room[exterior_shading_orientation]"
+                                            class="span2">
+                                                <option>North</option>
+                                                <option>North-East</option>
+                                                <option>East</option>
+                                                <option>South-East</option>
+                                                <option>South</option>
+                                                <option>South-West</option>
+                                                <option>West</option>
+                                                <option>North-West</option>
                                             </select>
-                                            <span class="add-on">lux</span>
+                                            <h4>Window Area</h4>
+                                            <ul class="inline">
+                                                <li>
+                                                    <input type="range" ng-model="winwalltyp" name="room[window_to_wall_ratio]"
+                                                    min="0" max="40" step="1" value=50/>
+                                                </li>
+                                                <li>
+                                                    <div class="input-append">
+                                                        <input class="span1" type="text" value={{winwalltyp}} ng-model="winwalltyp"
+                                                        />
+                                                        <span class="add-on">%</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="span2">
+                                            <img class="img-rounded" src="img/room_dimensions.png">
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="span2">
+                                            <img class="img-polaroid" src="img/windows/dgu_nb_thumb_on.gif">
+                                            <img class="img-polaroid" src="img/windows/dgu_thumb_on.gif">
+                                        </div>
+                                        <div class="span2">
+                                            <img class="img-polaroid" src="img/windows/invent_thumb_on.gif">
+                                            <img class="img-polaroid" src="img/windows/outvent_thumb_on.gif">
+                                        </div>
+                                        <div class="span2">
+                                            <img class="img-polaroid" src="img/windows/sgu_nb_thumb_on.gif">
+                                            <img class="img-polaroid" src="img/windows/sgu_thumb_on.gif">
+                                        </div>
+                                        <div class="span2">
+                                            <img class="img-polaroid" src="img/windows/tgu_nb_thumb_on.gif">
+                                            <img class="img-polaroid" src="img/windows/tgu_thumb_on.gif">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="span4">
+                                            <h4>Glas Type</h4>
+                                            <select name="room[window_glass_type]">
+                                                <option>clear</option>
+                                                <option>low-e</option>
+                                                <option>High Performance</option>
+                                                <option>Blue</option>
+                                                <option>Bronze</option>
+                                                <option>Green</option>
+                                                <option>Grey</option>
+                                            </select>
+                                        </div>
+                                        <div class="span4">
+                                            <h4>Overhang Distance</h4>
+                                            <div class="input-append">
+                                                <input class="span2" id="appendedInput" type="number" name="room[overhang_depth]">
+                                                <span class="add-on">m</span>
+                                            </div>
+                                            <h4>Lighting</h4>
+                                            <div class="input-append">
+                                                <select class="span2" id="appendedInput" name="room[illuminance]">
+                                                    <option>0 (Darkness)</option>
+                                                    <option>150 (Storage)</option>
+                                                    <option>200 (Casual Work)</option>
+                                                    <option>300 (Rough Work)</option>
+                                                    <option>400 Office Work-EU)</option>
+                                                    <option>500 (Office Work-US)</option>
+                                                    <option>750 (Fine Work)</option>
+                                                    <option>1000 (Fine Assembly)</option>
+                                                    <option>1500 (Very Fine Work)</option>
+                                                </select>
+                                                <span class="add-on">lux</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <input type="submit" class="btn-large btn-success right" value="Run Design Advisor" /> 
                                 </div>
-                                <div>
-                                    <button class="btn-large btn-success right">Run Design Advisor</button>
-                                </div>
+                                
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                    </form>
                 </div>
             </div>
         </div>

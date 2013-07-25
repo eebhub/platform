@@ -27,6 +27,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.getIndex);
+app.get('/lite', routes.getLite);
 
 
 http.createServer(app).listen(app.get('port'), function(){

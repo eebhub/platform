@@ -1,0 +1,122 @@
+.nav-signin {
+    float:right;
+    }
+.gray {
+    color:rgb(160, 160, 160);
+}
+
+.gray-small {
+    font-size:small;
+    color:rgb(160, 160, 160);
+}
+
+.house-center {
+    display: block; 
+    width: 100px; 
+    margin: 0 auto;
+}
+
+.house-left {
+    display: block; 
+    width: 100px; 
+}
+.house-right {
+    display: block; 
+    width: 100px; 
+    float: right;
+    
+}
+
+/*Lite*/
+
+.up-triangle-lite {
+   width: 0; 
+   height: 0; 
+   border-bottom: 45px solid rgb(186, 201, 51); 
+   border-left: 50px solid transparent; 
+   border-right: 50px solid transparent; 
+   
+}
+.square-lite {
+   width: 100px; 
+   height: 80px; 
+   background: rgb(186, 201, 51); 
+}
+
+.up-triangle-lite-small {
+   width: 0; 
+   height: 0; 
+   border-bottom: 11.25px solid rgb(186, 201, 51); 
+   border-left: 12.5px solid transparent; 
+   border-right: 12.5px solid transparent; 
+   margin-left: auto;
+}
+.square-lite-small {
+   width: 25px; 
+   height: 20px; 
+   background: rgb(186, 201, 51); 
+   margin-left: auto;
+}
+/*Partial*/
+.up-triangle-partial {
+   width: 0; 
+   height: 0; 
+   border-bottom: 45px solid rgb(161, 188, 103); 
+   border-left: 50px solid transparent; 
+   border-right: 50px solid transparent; 
+}
+.square-partial {
+   width: 100px; 
+   height: 80px; 
+   background: rgb(161, 188, 103); 
+}
+.up-triangle-partial-small {
+   width: 0; 
+   height: 0; 
+   border-bottom: 22.5px solid rgb(161, 188, 103); 
+   border-left: 25px solid transparent; 
+   border-right: 25px solid transparent; 
+}
+.square-partial-small {
+   width: 50px; 
+   height: 40px; 
+   background: rgb(161, 188, 103); 
+}
+/*Substantial*/
+.up-triangle-substantial {
+   width: 0; 
+   height: 0; 
+   border-bottom: 45px solid rgb(135, 174, 154); 
+   border-left: 50px solid transparent; 
+   border-right: 50px solid transparent; 
+}
+.square-substantial {
+   width: 100px; 
+   height: 80px; 
+   background: rgb(135, 174, 154); 
+}
+.up-triangle-substantial-small {
+   width: 0; 
+   height: 0; 
+   border-bottom: 11.25px solid rgb(135, 174, 154); 
+   border-left: 12.5px solid transparent; 
+   border-right: 12.5px solid transparent; 
+}
+.square-substantial-small {
+   width: 25px; 
+   height: 20px; 
+   background: rgb(135, 174, 154); 
+}
+/*Comprehensive*/
+.up-triangle-comprehensive {
+   width: 0; 
+   height: 0; 
+   border-bottom: 45px solid rgb(45, 149, 143); 
+   border-left: 50px solid transparent; 
+   border-right: 50px solid transparent; 
+}
+.square-comprehensive {
+   width: 100px; 
+   height: 80px; 
+   background: rgb(45, 149, 143); 
+}

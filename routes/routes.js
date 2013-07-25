@@ -8,4 +8,7 @@ module.exports = {
     getLiteResults: function(request, response){
         response.render('literesults');    
     },
+    getPartial: function(request, response){
+        response.render('partial');    
+    },
 };

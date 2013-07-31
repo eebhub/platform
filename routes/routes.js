@@ -14,9 +14,6 @@ module.exports = {
     getPartial: function(request, response){
         response.render('partial');    
     },
-    getTest: function(request, response){
-        response.render('test');    
-    },
     //Submits
     liteanalysis: function(request, response){
         var buildingName = request.body.building.building_name;

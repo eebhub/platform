@@ -30,7 +30,6 @@ app.get('/', routes.getIndex);
 app.get('/lite', routes.getLite);
 app.get('/literesults', routes.getLiteResults);
 app.get('/partial', routes.getPartial);
-app.get('/test', routes.getTest);
 
 //Posts
 app.post('/liteanalysis', routes.liteanalysis);

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>EEB Hub Simulation Platform Tools</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/stylesheet.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="css/bootstrap-fileupload.css" rel="stylesheet">
+        <link href="css/partial.css" rel="stylesheet">
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+                background-color: rgb(229, 229, 229);
+            }
+        </style>
+        <script>
+            function printValue(sliderID, textbox) {
+                var x = document.getElementById(textbox);
+                var y = document.getElementById(sliderID);
+                x.value = y.value;
+            }
+
+            window.onload = function() {
+                printValue('ceilingSlider', 'ceilingRangeValue');
+                printValue('floorSlider', 'floorRangeValue');
+                printValue('groundSlider', 'groundRangeValue');
+                printValue('wallSlider', 'wallRangeValue');
+                printValue('shadingDeviceSlider', 'shadingDeviceRangeValue');
+                printValue('overhangSlider', 'overhangRangeValue');
+                printValue('exteriorSlider', 'exteriorRangeValue');
+                printValue('interiorSlider', 'interiorRangeValue');
+                printValue('obstructionSlider', 'obstructionRangeValue');
+            }
+        </script>
+    </head>
+    
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="/">EEB Hub Simulation Platform</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li>
+                                <a href="lite">Lite</a>
+                            </li>
+                            <li class="">
+                                <a href="partial">Partial</a>
+                            </li>
+                            <li>
+                                <a href="substantial">Substantial</a>
+                            </li>
+                            <li class="active">
+                                <a href="comprehensive">Comprehensive</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <!-- Intro -->
+        <div class="container">
+            <div class="row">
+                <div class="span3 bs-docs-sidebar">
+                    
+                    <ul class="nav nav-list bs-docs-sidenav">
+                        <h3>Comprehensive <small>-PSU</small></h3>
+                            <li>
+                                <a href="#building"><i class="icon-chevron-right"></i> Building</a>
+                            </li>
+                            <li>
+                                <a href="#geometry"><i class="icon-chevron-right"></i>Geometry</a>
+                            </li>
+                            <li>
+                                <a href="#materials"><i class="icon-chevron-right"></i>Materials</a>
+                            </li>
+                            <li>
+                                <a href="#loads"><i class="icon-chevron-right"></i>Loads</a>
+                            </li>
+                            <li>
+                                <a href="#room"><i class="icon-chevron-right"></i>Typical Room</a>
+                            </li>
+                            <li>
+                                <a href="#lighting"><i class="icon-chevron-right"></i>Lighting</a>
+                            </li>
+                            <li>
+                                <a href="#airflow"><i class="icon-chevron-right"></i>Airflow</a>
+                            </li>
+                            <li>
+                                <a href="#schedules"><i class="icon-chevron-right"></i>Schedules</a>
+                            </li>
+                            <li>
+                                <a href="#ecms"><i class="icon-chevron-right"></i>ECMs</a>
+                            </li>
+                    </ul>
+                </div>
+                <div class="span9">
+                    <section id="building">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Building</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Building Name</h4>
+                                    <input class="span3" type="text" name="buidingname">
+                                    <br/>
+                                    <h4>City</h4>
+                                    <select class="span3">
+                                        <option>Albuquerque, NM (4B)</option>
+                                        <option>Baltimore, MD (4A)</option>
+                                        <option>Boise, ID (5B)</option>
+                                        <option>Burlingotn, NH (6A)</option>
+                                        <option>Chicago, IL (5A)</option>
+                                        <option>Duluth, MN (7)</option>
+                                        <option>El Paso, TX (3B)</option>
+                                        <option>Fairbanks, AK (8)</option>
+                                        <option>Helena, MT (6B)</option>
+                                        <option>Houston, TX (2A)</option>
+                                        <option>Memphis, TN (3A)</option>
+                                        <option>Miami, FL (1A)</option>
+                                        <option>Pheonix, AZ (2B)</option>
+                                        <option>Philadelphia, PA (4A)</option>
+                                        <option>Riyadh, SAU (1B)</option>
+                                        <option>Salem, MA (4C)</option>
+                                        <option>San Francisco, CA (3C)</option>
+                                        <option>Vancouver, CAN (5C)</option>
+                                    </select>
+                                </div>
+                                <div class="span4">
+                                    <div>
+                                        <h4>Function</h4>
+                                        <select class="span3">
+                                            <option>Small Office</option>
+                                            <option>Medium Office</option>
+                                            <option>Large Office</option>
+                                            <option>Stand-alone Retail</option>
+                                            <option>Strip Mall</option>
+                                            <option>Primary School</option>
+                                            <option>Secondary School</option>
+                                            <option>Outpatient Healthcare</option>
+                                            <option>Hospital</option>
+                                            <option>Small hotel</option>
+                                            <option>Large Hotel</option>
+                                            <option>Warehouse (non-refrigerated)</option>
+                                            <option>Quick Service Restaurant</option>
+                                            <option>Full Service Restaurant</option>
+                                            <option>Mid-Rise Apartment</option>
+                                            <option>High-Rise Apartment</option>
+                                        </select>
+                                    </div>
+                                    <h4>Year Built</h4>
+                                    <select class="span2">
+                                        <option>2013</option>
+                                        <option>2012</option>
+                                        <option>2011</option>
+                                        <option>2010</option>
+                                        <option>2009</option>
+                                        <option>2008</option>
+                                        <option>2007</option>
+                                        <option>2006</option>
+                                        <option>2005</option>
+                                        <option>2004</option>
+                                        <option>2003</option>
+                                        <option>2002</option>
+                                        <option>2001</option>
+                                        <option>2000</option>
+                                        <option>1999</option>
+                                        <option>1998</option>
+                                        <option>1997</option>
+                                        <option>1996</option>
+                                        <option>1995</option>
+                                        <option>1994</option>
+                                        <option>1993</option>
+                                        <option>1992</option>
+                                        <option>1991</option>
+                                        <option>1990</option>
+                                        <option>1989</option>
+                                        <option>1988</option>
+                                        <option>1987</option>
+                                        <option>1986</option>
+                                        <option>1985</option>
+                                        <option>1984</option>
+                                        <option>1983</option>
+                                        <option>1982</option>
+                                        <option>1981</option>
+                                        <option>1980</option>
+                                        <option>1979</option>
+                                        <option>1978</option>
+                                        <option>1977</option>
+                                        <option>1976</option>
+                                        <option>1974</option>
+                                        <option>1973</option>
+                                        <option>1972</option>
+                                        <option>1971</option>
+                                        <option>1970</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="geometry">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Geometry
+                                    <small>by BIMserver</small>
+                                </h2>
+                            </div>
+                            <img src="img/BuildingGEO.jpg" class="img-polaroid">
+                            <!--UPLOAD IFC-->
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div class="input-append">
+                                    <div class="uneditable-input span3">
+                                        <i class="icon-file fileupload-exists"></i>
+                                        <span class="fileupload-preview"></span>
+                                    </div>
+                                    <span class="btn btn-file">
+                                        <span class="fileupload-new">Upload Building Model (.IFC)</span>
+                                        <span class="fileupload-exists">Change</span>
+                                        <input type="file" />
+                                    </span>
+                                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                </div>
+                            </div>
+                            <!--UPLOAD IFC-->
+                            <h2 class="text-right"><small>extracts & <a href="http://www.virtualpulse.us/V1">visualizes</a> external walls, numbers of floors, gross floor area for simulation</small></h2>
+                        </div>
+                    </section>
+                    <section id="materials">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Materials</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Walls</h4>
+                                    <select class="span3">
+                                        <option>Concrete Mass</option>
+                                        <option>Metal</option>
+                                        <option>Steel Framed</option>
+                                        <option>Wood Framed and Other</option>
+                                    </select>
+                                    <h4>Windows</h4>
+                                    <select class="span3">
+                                        <option>Multi-layer Glass</option>
+                                        <option>Single Layer Clear Glass</option>
+                                        <option>Reflective Glass</option>
+                                        <option>Dark Tint Glass</option>
+                                        <option>Combination</option>
+                                        <option>No Windows</option>
+                                        <option>Unknown</option>
+                                    </select>
+                                    <h4>Roof</h4>
+                                    <select class="span3">
+                                        <option>Insulation Entirely Above Deck</option>
+                                        <option>Metal Roof</option>
+                                        <option>Attic and Other</option>
+                                    </select>
+                                </div>
+                                <div class="span4">
+                                     <h4>Wall Thickness</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text">
+                                        <span class="add-on">m</span>
+                                    </div>
+                                    <h4>% Windows to Walls</h4>
+                                    <input id="floorSlider" type="range" class="span2"
+                                    min="0" max="1" step="0.01" onchange="printValue('floorSlider','floorRangeValue')"
+                                    />
+                                    <input id="floorRangeValue" type="number" class="span1" min="0" max="1"
+                                    step="0.01" />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="loads">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Loads</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Lighting Power Density</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text">
+                                        <span class="add-on">W/m&sup2;</span>
+                                    </div>
+                                    <h4>Equipment Power Density</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text">
+                                        <span class="add-on">W/m&sup2;</span>
+                                    </div>
+                                </div>
+                                <div class="span4">
+                                    <h4>People Density</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text">
+                                        <span class="add-on">People/m&sup2;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <h2 class="text-right"><small>HVAC system type & efficiency are based on building type defaults</small></h2>
+                        </div>
+                    </section>
+                    <section id="room">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Typical Room</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Room Height</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" min="0" step="0.1">
+                                        <span class="add-on">m</span>
+                                    </div>
+                                    <h4>Room Width</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" min="0" step="0.1">
+                                        <span class="add-on">m</span>
+                                    </div>
+                                </div>
+                                <div class="span4">
+                                    <h4>Room Depth</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" min="0" step="0.1">
+                                        <span class="add-on">m</span>
+                                    </div>
+                                    <h4>Window Overhang Depth</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" min="0" step="0.1">
+                                        <span class="add-on">cm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="lighting">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Lighting
+                                    <small>by DAYSIM</small>
+                                </h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Window Head Height</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" placeholder="floor to top of window">
+                                        <span class="add-on">m</span>
+                                    </div>
+                                     <h4>Shading Device</h4>
+                                    <select class="span3">
+                                        <option>Horizontal Blinds</option>
+                                        <option>Fabric Shades</option>
+                                        <option>None</option>
+                                    </select>
+                                    
+                                </div>
+                               
+                                <div class="span4">
+                                    <h4>Floor Reflectance</h4>
+                                    <input id="floorSlider" type="range" class="span2"
+                                    min="0" max="1" step="0.01" onchange="printValue('floorSlider','floorRangeValue')"
+                                    />
+                                    <input id="floorRangeValue" type="number" class="span1" min="0" max="1"
+                                    step="0.01" />
+                                    <h4>Ceiling Reflectance</h4>
+                                    <input id="ceilingSlider" type="range" class="span2"
+                                    min="0" max="1" step="0.01" onchange="printValue('ceilingSlider','ceilingRangeValue')"
+                                    />
+                                    <input id="ceilingRangeValue" type="number" class="span1" min="0" max="1"
+                                    step="0.01" />
+                                    <h4>Wall Reflectance</h4>
+                                    <input id="wallSlider" type="range" class="span2"
+                                    min="0" max="1" step="0.01" onchange="printValue('wallSlider','wallRangeValue')"
+                                    />
+                                    <input id="wallRangeValue" type="number" class="span1" min="0" max="1"
+                                    step="0.01" />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="airflow">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Airflow
+                                    <small>by CONTAM</small>
+                                </h2>
+                            </div>
+                            <div class="row">
+                                    <h2 class="text-right"><small>Coming Soon</small></h2>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="schedules">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Schedules</h2>
+                                <h2>
+                                    <small>Occupancy, lighting, equipment schedules are based on building type defaults</small>
+                                </h2>
+                            </div>
+                            <a href="http://www.energycodes.gov/development/commercial/90.1_models">
+                            <img src="img/schedules/large_office.png" class="img-polaroid"></a>
+                            <h2 class="text-right"><small>based off of
+                                <a href="http://www.energycodes.gov/development/commercial/90.1_models">PNNL's Commercial Prototype Building Models</a></small></h2>
+                        </div>
+                    </section>
+                    <section id="ECMs">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Energy Conservation Measures</h2>
+                                <h2>
+                                    <small>Choose ECMs to add to your baseline</small>
+                                </h2>
+                            </div>
+                            <label class="checkbox">
+                                <input type="checkbox">Lighting Upgrade</label>
+                            <label class="checkbox">
+                                <input type="checkbox">Window Upgrade</label>
+                            <label class="checkbox">
+                                <input type="checkbox">Economizer</label>
+                        </div>
+                    </section>
+                    <div id="box-unit">
+                        <a href="#"><button class="btn-large btn-success">SIMULATE</button> </a>
+                        <h2 class="text-right"><small>with OpenStudio SDK + EnergyPlus, DAYSIM, CONTAM Engines</small></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Javascript -->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-scrollspy.js"></script>
+        <script src="js/bootstrap-fileupload.js"></script>
+    </body>
+
+</html>

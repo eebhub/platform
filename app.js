@@ -30,11 +30,12 @@ app.get('/', routes.getIndex);
 app.get('/lite', routes.getLite);
 app.get('/literesults', routes.getLiteResults);
 app.get('/partial', routes.getPartial);
+app.get('/substantial', routes.getSubstantial);
+app.get('/comprehensive', routes.getComprehensive);
 
 //Posts
 app.post('/liteanalysis', routes.liteanalysis);
 app.post('/partialanalysis', routes.partialanalysis);
-app.post('/testpost', routes.testpost);
 
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -1,4 +1,5 @@
 var mit = require("../lib/mit.js");
+var linteins = 
 var fs = require("fs");
 
 module.exports = {
@@ -51,7 +52,7 @@ module.exports = {
             });
     },
     partialanalysis: function(request, response){
-        var buildingName = request.body.building.building_name;
+        var buildingName = request.body.building.building_name || 'Test BUilding';
         var stringBuilding = JSON.stringify(request.body.building);
         var stringOccupancy = JSON.stringify(request.body.occupancy);
         var stringMaterials = JSON.stringify(request.body.materials);

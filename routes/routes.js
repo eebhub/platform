@@ -1,5 +1,4 @@
 var mit = require("../lib/mit.js");
-var linteins = 
 var fs = require("fs");
 
 module.exports = {

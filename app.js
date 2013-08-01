@@ -5,6 +5,8 @@
 
 var express = require('express')
   , routes = require('./routes/routes.js')
+  , lite = require("./routes/lite.js")
+  , partial = require("./routes/partial.js")
   , http = require('http')
   , path = require('path');
 
@@ -34,9 +36,8 @@ app.get('/substantial', routes.getSubstantial);
 app.get('/comprehensive', routes.getComprehensive);
 
 //Posts
-app.post('/liteanalysis', routes.liteanalysis);
-app.post('/partialanalysis', routes.partialanalysis);
-
+app.post('/liteanalysis', lite.liteanalysis);
+app.post('/partialanalysis', partial.partial);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

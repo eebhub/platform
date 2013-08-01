@@ -96,10 +96,10 @@
                                     <div class="span4">
                                         <h4>Building Name</h4>
                                         <input class="span3" type="text" ng-model="buildingName"
-                                        name="building[building_name]">
+                                        name="building_name">
                                         <br/>
                                         <h4>Year Built</h4>
-                                        <select class="span2" name="building[year_completed]">
+                                        <select class="span2" name="year_completed">
                                             <option>2013</option>
                                             <option>2012</option>
                                             <option>2011</option>
@@ -148,7 +148,7 @@
                                     <div class="span4">
                                         <div>
                                             <h4>Function</h4>
-                                            <select class="span3" name="building[activity_type]">
+                                            <select class="span3" name="activity_type">
                                                 <option>Small Office</option>
                                                 <option>Medium Office</option>
                                                 <option>Large Office</option>
@@ -168,7 +168,7 @@
                                             </select>
                                         </div>
                                         <h4>City</h4>
-                                        <select class="span3" name="building[weather_epw_location]">
+                                        <select class="span3" name="weather_epw_location">
                                             <option>Albuquerque, NM (4B)</option>
                                             <option>Baltimore, MD (4A)</option>
                                             <option>Boise, ID (5B)</option>
@@ -201,30 +201,30 @@
                                     <div class="span4">
                                         <h4>Gross Floor Area</h4>
                                         <div class="input-append">
-                                            <input type="number" min="0" step="0.1" name="size[gross_floor_area]"
+                                            <input type="number" min="0" step="0.1" name="gross_floor_area"
                                             />
                                             <span class="add-on">m&#178;</span>
                                         </div>
                                         <h4>Number of Floors</h4>
-                                        <input type="number" name="size[number_of_floors]"
+                                        <input type="number" name="number_of_floors"
                                         min="0" step="1" />
                                     </div>
                                     <div class="span4">
                                         <h4>Length</h4>
                                         <div class="input-append">
-                                            <input type="number" name="size[building_length]" min="0" step="0.01"
+                                            <input type="number" name="building_length" min="0" step="0.01"
                                             />
                                             <span class="add-on">m</span>
                                         </div>
                                         <h4>Width</h4>
                                         <div class="input-append">
-                                            <input type="number" name="size[building_width]" min="0" step="0.01" />
+                                            <input type="number" name="building_width" min="0" step="0.01" />
                                             <span class="add-on">m</span>
                                         </div>
                                         <h4>Window/Wall Ratio</h4>
                                         <ul class="inline">
                                             <li>
-                                                <input type="range" ng-model="winwall" name="size[window_to_wall_ratio]"
+                                                <input type="range" ng-model="winwall" name="window_to_wall_ratio"
                                                 min="0" max="40" step="1" value=50/>
                                             </li>
                                             <li>
@@ -240,7 +240,7 @@
                                 <div class="row">
                                     <div class="span3">
                                         <h4>Shape</h4>
-                                        <select name="" ng-model="shapeimage" name="shape[footprint_shape]">
+                                        <select name="" ng-model="shapeimage" name="footprint_shape">
                                             <option value="img/basic_geometry/c_shape_min_zone.png">C Shape</option>
                                             <option value="img/basic_geometry/h_shape_min_zone.png">H Shape</option>
                                             <option value="img/basic_geometry/l_shape_min_zone.png">L Shape</option>
@@ -322,22 +322,22 @@
                                         <h4>Weekday Occupancy Hours</h4>
                                         <h5>Day Start</h5>
                                         <input type="time" ng-model="weekdayStart
-                                                " name="occupancy[weekday_occupancy_start] "
+                                                " name="weekday_occupancy_start"
                                         />
                                         <h5>Day End</h5>
                                         <input type="time" value={{weekdayStart}} min={{weekdayStart}}
-                                        name="occupancy[weekday_occupancy_end]" />
+                                        name="weekday_occupancy_end" />
                                     </div>
                                     <div class="span4 ">
                                         <h4>Weekend Occupancy Hours</h4>
                                         <h5>Day Start</h5>
-                                        <input type="time" ng-model="weekendStart" name="occupancy[weekend_occupancy_start] "
+                                        <input type="time" ng-model="weekendStart" name="weekend_occupancy_start"
                                         />
                                         <h5>Day End</h5>
                                         <input type="time" value={{weekendStart}} min={{weekendStart}}
-                                        name="occupancy[weekend_occupancy_end]" />
+                                        name="weekend_occupancy_end" />
                                         <h4>Number of Occupants</h4>
-                                        <input type="number" step="1" min="0 " name="occupancy[number_of_occupants] "
+                                        <input type="number" step="1" min="0 " name="number_of_occupants"
                                         />
                                     </div>
                                 </div>
@@ -351,15 +351,14 @@
                                 <div class="row ">
                                     <div class="span4 ">
                                         <h4>Walls</h4>
-                                        <select class="span3 " name="materials[exterior_wall_type
-                                                ] ">
+                                        <select class="span3 " name="exterior_wall_type">
                                             <option>Concrete Mass</option>
                                             <option>Metal</option>
                                             <option>Steel Framed</option>
                                             <option>Wood Framed and Other</option>
                                         </select>
                                         <h4>Windows</h4>
-                                        <select class="span3 " name="materials[window_glass_type] ">
+                                        <select class="span3 " name="window_glass_type">
                                             <option>Multi-layer Glass</option>
                                             <option>Single Layer Glass</option>
                                             <option>Combination</option>
@@ -367,7 +366,7 @@
                                             <option>Unknown</option>
                                         </select>
                                         <h4>Thermal Mass</h4>
-                                        <select class="span3 " name="materials[thermal_mass] ">
+                                        <select class="span3 " name="thermal_mass">
                                             <option>High</option>
                                             <option>Low</option>
                                             <option>None</option>
@@ -376,14 +375,14 @@
                                     </div>
                                     <div class="span4 ">
                                         <h4>Roof</h4>
-                                        <select class="span3 " name="materials[roof_type] ">
+                                        <select class="span3 " name="roof_type">
                                             <option>Modified Bitumen Roof</option>
                                             <option>Metal Roof</option>
                                             <option>Green Roof</option>
                                             <option>Cool Roof</option>
                                         </select>
                                         <h4>Roof Insulation Type</h4>
-                                        <select class="span3 " name="materials[roof_insulation_type] ">
+                                        <select class="span3 " name="roof_insulation_type">
                                             <option>Wood Fiber</option>
                                             <option>Perlite Lnsulation Board</option>
                                             <option>Polyisocyanurate</option>
@@ -392,15 +391,15 @@
                                             <option>Cellular Glass</option>
                                             <option>Gypsum Board</option>
                                         </select>
-                                        <h4>Roof Insulation R Value</h4>
+                                        <h4>Wall Insulation R Value</h4>
                                         <div class="input-append ">
-                                            <input class="span3 " id="appendedInput" type="text" name="materials[roof_insulation_r_value] "
+                                            <input class="span3 " id="appendedInput" type="text" name="wall_insulation_r_value"
                                             />
                                             <span class="add-on ">m
                                                 <sup>2</sup>C/W</span>
                                         </div>
                                         <h4>Roof Insulation Location</h4>
-                                        <select class="span3" name="materials[roof_insulation_location]">
+                                        <select class="span3" name="roof_insulation_location">
                                             <option>Top of Slab</option>
                                             <option>Bottom of Slab</option>
                                         </select>
@@ -416,7 +415,7 @@
                                 <div class="row">
                                     <div class="span4">
                                         <h4>Ventilation System</h4>
-                                        <select name="mechanical[ventilation_system]">
+                                        <select name="ventilation_system">
                                             <option>Mechanical Cooling & Heating</option>
                                             <option>Natural ventilation cooling, Mechanical Heating</option>
                                             <option>Joint natural ventilation cooling and mechanical heating</option>
@@ -425,7 +424,7 @@
                                     <div class="span4">
                                         <h4>Equipment Density</h4>
                                         <div class="input-append">
-                                            <select class="span2" id="appendedInput" name="mechanical[equipment_power_density]">
+                                            <select class="span2" id="appendedInput" name="equipment_power_density">
                                                 <option>0.00 No Equipment</option>
                                                 <option>1.00</option>
                                                 <option>1.00 Office (Small)</option>
@@ -726,25 +725,25 @@
                                             <h4>Room Width</h4>
                                             <div class="input-append">
                                                 <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
-                                                name="room[room_width]" />
+                                                name="room_width" />
                                                 <span class="add-on">m</span>
                                             </div>
                                             <h4>Room Depth</h4>
                                             <div class="input-append">
                                                 <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
-                                                name="room[room_depth]" />
+                                                name="room_depth" />
                                                 <span class="add-on">m</span>
                                             </div>
                                             <h4>Room Height</h4>
                                             <div class="input-append">
                                                 <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
-                                                name="room[room_height]" />
+                                                name="room_height" />
                                                 <span class="add-on">m</span>
                                             </div>
                                         </div>
                                         <div class="span3">
                                             <h4>Window/Primary Facade Orientation</h4>
-                                            <select name="room[exterior_shading_orientation]"
+                                            <select name="exterior_shading_orientation"
                                             class="span2">
                                                 <option>North</option>
                                                 <option>North-East</option>
@@ -758,7 +757,7 @@
                                             <h4>Window Area</h4>
                                             <ul class="inline">
                                                 <li>
-                                                    <input type="range" ng-model="winwalltyp" name="room[window_to_wall_ratio]"
+                                                    <input type="range" ng-model="winwalltyp" name="window_to_wall_ratio_room"
                                                     min="0" max="40" step="1" value=50/>
                                                 </li>
                                                 <li>
@@ -795,7 +794,7 @@
                                     <div class="row">
                                         <div class="span4">
                                             <h4>Glas Type</h4>
-                                            <select name="room[window_glass_type]">
+                                            <select name="window_glass_coating">
                                                 <option>clear</option>
                                                 <option>low-e</option>
                                                 <option>High Performance</option>
@@ -808,12 +807,12 @@
                                         <div class="span4">
                                             <h4>Overhang Distance</h4>
                                             <div class="input-append">
-                                                <input class="span2" id="appendedInput" type="number" name="room[overhang_depth]">
+                                                <input class="span2" id="appendedInput" type="number" name="overhang_depth">
                                                 <span class="add-on">m</span>
                                             </div>
                                             <h4>Lighting</h4>
                                             <div class="input-append">
-                                                <select class="span2" id="appendedInput" name="room[illuminance]">
+                                                <select class="span2" id="appendedInput" name="illuminance">
                                                     <option>0 (Darkness)</option>
                                                     <option>150 (Storage)</option>
                                                     <option>200 (Casual Work)</option>

@@ -14,7 +14,7 @@ var express = require('express')
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 300);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -30,7 +30,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', splash.getSplash);
-app.get('/platform/', routes.getHome);
+app.get('/platform', routes.getHome);
 app.get('/platform/lite', routes.getLite);
 app.get('/platform/literesults', routes.getLiteResults);
 app.get('/platform/partial', routes.getPartial);

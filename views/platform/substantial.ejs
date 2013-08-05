@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>EEB Hub Simulation Platform Tools</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/stylesheet.css" rel="stylesheet">
+        <link href="../css/partial.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/bootstrap-switch.css" />
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+                background-color: rgb(229, 229, 229);
+            }
+        </style>
+        <script>
+            function printValue(sliderID, textbox) {
+                var x = document.getElementById(textbox);
+                var y = document.getElementById(sliderID);
+                x.value = y.value;
+            }
+
+            window.onload = function() {
+                printValue('ceilingSlider', 'ceilingRangeValue');
+                printValue('floorSlider', 'floorRangeValue');
+                printValue('groundSlider', 'groundRangeValue');
+                printValue('wallSlider', 'wallRangeValue');
+                printValue('shadingDeviceSlider', 'shadingDeviceRangeValue');
+                printValue('overhangSlider', 'overhangRangeValue');
+                printValue('exteriorSlider', 'exteriorRangeValue');
+                printValue('interiorSlider', 'interiorRangeValue');
+                printValue('obstructionSlider', 'obstructionRangeValue');
+            }
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <link href="../css/bootstrap-responsive.min.css" rel="stylesheet">
+    
+    </head>
+    
+    <body data-spy="scroll" data-target="#sidebar">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="/platform/">EEB Hub Simulation Platform</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li>
+                                <a href="lite">Lite</a>
+                            </li>
+                            <li>
+                                <a href="partial">Partial</a>
+                            </li>
+                            <li class="active">
+                                <a href="substantial">Substantial</a>
+                            </li>
+                            <li>
+                                <a href="comprehensive">Comprehensive</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <!-- Intro -->
+        <div class="container">
+            <div class="row">
+               <div class="span3 bs-docs-sidebar">
+                <ul class="nav nav-list bs-docs-sidenav">
+                    <li>
+                        <h3>Substantial <small>-UTRC</small></h3>
+                    </li>
+                    <li>
+                        <a href="#building"><i class="icon-chevron-right"></i> Building</a>
+                    </li>
+                    <li>
+                        <a href="#shape"><i class="icon-chevron-right"></i> Shape/Size</a>
+                    </li>
+                    <li>
+                        <a href="#lighting"><i class="icon-chevron-right"></i> Lighting</a>
+                    </li>
+                    <li>
+                        <a href="#materials"><i class="icon-chevron-right"></i> Materials</a>
+                    </li>
+                    <li>
+                        <a href="#equipment"><i class="icon-chevron-right"></i> Mechanical</a>
+                    </li>
+                    <li>
+                        <a href="#occupancy"><i class="icon-chevron-right"></i> Occupancy</a>
+                    </li>
+                </ul>
+            </div>
+                
+                
+                <div class="span9">
+
+
+
+                    <section id="summary">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Building</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Building Name</h4>
+                                    <input type="text" class="span3" name="building_name" 
+                                    />
+                                    <br/>
+                                    <h4>City</h4>
+                                    <select class="span3" name="building[weather_epw_location]">
+                                        <option>Albuquerque, NM (4B)</option>
+                                        <option>Baltimore, MD (4A)</option>
+                                        <option>Boise, ID (5B)</option>
+                                        <option>Burlingotn, NH (6A)</option>
+                                        <option>Chicago, IL (5A)</option>
+                                        <option>Duluth, MN (7)</option>
+                                        <option>El Paso, TX (3B)</option>
+                                        <option>Fairbanks, AK (8)</option>
+                                        <option>Helena, MT (6B)</option>
+                                        <option>Houston, TX (2A)</option>
+                                        <option>Memphis, TN (3A)</option>
+                                        <option>Miami, FL (1A)</option>
+                                        <option>Pheonix, AZ (2B)</option>
+                                        <option>Philadelphia, PA (4A)</option>
+                                        <option>Riyadh, SAU (1B)</option>
+                                        <option>Salem, MA (4C)</option>
+                                        <option>San Francisco, CA (3C)</option>
+                                        <option>Vancouver, CAN (5C)</option>
+                                    </select>
+                                </div>
+                                <div class="span4">
+                                <h4>Function</h4>
+                                    <select class="span2">
+                                        <option>Education</option>
+                                        <option>Enclosed mall</option>
+                                        <option>Food sale</option>
+                                        <option>Food service</option>
+                                        <option>Inpatient health care</option>
+                                        <option>Laboratory</option>
+                                        <option>Lodging</option>
+                                        <option>Non refrigeration warehouse</option>
+                                        <option>Nursing</option>
+                                        <option>Office</option>
+                                        <option>Other</option>
+                                        <option>Outpatient health care</option>
+                                        <option>Public assembly</option>
+                                        <option>Public order and safety</option>
+                                        <option>Refrigerated warehouse</option>
+                                        <option>Religious worship</option>
+                                        <option>Retail other than mall</option>
+                                        <option>Service</option>
+                                        <option>Strip shopping mall</option>
+                                        <option>vacant</option>
+                                    </select>
+                                <h4>More Specific Building Activity</h4>
+                                    <select class="span2">
+                                        <option>Administrative/professional office</option>
+                                        <option>Bank/other financial</option>
+                                        <option>Clinic/other outpatient health</option>
+                                        <option>College/university</option>
+                                        <option>Convenience store</option>
+                                        <option>Convenience store with gas station</option>
+                                        <option>Distribution/shipping center</option>
+                                        <option>Dormitory/fraternity/sorority</option>
+                                        <option>Elementary/middle school</option>
+                                        <option>Enclosed mall</option>
+                                        <option>Entertainment/culture</option>
+                                        <option>Fast food</option>
+                                        <option>Fire station/police station</option>
+                                        <option>Government office</option>
+                                        <option>Grocery store/food market</option>
+                                        <option>High school</option>
+                                        <option>Hospital/inpatient health</option>
+                                        <option>Hotel</option>
+                                        <option>Laboratory</option>
+                                        <option>Library</option>
+                                        <option>Medical office(diagnostic)</option>
+                                        <option>Medical office(non-diagnostic)</option>
+                                        <option>Mixed-use office</option>
+                                        <option>Motel or inn</option>
+                                        <option>Non-refrigerated warehouse</option>
+                                        <option>Nursing house/assisted living</option>
+                                        <option>Other</option>
+                                        <option>Other classroom education</option>
+                                        <option>Other food sales</option>
+                                        <option>Other food service</option>
+                                        <option>Other lodging</option>
+                                        <option>Other office</option>
+                                        <option>Other public assembly</option>
+                                        <option>Other public order and safety</option>
+                                        <option>Other retail</option>
+                                        <option>Other service</option>
+                                        <option>Post office/postal center</option>
+                                        <option>Preschool/daycare</option>
+                                        <option>Recreation</option>
+                                        <option>Refrigerated warehouse</option>
+                                        <option>Religious worship</option>
+                                        <option>Repair shop</option>
+                                        <option>Restaurant/cafeteria</option>
+                                        <option>Retail store</option>
+                                        <option>Self-storage</option>
+                                        <option>Social/meeting</option>
+                                        <option>Strip shopping mall</option>
+                                        <option>vacant</option>
+                                        <option>Vehicle dealership/showroom</option>
+                                        <option>Vehicle service/repair shop</option>
+                                        <option>Vehicle storage/maintenance</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                    
+        <section id="size">
+                <div id="box-unit">
+                    <div class="page-header">
+                        <h2>Shape/Size</h2>
+                    </div>
+                    <div class="row">
+                        <div class="span4">
+                            <h4>Gross Floor Area</h4>
+                            <div class="input-append">
+                                <input type="number" name="building_name" min="0" step="0.1" />
+                                <span class="add-on">m&#178;</span>
+                            </div>
+                            <h4>Number of Floors</h4>
+                            <input type="number" name="weather_epw_location"
+                            min="0" step="1" />
+                        </div>
+                        <div class="span4">
+                            <h4>Shape</h4>
+                            <select name="" ng-model="shapeimage">
+                                <option value="img/basic_geometry/c_shape_min_zone.png">C Shape</option>
+                                <option value="img/basic_geometry/h_shape_min_zone.png">H Shape</option>
+                                <option value="img/basic_geometry/l_shape_min_zone.png">L Shape</option>
+                                <option value="img/basic_geometry/rect_min_zone.png">Rectangle</option>
+                                <option value="img/basic_geometry/t_shape_min_zone.png">T Shaped</option>
+                                <option value="img/basic_geometry/u_shape_min_zone.png">U Shaped</option>
+                            </select>
+                            <h4>Total Building Height</h4>
+                                <div class="input-append">
+                                <input type="number" name="" min="0" step="1" />
+                                <span class="add-on">m</span>
+                                </div>             
+                        </div>
+                    </div>
+                </div>
+        </section>
+                    
+
+        
+        <section id="lighting">
+            <div id="box-unit">
+                <div class="page-header">
+                    <h2>Lighting</h2>
+                </div>
+                <div class="row">
+                <div class="span4">
+                <h4>Illuminance</h4>
+                <div class="input-append">
+                <input class="span2" id="appendedInput" type="number" min="0" step="0.1"
+                        placeholder=""><span class="add-on">lux</span>
+                </div>
+                <h4>Electric Illuminance</h4>
+                <div class="input-append">
+                <input class="span2" id="appendedInput" type="number" min="0" step="0.1"
+                        placeholder=""><span class="add-on">lux</span>
+                </div>
+                
+                </div>
+
+                <div class="span4">
+                <h4>Lighting Control Type</h4>
+                <select class="span2">
+                                <option>Daylight Dimming</option>
+                                <option>Occupancy Sensors</option>
+                                <option>Vacancy Sensors</option>
+                                <option>Manual Dimming</option>
+                                <option>Bi-level Control</option>
+                                <option>Timers</option>
+                                <option>Advanced Controls</option>
+                                <option>EMCS</option>
+                                <option>Manual</option>
+                                <option>Always On</option>
+                                <option>Other/Combination</option>
+                                <option>Unknown</option>
+                            </select>
+                </br>
+                <h4>Control Zone Depth</h4>
+                <input class="span2" id="appendedInput" type="number" min="0" step="0.1"
+                        placeholder=""><span class="help-inline"></span>
+
+                </div>
+                </div>
+            </div>
+        </section>
+
+                    <section id="materials">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Materials</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Walls</h4>
+                                    <select class="span2">
+                                        <option>Brick</option>
+                                        <option>Stone</option>
+                                        <option>Stucco</option>
+                                        <option>other</option>
+                                    </select>
+                                    <h4>Windows</h4>
+                                    <select class="span2 " name="materials[window_glass_type] ">
+                                        <option>Multi-layer Glass</option>
+                                        <option>Single Layer Glass</option>
+                                        <option>Combination</option>
+                                        <option>No Windows</option>
+                                        <option>Unknown</option>
+                                    </select>
+                                </div>
+                                <div class="span4">
+                                    <h4>Roof</h4>
+                                    <select class="span2">
+                                        <option>Brick</option>
+                                        <option>Stone</option>
+                                        <option>Stucco</option>
+                                        <option>other</option>
+                                    </select>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="mechanical">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Mechanical</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Primary HVAC System Type</h4>
+                                    <select>
+                                        <option>VAV w/Reheat</option>
+                                    </select>
+                                    
+                                    <h4>Demand Control Ventilation</h4>
+                                
+                                    Used <div class="make-switch">
+                                    <input type="checkbox">
+                                    </div>
+                                
+                                
+                                </div>
+                                <div class="span4">
+                                    <h4>Air Side Economizer</h4>
+                                    Present <div class="make-switch">
+                                    <input type="checkbox">
+                                    </div>
+                                    
+                                    <h4>Air Side Energy Recovery</h4>
+                                    Present <div class="make-switch">
+                                    <input type="checkbox">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="occupancy">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Occupancy</h2>
+                            </div>
+                        <div class="row">
+                            <div class="span4">
+                        
+                            <h4>Total Weekly Operating Hours</h4>
+                            <div class="input-append">
+                            <input class="span2" type="number"><span class="add-on">hrs</span>
+                            </div>
+                            
+                            </div>
+                            
+                            <div class="span4">
+                                <h4>Number of Employees During Main Shift</h4>
+                                <input type="number" class="span2" name="employ_number" min="0" step="1" />
+                                <span class="add-on"></span>
+                            </div>    
+                        </div>        
+                        </div>
+                    </section>
+
+                    <div id="box-unit">
+                        <a href="#"><button class="btn-large btn-success">SIMULATE</button> </a>
+                        <h2 class="text-right"><small>with UTRC Energy Audit Tool Engine</small></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Javascript -->
+        <script src="../js/bootstrap-switch.min.js"></script>  
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/bootstrap-scrollspy.js"></script>
+    </body>
+
+</html>

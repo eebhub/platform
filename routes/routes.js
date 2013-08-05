@@ -1,26 +1,25 @@
-var mit = require("../lib/mit.js");
-var fs = require("fs");
+
 
 module.exports = {
-    getIndex: function(request, response){
-        response.render('index');    
+    getHome: function(request, response){
+        response.render('platform/home');    
     },
     getLite: function(request, response){
-        response.render('lite');    
+        response.render('platform/lite');    
     },
     getLiteResults: function(request, response){
-        response.render('literesults');    
+        response.render('platform/literesults');    
     },
     getPartial: function(request, response){
-        response.render('partial');    
+        response.render('platform/partial');    
     },
     
     getSubstantial: function(request, response) {
-        response.render('substantial');
+        response.render('platform/substantial');
     },
     
     getComprehensive: function(request, response) {
-        response.render('comprehensive');
+        response.render('platform/comprehensive');
     },
     
     

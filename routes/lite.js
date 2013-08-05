@@ -1,5 +1,5 @@
 var fs = require("fs");
-
+var liteins = require("../lib/IMTins.js");
 module.exports = {
     liteanalysis: function(request, response) {
         var buildingName = request.body.building.building_name;

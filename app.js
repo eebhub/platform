@@ -31,6 +31,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', splash.getSplash);
 app.get('/platform', routes.getHome);
+app.get('/platform/', routes.getHome);
 app.get('/platform/lite', routes.getLite);
 app.get('/platform/literesults', routes.getLiteResults);
 app.get('/platform/partial', routes.getPartial);

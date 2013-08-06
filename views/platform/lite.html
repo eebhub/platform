@@ -55,7 +55,7 @@
                     <ul class="nav nav-list bs-docs-sidenav">
                         <li>
                             <h3>Lite
-                                <small>-ASHRAE IMT</small>
+                                <small>-ASHRAE, IBM</small>
                             </h3>
                         </li>
                         <li>
@@ -63,6 +63,9 @@
                         </li>
                         <li>
                             <a href="#utility"><i class="icon-chevron-right"></i>Utility Data</a>
+                        </li>
+                        <li>
+                            <a href="#size"><i class="icon-chevron-right"></i>Size</a>
                         </li>
                     </ul>
                 </div>
@@ -192,7 +195,8 @@
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" /></td>
+                                                name="utility[utility_electric]" />
+                                            </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
                                                 name="utility[utility_gas]" />
@@ -204,7 +208,8 @@
                                             </td>
                                             <td>
                                                 <input class="span2" id="appendedInput" type="number" placeholder="kWh"
-                                                name="utility[utility_electric]" /></td>
+                                                name="utility[utility_electric]" />
+                                            </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
                                                 name="utility[utility_gas]">
@@ -350,15 +355,52 @@
                                 </button>
                             </div>
                         </section>
+                        <section id="size">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Size<small>     required for IBM Analysis</small></h2>
+                                </div>
+                                <div class="row">
+                                    <div class="span4">
+                                        <h4>Gross Floor Area</h4>
+                                        <div class="input-append">
+                                            <input type="number" min="0" step="0.1" name="gross_floor_area" />
+                                            <span class="add-on">m&#178;</span>
+                                        </div>
+                                        <h4>Width</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="building_height" min="0" step="0.01" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                    </div>
+                                    <div class="span4">
+                                        <h4>Length</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="building_length" min="0" step="0.01" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                        <h4>Width</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="building_width" min="0" step="0.01" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                         <br />
                         <div class="box-unit">
-                        <input type="submit" class="btn btn-success" value="Run Inverse Modeling Toolkit" />
-                            
+                            <input type="submit" class="btn btn-success" value="Run Inverse Modeling Toolkit"
+                            /><h3><small>By ASRAE</small></h3>
                         </div>
-                    </form>  
-                    <div class="box-unit">
-                        <a href="literesults"><button class="btn btn-success ">Sample Results</button> </a>
-                    </div>
+                        <div class="box-unit">
+                            <input type="submit" class="btn btn-success" value="Run Inverse Modeling Simulation"
+                            /><h3><small>By IBM</small></h3>
+                        </div>
+                        </form>
+                        <div class="box-unit">
+                            <a href="literesults"><button class="btn btn-success ">Sample Results</button> </a>
+                        </div>
                 </div>
             </div>
         </div>

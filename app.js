@@ -4,19 +4,26 @@
  */
 
 var express = require('express')
+  , http = require('http')
+  , path = require('path')
+  , cons = require("consolidate")
+  , swig = require("swig")
   , routes = require('./routes/routes.js')
   , lite = require("./routes/lite.js")
   , partial = require("./routes/partial.js")
-  , http = require('http')
-  , path = require('path')
   , splash = require('./routes/splash.js');
 
 var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
+app.engine('.html', cons.swig);
+app.set('view engine', 'html');
+swig.init({
+    root: __dirname + '/views',
+    allowErrors: true // allows errors to be thrown and caught by express instead of suppressed by Swig
+});
 app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());

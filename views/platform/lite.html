@@ -16,6 +16,7 @@
                 background-color: rgb(229, 229, 229);
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
     </head>
     
     <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -70,7 +71,7 @@
                     </ul>
                 </div>
                 <div class="span9">
-                    <form action="/liteanalysis" method="post">
+                    <form  name="liteform" onsubmit="return onsubmitform();" method="post">
                         <section id="building">
                             <form action="/liteanalysis" method="post">
                                 <div class="box-unit">
@@ -80,10 +81,10 @@
                                     <div class="row">
                                         <div class="span4">
                                             <h4>Building Name</h4>
-                                            <input class="span3" type="text" name="building[building_name]">
+                                            <input class="span3" type="text" name="building_name">
                                             <br/>
                                             <h4>Year Built</h4>
-                                            <select class="span2" name="building[year_completed]">
+                                            <select class="span2" name="year_completed">
                                                 <option>2013</option>
                                                 <option>2012</option>
                                                 <option>2011</option>
@@ -132,7 +133,7 @@
                                         <div class="span4">
                                             <div>
                                                 <h4>Function</h4>
-                                                <select class="span3" name="building[activity_type]">
+                                                <select class="span3" name="activity_type">
                                                     <option>Small Office</option>
                                                     <option>Medium Office</option>
                                                     <option>Large Office</option>
@@ -152,7 +153,7 @@
                                                 </select>
                                             </div>
                                             <h4>City</h4>
-                                            <select class="span3" name="building[weather_epw_location]">
+                                            <select class="span3" name="weather_epw_location">
                                                 <option>Albuquerque, NM (4B)</option>
                                                 <option>Baltimore, MD (4A)</option>
                                                 <option>Boise, ID (5B)</option>
@@ -190,159 +191,159 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]"
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate"
                                                 />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]" />
+                                                name="utility_gas" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" id="appendedInput" type="number" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                     </tbody>
@@ -384,6 +385,20 @@
                                             <input type="number" name="building_width" min="0" step="0.01" />
                                             <span class="add-on">m</span>
                                         </div>
+                                        <h4>Orientation</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="orientation" name="building_orientation" min="0"
+                                                max="360" step="15" value={{orientation}}/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" type="text" value={{orientation}} ng-model="orientation"
+                                                    />
+                                                    <span class="add-on">&deg;</span>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -391,11 +406,11 @@
                         <br />
                         <div class="box-unit">
                             <input type="submit" class="btn btn-success" value="Run Inverse Modeling Toolkit"
-                            /><h3><small>By ASRAE</small></h3>
+                            name="operation" onclick="document.pressed=this.value"/><h3><small>By ASRAE</small></h3>
                         </div>
                         <div class="box-unit">
                             <input type="submit" class="btn btn-success" value="Run Inverse Modeling Simulation"
-                            /><h3><small>By IBM</small></h3>
+                            name="operation" onclick="document.pressed=this.value"/><h3><small>By IBM</small></h3>
                         </div>
                         </form>
                         <div class="box-unit">
@@ -405,6 +420,16 @@
             </div>
         </div>
         <!-- Javascript -->
+        <script>
+            function OnSubmitForm(){
+                if(document.pressed =='Run Inverse Modeling Toolkit'){
+                    document.liteform.action = "runIMT";
+                }
+                else if(document.pressed == 'Run Inverse Modeling Simulation'){
+                    document.liteform.action = 'runIBM';
+                }   
+            }
+        </script>
         <script>
             function addRow(tableID) {
                 var table = document.getElementById(tableID);
@@ -416,7 +441,7 @@
                 var element1 = document.createElement("input");
                 element1.className = "span2";
                 element1.type = "date";
-                element1.name = "utility[utility_startdate]";
+                element1.name = "utility_startdate";
 
                 cell1.appendChild(element1);
 
@@ -425,7 +450,7 @@
                 element2.type = "number";
                 element2.placeholder = "kWh";
                 element2.className = "span2";
-                element2.name = "utility[utility_electric]"
+                element2.name = "utility_electric"
                 cell2.appendChild(element2);
 
                 var cell3 = row.insertCell(2);
@@ -433,7 +458,7 @@
                 element3.type = "number";
                 element3.placeholder = "CCF";
                 element3.className = "span2";
-                element3.name = "utility[utility_gas]";
+                element3.name = "utility_gas";
                 cell3.appendChild(element3);
             }
 

@@ -71,111 +71,110 @@
                     </ul>
                 </div>
                 <div class="span9">
-                    <form  name="liteform" onsubmit="return onsubmitform();" method="post">
+                    <form action="/imtanalysis" method="post">
                         <section id="building">
-                            <form action="/liteanalysis" method="post">
-                                <div class="box-unit">
-                                    <div class="page-header">
-                                        <h2>Building</h2>
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Building</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="span4">
+                                        <h4>Building Name</h4>
+                                        <input class="span3" type="text" name="building_name">
+                                        <br/>
+                                        <h4>Year Built</h4>
+                                        <select class="span2" name="year_completed">
+                                            <option>2013</option>
+                                            <option>2012</option>
+                                            <option>2011</option>
+                                            <option>2010</option>
+                                            <option>2009</option>
+                                            <option>2008</option>
+                                            <option>2007</option>
+                                            <option>2006</option>
+                                            <option>2005</option>
+                                            <option>2004</option>
+                                            <option>2003</option>
+                                            <option>2002</option>
+                                            <option>2001</option>
+                                            <option>2000</option>
+                                            <option>1999</option>
+                                            <option>1998</option>
+                                            <option>1997</option>
+                                            <option>1996</option>
+                                            <option>1995</option>
+                                            <option>1994</option>
+                                            <option>1993</option>
+                                            <option>1992</option>
+                                            <option>1991</option>
+                                            <option>1990</option>
+                                            <option>1989</option>
+                                            <option>1988</option>
+                                            <option>1987</option>
+                                            <option>1986</option>
+                                            <option>1985</option>
+                                            <option>1984</option>
+                                            <option>1983</option>
+                                            <option>1982</option>
+                                            <option>1981</option>
+                                            <option>1980</option>
+                                            <option>1979</option>
+                                            <option>1978</option>
+                                            <option>1977</option>
+                                            <option>1976</option>
+                                            <option>1974</option>
+                                            <option>1973</option>
+                                            <option>1972</option>
+                                            <option>1971</option>
+                                            <option>1970</option>
+                                        </select>
                                     </div>
-                                    <div class="row">
-                                        <div class="span4">
-                                            <h4>Building Name</h4>
-                                            <input class="span3" type="text" name="building_name">
-                                            <br/>
-                                            <h4>Year Built</h4>
-                                            <select class="span2" name="year_completed">
-                                                <option>2013</option>
-                                                <option>2012</option>
-                                                <option>2011</option>
-                                                <option>2010</option>
-                                                <option>2009</option>
-                                                <option>2008</option>
-                                                <option>2007</option>
-                                                <option>2006</option>
-                                                <option>2005</option>
-                                                <option>2004</option>
-                                                <option>2003</option>
-                                                <option>2002</option>
-                                                <option>2001</option>
-                                                <option>2000</option>
-                                                <option>1999</option>
-                                                <option>1998</option>
-                                                <option>1997</option>
-                                                <option>1996</option>
-                                                <option>1995</option>
-                                                <option>1994</option>
-                                                <option>1993</option>
-                                                <option>1992</option>
-                                                <option>1991</option>
-                                                <option>1990</option>
-                                                <option>1989</option>
-                                                <option>1988</option>
-                                                <option>1987</option>
-                                                <option>1986</option>
-                                                <option>1985</option>
-                                                <option>1984</option>
-                                                <option>1983</option>
-                                                <option>1982</option>
-                                                <option>1981</option>
-                                                <option>1980</option>
-                                                <option>1979</option>
-                                                <option>1978</option>
-                                                <option>1977</option>
-                                                <option>1976</option>
-                                                <option>1974</option>
-                                                <option>1973</option>
-                                                <option>1972</option>
-                                                <option>1971</option>
-                                                <option>1970</option>
+                                    <div class="span4">
+                                        <div>
+                                            <h4>Function</h4>
+                                            <select class="span3" name="activity_type">
+                                                <option>Small Office</option>
+                                                <option>Medium Office</option>
+                                                <option>Large Office</option>
+                                                <option>Stand-alone Retail</option>
+                                                <option>Strip Mall</option>
+                                                <option>Primary School</option>
+                                                <option>Secondary School</option>
+                                                <option>Outpatient Healthcare</option>
+                                                <option>Hospital</option>
+                                                <option>Small hotel</option>
+                                                <option>Large Hotel</option>
+                                                <option>Warehouse (non-refrigerated)</option>
+                                                <option>Quick Service Restaurant</option>
+                                                <option>Full Service Restaurant</option>
+                                                <option>Mid-Rise Apartment</option>
+                                                <option>High-Rise Apartment</option>
                                             </select>
                                         </div>
-                                        <div class="span4">
-                                            <div>
-                                                <h4>Function</h4>
-                                                <select class="span3" name="activity_type">
-                                                    <option>Small Office</option>
-                                                    <option>Medium Office</option>
-                                                    <option>Large Office</option>
-                                                    <option>Stand-alone Retail</option>
-                                                    <option>Strip Mall</option>
-                                                    <option>Primary School</option>
-                                                    <option>Secondary School</option>
-                                                    <option>Outpatient Healthcare</option>
-                                                    <option>Hospital</option>
-                                                    <option>Small hotel</option>
-                                                    <option>Large Hotel</option>
-                                                    <option>Warehouse (non-refrigerated)</option>
-                                                    <option>Quick Service Restaurant</option>
-                                                    <option>Full Service Restaurant</option>
-                                                    <option>Mid-Rise Apartment</option>
-                                                    <option>High-Rise Apartment</option>
-                                                </select>
-                                            </div>
-                                            <h4>City</h4>
-                                            <select class="span3" name="weather_epw_location">
-                                                <option>Albuquerque, NM (4B)</option>
-                                                <option>Baltimore, MD (4A)</option>
-                                                <option>Boise, ID (5B)</option>
-                                                <option>Burlingotn, NH (6A)</option>
-                                                <option>Chicago, IL (5A)</option>
-                                                <option>Duluth, MN (7)</option>
-                                                <option>El Paso, TX (3B)</option>
-                                                <option>Fairbanks, AK (8)</option>
-                                                <option>Helena, MT (6B)</option>
-                                                <option>Houston, TX (2A)</option>
-                                                <option>Memphis, TN (3A)</option>
-                                                <option>Miami, FL (1A)</option>
-                                                <option>Pheonix, AZ (2B)</option>
-                                                <option>Philadelphia, PA (4A)</option>
-                                                <option>Riyadh, SAU (1B)</option>
-                                                <option>Salem, MA (4C)</option>
-                                                <option>San Francisco, CA (3C)</option>
-                                                <option>Vancouver, CAN (5C)</option>
-                                            </select>
-                                        </div>
+                                        <h4>City</h4>
+                                        <select class="span3" name="weather_epw_location">
+                                            <option>Albuquerque, NM (4B)</option>
+                                            <option>Baltimore, MD (4A)</option>
+                                            <option>Boise, ID (5B)</option>
+                                            <option>Burlingotn, NH (6A)</option>
+                                            <option>Chicago, IL (5A)</option>
+                                            <option>Duluth, MN (7)</option>
+                                            <option>El Paso, TX (3B)</option>
+                                            <option>Fairbanks, AK (8)</option>
+                                            <option>Helena, MT (6B)</option>
+                                            <option>Houston, TX (2A)</option>
+                                            <option>Memphis, TN (3A)</option>
+                                            <option>Miami, FL (1A)</option>
+                                            <option>Pheonix, AZ (2B)</option>
+                                            <option>Philadelphia, PA (4A)</option>
+                                            <option>Riyadh, SAU (1B)</option>
+                                            <option>Salem, MA (4C)</option>
+                                            <option>San Francisco, CA (3C)</option>
+                                            <option>Vancouver, CAN (5C)</option>
+                                        </select>
                                     </div>
                                 </div>
+                            </div>
                         </section>
                         <section id="utility">
                             <div class="box-unit">
@@ -359,7 +358,9 @@
                         <section id="size">
                             <div class="box-unit">
                                 <div class="page-header">
-                                    <h2>Size<small>     required for IBM Analysis</small></h2>
+                                    <h2>Size
+                                        <small>required for IBM Analysis</small>
+                                    </h2>
                                 </div>
                                 <div class="row">
                                     <div class="span4">
@@ -388,8 +389,8 @@
                                         <h4>Orientation</h4>
                                         <ul class="inline">
                                             <li>
-                                                <input type="range" ng-model="orientation" name="building_orientation" min="0"
-                                                max="360" step="15" value={{orientation}}/>
+                                                <input type="range" ng-model="orientation" name="building_orientation"
+                                                min="0" max="360" step="15" value={{orientation}}/>
                                             </li>
                                             <li>
                                                 <div class="input-append">
@@ -403,33 +404,15 @@
                                 </div>
                             </div>
                         </section>
-                        <br />
-                        <div class="box-unit">
-                            <input type="submit" class="btn btn-success" value="Run Inverse Modeling Toolkit"
-                            name="operation" onclick="document.pressed=this.value"/><h3><small>By ASRAE</small></h3>
-                        </div>
-                        <div class="box-unit">
-                            <input type="submit" class="btn btn-success" value="Run Inverse Modeling Simulation"
-                            name="operation" onclick="document.pressed=this.value"/><h3><small>By IBM</small></h3>
-                        </div>
-                        </form>
-                        <div class="box-unit">
-                            <a href="literesults"><button class="btn btn-success ">Sample Results</button> </a>
-                        </div>
+                        <input type="submit" value="run IMT" />
+                    </form>
+                    <div class="box-unit">
+                        <a href="literesults"><button class="btn btn-success ">Sample Results</button> </a>
+                    </div>
                 </div>
             </div>
         </div>
         <!-- Javascript -->
-        <script>
-            function OnSubmitForm(){
-                if(document.pressed =='Run Inverse Modeling Toolkit'){
-                    document.liteform.action = "runIMT";
-                }
-                else if(document.pressed == 'Run Inverse Modeling Simulation'){
-                    document.liteform.action = 'runIBM';
-                }   
-            }
-        </script>
         <script>
             function addRow(tableID) {
                 var table = document.getElementById(tableID);

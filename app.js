@@ -17,12 +17,7 @@ var app = express();
 
 // Seting Server environments, ports and rendering
 app.set('port', process.env.PORT || 3000);
-app.engine('.html', cons.swig);
-app.set('view engine', 'html');
-swig.init({
-    root: __dirname + '/views',
-    allowErrors: true // allows errors to be thrown and caught by express instead of suppressed by Swig
-});
+app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(express.logger('dev'));
 app.use(express.bodyParser());

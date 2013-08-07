@@ -72,36 +72,37 @@
         <div class="container">
             <div class="row">
                 <div class="span3 bs-docs-sidebar">
-                    
                     <ul class="nav nav-list bs-docs-sidenav">
-                        <h3>Comprehensive <small>-PSU</small></h3>
-                            <li>
-                                <a href="#building"><i class="icon-chevron-right"></i> Building</a>
-                            </li>
-                            <li>
-                                <a href="#geometry"><i class="icon-chevron-right"></i>Geometry</a>
-                            </li>
-                            <li>
-                                <a href="#materials"><i class="icon-chevron-right"></i>Materials</a>
-                            </li>
-                            <li>
-                                <a href="#loads"><i class="icon-chevron-right"></i>Loads</a>
-                            </li>
-                            <li>
-                                <a href="#room"><i class="icon-chevron-right"></i>Typical Room</a>
-                            </li>
-                            <li>
-                                <a href="#lighting"><i class="icon-chevron-right"></i>Lighting</a>
-                            </li>
-                            <li>
-                                <a href="#airflow"><i class="icon-chevron-right"></i>Airflow</a>
-                            </li>
-                            <li>
-                                <a href="#schedules"><i class="icon-chevron-right"></i>Schedules</a>
-                            </li>
-                            <li>
-                                <a href="#ecms"><i class="icon-chevron-right"></i>ECMs</a>
-                            </li>
+                        <h3>Comprehensive
+                            <small>-PSU</small>
+                        </h3>
+                        <li>
+                            <a href="#building"><i class="icon-chevron-right"></i> Building</a>
+                        </li>
+                        <li>
+                            <a href="#geometry"><i class="icon-chevron-right"></i>Geometry</a>
+                        </li>
+                        <li>
+                            <a href="#materials"><i class="icon-chevron-right"></i>Materials</a>
+                        </li>
+                        <li>
+                            <a href="#loads"><i class="icon-chevron-right"></i>Loads</a>
+                        </li>
+                        <li>
+                            <a href="#room"><i class="icon-chevron-right"></i>Typical Room</a>
+                        </li>
+                        <li>
+                            <a href="#lighting"><i class="icon-chevron-right"></i>Lighting</a>
+                        </li>
+                        <li>
+                            <a href="#airflow"><i class="icon-chevron-right"></i>Airflow</a>
+                        </li>
+                        <li>
+                            <a href="#schedules"><i class="icon-chevron-right"></i>Schedules</a>
+                        </li>
+                        <li>
+                            <a href="#ecms"><i class="icon-chevron-right"></i>ECMs</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="span9">
@@ -233,7 +234,10 @@
                                 </div>
                             </div>
                             <!--UPLOAD IFC-->
-                            <h2 class="text-right"><small>extracts & <a href="http://www.virtualpulse.us/V1">visualizes</a> external walls, numbers of floors, gross floor area for simulation</small></h2>
+                            <h2 class="text-right">
+                                <small>extracts &
+                                    <a href="http://www.virtualpulse.us/V1">visualizes</a>external walls, numbers of floors, gross floor area for simulation</small>
+                            </h2>
                         </div>
                     </section>
                     <section id="materials">
@@ -268,7 +272,7 @@
                                     </select>
                                 </div>
                                 <div class="span4">
-                                     <h4>Wall Thickness</h4>
+                                    <h4>Wall Thickness</h4>
                                     <div class="input-append">
                                         <input class="span2" id="appendedInput" type="text">
                                         <span class="add-on">m</span>
@@ -309,7 +313,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <h2 class="text-right"><small>HVAC system type & efficiency are based on building type defaults</small></h2>
+                            <h2 class="text-right">
+                                <small>HVAC system type & efficiency are based on building type defaults</small>
+                            </h2>
                         </div>
                     </section>
                     <section id="room">
@@ -359,15 +365,13 @@
                                         <input class="span2" id="appendedInput" type="text" placeholder="floor to top of window">
                                         <span class="add-on">m</span>
                                     </div>
-                                     <h4>Shading Device</h4>
+                                    <h4>Shading Device</h4>
                                     <select class="span3">
                                         <option>Horizontal Blinds</option>
                                         <option>Fabric Shades</option>
                                         <option>None</option>
                                     </select>
-                                    
                                 </div>
-                               
                                 <div class="span4">
                                     <h4>Floor Reflectance</h4>
                                     <input id="floorSlider" type="range" class="span2"
@@ -399,9 +403,62 @@
                                 </h2>
                             </div>
                             <div class="row">
-                                    <h2 class="text-right"><small>Coming Soon</small></h2>
-                            </div>
-                        </div>
+                                <div class="span4">
+                                    <h4>Outdoor Air Percent</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                        max="100" name="outdoor_air_percentage">
+                                        <span class="add-on">%</span>
+                                    </div>
+                                </div>
+                                <div class="span4">
+                                    <h3>Zone: 1</h3>
+                                    <h4>Supply Airflow</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                        name="zone1_supply_airflow">
+                                        <span class="add-on">SCFM</span>
+                                        <h4>Return Airflow</h4>
+                                        <div class="input-append">
+                                            <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                            name="zone1_supply_airflow">
+                                            <span class="add-on">SCFM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="span8">
+                                    <h3>Walls</h3></div>
+                                    <div class="span4">
+                                        <h4>Azimuth of Wall 1</h4>
+                                        <div class="input-append">
+                                            <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                            name="wall1_azimuth">
+                                            <span class="add-on">&deg;</span>
+                                        </div>
+                                        <h4>Azimuth of Wall 3</h4>
+                                        <div class="input-append">
+                                            <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                            name="wall1_azimuth">
+                                            <span class="add-on">&deg;</span>
+                                        </div>
+                                    </div>
+                                    <div class="span4">
+                                        <h4>Azimuth of Wall 2</h4>
+                                        <div class="input-append">
+                                            <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                            name="wall1_azimuth">
+                                            <span class="add-on">&deg;</span>
+                                        </div>
+                                        <h4>Azimuth of Wall 4</h4>
+                                        <div class="input-append">
+                                            <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                            name="wall1_azimuth">
+                                            <span class="add-on">&deg;</span>
+                                        </div>
+                                    </div>
+                                </div>
                     </section>
                     <section id="schedules">
                         <div id="box-unit">
@@ -413,8 +470,11 @@
                             </div>
                             <a href="http://www.energycodes.gov/development/commercial/90.1_models">
                             <img src="../img/schedules/large_office.png" class="../img-polaroid"></a>
-                            <h2 class="text-right"><small>based off of
-                                <a href="http://www.energycodes.gov/development/commercial/90.1_models">PNNL's Commercial Prototype Building Models</a></small></h2>
+                            <h2 class="text-right">
+                                <small>based off of
+                                    <a href="http://www.energycodes.gov/development/commercial/90.1_models">PNNL's Commercial Prototype Building Models</a>
+                                </small>
+                            </h2>
                         </div>
                     </section>
                     <section id="ECMs">
@@ -435,16 +495,18 @@
                     </section>
                     <div id="box-unit">
                         <a href="#"><button class="btn-large btn-success">SIMULATE</button> </a>
-                        <h2 class="text-right"><small>with OpenStudio SDK + EnergyPlus, DAYSIM, CONTAM Engines</small></h2>
+                        <h2 class="text-right">
+                            <small>with OpenStudio SDK + EnergyPlus, DAYSIM, CONTAM Engines</small>
+                        </h2>
+                    </div>
+                    </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Javascript -->
-        <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
-        <script src="../js/bootstrap-scrollspy.js"></script>
-        <script src="../js/bootstrap-fileupload.js"></script>
+                <!-- Javascript -->
+                <script src="http://code.jquery.com/jquery.js"></script>
+                <script src="../js/bootstrap.min.js"></script>
+                <script src="../js/bootstrap-scrollspy.js"></script>
+                <script src="../js/bootstrap-fileupload.js"></script>
     </body>
 
 </html>

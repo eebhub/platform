@@ -2,25 +2,24 @@
 
 module.exports = {
     getHome: function(request, response){
-        response.render('platform/home');    
+        response.render('home');    
     },
     getLite: function(request, response){
-        response.render('platform/lite');    
+        response.render('lite');    
     },
     getLiteResults: function(request, response){
-        response.render('platform/literesults');    
+        response.render('literesults');    
     },
     getPartial: function(request, response){
-        response.render('platform/partial');    
+        response.render('partial');    
     },
     
     getSubstantial: function(request, response) {
-        response.render('platform/substantial');
+        response.render('substantial');
     },
     
     getComprehensive: function(request, response) {
-        response.render('platform/comprehensive');
+        response.render('comprehensive');
     },
-    
-    
+  
 };

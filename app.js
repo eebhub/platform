@@ -6,12 +6,9 @@
 var express = require('express')
   , http = require('http')
   , path = require('path')
-  , cons = require("consolidate")
-  , swig = require("swig")
   , routes = require('./routes/routes.js')
   , lite = require("./routes/lite.js")
-  , partial = require("./routes/partial.js")
-  , splash = require('./routes/splash.js');
+  , partial = require("./routes/partial.js");
 
 var app = express();
 
@@ -31,14 +28,13 @@ if ('development' == app.get('env')) {
 }
 
 //Get Routing
-app.get('/', splash.getSplash);
-app.get('/platform', routes.getHome);
-app.get('/platform/', routes.getHome);
-app.get('/platform/lite', routes.getLite);
-app.get('/platform/literesults', routes.getLiteResults);
-app.get('/platform/partial', routes.getPartial);
-app.get('/platform/substantial', routes.getSubstantial);
-app.get('/platform/comprehensive', routes.getComprehensive);
+app.get('/', routes.getHome);
+app.get('/', routes.getHome);
+app.get('/lite', routes.getLite);
+app.get('/literesults', routes.getLiteResults);
+app.get('/partial', routes.getPartial);
+app.get('/substantial', routes.getSubstantial);
+app.get('/comprehensive', routes.getComprehensive);
 
 //Posts
 app.post('/partialanalysis', partial.partial);

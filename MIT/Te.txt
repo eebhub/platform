@@ -1,0 +1,47 @@
+Modified Bitumen Roof  //  typeOfRoof
+Wood Fiber  //  roofInsulationRValue
+  //  numFloors
+Top of Slab  //  roofInsulationLocation
+DEFAULT  //  scenario
+Albuquerque, NM (4B)  //  location
+DEFAULT  //  typeOfSim
+North  //  orientation
+  //  roomWidth
+  //  roomDepth
+  //  roomHeight
+  //  buildingLengthA
+  //  buildingLengthB
+DEFAULT  //  typology
+DEFAULT  //  coating
+20  //  windowArea
+DEFAULT  //  cavityDepth
+DEFAULT  //  flowRate
+DEFAULT  //  freeFraction
+DEFAULT  //  ventSupply
+DEFAULT  //  ventExhaust
+Mechanical Cooling & Heating  //  ventilationType
+DEFAULT  //  airChangesOccupied
+DEFAULT  //  airChangesUnoccupied
+  //  insulationRValue
+NaN  //  occupancyLoad
+0.00 No Equipment  //  lightingLoad
+0.00 No Equipment  //  equipmentLoad
+DEFAULT  //  lightingControl
+  //  startHour
+  //  endHour
+DEFAULT  //  blindDaytimeSchedule
+DEFAULT  //  blindNighttimeSchedule
+DEFAULT  //  blindClosedAngle
+DEFAULT  //  blindWidth
+DEFAULT  //  blindEmissivity
+DEFAULT  //  blindAbsorptivity
+DEFAULT  //  thermalMass
+  //  overhangDepth
+DEFAULT  //  relHumidityMax
+DEFAULT  //  maxTempOccupied
+DEFAULT  //  minTempOccupied
+DEFAULT  //  maxTempUnoccupied
+DEFAULT  //  minTempUnoccupied
+DEFAULT  //  debugData
+DEFAULT  //  debugLighting
+DEFAULT  //  debugComfortRange

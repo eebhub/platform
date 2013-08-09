@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-    
+    <!-- test-->
     <head>
         <title>EEB Hub Simulation Platform Tools</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/stylesheet.css" rel="stylesheet">
-        <link href="css/partial.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/stylesheet.css" rel="stylesheet">
+        <link href="../css/partial.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/bootstrap-switch.css" />
         <style type="text/css">
             body {
                 padding-top: 60px;
@@ -35,7 +35,9 @@
                 printValue('obstructionSlider', 'obstructionRangeValue');
             }
         </script>
-        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <link href="../css/bootstrap-responsive.min.css" rel="stylesheet">
+    
     </head>
     
     <body data-spy="scroll" data-target="#sidebar">
@@ -47,20 +49,20 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="brand" href="/">EEB Hub Simulation Platform</a>
+                    <a class="brand" href="/platform/">EEB Hub Simulation Platform</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li>
-                                <a href="lite">Lite</a>
+                                <a href="/platform/lite">Lite</a>
                             </li>
                             <li>
-                                <a href="partial">Partial</a>
+                                <a href="/platform/partial">Partial</a>
                             </li>
                             <li class="active">
-                                <a href="substantial">Substantial</a>
+                                <a href="/platform/substantial">Substantial</a>
                             </li>
                             <li>
-                                <a href="comprehensive">Comprehensive</a>
+                                <a href="/platform/comprehensive">Comprehensive</a>
                             </li>
                         </ul>
                     </div>
@@ -352,24 +354,23 @@
                                     </select>
                                     
                                     <h4>Demand Control Ventilation</h4>
-                                    <label class="radio">
-                                        <input type="radio" name="controlvent" id="controlvent1" value="option1">Used</label>
-                                    <label class="radio">
-                                        <input type="radio" name="controlvent" id="controlvent2" value="option2"
-                                        checked>Not Used</label>
+                                
+                                    Used <div class="make-switch">
+                                    <input type="checkbox">
+                                    </div>
+                                
+                                
                                 </div>
                                 <div class="span4">
                                     <h4>Air Side Economizer</h4>
-                                    <label class="radio">
-                                        <input type="radio" name="economizer" id="economizer1" value="option1">Present</label>
-                                    <label class="radio">
-                                        <input type="radio" name="economizer" id="economizer2" value="option2"
-                                        checked>Not Present</label>
+                                    Present <div class="make-switch">
+                                    <input type="checkbox">
+                                    </div>
+                                    
                                     <h4>Air Side Energy Recovery</h4>
-                                    <label class="radio">
-                                        <input type="radio" name="recovery" id="recovery1" value="option1">Present</label>
-                                    <label class="radio">
-                                        <input type="radio" name="recovery" id="recovery2" value="option2" checked>Not Present</label>
+                                    Present <div class="make-switch">
+                                    <input type="checkbox">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -406,9 +407,10 @@
             </div>
         </div>
         <!-- Javascript -->
+        <script src="../js/bootstrap-switch.min.js"></script>  
         <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/bootstrap-scrollspy.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/bootstrap-scrollspy.js"></script>
     </body>
 
 </html>

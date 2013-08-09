@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "platform",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "express": "3.3.4",
-    "ejs": "*"
+    "swig" : "0.14.0",
+    "consolidate": "*",
+    "forever" : "*",
+    "jsdom" : "*"
   }
 }

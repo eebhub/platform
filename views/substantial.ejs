@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
     <!-- test-->
     <head>
         <title>EEB Hub Simulation Platform Tools</title>
@@ -116,30 +116,27 @@
                                     <input type="text" class="span3" name="info[building_name]" 
                                     />
                                     <br/>
-                                    <h4>City</h4>
-                                    <select class="span3" name="info[building_city]">
-                                        <option>Albuquerque, NM (4B)</option>
-                                        <option>Baltimore, MD (4A)</option>
-                                        <option>Boise, ID (5B)</option>
-                                        <option>Burlingotn, NH (6A)</option>
-                                        <option>Chicago, IL (5A)</option>
-                                        <option>Duluth, MN (7)</option>
-                                        <option>El Paso, TX (3B)</option>
-                                        <option>Fairbanks, AK (8)</option>
-                                        <option>Helena, MT (6B)</option>
-                                        <option>Houston, TX (2A)</option>
-                                        <option>Memphis, TN (3A)</option>
-                                        <option>Miami, FL (1A)</option>
-                                        <option>Pheonix, AZ (2B)</option>
-                                        <option>Philadelphia, PA (4A)</option>
-                                        <option>Riyadh, SAU (1B)</option>
-                                        <option>Salem, MA (4C)</option>
-                                        <option>San Francisco, CA (3C)</option>
-                                        <option>Vancouver, CAN (5C)</option>
-                                    </select>
                                     <h4>Climate</h4>
-                                    <input type="text" name="info[building_climate]" 
-                                    />
+                                    <select class="span3" name="info[building_climate]">
+                                        <option value="ALBUQUERQUE INTL ARPT [ISIS]">Albuquerque, NM (4B)</option>
+                                        <option value="BALTIMORE BLT-WASHNGTN INT'L">Baltimore, MD (4A)</option>
+                                        <option value="BOISE AIR TERMINAL [UO]">Boise, ID (5B)</option>
+                                        <option value="BURLINGTON INTERNATIONAL AP">Burlingotn, NH (6A)</option>
+                                        <option value="CHICAGO OHARE INTL AP">Chicago, IL (5A)</option>
+                                        <option value="DULUTH INTERNATIONAL ARPT">Duluth, MN (7)</option>
+                                        <option value="EL PASO INTERNATIONAL AP [UT]">El Paso, TX (3B)</option>
+                                        <option value="FAIRBANKS INTL ARPT">Fairbanks, AK (8)</option>
+                                        <option value="HELENA REGIONAL AIRPORT">Helena, MT (6B)</option>
+                                        <option value="HOUSTON BUSH INTERCONTINENTAL">Houston, TX (2A)</option>
+                                        <option value="MEMPHIS INTERNATIONAL AP">Memphis, TN (3A)</option>
+                                        <option value="MIAMI INTL AP">Miami, FL (1A)</option>
+                                        <option value="PHOENIX SKY HARBOR INTL AP">Pheonix, AZ (2B)</option>
+                                        <option value="PHILADELPHIA INTERNATIONAL AP">Philadelphia, PA (4A)</option>
+                                        <option value="">Riyadh, SAU (1B)</option>
+                                        <option value="SALEM MCNARY FIELD">Salem, MA (4C)</option>
+                                        <option value="SAN FRANCISCO INTL AP'>San Francisco, CA (3C)</option>
+                                        <option value="">Vancouver, CAN (5C)</option>
+                                    </select>
                                 </div>
                                 <div class="span4">
                                 <h4>Function</h4>
@@ -258,12 +255,12 @@
                         <div class="span4">
                             <h4>Shape</h4>
                             <select name="architecture[shape]" ng-model="shapeimage">
-                                <option value="img/basic_geometry/c_shape_min_zone.png">C Shape</option>
-                                <option value="img/basic_geometry/h_shape_min_zone.png">H Shape</option>
-                                <option value="img/basic_geometry/l_shape_min_zone.png">L Shape</option>
-                                <option value="img/basic_geometry/rect_min_zone.png">Rectangle</option>
-                                <option value="img/basic_geometry/t_shape_min_zone.png">T Shaped</option>
-                                <option value="img/basic_geometry/u_shape_min_zone.png">U Shaped</option>
+                                <option>C Shape</option>
+                                <option>H Shape</option>
+                                <option>L Shape</option>
+                                <option>Rectangle</option>
+                                <option>T Shaped</option>
+                                <option>U Shaped</option>
                             </select>
                             <h4>Total Building Height</h4>
                                 <div class="input-append">
@@ -418,13 +415,59 @@
                             
                             <h4>Weekday Occupancy Hours</h4>
                             <h5>Day Start</h5>
-                            <input type="time" ng-model="weekdayStart" name="occupancy[weekday_open]"
-                            />
+                            <select name="occupancy[weekday_open]">
+                            <option>12AM</option>
+                            <option>1AM</option>
+                            <option>2AM</option>
+                            <option>3AM</option>
+                            <option>4AM</option>
+                            <option>5AM</option>
+                            <option>6AM</option>
+                            <option>7AM</option>
+                            <option>8AM</option>
+                            <option>9AM</option>
+                            <option>10AM</option>
+                            <option>11AM</option>
+                            <option>12PM</option>
+                            <option>1PM</option>
+                            <option>2PM</option>
+                            <option>3PM</option>
+                            <option>4PM</option>
+                            <option>5PM</option>
+                            <option>6PM</option>
+                            <option>7PM</option>
+                            <option>8PM</option>
+                            <option>9PM</option>
+                            <option>10PM</option>
+                            <option>11PM</option>
+                            <select/>
                             <h5>Day End</h5>
-                            <input type="time" value={{weekdayStart}} min={{weekdayStart}}
-                                name="occupancy[weekday_close]" />
-
-                            
+                            <select name="occupancy[weekday_close]">
+                            <option>12AM</option>
+                            <option>1AM</option>
+                            <option>2AM</option>
+                            <option>3AM</option>
+                            <option>4AM</option>
+                            <option>5AM</option>
+                            <option>6AM</option>
+                            <option>7AM</option>
+                            <option>8AM</option>
+                            <option>9AM</option>
+                            <option>10AM</option>
+                            <option>11AM</option>
+                            <option>12PM</option>
+                            <option>1PM</option>
+                            <option>2PM</option>
+                            <option>3PM</option>
+                            <option>4PM</option>
+                            <option>5PM</option>
+                            <option>6PM</option>
+                            <option>7PM</option>
+                            <option>8PM</option>
+                            <option>9PM</option>
+                            <option>10PM</option>
+                            <option>11PM</option>
+                            </select>
                             </div>
                             
                             <div class="span4">
@@ -433,18 +476,114 @@
                                 <span class="add-on"></span>
                                 <h4>Saturday Occupancy Hours</h4>
                                 <h5>Day Start</h5>
-                                <input type="time" ng-model="weekdayStart" name="occupancy[sat_open]"
-                                />
+                                <select name="occupancy[sat_open]">
+                                <option>12AM</option>
+                                <option>1AM</option>
+                                <option>2AM</option>
+                                <option>3AM</option>
+                                <option>4AM</option>
+                                <option>5AM</option>
+                                <option>6AM</option>
+                                <option>7AM</option>
+                                <option>8AM</option>
+                                <option>9AM</option>
+                                <option>10AM</option>
+                                <option>11AM</option>
+                                <option>12PM</option>
+                                <option>1PM</option>
+                                <option>2PM</option>
+                                <option>3PM</option>
+                                <option>4PM</option>
+                                <option>5PM</option>
+                                <option>6PM</option>
+                                <option>7PM</option>
+                                <option>8PM</option>
+                                <option>9PM</option>
+                                <option>10PM</option>
+                                <option>11PM</option>
+                                </select>
                                 <h5>Day End</h5>
-                                <input type="time" value={{weekdayStart}} min={{weekdayStart}}
-                                        name="occupancy[sat_close]" />
+                                <select name="occupancy[sat_close]">
+                                <option>12AM</option>
+                                <option>1AM</option>
+                                <option>2AM</option>
+                                <option>3AM</option>
+                                <option>4AM</option>
+                                <option>5AM</option>
+                                <option>6AM</option>
+                                <option>7AM</option>
+                                <option>8AM</option>
+                                <option>9AM</option>
+                                <option>10AM</option>
+                                <option>11AM</option>
+                                <option>12PM</option>
+                                <option>1PM</option>
+                                <option>2PM</option>
+                                <option>3PM</option>
+                                <option>4PM</option>
+                                <option>5PM</option>
+                                <option>6PM</option>
+                                <option>7PM</option>
+                                <option>8PM</option>
+                                <option>9PM</option>
+                                <option>10PM</option>
+                                <option>11PM</option>
+                                </select>
                                 <h4>Sunday Occupancy Hours</h4>
                                 <h5>Day Start</h5>
-                                    <input type="time" ng-model="weekdayStart" name="occupancy[sun_open]"
-                                />
+                                <select name="occupancy[sun_open]">
+                                <option>12AM</option>
+                                <option>1AM</option>
+                                <option>2AM</option>
+                                <option>3AM</option>
+                                <option>4AM</option>
+                                <option>5AM</option>
+                                <option>6AM</option>
+                                <option>7AM</option>
+                                <option>8AM</option>
+                                <option>9AM</option>
+                                <option>10AM</option>
+                                <option>11AM</option>
+                                <option>12PM</option>
+                                <option>1PM</option>
+                                <option>2PM</option>
+                                <option>3PM</option>
+                                <option>4PM</option>
+                                <option>5PM</option>
+                                <option>6PM</option>
+                                <option>7PM</option>
+                                <option>8PM</option>
+                                <option>9PM</option>
+                                <option>10PM</option>
+                                <option>11PM</option>
+                                </select>
                                 <h5>Day End</h5>
-                                    <input type="time" value={{weekdayStart}} min={{weekdayStart}}
-                                    name="occupancy[sun_close]" />
+                                <select name="occupancy[sun_close]">
+                                <option>12AM</option>
+                                <option>1AM</option>
+                                <option>2AM</option>
+                                <option>3AM</option>
+                                <option>4AM</option>
+                                <option>5AM</option>
+                                <option>6AM</option>
+                                <option>7AM</option>
+                                <option>8AM</option>
+                                <option>9AM</option>
+                                <option>10AM</option>
+                                <option>11AM</option>
+                                <option>12PM</option>
+                                <option>1PM</option>
+                                <option>2PM</option>
+                                <option>3PM</option>
+                                <option>4PM</option>
+                                <option>5PM</option>
+                                <option>6PM</option>
+                                <option>7PM</option>
+                                <option>8PM</option>
+                                <option>9PM</option>
+                                <option>10PM</option>
+                                <option>11PM</option>
+                                </select>
                             </div>    
                         </div>        
                         </div>
@@ -471,7 +610,7 @@
         <!-- Javascript -->
         
 
-        
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="/js/bootstrap-switch.min.js"></script>  
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="/js/bootstrap.min.js"></script>

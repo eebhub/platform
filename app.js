@@ -11,7 +11,9 @@ var express = require('express')
   , routes = require('./routes/routes.js')
   , lite = require("./routes/lite.js")
   , partial = require("./routes/partial.js")
-  , splash = require('./routes/splash.js');
+  , substantial=require("./routes/substantial.js")
+  , splash = require('./routes/splash.js')
+  , shjs = require('shelljs/global');
 
 var app = express();
 
@@ -44,10 +46,12 @@ app.get('/platform/literesults', routes.getLiteResults);
 app.get('/platform/partial', routes.getPartial);
 app.get('/platform/substantial', routes.getSubstantial);
 app.get('/platform/comprehensive', routes.getComprehensive);
+app.get('/platform/test-remote-engine', routes.getRemoteEngineRun);
 
 //Posts
 app.post('/liteanalysis', lite.liteanalysis);
 app.post('/partialanalysis', partial.partial);
+app.post('/substantial/analyze', substantial.getSubstantialInput);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

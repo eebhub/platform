@@ -5,10 +5,10 @@
         <title>EEB Hub Simulation Platform Tools</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/stylesheet.css" rel="stylesheet">
-        <link href="../css/partial.css" rel="stylesheet">
-        <link href="../css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/stylesheet.css" rel="stylesheet">
+        <link href="css/partial.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
         <style type="text/css">
             body {
                 padding-top: 60px;
@@ -16,6 +16,7 @@
                 background-color: rgb(229, 229, 229);
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
     </head>
     
     <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -27,20 +28,20 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="/platform/" class="brand">EEB Hub Simulation Platform</a>
+                    <a href="/" class="brand">EEB Hub Simulation Platform</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li class="active">
-                                <a href="/platform/lite">Lite</a>
+                                <a href="/lite">Lite</a>
                             </li>
                             <li>
-                                <a href="/platform/partial">Partial</a>
+                                <a href="/partial">Partial</a>
                             </li>
                             <li>
-                                <a href="/platform/substantial">Substantial</a>
+                                <a href="/substantial">Substantial</a>
                             </li>
                             <li>
-                                <a href="/platform/comprehensive">Comprehensive</a>
+                                <a href="/comprehensive">Comprehensive</a>
                             </li>
                         </ul>
                     </div>
@@ -65,116 +66,120 @@
                             <a href="#utility"><i class="icon-chevron-right"></i>Utility Data</a>
                         </li>
                         <li>
-                            <a href="#size"><i class="icon-chevron-right"></i>Size</a>
+                            <a href="#architecture"><i class="icon-chevron-right"></i>Architecture</a>
                         </li>
                     </ul>
                 </div>
                 <div class="span9">
-                    <form action="/liteanalysis" method="post">
+                    <form action="/ibmanalysis" method="post">
                         <section id="building">
-                            <form action="/liteanalysis" method="post">
-                                <div class="box-unit">
-                                    <div class="page-header">
-                                        <h2>Building</h2>
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Building</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="span4">
+                                        <h4>Building Name</h4>
+                                        <input class="span3" type="text" name="building_name">
+                                        <br/>
+                                        <h4>City</h4>
+                                        <div class="input-append">
+                                            <select class="span3" name="weather_epw_location">
+                                                <option>Albuquerque, NM</option>
+                                                <option>Baltimore, MD</option>
+                                                <option>Boise, ID</option>
+                                                <option>Burlington, VT</option>
+                                                <option>Chicago, IL</option>
+                                                <option>Duluth, MN</option>
+                                                <option>El Paso, TX</option>
+                                                <option>Fairbanks, AK</option>
+                                                <option>Helena, MT</option>
+                                                <option>Houston, TX</option>
+                                                <option>Memphis, TN</option>
+                                                <option>Miami, FL</option>
+                                                <option>Pheonix, AZ</option>
+                                                <option selected>Philadelphia, PA</option>
+                                                <option>Riyadh, SAU</option>
+                                                <option>Salem, OR</option>
+                                                <option>San Francisco, CA</option>
+                                                <option>Vancouver, CAN</option>
+                                            </select>
+                                            <span class="add-on">
+                                                <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="span4">
-                                            <h4>Building Name</h4>
-                                            <input class="span3" type="text" name="building[building_name]">
-                                            <br/>
-                                            <h4>Year Built</h4>
-                                            <select class="span2" name="building[year_completed]">
-                                                <option>2013</option>
-                                                <option>2012</option>
-                                                <option>2011</option>
-                                                <option>2010</option>
-                                                <option>2009</option>
-                                                <option>2008</option>
-                                                <option>2007</option>
-                                                <option>2006</option>
-                                                <option>2005</option>
-                                                <option>2004</option>
-                                                <option>2003</option>
-                                                <option>2002</option>
-                                                <option>2001</option>
-                                                <option>2000</option>
-                                                <option>1999</option>
-                                                <option>1998</option>
-                                                <option>1997</option>
-                                                <option>1996</option>
-                                                <option>1995</option>
-                                                <option>1994</option>
-                                                <option>1993</option>
-                                                <option>1992</option>
-                                                <option>1991</option>
-                                                <option>1990</option>
-                                                <option>1989</option>
-                                                <option>1988</option>
-                                                <option>1987</option>
-                                                <option>1986</option>
-                                                <option>1985</option>
-                                                <option>1984</option>
-                                                <option>1983</option>
-                                                <option>1982</option>
-                                                <option>1981</option>
-                                                <option>1980</option>
-                                                <option>1979</option>
-                                                <option>1978</option>
-                                                <option>1977</option>
-                                                <option>1976</option>
-                                                <option>1974</option>
-                                                <option>1973</option>
-                                                <option>1972</option>
-                                                <option>1971</option>
-                                                <option>1970</option>
+                                    <div class="span4">
+                                        <div>
+                                            <h4>Function</h4>
+                                            <select class="span3" name="activity_type">
+                                                <option>Small Office</option>
+                                                <option>Medium Office</option>
+                                                <option>Large Office</option>
+                                                <option>Stand-alone Retail</option>
+                                                <option>Strip Mall</option>
+                                                <option>Primary School</option>
+                                                <option>Secondary School</option>
+                                                <option>Outpatient Healthcare</option>
+                                                <option>Hospital</option>
+                                                <option>Small hotel</option>
+                                                <option>Large Hotel</option>
+                                                <option>Warehouse (non-refrigerated)</option>
+                                                <option>Quick Service Restaurant</option>
+                                                <option>Full Service Restaurant</option>
+                                                <option>Mid-Rise Apartment</option>
+                                                <option>High-Rise Apartment</option>
                                             </select>
                                         </div>
-                                        <div class="span4">
-                                            <div>
-                                                <h4>Function</h4>
-                                                <select class="span3" name="building[activity_type]">
-                                                    <option>Small Office</option>
-                                                    <option>Medium Office</option>
-                                                    <option>Large Office</option>
-                                                    <option>Stand-alone Retail</option>
-                                                    <option>Strip Mall</option>
-                                                    <option>Primary School</option>
-                                                    <option>Secondary School</option>
-                                                    <option>Outpatient Healthcare</option>
-                                                    <option>Hospital</option>
-                                                    <option>Small hotel</option>
-                                                    <option>Large Hotel</option>
-                                                    <option>Warehouse (non-refrigerated)</option>
-                                                    <option>Quick Service Restaurant</option>
-                                                    <option>Full Service Restaurant</option>
-                                                    <option>Mid-Rise Apartment</option>
-                                                    <option>High-Rise Apartment</option>
-                                                </select>
-                                            </div>
-                                            <h4>City</h4>
-                                            <select class="span3" name="building[weather_epw_location]">
-                                                <option>Albuquerque, NM (4B)</option>
-                                                <option>Baltimore, MD (4A)</option>
-                                                <option>Boise, ID (5B)</option>
-                                                <option>Burlingotn, NH (6A)</option>
-                                                <option>Chicago, IL (5A)</option>
-                                                <option>Duluth, MN (7)</option>
-                                                <option>El Paso, TX (3B)</option>
-                                                <option>Fairbanks, AK (8)</option>
-                                                <option>Helena, MT (6B)</option>
-                                                <option>Houston, TX (2A)</option>
-                                                <option>Memphis, TN (3A)</option>
-                                                <option>Miami, FL (1A)</option>
-                                                <option>Pheonix, AZ (2B)</option>
-                                                <option>Philadelphia, PA (4A)</option>
-                                                <option>Riyadh, SAU (1B)</option>
-                                                <option>Salem, MA (4C)</option>
-                                                <option>San Francisco, CA (3C)</option>
-                                                <option>Vancouver, CAN (5C)</option>
-                                            </select>
-                                        </div>
+                                        <h4>Year Built</h4>
+                                        <select class="span2" name="year_completed">
+                                            <option>2013</option>
+                                            <option>2012</option>
+                                            <option>2011</option>
+                                            <option>2010</option>
+                                            <option>2009</option>
+                                            <option>2008</option>
+                                            <option>2007</option>
+                                            <option>2006</option>
+                                            <option>2005</option>
+                                            <option>2004</option>
+                                            <option>2003</option>
+                                            <option>2002</option>
+                                            <option>2001</option>
+                                            <option>2000</option>
+                                            <option>1999</option>
+                                            <option>1998</option>
+                                            <option>1997</option>
+                                            <option>1996</option>
+                                            <option>1995</option>
+                                            <option>1994</option>
+                                            <option>1993</option>
+                                            <option>1992</option>
+                                            <option>1991</option>
+                                            <option>1990</option>
+                                            <option>1989</option>
+                                            <option>1988</option>
+                                            <option>1987</option>
+                                            <option>1986</option>
+                                            <option>1985</option>
+                                            <option>1984</option>
+                                            <option>1983</option>
+                                            <option>1982</option>
+                                            <option>1981</option>
+                                            <option>1980</option>
+                                            <option>1979</option>
+                                            <option>1978</option>
+                                            <option>1977</option>
+                                            <option>1976</option>
+                                            <option>1974</option>
+                                            <option>1973</option>
+                                            <option>1972</option>
+                                            <option>1971</option>
+                                            <option>1970</option>
+                                        </select>
                                     </div>
                                 </div>
+                            </div>
                         </section>
                         <section id="utility">
                             <div class="box-unit">
@@ -190,159 +195,159 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]"
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate"
                                                 />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]" />
+                                                name="utility_gas" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" id="appendedInput" type="number" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility[utility_startdate]">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility[utility_electric]" />
+                                                name="utility_electric" />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility[utility_gas]">
+                                                name="utility_gas">
                                             </td>
                                         </tr>
                                     </tbody>
@@ -355,10 +360,12 @@
                                 </button>
                             </div>
                         </section>
-                        <section id="size">
+                        <section id="architecture">
                             <div class="box-unit">
                                 <div class="page-header">
-                                    <h2>Size<small>     required for IBM Analysis</small></h2>
+                                    <h2>Architecture
+                                        <small>required for IBM Analysis</small>
+                                    </h2>
                                 </div>
                                 <div class="row">
                                     <div class="span4">
@@ -384,23 +391,29 @@
                                             <input type="number" name="building_width" min="0" step="0.01" />
                                             <span class="add-on">m</span>
                                         </div>
+                                        <h4>Orientation</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="orientation" name="building_orientation"
+                                                min="0" max="360" step="15" value={{orientation}}/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" type="text" value={{orientation}} ng-model="orientation"
+                                                    />
+                                                    <span class="add-on">&deg;</span>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </section>
-                        <br />
-                        <div class="box-unit">
-                            <input type="submit" class="btn btn-success" value="Run Inverse Modeling Toolkit"
-                            /><h3><small>By ASRAE</small></h3>
-                        </div>
-                        <div class="box-unit">
-                            <input type="submit" class="btn btn-success" value="Run Inverse Modeling Simulation"
-                            /><h3><small>By IBM</small></h3>
-                        </div>
-                        </form>
-                        <div class="box-unit">
-                            <a href="literesults"><button class="btn btn-success ">Sample Results</button> </a>
-                        </div>
+                        <input type="submit" value="run IBM" class="btn-success"/>
+                    </form>
+                    <div class="box-unit">
+                        <a href="literesults"><button class="btn btn-success ">Sample Results</button> </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -416,7 +429,7 @@
                 var element1 = document.createElement("input");
                 element1.className = "span2";
                 element1.type = "date";
-                element1.name = "utility[utility_startdate]";
+                element1.name = "utility_startdate";
 
                 cell1.appendChild(element1);
 
@@ -425,7 +438,7 @@
                 element2.type = "number";
                 element2.placeholder = "kWh";
                 element2.className = "span2";
-                element2.name = "utility[utility_electric]"
+                element2.name = "utility_electric"
                 cell2.appendChild(element2);
 
                 var cell3 = row.insertCell(2);
@@ -433,7 +446,7 @@
                 element3.type = "number";
                 element3.placeholder = "CCF";
                 element3.className = "span2";
-                element3.name = "utility[utility_gas]";
+                element3.name = "utility_gas";
                 cell3.appendChild(element3);
             }
 
@@ -444,8 +457,8 @@
             }
         </script>
         <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
-        <script src="../js/bootstrap-scrollspy.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-scrollspy.js"></script>
     </body>
 
 </html>

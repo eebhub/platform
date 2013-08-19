@@ -5,11 +5,11 @@
         <title>EEB Hub Simulation Platform Tools</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/stylesheet.css" rel="stylesheet">
-        <link href="../css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="../css/bootstrap-fileupload.css" rel="stylesheet">
-        <link href="../css/partial.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/stylesheet.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="css/bootstrap-fileupload.css" rel="stylesheet">
+        <link href="css/partial.css" rel="stylesheet">
         <style type="text/css">
             body {
                 padding-top: 60px;
@@ -47,20 +47,20 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="brand" href="/platform/">EEB Hub Simulation Platform</a>
+                    <a class="brand" href="/">EEB Hub Simulation Platform</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li>
-                                <a href="/platform/lite">Lite</a>
+                                <a href="/lite">Lite</a>
                             </li>
                             <li class="">
-                                <a href="/platform/partial">Partial</a>
+                                <a href="/partial">Partial</a>
                             </li>
                             <li>
-                                <a href="/platform/substantial">Substantial</a>
+                                <a href="/substantial">Substantial</a>
                             </li>
                             <li class="active">
-                                <a href="/platform/comprehensive">Comprehensive</a>
+                                <a href="/comprehensive">Comprehensive</a>
                             </li>
                         </ul>
                     </div>
@@ -72,36 +72,37 @@
         <div class="container">
             <div class="row">
                 <div class="span3 bs-docs-sidebar">
-                    
                     <ul class="nav nav-list bs-docs-sidenav">
-                        <h3>Comprehensive <small>-PSU</small></h3>
-                            <li>
-                                <a href="#building"><i class="icon-chevron-right"></i> Building</a>
-                            </li>
-                            <li>
-                                <a href="#geometry"><i class="icon-chevron-right"></i>Geometry</a>
-                            </li>
-                            <li>
-                                <a href="#materials"><i class="icon-chevron-right"></i>Materials</a>
-                            </li>
-                            <li>
-                                <a href="#loads"><i class="icon-chevron-right"></i>Loads</a>
-                            </li>
-                            <li>
-                                <a href="#room"><i class="icon-chevron-right"></i>Typical Room</a>
-                            </li>
-                            <li>
-                                <a href="#lighting"><i class="icon-chevron-right"></i>Lighting</a>
-                            </li>
-                            <li>
-                                <a href="#airflow"><i class="icon-chevron-right"></i>Airflow</a>
-                            </li>
-                            <li>
-                                <a href="#schedules"><i class="icon-chevron-right"></i>Schedules</a>
-                            </li>
-                            <li>
-                                <a href="#ecms"><i class="icon-chevron-right"></i>ECMs</a>
-                            </li>
+                        <h3>Comprehensive
+                            <small>-PSU</small>
+                        </h3>
+                        <li>
+                            <a href="#building"><i class="icon-chevron-right"></i> Building</a>
+                        </li>
+                        <li>
+                            <a href="#architecture"><i class="icon-chevron-right"></i>Architecture</a>
+                        </li>
+                        <li>
+                            <a href="#materials"><i class="icon-chevron-right"></i>Materials</a>
+                        </li>
+                        <li>
+                            <a href="#loads"><i class="icon-chevron-right"></i>Loads</a>
+                        </li>
+                        <li>
+                            <a href="#room"><i class="icon-chevron-right"></i>Typical Room</a>
+                        </li>
+                        <li>
+                            <a href="#lighting"><i class="icon-chevron-right"></i>Lighting</a>
+                        </li>
+                        <li>
+                            <a href="#mechanical"><i class="icon-chevron-right"></i>Mechanical</a>
+                        </li>
+                        <li>
+                            <a href="#schedules"><i class="icon-chevron-right"></i>Schedules</a>
+                        </li>
+                        <li>
+                            <a href="#ecms"><i class="icon-chevron-right"></i>ECMs</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="span9">
@@ -116,26 +117,31 @@
                                     <input class="span3" type="text" name="buidingname">
                                     <br/>
                                     <h4>City</h4>
-                                    <select class="span3">
-                                        <option>Albuquerque, NM (4B)</option>
-                                        <option>Baltimore, MD (4A)</option>
-                                        <option>Boise, ID (5B)</option>
-                                        <option>Burlingotn, NH (6A)</option>
-                                        <option>Chicago, IL (5A)</option>
-                                        <option>Duluth, MN (7)</option>
-                                        <option>El Paso, TX (3B)</option>
-                                        <option>Fairbanks, AK (8)</option>
-                                        <option>Helena, MT (6B)</option>
-                                        <option>Houston, TX (2A)</option>
-                                        <option>Memphis, TN (3A)</option>
-                                        <option>Miami, FL (1A)</option>
-                                        <option>Pheonix, AZ (2B)</option>
-                                        <option>Philadelphia, PA (4A)</option>
-                                        <option>Riyadh, SAU (1B)</option>
-                                        <option>Salem, MA (4C)</option>
-                                        <option>San Francisco, CA (3C)</option>
-                                        <option>Vancouver, CAN (5C)</option>
-                                    </select>
+                                    <div class="input-append">
+                                        <select class="span3" name="weather_epw_location">
+                                            <option>Albuquerque, NM</option>
+                                            <option>Baltimore, MD</option>
+                                            <option>Boise, ID</option>
+                                            <option>Burlington, VT</option>
+                                            <option>Chicago, IL</option>
+                                            <option>Duluth, MN</option>
+                                            <option>El Paso, TX</option>
+                                            <option>Fairbanks, AK</option>
+                                            <option>Helena, MT</option>
+                                            <option>Houston, TX</option>
+                                            <option>Memphis, TN</option>
+                                            <option>Miami, FL</option>
+                                            <option>Pheonix, AZ</option>
+                                            <option selected>Philadelphia, PA</option>
+                                            <option>Riyadh, SAU</option>
+                                            <option>Salem, OR</option>
+                                            <option>San Francisco, CA</option>
+                                            <option>Vancouver, CAN</option>
+                                        </select>
+                                        <span class="add-on">
+                                            <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="span4">
                                     <div>
@@ -209,14 +215,14 @@
                             </div>
                         </div>
                     </section>
-                    <section id="geometry">
+                    <section id="architecture">
                         <div id="box-unit">
                             <div class="page-header">
-                                <h2>Geometry
-                                    <small>by BIMserver</small>
+                                <h2>Architecture
+                                    <small>geometry import by BIMserver</small>
                                 </h2>
                             </div>
-                            <img src="../img/BuildingGEO.jpg" class="../img-polaroid">
+                            <img src="img/BuildingGEO.jpg" class="img-polaroid">
                             <!--UPLOAD IFC-->
                             <div class="fileupload fileupload-new" data-provides="fileupload">
                                 <div class="input-append">
@@ -233,7 +239,10 @@
                                 </div>
                             </div>
                             <!--UPLOAD IFC-->
-                            <h2 class="text-right"><small>extracts & <a href="http://www.virtualpulse.us/V1">visualizes</a> external walls, numbers of floors, gross floor area for simulation</small></h2>
+                            <h2 class="text-right">
+                                <small>extracts &
+                                    <a href="http://www.virtualpulse.us/V1">visualizes</a> external walls, numbers of floors, gross floor area for simulation</small>
+                            </h2>
                         </div>
                     </section>
                     <section id="materials">
@@ -268,7 +277,7 @@
                                     </select>
                                 </div>
                                 <div class="span4">
-                                     <h4>Wall Thickness</h4>
+                                    <h4>Wall Thickness</h4>
                                     <div class="input-append">
                                         <input class="span2" id="appendedInput" type="text">
                                         <span class="add-on">m</span>
@@ -309,7 +318,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <h2 class="text-right"><small>HVAC system type & efficiency are based on building type defaults</small></h2>
+                            <h2 class="text-right">
+                                <small>HVAC system type & efficiency are based on building type defaults</small>
+                            </h2>
                         </div>
                     </section>
                     <section id="room">
@@ -359,15 +370,13 @@
                                         <input class="span2" id="appendedInput" type="text" placeholder="floor to top of window">
                                         <span class="add-on">m</span>
                                     </div>
-                                     <h4>Shading Device</h4>
+                                    <h4>Shading Device</h4>
                                     <select class="span3">
                                         <option>Horizontal Blinds</option>
                                         <option>Fabric Shades</option>
                                         <option>None</option>
                                     </select>
-                                    
                                 </div>
-                               
                                 <div class="span4">
                                     <h4>Floor Reflectance</h4>
                                     <input id="floorSlider" type="range" class="span2"
@@ -391,17 +400,70 @@
                             </div>
                         </div>
                     </section>
-                    <section id="airflow">
+                    <section id="mechanical">
                         <div id="box-unit">
                             <div class="page-header">
-                                <h2>Airflow
-                                    <small>by CONTAM</small>
+                                <h2>Mechanical
+                                    <small>airflow by CONTAM</small>
                                 </h2>
                             </div>
                             <div class="row">
-                                    <h2 class="text-right"><small>Coming Soon</small></h2>
-                            </div>
-                        </div>
+                                <div class="span4">
+                                    <h4>Outdoor Air Percent</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                        max="100" name="outdoor_air_percentage">
+                                        <span class="add-on">%</span>
+                                    </div>
+                                </div>
+                                <div class="span4">
+                                    <h3>Zone: 1</h3>
+                                    <h4>Supply Airflow</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                        name="zone1_supply_airflow">
+                                        <span class="add-on">SCFM</span>
+                                        <h4>Return Airflow</h4>
+                                        <div class="input-append">
+                                            <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                            name="zone1_supply_airflow">
+                                            <span class="add-on">SCFM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="span8">
+                                    <h3>Walls</h3></div>
+                                    <div class="span4">
+                                        <h4>Azimuth of Wall 1</h4>
+                                        <div class="input-append">
+                                            <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                            name="wall1_azimuth">
+                                            <span class="add-on">&deg;</span>
+                                        </div>
+                                        <h4>Azimuth of Wall 3</h4>
+                                        <div class="input-append">
+                                            <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                            name="wall1_azimuth">
+                                            <span class="add-on">&deg;</span>
+                                        </div>
+                                    </div>
+                                    <div class="span4">
+                                        <h4>Azimuth of Wall 2</h4>
+                                        <div class="input-append">
+                                            <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                            name="wall1_azimuth">
+                                            <span class="add-on">&deg;</span>
+                                        </div>
+                                        <h4>Azimuth of Wall 4</h4>
+                                        <div class="input-append">
+                                            <input class="span2" id="appendedInput" type="number" step="0.1" min="0"
+                                            name="wall1_azimuth">
+                                            <span class="add-on">&deg;</span>
+                                        </div>
+                                    </div>
+                                </div>
                     </section>
                     <section id="schedules">
                         <div id="box-unit">
@@ -412,9 +474,12 @@
                                 </h2>
                             </div>
                             <a href="http://www.energycodes.gov/development/commercial/90.1_models">
-                            <img src="../img/schedules/large_office.png" class="../img-polaroid"></a>
-                            <h2 class="text-right"><small>based off of
-                                <a href="http://www.energycodes.gov/development/commercial/90.1_models">PNNL's Commercial Prototype Building Models</a></small></h2>
+                            <img src="img/schedules/large_office.png" class="img-polaroid"></a>
+                            <h2 class="text-right">
+                                <small>based off of
+                                    <a href="http://www.energycodes.gov/development/commercial/90.1_models">PNNL's Commercial Prototype Building Models</a>
+                                </small>
+                            </h2>
                         </div>
                     </section>
                     <section id="ECMs">
@@ -434,17 +499,20 @@
                         </div>
                     </section>
                     <div id="box-unit">
-                        <a href="#"><button class="btn-large btn-success">SIMULATE</button> </a>
-                        <h2 class="text-right"><small>with OpenStudio SDK + EnergyPlus, DAYSIM, CONTAM Engines</small></h2>
+                        <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
+                        <button type="button" class="btn btn-large btn-info"><i class="icon-plus"></i> Building 101 Data</button>
+                        <a class="btn btn-large btn-info" href="http://128.118.67.241/rmt/example_out.php?t=summary"><i class="icon-signal"></i> Example Outputs</a>
+                        <h2 class="text-right"><small>powered by OpenStudio SDK + EnergyPlus, DAYSIM, CONTAM Engines</small></h2>
+                        </h2>
+                    </div>
+                    </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Javascript -->
-        <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
-        <script src="../js/bootstrap-scrollspy.js"></script>
-        <script src="../js/bootstrap-fileupload.js"></script>
+                <!-- Javascript -->
+                <script src="http://code.jquery.com/jquery.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                <script src="js/bootstrap-scrollspy.js"></script>
+                <script src="js/bootstrap-fileupload.js"></script>
     </body>
 
 </html>

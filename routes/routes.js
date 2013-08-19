@@ -2,25 +2,26 @@ var shell = require('shelljs');
 
 module.exports = {
     getHome: function(request, response){
-        response.render('platform/home');    
+        response.render('home');    
     },
     getLite: function(request, response){
-        response.render('platform/lite');    
+        response.render('lite');    
     },
     getLiteResults: function(request, response){
-        response.render('platform/literesults');    
+        response.render('literesults');    
     },
     getPartial: function(request, response){
-        response.render('platform/partial');    
+        response.render('partial');    
     },
     
     getSubstantial: function(request, response) {
-        response.render('platform/substantial');
+        response.render('substantial');
     },
     
     getComprehensive: function(request, response) {
-        response.render('platform/comprehensive');
+        response.render('comprehensive');
     },
+<<<<<<< HEAD
     
     
     
@@ -46,4 +47,7 @@ module.exports = {
         response.render('platform/remote');  
     },
     
+=======
+  
+>>>>>>> 6b3089e3f2c427112d671d3ae6df74c14d6fc4f8
 };

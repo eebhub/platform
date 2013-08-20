@@ -20,7 +20,7 @@ module.exports = {
         var utility_gas = request.body.utility_gas;
         var utility_electric = request.body.utility_electric;
         var utility_startdate = request.body.utility_startdate;
-
+        var building_year = request.body.year_completed;
 
         //Make Timespamp
         var timestamp = createTimestamp();
@@ -68,6 +68,9 @@ module.exports = {
                                     'datFile': 'http://developer.eebhub.org/imt/inputs/' + dataFileName,
                                     'outFile': 'http://developer.eebhub.org/imt/outputs/' + outFileName,
                                     'resFile': 'http://developer.eebhub.org/imt/outputs/' + resFileName,
+                                    'building_year': building_year,
+                                    'building_function': building_function,
+                                    'building_location': building_location,
                                 });
 
                             });

@@ -73,39 +73,44 @@
         <!-- Intro -->
         <div class="container">
             <div class="row">
-               <div class="span3 bs-docs-sidebar">
-                <ul class="nav nav-list bs-docs-sidenav">
-                    <li>
-                        <h3>Substantial <small>-UTRC</small></h3>
-                    </li>
-                    <li>
-                        <a href="#building"><i class="icon-chevron-right"></i> Building</a>
-                    </li>
-                    <li>
-                        <a href="#shape"><i class="icon-chevron-right"></i> Shape/Size</a>
-                    </li>
-                    <li>
-                        <a href="#lighting"><i class="icon-chevron-right"></i> Lighting</a>
-                    </li>
-                    <li>
-                        <a href="#materials"><i class="icon-chevron-right"></i> Materials</a>
-                    </li>
-                    <li>
-                        <a href="#equipment"><i class="icon-chevron-right"></i> Mechanical</a>
-                    </li>
-                    <li>
-                        <a href="#occupancy"><i class="icon-chevron-right"></i> Occupancy</a>
-                    </li>
-                </ul>
-            </div>
+                <div class="span3 bs-docs-sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav">
+                        <li>
+                            <h3>Substantial
+                                <small>-UTRC</small>
+                            </h3>
+                        </li>
+                        <li>
+                            <h4 ng-cloak>{{buildingName}}</h4>
+                        </li>
+                        <li>
+                            <a href="#building"><i class="icon-map-marker"></i> Building</a>
+                        </li>
+                        <li>
+                            <a href="#architecture"><i class="icon-home"></i> Architecture</a>
+                        </li>
+                        <li>
+                            <a href="#materials"><i class="icon-th-large"></i> Materials</a>
+                        </li>
+                        <li>
+                            <a href="#people"><i class="icon-user"></i> People</a>
+                        </li>
+                        <li>
+                            <a href="#mechanical"><i class="icon-cog"></i> Mechanical</a>
+                        </li>
+                         <li>
+                            <a href="#schedules"><i class="icon-time"></i> Schedules</a>
+                        </li>
+                    </ul>
+                </div>
                 
                 
                 <div class="span9">
 
 
-<form action="/substantial/analyze" method="post">
+                <form action="/substantial/analyze" method="post">
 
-                    <section id="summary">
+                    <section id="building">
                         <div id="box-unit">
                             <div class="page-header">
                                 <h2>Building</h2>
@@ -113,7 +118,7 @@
                             <div class="row">
                                 <div class="span4">
                                     <h4>Building Name</h4>
-                                    <input type="text" class="span3" name="info[building_name]" 
+                                    <input type="text" class="span3" ng-model="buildingName" name="info[building_name]" 
                                     />
                                     <br/>
                                     <h4>Climate</h4>
@@ -227,7 +232,7 @@
                         </div>
                     </section>
                     
-        <section id="size">
+        <section id="architecture">
                 <div id="box-unit">
                     <div class="page-header">
                         <h2>Architecture <small>shape of building</small></h2>
@@ -279,51 +284,7 @@
                     
 
         
-        <section id="lighting">
-            <div id="box-unit">
-                <div class="page-header">
-                    <h2>Lighting</h2>
-                </div>
-                <div class="row">
-                <div class="span4">
-                <h4>Illuminance</h4>
-                <div class="input-append">
-                <input class="span2" id="appendedInput" type="number" min="0" step="0.1"
-                        placeholder=""><span class="add-on">lux</span>
-                </div>
-                <h4>Electric Illuminance</h4>
-                <div class="input-append">
-                <input class="span2" id="appendedInput" type="number" min="0" step="0.1"
-                        placeholder=""><span class="add-on">lux</span>
-                </div>
-                
-                </div>
 
-                <div class="span4">
-                <h4>Lighting Control Type</h4>
-                <select class="span2">
-                                <option>Daylight Dimming</option>
-                                <option>Occupancy Sensors</option>
-                                <option>Vacancy Sensors</option>
-                                <option>Manual Dimming</option>
-                                <option>Bi-level Control</option>
-                                <option>Timers</option>
-                                <option>Advanced Controls</option>
-                                <option>EMCS</option>
-                                <option>Manual</option>
-                                <option>Always On</option>
-                                <option>Other/Combination</option>
-                                <option>Unknown</option>
-                            </select>
-                </br>
-                <h4>Control Zone Depth</h4>
-                <input class="span2" id="appendedInput" type="number" min="0" step="0.1"
-                        placeholder=""><span class="help-inline"></span>
-
-                </div>
-                </div>
-            </div>
-        </section>
 
                     <section id="materials">
                         <div id="box-unit">
@@ -359,8 +320,22 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section>   
 
+                        <section id="people">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>People</h2>           
+                                </div>
+                                
+                                <h4>Number of Employees During Main Shift</h4>
+                                <input type="number" class="span2" name="occupancy[number_of_employee_during_main_shift]" min="0" step="1" />
+                                <span class="add-on"></span>
+                                
+                            </div>
+                        </section>
+                
+            
                     <section id="mechanical">
                         <div id="box-unit">
                             <div class="page-header">
@@ -417,12 +392,14 @@
                             </div>
                         </div>
                     </section>
-                    <section id="occupancy">
+                    
+                    
+                    <section id="schedules">
                         <div id="box-unit">
                             <div class="page-header">
-                                <h2>Occupancy</h2>
+                                <h2>Schedules</h2>
                             </div>
-                        <div class="row">
+                            <div class="row">
                             <div class="span4">
                         
                             <h4>Total Weekly Operating Hours</h4>
@@ -498,9 +475,7 @@
                             </div>
                             
                             <div class="span4">
-                                <h4>Number of Employees During Main Shift</h4>
-                                <input type="number" class="span2" name="occupancy[number_of_employee_during_main_shift]" min="0" step="1" />
-                                <span class="add-on"></span>
+                                
                                 <h4>Saturday Occupancy Hours</h4>
                                 <h5>Day Start</h5>
                                 <select name="occupancy[sat_open]">
@@ -625,7 +600,11 @@
                     <a class="btn btn-large btn-info" href="http://eebhub.minus.com/lICR2bdjxVvbP"><i class="icon-signal"></i> Example Outputs</a>
                     <h2 class="text-right"><small>powered by UTRC Energy Audit Tool Engine</small></h2>
                 </div>
-</form>                
+        
+        
+        
+        
+        </form>                
                     
                     
             

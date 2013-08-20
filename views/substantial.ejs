@@ -141,26 +141,26 @@
                                 <div class="span4">
                                 <h4>Function</h4>
                                     <select class="span2" name="info[bulding_function]">
-                                        <option>Education</option>
-                                        <option>Enclosed mall</option>
-                                        <option>Food sale</option>
-                                        <option>Food service</option>
-                                        <option>Inpatient health care</option>
-                                        <option>Laboratory</option>
-                                        <option>Lodging</option>
-                                        <option>Non refrigeration warehouse</option>
-                                        <option>Nursing</option>
-                                        <option>Office</option>
-                                        <option>Other</option>
-                                        <option>Outpatient health care</option>
-                                        <option>Public assembly</option>
-                                        <option>Public order and safety</option>
-                                        <option>Refrigerated warehouse</option>
-                                        <option>Religious worship</option>
-                                        <option>Retail other than mall</option>
-                                        <option>Service</option>
-                                        <option>Strip shopping mall</option>
-                                        <option>vacant</option>
+                                        <option value="Education">Education</option>
+                                        <option value="Enclosed mall">Enclosed mall</option>
+                                        <option value="Food sale">Food sale</option>
+                                        <option value="Food service">Food service</option>
+                                        <option value="Inpatient health care">Inpatient health care</option>
+                                        <option value="Laboratory">Laboratory</option>
+                                        <option value="Lodging">Lodging</option>
+                                        <option value="Non refriferation warehouse">Non refrigeration warehouse</option>
+                                        <option value="Nursing">Nursing</option>
+                                        <option value="Office">Office</option>
+                                        <option value="Other">Other</option>
+                                        <option value="Outpatient health care">Outpatient health care</option>
+                                        <option value="Public assembly">Public assembly</option>
+                                        <option value="Public order and safety">Public order and safety</option>
+                                        <option value="Refrigerated warehouse">Refrigerated warehouse</option>
+                                        <option value="Religious worship">Religious worship</option>
+                                        <option value="Retail other than mall">Retail other than mall</option>
+                                        <option value="Service">Service</option>
+                                        <option value="Strip shopping mall">Strip shopping mall</option>
+                                        <option value="vacant">vacant</option>
                                     </select>
                                 <h4>More Specific Building Activity</h4>
                                     <select class="span2" name="info[building_activity_type]">
@@ -335,7 +335,7 @@
                                         <option>other</option>
                                     </select>
                                     <h4>Windows</h4>
-                                    <select class="span2 " name="materials[window_glass_type] ">
+                                    <select class="span2 " name="materials[window_glass_type]">
                                         <option>Multi-layer Glass</option>
                                         <option>Single Layer Glass</option>
                                         <option>Combination</option>
@@ -365,26 +365,48 @@
                                 <div class="span4">
                                     <h4>Primary HVAC System Type</h4>
                                     <select name="mechanical[primary_hvac_type]">
-                                        <option>VAV w/Reheat</option>
+                                        <option>Direct evap cooler</option>
+                                        <option>Direct evap cooler, unit heaters</option>
+                                        <option>Direct chilled water fan coil</option>
+                                        <option>Direct hot water baseboards</option>
+                                        <option>Direct hot water baseboards, direct evap cooler</option>
+                                        <option>Dual-duct CAV</option>
+                                        <option>Dual-duct VAV</option>
+                                        <option>Electric baseboards</option>
+                                        <option>Electric baseboards, direct evap cooler</option>
+                                        <option>Fan coil chiller</option>
+                                        <option>Fan coil, district chilled water and boiler</option>
+                                        <option>Fan coil, district chilled water, electric baseboards</option>
+                                        <option>Fan coil, district chilled water, unit heaters</option>
+                                        <option>Fan coil, district hot and cold water</option>
+                                        <option>Fan coil, District hot water and chiller</option>
+                                        <option>Forced air furnace</option>
+                                        <option>Forced air furnace, direct evap cooler</option>
+                                        <option>Forced air furnace, district chilled water fan coil</option>
+                                        <option>Heat pump heating</option>
+                                        <option>Heat pump heating, direct evap cooler</option>
+                                        <option>Hot water baseboards</option>
+                                        <option>Hot water baseboards, direct evap cooler</option>
+                                        <option>Package VAV w/PFP boxes</option>
                                     </select>
                                     
                                     <h4>Demand Control Ventilation</h4>
                                 
                                     Used <div class="make-switch">
-                                    <input type="checkbox" name="mechanical[primary_hvac_type]">
+                                    <input type="checkbox" name="mechanical[demand_control_ventilation]">
                                     </div>
                                 
                                 
                                 </div>
                                 <div class="span4">
                                     <h4>Air Side Economizer</h4>
-                                    Present <div class="make-switch" name="mechanical[airside_economizer]">
-                                    <input type="checkbox">
+                                    Present <div class="make-switch">
+                                    <input type="checkbox" name="mechanical[airside_economizer]">
                                     </div>
                                     
                                     <h4>Air Side Energy Recovery</h4>
-                                    Present <div class="make-switch" name="mechanical[airside_energy_recovery]">
-                                    <input type="checkbox">
+                                    Present <div class="make-switch">
+                                    <input type="checkbox" name="mechanical[airside_energy_recovery]">
                                     </div>
                                 </div>
                             </div>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>EEB Hub Simulation Platform Tools</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="css/partial.css" rel="stylesheet" />
+        <link href="css/stylesheet.css" rel="stylesheet" />
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+                background-color: rgb(229, 229, 229);
+            }
+        </style>
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#euijs').highcharts({
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: 'Energy Use Intensity'
+                    },
+
+                    xAxis: {
+                        categories: ['Healthcare Building', 'Industry Average', ],
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Energy Use Instensity (kBtu/sqft/yr)',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' kBtu/sqft/yr'
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: true
+                    },
+                    series: [{
+                        name: 'EUI',
+                        data: [64.54, 45]
+                    }]
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(function() {
+                $('#temphighjs').highcharts({
+                    chart: {
+                        zoomType: 'xy'
+                    },
+                    title: {
+                        text: 'Energy Consumption vs. Monthly Average Temperature '
+                    },
+
+                    xAxis: [{
+                        categories: ['07/09', '8/09', '9/09', '10/09', '11/09', '12/09', '1/10', '2/10', '3/10', '4/10', '5/10', '6/10', '7/10', '8/10', '9/10', '10/10', '11/10', '12/10']
+                    }],
+                    credits: {
+                        enabled: true
+                    },
+                    yAxis: [{ // Primary yAxis
+                        labels: {
+                            formatter: function() {
+                                return this.value + '\xB0F';
+                            },
+                            style: {
+                                color: '#89A54E'
+                            }
+                        },
+                        title: {
+                            text: 'Temperature',
+                            style: {
+                                color: '#89A54E'
+                            }
+                        },
+                        opposite: true
+
+                    }, { // Secondary yAxis
+                        gridLineWidth: 1,
+                        title: {
+                            text: 'Gas',
+                            style: {
+                                color: 'red'
+                            }
+                        },
+
+                        labels: {
+                            formatter: function() {
+                                return this.value + ' CCF';
+                            },
+                            style: {
+                                color: 'red'
+                            }
+                        }
+
+                    }, { // Third yAxis
+                        gridLineWidth: 1,
+                        title: {
+                            text: 'Electricity',
+                            style: {
+                                color: '#4572A7'
+                            }
+                        },
+
+                        labels: {
+                            formatter: function() {
+                                return this.value + ' kWh';
+                            },
+                            style: {
+                                color: '#4572A7'
+                            }
+                        }
+
+                    }],
+                    tooltip: {
+                        shared: true
+                    },
+
+                    series: [{
+                        name: 'Electricity',
+                        color: '#4572A7',
+                        type: 'column',
+                        yAxis: 2,
+                        data: [63360, 46800, 47160, 53280, 48960, 48600, 47160, 48600, 55800, 71640, 93240, 79200, 70560, 53280, 48960, 56880, 54720, 45000],
+                        tooltip: {
+                            valueSuffix: ' kWh'
+                        }
+
+                    }, {
+                        name: 'Natural Gas',
+                        color: 'red',
+                        type: 'column',
+                        yAxis: 1,
+                        data: [110, 100, 330, 2310, 3650, 6210, 7060, 3220, 120, 70, 60, 70, 70, 110, 2270, 3660, 5830, 4600],
+                        tooltip: {
+                            valueSuffix: ' CCF'
+                        }
+
+                    }, {
+                        name: 'Temperature',
+                        color: '#89A54E',
+                        type: 'spline',
+                        data: [77.16, 74.34, 62.26, 53.48, 45.16, 30.86, 33.37, 51.27, 60.30, 72.60, 80.68, 81.72, 75.10, 66.44, 53.46, 41.10, 30.51, 30.99],
+                        tooltip: {
+                            valueSuffix: '\xB0F'
+                        }
+
+
+                    }]
+
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(function() {
+                $('#regressionjs').highcharts({
+                    chart: {
+                        zoomType: 'xy'
+                    },
+                    title: {
+                        text: 'Regression Analysis'
+                    },
+                    credits: {
+                        enabled: true
+                    },
+                    xAxis: [{
+                        min: 20,
+                        labels: {
+                            formatter: function() {
+                                return this.value + '\xB0F';
+                            },
+                            style: {
+                                color: 'black'
+                            }
+                        },
+                        title: {
+                            text: 'Temperature (\xB0F)',
+                            style: {
+                                color: 'black'
+                            }
+                        },
+                    }],
+                    yAxis: [{ // Primary yAxis
+                        labels: {
+                            formatter: function() {
+                                return this.value + 'kWh/day';
+                            },
+                            style: {
+                                color: 'blue'
+                            }
+                        },
+                        title: {
+                            text: 'Electricity Usage',
+                            style: {
+                                color: 'blue'
+                            }
+                        },
+                        opposite: false,
+                        min: 0
+
+                    }, { // Secondary yAxis
+                        labels: {
+                            formatter: function() {
+                                return this.value + 'CCF/day';
+                            },
+                            style: {
+                                color: 'red'
+                            }
+                        },
+                        title: {
+                            text: 'Natural Gas Usage',
+                            style: {
+                                color: 'red'
+                            }
+                        },
+                        opposite: true,
+                        min: 0
+
+                    }],
+                    tooltip: {
+                        shared: false
+                    },
+                    plotOptions: {
+                        spline: {
+                            lineWidth: 4,
+                            states: {
+                                hover: {
+                                    lineWidth: 5
+                                }
+                            },
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Natural Gas',
+                        color: 'red',
+                        type: 'scatter',
+                        yAxis: 1,
+                        data: [
+                            [30.5, 171.471],
+                            [30.9, 200.323],
+                            [31.0, 164.286],
+                            [33.4, 172.195],
+                            [38.8, 144.966],
+                            [39.8, 138.970],
+                            [41.1, 122.000],
+                            [42.8, 113.214],
+                            [45.2, 125.862],
+                            [46.1, 103.929],
+                            [47.8, 75.200],
+                            [47.9, 91.935],
+                            [51.3, 65.714],
+                            [52.8, 30.844],
+                            [53.5, 73.226],
+                            [53.5, 72.188],
+                            [55.0, 30.938],
+                            [59.8, 12.414],
+                            [60.3, 4.138],
+                            [62.0, 13.226],
+                            [62.3, 11.000],
+                            [64.9, 4.862],
+                            [66.4, 3.667],
+                            [71.0, 3.871],
+                            [72.6, 2.188],
+                            [73.3, 4.000],
+                            [73.5, 4.355],
+                            [74.3, 3.125],
+                            [75.1, 2.414],
+                            [77.2, 3.667],
+                            [78.4, 4.567],
+                            [80.1, 3.871],
+                            [80.7, 2.000],
+                            [80.7, 3.452],
+                            [81.7, 2.121]
+                        ],
+                        tooltip: {
+                            valueSuffix: ' kWh/day'
+                        }
+
+                    }, {
+                        name: 'Natural Gas',
+                        color: 'red',
+                        type: 'spline',
+                        yAxis: 1,
+                        data: [
+                            [30.5, 186.45],
+                            [30.9, 184.15],
+                            [31.0, 183.57],
+                            [33.4, 169.78],
+                            [38.8, 138.73],
+                            [39.8, 132.99],
+                            [41.1, 125.51],
+                            [42.8, 115.74],
+                            [45.2, 101.94],
+                            [46.1, 96.77],
+                            [47.8, 87],
+                            [47.9, 86.42],
+                            [51.3, 66.88],
+                            [52.8, 58.25],
+                            [53.5, 54.23],
+                            [53.5, 54.23],
+                            [55.0, 45.61],
+                            [59.8, 18.01],
+                            [60.3, 15.14],
+                            [62.0, 5.37],
+                            [62.3, 3.96],
+                            [64.9, 3.96],
+                            [66.4, 3.96],
+                            [71.0, 3.96],
+                            [72.6, 3.96],
+                            [73.3, 3.96],
+                            [73.5, 3.96],
+                            [74.3, 3.96],
+                            [75.1, 3.96],
+                            [77.2, 3.96],
+                            [78.4, 3.96],
+                            [80.1, 3.96],
+                            [80.7, 3.96],
+                            [80.7, 3.96],
+                            [81.7, 3.96]
+                        ],
+                        tooltip: {
+                            valueSuffix: ' CCF/day'
+                        }
+
+
+                    }, {
+                        name: 'Electricity',
+                        color: 'blue',
+                        type: 'scatter',
+                        data: [
+                            [30.5, 1675.862],
+                            [33.9, 1632.000],
+                            [34.9, 1607.143],
+                            [35.5, 1625.143],
+                            [39.4, 1522.286],
+                            [39.5, 1738.286],
+                            [39.5, 1881.290],
+                            [44.6, 1556.129],
+                            [46.9, 1626.207],
+                            [47.9, 1837.241],
+                            [48.3, 1776.774],
+                            [51.9, 1849.655],
+                            [52.4, 1579.355],
+                            [52.6, 1746.667],
+                            [52.7, 1576.552],
+                            [55.5, 1800.000],
+                            [57.0, 1567.742],
+                            [57.6, 1418.182],
+                            [59.9, 1973.793],
+                            [62.4, 1837.241],
+                            [64.4, 1924.138],
+                            [64.6, 1762.759],
+                            [64.7, 2090.323],
+                            [70.4, 2184.828],
+                            [70.8, 2261.250],
+                            [73.4, 2395.862],
+                            [73.6, 2352.000],
+                            [75.8, 2364.000],
+                            [76.8, 2388.000],
+                            [78.7, 2723.478],
+                            [79.3, 2731.034],
+                            [79.5, 2731.034],
+                            [80.8, 2868.750],
+                            [81.1, 2844.000],
+                            [82.2, 2913.750]
+                        ],
+                        tooltip: {
+                            valueSuffix: ' CCF/day'
+                        }
+                    }, {
+                        name: 'Electricity',
+                        color: 'blue',
+                        type: 'spline',
+
+
+                        data: [
+                            [30.5, 1676.71],
+                            [33.9, 1676.71],
+                            [34.9, 1676.71],
+                            [35.5, 1676.71],
+                            [39.4, 1676.71],
+                            [39.5, 1676.71],
+                            [39.5, 1676.71],
+                            [44.6, 1676.71],
+                            [46.9, 1676.71],
+                            [47.9, 1676.71],
+                            [48.3, 1676.71],
+                            [51.9, 1676.71],
+                            [52.4, 1676.71],
+                            [52.6, 1676.71],
+                            [52.7, 1676.71],
+                            [55.5, 1676.71],
+                            [57.0, 1676.71],
+                            [57.6, 1676.71],
+                            [59.9, 1714.9],
+                            [62.4, 1841.17],
+                            [64.4, 1942.19],
+                            [64.6, 1952.29],
+                            [64.7, 1957.34],
+                            [70.4, 2245.25],
+                            [70.8, 2265.45],
+                            [73.4, 2396.78],
+                            [73.6, 2406.88],
+                            [75.8, 2518],
+                            [76.8, 2568.51],
+                            [78.7, 2664.48],
+                            [79.3, 2694.78],
+                            [79.5, 2704.89],
+                            [80.8, 2770.55],
+                            [81.1, 2785.7],
+                            [82.2, 2841.26]
+                        ],
+                        tooltip: {
+                            valueSuffix: ' kWh/day'
+                        }
+
+
+                    }]
+                });
+            });
+        </script>
+    </head>
+    
+    <body data-spy="scroll" data-target="#sidebar">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="brand">EEB Hub Simulation Platform</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="/lite">Lite</a>
+                            </li>
+                            <li>
+                                <a href="/partial">Partial</a>
+                            </li>
+                            <li>
+                                <a href="/substantial">Substantial</a>
+                            </li>
+                            <li>
+                                <a href="/comprehensive">Comprehensive</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <!-- Intro -->
+        <div class="container">
+            <div class="row">
+                <div class="span3 bs-docs-sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav">
+                        <li>
+                            <h3>Lite
+                                <small>-ASHRAE IMT</small>
+                            </h3>
+                        </li>
+                        <li>
+                            <a href="#building"><i class="icon-chevron-right"></i> Building</a>
+                        </li>
+                        <li>
+                            <a href="#eui"><i class="icon-chevron-right"></i> Energy Use Intensity</a>
+                        </li>
+                        <li>
+                            <a href="#regression"><i class="icon-chevron-right"></i> Regression Analysis</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="span9">
+                        
+                        <div class="row">
+                            <section id="building">
+                                <div class="span9 box-unit">
+                                    <div class="page-header">
+                                        <h2>Building</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="span4">
+                                            <h4>Building Name</h4>
+                                            <input id="disabledInput" class="span3" type="text"
+                                            placeholder="Healthcare Building" disabled>
+                                            <br/>
+                                            <h4>Year Built</h4>
+                                            <input id="disabledInput" class="span3" type="text" placeholder="1911"
+                                            disabled>
+                                        </div>
+                                        <div class="span4">
+                                            <h4>Function</h4>
+                                            <input id="disabledInput" class="span3" type="text" placeholder=" Outpatient Healthcare"
+                                            disabled>
+                                            <h4>City</h4>
+                                            <input id="disabledInput" class="span3" type="text" placeholder="Philadelphia, PA"
+                                            disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="row">
+                            <section id="eui">
+                                <div class="span9 box-unit">
+                                    <div class="page-header">
+                                        <h2>Energy Use Intensity</h2>
+                                    </div>
+                                    <div id="euijs" class="span8"></div>
+                                </div>
+                            </section>
+                            <section id="temp">
+                                <div class="span9 box-unit">
+                                    <div class="page-header">
+                                        <h2>Temperature Related Consumption</h2>
+                                    </div>
+                                    <div id="temphighjs" class="span8"></div>
+                                </div>
+                            </section>
+                            <section id="regression">
+                                <div class="span9 box-unit">
+                                    <div class="page-header">
+                                        <h2>Regression Analysis</h2>
+                                    </div>
+                                    <div id="regressionjs" class="span8"></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Javascript -->
+            <script src="js/bootstrap-scrollspy.js"></script>
+            <script src="js/highcharts.js"></script>
+            <script src="js/modules/exporting.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+    </body>
+
+</html>

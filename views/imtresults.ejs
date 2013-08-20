@@ -1,0 +1,169 @@
+<!DOCUMENT html>
+<html>
+    <head>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#euijs').highcharts({
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: 'Site Energy Use Intensity'
+                    },
+
+                    xAxis: {
+                        categories: ['<%= building_name %>', 'Industry Average', ],
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Energy Use Instensity (kBtu/sqft/yr)',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' kBtu/m&sup2;/yr'
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: true
+                    },
+                    series: [{
+                        name: 'EUI',
+                        data: [<%= EUI %>, 55]
+                    }]
+                });
+            });
+        </script>
+        <script type="text/javascript">
+$(function () {
+        $('#temphighjs').highcharts({
+            chart: {
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Average Monthly Temperature vs Monthly Utility Use'
+            },
+            subtitle: {
+                text: 'for <%= building_name%>'
+            },
+            xAxis: [{
+                
+            }],
+            yAxis: [{ // Primary yAxis
+                labels: {
+                    format: '{value}°F',
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'Temperature',
+                    style: {
+                        color: '#89A54E'
+                    }
+                }
+            }, { // Secondary yAxis
+                title: {
+                    text: 'Monthly Utility Energy Use',
+                    style: {
+                        color: '#4572A7'
+                    }
+                },
+                labels: {
+                    format: '{value} kBTU',
+                    style: {
+                        color: '#4572A7'
+                    }
+                },
+                opposite: true
+            }],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                x: 120,
+                verticalAlign: 'top',
+                y: 100,
+                floating: true,
+                backgroundColor: '#FFFFFF'
+            },
+            series: [{
+                name: 'Monthly Utility Energy Use',
+                color: '#4572A7',
+                type: 'column',
+                yAxis: 1,
+                data: [<%= energy %>],
+                tooltip: {
+                    valueSuffix: ' kBTU'
+                }
+    
+            }, {
+                name: 'Monthly Average Temperature',
+                color: '#89A54E',
+                type: 'spline',
+                data: [ <%= temperatures %>],
+                tooltip: {
+                    valueSuffix: '°F'
+                }
+            }]
+        });
+    });
+    
+
+    	</script>
+        
+        
+    </head>
+    <body>
+        <h1>Thanks for Running IMT</h1>
+
+        <%= building_name %>
+
+        <br>
+        
+                                
+        <h2>Energy Use Intensity</h2>
+                                
+        <div id="euijs" class=""></div>
+        <h2>Temperature Dependance</h2>
+        
+        <div id="temphighjs" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+        
+        <br>
+        <h3>Regression Analysis</h3>
+
+        <br>
+        <p>Ycp =<%= Ycp %></p> <br>
+        <p>LS =<%= LS %></p> <br>
+        <p>RS =<%= RS %></p> <br>
+        <p>Xcp1 = <%= Xcp1 %></p> <br>
+        <p>Xcp2 = <%= Xcp2 %></p> <br>
+        <h3>Building Equation</h3>
+        <p>kBTU/Day = <%= Ycp %> + <%= LS %>  * (Average Temperature - <%= Xcp1 %>) + <%= RS %> * (Average Temperature - <%= Xcp2 %>)</p>
+        
+        <h2>IMT Files</h2>
+        <a href='<%= insFile %>'>Instruction File</a>
+        <a href='<%= datFile %>'>Data File</a>
+        <a href='<%= outFile %>'>Output File</a>
+        <a href='<%= resFile %>'>Residule File</a>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    </body>
+</html>

@@ -54,6 +54,7 @@ module.exports = {
                                 Xcp1 = outputs[3],
                                 Xcp2 = outputs[4];
                             imtCalculations.calcSiteEUI(utility_startdate, total_utility_energykBTU, building_size, function(EUI) {
+                                console.log(EUI);
                                 var temperatures = results[0][0];
                                 total_utility_energykBTU.pop(),
                                 response.render('imtresults', {
@@ -67,7 +68,7 @@ module.exports = {
                                     'RS': RS,
                                     'Xcp1': Xcp1,
                                     'Xcp2': Xcp2,
-                                    'insFile': 'http://developer.eebhub.org/imt/intputs/' + insFileName,
+                                    'insFile': 'http://developer.eebhub.org/imt/inputs/' + insFileName,
                                     'datFile': 'http://developer.eebhub.org/imt/inputs/' + dataFileName,
                                     'outFile': 'http://developer.eebhub.org/imt/outputs/' + outFileName,
                                     'resFile': 'http://developer.eebhub.org/imt/outputs/' + resFileName,

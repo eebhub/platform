@@ -1,5 +1,6 @@
 var fs = require("fs");
-var dainput = require("../lib/mit.js")
+var dainput = require("../lib/mit.js");
+var timestp = require("../lib/timestamp.js");
 
 module.exports = {
 
@@ -14,9 +15,6 @@ module.exports = {
         var window_to_wall_ratio = request.body.window_to_wall_ratio;
         var weekday_occupancy_start = request.body.weekday_occupancy_start;
         var weekday_occupancy_end = request.body.weekday_occupancy_end;
-        var weekend_occupancy_start = request.body.weekend_occupancy_start;
-        var weekend_occupancy_end = request.body.weekend_occupancy_end;
-        var exterior_wall_type = request.body.exterior_wall_type;
         var window_glass_type = request.body.window_glass_type;
         var thermal_mass = request.body.thermal_mass;
         var roof_type = request.body.roof_type;
@@ -32,28 +30,19 @@ module.exports = {
         var room_width = request.body.room_width;
         var room_height = request.body.room_height;
         var exterior_shading_orientation = request.body.exterior_shading_orientation;
-        var window_to_wall_ratio_room = request.body.window_to_wall_ratio_room;
         var window_glass_coating = request.body.window_glass_coating;
         var overhang_depth = request.body.overhang_depth;
 
         //Inputs
-        var mitInputFileName =  building_name + '.txt'
+        var timestamp = timestp.createTimestamp();
+        var mitInputFileName =  building_name+timestamp+ '.txt';
 
         dainput.MITinputFile(mitInputFileName, roof_type, roof_insulation_type, number_of_floors, roof_insulation_location, weather_epw_location,
                         exterior_shading_orientation, room_width, room_depth, room_height,
                         window_glass_type, window_to_wall_ratio, ventilation_system, wall_insulation_r_value, lighting_power_density,
-                        equipment_power_density, weekday_occupancy_start, weekday_occupancy_end, overhang_depth, thermal_mass, people_density);
+                        equipment_power_density, weekday_occupancy_start, weekday_occupancy_end, overhang_depth, thermal_mass, people_density, window_glass_coating);
 
-        fs.readFile(mitInputFileName, function(error, content) {
-            if (error) {
-                response.writeHead(500);
-                response.end();
-            }
-            else {
-                response.writeHead(200, {
-                    'Content-Type': 'text/plain'});
-                response.end(content, 'utf-8');
-            }
-        });
+        response.redirect('http://developer.eebhub.org/mit/inputs/'+  mitInputFileName);
+
     },
 };

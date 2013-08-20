@@ -11,7 +11,7 @@ var express = require('express')
   , partial = require("./routes/partial.js")
   , substantial=require("./routes/substantial.js")
   , shjs = require('shelljs/global')
-  , partial = require("./routes/partial.js");
+
 
 var app = express();
 
@@ -39,11 +39,17 @@ app.get('/partial', routes.getPartial);
 app.get('/substantial', routes.getSubstantial);
 app.get('/comprehensive', routes.getComprehensive);
 
+
+
 //Posts
 app.post('/partialanalysis', partial.partial);
+
 app.post('/substantial/analyze', substantial.getSubstantialInput);
+
 app.post('/imtanalysis', lite.imt);
 app.post('/ibmanalysis', lite.ibm);
+
+
 
 //Server
 http.createServer(app).listen(app.get('port'), function(){

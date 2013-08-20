@@ -96,7 +96,7 @@ module.exports ={
         //var fileName = route + buildingName + '.ejs' ;
 
 var timestamp = timestp.createTimestamp();
-var writeStream = fs.createWriteStream(buildingname+timestamp+".xlsx");
+var writeStream = fs.createWriteStream("../utrc/inputs/"+buildingname+timestamp+".xlsx");
 
 
 var row1	=	"Input description"+"\t"+"Input"+"\n";
@@ -540,7 +540,7 @@ writeStream.write(row218);
 
 //writeStream.close();
         //fs.writeFileSync(fileName, string);
-        response.render('platform/download');           
+        response.render('download');           
     },
     
     

@@ -117,26 +117,31 @@
                                     />
                                     <br/>
                                     <h4>Climate</h4>
-                                    <select class="span3" name="info[building_climate]">
-                                        <option value="ALBUQUERQUE INTL ARPT [ISIS]">Albuquerque, NM (4B)</option>
-                                        <option value="BALTIMORE BLT-WASHNGTN INT'L">Baltimore, MD (4A)</option>
-                                        <option value="BOISE AIR TERMINAL [UO]">Boise, ID (5B)</option>
-                                        <option value="BURLINGTON INTERNATIONAL AP">Burlingotn, NH (6A)</option>
-                                        <option value="CHICAGO OHARE INTL AP">Chicago, IL (5A)</option>
-                                        <option value="DULUTH INTERNATIONAL ARPT">Duluth, MN (7)</option>
-                                        <option value="EL PASO INTERNATIONAL AP [UT]">El Paso, TX (3B)</option>
-                                        <option value="FAIRBANKS INTL ARPT">Fairbanks, AK (8)</option>
-                                        <option value="HELENA REGIONAL AIRPORT">Helena, MT (6B)</option>
-                                        <option value="HOUSTON BUSH INTERCONTINENTAL">Houston, TX (2A)</option>
-                                        <option value="MEMPHIS INTERNATIONAL AP">Memphis, TN (3A)</option>
-                                        <option value="MIAMI INTL AP">Miami, FL (1A)</option>
-                                        <option value="PHOENIX SKY HARBOR INTL AP">Pheonix, AZ (2B)</option>
-                                        <option value="PHILADELPHIA INTERNATIONAL AP">Philadelphia, PA (4A)</option>
-                                        <option value="">Riyadh, SAU (1B)</option>
-                                        <option value="SALEM MCNARY FIELD">Salem, MA (4C)</option>
-                                        <option value="SAN FRANCISCO INTL AP'>San Francisco, CA (3C)</option>
-                                        <option value="">Vancouver, CAN (5C)</option>
-                                    </select>
+                                    <div class="input-append">
+                                        <select class="span3" name="info[building_climate]">
+                                            <option value="ALBUQUERQUE INTL ARPT [ISIS]">Albuquerque, NM</option>
+                                            <option value="BALTIMORE BLT-WASHNGTN INT'L">Baltimore, MD</option>
+                                            <option value="BOISE AIR TERMINAL [UO]">Boise, ID</option>
+                                            <option value="BURLINGTON INTERNATIONAL AP">Burlingotn, NH</option>
+                                            <option value="CHICAGO OHARE INTL AP">Chicago, IL</option>
+                                            <option value="DULUTH INTERNATIONAL ARPT">Duluth, MN</option>
+                                            <option value="EL PASO INTERNATIONAL AP [UT]">El Paso, TX</option>
+                                            <option value="FAIRBANKS INTL ARPT">Fairbanks, AK</option>
+                                            <option value="HELENA REGIONAL AIRPORT">Helena, MT</option>
+                                            <option value="HOUSTON BUSH INTERCONTINENTAL">Houston, TX</option>
+                                            <option value="MEMPHIS INTERNATIONAL AP">Memphis, TN</option>
+                                            <option value="MIAMI INTL AP">Miami, FL</option>
+                                            <option value="PHOENIX SKY HARBOR INTL AP">Pheonix, AZ</option>
+                                            <option value="PHILADELPHIA INTERNATIONAL AP" selected>Philadelphia, PA</option>
+                                            <option value="">Riyadh, SAU</option>
+                                            <option value="SALEM MCNARY FIELD">Salem, MA</option>
+                                            <option value="SAN FRANCISCO INTL AP">San Francisco, CA</option>
+                                            <option value="">Vancouver, CAN</option>
+                                        </select>
+                                        <span class="add-on">
+                                            <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="span4">
                                 <h4>Function</h4>
@@ -225,7 +230,7 @@
         <section id="size">
                 <div id="box-unit">
                     <div class="page-header">
-                        <h2>Shape/Size</h2>
+                        <h2>Architecture <small>shape of building</small></h2>
                     </div>
                     <div class="row">
                         <div class="span4">

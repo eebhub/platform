@@ -11,6 +11,9 @@
     "consolidate": "*",
     "forever" : "*",
     "jsdom" : "*",
-    "shelljs" : "*"
+    "shelljs" : "*",
+    "request": "2.26.0",
+    "cheerio":"0.12.1",
+    "async":"0.2.9"
   }
 }

@@ -21,9 +21,6 @@ module.exports = {
     getComprehensive: function(request, response) {
         response.render('comprehensive');
     },
-<<<<<<< HEAD
-    
-    
     
     getRemoteEngineRun: function(request, response){
         //var shell = require('shelljs');
@@ -47,7 +44,4 @@ module.exports = {
         response.render('platform/remote');  
     },
     
-=======
-  
->>>>>>> 6b3089e3f2c427112d671d3ae6df74c14d6fc4f8
 };

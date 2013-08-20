@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="partial">
+<html ng-app>
     
     <head>
         <title>EEB Hub Simulation Platform Tools</title>
@@ -98,24 +98,25 @@
                                         <h4>City</h4>
                                         <div class="input-append">
                                             <select class="span3" name="weather_epw_location">
-                                                <option>Albuquerque, NM</option>
-                                                <option>Baltimore, MD</option>
-                                                <option>Boise, ID</option>
-                                                <option>Burlington, VT</option>
-                                                <option>Chicago, IL</option>
-                                                <option>Duluth, MN</option>
-                                                <option>El Paso, TX</option>
-                                                <option>Fairbanks, AK</option>
-                                                <option>Helena, MT</option>
-                                                <option>Houston, TX</option>
-                                                <option>Memphis, TN</option>
-                                                <option>Miami, FL</option>
-                                                <option>Pheonix, AZ</option>
-                                                <option selected>Philadelphia, PA</option>
-                                                <option>Riyadh, SAU</option>
-                                                <option>Salem, OR</option>
-                                                <option>San Francisco, CA</option>
-                                                <option>Vancouver, CAN</option>
+                                                <option value="USA_NM_Albuquerque.Intl.AP.723650_TMY3">Albuquerque, NM</option>
+                                                <option value="USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3">Baltimore, MD</option>
+                                                <option value="USA_ID_Boise.Air.Terminal.726810_TMY3">Boise, ID</option>
+                                                <option value="USA_VT_Burlington.Intl.AP.726170_TMY3">Burlington, VT</option>
+                                                <option value="USA_IL_Chicago-OHare.Intl.AP.725300_TMY3">Chicago, IL</option>
+                                                <option value="USA_MN_Duluth.Intl.AP.727450_TMY3">Duluth, MN</option>
+                                                <option value="USA_TX_El.Paso.Intl.AP.722700_TMY3">El Paso, TX</option>
+                                                <option value="USA_AK_Fairbanks.Intl.AP.702610_TMY3">Fairbanks, AK</option>
+                                                <option value="USA_MT_Helena.Rgnl.AP.727720_TMY3">Helena, MT</option>
+                                                <option value="USA_TX_Houston-Bush.Intercontinental.AP.722430_TMY3">Houston, TX</option>
+                                                <option value="USA_TN_Memphis.Intl.AP.723340_TMY3.epw">Memphis, TN</option>
+                                                <option value="USA_FL_Miami.Intl.AP.722020_TMY3">Miami, FL</option>
+                                                <option value="USA_AZ_Phoenix-Sky.Harbor.Intl.AP.722780_TMY3">Pheonix, AZ</option>
+                                                <option value="USA_PA_Philadelphia.Intl.AP.724080_TMY3"
+                                                selected>Philadelphia, PA</option>
+                                                <option value="SAU_Riyadh.404380_IWEC">Riyadh, SAU</option>
+                                                <option value="USA_OR_Salem-McNary.Field.726940_TMY3">Salem, OR</option>
+                                                <option value="USA_CA_San.Francisco.Intl.AP.724940_TMY3">San Francisco, CA</option>
+                                                <option value="CAN_BC_Vancouver.718920_CWEC">Vancouver, CAN</option>
                                             </select>
                                             <span class="add-on">
                                                 <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
@@ -190,384 +191,314 @@
                                         </select>
                                     </div>
                                 </div>
-                </section>
-                <section id="architecture">
-                    <div class="box-unit">
-                        <div class="page-header">
-                            <h2>Architecture</h2>
-                        </div>
-                        <div class="row">
-                            <div class="span4">
-                                <h4>Gross Floor Area</h4>
-                                <div class="input-append">
-                                    <input type="number" min="0" step="0.1" name="gross_floor_area" />
-                                    <span class="add-on">m&#178;</span>
+                        </section>
+                        <section id="architecture">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Architecture
+                                        <small>typical room</small>
+                                    </h2>
                                 </div>
-                                <h4>Number of Floors</h4>
-                                <input type="number" name="number_of_floors" min="0"
-                                step="1" />
-                            </div>
-                            <div class="span4">
-                                <h4>Length</h4>
-                                <div class="input-append">
-                                    <input type="number" name="building_length" min="0" step="0.01" />
-                                    <span class="add-on">m</span>
-                                </div>
-                                <h4>Width</h4>
-                                <div class="input-append">
-                                    <input type="number" name="building_width" min="0" step="0.01" />
-                                    <span class="add-on">m</span>
-                                </div>
-                                <h4>Window/Wall Ratio</h4>
-                                <ul class="inline">
-                                    <li>
-                                        <input type="range" ng-model="winwall" name="window_to_wall_ratio" min="0"
-                                        max="40" step="1" value=50/>
-                                    </li>
-                                    <li>
+                                <div class="row">
+                                    <div class="span2">
+                                        <img class="img-rounded" src="img/room_dimensions.png">
+                                    </div>
+                                    <div class="span3">
+                                        <h4>Room Width</h4>
                                         <div class="input-append">
-                                            <input class="span1" type="text" value={{winwall}} ng-model="winwall"
-                                            />
-                                            <span class="add-on">%</span>
+                                            <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                            name="room_width" />
+                                            <span class="add-on">m</span>
                                         </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="span3">
-                                <h4>Shape</h4>
-                                <select name="" ng-model="shapeimage" name="footprint_shape">
-                                    <option value="img/basic_geometry/c_shape_min_zone.png">C Shape</option>
-                                    <option value="img/basic_geometry/h_shape_min_zone.png">H Shape</option>
-                                    <option value="img/basic_geometry/l_shape_min_zone.png">L Shape</option>
-                                    <option value="img/basic_geometry/rect_min_zone.png">Rectangle</option>
-                                    <option value="img/basic_geometry/t_shape_min_zone.png">T Shaped</option>
-                                    <option value="img/basic_geometry/u_shape_min_zone.png">U Shaped</option>
-                                </select>
-                                <h4>Orientation</h4>
-                                <table>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <button class="btn" type="button" ng-click="orientation='north'">North</button>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <button class="btn" type="button" ng-click="orientation='northwest'">NW</button>
-                                        </td>
-                                        <td></td>
-                                        <td>
-                                            <button class="btn" type="button" ng-click="orientation='northeast'">NE</button>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <button class="btn" type="button" ng-click="orientation='west'">West</button>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <button class="btn" type="button" ng-click="orientation='east'">East</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <button class="btn" type="button" ng-click="orientation='southwest' ">SW</button>
-                                        </td>
-                                        <td></td>
-                                        <td>
-                                            <button class="btn" type="button" ng-click="orientation='southeast' ">SE</button>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <button class="btn" type="button" ng-click="orientation='south' ">South</button>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="span5 ">
-                                <img ng-src="{{shapeimage}}" ng-class="orientation" ng-name="orientation"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="occupancy">
-                    <div class="box-unit ">
-                        <div class="page-header ">
-                            <h2>Occupancy</h2>
-                        </div>
-                        <div class="row ">
-                            <div class="span4 ">
-                                <h4>Weekday Occupancy Hours</h4>
-                                <h5>Day Start</h5>
-                                <input type="time" ng-model="weekdayStart
-                                                " name="weekday_occupancy_start"
-                                />
-                                <h5>Day End</h5>
-                                <input type="time" value={{weekdayStart}} min={{weekdayStart}}
-                                name="weekday_occupancy_end" />
-                            </div>
-                            <div class="span4 ">
-                                <h4>Weekend Occupancy Hours</h4>
-                                <h5>Day Start</h5>
-                                <input type="time" ng-model="weekendStart" name="weekend_occupancy_start"
-                                />
-                                <h5>Day End</h5>
-                                <input type="time" value={{weekendStart}} min={{weekendStart}}
-                                name="weekend_occupancy_end" />
-                                <h4>Number of Occupants</h4>
-                                <input type="number" step="1" min="0 " name="number_of_occupants"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="materials">
-                    <div class="box-unit">
-                        <div class="page-header">
-                            <h2>Materials</h2>
-                        </div>
-                        <div class="row ">
-                            <div class="span4 ">
-                                <h4>Walls</h4>
-                                <select class="span3 " name="exterior_wall_type">
-                                    <option>Concrete Mass</option>
-                                    <option>Metal</option>
-                                    <option>Steel Framed</option>
-                                    <option>Wood Framed and Other</option>
-                                </select>
-                                <h4>Windows</h4>
-                                <select class="span3 " name="window_glass_type">
-                                    <option>Multi-layer Glass</option>
-                                    <option>Single Layer Glass</option>
-                                    <option>Combination</option>
-                                    <option>No Windows</option>
-                                    <option>Unknown</option>
-                                </select>
-                                <h4>Thermal Mass</h4>
-                                <select class="span3 " name="thermal_mass">
-                                    <option>High</option>
-                                    <option>Low</option>
-                                    <option>None</option>
-                                    <option>Isolated in Floor</option>
-                                </select>
-                            </div>
-                            <div class="span4 ">
-                                <h4>Roof</h4>
-                                <select class="span3 " name="roof_type">
-                                    <option>Modified Bitumen Roof</option>
-                                    <option>Metal Roof</option>
-                                    <option>Green Roof</option>
-                                    <option>Cool Roof</option>
-                                </select>
-                                <h4>Roof Insulation Type</h4>
-                                <select class="span3 " name="roof_insulation_type">
-                                    <option>Wood Fiber</option>
-                                    <option>Perlite Lnsulation Board</option>
-                                    <option>Polyisocyanurate</option>
-                                    <option>Polystyrene</option>
-                                    <option>Extruded Polystyrene</option>
-                                    <option>Cellular Glass</option>
-                                    <option>Gypsum Board</option>
-                                </select>
-                                <h4>Wall Insulation R Value</h4>
-                                <div class="input-append ">
-                                    <input class="span3 " id="appendedInput" type="text" name="wall_insulation_r_value"
-                                    />
-                                    <span class="add-on ">m
-                                        <sup>2</sup>C/W</span>
+                                        <h4>Room Depth</h4>
+                                        <div class="input-append">
+                                            <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                            name="room_depth" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                        <h4>Room Height</h4>
+                                        <div class="input-append">
+                                            <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                            name="room_height" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                    </div>
+                                    <div class="span3">
+                                        <h4>Window Facade Orientation</h4>
+                                        <select name="exterior_shading_orientation"
+                                        class="span2">
+                                            <option>North</option>
+                                            <option>North-East</option>
+                                            <option>East</option>
+                                            <option>South-East</option>
+                                            <option>South</option>
+                                            <option>South-West</option>
+                                            <option>West</option>
+                                            <option>North-West</option>
+                                        </select>
+                                        <h4>Window Area</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="winwalltyp" name="window_to_wall_ratio_room"
+                                                min="0" max="100" step="1" value=50/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" type="text" value={{winwalltyp}} ng-model="winwalltyp"
+                                                    />
+                                                    <span class="add-on">%</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <h4>Roof Insulation Location</h4>
-                                <select class="span3" name="roof_insulation_location">
-                                    <option>Top of Slab</option>
-                                    <option>Bottom of Slab</option>
-                                </select>
+                                <div class="row">
+                                    <div class="span2">
+                                        <img class="img-rounded" src="img/overhang.gif" width="170">
+                                    </div>
+                                    <div class="span3">
+                                        <h4>Overhang Depth</h4>
+                                        <div class="input-append">
+                                            <input class="span2" id="appendedInput" type="number" name="overhang_depth">
+                                            <span class="add-on">m</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h2 class="text-right">
+                                    <small>Single Zone (1 facade) defaulted</small>
+                                </h2>
                             </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="mechanical">
-                    <div class="box-unit">
-                        <div class="page-header">
-                            <h2>Mechanical</h2>
-                        </div>
-                        <div class="row">
-                            <div class="span4">
-                                <h4>Ventilation System</h4>
-                                <select name="ventilation_system">
-                                    <option>Mechanical Cooling & Heating</option>
-                                    <option>Natural ventilation cooling, Mechanical Heating</option>
-                                    <option>Joint natural ventilation cooling and mechanical heating</option>
-                                </select>
+                        </section>
+                        <section id="materials">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Materials</h2>
+                                </div>
+                                <div class="row ">
+                                    <div class="span4 ">
+                                        <h4>Wall Insulation</h4>
+                                        <select class="span3 " name="wall_insulation_r_value">
+                                            <option value="1">Commercial (Low Insulation): 1(m2-&deg;C)/W</option>
+                                            <option value="2">Commercial (Medium Insulation): 2(m2-&deg;C)/W</option>
+                                            <option value="5">Commercial (High Insulation): 5(m2-&deg;C)/W</option>
+                                        </select>
+                                        <h4>Floor Thermal Mass</h4>
+                                        <select class="span3 " name="thermal_mass">
+                                            <option value="high">High: think concrete slab or iron girder construction</option>
+                                            <option
+                                            value="low">Low: lightweight or wood framed with no concrete</option>
+                                                <option value="zero">Zero</option>
+                                        </select>
+                                        <h4>Windows</h4>
+                                        <select class="span3 " name="window_glass_type">
+                                            <option value="sgu_nb">Single Glazed</option>
+                                            <option value="dgu_nb">Double Glazed</option>
+                                            <option value="tgu_nb">Triple Glazed</option>
+                                        </select>
+                                        <h4>Glass Coating</h4>
+                                        <select name="window_glass_coating">
+                                            <option>clear</option>
+                                            <option>low-e</option>
+                                            <option>High Performance</option>
+                                            <option>Blue</option>
+                                            <option>Bronze</option>
+                                            <option>Green</option>
+                                            <option>Grey</option>
+                                        </select>
+                                    </div>
+                                    <div class="span4 ">
+                                        <h4>Roof</h4>
+                                        <select class="span3 " name="roof_type">
+                                            <option value="none">Do Not Consider</option>
+                                            <option value="bitumen">Modified Bitumen Roof</option>
+                                            <option value="green">Green Roof</option>
+                                            <option value="cool">Cool Roof</option>
+                                        </select>
+                                        <h4>Roof Insulation</h4>
+                                        <select class="span3 " name="roof_insulation_type">
+                                            <option value="1">Commercial (Low Insulation): 1(m2-&deg;C)/W</option>
+                                            <option value="2">Commercial (Medium Insulation): 2(m2-&deg;C)/W</option>
+                                            <option value="5">Commercial (High Insulation): 5(m2-&deg;C)/W</option>
+                                        </select>
+                                        <h4>Roof Insulation Location</h4>
+                                        <select class="span3" name="roof_insulation_location">
+                                            <option value="top">Top of Roof Slab</option>
+                                            <option value="bottom">Bottom of Roof Slab</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="span4">
-                                <h4>Equipment Density</h4>
+                        </section>
+                        <section id="people">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>People</h2>
+                                </div>
+                                <h4>People Density</h4>
                                 <div class="input-append">
-                                    <select class="span2" id="appendedInput" name="equipment_power_density">
-                                        <option>0.00 No Equipment</option>
-                                        <option>1.00</option>
-                                        <option>1.00 Office (Small)</option>
-                                        <option>5.00 Office (Medium)</option>
-                                        <option>10.00 Office (Large)</option>
-                                        <option>15</option>
-                                        <option>20</option>
-                                        <option>25</option>
-                                        <option>50</option>
-                                        <option>100</option>
+                                    <select class="span2" id="appendedInput" name="people_density">
+                                        <option>0.000</option>
+                                        <option>0.025</option>
+                                        <option>0.050</option>
+                                        <option>0.075</option>
+                                        <option>0.10</option>
+                                        <option>0.25</option>
+                                        <option>0.50</option>
+                                        <option>0.75</option>
+                                        <option>1.0</option>
+                                        <option>1.5</option>
+                                        <option>2.0</option>
                                     </select>
-                                    <span class="add-on">W/m
-                                        <sup>2</sup>
-                                    </span>
+                                    <span class="add-on">People/m&sup2;</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="room">
-                    <div class="box-unit">
-                        <div class="page-header">
-                            <h2>Typical Room</h2>
-                        </div>
-                        <div class="row">
-                            <div class="span3">
-                                <h4>Room Width</h4>
-                                <div class="input-append">
-                                    <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
-                                    name="room_width" />
-                                    <span class="add-on">m</span>
+                        </section>
+                        <section id="lighting">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Lighting</h2>
                                 </div>
-                                <h4>Room Depth</h4>
-                                <div class="input-append">
-                                    <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
-                                    name="room_depth" />
-                                    <span class="add-on">m</span>
-                                </div>
-                                <h4>Room Height</h4>
-                                <div class="input-append">
-                                    <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
-                                    name="room_height" />
-                                    <span class="add-on">m</span>
-                                </div>
-                            </div>
-                            <div class="span3">
-                                <h4>Window/Primary Facade Orientation</h4>
-                                <select name="exterior_shading_orientation"
-                                class="span2">
-                                    <option>North</option>
-                                    <option>North-East</option>
-                                    <option>East</option>
-                                    <option>South-East</option>
-                                    <option>South</option>
-                                    <option>South-West</option>
-                                    <option>West</option>
-                                    <option>North-West</option>
-                                </select>
-                                <h4>Window Area</h4>
-                                <ul class="inline">
-                                    <li>
-                                        <input type="range" ng-model="winwalltyp" name="window_to_wall_ratio_room"
-                                        min="0" max="40" step="1" value=50/>
-                                    </li>
-                                    <li>
-                                        <div class="input-append">
-                                            <input class="span1" type="text" value={{winwalltyp}} ng-model="winwalltyp"
-                                            />
-                                            <span class="add-on">%</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="span2">
-                                <img class="img-rounded" src="img/room_dimensions.png">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="span2">
-                                <img class="img-polaroid" src="img/windows/dgu_nb_thumb_on.gif">
-                                <img class="img-polaroid" src="img/windows/dgu_thumb_on.gif">
-                            </div>
-                            <div class="span2">
-                                <img class="img-polaroid" src="img/windows/invent_thumb_on.gif">
-                                <img class="img-polaroid" src="img/windows/outvent_thumb_on.gif">
-                            </div>
-                            <div class="span2">
-                                <img class="img-polaroid" src="img/windows/sgu_nb_thumb_on.gif">
-                                <img class="img-polaroid" src="img/windows/sgu_thumb_on.gif">
-                            </div>
-                            <div class="span2">
-                                <img class="img-polaroid" src="img/windows/tgu_nb_thumb_on.gif">
-                                <img class="img-polaroid" src="img/windows/tgu_thumb_on.gif">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="span4">
-                                <h4>Glas Type</h4>
-                                <select name="window_glass_coating">
-                                    <option>clear</option>
-                                    <option>low-e</option>
-                                    <option>High Performance</option>
-                                    <option>Blue</option>
-                                    <option>Bronze</option>
-                                    <option>Green</option>
-                                    <option>Grey</option>
-                                </select>
-                            </div>
-                            <div class="span4">
-                                <h4>Overhang Distance</h4>
-                                <div class="input-append">
-                                    <input class="span2" id="appendedInput" type="number" name="overhang_depth">
-                                    <span class="add-on">m</span>
-                                </div>
-                                <h4>Lighting</h4>
+                                <h4>Lighting Intensity</h4>
                                 <div class="input-append">
                                     <select class="span2" id="appendedInput" name="illuminance">
-                                        <option>0 (Darkness)</option>
-                                        <option>150 (Storage)</option>
-                                        <option>200 (Casual Work)</option>
-                                        <option>300 (Rough Work)</option>
-                                        <option>400 Office Work-EU)</option>
-                                        <option>500 (Office Work-US)</option>
-                                        <option>750 (Fine Work)</option>
-                                        <option>1000 (Fine Assembly)</option>
-                                        <option>1500 (Very Fine Work)</option>
+                                        <option value="0">0 (Darkness)</option>
+                                        <option value="150">150 (Storage)</option>
+                                        <option value="200">200 (Casual Work)</option>
+                                        <option value="300">300 (Rough Work)</option>
+                                        <option value="400">400 Office Work-EU)</option>
+                                        <option value="500">500 (Office Work-US)</option>
+                                        <option value="750">750 (Fine Work)</option>
+                                        <option value="1000">1000 (Fine Assembly)</option>
+                                        <option value="1500">1500 (Very Fine Work)</option>
                                     </select>
                                     <span class="add-on">lux</span>
                                 </div>
                             </div>
+                        </section>
+                        <section id="mechanical">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Mechanical</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="span4">
+                                        <h4>Equipment Density</h4>
+                                        <div class="input-append">
+                                            <select class="span2" id="appendedInput" name="equipment_power_density">
+                                                <option value="0.00">0.0 No Equipment</option>
+                                                <option value="1.00">1.0</option>
+                                                <option value="5.00">5.0 Office (light)</option>
+                                                <option value="10.00">10 Office (medium)</option>
+                                                <option value="15.00">15 Office (medium-high)</option>
+                                                <option value="20.00">20 Office (high)</option>
+                                                <option value="25.00">25</option>
+                                                <option value="50.00">50</option>
+                                                <option value="100.00">100</option>
+                                            </select>
+                                            <span class="add-on">W/m
+                                                <sup>2</sup>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="span4">
+                                        <h4>Ventilation System</h4>
+                                        <select name="ventilation_system">
+                                            <option value="mechanical">Mechanical Cooling & Heating</option>
+                                            <option value="natural">Natural ventilation cooling, Mechanical Heating</option>
+                                            <option value="joint">Joint natural ventilation cooling and mechanical heating</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="schedules">
+                            <div class="box-unit ">
+                                <div class="page-header ">
+                                    <h2>Schedules</h2>
+                                </div>
+                                <div class="row ">
+                                    <div class="span4 ">
+                                        <h4>Occupancy Start</h4>
+                                        <select name="weekday_occupancy_start">
+                                            <option value="0.0">12:00 midnight</option>
+                                            <option value="1.0">&nbsp;1:00 AM</option>
+                                            <option value="2.0">&nbsp;2:00 AM</option>
+                                            <option value="3.0">&nbsp;3:00 AM</option>
+                                            <option value="4.0">&nbsp;4:00 AM</option>
+                                            <option value="5.0">&nbsp;5:00 AM</option>
+                                            <option value="6.0">&nbsp;6:00 AM</option>
+                                            <option value="7.0">&nbsp;7:00 AM</option>
+                                            <option value="8.0">&nbsp;8:00 AM</option>
+                                            <option value="9.0">&nbsp;9:00 AM</option>
+                                            <option value="10.0">10:00 AM</option>
+                                            <option value="11.0">11:00 AM</option>
+                                            <option value="12.0">12:00 noon</option>
+                                            <option value="13.0">&nbsp;1:00 PM</option>
+                                            <option value="14.0">&nbsp;2:00 PM</option>
+                                            <option value="15.0">&nbsp;3:00 PM</option>
+                                            <option value="16.0">&nbsp;4:00 PM</option>
+                                            <option value="17.0">&nbsp;5:00 PM</option>
+                                            <option value="18.0">&nbsp;6:00 PM</option>
+                                            <option value="19.0">&nbsp;7:00 PM</option>
+                                            <option value="20.0">&nbsp;8:00 PM</option>
+                                            <option value="21.0">&nbsp;9:00 PM</option>
+                                            <option value="22.0">10:00 PM</option>
+                                            <option value="23.0">11:00 PM</option>
+                                            <option value="24.0">12:00 midnight</option>
+                                        </select>
+                                    </div>
+                                    <div class="span4 ">
+                                        <h4>Occupancy End</h4>
+                                        <select name="weekday_occupancy_end">
+                                            <option value="0.0">12:00 midnight</option>
+                                            <option value="1.0">&nbsp;1:00 AM</option>
+                                            <option value="2.0">&nbsp;2:00 AM</option>
+                                            <option value="3.0">&nbsp;3:00 AM</option>
+                                            <option value="4.0">&nbsp;4:00 AM</option>
+                                            <option value="5.0">&nbsp;5:00 AM</option>
+                                            <option value="6.0">&nbsp;6:00 AM</option>
+                                            <option value="7.0">&nbsp;7:00 AM</option>
+                                            <option value="8.0">&nbsp;8:00 AM</option>
+                                            <option value="9.0">&nbsp;9:00 AM</option>
+                                            <option value="10.0">10:00 AM</option>
+                                            <option value="11.0">11:00 AM</option>
+                                            <option value="12.0">12:00 noon</option>
+                                            <option value="13.0">&nbsp;1:00 PM</option>
+                                            <option value="14.0">&nbsp;2:00 PM</option>
+                                            <option value="15.0">&nbsp;3:00 PM</option>
+                                            <option value="16.0">&nbsp;4:00 PM</option>
+                                            <option value="17.0">&nbsp;5:00 PM</option>
+                                            <option value="18.0">&nbsp;6:00 PM</option>
+                                            <option value="19.0">&nbsp;7:00 PM</option>
+                                            <option value="20.0">&nbsp;8:00 PM</option>
+                                            <option value="21.0">&nbsp;9:00 PM</option>
+                                            <option value="22.0">10:00 PM</option>
+                                            <option value="23.0">11:00 PM</option>
+                                            <option value="24.0">12:00 midnight</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="box-unit">
+                            <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"
+                            />
+                            <button type="button" class="btn btn-large btn-info">
+                                <i class="icon-plus"></i>Building 101 Data</button>
+                            <a class="btn btn-large btn-info" href="http://designadvisor.mit.edu/design/"><i class="icon-signal"></i> Example Outputs</a>
+                            <h2 class="text-right">
+                                <small>powered by MIT Design Advisor Engine</small>
+                            </h2>
                         </div>
+                    </form>
                     </div>
-                </section>
-                <div class="box-unit">
-                    <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
-                    <button type="button" class="btn btn-large btn-info"><i class="icon-plus"></i> Building 101 Data</button>
-                    <a class="btn btn-large btn-info" href="http://designadvisor.mit.edu/design/"><i class="icon-signal"></i> Example Outputs</a>
-                    <h2 class="text-right"><small>powered by MIT Design Advisor</small></h2>
                 </div>
-                </form>
             </div>
-        </div>
-        </div>
-        <!-- Javascript -->
-        <script src="js/ui-bootstrap.js"></script>
-        <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/bootstrap-scrollspy.js"></script>
+            <!-- Javascript -->
+            <script src="js/ui-bootstrap.js"></script>
+            <script src="js/jquery.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/bootstrap-scrollspy.js"></script>
     </body>
 
 </html>

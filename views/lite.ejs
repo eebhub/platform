@@ -71,7 +71,7 @@
                     </ul>
                 </div>
                 <div class="span9">
-                    <form action="/ibmanalysis" method="post">
+                    <form action="/imtanalysis" method="post">
                         <section id="building">
                             <div class="box-unit">
                                 <div class="page-header">
@@ -196,7 +196,7 @@
                                         <tr>
                                             <td>
                                                 <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate"
-                                                />
+                                                 required />
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
@@ -209,7 +209,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate" required>
                                             </td>
                                             <td>
                                                 <input class="span2" id="appendedInput" type="number" placeholder="kWh"
@@ -222,7 +222,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate" required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
@@ -235,7 +235,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate" required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
@@ -248,7 +248,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate" required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
@@ -261,7 +261,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate" required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
@@ -274,7 +274,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate" required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
@@ -287,7 +287,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate" required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
@@ -300,7 +300,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate" required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
@@ -313,7 +313,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate" required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
@@ -326,7 +326,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate" required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
@@ -339,7 +339,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate">
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate" required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
@@ -348,16 +348,28 @@
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
                                                 name="utility_gas">
+                                            </td>
+                                        </tr>
+                                        <thead>
+                                            <th class="span3">Billing Period End Date</th>
+                                            <th class="span3">Electricity (kWh)</th>
+                                            <th class="span3">Gas (CCF)</th>
+                                        </thead>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" placeholder="mm/dd/yyy" name="utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" disabled/>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" disabled>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <button class="btn" onclick="addRow('utltable')">
-                                    <i class="icon-plus"></i>
-                                </button>
-                                <button class="btn" onclick="deleteRow('utltable')">
-                                    <i class="icon-minus"></i>
-                                </button>
                             </div>
                         </section>
                         <div class="box-unit">
@@ -421,6 +433,13 @@
                                 </div>
                             </div>
                         </section>
+<<<<<<< HEAD
+                        <input type="submit" value="run IMT" class="btn-success" />
+                    </form>
+                    <div class="box-unit">
+                        <a href="sampleliteresults"><button class="btn btn-success ">Sample Results</button> </a>
+                    </div>
+=======
                         <div class="box-unit">
                             <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"
                             />
@@ -431,48 +450,11 @@
                                 <small>powered by IBM Inverse Model Engine</small>
                             </h2>
                         </div>
+>>>>>>> bd9922a0bd47b876e25bbeb74fe9c4416dfbeced
                 </div>
             </div>
         </div>
         <!-- Javascript -->
-        <script>
-            function addRow(tableID) {
-                var table = document.getElementById(tableID);
-
-                var rowCount = table.rows.length;
-                var row = table.insertRow(rowCount);
-
-                var cell1 = row.insertCell(0);
-                var element1 = document.createElement("input");
-                element1.className = "span2";
-                element1.type = "date";
-                element1.name = "utility_startdate";
-
-                cell1.appendChild(element1);
-
-                var cell2 = row.insertCell(1);
-                var element2 = document.createElement("input");
-                element2.type = "number";
-                element2.placeholder = "kWh";
-                element2.className = "span2";
-                element2.name = "utility_electric"
-                cell2.appendChild(element2);
-
-                var cell3 = row.insertCell(2);
-                var element3 = document.createElement("input");
-                element3.type = "number";
-                element3.placeholder = "CCF";
-                element3.className = "span2";
-                element3.name = "utility_gas";
-                cell3.appendChild(element3);
-            }
-
-            function deleteRow(tableID) {
-                var table = document.getElementById(tableID);
-                var rowCount = table.rows.length;
-                table.deleteRow(rowCount - 1);
-            }
-        </script>
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap-scrollspy.js"></script>

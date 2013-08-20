@@ -83,7 +83,7 @@ module.exports ={
         var primaryhvactype = request.body.mechanical.primary_hvac_type;    
         var airsideeconomizer = request.body.mechanical.airside_economizer;
         var airsideenergyrecovery = request.body.mechanical.airside_energy_recovery;
-        var demandcontroltype = request.body.mechanical.demand_control_type;
+        var demandcontroltype = request.body.mechanical.demand_control_ventilation;
         var percentexteriorglass = request.body.architecture.percent_exterior_glass;
         var windowglasstype = request.body.materials.window_glass_type;
         var walltype = request.body.materials.wall_type; 
@@ -97,6 +97,7 @@ module.exports ={
 
 var timestamp = timestp.createTimestamp();
 var writeStream = fs.createWriteStream("../utrc/inputs/"+buildingname+timestamp+".xlsx");
+//var writeStream = fs.createWriteStream("utrc/inputs/"+buildingname+timestamp+".xlsx");
 
 
 var row1	=	"Input description"+"\t"+"Input"+"\n";

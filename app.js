@@ -43,7 +43,6 @@ app.get('/comprehensive', routes.getComprehensive);
 
 //Posts
 app.post('/partialanalysis', partial.partial);
-
 app.post('/substantial/analyze', substantial.getSubstantialInput);
 
 app.post('/imtanalysis', lite.runIMT);

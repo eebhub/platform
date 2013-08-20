@@ -38,13 +38,16 @@ module.exports = {
         var airportCode = determineAirportCode(building_location);
         //Get Weather Data
         getWeatherData(utility_startdate, airportCode, function(weatherData) {
+            console.log(weatherData);
             writeFiles.writeIns(insFileName, dataFileName);
             writeFiles.writeData(dataFileName, energyPerDay, weatherData, function() {
                 executeIMT(insFileName, outFileName, resFileName, function() {
                     writeFiles.moveFiles(insFileName, dataFileName, outFileName, resFileName, function() {
+                        console.log('moved Files');
                         parseIMT(resFileName, outFileName, function(results) {
                             var resultsIMT = results[0];
                             var outputs = results[1];
+                            console.log(outputs);
                             var Ycp = outputs[0],
                                 LS = outputs[1],
                                 RS = outputs[2],
@@ -76,6 +79,8 @@ module.exports = {
                             });
                         });
                     });
+
+
                 });
             });
         });

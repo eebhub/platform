@@ -540,7 +540,8 @@ writeStream.write(row218);
 
 //writeStream.close();
         //fs.writeFileSync(fileName, string);
-        response.render('download');           
+        //response.render('download');           
+    response.redirect('http://developer.eebhub.org/utrc/inputs/'+buildingname+timestamp+'.xlsx');
     },
     
     

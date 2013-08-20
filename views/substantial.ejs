@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
     <!-- test-->
     <head>
         <title>EEB Hub Simulation Platform Tools</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/stylesheet.css" rel="stylesheet">
-        <link href="css/partial.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/bootstrap-switch.css" />
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/stylesheet.css" rel="stylesheet">
+        <link href="/css/partial.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/bootstrap-switch.css" />
         <style type="text/css">
             body {
                 padding-top: 60px;
@@ -36,7 +36,7 @@
             }
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
     
     </head>
     
@@ -82,7 +82,7 @@
                         <a href="#building"><i class="icon-chevron-right"></i> Building</a>
                     </li>
                     <li>
-                        <a href="#architecture"><i class="icon-chevron-right"></i> Architecture</a>
+                        <a href="#shape"><i class="icon-chevron-right"></i> Shape/Size</a>
                     </li>
                     <li>
                         <a href="#lighting"><i class="icon-chevron-right"></i> Lighting</a>
@@ -99,6 +99,13 @@
                 </ul>
             </div>                
                 <div class="span9">
+<<<<<<< HEAD
+=======
+
+
+<form action="/substantial/analyze" method="post">
+
+>>>>>>> staging
                     <section id="summary">
                         <div id="box-unit">
                             <div class="page-header">
@@ -107,62 +114,62 @@
                             <div class="row">
                                 <div class="span4">
                                     <h4>Building Name</h4>
-                                    <input type="text" class="span3" name="building_name" 
+                                    <input type="text" class="span3" name="info[building_name]" 
                                     />
                                     <br/>
-                                    <h4>City</h4>
-                                        <div class="input-append">
-                                            <select class="span3" name="weather_epw_location">
-                                                <option>Albuquerque, NM</option>
-                                                <option>Baltimore, MD</option>
-                                                <option>Boise, ID</option>
-                                                <option>Burlington, VT</option>
-                                                <option>Chicago, IL</option>
-                                                <option>Duluth, MN</option>
-                                                <option>El Paso, TX</option>
-                                                <option>Fairbanks, AK</option>
-                                                <option>Helena, MT</option>
-                                                <option>Houston, TX</option>
-                                                <option>Memphis, TN</option>
-                                                <option>Miami, FL</option>
-                                                <option>Pheonix, AZ</option>
-                                                <option selected>Philadelphia, PA</option>
-                                                <option>Riyadh, SAU</option>
-                                                <option>Salem, OR</option>
-                                                <option>San Francisco, CA</option>
-                                                <option>Vancouver, CAN</option>
-                                            </select>
-                                            <span class="add-on">
-                                                <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
-                                            </span>
-                                        </div>
+                                    <h4>Climate</h4>
+                                    <div class="input-append">
+                                        <select class="span3" name="info[building_climate]">
+                                            <option value="ALBUQUERQUE INTL ARPT [ISIS]">Albuquerque, NM</option>
+                                            <option value="BALTIMORE BLT-WASHNGTN INT'L">Baltimore, MD</option>
+                                            <option value="BOISE AIR TERMINAL [UO]">Boise, ID</option>
+                                            <option value="BURLINGTON INTERNATIONAL AP">Burlingotn, NH</option>
+                                            <option value="CHICAGO OHARE INTL AP">Chicago, IL</option>
+                                            <option value="DULUTH INTERNATIONAL ARPT">Duluth, MN</option>
+                                            <option value="EL PASO INTERNATIONAL AP [UT]">El Paso, TX</option>
+                                            <option value="FAIRBANKS INTL ARPT">Fairbanks, AK</option>
+                                            <option value="HELENA REGIONAL AIRPORT">Helena, MT</option>
+                                            <option value="HOUSTON BUSH INTERCONTINENTAL">Houston, TX</option>
+                                            <option value="MEMPHIS INTERNATIONAL AP">Memphis, TN</option>
+                                            <option value="MIAMI INTL AP">Miami, FL</option>
+                                            <option value="PHOENIX SKY HARBOR INTL AP">Pheonix, AZ</option>
+                                            <option value="PHILADELPHIA INTERNATIONAL AP" selected>Philadelphia, PA</option>
+                                            <option value="">Riyadh, SAU</option>
+                                            <option value="SALEM MCNARY FIELD">Salem, MA</option>
+                                            <option value="SAN FRANCISCO INTL AP">San Francisco, CA</option>
+                                            <option value="">Vancouver, CAN</option>
+                                        </select>
+                                        <span class="add-on">
+                                            <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="span4">
                                 <h4>Function</h4>
-                                    <select class="span2">
-                                        <option>Education</option>
-                                        <option>Enclosed mall</option>
-                                        <option>Food sale</option>
-                                        <option>Food service</option>
-                                        <option>Inpatient health care</option>
-                                        <option>Laboratory</option>
-                                        <option>Lodging</option>
-                                        <option>Non refrigeration warehouse</option>
-                                        <option>Nursing</option>
-                                        <option>Office</option>
-                                        <option>Other</option>
-                                        <option>Outpatient health care</option>
-                                        <option>Public assembly</option>
-                                        <option>Public order and safety</option>
-                                        <option>Refrigerated warehouse</option>
-                                        <option>Religious worship</option>
-                                        <option>Retail other than mall</option>
-                                        <option>Service</option>
-                                        <option>Strip shopping mall</option>
-                                        <option>vacant</option>
+                                    <select class="span2" name="info[bulding_function]">
+                                        <option value="Education">Education</option>
+                                        <option value="Enclosed mall">Enclosed mall</option>
+                                        <option value="Food sale">Food sale</option>
+                                        <option value="Food service">Food service</option>
+                                        <option value="Inpatient health care">Inpatient health care</option>
+                                        <option value="Laboratory">Laboratory</option>
+                                        <option value="Lodging">Lodging</option>
+                                        <option value="Non refriferation warehouse">Non refrigeration warehouse</option>
+                                        <option value="Nursing">Nursing</option>
+                                        <option value="Office">Office</option>
+                                        <option value="Other">Other</option>
+                                        <option value="Outpatient health care">Outpatient health care</option>
+                                        <option value="Public assembly">Public assembly</option>
+                                        <option value="Public order and safety">Public order and safety</option>
+                                        <option value="Refrigerated warehouse">Refrigerated warehouse</option>
+                                        <option value="Religious worship">Religious worship</option>
+                                        <option value="Retail other than mall">Retail other than mall</option>
+                                        <option value="Service">Service</option>
+                                        <option value="Strip shopping mall">Strip shopping mall</option>
+                                        <option value="vacant">vacant</option>
                                     </select>
                                 <h4>More Specific Building Activity</h4>
-                                    <select class="span2">
+                                    <select class="span2" name="info[building_activity_type]">
                                         <option>Administrative/professional office</option>
                                         <option>Bank/other financial</option>
                                         <option>Clinic/other outpatient health</option>
@@ -221,35 +228,49 @@
                         </div>
                     </section>
                     
-        <section id="architecture">
+        <section id="size">
                 <div id="box-unit">
                     <div class="page-header">
-                        <h2>Architecture</h2>
+                        <h2>Architecture <small>shape of building</small></h2>
                     </div>
                     <div class="row">
                         <div class="span4">
                             <h4>Gross Floor Area</h4>
                             <div class="input-append">
-                                <input type="number" name="building_name" min="0" step="0.1" />
+                                <input type="number" name="architecture[gross_floor_area]" min="0" step="0.1" />
                                 <span class="add-on">m&#178;</span>
                             </div>
                             <h4>Number of Floors</h4>
-                            <input type="number" name="weather_epw_location"
+                            <input type="number" name="architecture[number_of_floors]"
                             min="0" step="1" />
+                            <h4>Window/Wall Ratio</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="winwall" name="architecture[percent_exterior_glass]" min="0"
+                                                max="40" step="1" value=50/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" type="text" value={{winwall}} ng-model="winwall"
+                                                    />
+                                                    <span class="add-on">%</span>
+                                                </div>
+                                            </li>
+                                        </ul>
                         </div>
                         <div class="span4">
                             <h4>Shape</h4>
-                            <select name="" ng-model="shapeimage">
-                                <option value="img/basic_geometry/c_shape_min_zone.png">C Shape</option>
-                                <option value="img/basic_geometry/h_shape_min_zone.png">H Shape</option>
-                                <option value="img/basic_geometry/l_shape_min_zone.png">L Shape</option>
-                                <option value="img/basic_geometry/rect_min_zone.png">Rectangle</option>
-                                <option value="img/basic_geometry/t_shape_min_zone.png">T Shaped</option>
-                                <option value="img/basic_geometry/u_shape_min_zone.png">U Shaped</option>
+                            <select name="architecture[shape]" ng-model="shapeimage">
+                                <option>C Shape</option>
+                                <option>H Shape</option>
+                                <option>L Shape</option>
+                                <option>Rectangle</option>
+                                <option>T Shaped</option>
+                                <option>U Shaped</option>
                             </select>
                             <h4>Total Building Height</h4>
                                 <div class="input-append">
-                                <input type="number" name="" min="0" step="1" />
+                                <input type="number" name="architecture[total_building_height]" min="0" step="1" />
                                 <span class="add-on">m</span>
                                 </div>             
                         </div>
@@ -313,14 +334,14 @@
                             <div class="row">
                                 <div class="span4">
                                     <h4>Walls</h4>
-                                    <select class="span2">
+                                    <select class="span2" name="materials[wall_type]">
                                         <option>Brick</option>
                                         <option>Stone</option>
                                         <option>Stucco</option>
                                         <option>other</option>
                                     </select>
                                     <h4>Windows</h4>
-                                    <select class="span2 " name="materials[window_glass_type] ">
+                                    <select class="span2 " name="materials[window_glass_type]">
                                         <option>Multi-layer Glass</option>
                                         <option>Single Layer Glass</option>
                                         <option>Combination</option>
@@ -330,7 +351,7 @@
                                 </div>
                                 <div class="span4">
                                     <h4>Roof</h4>
-                                    <select class="span2">
+                                    <select class="span2" name="materials[roof_type]">
                                         <option>Brick</option>
                                         <option>Stone</option>
                                         <option>Stucco</option>
@@ -349,14 +370,36 @@
                             <div class="row">
                                 <div class="span4">
                                     <h4>Primary HVAC System Type</h4>
-                                    <select>
-                                        <option>VAV w/Reheat</option>
+                                    <select name="mechanical[primary_hvac_type]">
+                                        <option>Direct evap cooler</option>
+                                        <option>Direct evap cooler, unit heaters</option>
+                                        <option>Direct chilled water fan coil</option>
+                                        <option>Direct hot water baseboards</option>
+                                        <option>Direct hot water baseboards, direct evap cooler</option>
+                                        <option>Dual-duct CAV</option>
+                                        <option>Dual-duct VAV</option>
+                                        <option>Electric baseboards</option>
+                                        <option>Electric baseboards, direct evap cooler</option>
+                                        <option>Fan coil chiller</option>
+                                        <option>Fan coil, district chilled water and boiler</option>
+                                        <option>Fan coil, district chilled water, electric baseboards</option>
+                                        <option>Fan coil, district chilled water, unit heaters</option>
+                                        <option>Fan coil, district hot and cold water</option>
+                                        <option>Fan coil, District hot water and chiller</option>
+                                        <option>Forced air furnace</option>
+                                        <option>Forced air furnace, direct evap cooler</option>
+                                        <option>Forced air furnace, district chilled water fan coil</option>
+                                        <option>Heat pump heating</option>
+                                        <option>Heat pump heating, direct evap cooler</option>
+                                        <option>Hot water baseboards</option>
+                                        <option>Hot water baseboards, direct evap cooler</option>
+                                        <option>Package VAV w/PFP boxes</option>
                                     </select>
                                     
                                     <h4>Demand Control Ventilation</h4>
                                 
                                     Used <div class="make-switch">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="mechanical[demand_control_ventilation]">
                                     </div>
                                 
                                 
@@ -364,12 +407,12 @@
                                 <div class="span4">
                                     <h4>Air Side Economizer</h4>
                                     Present <div class="make-switch">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="mechanical[airside_economizer]">
                                     </div>
                                     
                                     <h4>Air Side Energy Recovery</h4>
                                     Present <div class="make-switch">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="mechanical[airside_energy_recovery]">
                                     </div>
                                 </div>
                             </div>
@@ -385,34 +428,221 @@
                         
                             <h4>Total Weekly Operating Hours</h4>
                             <div class="input-append">
-                            <input class="span2" type="number"><span class="add-on">hrs</span>
+                            <input class="span2" type="number" name="occupancy[total_weekly_operating_hours]"><span class="add-on">hrs</span>
                             </div>
                             
+                            <h4>Open During Week</h4>
+                            <div class="make-switch">
+                            <input type="checkbox" name="occupancy[open_during_week]">
+                            </div>
+                            
+                            <h4>Open On Weekend</h4>
+                            <div class="make-switch">
+                            <input type="checkbox" name="occupancy[open_on_weekend]">
+                            </div>
+                            
+                            <h4>Weekday Occupancy Hours</h4>
+                            <h5>Day Start</h5>
+                            <select name="occupancy[weekday_open]">
+                            <option>12AM</option>
+                            <option>1AM</option>
+                            <option>2AM</option>
+                            <option>3AM</option>
+                            <option>4AM</option>
+                            <option>5AM</option>
+                            <option>6AM</option>
+                            <option>7AM</option>
+                            <option>8AM</option>
+                            <option>9AM</option>
+                            <option>10AM</option>
+                            <option>11AM</option>
+                            <option>12PM</option>
+                            <option>1PM</option>
+                            <option>2PM</option>
+                            <option>3PM</option>
+                            <option>4PM</option>
+                            <option>5PM</option>
+                            <option>6PM</option>
+                            <option>7PM</option>
+                            <option>8PM</option>
+                            <option>9PM</option>
+                            <option>10PM</option>
+                            <option>11PM</option>
+                            <select/>
+                            <h5>Day End</h5>
+                            <select name="occupancy[weekday_close]">
+                            <option>12AM</option>
+                            <option>1AM</option>
+                            <option>2AM</option>
+                            <option>3AM</option>
+                            <option>4AM</option>
+                            <option>5AM</option>
+                            <option>6AM</option>
+                            <option>7AM</option>
+                            <option>8AM</option>
+                            <option>9AM</option>
+                            <option>10AM</option>
+                            <option>11AM</option>
+                            <option>12PM</option>
+                            <option>1PM</option>
+                            <option>2PM</option>
+                            <option>3PM</option>
+                            <option>4PM</option>
+                            <option>5PM</option>
+                            <option>6PM</option>
+                            <option>7PM</option>
+                            <option>8PM</option>
+                            <option>9PM</option>
+                            <option>10PM</option>
+                            <option>11PM</option>
+                            </select>
                             </div>
                             
                             <div class="span4">
                                 <h4>Number of Employees During Main Shift</h4>
-                                <input type="number" class="span2" name="employ_number" min="0" step="1" />
+                                <input type="number" class="span2" name="occupancy[number_of_employee_during_main_shift]" min="0" step="1" />
                                 <span class="add-on"></span>
+                                <h4>Saturday Occupancy Hours</h4>
+                                <h5>Day Start</h5>
+                                <select name="occupancy[sat_open]">
+                                <option>12AM</option>
+                                <option>1AM</option>
+                                <option>2AM</option>
+                                <option>3AM</option>
+                                <option>4AM</option>
+                                <option>5AM</option>
+                                <option>6AM</option>
+                                <option>7AM</option>
+                                <option>8AM</option>
+                                <option>9AM</option>
+                                <option>10AM</option>
+                                <option>11AM</option>
+                                <option>12PM</option>
+                                <option>1PM</option>
+                                <option>2PM</option>
+                                <option>3PM</option>
+                                <option>4PM</option>
+                                <option>5PM</option>
+                                <option>6PM</option>
+                                <option>7PM</option>
+                                <option>8PM</option>
+                                <option>9PM</option>
+                                <option>10PM</option>
+                                <option>11PM</option>
+                                </select>
+                                <h5>Day End</h5>
+                                <select name="occupancy[sat_close]">
+                                <option>12AM</option>
+                                <option>1AM</option>
+                                <option>2AM</option>
+                                <option>3AM</option>
+                                <option>4AM</option>
+                                <option>5AM</option>
+                                <option>6AM</option>
+                                <option>7AM</option>
+                                <option>8AM</option>
+                                <option>9AM</option>
+                                <option>10AM</option>
+                                <option>11AM</option>
+                                <option>12PM</option>
+                                <option>1PM</option>
+                                <option>2PM</option>
+                                <option>3PM</option>
+                                <option>4PM</option>
+                                <option>5PM</option>
+                                <option>6PM</option>
+                                <option>7PM</option>
+                                <option>8PM</option>
+                                <option>9PM</option>
+                                <option>10PM</option>
+                                <option>11PM</option>
+                                </select>
+                                <h4>Sunday Occupancy Hours</h4>
+                                <h5>Day Start</h5>
+                                <select name="occupancy[sun_open]">
+                                <option>12AM</option>
+                                <option>1AM</option>
+                                <option>2AM</option>
+                                <option>3AM</option>
+                                <option>4AM</option>
+                                <option>5AM</option>
+                                <option>6AM</option>
+                                <option>7AM</option>
+                                <option>8AM</option>
+                                <option>9AM</option>
+                                <option>10AM</option>
+                                <option>11AM</option>
+                                <option>12PM</option>
+                                <option>1PM</option>
+                                <option>2PM</option>
+                                <option>3PM</option>
+                                <option>4PM</option>
+                                <option>5PM</option>
+                                <option>6PM</option>
+                                <option>7PM</option>
+                                <option>8PM</option>
+                                <option>9PM</option>
+                                <option>10PM</option>
+                                <option>11PM</option>
+                                </select>
+                                <h5>Day End</h5>
+                                <select name="occupancy[sun_close]">
+                                <option>12AM</option>
+                                <option>1AM</option>
+                                <option>2AM</option>
+                                <option>3AM</option>
+                                <option>4AM</option>
+                                <option>5AM</option>
+                                <option>6AM</option>
+                                <option>7AM</option>
+                                <option>8AM</option>
+                                <option>9AM</option>
+                                <option>10AM</option>
+                                <option>11AM</option>
+                                <option>12PM</option>
+                                <option>1PM</option>
+                                <option>2PM</option>
+                                <option>3PM</option>
+                                <option>4PM</option>
+                                <option>5PM</option>
+                                <option>6PM</option>
+                                <option>7PM</option>
+                                <option>8PM</option>
+                                <option>9PM</option>
+                                <option>10PM</option>
+                                <option>11PM</option>
+                                </select>
                             </div>    
                         </div>        
                         </div>
                     </section>
 
-                    <div id="box-unit">
-                        <button class="btn btn-large btn-primary" type="submit">SIMULATE</button>
-                        <a class="btn btn-large btn-info"><i class="icon-plus"></i> Building 101 Data</a>
-                        <a class="btn btn-large btn-info"><i class="icon-signal"></i> Example Outputs</a>
-                        <h2 class="text-right"><small>with UTRC Energy Audit Tool Engine</small></h2>
-                    </div>
+    
+
+
+                <div class="box-unit">
+                    <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
+                    <button type="button" class="btn btn-large btn-info"><i class="icon-plus"></i> Building 101 Data</button>
+                    <a class="btn btn-large btn-info" href="http://designadvisor.mit.edu/design/"><i class="icon-signal"></i> Example Outputs</a>
+                    <h2 class="text-right"><small>with UTRC Energy Audit Tool Engine</small></h2>
+                </div>
+</form>                
+                    
+                    
+            
+                    
+                    
                 </div>
             </div>
         </div>
         <!-- Javascript -->
-        <script src="js/bootstrap-switch.min.js"></script>  
+        
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="/js/bootstrap-switch.min.js"></script>  
         <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/bootstrap-scrollspy.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap-scrollspy.js"></script>
     </body>
 
 </html>

@@ -1,6 +1,0 @@
-{"ts":1375717126111,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
-{"contributors":[],"silentsave":false,"ts":1375717189368,"patch":[[{"diffs":[[1,"module.exports ={\n    \n}"]],"start1":0,"start2":0,"length1":0,"length2":24}]],"length":24,"saved":false}
-{"ts":1375717209284,"patch":[[{"diffs":[[0," ={\n    "],[1,"getSplash: function(response, request){\n        \n    }"],[0,"\n}"]],"start1":14,"start2":14,"length1":10,"length2":64}]],"length":78,"saved":false}
-{"ts":1375717221251,"patch":[[{"diffs":[[0,"n(re"],[-1,"sponse, request"],[1,"quest, response"],[0,"){\n "]],"start1":40,"start2":40,"length1":23,"length2":23}]],"length":78,"saved":false}
-{"ts":1375717238396,"patch":[[{"diffs":[[0,"        "],[1,"response.render('splash')"],[0,"\n    }\n}"]],"start1":62,"start2":62,"length1":16,"length2":41}]],"length":103,"saved":false}
-{"ts":1375717239873,"patch":[[{"diffs":[[0,"splash')"],[1,";"],[0,"\n    }\n}"]],"start1":87,"start2":87,"length1":16,"length2":17}]],"length":104,"saved":false}

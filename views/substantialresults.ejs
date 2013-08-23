@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>EEB Hub Simulation Platform Tools</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="css/partial.css" rel="stylesheet" />
+        <link href="css/stylesheet.css" rel="stylesheet" />
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+                background-color: rgb(229, 229, 229);
+            }
+        </style>
+        <script src="js/jquery.js"></script>
+        
+        <script type="text/javascript">
+            $(function() {
+                $('#electricityjs').highcharts({
+                    chart: {
+                      type: 'column'
+                  },
+                  title: {
+                      text: 'Electricity Consumption (kWh)'
+                  },
+                  xAxis: {
+                      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                  },
+                  yAxis: {
+                      min: 0,
+                      title: {
+                          text: ''
+                      },
+                      stackLabels: {
+                          enabled: true,
+                          style: {
+                              fontWeight: 'bold',
+                              color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                          }
+                      }
+                  },
+                  legend: {
+                      align: 'center',
+                      x: 0,
+                      verticalAlign: 'bottom',
+                      y: 0,
+                      floating: false,
+                      backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white',
+                      borderColor: '#CCC',
+                      borderWidth: 1,
+                      shadow: true
+                  },
+                  tooltip: {
+                      formatter: function() {
+                          return '<b>'+ this.x +'</b><br/>'+
+                              this.series.name +': '+ this.y +'<br/>'+
+                              'Total: '+ this.point.stackTotal;
+                      }
+                  },
+                  plotOptions: {
+                      column: {
+                          stacking: 'normal',
+                          dataLabels: {
+                              enabled: false,
+                              color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                          }
+                      }
+                  },
+                  series: [{
+                      name: 'Heat',
+                
+                      data: [<%= elec_heat %>]                  },{
+                      name: 'Pump',
+                      data: [<%= elec_pump %>]                  }, {
+                      name: 'Cool',
+                      data: [<%= elec_cool %>]                  }, {
+                      name: 'Light',
+                      data: [<%= elec_light %>]                  }, {
+                      name: 'Equip',
+                      data: [<%= elec_equip %>]                  }, {
+                      name: 'Ref',            
+                      data: [<%= elec_ref %>]                  }, {
+                      name: 'Fan',
+                      data: [<%= elec_fan %>]                  }, {
+                      name: 'Water',
+                      data: [<%= elec_water %>]                  },  ]
+
+
+                });
+            });
+        </script>
+       
+       <script type="text/javascript">
+            $(function() {
+                $('#naturalgasjs').highcharts({
+                    chart: {
+                      type: 'column'
+                  },
+                  title: {
+                      text: 'Natural Gas Consumption (kWh)'
+                  },
+                  xAxis: {
+                      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                  },
+                  yAxis: {
+                      min: 0,
+                      title: {
+                          text: ''
+                      },
+                      stackLabels: {
+                          enabled: true,
+                          style: {
+                              fontWeight: 'bold',
+                              color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                          }
+                      }
+                  },
+                  legend: {
+                      align: 'center',
+                      x: 0,
+                      verticalAlign: 'bottom',
+                      y: 0,
+                      floating: false,
+                      backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white',
+                      borderColor: '#CCC',
+                      borderWidth: 1,
+                      shadow: true
+                  },
+                  tooltip: {
+                      formatter: function() {
+                          return '<b>'+ this.x +'</b><br/>'+
+                              this.series.name +': '+ this.y +'<br/>'+
+                              'Total: '+ this.point.stackTotal;
+                      }
+                  },
+                  plotOptions: {
+                      column: {
+                          stacking: 'normal',
+                          dataLabels: {
+                              enabled: false,
+                              color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                          }
+                      }
+                  },
+                  series: [{
+                      name: 'Water',
+                
+                      data: [<%= gas_water %>]                  },{
+                      name: 'Cool',
+                      data: [<%= gas_cool %>]                  }, {
+                      name: 'Heat',
+                      data: [<%= gas_heat %>]                  },   ]
+
+
+                });
+            });
+        </script>
+        <script type="text/javascript">
+        $(function () {
+        $('#eleccomparisonjs').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Baseline'
+            },
+            subtitle: {
+                text: 'Electricity'
+            },
+            xAxis: {
+                categories: ['Electricity cooling use', 'Electric heating use', 'Electric lighting use', 'Electric equipment use', 'Electric refrigeration use', 'Electric ventilation use', 'Electric water heating use', 'Electric pump use', 'Annual elec Concumption'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'kWh/year',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' kWh/year'
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Calculated',
+                data: [<%= bs_elec0 %>]
+            }, {
+                name: 'Measured',
+                data: [<%= bs_elec1 %>]
+            }, ]
+        });
+    });
+    </script>
+        
+    <script type="text/javascript">
+        $(function () {
+        $('#gascomparisonjs').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Baseline'
+            },
+            subtitle: {
+                text: 'Natural Gas'
+            },
+            xAxis: {
+                categories: ['Natural gas cooling use', 'Natural gas heating use', 'Natural gas water heating', 'Annual nat gas consumption'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'kWh/year',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' kWh/year'
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Calculated',
+                data: [<%= bs_gas0 %>]
+            }, {
+                name: 'Measured',
+                data: [<%= bs_gas1 %>]
+            }, ]
+        });
+    });
+    </script>    
+        
+        
+    </head>
+    
+    <body data-spy="scroll" data-target="#sidebar">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="brand">EEB Hub Simulation Platform</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li>
+                                <a href="/lite">Lite</a>
+                            </li>
+                            <li>
+                                <a href="/partial">Partial</a>
+                            </li>
+                            <li class="active">
+                                <a href="/substantial">Substantial</a>
+                            </li>
+                            <li>
+                                <a href="/comprehensive">Comprehensive</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <!-- Intro -->
+        
+        <h1>UTRC Audit Engine Results<h1>
+        
+        <div class="container">
+        <div class="page-header">
+            <h2>Baseline</h2>
+        </div>
+        <div id="eleccomparisonjs" style="width: 50%; min-width: 400px; height: 500px; float:left;"></div>        
+        <div id="gascomparisonjs" style="width: 50%; min-width: 400px; height: 500px; float:left;"></div>
+        </div>
+        
+        <!-- Electricity Consumption Bar Chart -->
+        <div class="container">
+        
+        <div class="page-header">
+            <h2>Caculated Monthly Energy Use</h2>
+        </div>
+        
+        <div id="electricityjs" style="width: 50%; min-width: 400px; height: 500px; float:left;"></div>
+         
+        <!-- Natural Gas Consumption Bar Chart -->
+        <div id="naturalgasjs" style="width: 50%; min-width: 400px; height: 500px; float: left; margin-bottom: 25px;"></div>
+        </div>
+
+            <!-- Javascript -->
+            <script src="js/bootstrap-scrollspy.js"></script>
+            <script src="js/highcharts.js"></script>
+            <script src="js/modules/exporting.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+    </body>
+
+</html>

@@ -96,11 +96,11 @@ module.exports ={
         //var fileName = route + buildingName + '.ejs' ;
 
 var timestamp = timestp.createTimestamp();
-var writeStream = fs.createWriteStream("../utrc/inputs/"+buildingname+timestamp+".xlsx");
-//var writeStream = fs.createWriteStream("utrc/inputs/"+buildingname+timestamp+".xlsx");
+//var writeStream = fs.createWriteStream("../utrc/inputs/"+buildingname+timestamp+".xlsx");
+var writeStream = fs.createWriteStream("utrc/inputs/"+buildingname+timestamp+".xlsx");
 
 
-var row1	=	"Input description"+"\t"+"Input"+"\n";
+var row1    =	"Input description"+"\t"+"Input"+"\n";
 var	row2	=	"Project name"+"\t"+buildingname+"\n";
 var	row3	=	"Settings"+"\t"+"Show"+"\n";
 var	row4	=	"Conduction modeling"+"\t"+"Radiant Time Series (Default)"+"\n";
@@ -544,6 +544,257 @@ writeStream.write(row218);
         //response.render('download');           
     response.redirect('http://developer.eebhub.org/utrc/inputs/'+buildingname+timestamp+'.xlsx');
     },
+    
+    
+    getSubstantialResults:  function(request, response) {
+        var xlsx = require('node-xlsx');
+
+        //var data1 = xlsx.parse('/var/lib/stickshift/51fe45ea500446605900003e/app-root/data/577413/utrc/Output_StageI.xlsx'); 
+        var data1 = xlsx.parse('utrc/Output_StageI.xlsx'); 
+        var elec_heat01 = data1.worksheets[4].data[1][1].value;
+        var elec_heat02 = data1.worksheets[4].data[1][2].value;
+        var elec_heat03 = data1.worksheets[4].data[1][3].value;
+        var elec_heat04 = data1.worksheets[4].data[1][4].value;
+        var elec_heat05 = data1.worksheets[4].data[1][5].value;
+        var elec_heat06 = data1.worksheets[4].data[1][6].value;
+        var elec_heat07 = data1.worksheets[4].data[1][7].value;
+        var elec_heat08 = data1.worksheets[4].data[1][8].value;
+        var elec_heat09 = data1.worksheets[4].data[1][9].value;
+        var elec_heat10 = data1.worksheets[4].data[1][10].value;
+        var elec_heat11 = data1.worksheets[4].data[1][11].value;
+        var elec_heat12 = data1.worksheets[4].data[1][12].value;
+
+        var elec_heat = [elec_heat01,elec_heat02,elec_heat03,elec_heat04,elec_heat05,elec_heat06,elec_heat07,elec_heat08,elec_heat09,elec_heat10,elec_heat11,elec_heat12];
+        
+        var elec_pump01 = data1.worksheets[4].data[2][1].value;
+        var elec_pump02 = data1.worksheets[4].data[2][2].value;
+        var elec_pump03 = data1.worksheets[4].data[2][3].value;
+        var elec_pump04 = data1.worksheets[4].data[2][4].value;
+        var elec_pump05 = data1.worksheets[4].data[2][5].value;
+        var elec_pump06 = data1.worksheets[4].data[2][6].value;
+        var elec_pump07 = data1.worksheets[4].data[2][7].value;
+        var elec_pump08 = data1.worksheets[4].data[2][8].value;
+        var elec_pump09 = data1.worksheets[4].data[2][9].value;
+        var elec_pump10 = data1.worksheets[4].data[2][10].value;
+        var elec_pump11 = data1.worksheets[4].data[2][11].value;
+        var elec_pump12 = data1.worksheets[4].data[2][12].value;
+
+        var elec_pump = [elec_pump01,elec_pump02,elec_pump03,elec_pump04,elec_pump05,elec_pump06,elec_pump07,elec_pump08,elec_pump09,elec_pump10,elec_pump11,elec_pump12];
+        
+        var elec_cool01 = data1.worksheets[4].data[3][1].value;
+        var elec_cool02 = data1.worksheets[4].data[3][2].value;
+        var elec_cool03 = data1.worksheets[4].data[3][3].value;
+        var elec_cool04 = data1.worksheets[4].data[3][4].value;
+        var elec_cool05 = data1.worksheets[4].data[3][5].value;
+        var elec_cool06 = data1.worksheets[4].data[3][6].value;
+        var elec_cool07 = data1.worksheets[4].data[3][7].value;
+        var elec_cool08 = data1.worksheets[4].data[3][8].value;
+        var elec_cool09 = data1.worksheets[4].data[3][9].value;
+        var elec_cool10 = data1.worksheets[4].data[3][10].value;
+        var elec_cool11 = data1.worksheets[4].data[3][11].value;
+        var elec_cool12 = data1.worksheets[4].data[3][12].value;
+
+        var elec_cool = [elec_cool01,elec_cool02,elec_cool03,elec_cool04,elec_cool05,elec_cool06,elec_cool07,elec_cool08,elec_cool09,elec_cool10,elec_cool11,elec_cool12];
+        
+        var elec_light01 = data1.worksheets[4].data[4][1].value;
+        var elec_light02 = data1.worksheets[4].data[4][2].value;
+        var elec_light03 = data1.worksheets[4].data[4][3].value;
+        var elec_light04 = data1.worksheets[4].data[4][4].value;
+        var elec_light05 = data1.worksheets[4].data[4][5].value;
+        var elec_light06 = data1.worksheets[4].data[4][6].value;
+        var elec_light07 = data1.worksheets[4].data[4][7].value;
+        var elec_light08 = data1.worksheets[4].data[4][8].value;
+        var elec_light09 = data1.worksheets[4].data[4][9].value;
+        var elec_light10 = data1.worksheets[4].data[4][10].value;
+        var elec_light11 = data1.worksheets[4].data[4][11].value;
+        var elec_light12 = data1.worksheets[4].data[4][12].value;
+
+        var elec_light = [elec_light01,elec_light02,elec_light03,elec_light04,elec_light05,elec_light06,elec_light07,elec_light08,elec_light09,elec_light10,elec_light11,elec_light12];
+        
+        var elec_equip01 = data1.worksheets[4].data[5][1].value;
+        var elec_equip02 = data1.worksheets[4].data[5][2].value;
+        var elec_equip03 = data1.worksheets[4].data[5][3].value;
+        var elec_equip04 = data1.worksheets[4].data[5][4].value;
+        var elec_equip05 = data1.worksheets[4].data[5][5].value;
+        var elec_equip06 = data1.worksheets[4].data[5][6].value;
+        var elec_equip07 = data1.worksheets[4].data[5][7].value;
+        var elec_equip08 = data1.worksheets[4].data[5][8].value;
+        var elec_equip09 = data1.worksheets[4].data[5][9].value;
+        var elec_equip10 = data1.worksheets[4].data[5][10].value;
+        var elec_equip11 = data1.worksheets[4].data[5][11].value;
+        var elec_equip12 = data1.worksheets[4].data[5][12].value;
+
+        var elec_equip = [elec_equip01,elec_equip02,elec_equip03,elec_equip04,elec_equip05,elec_equip06,elec_equip07,elec_equip08,elec_equip09,elec_equip10,elec_equip11,elec_equip12];
+        
+        var elec_ref01 = data1.worksheets[4].data[6][1].value;
+        var elec_ref02 = data1.worksheets[4].data[6][2].value;
+        var elec_ref03 = data1.worksheets[4].data[6][3].value;
+        var elec_ref04 = data1.worksheets[4].data[6][4].value;
+        var elec_ref05 = data1.worksheets[4].data[6][5].value;
+        var elec_ref06 = data1.worksheets[4].data[6][6].value;
+        var elec_ref07 = data1.worksheets[4].data[6][7].value;
+        var elec_ref08 = data1.worksheets[4].data[6][8].value;
+        var elec_ref09 = data1.worksheets[4].data[6][9].value;
+        var elec_ref10 = data1.worksheets[4].data[6][10].value;
+        var elec_ref11 = data1.worksheets[4].data[6][11].value;
+        var elec_ref12 = data1.worksheets[4].data[6][12].value;
+
+        var elec_ref = [elec_ref01,elec_ref02,elec_ref03,elec_ref04,elec_ref05,elec_ref06,elec_ref07,elec_ref08,elec_ref09,elec_ref10,elec_ref11,elec_ref12];
+        
+        var elec_fan01 = data1.worksheets[4].data[7][1].value;
+        var elec_fan02 = data1.worksheets[4].data[7][2].value;
+        var elec_fan03 = data1.worksheets[4].data[7][3].value;
+        var elec_fan04 = data1.worksheets[4].data[7][4].value;
+        var elec_fan05 = data1.worksheets[4].data[7][5].value;
+        var elec_fan06 = data1.worksheets[4].data[7][6].value;
+        var elec_fan07 = data1.worksheets[4].data[7][7].value;
+        var elec_fan08 = data1.worksheets[4].data[7][8].value;
+        var elec_fan09 = data1.worksheets[4].data[7][9].value;
+        var elec_fan10 = data1.worksheets[4].data[7][10].value;
+        var elec_fan11 = data1.worksheets[4].data[7][11].value;
+        var elec_fan12 = data1.worksheets[4].data[7][12].value;
+
+        var elec_fan = [elec_fan01,elec_fan02,elec_fan03,elec_fan04,elec_fan05,elec_fan06,elec_fan07,elec_fan08,elec_fan09,elec_fan10,elec_fan11,elec_fan12];
+        
+        var elec_water01 = data1.worksheets[4].data[8][1].value;
+        var elec_water02 = data1.worksheets[4].data[8][2].value;
+        var elec_water03 = data1.worksheets[4].data[8][3].value;
+        var elec_water04 = data1.worksheets[4].data[8][4].value;
+        var elec_water05 = data1.worksheets[4].data[8][5].value;
+        var elec_water06 = data1.worksheets[4].data[8][6].value;
+        var elec_water07 = data1.worksheets[4].data[8][7].value;
+        var elec_water08 = data1.worksheets[4].data[8][8].value;
+        var elec_water09 = data1.worksheets[4].data[8][9].value;
+        var elec_water10 = data1.worksheets[4].data[8][10].value;
+        var elec_water11 = data1.worksheets[4].data[8][11].value;
+        var elec_water12 = data1.worksheets[4].data[8][12].value;
+
+        var elec_water = [elec_water01,elec_water02,elec_water03,elec_water04,elec_water05,elec_water06,elec_water07,elec_water08,elec_water09,elec_water10,elec_water11,elec_water12];
+        
+        var gas_water01 = data1.worksheets[5].data[1][1].value;
+        var gas_water02 = data1.worksheets[5].data[1][2].value;
+        var gas_water03 = data1.worksheets[5].data[1][3].value;
+        var gas_water04 = data1.worksheets[5].data[1][4].value;
+        var gas_water05 = data1.worksheets[5].data[1][5].value;
+        var gas_water06 = data1.worksheets[5].data[1][6].value;
+        var gas_water07 = data1.worksheets[5].data[1][7].value;
+        var gas_water08 = data1.worksheets[5].data[1][8].value;
+        var gas_water09 = data1.worksheets[5].data[1][9].value;
+        var gas_water10 = data1.worksheets[5].data[1][10].value;
+        var gas_water11 = data1.worksheets[5].data[1][11].value;
+        var gas_water12 = data1.worksheets[5].data[1][12].value;
+
+        var gas_water = [gas_water01,gas_water02,gas_water03,gas_water04,gas_water05,gas_water06,gas_water07,gas_water08,gas_water09,gas_water10,gas_water11,gas_water12];
+        
+        var gas_cool01 = data1.worksheets[5].data[2][1].value;
+        var gas_cool02 = data1.worksheets[5].data[2][2].value;
+        var gas_cool03 = data1.worksheets[5].data[2][3].value;
+        var gas_cool04 = data1.worksheets[5].data[2][4].value;
+        var gas_cool05 = data1.worksheets[5].data[2][5].value;
+        var gas_cool06 = data1.worksheets[5].data[2][6].value;
+        var gas_cool07 = data1.worksheets[5].data[2][7].value;
+        var gas_cool08 = data1.worksheets[5].data[2][8].value;
+        var gas_cool09 = data1.worksheets[5].data[2][9].value;
+        var gas_cool10 = data1.worksheets[5].data[2][10].value;
+        var gas_cool11 = data1.worksheets[5].data[2][11].value;
+        var gas_cool12 = data1.worksheets[5].data[2][12].value;
+
+        var gas_cool = [gas_cool01,gas_cool02,gas_cool03,gas_cool04,gas_cool05,gas_cool06,gas_cool07,gas_cool08,gas_cool09,gas_cool10,gas_cool11,gas_cool12];
+        
+        var gas_heat01 = data1.worksheets[5].data[3][1].value;
+        var gas_heat02 = data1.worksheets[5].data[3][2].value;
+        var gas_heat03 = data1.worksheets[5].data[3][3].value;
+        var gas_heat04 = data1.worksheets[5].data[3][4].value;
+        var gas_heat05 = data1.worksheets[5].data[3][5].value;
+        var gas_heat06 = data1.worksheets[5].data[3][6].value;
+        var gas_heat07 = data1.worksheets[5].data[3][7].value;
+        var gas_heat08 = data1.worksheets[5].data[3][8].value;
+        var gas_heat09 = data1.worksheets[5].data[3][9].value;
+        var gas_heat10 = data1.worksheets[5].data[3][10].value;
+        var gas_heat11 = data1.worksheets[5].data[3][11].value;
+        var gas_heat12 = data1.worksheets[5].data[3][12].value;
+
+        var gas_heat = [gas_heat01,gas_heat02,gas_heat03,gas_heat04,gas_heat05,gas_heat06,gas_heat07,gas_heat08,gas_heat09,gas_heat10,gas_heat11,gas_heat12];
+        
+        var bs_elec01 = data1.worksheets[3].data[2][1].value;
+        var bs_elec02 = data1.worksheets[3].data[3][1].value;
+        var bs_elec03 = data1.worksheets[3].data[4][1].value;
+        var bs_elec04 = data1.worksheets[3].data[5][1].value;
+        var bs_elec05 = data1.worksheets[3].data[6][1].value;
+        var bs_elec06 = data1.worksheets[3].data[7][1].value;
+        var bs_elec07 = data1.worksheets[3].data[8][1].value;
+        var bs_elec08 = data1.worksheets[3].data[9][1].value;
+        var bs_elec09 = data1.worksheets[3].data[10][1].value;
+
+        var bs_elec0 = [bs_elec01,bs_elec02,bs_elec03,bs_elec04,bs_elec05,bs_elec06,bs_elec07,bs_elec08,bs_elec09];
+        
+        var bs_elec11 = data1.worksheets[3].data[2][2].value;
+        var bs_elec12 = data1.worksheets[3].data[3][2].value;
+        var bs_elec13 = data1.worksheets[3].data[4][2].value;
+        var bs_elec14 = data1.worksheets[3].data[5][2].value;
+        var bs_elec15 = data1.worksheets[3].data[6][2].value;
+        var bs_elec16 = data1.worksheets[3].data[7][2].value;
+        var bs_elec17 = data1.worksheets[3].data[8][2].value;
+        var bs_elec18 = data1.worksheets[3].data[9][2].value;
+        var bs_elec19 = data1.worksheets[3].data[10][2].value;
+
+        var bs_elec1 = [bs_elec11,bs_elec12,bs_elec13,bs_elec14,bs_elec15,bs_elec16,bs_elec17,bs_elec18,bs_elec19];
+
+        var bs_gas01 = data1.worksheets[3].data[12][1].value;
+        var bs_gas02 = data1.worksheets[3].data[13][1].value;
+        var bs_gas03 = data1.worksheets[3].data[14][1].value;
+        var bs_gas04 = data1.worksheets[3].data[15][1].value;
+        
+        var bs_gas0 = [bs_gas01,bs_gas02,bs_gas03,bs_gas04];
+        
+        var bs_gas11 = data1.worksheets[3].data[12][2].value;
+        var bs_gas12 = data1.worksheets[3].data[13][2].value;
+        var bs_gas13 = data1.worksheets[3].data[14][2].value;
+        var bs_gas14 = data1.worksheets[3].data[15][2].value;
+        
+        var bs_gas1 = [bs_gas11,bs_gas12,bs_gas13,bs_gas14];
+        
+        
+        
+        // var fs = require('fs');
+        // var buffer = xlsx.build({worksheets: [
+        // {"name":"mySheetName", "data":[
+        // ["A1", "B1"],
+        // [
+        //     {"value":"A2","formatCode":"General"},
+        //     {"value":"B2","formatCode":"General"}
+        // ]
+        // ]}
+        // ]});
+        
+        // fs.writeFile("test.xlsx", buffer, function(err) {
+        // if(err) {
+        //     console.log(err);
+        // } else {
+        // console.log("The file was saved!");
+        // }
+        // });
+        
+        response.render('substantialresults', {
+            'elec_heat': elec_heat,
+            'elec_pump': elec_pump,
+            'elec_cool': elec_cool,
+            'elec_light': elec_light,
+            'elec_equip': elec_equip,
+            'elec_ref': elec_ref,
+            'elec_fan': elec_fan,
+            'elec_water': elec_water,
+            'gas_water': gas_water,
+            'gas_cool': gas_cool,
+            'gas_heat': gas_heat,
+            'bs_elec0': bs_elec0,
+            'bs_elec1': bs_elec1,
+            'bs_gas0': bs_gas0,
+            'bs_gas1': bs_gas1,
+         
+        });
+        
+    }
     
     
     

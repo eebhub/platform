@@ -96,8 +96,8 @@ module.exports ={
         //var fileName = route + buildingName + '.ejs' ;
 
 var timestamp = timestp.createTimestamp();
-//var writeStream = fs.createWriteStream("../utrc/inputs/"+buildingname+timestamp+".xlsx");
-var writeStream = fs.createWriteStream("utrc/inputs/"+buildingname+timestamp+".xlsx");
+var writeStream = fs.createWriteStream("../utrc/inputs/"+buildingname+timestamp+".xlsx");
+//var writeStream = fs.createWriteStream("utrc/inputs/"+buildingname+timestamp+".xlsx");
 
 
 var row1    =	"Input description"+"\t"+"Input"+"\n";
@@ -550,7 +550,7 @@ writeStream.write(row218);
         var xlsx = require('node-xlsx');
 
         //var data1 = xlsx.parse('/var/lib/stickshift/51fe45ea500446605900003e/app-root/data/577413/utrc/Output_StageI.xlsx'); 
-        var data1 = xlsx.parse('utrc/Output_StageI.xlsx'); 
+        var data1 = xlsx.parse('../utrc/Output_StageI.xlsx'); 
         var elec_heat01 = data1.worksheets[4].data[1][1].value;
         var elec_heat02 = data1.worksheets[4].data[1][2].value;
         var elec_heat03 = data1.worksheets[4].data[1][3].value;

@@ -6,7 +6,7 @@ module.exports = {
 
     partial: function(request, response) {
         //Common Body Variables, missing building orientation and Footprint
-        var building_name = request.body.building_name || "No-Name";
+        var building_name = request.body.building_name.replace(/\s+/g, '-') || "NoName";
         var year_completed = request.body.year_completed;
         var number_of_floors = request.body.number_of_floors ;
         var people_density = request.body.people_density;
@@ -35,14 +35,18 @@ module.exports = {
 
         //Inputs
         var timestamp = timestp.createTimestamp();
-        var mitInputFileName =  building_name+timestamp+ '.txt';
+        var BuildingInputName =  building_name+timestamp;
+        
+        fs.mkdir('../mit/' + BuildingInputName, function(error) {
+            if (error) throw error;
+        });
 
-        dainput.MITinputFile(mitInputFileName, roof_type, roof_insulation_type, number_of_floors, roof_insulation_location, weather_epw_location,
+        dainput.MITinputFile(BuildingInputName, roof_type, roof_insulation_type, number_of_floors, roof_insulation_location, weather_epw_location,
                         exterior_shading_orientation, room_width, room_depth, room_height,
                         window_glass_type, window_to_wall_ratio, ventilation_system, wall_insulation_r_value, lighting_power_density,
                         equipment_power_density, weekday_occupancy_start, weekday_occupancy_end, overhang_depth, thermal_mass, people_density, window_glass_coating);
 
-        response.redirect('http://developer.eebhub.org/mit/inputs/'+  mitInputFileName);
+        response.redirect('http://developer.eebhub.org/mit/'+BuildingInputName+'/');
 
     },
 };

@@ -5,8 +5,8 @@ var timestp = require("../lib/timestamp.js");
 module.exports ={
 
     getSubstantialInput: function(request, response) {
-        var buildingname = request.body.info.building_name;
-        var buildingclimate = request.body.info.building_climate;
+        var buildingname = request.body.building_name;
+        var buildingclimate = request.body.weather_epw_location;
         var buildingstate = "";
         switch (buildingclimate)
         {
@@ -64,30 +64,32 @@ module.exports ={
         }
 
         //var buildingstate = request.body.info.building_state;
-        var grossfloorarea = request.body.architecture.gross_floor_area;
-        var numberoffloors = request.body.architecture.number_of_floors;
-        var shape = request.body.architecture.shape;
-        var totalbuildingheight = request.body.architecture.total_building_height;
-        var buildingfunction = request.body.info.building_function;
-        var buildingactivitytype = request.body.info.building_activity_type;
-        var numberofemployeeduringmainshift = request.body.occupancy.number_of_employee_during_main_shift;
-        var totalweeklyoperatinghours = request.body.occupancy.total_weekly_operating_hours;
-        var openduringweek = request.body.occupancy.open_during_week;
-        var openonweekend = request.body.occupancy.open_on_weekend;
-        var weekdayopen = request.body.occupancy.weekday_open;
-        var weekdayclose = request.body.occupancy.weekday_close;
-        var satopen = request.body.occupancy.sat_open;
-        var satclose = request.body.occupancy.sat_close;
-        var sunopen = request.body.occupancy.sun_open;
-        var sunclose = request.body.occupancy.sun_close;
-        var primaryhvactype = request.body.mechanical.primary_hvac_type;    
-        var airsideeconomizer = request.body.mechanical.airside_economizer;
-        var airsideenergyrecovery = request.body.mechanical.airside_energy_recovery;
-        var demandcontroltype = request.body.mechanical.demand_control_ventilation;
-        var percentexteriorglass = request.body.architecture.percent_exterior_glass;
-        var windowglasstype = request.body.materials.window_glass_type;
-        var walltype = request.body.materials.wall_type; 
-        var rooftype = request.body.materials.roof_type;
+        var grossfloorarea = request.body.gross_floor_area;
+        var numberoffloors = request.body.number_of_floors;
+        var shape = request.body.footprint_shape;
+        var totalbuildingheight = request.body.building_height;
+        var buildingfunction = request.body.actibity_type;
+        var buildingactivitytype = request.body.activity_type_specific;
+        var numberofemployeeduringmainshift = request.body.number_of_employees_during_main_shift;
+        var totalweeklyoperatinghours = request.body.average_weekly_operating_hours;
+        var openduringweek1 = request.body.open_during_week;
+        var openduringweek = "No";
+        if(openduringweek1 == 'on') {openduringweek = "Yes";}
+        var openonweekend = request.body.open_on_weekend;
+        var weekdayopen = request.body.weekday_occupancy_hours_day_start;
+        var weekdayclose = request.body.weekday_occupancy_hours_day_end;
+        var satopen = request.body.saturday_occupancy_hours_day_start;
+        var satclose = request.body.saturday_occupancy_hours_day_end;
+        var sunopen = request.body.sunday_occupancy_hours_day_start;
+        var sunclose = request.body.sunday_occupancy_hours_day_end;
+        var primaryhvactype = request.body.primary_hvac_type;    
+        var airsideeconomizer = request.body.airside_economizer;
+        var airsideenergyrecovery = request.body.airside_energy_recovery;
+        var demandcontroltype = request.body.demand_control_ventilation;
+        var percentexteriorglass = request.body.window_to_wall_ratio;
+        var windowglasstype = request.body.window_glass_type;
+        var walltype = request.body.exterior_wall_type; 
+        var rooftype = request.body.roof_type;
         
         //var stringInfo = JSON.stringify(request.body.info);
         //var stringData = JSON.stringify(request.body.data);
@@ -547,7 +549,335 @@ writeStream.write(row218);
     
     
     getSubstantialResults:  function(request, response) {
+        var buildingname = request.body.building_name;
+        var buildingclimate = request.body.weather_epw_location;
+        var buildingstate = "";
+        switch (buildingclimate)
+        {
+        case "ALBUQUERQUE INTL ARPT [ISIS]":
+        buildingstate="Minnesota";
+        break;
+        case "BALTIMORE BLT-WASHNGTN INT'L":
+        buildingstate="Maryland";
+        break;
+        case "BOISE AIR TERMINAL [UO]":
+        buildingstate="Idaho";
+        break;
+        case "BURLINGTON INTERNATIONAL AP":
+        buildingstate="New Hampshire";
+        break;
+        case "CHICAGO OHARE INTL AP":
+        buildingstate="Illinois";
+        break;
+        case "DULUTH INTERNATIONAL ARPT":
+        buildingstate="Minnesota";
+        break;
+        case "EL PASO INTERNATIONAL AP [UT]":
+        buildingstate="Texas";
+        break;
+        case "FAIRBANKS INTL ARPT":
+        buildingstate="Alaska";
+        break;
+        case "HELENA REGIONAL AIRPORT":
+        buildingstate="Montana";
+        break;
+        case "HOUSTON BUSH INTERCONTINENTAL": 
+        buildingstate="Texas";
+        break;
+        case "MEMPHIS INTERNATIONAL AP":
+        buildingstate="Tennessee";
+        break;
+        case "MIAMI INTL AP":
+        buildingstate="Florida";
+        break;
+        case "PHOENIX SKY HARBOR INTL AP":
+        buildingstate="Arizona";
+        break;
+        case "PHILADELPHIA INTERNATIONAL AP":
+        buildingstate="Pennsylvania";
+        break;
+        case "":
+        buildingstate="";
+        break;
+        case "SALEM MCNARY FIELD":
+        buildingstate="Massachusetts";
+        break;
+        case "SAN FRANCISCO INTL AP":
+        buildingstate="California";
+        break;        
+        }
+
+        //var buildingstate = request.body.info.building_state;
+        var grossfloorarea = request.body.gross_floor_area;
+        var numberoffloors = request.body.number_of_floors;
+        var shape = request.body.footprint_shape;
+        var totalbuildingheight = request.body.building_height;
+        var buildingfunction = request.body.activity_type;
+        var buildingactivitytype = request.body.activity_type_specific;
+        var numberofemployeeduringmainshift = request.body.number_of_employees_during_main_shift;
+        var totalweeklyoperatinghours = request.body.average_weekly_operating_hours;
+        var openduringweek1 = request.body.open_during_week;
+        var openduringweek = "No";
+        if(openduringweek1 == "on") {openduringweek = "Yes";}
+        var openonweekend1 = request.body.open_on_weekend;
+        var openonweekend = "No";
+        if(openonweekend1=="on") {openonweekend = "Yes";}
+        var weekdayopen = request.body.weekly_occupancy_hours_day_start;
+        var weekdayclose = request.body.weekly_occupancy_hours_day_end;
+        var satopen = request.body.saturday_occupancy_hours_day_start;
+        var satclose = request.body.saturday_occupancy_hours_day_end;
+        var sunopen = request.body.sunday_occupancy_hours_day_start;
+        var sunclose = request.body.sunday_occupancy_hours_day_end;
+        var primaryhvactype = request.body.primary_hvac_type; 
+        var airsideeconomizer1 = request.body.airside_economizer;
+        var airsideeconomizer = "No";
+        if(airsideeconomizer1 == "on") airsideeconomizer = "Yes";
+        var airsideenergyrecovery1 = request.body.airside_energy_recovery;
+        var airsideenergyrecovery = "No";
+        if(airsideenergyrecovery1 == "on") airsideenergyrecovery = "Yes"; 
+        var demandcontroltype1 = request.body.demand_control_ventilation;
+        var demandcontroltype = "No";
+        if(demandcontroltype1 == "on") demandcontroltype = "Yes";
+        var percentexteriorglass = request.body.window_to_wall_ratio;
+        var windowglasstype = request.body.window_glass_type;
+        var walltype = request.body.exterior_wall_type; 
+        var rooftype = request.body.roof_type;
+        
+        
         var xlsx = require('node-xlsx');
+        var fs = require('fs');
+        var buffer = xlsx.build({worksheets: [
+        {"name":"Sheet1", "data":[
+        ["Input description", "Input"],
+        ["Project name", buildingname],
+        ["Settings","Show"],
+        ["Conduction modeling","Radiant Time Series (Default)"],
+        ["Zoning","Single-zone (Default)"],
+        ["Economic Analysis","Run (Default)"],
+        ["Occupancy Schedule","Unspecified"],
+        ["Lighting Schedule","Unspecified"],
+        ["HVAC Schedule","Unspecified"],
+        ["Metered Data","User Defined"],
+        ["Package Optimization settings","Do Not Run"],
+        ["Calibration settings","Do Not Run"],
+        ["ECM Selection and Configuration",""],
+        ["Location",""],
+        ["Country",""],
+        ["State",buildingstate],
+        ["City",""],
+        ["Climate",buildingclimate],
+        ["Climate file name",""],
+        ["HDD",""],
+        ["CDD",""],
+        ["No of buildings of this type",""],
+        ["Census region",""],
+        ["Census division",""],
+        ["Climate zone (30-year average)",""],
+        ["Shape/Size",""],
+        ["Square Footage",grossfloorarea],
+        ["Number of floors",numberoffloors],
+        ["Building shape",shape],
+        ["Total Building Height (ft)",totalbuildingheight],
+        ["Perimeter (ft)",""],
+        ["Usage",""],
+        ["Principal building activity",buildingfunction],
+        ["More specific building activity",buildingactivitytype],
+        ["Number of employees during main shift",numberofemployeeduringmainshift],
+        ["Operating Schedule (Opening and closing times)",""],
+        ["Operating Schedule Data Source","User Defined (Simple)"],
+        ["Open 24 hours a day","No"],
+        ["Total weekly operating hours",totalweeklyoperatinghours],
+        ["Open during week",openduringweek],
+        ["Open on weekend",openonweekend],
+        ["Weekday, Open",{"value": weekdayopen, "formatCode": "General"}],
+        ["Weekday, Close",{"value": weekdayclose, "formatCode": "General"}],
+        ["Sat, Open",{"value": satopen, "formatCode": "General"}],
+        ["Sat, Close",{"value":satclose, "formatCode": "General"}],
+        ["Sun, Open",{"value": sunopen, "formatCode": "General"}],
+        ["Sun, Close",{"value": sunclose, "formatCode": "General"}],
+        ["End Use Type",""],
+        ["Electricity used for main heating",""],
+        ["Natural gas used for main heating",""],
+        ["Fuel oil used for main heating",""],
+        ["Propane used for main heating",""],
+        ["District steam used for main heating",""],
+        ["District hot water used for main heating",""],
+        ["Electricity used for cooling",""],
+        ["Natural gas used for cooling",""],
+        ["Fuel oil used for cooling",""],
+        ["Propane used for cooling",""],
+        ["District steam used for cooling",""],
+        ["District hot water used for cooling",""],
+        ["Electricity used for water heating",""],
+        ["Natural gas used for water heating",""],
+        ["Fuel oil used for water heating",""],
+        ["Propane used for water heating",""],
+        ["District steam used for water heating",""],
+        ["District hot water used for water heating",""],
+        ["Source energy conversion for electricity specification","Unspecified"],
+        ["Source energy conversion factor for electricity",""],
+        ["Type of source energy used for electricity generation","State representative"],
+        ["Source energy conversion factor for district heat",""],
+        ["Source energy conversion factor for district chilled water",""],
+        ["HVAC Equipment",""],
+        ["Primary HVAC System Type",primaryhvactype],
+        ["Airside Economizer",airsideeconomizer],
+        ["Airside Energy Recovery",airsideenergyrecovery],
+        ["Ventilation Scheduled with Occupancy (MaxCFM / MinCFM)",""],
+        ["Max OA CFM - CFM while occupied",""],
+        ["OA damper control outside of economizer operation for VAV system",""],
+        ["OA damper position (%)",""],
+        ["Demand Control Ventilation",demandcontroltype],
+        ["Natural Ventilation",""],
+        ["Natural Ventilation Precooling",""],
+        ["Maximum Supply Air Flow (CFM)",""],
+        ["Minimum VAV damper position (%)",""],
+        ["Fan power input description","Specified by size"],
+        ["Supply Fan Total Rated Power (kW)",""],
+        ["Return Fan Total Rated Power (kW)",""],
+        ["Total Zone Fan Rated Power (kW)",""],
+        ["Supply Fan Specific Power (kW/(m3/s))",""],
+        ["Return Fan Specific Power (kW/(m3/s))",""],
+        ["Zone Fan Specific Power (kW/(m3/s))",""],
+        ["DOAS Fan Specific Power (kW/(m3/s))",""],
+        ["Fan coil cycling",""],
+        ["Static Pressure Reset",""],
+        ["Fan With VFD",""],
+        ["Dual Duct System Operation",""],
+        ["Humidity Control For Dual Duct Bypass Mode",""],
+        ["Hot Water Pump Power (kW)",""],
+        ["Hot Water Loop Pump - Variable Flow",""],
+        ["Hot Water Loop Pump - VFD",""],
+        ["Chilled Water Pump Power (kW)",""],
+        ["Chilled Water Loop Pump - Variable Flow",""],
+        ["Chilled Water Loop Pump - VFD",""],
+        ["Condenser Pump Power (kW)",""],
+        ["Condenser Water Loop Pump - Variable Flow",""],
+        ["Condenser Water Loop Pump - VFD",""],
+        ["Condenser cooling media",""],
+        ["Aircooled Condenser/ Cooling Tower Rated Capacity (kBTU/h)",""],
+        ["Aircooled Condenser/Cooling Tower Power Consumption (kW)",""],
+        ["Efficiency of Hot Water System",""],
+        ["COP of Refrigeration System",""],
+        ["COP of Primary Cooling",""],
+        ["Evaporative Indirect Cooling",""],
+        ["Direct Evaporative Cooling    ",""],
+        ["Dessicant Dehumidification With SWH",""],
+        ["Waterside Economizer",""],
+        ["Absorption Chiller With SWH",""],
+        ["Night Ventilation Precooling",""],
+        ["Efficiency/COP of Primary Heating",""],
+        ["Solar Heating",""],
+        ["HVAC Nominal Temperature Conditions",""],
+        ["Design Heating Supply Temperature (Degree F)",""],
+        ["Design Cooling Supply Temperature (Degree F)",""],
+        ["For Dual Duct Systems: Temperature Of The Hot Deck (Degree F)",""],
+        ["Design Preheat Temperature (Degree F)",""],
+        ["Cooling Coil Design Leaving Temperature (Degree F)",""],
+        ["Supply Air Temperature Reset - Function Of Outside Temp",""],
+        ["Supply Air Temperature Reset - Optimal Control",""],
+                
+        ["Temperature Set Points    ",""],
+        ["Cooling set up implementation",""],
+        ["Heating set back implementation",""],
+        ["Cooling Set Point (Degree F)",""],
+        ["Cooling Set Back (Degree F)",""],
+        ["Heating Set Point (Degree F)",""],
+        ["Heating Set Back (Degree F)",""],
+        ["Occupant Load",""],
+        ["Occupant load description","Unspecified"],
+        ["Number of total occupants (excluding employees)",""],
+        ["Religious worship seating capacity",""],
+        ["Assembly seating capacity",""],
+        ["Number of classroom seating capacity",""],
+        ["Food service seating capacity",""],
+        ["Licensed bed capacity",""],
+        ["Plug and Process Load",""],
+        ["Plug and process load description","Unspecified"],
+        ["Number of computers",""],
+        ["Flat screen monitors",""],
+        ["Number of servers",""],
+        ["Number of cash registers",""],
+        ["Number of printers",""],
+        ["Type of printers","Unspecified"],
+        ["Number of photocopiers",""],
+        ["Number of residential refrigerators",""],
+        ["Number of elevators",""],
+        ["Number of vending machines",""],
+        ["Plug Load Power Density (Watts/ft^2)",""],
+        ["Lighting Load",""],
+        ["Interior Lighting Power Density (Watts/ft^2)",""],
+        ["Occupancy Sensors",""],
+        ["Daylight-based Dimming",""],
+        ["Added Daylight",""],
+        ["Light Shelves",""],
+        ["Refrigeration Load",""],
+        ["Refrigeration in conditioned space",""],
+        ["Refrigeration Power Density (Watts/ft^2)",""],
+        ["Hot Water Usage",""],
+        ["Hot water usage rate data source","Unspecified"],
+        ["Hot water usage rate (l / (Person Day))",""],
+        ["Infiltration Load",""],
+        ["Leakage Rate","Unspecified"],
+        ["User defined leakage rate (CFM/SqFt of outside wall)",""],
+        ["Fenestration and Conduction Load",""],
+        ["Percent exterior glass (With respect to wall area)",percentexteriorglass],
+        ["Angular Solar Dependency","No"],
+        ["Angular Solar Dependency Data Specification",""],
+        ["How much of the total window area is on the surface with azimuth 0 + Orientation shift (percentage of overall window area)",""],
+        ["How much of the total window area is on the surface with azimuth 90 + Orientation shift (percentage of overall window area)",""],
+        ["How much of the total window area is on the surface with azimuth 180 + Orientation shift (percentage of overall window area)",""],
+        ["How much of the total window area is on the surface with azimuth -90 + Orientation shift (percentage of overall window area)",""],
+        ["Length of the wall with surface azimuth 0 + Orientation shift (ft)",""],
+        ["Window percentage on the wall with with surface azimuth 0 + Orientation shift",""],
+        ["Length of the wall with surface azimuth 90 + Orientation shift (ft)",""],
+        ["Window percentage on the wall with with surface azimuth 90 + Orientation shift",""],
+        ["Length of the wall with surface azimuth 180 + Orientation shift (ft)",""],
+        ["Window percentage on the wall with with surface azimuth 180 + Orientation shift",""],
+        ["Length of the wall with surface azimuth -90 + Orientation shift (ft)",""],
+        ["Window percentage on the wall with with surface azimuth -90 + Orientation shift",""],
+        ["Orientation shift - If the building orientation is shifted (Positive clockwise)",""],
+        ["Window glass type",windowglasstype],
+        ["Window Visual Transmitivity (fraction)",""],
+        ["Window U value (Btu/(hr ft^2 F))",""],
+        ["Window Solar Heat Gain Coeff",""],
+        ["SHGC at 0 degree incident angle",""],
+        ["SHGC at 40 degree incident angle",""],
+        ["SHGC at 50 degree incident angle",""],
+        ["SHGC at 60 degree incident angle",""],
+        ["SHGC at 70 degree incident angle",""],
+        ["SHGC at 80 degree incident angle",""],
+        ["SHGC at 90 degree incident angle",""],
+        ["Hemispherical SHGC",""],
+        ["Tinted window glass",""],
+        ["Reflective window glass",""],
+        ["Wall and Roof Conduction",""],
+        ["Wall construction material",walltype],
+        ["Roof construction material",rooftype],
+        ["Carpeting",""],
+        ["Uwall (Btu/h-ft^2-F)",""],
+        ["Uroof (Btu/h-ft^2-F)",""],
+        ["Cool Roof",""],
+        ["Active External Shading",""],
+        ["Trees",""],
+        ["Freestanding building",""],
+        ["Ground Conduction",""],
+        ["Ground properties","Unspecified"],
+        ["Uground (Btu/h-ft^2-F)	",""],
+        ["Internal Thermal Mass Load	",""],
+        ["Ratio of internal wall perimeter/building perimeter",""]
+        
+        ]}
+         ]});
+        
+         fs.writeFile("../utrc/inputs/test.xlsx", buffer, function(err) {
+         if(err) {
+             console.log(err);
+         } else {
+         console.log("The file was saved!");
+         }
+         });
+         
 
         //var data1 = xlsx.parse('/var/lib/stickshift/51fe45ea500446605900003e/app-root/data/577413/utrc/Output_StageI.xlsx'); 
         var data1 = xlsx.parse('../utrc/Output_StageI.xlsx'); 

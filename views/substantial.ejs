@@ -35,6 +35,16 @@
                 printValue('obstructionSlider', 'obstructionRangeValue');
             }
         </script>
+        <script type="text/javascript">
+            function onoff(){
+            currentvalue = document.getElementById('onoff').value;
+            if(currentvalue == "Off"){
+            document.getElementById("onoff").value="On";
+            }else{
+            document.getElementById("onoff").value="Off";
+            }
+            }
+        </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
     
@@ -108,7 +118,7 @@
                 <div class="span9">
 
 
-                <form action="/substantial/analyze" method="post">
+                <form action="/substantialresults" method="post">
 
                     <section id="building">
                         <div id="box-unit">
@@ -118,12 +128,12 @@
                             <div class="row">
                                 <div class="span4">
                                     <h4>Building Name</h4>
-                                    <input type="text" class="span3" ng-model="buildingName" name="info[building_name]" 
+                                    <input type="text" class="span3" ng-model="buildingName" name="building_name" 
                                     />
                                     <br/>
                                     <h4>Climate</h4>
                                     <div class="input-append">
-                                        <select class="span3" name="info[building_climate]">
+                                        <select class="span3" name="weather_epw_location">
                                             <option value="ALBUQUERQUE INTL ARPT [ISIS]">Albuquerque, NM</option>
                                             <option value="BALTIMORE BLT-WASHNGTN INT'L">Baltimore, MD</option>
                                             <option value="BOISE AIR TERMINAL [UO]">Boise, ID</option>
@@ -150,7 +160,7 @@
                                 </div>
                                 <div class="span4">
                                 <h4>Function</h4>
-                                    <select class="span2" name="info[building_function]">
+                                    <select class="span2" name="activity_type">
                                         <option value="Education">Education</option>
                                         <option value="Enclosed mall">Enclosed mall</option>
                                         <option value="Food sale">Food sale</option>
@@ -173,7 +183,7 @@
                                         <option value="vacant">vacant</option>
                                     </select>
                                 <h4>More Specific Building Activity</h4>
-                                    <select class="span2" name="info[building_activity_type]">
+                                    <select class="span2" name="activity_type_specific">
                                         <option>Administrative/professional office</option>
                                         <option>Bank/other financial</option>
                                         <option>Clinic/other outpatient health</option>
@@ -241,16 +251,16 @@
                         <div class="span4">
                             <h4>Gross Floor Area</h4>
                             <div class="input-append">
-                                <input type="number" name="architecture[gross_floor_area]" min="0" step="0.1" />
+                                <input type="number" name="gross_floor_area" min="0" step="0.1" />
                                 <span class="add-on">m&#178;</span>
                             </div>
                             <h4>Number of Floors</h4>
-                            <input type="number" name="architecture[number_of_floors]"
+                            <input type="number" name="number_of_floors"
                             min="0" step="1" />
                             <h4>Window/Wall Ratio</h4>
                                         <ul class="inline">
                                             <li>
-                                                <input type="range" ng-model="winwall" name="architecture[percent_exterior_glass]" min="0"
+                                                <input type="range" ng-model="winwall" name="window_to_wall_ratio" min="0"
                                                 max="40" step="1" value=50/>
                                             </li>
                                             <li>
@@ -264,7 +274,7 @@
                         </div>
                         <div class="span4">
                             <h4>Shape</h4>
-                            <select name="architecture[shape]" ng-model="shapeimage">
+                            <select name="footprint_shape" ng-model="shapeimage">
                                 <option>C Shape</option>
                                 <option>H Shape</option>
                                 <option>L Shape</option>
@@ -274,7 +284,7 @@
                             </select>
                             <h4>Total Building Height</h4>
                                 <div class="input-append">
-                                <input type="number" name="architecture[total_building_height]" min="0" step="1" />
+                                <input type="number" name="building_height" min="0" step="1" />
                                 <span class="add-on">m</span>
                                 </div>             
                         </div>
@@ -294,14 +304,14 @@
                             <div class="row">
                                 <div class="span4">
                                     <h4>Walls</h4>
-                                    <select class="span2" name="materials[wall_type]">
+                                    <select class="span2" name="exterior_wall_type">
                                         <option>Brick</option>
                                         <option>Stone</option>
                                         <option>Stucco</option>
                                         <option>other</option>
                                     </select>
                                     <h4>Windows</h4>
-                                    <select class="span2 " name="materials[window_glass_type]">
+                                    <select class="span2 " name="window_glass_type">
                                         <option>Multi-layer Glass</option>
                                         <option>Single Layer Glass</option>
                                         <option>Combination</option>
@@ -311,7 +321,7 @@
                                 </div>
                                 <div class="span4">
                                     <h4>Roof</h4>
-                                    <select class="span2" name="materials[roof_type]">
+                                    <select class="span2" name="roof_type">
                                         <option>Brick</option>
                                         <option>Stone</option>
                                         <option>Stucco</option>
@@ -329,7 +339,7 @@
                                 </div>
                                 
                                 <h4>Number of Employees During Main Shift</h4>
-                                <input type="number" class="span2" name="occupancy[number_of_employee_during_main_shift]" min="0" step="1" />
+                                <input type="number" class="span2" name="number_of_employees_during_main_shift" min="0" step="1" />
                                 <span class="add-on"></span>
                                 
                             </div>
@@ -344,7 +354,7 @@
                             <div class="row">
                                 <div class="span4">
                                     <h4>Primary HVAC System Type</h4>
-                                    <select name="mechanical[primary_hvac_type]">
+                                    <select name="primary_hvac_type">
                                         <option>Direct evap cooler</option>
                                         <option>Direct evap cooler, unit heaters</option>
                                         <option>Direct chilled water fan coil</option>
@@ -368,12 +378,44 @@
                                         <option>Hot water baseboards</option>
                                         <option>Hot water baseboards, direct evap cooler</option>
                                         <option>Package VAV w/PFP boxes</option>
+                                        <option>Package VAV w/reheat</option>
+                                        <option>PSZ-A/C w/electric baseboards</option>
+                                        <option>PSZ-AC</option>
+                                        <option>PSZ-AC (no heat)</option>
+                                        <option>PSZ-AC w/district hot water</option>
+                                        <option>PSZ-HP</option>
+                                        <option>PTAC (no heat)</option>
+                                        <option>PTAC air source</option>
+                                        <option>PTAC w/district hot water</option>
+                                        <option>PTAC w/electric baseboards</option>
+                                        <option>PTAC with gas coil heat</option>
+                                        <option>PTHP air source</option>
+                                        <option>Radiantial heating and cooling</option>
+                                        <option>Residential A/C (no heat)</option>
+                                        <option>Residential A/C w/electric baseboards</option>
+                                        <option>Residential forced air</option>
+                                        <option>Residential forced air cooling, hot water baseboards</option>
+                                        <option>Residential forced air w/district hot water</option>
+                                        <option>Residential heat pump</option>
+                                        <option>Unit heaters</option>
+                                        <option>VAV cool with zone heat pump heating</option>
+                                        <option>VAV w/electric baseboards</option>
+                                        <option>VAV w/gas reheat</option>
+                                        <option>VAV w/PFP boxes</option>
+                                        <option>VAV w/Reheat</option>
+                                        <option>VAV w/zone unit heaters</option>
+                                        <option>Window A/C</option>
+                                        <option>Window A/C w/district hot water</option>
+                                        <option>Window A/C w/forced air furnace</option>
+                                        <option>Window A/C w/hot water baseboards</option>
+                                        <option>Window A/C, electric baseboards</option>
+                                        <option>Window A/C, unit heater</option>
                                     </select>
                                     
                                     <h4>Demand Control Ventilation</h4>
                                 
                                     Used <div class="make-switch">
-                                    <input type="checkbox" name="mechanical[demand_control_ventilation]">
+                                    <input type="checkbox" checked name="demand_control_ventilation">
                                     </div>
                                 
                                 
@@ -381,12 +423,12 @@
                                 <div class="span4">
                                     <h4>Air Side Economizer</h4>
                                     Present <div class="make-switch">
-                                    <input type="checkbox" name="mechanical[airside_economizer]">
+                                    <input type="checkbox" name="airside_economizer">
                                     </div>
                                     
                                     <h4>Air Side Energy Recovery</h4>
                                     Present <div class="make-switch">
-                                    <input type="checkbox" name="mechanical[airside_energy_recovery]">
+                                    <input type="checkbox" name="airside_energy_recovery">
                                     </div>
                                 </div>
                             </div>
@@ -404,49 +446,49 @@
                         
                             <h4>Total Weekly Operating Hours</h4>
                             <div class="input-append">
-                            <input class="span2" type="number" name="occupancy[total_weekly_operating_hours]"><span class="add-on">hrs</span>
+                            <input class="span2" type="number" name="average_weekly_operating_hours"><span class="add-on">hrs</span>
                             </div>
                             
                             <h4>Open During Week</h4>
                             <div class="make-switch">
-                            <input type="checkbox" name="occupancy[open_during_week]">
+                            <input name="open_during_week" type="checkbox" checked />
                             </div>
                             
                             <h4>Open On Weekend</h4>
                             <div class="make-switch">
-                            <input type="checkbox" name="occupancy[open_on_weekend]">
+                            <input name="open_on_weekend" type="checkbox" />
                             </div>
                             
                             <h4>Weekday Occupancy Hours</h4>
                             <h5>Day Start</h5>
-                            <select name="occupancy[weekday_open]">
-                            <option>12AM</option>
-                            <option>1AM</option>
-                            <option>2AM</option>
-                            <option>3AM</option>
-                            <option>4AM</option>
-                            <option>5AM</option>
-                            <option>6AM</option>
-                            <option>7AM</option>
-                            <option>8AM</option>
-                            <option>9AM</option>
-                            <option>10AM</option>
-                            <option>11AM</option>
-                            <option>12PM</option>
-                            <option>1PM</option>
-                            <option>2PM</option>
-                            <option>3PM</option>
-                            <option>4PM</option>
-                            <option>5PM</option>
-                            <option>6PM</option>
-                            <option>7PM</option>
-                            <option>8PM</option>
-                            <option>9PM</option>
-                            <option>10PM</option>
-                            <option>11PM</option>
+                            <select name="weekday_occupancy_hours_day_start">
+                            <option value="12AM">12AM</option>
+                            <option value="1AM">1AM</option>
+                            <option value="2AM">2AM</option>
+                            <option value="3AM">3AM</option>
+                            <option value="4AM">4AM</option>
+                            <option value="5AM">5AM</option>
+                            <option value="6AM">6AM</option>
+                            <option value="7AM">7AM</option>
+                            <option value="8AM">8AM</option>
+                            <option value="9AM">9AM</option>
+                            <option value="10AM">10AM</option>
+                            <option value="11AM">11AM</option>
+                            <option value="12PM">12PM</option>
+                            <option value="1PM">1PM</option>
+                            <option value="2PM">2PM</option>
+                            <option value="3PM">3PM</option>
+                            <option value="4PM">4PM</option>
+                            <option value="5PM">5PM</option>
+                            <option value="6PM">6PM</option>
+                            <option value="7PM">7PM</option>
+                            <option value="8PM">8PM</option>
+                            <option value="9PM">9PM</option>
+                            <option value="10PM">10PM</option>
+                            <option value="11PM">11PM</option>
                             <select/>
                             <h5>Day End</h5>
-                            <select name="occupancy[weekday_close]">
+                            <select name="weekday_occupancy_hours_day_end">
                             <option>12AM</option>
                             <option>1AM</option>
                             <option>2AM</option>
@@ -478,7 +520,7 @@
                                 
                                 <h4>Saturday Occupancy Hours</h4>
                                 <h5>Day Start</h5>
-                                <select name="occupancy[sat_open]">
+                                <select name="saturday_occupancy_hours_day_start">
                                 <option>12AM</option>
                                 <option>1AM</option>
                                 <option>2AM</option>
@@ -505,7 +547,7 @@
                                 <option>11PM</option>
                                 </select>
                                 <h5>Day End</h5>
-                                <select name="occupancy[sat_close]">
+                                <select name="saturday_occupancy_hours_day_end">
                                 <option>12AM</option>
                                 <option>1AM</option>
                                 <option>2AM</option>
@@ -533,7 +575,7 @@
                                 </select>
                                 <h4>Sunday Occupancy Hours</h4>
                                 <h5>Day Start</h5>
-                                <select name="occupancy[sun_open]">
+                                <select name="sunday_occupancy_hours_day_start">
                                 <option>12AM</option>
                                 <option>1AM</option>
                                 <option>2AM</option>
@@ -560,7 +602,7 @@
                                 <option>11PM</option>
                                 </select>
                                 <h5>Day End</h5>
-                                <select name="occupancy[sun_close]">
+                                <select name="sunday_occupancy_hours_day_end">
                                 <option>12AM</option>
                                 <option>1AM</option>
                                 <option>2AM</option>

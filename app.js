@@ -43,7 +43,8 @@ app.get('/substantialresults', substantial.getSubstantialResults);
 
 //Posts
 app.post('/partialanalysis', partial.partial);
-app.post('/substantial/analyze', substantial.getSubstantialInput);
+//app.post('/substantialresults', substantial.getSubstantialInput);
+app.post('/substantialresults', substantial.getSubstantialResults);
 
 app.post('/imtanalysis', lite.runIMT);
 app.post('/ibmanalysis', lite.ibm);

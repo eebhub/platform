@@ -1,5 +1,6 @@
 var fs = require("fs");
 var dainput = require("../lib/mit.js");
+var newShell = require("../lib/newShell-mit.js");
 var timestp = require("../lib/timestamp.js");
 
 module.exports = {
@@ -37,7 +38,7 @@ module.exports = {
         var timestamp = timestp.createTimestamp();
         var BuildingInputName =  building_name+timestamp;
         
-        fs.mkdir('../mit/' + BuildingInputName, function(error) {
+        fs.mkdirSync('../mit/' + BuildingInputName, function(error) {
             if (error) throw error;
         });
 
@@ -45,6 +46,8 @@ module.exports = {
                         exterior_shading_orientation, room_width, room_depth, room_height,
                         window_glass_type, window_to_wall_ratio, ventilation_system, wall_insulation_r_value, lighting_power_density,
                         equipment_power_density, weekday_occupancy_start, weekday_occupancy_end, overhang_depth, thermal_mass, people_density, window_glass_coating);
+        
+        newShell.newShellMIT(BuildingInputName);
 
         response.redirect('http://developer.eebhub.org/mit/'+BuildingInputName+'/');
 

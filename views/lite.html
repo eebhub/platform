@@ -17,6 +17,19 @@
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script>
+            function submitIMT() {
+                var form = document.forms.liteForm;
+                form.action = "/imtanalysis";
+                form.submit();
+            }
+            function submitIBM() {
+                var form = document.forms.liteForm;
+                form.action = "/ibmanalysis";
+                form.submit();
+            }
+            
+        </script>
     </head>
     
     <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -71,7 +84,7 @@
                     </ul>
                 </div>
                 <div class="span9">
-                    <form action="/imtanalysis" method="post">
+                    <form action="" method="post" name="liteForm">
                         <section id="building">
                             <div class="box-unit">
                                 <div class="page-header">
@@ -422,8 +435,8 @@
                             </div>
                         </section>
                         <div class="box-unit">
-                            <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"
-                            />
+                        <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
+                            
                             <button type="button" class="btn btn-large btn-info">
                                 <i class="icon-plus"></i>Building 101 Data</button>
                             <a class="btn btn-large btn-info" href="literesults"><i class="icon-signal"></i> Example Outputs</a>
@@ -435,8 +448,7 @@
                     </form>
 
                         <div class="box-unit">
-                            <a href="http://developer.eebhub.org/ibm/inputs/" class="btn btn-large btn-primary"
-                            />SIMULATE</a>
+                            <button onclick="submitIBM()" class="btn btn-large btn-primary">SIMULATE</button>
                             <button type="button" class="btn btn-large btn-info">
                                 <i class="icon-plus"></i>Building 101 Data</button>
                             <a class="btn btn-large btn-info" href="http://eebhub.minus.com/lbeVXp00yjiSNe/"><i class="icon-signal"></i> Example Outputs</a>

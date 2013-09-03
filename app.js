@@ -10,7 +10,7 @@ var express = require('express')
   , lite = require("./routes/lite.js")
   , partial = require("./routes/partial.js")
   , substantial=require("./routes/substantial.js")
-  , shjs = require('shelljs/global')
+  , shjs = require('shelljs/global');
 
 
 var app = express();

@@ -1454,11 +1454,4 @@ console.log(arr);
     
 };
 
-/*var fileName = buildingName + '.ejs' ;
-var route = "./views/";
-        var inputs = buildingName + '\r\n' + buildingFunction;
-        var form = request.body;
-        fs.writeFileSync(route + fileName , inputs);
-        fs.writeFileSync(buildingName + '.txt', form );
-        response.render(fileName);*/
         

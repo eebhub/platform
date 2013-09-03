@@ -9,13 +9,7 @@
         <link href="css/stylesheet.css" rel="stylesheet">
         <link href="css/partial.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-        <style type="text/css">
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-                background-color: rgb(229, 229, 229);
-            }
-        </style>
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script>
             function submitIMT() {
@@ -194,26 +188,31 @@
                                 </div>
                             </div>
                         </section>
-                        <section id="utilities">
+                         <section id="utility">
                             <div class="box-unit">
                                 <div class="page-header">
-                                    <h2>Utilities</h2>
+                                    <h2>Utility Data</h2>
                                 </div>
                                 <table class="table table-hover" id="utltable">
                                     <thead>
-                                        <th class="span3">Billing Period Start Date</th>
-                                        <th class="span3">Electricity (kWh)</th>
-                                        <th class="span3">Gas (CCF)</th>
+                                        <th class="span2">Electric Billing Period Start Date</th>
+                                        <th class="span2">Electricity (kWh)</th>
+                                        <th class="span2">Gas Billing Period Start Date</th>
+                                        <th class="span2">Gas (CCF)</th>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate"
-                                                 required />
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
                                                 name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                >
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
@@ -222,165 +221,227 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" id="appendedInput" type="number" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate" required>
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
                                                 name="utility_electric" />
                                             </td>
                                             <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                >
+                                            </td>
+                                            <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas">
+                                                name="utility_gas" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate" required>
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
                                                 name="utility_electric" />
                                             </td>
                                             <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                >
+                                            </td>
+                                            <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas">
+                                                name="utility_gas" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate" required>
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
                                                 name="utility_electric" />
                                             </td>
                                             <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                >
+                                            </td>
+                                            <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas">
+                                                name="utility_gas" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate" required>
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
                                                 name="utility_electric" />
                                             </td>
                                             <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                >
+                                            </td>
+                                            <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas">
+                                                name="utility_gas" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate" required>
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
                                                 name="utility_electric" />
                                             </td>
                                             <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                >
+                                            </td>
+                                            <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas">
+                                                name="utility_gas" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate" required>
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
                                                 name="utility_electric" />
                                             </td>
                                             <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                >
+                                            </td>
+                                            <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas">
+                                                name="utility_gas" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate" required>
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
                                                 name="utility_electric" />
                                             </td>
                                             <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                >
+                                            </td>
+                                            <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas">
+                                                name="utility_gas" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate" required>
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
                                                 name="utility_electric" />
                                             </td>
                                             <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                >
+                                            </td>
+                                            <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas">
+                                                name="utility_gas" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate" required>
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
                                                 name="utility_electric" />
                                             </td>
                                             <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                >
+                                            </td>
+                                            <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas">
+                                                name="utility_gas" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate" required>
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
                                                 name="utility_electric" />
                                             </td>
                                             <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                >
+                                            </td>
+                                            <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas">
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                >
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
                                             </td>
                                         </tr>
                                         <thead>
-                                            <th class="span3">Billing Period End Date</th>
-                                            <th class="span3">Electricity (kWh)</th>
-                                            <th class="span3">Gas (CCF)</th>
-                                        </thead>
-                                        <tr>
+                                        <th class="span2">Electric Billing Period End Date</th>
+                                        <th class="span2">Electricity (kWh)</th>
+                                        <th class="span2">Gas Billing Period End Date</th>
+                                        <th class="span2">Gas (CCF)</th>
+                                    </thead>
+                                    <tr>
                                             <td>
-                                                <input type="date" class="span2" placeholder="mm/dd/yyyy" name="utility_startdate" required>
+                                                <input type="date" class="span2"  name="electric_utility_startdate"
+                                                required>
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" disabled/>
+                                                name="utility_electric" disabled>
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2"  name="gas_utility_startdate"
+                                                 >
                                             </td>
                                             <td>
                                                 <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
                                                 name="utility_gas" disabled>
                                             </td>
                                         </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>

@@ -963,7 +963,7 @@ writeStream.write(row218);
         var propanewaterheating1 = request.body.propane_used_for_water_heating;
         var propanewaterheating = "No";
         if(propanewaterheating1=="on") propanewaterheating = "Yes";
-        var dissteamwaterheating1 = request.body.district_steam_water_heating;
+        var dissteamwaterheating1 = request.body.district_steam_used_for_water_heating;
         var dissteamwaterheating = "No";
         if(dissteamwaterheating1=="on") dissteamwaterheating = "Yes";
         var dishotwaterwaterheating1 = request.body.district_hot_water_used_for_water_heating;

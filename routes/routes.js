@@ -2,24 +2,24 @@ var shell = require('shelljs');
 
 module.exports = {
     getHome: function(request, response){
-        response.render('home');    
+        response.sendfile('./views/home.html');    
     },
     getLite: function(request, response){
-        response.render('lite');    
+        response.sendfile('./views/lite.html');    
     },
     getLiteResults: function(request, response){
-        response.render('literesults');    
+        response.sendfile('./views/literesults.html');    
     },
     getPartial: function(request, response){
-        response.render('partial');    
+        response.sendfile('./views/partial.html');    
     },
     
     getSubstantial: function(request, response) {
-        response.render('substantial');
+        response.sendfile('./views/substantial.html');
     },
     
     getComprehensive: function(request, response) {
-        response.render('comprehensive');
+        response.sendfile('./views/comprehensive.html');
     },
        
     

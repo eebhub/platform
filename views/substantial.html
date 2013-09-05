@@ -252,7 +252,7 @@
                             <h4>Gross Floor Area</h4>
                             <div class="input-append">
                                 <input type="number" name="gross_floor_area" min="0" step="0.1" />
-                                <span class="add-on">m&#178;</span>
+                                <span class="add-on">ft&#178;</span>
                             </div>
                             <h4>Number of Floors</h4>
                             <input type="number" name="number_of_floors"
@@ -275,18 +275,29 @@
                         <div class="span4">
                             <h4>Shape</h4>
                             <select name="footprint_shape" ng-model="shapeimage">
-                                <option>C Shape</option>
-                                <option>H Shape</option>
-                                <option>L Shape</option>
-                                <option>Rectangle</option>
-                                <option>T Shaped</option>
-                                <option>U Shaped</option>
+                                <option>E Shaped</option>
+                                <option>H Shaped</option>
+                                <option>L Shaped</option>
+                                <option>Narrow rectangle</option>
+                                <option>Other Shape</option>
+                                <option>plug sign or cross shaped</option>
+                                <option>Rectangle/square with courtyard</option>
+                                <option>Square</option>
+                                <option>T shaped</option>
+                                <option>U shaped</option>
+                                <option>Unspecified</option>
+                                <option>Wide rectangle</option>
                             </select>
                             <h4>Total Building Height</h4>
                                 <div class="input-append">
                                 <input type="number" name="building_height" min="0" step="1" />
-                                <span class="add-on">m</span>
-                                </div>             
+                                <span class="add-on">ft</span>
+                                </div>   
+                            <h4>Perimeter</h4>
+                                <div class="input-append">
+                                <input type="number" name="perimeter" min="0" step="1" />
+                                <span class="add-on">ft</span>
+                                </div>      
                         </div>
                     </div>
                 </div>
@@ -412,24 +423,165 @@
                                         <option>Window A/C, unit heater</option>
                                     </select>
                                     
-                                    <h4>Demand Control Ventilation</h4>
+                                    <h4>Main Heating</h4>
+
+                                    <input type="checkbox" checked name="electricity_used_for_main_heating"> Electricity
+
+                                    <input type="checkbox" name="natural_gas_used_for_main_heating"> Natural Gas</br>
+                                    
+                                    <input type="checkbox" name="fuel_oil_used_for_main_heating"> Fuel Oil
+                                    
+                                    <input type="checkbox" name="propane_used_for_main_heating"> Propane</br>
+                                    
+                                    <input type="checkbox" name="district_steam_used_for_main_heating"> District Steam
+                                    
+                                    <input type="checkbox" name="district_hot_water_used_for_main_heating"> District Hot Water</br>
+                                    <!--<h4>Electricity used for main heating</h4>-->
                                 
-                                    Used <div class="make-switch">
-                                    <input type="checkbox" checked name="demand_control_ventilation">
-                                    </div>
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="electricity_used_for_main_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>Natural gas used for main heating</h4>-->
                                 
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="natural_gas_used_for_main_heating">-->
+                                    <!--</div>-->
+                                
+                                    <!--<h4>Fuel oil used for main heating</h4>-->
+                                
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="fuel_oil_used_for_main_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>Propane used for main heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="propane_used_for_main_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>District steam used for main heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_steam_used_for_main_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>District hot water used for main heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_hot_water_used_for_main_heating">-->
+                                    <!--</div>-->
+                                    
+                                    
+                                    <h4>Cooling</h4>
+                                    
+                                    <input type="checkbox" checked name="electricity_used_for_cooling"> Electricity
+                                    
+                                    <input type="checkbox" name="natural_gas_used_for_cooling"> Natural Gas</br>
+                                    
+                                    <input type="checkbox" name="fuel_oil_used_for_cooling"> Fuel Oil
+                                    
+                                    <input type="checkbox" name="propane_used_for_cooling"> Propane</br>
+                                    
+                                    <input type="checkbox" name="district_steam_used_for_cooling"> District Steam
+                                    
+                                    <input type="checkbox" name="district_hot_water_used_for_cooling"> District Hot Water</br>
+                                    
+                                    <input type="checkbox" name="district_chilled_water_used_for_cooling"> District Chilled Water</br>
+                                    
+                                    
+                                    <!--<h4>Electricity used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="electricity_used_for_cooling">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>Natural gas used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="natural_gas_used_for_cooling">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>Fuel oil used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="fuel_oil_used_for_cooling">-->
+                                    <!--</div>-->
                                 
                                 </div>
                                 <div class="span4">
-                                    <h4>Air Side Economizer</h4>
-                                    Present <div class="make-switch">
-                                    <input type="checkbox" name="airside_economizer">
-                                    </div>
+                                    <!--<h4>Propane used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="propane_used_for_cooling">-->
+                                    <!--</div>-->
                                     
-                                    <h4>Air Side Energy Recovery</h4>
-                                    Present <div class="make-switch">
-                                    <input type="checkbox" name="airside_energy_recovery">
-                                    </div>
+                                    <!--<h4>District steam used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_steam_used_for_cooling">-->
+                                    <!--</div>-->
+                        
+                                    <!--<h4>District hot water used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_hot_water_used_for_cooling">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>District chilled water used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_chilled_water_used_for_cooling">-->
+                                    <!--</div>-->
+                                    </br>
+                                    </br>
+                                    </br>
+                                    </br>
+                                    <h4>Water Heating</h4>
+                                    
+                                    <input type="checkbox" name="electricity_used_for_water_heating"> Electricity
+                                    <input type="checkbox" name="natural_gas_used_for_water_heating"> Natural Gas</br>
+                                    <input type="checkbox" name="fuel_oil_used_for_water_heating"> Fuel Oil
+                                    <input type="checkbox" name="propane_used_for_water_heating"> Propane</br>
+                                    <input type="checkbox" name="district_steam_used_for_water_heating"> District Steam
+                                    <input type="checkbox" name="district_hot_water_used_for_water_heating"> District Hot Water</br>
+                                    
+                                    <!--<h4>Electricity used for water heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="electricity_used_for_water_heating">-->
+                                    <!--</div>-->
+                        
+                                    <!--<h4>Natural gas used for water heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="natural_gas_used_for_water_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>Fuel oil used for water heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="fuel_water_used_for_water_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>Propane used for water heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="propane_used_for_water_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>District steam used for water heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_steam_used_for_water_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>District hot water used for water heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_hot_water_used_for_water_heating">-->
+                                    <!--</div>-->
+                                    
                                 </div>
                             </div>
                         </div>
@@ -443,7 +595,12 @@
                             </div>
                             <div class="row">
                             <div class="span4">
-                        
+                            
+                            <h4>Open 24 hours a day</h4>
+                            <div class="make-switch">
+                            <input name="open_24_hours_a_day" type="checkbox"/>
+                            </div>
+                                                        
                             <h4>Total Weekly Operating Hours</h4>
                             <div class="input-append">
                             <input class="span2" type="number" name="average_weekly_operating_hours"><span class="add-on">hrs</span>
@@ -643,7 +800,10 @@
                     <h2 class="text-right"><small>powered by UTRC Energy Audit Tool Engine</small></h2>
                 </div>
         
-        
+                <div class="box-unit">
+                <a class="btn btn-large btn-info" href="http://developer.eebhub.org/upenn/"><i class="icon-star-empty"></i> Parametric Analysis Toolkit for System Control</a>
+                <h2 class="text-right"><small>powered by Parametric Analysis Toolkit (U Penn)</small></h2>
+                </div>
         
         
         </form>                

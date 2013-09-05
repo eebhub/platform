@@ -35,6 +35,8 @@ if (form.contains(form.building_height)) {form.building_height.value = 15.54;} /
 if (form.contains(form.building_orientation)) {form.building_orientation.value = 275;} //clockwise from North, degrees
 if (form.contains(form.window_to_wall_ratio)) {form.window_to_wall_ratio.value = 15;}
 if (form.contains(form.number_of_floors)) {form.number_of_floors.value = 4;} //conditioned space, includes basement
+if (form.contains(form.perimeter)) {form.perimeter.value = 800;} 
+
 
 //ROOM
 if (form.contains(form.exterior_shading_orientation)) {form.exterior_shading_orientation.value = "East";}
@@ -63,6 +65,7 @@ if (form.contains(form.roof_insulation_location)) {form.roof_insulation_location
 //PEOPLE
 if (form.contains(form.people_density)) {form.people_density.value = 0.025;}
 if (form.contains(form.number_of_occupants)) {form.number_of_occupants.value = 94;}
+if (form.contains(form.number_of_employees_during_main_shift)) {form.number_of_employees_during_main_shift.value = 55;}
 
 //LIGHTING
 if (form.contains(form.illuminance)) {form.illuminance.value = 500;}
@@ -77,12 +80,15 @@ if (form.contains(form.wall_reflectance)) {form.wall_reflectance.value = 0.6;}
 //MECHANICAL
 if (form.contains(form.equipment_power_density)) {form.equipment_power_density.value = 15.00;} //1W/sqft
 if (form.contains(form.ventilation_system)) {form.ventilation_system.value = "natural";}
-if (form.contains(form.primary_hvac_type)) {form.primary_hvac_type.value = 500;}
+if (form.contains(form.primary_hvac_type)) {form.primary_hvac_type.value = "VAV w/Reheat";}
 if (form.contains(form.demand_control_ventilation)) {form.demand_control_ventilation.value = "no";}
 if (form.contains(form.airside_economizer)) {form.airside_economizer.value = "no";}
 if (form.contains(form.airside_energy_recovery)) {form.airside_energy_recovery.value = "no";}
 
 //SCHEDULES
+if (form.contains(form.average_weekly_operating_hours)) {form.average_weekly_operating_hours.value = 55;}
+if (form.contains(form.weekday_occupancy_hours_day_start)) {form.weekday_occupancy_hours_day_start.value = "7AM";}
+if (form.contains(form.weekday_occupancy_hours_day_end)) {form.weekday_occupancy_hours_day_end.value = "6PM";}
 if (form.contains(form.weekday_occupancy_start)) {form.weekday_occupancy_start.value = 7.0;}
 if (form.contains(form.weekday_occupancy_end)) {form.weekday_occupancy_end.value = 18.0;}
 if (form.contains(form.saturday_occupancy_start)) {form.saturday_occupancy_start.value = "closed";}

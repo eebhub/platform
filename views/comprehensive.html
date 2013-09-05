@@ -103,7 +103,9 @@
                         </li>
                     </ul>
                 </div>
+                <form 
                 <div class="span9">
+                    <form action="http://128.118.67.241/rmt/simulate-openstudio.php" method="post">
                     <section id="building">
                         <div id="box-unit">
                             <div class="page-header">
@@ -112,9 +114,9 @@
                             <div class="row">
                                 <div class="span4">
                                     <h4>Building Name</h4>
-                                    <input class="span3" type="text" name="buidingname">
+                                    <input class="span3" type="text" name="buiding_name">
                                     <br/>
-                                    <h4>City</h4>
+                                    <h4>Climate</h4>
                                     <div class="input-append">
                                         <select class="span3" name="weather_epw_location">
                                             <option>Albuquerque, NM</option>
@@ -142,73 +144,27 @@
                                     </div>
                                 </div>
                                 <div class="span4">
-                                    <div>
-                                        <h4>Function</h4>
-                                        <select class="span3">
-                                            <option>Small Office</option>
-                                            <option>Medium Office</option>
-                                            <option>Large Office</option>
-                                            <option>Stand-alone Retail</option>
-                                            <option>Strip Mall</option>
-                                            <option>Primary School</option>
-                                            <option>Secondary School</option>
-                                            <option>Outpatient Healthcare</option>
-                                            <option>Hospital</option>
-                                            <option>Small hotel</option>
-                                            <option>Large Hotel</option>
-                                            <option>Warehouse (non-refrigerated)</option>
-                                            <option>Quick Service Restaurant</option>
-                                            <option>Full Service Restaurant</option>
-                                            <option>Mid-Rise Apartment</option>
-                                            <option>High-Rise Apartment</option>
-                                        </select>
-                                    </div>
-                                    <h4>Year Built</h4>
-                                    <select class="span2">
-                                        <option>2013</option>
-                                        <option>2012</option>
-                                        <option>2011</option>
-                                        <option>2010</option>
-                                        <option>2009</option>
-                                        <option>2008</option>
-                                        <option>2007</option>
-                                        <option>2006</option>
-                                        <option>2005</option>
-                                        <option>2004</option>
-                                        <option>2003</option>
-                                        <option>2002</option>
-                                        <option>2001</option>
-                                        <option>2000</option>
-                                        <option>1999</option>
-                                        <option>1998</option>
-                                        <option>1997</option>
-                                        <option>1996</option>
-                                        <option>1995</option>
-                                        <option>1994</option>
-                                        <option>1993</option>
-                                        <option>1992</option>
-                                        <option>1991</option>
-                                        <option>1990</option>
-                                        <option>1989</option>
-                                        <option>1988</option>
-                                        <option>1987</option>
-                                        <option>1986</option>
-                                        <option>1985</option>
-                                        <option>1984</option>
-                                        <option>1983</option>
-                                        <option>1982</option>
-                                        <option>1981</option>
-                                        <option>1980</option>
-                                        <option>1979</option>
-                                        <option>1978</option>
-                                        <option>1977</option>
-                                        <option>1976</option>
-                                        <option>1974</option>
-                                        <option>1973</option>
-                                        <option>1972</option>
-                                        <option>1971</option>
-                                        <option>1970</option>
+                                    <h4>Function</h4>
+                                    <select class="span3" name="activity_type">
+                                        <option>Small Office</option>
+                                        <option>Medium Office</option>
+                                        <option>Large Office</option>
+                                        <option>Stand-alone Retail</option>
+                                        <option>Strip Mall</option>
+                                        <option>Primary School</option>
+                                        <option>Secondary School</option>
+                                        <option>Outpatient Healthcare</option>
+                                        <option>Hospital</option>
+                                        <option>Small hotel</option>
+                                        <option>Large Hotel</option>
+                                        <option>Warehouse (non-refrigerated)</option>
+                                        <option>Quick Service Restaurant</option>
+                                        <option>Full Service Restaurant</option>
+                                        <option>Mid-Rise Apartment</option>
+                                        <option>High-Rise Apartment</option>
                                     </select>
+                                    <h4>Year Built</h4>
+                                    <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
                                 </div>
                             </div>
                         </div>
@@ -217,30 +173,101 @@
                         <div id="box-unit">
                             <div class="page-header">
                                 <h2>Architecture
-                                    <small>geometry import by BIMserver</small>
+                                    <small>shape / geometry</small>
                                 </h2>
                             </div>
-                            <img src="img/BuildingGEO.jpg" class="img-polaroid">
-                            <!--UPLOAD IFC-->
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="input-append">
-                                    <div class="uneditable-input span3">
-                                        <i class="icon-file fileupload-exists"></i>
-                                        <span class="fileupload-preview"></span>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Gross Floor Area</h4>
+                                    <div class="input-append">
+                                        <input type="text" name="gross_floor_area">
+                                        <span class="add-on">m&#178;</span>
                                     </div>
-                                    <span class="btn btn-file">
-                                        <span class="fileupload-new">Upload Building Model (.IFC)</span>
-                                        <span class="fileupload-exists">Change</span>
-                                        <input type="file" />
-                                    </span>
-                                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                    <h4>Number of Floors</h4>
+                                    <input type="number" name="number_of_floors" min="0" step="1">
+                                    <h4>% Window to Wall Area</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="winwall" min="0" max="100" step="1" value=50/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" type="text" value={{winwall}} ng-model="winwall" name="window_to_wall_ratio">
+                                                    <span class="add-on">%</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                </div>
+                                <div class="span4">
+                                    <h4>Geometry Import</h4>
+                                    <img src="img/BuildingGEO.jpg" class="img-polaroid">
+                                    <!--UPLOAD IFC-->
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="input-append">
+                                            <div class="uneditable-input span2">
+                                                <i class="icon-file fileupload-exists"></i>
+                                                <span class="fileupload-preview">coming soon</span>
+                                            </div>
+                                            <span class="btn btn-file">
+                                                <span class="fileupload-new">Upload Building Model (.IFC)</span>
+                                                <span class="fileupload-exists"></span>
+                                                <input type="file" />
+                                            </span>
+                                            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                        </div>
+                                    </div>
+                                    <!--UPLOAD IFC-->
+                                    <h2 class="text-right">
+                                        <small>BIMserver will extract &
+                                            <a href="http://www.virtualpulse.us/V1">visualize </a>external walls, numbers of floors, gross floor area for simulation.</small>
+                                    </h2>
                                 </div>
                             </div>
-                            <!--UPLOAD IFC-->
-                            <h2 class="text-right">
-                                <small>extracts &
-                                    <a href="http://www.virtualpulse.us/V1">visualizes</a> external walls, numbers of floors, gross floor area for simulation</small>
-                            </h2>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Shape</h4>
+                                    <select name="footprint_shape">
+                                        <option value="Rectangle">Rectangle</option>
+                                        <option value="T" selected>T Shaped</option>
+                                        <option value="H" disabled>H Shape</option>
+                                        <option value="L" disabled>L Shape</option>
+                                        <option value="U" disabled>U Shaped</option>
+                                        <option value="Pie" disabled>Pie Shaped</option>
+                                        <option value="Polygon" disabled>Geometry Import</option>
+                                    </select>
+                                    <img src="img/basic_geometry/t_shape_min_zone.png" class="img-polaroid">
+                                </div>
+                                <div class="span4">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <h4>Length</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" name="building_length">
+                                        <span class="add-on">m</span>
+                                    </div>
+                                    <h4>Width</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" name="building_width">
+                                        <span class="add-on">m</span>
+                                    </div>
+                                    <h4>End 1</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" name="building_end1">
+                                        <span class="add-on">m</span>
+                                    </div>
+                                    <h4>End 2</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" name="building_end2">
+                                        <span class="add-on">m</span>
+                                    </div>
+                                    <h4>Offset</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" name="building_offset">
+                                        <span class="add-on">m</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </section>
                     <section>
@@ -287,20 +314,6 @@
                                         <option>West</option>
                                         <option>North-West</option>
                                     </select>
-                                    <h4>Window Area</h4>
-                                    <ul class="inline">
-                                        <li>
-                                            <input type="range" ng-model="winwalltyp" name="window_to_wall_ratio_room"
-                                            min="0" max="40" step="1" value=50/>
-                                        </li>
-                                        <li>
-                                            <div class="input-append">
-                                                <input class="span1" type="text" value={{winwalltyp}} ng-model="winwalltyp"
-                                                />
-                                                <span class="add-on">%</span>
-                                            </div>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                             <div class="row">
@@ -349,11 +362,6 @@
                                         <option>Steel Framed</option>
                                         <option>Wood Framed and Other</option>
                                     </select>
-                                    <h4>Wall Thickness</h4>
-                                    <div class="input-append">
-                                        <input class="span2" id="appendedInput" type="text">
-                                        <span class="add-on">m</span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -367,7 +375,7 @@
                                 <div class="span4">
                                     <h4>People Density</h4>
                                     <div class="input-append">
-                                        <input class="span2" id="appendedInput" type="text">
+                                        <input class="span2" id="appendedInput" type="text" placeholder="building type default" disabled>
                                         <span class="add-on">People/m&sup2;</span>
                                     </div>
                                 </div>
@@ -391,6 +399,11 @@
                                     <h4>Window Head Height</h4>
                                     <div class="input-append">
                                         <input class="span2" id="appendedInput" type="text" placeholder="floor to top of window">
+                                        <span class="add-on">m</span>
+                                    </div>
+                                    <h4>Wall Thickness</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text">
                                         <span class="add-on">m</span>
                                     </div>
                                     <h4>Shading Device</h4>
@@ -430,23 +443,23 @@
                             </div>
                             <div class="row">
                                 <div class="span4">
-                                    <h4>Infiltration Rate</h4>
+                                    <h4>Equipment Power Density</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" placeholder="building type default" disabled>
+                                        <span class="add-on">W/m&sup2;</span>
+                                    </div>
+                                </div>
+                                <div class="span4">
+                                    <h4>Airtightness Assessment</h4>
                                     <select class="span3">
                                         <option>Leaky</option>
                                         <option>Average</option>
                                         <option>Tight</option>
                                     </select>
                                 </div>
-                                <div class="span4">
-                                    <h4>Equipment Power Density</h4>
-                                    <div class="input-append">
-                                        <input class="span2" id="appendedInput" type="text">
-                                        <span class="add-on">W/m&sup2;</span>
-                                    </div>
-                                </div>
                             </div>
                             <h2 class="text-right">
-                                <small>HVAC system type & efficiency are based on building type defaults</small>
+                                <small>HVAC system type & efficiency are based on building type defaults, Airtightness optimized by CONTAM</small>
                             </h2>
                     </section>
                     <section id="schedules">
@@ -471,20 +484,20 @@
                             <div class="page-header">
                                 <h2>Energy Conservation Measures</h2>
                                 <h2>
-                                    <small>Choose ECMs to add to your baseline</small>
+                                    <small>Choose ECMs to add to your baseline (coming soon)</small>
                                 </h2>
                             </div>
                             <label class="checkbox">
-                                <input type="checkbox">Lighting Upgrade</label>
+                                <input type="checkbox" disabled>Lighting Upgrade</label>
                             <label class="checkbox">
-                                <input type="checkbox">Window Upgrade</label>
+                                <input type="checkbox" disabled>Window Upgrade</label>
                             <label class="checkbox">
-                                <input type="checkbox">Economizer</label>
+                                <input type="checkbox" disabled>Economizer</label>
                         </div>
                     </section>
                     <div id="box-unit">
                         <a href="http://developer.eebhub.org/openstudio/inputs/run_eeb20138202345897.sh.txt"class="btn btn-large btn-primary"/>SIMULATE</a>
-                        <!--<input class="btn btn-large btn-primary" type="submit" value="SIMULATE"/></a>-->
+                        <input class="btn btn-large btn-primary" type="submit" value="SIMULATE">
                         <button type="button" class="btn btn-large btn-info">
                             <i class="icon-plus"></i>Building 101 Data</button>
                         <a class="btn btn-large btn-info" href="http://128.118.67.241/tools.eebhub.org/energy-use.php"><i class="icon-signal"></i> Example Outputs</a>
@@ -492,6 +505,7 @@
                             <small>powered by OpenStudio SDK + EnergyPlus, DAYSIM, CONTAM Engines</small>
                         </h2>
                     </div>
+                    </form>
                 </div>
             </div>
             <!-- Javascript -->

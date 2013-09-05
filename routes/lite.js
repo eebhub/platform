@@ -30,6 +30,9 @@ module.exports = {
         var dataFileName = building_name + '_dat_' + timestamp + '.txt';
         var outFileName = building_name + '_out_' + timestamp + '.txt';
         var resFileName = building_name + '_res_' + timestamp + '.txt';
+        //Create folderPath and make directory
+        var folderPath = '../imt/' + building_name + timestamp;
+        fs.mkdir(folderPath);
         //Convert Utilities to kBTU and combine and figure EnergyPerDay
         var utilities_kBTU = utilities.convertUtilities(utility_electric, utility_gas);
         var total_utility_energykBTU = utilities.combineUtilities(utilities_kBTU[0], utilities_kBTU[1]);
@@ -42,7 +45,7 @@ module.exports = {
             writeFiles.writeIns(insFileName, dataFileName);
             writeFiles.writeData(dataFileName, energyPerDay, weatherData, function() {
                 executeIMT(insFileName, outFileName, resFileName, function() {
-                    writeFiles.moveFiles(insFileName, dataFileName, outFileName, resFileName, function() {
+                    writeFiles.moveFiles(folderPath, insFileName, dataFileName, outFileName, resFileName, function() {
                         console.log('moved Files');
                         parseIMT(resFileName, outFileName, function(results) {
                             var resultsIMT = results[0];
@@ -87,29 +90,42 @@ module.exports = {
         });
     },
     ibm: function(request, response) {
+        //Get User Inputs
         var building_name = request.body.building_name;
-        var utility_startdate = request.body.utility_startdate;
+        var electric_utility_startdate = request.body.electric_utility_startdate;
         var utility_electric = request.body.utility_electric;
         var utility_gas = request.body.utility_gas;
-        var orientation = request.body.orientation;
+        var orientation = request.body.building_orientation;
         var building_length = request.body.building_length;
         var building_width = request.body.building_width;
         var building_height = request.body.building_height;
         var gross_floor_area = request.body.gross_floor_area;
+        var building_location_address = request.body.building_location_address;
+        var building_location_city = request.body.building_location_city;
+        var building_location_state = request.body.building_location_state;
+
         //Location
-        var building_lat = 42.00909;
-        var building_long = 23.0909;
 
-        //Path
-        var time = new Date().getTime();
-        var path = './lite/ibm/' + building_name + time + '/';
-        fs.mkdirSync(path);
 
+
+        //Create Timestamp
+        var timestamp = createTimestamp();
+        //File paths 
+        var folderPath = '../ibm/';
+        var filePath = folderPath + building_name + timestamp + '/';
         //File Names
-        var ibmBuildingDataFileName = path + building_name + '_buildingData.txt';
-        var ibmUtilityDataFileName = path + building_name + '_utililtyData.txt';
+        var ibmBuildingDataFileName = filePath + building_name + '_' + timestamp + '_buildingData.csv';
+        var ibmUtilityDataFileName = filePath + building_name + '_' + timestamp + '_utililtyData.csv';
 
-        ibm.IBMbuildingData(ibmBuildingDataFileName, building_name, building_lat, building_long, orientation, building_length, building_width, building_height, gross_floor_area);
-        ibm.IBMutilityData(ibmUtilityDataFileName, utility_startdate, utility_electric, utility_gas);
+        //Make Simulation Run Folder
+        ibm.geoCode(building_location_address, building_location_city, building_location_state, function(building_lat, building_long) {
+            fs.mkdir(folderPath + building_name + timestamp, function() {
+                ibm.IBMbuildingData(ibmBuildingDataFileName, building_name, building_lat, building_long, orientation, building_length, building_width, building_height, gross_floor_area);
+                ibm.IBMutilityData(ibmUtilityDataFileName, electric_utility_startdate, utility_electric, utility_gas);
+                response.redirect('http://developer.eebhub.org/imt/' + building_name + timestamp);
+            });
+        });
+
+
     }
 };

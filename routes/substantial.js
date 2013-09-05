@@ -890,7 +890,9 @@ console.log(arr);
         
         var bs_gas1 = [bs_gas11,bs_gas12,bs_gas13,bs_gas14];
         
+        var bldname = filename;
         response.render('substantialresults', {
+            'bldname': bldname,
             'elec_heat': elec_heat,
             'elec_pump': elec_pump,
             'elec_cool': elec_cool,

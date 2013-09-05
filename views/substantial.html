@@ -2,7 +2,7 @@
 <html ng-app>
     <!-- test-->
     <head>
-        <title>EEB Hub Simulation Platform Tools</title>
+<title>EEB Hub Simulation Platform Tools</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -35,19 +35,10 @@
                 printValue('obstructionSlider', 'obstructionRangeValue');
             }
         </script>
-        <script type="text/javascript">
-            function onoff(){
-            currentvalue = document.getElementById('onoff').value;
-            if(currentvalue == "Off"){
-            document.getElementById("onoff").value="On";
-            }else{
-            document.getElementById("onoff").value="Off";
-            }
-            }
-        </script>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
-    
+        
     </head>
     
     <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -795,15 +786,22 @@
 
                 <div class="box-unit">
                     <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
-                    <button type="button" class="btn btn-large btn-info"><i class="icon-plus"></i> Building 101 Data</button>
-                    <a class="btn btn-large btn-info" href="substantialresults"><i class="icon-signal"></i> Example Outputs</a>
+                    <!--<button type="button" class="btn btn-large btn-info"><i class="icon-plus"></i> Building 101 Data</button>-->
+                    <!--<a class="btn btn-large btn-info" href="substantialresults"><i class="icon-signal"></i> Example Outputs</a>-->
                     <h2 class="text-right"><small>powered by UTRC Energy Audit Tool Engine</small></h2>
+                
+                <!--<div id="progressbar"></div>-->
+           
+               
                 </div>
+        
         
                 <div class="box-unit">
                 <a class="btn btn-large btn-info" href="http://developer.eebhub.org/upenn/"><i class="icon-star-empty"></i> Parametric Analysis Toolkit for System Control</a>
-                <h2 class="text-right"><small>powered by Parametric Analysis Toolkit (U Penn)</small></h2>
+                <h2 class="text-right"><small>powered by Parametric Analysis Toolkit (UPenn)</small></h2>
                 </div>
+                
+
         
         
         </form>                

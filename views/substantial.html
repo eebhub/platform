@@ -37,6 +37,7 @@
         </script>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="js/building101Data.js"></script>
         <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
         
     </head>
@@ -109,12 +110,24 @@
                 <div class="span9">
 
 
-                <form action="/substantialresults" method="post">
+                <form action="/substantialresults" method="post" name="platformForm">
 
                     <section id="building">
                         <div id="box-unit">
                             <div class="page-header">
-                                <h2>Building</h2>
+                                <table>
+                                        <tr>
+                                            <td>
+                                                <h2>Building</h2>
+                                            </td>
+                                            <td class="span7">
+                                                <div class="pull-right text-right">
+                                                <button type="button" onclick="building101Data()" class="btn">
+                                                    <i class="icon-plus"></i><b>Building 101 Data</b></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
                             </div>
                             <div class="row">
                                 <div class="span4">

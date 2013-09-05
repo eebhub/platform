@@ -2,6 +2,7 @@
 
 //HTML
 //<script src="js/building101Data.js"></script>
+//<form action="action" method="post" name="platformForm">
 //<button type="button"  onclick="building101Data()"> + Building 101</button>
 
 //UNITS
@@ -106,7 +107,7 @@ for (i in electric_utility_startdate) {
     electric_utility_startdate[i].value = electric_utility_startdate_building101[i];
     utility_electric[i].value = utility_electric_building101[i];
     gas_utility_startdate[i].value = gas_utility_startdate_building101[i];
-    utility_gas[i].value = utility_gas_building101[i];
+    utility_gas[i].value = utility_gas_building101[i];}
         
         }
 

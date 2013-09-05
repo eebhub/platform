@@ -17,6 +17,7 @@
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="js/building101Data.js"></script>
     </head>
     
     <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -86,11 +87,23 @@
                     </ul>
                 </div>
                 <div class="span9">
-                    <form action="/partialanalysis" method="post">
+                    <form action="/partialanalysis" method="post" name="platformForm">
                         <section id="building">
                             <div class="box-unit">
                                 <div class="page-header">
-                                    <h2>Building</h2>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <h2>Building</h2>
+                                            </td>
+                                            <td class="span7">
+                                                <div class="pull-right text-right">
+                                                <button type="button" onclick="building101Data()" class="btn">
+                                                    <i class="icon-plus"></i><b>Building 101 Data</b></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
                                 <div class="row">
                                     <div class="span4">
@@ -441,8 +454,6 @@
                         </section>
                         <div class="box-unit">
                             <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
-                            <button type="button" class="btn btn-large btn-info">
-                                <i class="icon-plus"></i>Building 101 Data</button>
                             <a class="btn btn-large btn-info" href="http://designadvisor.mit.edu/design/"><i class="icon-signal"></i> Example Outputs</a>
                             <h2 class="text-right">
                                 <small>powered by MIT Design Advisor Engine</small>

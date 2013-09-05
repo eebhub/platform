@@ -2,6 +2,7 @@
 
 //HTML
 //<script src="js/building101Data.js"></script>
+//<form action="action" method="post" name="platformForm">
 //<button type="button"  onclick="building101Data()"> + Building 101</button>
 
 //UNITS
@@ -17,6 +18,7 @@ if (form.contains(form.weather_epw_location)) {form.weather_epw_location.value =
 if (form.contains(form.activity_type)) {form.activity_type.value = "Medium Office";}
 if (form.contains(form.activity_type_specific)) {form.activity_type_specific.value = "Administrative/professional office";}
 if (form.contains(form.year_completed)) {form.year_completed.value = "1911";}
+if (form.contains(form.building_location_address)) {form.building_location_address.value = "4747 South Broad Street, Philadelphia, PA 19112";}
 
 //UTILITIES > excel
 //form.utility_startdate_electric.value = "01/15/2012";
@@ -88,6 +90,25 @@ if (form.contains(form.saturday_occupancy_end)) {form.saturday_occupancy_end.val
 if (form.contains(form.sunday_occupancy_start)) {form.sunday_occupancy_start.value = "closed";}
 if (form.contains(form.sunday_occupancy_end)) {form.sunday_occupancy_end.value = "closed";}
 
+//UTILITY DATA
+var electric_utility_startdate_building101 = ['2012-01-01', '2012-02-01', '2012-03-01', '2012-04-01', '2012-05-01', '2012-06-01', '2012-07-01', '2012-08-01', '2012-09-01', '2012-10-01', '2012-11-01', '2012-12-01', '2012-12-31'],
+    utility_electric_building101 = [65280, 50400, 54600, 68160, 72240, 89280, 100560, 131400, 111000, 89880, 89040, 66120, '--'],
+    gas_utility_startdate_building101 = ['2012-01-26', '2012-02-24', '2012-03-27', '2012-04-27', '2012-05-27', '2012-06-27', '2012-07-27', '2012-08-27', '2012-09-27', '2012-10-27', '2012-11-27', '2012-12-27', '2013-01-27'],
+    utility_gas_building101 = [3641, 2166, 1019, 923, 30.5, 34.5, 85.7, 38.7, 989.7, 2824, 2385, 3500, '--'];
+
+//UTILITY INPUTS
+var electric_utility_startdate = document.getElementsByName('electric_utility_startdate'),
+    utility_electric = document.getElementsByName('utility_electric'),
+    gas_utility_startdate = document.getElementsByName('gas_utility_startdate'),
+    utility_gas = document.getElementsByName('utility_gas');
+
+//Update the Utility Table
+for (i in electric_utility_startdate) {
+    electric_utility_startdate[i].value = electric_utility_startdate_building101[i];
+    utility_electric[i].value = utility_electric_building101[i];
+    gas_utility_startdate[i].value = gas_utility_startdate_building101[i];
+    utility_gas[i].value = utility_gas_building101[i];}
+        
         }
 
 /*

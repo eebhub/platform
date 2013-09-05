@@ -10,6 +10,7 @@
         <link href="css/partial.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="js/building101Data.js"></script>
         <script>
             function submitIMT() {
                 var form = document.forms.liteForm;
@@ -28,10 +29,10 @@
                 var form = document.forms.liteForm;
                 
                 //Utility Data
-                var electric_utility_startdate_building101 = ['2011-01-01', '2011-02-01', '2011-03-01', '2011-04-01', '2011-05-01', '2011-01-01', '2011-02-01', '2011-03-01', '2011-04-01', '2011-05-01', '2011-03-01', '2011-04-01', '2011-05-01'],
-                    utility_electric_building101 = [111, 2222, 33333, 444444, 5555555, 111, 2222, 33333, 444444, 5555555, 123, 345, 567],
-                    gas_utility_startdate_building101 = ['2011-01-01', '2011-02-01', '2011-03-01', '2011-04-01', '2011-05-01', '2011-01-01', '2011-02-01', '2011-03-01', '2011-04-01', '2011-05-01', '2011-03-01', '2011-04-01', '2011-05-01'],
-                    utility_gas_building101 = [111, 2222, 33333, 444444, 5555555, 111, 2222, 33333, 444444, 5555555, 123, 345, 567];
+                var electric_utility_startdate_building101 = ['2012-01-01', '2012-02-01', '2012-03-01', '2012-04-01', '2012-05-01', '2012-06-01', '2012-07-01', '2012-08-01', '2012-09-01', '2012-10-01', '2012-11-01', '2012-12-01', '2012-12-31'],
+                    utility_electric_building101 = [65280, 50400, 54600, 68160, 72240, 89280, 100560, 131400, 111000, 89880, 89040, 66120, '--'],
+                    gas_utility_startdate_building101 = ['2012-01-26', '2012-02-24', '2012-03-27', '2012-04-27', '2012-05-27', '2012-06-27', '2012-07-27', '2012-08-27', '2012-09-27', '2012-10-27', '2012-11-27', '2012-12-27', '2013-01-27'],
+                    utility_gas_building101 = [3641, 2166, 1019, 923, 30.5, 34.5, 85.7, 38.7, 989.7, 2824, 2385, 3500, '--'];
 
                 //Utility Inputs
                 var electric_utility_startdate = document.getElementsByName('electric_utility_startdate'),
@@ -114,11 +115,23 @@
                     </ul>
                 </div>
                 <div class="span9">
-                    <form action="" method="post" name="liteForm">
+                    <form action="" method="post" name="platformForm">
                         <section id="building">
                             <div class="box-unit">
                                 <div class="page-header">
-                                    <h2>Building</h2>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <h2>Building</h2>
+                                            </td>
+                                            <td class="span7">
+                                                <div class="pull-right text-right">
+                                                <button type="button" onclick="building101Data()" class="btn">
+                                                    <i class="icon-plus"></i><b>Building 101 Data</b></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
                                 <div class="row">
                                     <div class="span4">
@@ -523,9 +536,6 @@
                         </section>
                         <div class="box-unit">
                             <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
-                            <button type="button" class="btn btn-large btn-info"
-                            onclick="updateData()">
-                                <i class="icon-plus"></i>Building 101 Data</button>
                             <a class="btn btn-large btn-info" href="literesults"><i class="icon-signal"></i> Example Outputs</a>
                             <h2 class="text-right">
                                 <small>powered by ASHRAE Inverse Modeling Toolkit</small>
@@ -534,12 +544,9 @@
                     </form>
                     <div class="box-unit">
                         <button onclick="submitIBM()" class="btn btn-large btn-primary">SIMULATE</button>
-                        <button type="button" class="btn btn-large btn-info"
-                        onclick="updateData()">
-                            <i class="icon-plus"></i>Building 101 Data</button>
-                        <a class="btn btn-large btn-info" href="http://eebhub.minus.com/lbeVXp00yjiSNe/"><i class="icon-signal"></i> Example Outputs</a>
+                        <a class="btn btn-large btn-info" href="http://eebhub.minus.com/mbw8FJL02UdsL2"><i class="icon-signal"></i> Example Outputs</a>
                         <h2 class="text-right">
-                            <small>powered by IBM Inverse Model Engine</small>
+                            <small>powered by IBM Inverse Modeling Engine</small>
                         </h2>
                     </div>
                 </div>

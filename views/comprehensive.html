@@ -18,6 +18,7 @@
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="js/building101Data.js"></script>
         <script>
             function printValue(sliderID, textbox) {
                 var x = document.getElementById(textbox);
@@ -103,18 +104,29 @@
                         </li>
                     </ul>
                 </div>
-                <form 
                 <div class="span9">
-                    <form action="http://128.118.67.241/rmt/simulate-openstudio.php" method="post">
+                    <form action="http://128.118.67.241/rmt/simulate-openstudio.php" method="post" name="platformForm">
                     <section id="building">
                         <div id="box-unit">
                             <div class="page-header">
-                                <h2>Building</h2>
+                                <table>
+                                        <tr>
+                                            <td>
+                                                <h2>Building</h2>
+                                            </td>
+                                            <td class="span7">
+                                                <div class="pull-right text-right">
+                                                <button type="button" onclick="building101Data()" class="btn">
+                                                    <i class="icon-plus"></i><b>Building 101 Data</b></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
                             </div>
                             <div class="row">
                                 <div class="span4">
                                     <h4>Building Name</h4>
-                                    <input class="span3" type="text" name="buiding_name">
+                                    <input class="span3" type="text" name="building_name">
                                     <br/>
                                     <h4>Climate</h4>
                                     <div class="input-append">
@@ -496,10 +508,7 @@
                         </div>
                     </section>
                     <div id="box-unit">
-                        <a href="http://developer.eebhub.org/openstudio/inputs/run_eeb20138202345897.sh.txt"class="btn btn-large btn-primary"/>SIMULATE</a>
                         <input class="btn btn-large btn-primary" type="submit" value="SIMULATE">
-                        <button type="button" class="btn btn-large btn-info">
-                            <i class="icon-plus"></i>Building 101 Data</button>
                         <a class="btn btn-large btn-info" href="http://128.118.67.241/tools.eebhub.org/energy-use.php"><i class="icon-signal"></i> Example Outputs</a>
                         <h2 class="text-right">
                             <small>powered by OpenStudio SDK + EnergyPlus, DAYSIM, CONTAM Engines</small>

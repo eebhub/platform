@@ -146,9 +146,8 @@
                                         </td>
                                         <td class="span7">
                                             <div class="pull-right text-right">
-                                                <button type="button" onclick="building101Data()" class="btn">
-                                                    <i class="icon-plus"></i>
-                                                    <b>Building 101 Data</b>
+                                                <button type="button" onclick="building101Data_comprehensive()" class="btn">
+                                                    <i class="icon-plus"></i><b>Building 101 Data</b>
                                                 </button>
                                             </div>
                                         </td>
@@ -498,7 +497,7 @@
                                 <div class="span4">
                                     <h4>Equipment Power Density</h4>
                                     <div class="input-append">
-                                        <input class="span2" id="appendedInput" type="text" placeholder="building type default" disabled>
+                                        <input class="span2" name="equipment_power_density" id="appendedInput" type="text" placeholder="building type default" disabled>
                                         <span class="add-on">W/m&sup2;</span>
                                     </div>
                                 </div>
@@ -626,19 +625,19 @@
         		case 'T':
         			img_scr = 'T_Shape';
         			extend_inputs = ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
-        			                ' <div class="controls"> <input type="number" min="1" name="length" id="length" placeholder="length"> </div> </div>' +  
+        			                ' <div class="controls"> <input type="number" min="1" step="0.001" name="length" id="length" placeholder="length"> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
-        			                ' <div class="controls"> <input type="number" min="1" name="width" id="width" placeholder="width"> </div> </div>' +  
+        			                ' <div class="controls"> <input type="number" min="1" step="0.001" name="width" id="width" placeholder="width"> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
-        			                ' <div class="controls"> <input type="number" min="1" name="end_1" id="end_1" placeholder="end_1"> </div> </div>' +  
+        			                ' <div class="controls"> <input type="number" min="1" step="0.001" name="end_1" id="end_1" placeholder="end_1"> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
-        			                ' <div class="controls"> <input type="number" min="1" name="end_2" id="end_2" placeholder="end_2"> </div> </div>' +  
+        			                ' <div class="controls"> <input type="number" min="1" step="0.001" name="end_2" id="end_2" placeholder="end_2"> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="offset">Offset</label>' +
-        			                ' <div class="controls"> <input type="number" min="1" name="offset" id="offset" placeholder="offset"> </div> </div>' ;
+        			                ' <div class="controls"> <input type="number" min="1" step="0.001" name="offset" id="offset" placeholder="offset"> </div> </div>' ;
         		break;
         
         		case 'H':

@@ -427,24 +427,15 @@
                         <section id="architecture">
                             <div class="box-unit">
                                 <div class="page-header">
-                                    <h2>Architecture
-                                        <small>required for IBM Analysis</small>
-                                    </h2>
+                                    <h2>Architecture</h2>
                                 </div>
                                 <div class="row">
                                     <div class="span4">
                                         <h4>Gross Floor Area</h4>
                                         <div class="input-append">
-                                            <input type="number" min="0" step="0.001" name="gross_floor_area" />
+                                            <input type="number" min="0" step="0.001" placeholder="required" name="gross_floor_area" />
                                             <span class="add-on">m&#178;</span>
                                         </div>
-                                        <h4>Height</h4>
-                                        <div class="input-append">
-                                            <input type="number" name="building_height" min="0" step="0.01" />
-                                            <span class="add-on">m</span>
-                                        </div>
-                                    </div>
-                                    <div class="span4">
                                         <h4>Length</h4>
                                         <div class="input-append">
                                             <input type="number" name="building_length" min="0" step="0.01" />
@@ -455,23 +446,27 @@
                                             <input type="number" name="building_width" min="0" step="0.01" />
                                             <span class="add-on">m</span>
                                         </div>
-                                        <h4>Orientation</h4>
+                                        <h4>Height</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="building_height" min="0" step="0.01" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                    </div>
+                                    <div class="span4">
+                                        <h4>Orientation <small>clockwise degrees from North</small></h4>
                                         <ul class="inline">
                                             <li>
-                                                <input type="range" ng-model="orientation" name="building_orientation"
-                                                min="0" max="360" step="15" value={{orientation}}/>
+                                                <input type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
                                             </li>
                                             <li>
                                                 <div class="input-append">
-                                                    <input class="span1" type="text" value={{orientation}} ng-model="orientation"
-                                                    />
+                                                    <input class="span1" type="text" value={{orientation}} name="building_orientation" ng-model="orientation"/>
                                                     <span class="add-on">&deg;</span>
                                                 </div>
                                             </li>
                                         </ul>
-                                    </div>
-                                    <div class="span8">
-                                        <h4>Address</h4>
+                                    
+                                    <h4>Address</h4>
                                         <input type="text" name="building_location_address">
                                         <h4>City</h4>
                                         <input type="text" name="building_location_city">
@@ -531,15 +526,50 @@
                                             <option value="WY">Wyoming</option>
                                         </select>
                                     </div>
+
+                                    
+                                        
                                 </div>
                             </div>
                         </section>
+                        
                         <div class="box-unit">
                             <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
                             <a class="btn btn-large btn-info" href="literesults"><i class="icon-signal"></i> Example Outputs</a>
                             <h2 class="text-right">
                                 <small>powered by ASHRAE Inverse Modeling Toolkit</small>
                             </h2>
+                             
+                        </div>
+                        <div class="box-unit">
+                        <div class="row">
+                                <div class="span4">
+                                    <h4>EPA Portfolio Manager Score</h4>
+                                    <ul class="inline">
+                                        <li>
+                                            <input type="range" ng-model="portfolio" min="0" max="100" step="1"
+                                            value={{portfolio}}/>
+                                        </li>
+                                        <li>
+                                            <input class="span1" type="text" value={{portfolio}} 
+                                            ng-model="portfolio" />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="span4">
+                                    <h4>DOE Asset Rating Score</h4>
+                                    <ul class="inline">
+                                        <li>
+                                            <input type="range" ng-model="asset" min="0" max="100" step="1"
+                                            value={{asset}}/>
+                                        </li>
+                                        <li>
+                                            <input class="span1" type="text" value={{asset}} 
+                                            ng-model="asset" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </form>
                     <div class="box-unit">

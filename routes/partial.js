@@ -24,7 +24,7 @@ module.exports = {
         var wall_insulation_r_value = request.body.wall_insulation_r_value;
         var ventilation_system = request.body.ventilation_system;
         var equipment_power_density = request.body.equipment_power_density;
-        var lighting_power_density = request.body.lighting_power_density;
+        var illuminance = request.body.illuminance;
 
         //Typical Room Inputs
         var room_depth = request.body.room_depth;
@@ -44,10 +44,23 @@ module.exports = {
 
         dainput.MITinputFile(BuildingInputName, roof_type, roof_insulation_type, number_of_floors, roof_insulation_location, weather_epw_location,
                         exterior_shading_orientation, room_width, room_depth, room_height,
-                        window_glass_type, window_to_wall_ratio, ventilation_system, wall_insulation_r_value, lighting_power_density,
+                        window_glass_type, window_to_wall_ratio, ventilation_system, wall_insulation_r_value, illuminance,
                         equipment_power_density, weekday_occupancy_start, weekday_occupancy_end, overhang_depth, thermal_mass, people_density, window_glass_coating);
         
         newShell.newShellMIT(BuildingInputName);
+        
+        /*
+        var exec = require('child_process').exec;
+        var command = 
+                    'ssh platform@128.118.67.227\"' +
+                    'cd /home/platform/;' +
+                    'java -jar DATest.jar mit/'+BuildingInputName+'/'+BuildingInputName+'_input.txt;' +
+                    'cp '+BuildingInputName+'_output.txt /home/platform/mit/' + BuildingInputName + '/\"';
+        
+        exec(command);
+        */
+        //exec('ssh platform@128.118.67.227 \"cd /home/platform/; java -jar DATest.jar '+BuildingInputName+'_input.txt; cp '+BuildingInputName+'.txt /home/platform/mit/' + BuildingInputName + '/\"', function(err2, stdout2, stderr2));
+        //});
 
         response.redirect('http://developer.eebhub.org/mit/'+BuildingInputName+'/');
 

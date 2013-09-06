@@ -532,12 +532,44 @@
                                 </div>
                             </div>
                         </section>
+                        
                         <div class="box-unit">
                             <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
                             <a class="btn btn-large btn-info" href="literesults"><i class="icon-signal"></i> Example Outputs</a>
                             <h2 class="text-right">
                                 <small>powered by ASHRAE Inverse Modeling Toolkit</small>
                             </h2>
+                             
+                        </div>
+                        <div class="box-unit">
+                        <div class="row">
+                                <div class="span4">
+                                    <h4>EPA Portfolio Manager Score</h4>
+                                    <ul class="inline">
+                                        <li>
+                                            <input type="range" ng-model="portfolio" min="0" max="100" step="1"
+                                            value={{portfolio}}/>
+                                        </li>
+                                        <li>
+                                            <input class="span1" type="text" value={{portfolio}} 
+                                            ng-model="portfolio" />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="span4">
+                                    <h4>DOE Asset Rating Score</h4>
+                                    <ul class="inline">
+                                        <li>
+                                            <input type="range" ng-model="asset" min="0" max="100" step="1"
+                                            value={{asset}}/>
+                                        </li>
+                                        <li>
+                                            <input class="span1" type="text" value={{asset}} 
+                                            ng-model="asset" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </form>
                     <div class="box-unit">

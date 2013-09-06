@@ -2,15 +2,17 @@ var fs = require("fs");
 var ibm = require("../lib/ibm.js");
 //Calling Module Pieces of IMT in /lib/imt/
 var createTimestamp = require("../lib/timestamp.js").createTimestamp;
-var utilities = require("../lib/imt/utilities");
-var determineAirportCode = require("../lib/imt/airportCodes").determineAirportCode;
-var getWeatherData = require("../lib/imt/meanTemperature.js").getWeatherData;
-var writeFiles = require("../lib/imt/writeFiles.js");
-var executeIMT = require("../lib/imt/executeIMT.js").executeIMT;
-var parseIMT = require("../lib/imt/parseIMTOutput.js").parseIMT;
-var imtCalculations = require("../lib/imt/imtCalculations.js");
+//Dependencies
+var createTimestamp = require("../lib/timestamp.js").createTimestamp;
+var imt = require("../lib/imt/imt.js");
+var fs = require('fs');
+var async = require('async');
 
 module.exports = {
+    getLite: function(request, response) {
+        response.sendfile('./views/lite.html');
+    },
+
     runIMT: function(request, response) {
         //Get User Inputs
         var building_name = request.body.building_name;
@@ -19,75 +21,181 @@ module.exports = {
         var building_size = request.body.gross_floor_area;
         var utility_gas = request.body.utility_gas;
         var utility_electric = request.body.utility_electric;
-        var utility_startdate = request.body.utility_startdate;
-        var building_year = request.body.year_completed;
+        var electric_utility_startdate = request.body.electric_utility_startdate;
+        var gas_utility_startdate = request.body.gas_utility_startdate;
 
         //Make Timespamp
         var timestamp = createTimestamp();
 
         //Create Instruction, Data, Output, and Results File Names
-        var insFileName = building_name + '_ins_' + timestamp + '.txt';
-        var dataFileName = building_name + '_dat_' + timestamp + '.txt';
-        var outFileName = building_name + '_out_' + timestamp + '.txt';
-        var resFileName = building_name + '_res_' + timestamp + '.txt';
-        //Create folderPath and make directory
-        var folderPath = '../imt/' + building_name + timestamp;
+        var insFileNameElectric = building_name + '_e_ins_' + timestamp + '.txt';
+        var insFileNameGas = building_name + '_g_ins_' + timestamp + '.txt';
+        var dataFileNameElectric = building_name + '_e_dat_' + timestamp + '.txt';
+        var dataFileNameGas = building_name + '_g_dat_' + timestamp + '.txt';
+        var outFileNameElectric = building_name + '_e_out_' + timestamp + '.txt';
+        var outFileNameGas = building_name + '_g_out_' + timestamp + '.txt';
+        var resFileNameElectric = building_name + '_e_res_' + timestamp + '.txt';
+        var resFileNameGas = building_name + '_g_res_' + timestamp + '.txt';
+        //Folder path and new File Path
+        var folderPath = '../imt/' + building_name + "_" + timestamp;
+        var filePath = '../imt/' + building_name + "_" + timestamp + '/';
+        //Create input and output folders
         fs.mkdir(folderPath);
-        //Convert Utilities to kBTU and combine and figure EnergyPerDay
-        var utilities_kBTU = utilities.convertUtilities(utility_electric, utility_gas);
-        var total_utility_energykBTU = utilities.combineUtilities(utilities_kBTU[0], utilities_kBTU[1]);
-        var energyPerDay = utilities.energyPerDay(total_utility_energykBTU, utility_startdate);
-        //Get Airport Code
-        var airportCode = determineAirportCode(building_location);
-        //Get Weather Data
-        getWeatherData(utility_startdate, airportCode, function(weatherData) {
-            console.log(weatherData);
-            writeFiles.writeIns(insFileName, dataFileName);
-            writeFiles.writeData(dataFileName, energyPerDay, weatherData, function() {
-                executeIMT(insFileName, outFileName, resFileName, function() {
-                    writeFiles.moveFiles(folderPath, insFileName, dataFileName, outFileName, resFileName, function() {
-                        console.log('moved Files');
-                        parseIMT(resFileName, outFileName, function(results) {
-                            var resultsIMT = results[0];
-                            var outputs = results[1];
-                            console.log(outputs);
-                            var Ycp = outputs[0],
-                                LS = outputs[1],
-                                RS = outputs[2],
-                                Xcp1 = outputs[3],
-                                Xcp2 = outputs[4];
-                            imtCalculations.calcSiteEUI(utility_startdate, total_utility_energykBTU, building_size, function(EUI) {
-                                console.log(EUI);
-                                var temperatures = results[0][0];
-                                total_utility_energykBTU.pop(),
-                                response.render('imtresults', {
-                                    'building_name': building_name,
-                                    'EUI': EUI,
-                                    'utility_startdate': utility_startdate,
-                                    'temperatures': temperatures,
-                                    'energy': total_utility_energykBTU,
-                                    'Ycp': Ycp,
-                                    'LS': LS,
-                                    'RS': RS,
-                                    'Xcp1': Xcp1,
-                                    'Xcp2': Xcp2,
-                                    'insFile': 'http://developer.eebhub.org/imt/inputs/' + insFileName,
-                                    'datFile': 'http://developer.eebhub.org/imt/inputs/' + dataFileName,
-                                    'outFile': 'http://developer.eebhub.org/imt/outputs/' + outFileName,
-                                    'resFile': 'http://developer.eebhub.org/imt/outputs/' + resFileName,
-                                    'building_year': building_year,
-                                    'building_function': building_function,
-                                    'building_location': building_location,
-                                });
 
+        //Get Building Type EUI
+        var buildingTypeEUI = imt.buildingEUI(building_function);
+
+        //Get Airport Code from building Location
+        var airportCode = imt.determineAirportCode(building_location);
+
+        //Start If statements for 3ph/c (electric and gas) and 5p (electric only)
+        if (utility_gas[1] === '') {
+            //Just electricity run 5p
+            //Convert kWh to kBTU
+            var utility_electric_kBTU = imt.convertElectricity(utility_electric);
+            //Calculate Per Day use
+            var utility_perDay_electric_kBTU = imt.energyPerDay(utility_electric, electric_utility_startdate);
+
+            //Get Weather Data
+            imt.getWeatherData(electric_utility_startdate, airportCode, function(weatherData) {
+                imt.writeIns5p(insFileNameElectric, dataFileNameElectric);
+                imt.writeData(dataFileNameElectric, utility_perDay_electric_kBTU, weatherData, function() {
+                    imt.executeIMT(insFileNameElectric, outFileNameElectric, resFileNameElectric, function() {
+                        imt.moveFiles(insFileNameElectric, dataFileNameElectric, outFileNameElectric, resFileNameElectric, filePath, function() {
+                            imt.parseIMT5p(resFileNameElectric, outFileNameElectric, filePath, function(parsedResults) {
+                                var resultsIMT = parsedResults[0];
+                                var outputs = parsedResults[1];
+                                var Ycp = outputs[0],
+                                    LS = outputs[1],
+                                    RS = outputs[2],
+                                    Xcp1 = outputs[3],
+                                    Xcp2 = outputs[4];
+                                var temperatures = resultsIMT[0];
+                                var X1 = Math.min.apply(null, temperatures);
+                                var X2 = Math.max.apply(null, temperatures);
+                                var Y1 = (LS * X1) + Ycp;
+                                var Y2 = (RS * X2) + Ycp;
+                                imt.calcSiteEUI(electric_utility_startdate, utility_electric_kBTU, building_size, function(EUI) {
+                                    response.render('imtresults_5p', {
+                                        'building_name': building_name,
+                                        'EUI': EUI,
+                                        'buildingTypeEUI': buildingTypeEUI,
+                                        'electric_utility_startdate': electric_utility_startdate,
+                                        'temperatures': temperatures,
+                                        'energy': utility_electric_kBTU,
+                                        'Ycp': Ycp,
+                                        'LS': LS,
+                                        'RS': RS,
+                                        'Xcp1': Xcp1,
+                                        'Xcp2': Xcp2,
+                                        'Y1': Y1,
+                                        'Y2': Y2,
+                                        'X1': X1,
+                                        'X2': X2,
+                                        'building_year': 1990,
+                                        'insFile': 'http://developer.eebhub.org/imt/intputs/' + insFileNameElectric,
+                                        'datFile': 'http://developer.eebhub.org/imt/inputs/' + dataFileNameElectric,
+                                        'outFile': 'http://developer.eebhub.org/imt/outputs/' + outFileNameElectric,
+                                        'resFile': 'http://developer.eebhub.org/imt/outputs/' + resFileNameElectric,
+                                    });
+                                });
                             });
                         });
                     });
-
-
                 });
             });
-        });
+        }
+        else {
+            //Have seperate runs of 3p for cooling (elect) and heating (gas)
+            //Convert utilities to kBTU
+            var utility_electric_kBTU_dual = imt.convertElectricity(utility_electric);
+            var utility_gas_kBTU_dual = imt.convertGas(utility_gas);
+            //Calculate Per Day use
+            var utility_perDay_electric_kBTU_dual = imt.energyPerDay(utility_electric_kBTU_dual, electric_utility_startdate);
+            var utility_perDay_gas_kBTU_dual = imt.energyPerDay(utility_gas_kBTU_dual, gas_utility_startdate);
+            //Parallel runs of IMT
+            async.parallel([
+            //Electic Run 3PC
+            function(callback) {
+                imt.getWeatherData(electric_utility_startdate, airportCode, function(weatherData_elect) {
+                    imt.writeIns3pc(insFileNameElectric, dataFileNameElectric);
+                    imt.writeData(dataFileNameElectric, utility_perDay_electric_kBTU_dual, weatherData_elect, function() {
+                        imt.executeIMT(insFileNameElectric, outFileNameElectric, resFileNameElectric, function() {
+                            imt.moveFiles(insFileNameElectric, dataFileNameElectric, outFileNameElectric, resFileNameElectric, filePath, function() {
+                                imt.parseIMT3p(resFileNameElectric, outFileNameElectric, filePath, function(parsedResults) {
+                                    var resultsIMT_electric = parsedResults[0];
+                                    var outputs_electric = parsedResults[1];
+                                    var Ycp_electric = outputs_electric[0],
+                                        LS_electric = outputs_electric[1],
+                                        RS_electric = outputs_electric[2],
+                                        Xcp_electric = outputs_electric[3];
+                                    var temperatures_electric = resultsIMT_electric[0];
+                                    var X1 = Math.min.apply(null, temperatures_electric);
+                                    var Y1 = (LS_electric * X1) + Ycp_electric;
+                                    imt.calcSiteEUI(electric_utility_startdate, utility_electric_kBTU_dual, building_size, function(EUI_electric) {
+                                        callback(null, [EUI_electric, resultsIMT_electric, Ycp_electric, LS_electric, Xcp_electric, temperatures_electric, X1, Y1]);
+                                    });
+
+                                });
+                            });
+                        });
+                    });
+                });
+            },
+            //Gas run 3PH
+            function(callback) {
+                imt.getWeatherData(gas_utility_startdate, airportCode, function(weatherData_gas) {
+                    imt.writeIns3ph(insFileNameGas, dataFileNameGas);
+                    imt.writeData(dataFileNameGas, utility_perDay_gas_kBTU_dual, weatherData_gas, function() {
+                        imt.executeIMT(insFileNameGas, outFileNameGas, resFileNameGas, function() {
+                            imt.moveFiles(insFileNameGas, dataFileNameGas, outFileNameGas, resFileNameGas, filePath, function() {
+                                imt.parseIMT3p(resFileNameGas, outFileNameGas, filePath, function(parsedResults) {
+                                    var resultsIMT_gas = parsedResults[0];
+                                    var outputs_gas = parsedResults[1];
+                                    var Ycp_gas = outputs_gas[0],
+                                        LS_gas = outputs_gas[1],
+                                        RS_gas = outputs_gas[2],
+                                        Xcp_gas = outputs_gas[3];
+                                    var temperatures_gas = resultsIMT_gas[0];
+                                    var X2 = Math.min.apply(null, temperatures_gas);
+                                    var Y2 = (RS_gas * X2) + Ycp_gas;
+                                    imt.calcSiteEUI(gas_utility_startdate, utility_gas_kBTU_dual, building_size, function(EUI_gas) {
+                                        callback(null, [EUI_gas, resultsIMT_gas, Ycp_gas, LS_gas, RS_gas, Xcp_gas, temperatures_gas, X2, Y2]);
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            }],
+            // optional callback
+            function(err, results) {
+                var electric = results[0];
+                var gas = results[1];
+                var totalEUI = parseFloat(electric[0]) + parseFloat(gas[0]);
+                var temperatures_electric = electric[5];
+                response.render('imtresults_3p', {
+                    'building_name': building_name,
+                    'EUI': totalEUI,
+                    'buildingTypeEUI': buildingTypeEUI,
+                    'electric_utility_startdate': electric_utility_startdate,
+                    'temperatures': temperatures_electric,
+                    'utility_electric': electric[1][1],
+                    'utility_gas': gas[1][1],
+                    'building_year': 1990,
+                    'insFileElectric': 'http://developer.eebhub.org/imt/intputs/' + insFileNameElectric,
+                    'datFileElectric': 'http://developer.eebhub.org/imt/inputs/' + dataFileNameElectric,
+                    'outFileElectric': 'http://developer.eebhub.org/imt/outputs/' + outFileNameElectric,
+                    'resFileElectric': 'http://developer.eebhub.org/imt/outputs/' + resFileNameElectric,
+                    'insFileGas': 'http://developer.eebhub.org/imt/intputs/' + insFileNameGas,
+                    'datFileGas': 'http://developer.eebhub.org/imt/inputs/' + dataFileNameGas,
+                    'outFileGas': 'http://developer.eebhub.org/imt/outputs/' + outFileNameGas,
+                    'resFileGas': 'http://developer.eebhub.org/imt/outputs/' + resFileNameGas,
+                });
+            });
+
+        }
+
     },
     ibm: function(request, response) {
         //Get User Inputs

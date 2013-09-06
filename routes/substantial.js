@@ -1,12 +1,10 @@
 var fs = require("fs");
-//var buf = require("buffer");
 var timestp = require("../lib/timestamp.js");
 var shelljs = require('shelljs');
 
 module.exports ={
 
     getSubstantialResults:  function(request, response) {
-        //console.log(request);
         console.log(request.body);
         console.log(request.body.electricity_used_for_cooling);
         var buildingname = request.body.building_name;
@@ -67,7 +65,6 @@ module.exports ={
         break;        
         }
 
-        //var buildingstate = request.body.info.building_state;
         var grossfloorarea = request.body.gross_floor_area;
         var numberoffloors = request.body.number_of_floors;
         var shape = request.body.footprint_shape;
@@ -668,23 +665,24 @@ module.exports ={
         fs.writeFileSync("../utrc/"+filename+"/"+"example.xml", config);
         shelljs.echo('hello world');
         
-        //shelljs.exec('scp -r ../utrc/'+filename +'/ platform@128.118.67.221:/home/platform/utrc/');
-        
-	//shell.exec('ssh platform@128.118.67.201 bash hello.sh');
+		
+		var exec = require('child_process').exec;
+		exec('scp -r ../utrc/'+filename +'/ platform@128.118.67.221:/home/platform/utrc/', function(err, stdout, stderr) {
+		
 	    var command = 'ssh platform@128.118.67.221 \"cd ~/ESTCP_exe_LINUX_3.0rc15_HUB/06_ToolVersions/trunk/development/templates/Individual_Bldg/; ./run_DeepRetro.sh /usr/local/MATLAB/MATLAB_Compiler_Runtime/v717/ ~/utrc/' + filename + '/example.xml; cp Outputs/OutputStageI/Output_StageI.csv ~/utrc/' + filename + '\"';
-        shelljs.exec(command); 
         
+		exec(command, function(err2, stdout2, stderr2) {
 
-var str = '';
-var filename1 = '../utrc/Output_StageI.csv';
-fs.readFile(filename1, 'utf8', function(err, data) {   
-	str = str + data.to_s;
-});
-console.log(str);
-var arr = str.split(/[,\n]+/);
-arr.splice(0,3);
+		var str = '';
+		var filename1 = '../utrc/Output_StageI.csv';
+		fs.readFile(filename1, 'utf8', function(err, data) {   
+			str = str + data.to_s;
+		});
+		console.log(str);
+		var arr = str.split(/[,\n]+/);
+		arr.splice(0,3);
 
-console.log(arr);
+		console.log(arr);
          
         var data1 = xlsx.parse('../utrc/Output_StageI.xlsx'); 
         var elec_heat01 = data1.worksheets[4].data[1][1].value;
@@ -911,6 +909,50 @@ console.log(arr);
          
         });
         
+        response.render('substantialresults', {
+        'bldname': bldname,
+        'elec_heat': elec_heat,
+        'elec_pump': elec_pump,
+        'elec_cool': elec_cool,
+        'elec_light': elec_light,
+        'elec_equip': elec_equip,
+        'elec_ref': elec_ref,
+        'elec_fan': elec_fan,
+        'elec_water': elec_water,
+        'gas_water': gas_water,
+        'gas_cool': gas_cool,
+        'gas_heat': gas_heat,
+        'bs_elec0': bs_elec0,
+        'bs_elec1': bs_elec1,
+        'bs_gas0': bs_gas0,
+        'bs_gas1': bs_gas1,
+     
+    });
+    
+    
+    response.render('substantialresults', {
+        'bldname': bldname,
+        'elec_heat': elec_heat,
+        'elec_pump': elec_pump,
+        'elec_cool': elec_cool,
+        'elec_light': elec_light,
+        'elec_equip': elec_equip,
+        'elec_ref': elec_ref,
+        'elec_fan': elec_fan,
+        'elec_water': elec_water,
+        'gas_water': gas_water,
+        'gas_cool': gas_cool,
+        'gas_heat': gas_heat,
+        'bs_elec0': bs_elec0,
+        'bs_elec1': bs_elec1,
+        'bs_gas0': bs_gas0,
+        'bs_gas1': bs_gas1,
+    });
+     
+        
+ 	});
+ 	});
+	
     }
     
     

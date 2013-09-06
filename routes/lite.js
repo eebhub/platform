@@ -230,7 +230,7 @@ module.exports = {
             fs.mkdir(folderPath + building_name + timestamp, function() {
                 ibm.IBMbuildingData(ibmBuildingDataFileName, building_name, building_lat, building_long, orientation, building_length, building_width, building_height, gross_floor_area);
                 ibm.IBMutilityData(ibmUtilityDataFileName, electric_utility_startdate, utility_electric, utility_gas);
-                response.redirect('http://developer.eebhub.org/imt/' + building_name + timestamp);
+                response.redirect('http://developer.eebhub.org/ibm/' + building_name + timestamp);
             });
         });
 

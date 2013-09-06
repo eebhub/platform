@@ -15,6 +15,33 @@
                 padding-bottom: 40px;
                 background-color: rgb(229, 229, 229);
             }
+                        #filter {
+            	position: fixed;
+            	top: 0;
+            	left: 0;
+            	background: #111;
+            	min-width: 100%;
+            	min-height: 100%;
+            	opacity: 0.1;
+            }
+            
+            .progress{
+                height: 30px;
+            }
+            
+            .loading-div {
+                z-index: 100;
+            	position: fixed;
+                top: 55%;
+            	display: none;
+            	padding: 10px;
+            	text-align: center;
+            	margin: 0 20%;
+            	width: 60%;
+            	max-width: 800px;
+            	background: #fff;
+            }
+            
         </style>
         <script>
             function printValue(sliderID, textbox) {
@@ -157,7 +184,7 @@
                 <div class="span9">
 
 
-                <form action="/substantialresults" method="post" name="platformForm">
+                <form action="/substantialresults" method="post" name="platformForm" onsubmit="$('#baseline-form, header, .top-nav, footer').fadeTo('slow', 0.33);$('.loading-div').fadeIn('slow'); $('html,body').css('overflow', 'hidden');loading();return true;">
 
                     <section id="building">
                         <div id="box-unit">
@@ -856,10 +883,53 @@
         
                 <div class="box-unit">
                 <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/upenn/"><i class="icon-star-empty"></i> Parametric Analysis Toolkit for System Control</a>
-                <h2 class="text-right"><small>powered by Parametric Analysis Toolkit (UPenn)</small></h2>
+                <h2 class="text-right"><small>powered by UPenn Parametric Analysis Toolkit</small></h2>
                 </div>
                 
 
+            
+            <!--  Testing Loading Bar -->
+            <!--<button class="button" onclick="$('input, select, a, button').attr('disabled', 'disabled'); $('.main-div, header, .top-nav, footer').fadeTo('slow', 0.33);$('.loading-div').fadeIn('slow');  loading();"> Loading </button>-->
+            
+            <!-- Javascript: HighChart, Bootstrap, Jquery -->
+            <script src="http://code.jquery.com/jquery.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/bootstrap-scrollspy.js"></script>
+            <script src="js/bootstrap-fileupload.js"></script>
+            <script>
+        	
+        	// update loading bar
+        	function loading() {
+        	    
+        	    // current progress number in pixel
+            	var num = 0;
+            	
+            	// update the progress every second
+            	var update = setInterval(function(){
+            	    
+            	    // update the loading-status (text)
+            	    $("#loading-status").html("Simulation In Progress "+parseInt(num/$(".loading-div").width()*100)+"%");
+            		
+            		// loading to the next process
+            		if(num>=$(".loading-div").width()) { 
+            				$("#loading-status").html("Loading...");
+            				clearInterval(update);
+            		}
+            		
+            		// update the loading bar 
+            		$(".bar").width(num);
+                    
+                    // increase the loading bar 3 pixes per second.
+            		num=num+3;
+            	},1000);
+            }
+       
+           
+        	</script>
+        
+                 <!-- ################################ Loading Bar end##################################################### -->
+           
+        
         
         
         </form>                
@@ -873,7 +943,19 @@
         </div>
         <!-- Javascript -->
         
-
+                    <!-- ################################ Loading Bar ##################################################### -->
+            <div class="loading-div container-fluid">
+            	<div id="filter" > 
+            	</div>
+            
+            	<div class="progress progress-striped active">
+            	  <div class="bar" ></div>
+            	</div>
+            
+            	<h4 id="loading-status">Simulation In Progress ...</h4>
+            </div>
+            
+            
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="/js/bootstrap-switch.min.js"></script>  
         <script src="http://code.jquery.com/jquery.js"></script>

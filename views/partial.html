@@ -98,7 +98,7 @@
                                             </td>
                                             <td class="span7">
                                                 <div class="pull-right text-right">
-                                                <button type="button" onclick="building101Data()" class="btn">
+                                                <button type="button" onclick="building101Data_partial()" class="btn">
                                                     <i class="icon-plus"></i><b>Building 101 Data</b></button>
                                                 </div>
                                             </td>
@@ -208,20 +208,20 @@
                                             <option>West</option>
                                             <option>North-West</option>
                                         </select>
-                                        <h4>Window Area</h4>
+                                        <h4>% Window to Wall Area</h4>
                                         <ul class="inline">
                                             <li>
-                                                <input type="range" ng-model="winwalltyp" name="window_to_wall_ratio_room"
-                                                min="0" max="100" step="1" value=50/>
+                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50 />
                                             </li>
                                             <li>
                                                 <div class="input-append">
-                                                    <input class="span1" type="text" value={{winwalltyp}} ng-model="winwalltyp"
-                                                    />
+                                                    <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="window_to_wall_ratio">
                                                     <span class="add-on">%</span>
                                                 </div>
                                             </li>
                                         </ul>
+                                        <h4>Number of Floors</h4>
+                                        <input type="number" id="number_of_floors" name="number_of_floors" min="0" step="1">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -458,6 +458,14 @@
                             <h2 class="text-right">
                                 <small>powered by MIT Design Advisor Engine</small>
                             </h2>
+                        </div>
+                        <div class="box-unit">
+                            
+                            <div class="text-right">
+                                <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/utrc/uncertainty/riskanalysis.html"><i class="icon-exclamation-sign"></i> Risk Analysis </a>
+                                <br>
+                                <h2><small>powered by UTRC Uncertainty Quantification</small></h2>
+                            </div>
                         </div>
                     </form>
                     </div>

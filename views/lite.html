@@ -427,24 +427,15 @@
                         <section id="architecture">
                             <div class="box-unit">
                                 <div class="page-header">
-                                    <h2>Architecture
-                                        <small>required for IBM Analysis</small>
-                                    </h2>
+                                    <h2>Architecture</h2>
                                 </div>
                                 <div class="row">
                                     <div class="span4">
                                         <h4>Gross Floor Area</h4>
                                         <div class="input-append">
-                                            <input type="number" min="0" step="0.001" name="gross_floor_area" />
+                                            <input type="number" min="0" step="0.001" placeholder="required" name="gross_floor_area" />
                                             <span class="add-on">m&#178;</span>
                                         </div>
-                                        <h4>Height</h4>
-                                        <div class="input-append">
-                                            <input type="number" name="building_height" min="0" step="0.01" />
-                                            <span class="add-on">m</span>
-                                        </div>
-                                    </div>
-                                    <div class="span4">
                                         <h4>Length</h4>
                                         <div class="input-append">
                                             <input type="number" name="building_length" min="0" step="0.01" />
@@ -455,7 +446,14 @@
                                             <input type="number" name="building_width" min="0" step="0.01" />
                                             <span class="add-on">m</span>
                                         </div>
-                                        <h4>Orientation</h4>
+                                        <h4>Height</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="building_height" min="0" step="0.01" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                    </div>
+                                    <div class="span4">
+                                        <h4>Orientation <small>clockwise degrees from North</small></h4>
                                         <ul class="inline">
                                             <li>
                                                 <input type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
@@ -467,9 +465,8 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                    </div>
-                                    <div class="span8">
-                                        <h4>Address</h4>
+                                    
+                                    <h4>Address</h4>
                                         <input type="text" name="building_location_address">
                                         <h4>City</h4>
                                         <input type="text" name="building_location_city">
@@ -529,6 +526,9 @@
                                             <option value="WY">Wyoming</option>
                                         </select>
                                     </div>
+
+                                    
+                                        
                                 </div>
                             </div>
                         </section>

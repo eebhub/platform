@@ -458,13 +458,11 @@
                                         <h4>Orientation</h4>
                                         <ul class="inline">
                                             <li>
-                                                <input type="range" ng-model="orientation" name="building_orientation"
-                                                min="0" max="360" step="15" value={{orientation}}/>
+                                                <input type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
                                             </li>
                                             <li>
                                                 <div class="input-append">
-                                                    <input class="span1" type="text" value={{orientation}} ng-model="orientation"
-                                                    />
+                                                    <input class="span1" type="text" value={{orientation}} name="building_orientation" ng-model="orientation"/>
                                                     <span class="add-on">&deg;</span>
                                                 </div>
                                             </li>

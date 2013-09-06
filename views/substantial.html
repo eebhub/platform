@@ -36,6 +36,53 @@
             }
         </script>
         
+        <script>
+        function building101DataSubstantial() {
+            var form = document.forms.platformForm;
+
+            //BUILDING
+            if (form.contains(form.building_name)) {form.building_name.value = "Building 101";}
+            if (form.contains(form.weather_epw_location)) {form.weather_epw_location.value = "PHILADELPHIA INTERNATIONAL AP";}
+            if (form.contains(form.activity_type)) {form.activity_type.value = "Office";}
+            if (form.contains(form.activity_type_specific)) {form.activity_type_specific.value = "Administrative/professional office";}
+            
+            //ARCHITECTURE
+            if (form.contains(form.gross_floor_area)) {form.gross_floor_area.value = 6967.72;} // attic & basement
+            if (form.contains(form.building_height)) {form.building_height.value = 15.54;} 
+            if (form.contains(form.window_to_wall_ratio)) {form.window_to_wall_ratio.value = 15;}
+            if (form.contains(form.number_of_floors)) {form.number_of_floors.value = 4;} //conditioned space, includes basement
+            if (form.contains(form.perimeter)) {form.perimeter.value = 800;} 
+            if (form.contains(form.footprint_shape)) {form.footprint_shape.value = "T shaped";}
+            
+
+            //MATERIALS
+            if (form.contains(form.exterior_wall_type)) {form.exterior_wall_type.value = "Brick";}
+            if (form.contains(form.window_glass_type)) {form.window_glass_type.value = "Single Layer Glass";} //Windows Double Glazed
+            if (form.contains(form.roof_type)) {form.roof_type.value = "none";}
+
+            //PEOPLE
+            if (form.contains(form.number_of_employees_during_main_shift)) {form.number_of_employees_during_main_shift.value = 55;}
+
+            //MECHANICAL
+            if (form.contains(form.primary_hvac_type)) {form.primary_hvac_type.value = "VAV w/Reheat";}
+            if (form.contains(form.demand_control_ventilation)) {form.demand_control_ventilation.value = "no";}
+            if (form.contains(form.airside_economizer)) {form.airside_economizer.value = "no";}
+            if (form.contains(form.airside_energy_recovery)) {form.airside_energy_recovery.value = "no";}
+
+            //SCHEDULES
+            if (form.contains(form.average_weekly_operating_hours)) {form.average_weekly_operating_hours.value = 55;}
+            if (form.contains(form.weekday_occupancy_hours_day_start)) {form.weekday_occupancy_hours_day_start.value = "7AM";}
+            if (form.contains(form.weekday_occupancy_hours_day_end)) {form.weekday_occupancy_hours_day_end.value = "6PM";}
+            if (form.contains(form.saturday_occupancy_hours_day_start)) {form.saturday_occupancy_hours_day_start.value = "closed";}
+            if (form.contains(form.saturday_occupancy_hours_day_end)) {form.saturday_occupancy_hours_day_end.value = "closed";}
+            if (form.contains(form.sunday_occupancy_hours_day_start)) {form.sunday_occupancy_hours_day_start.value = "closed";}
+            if (form.contains(form.sunday_occupancy_hours_day_end)) {form.sunday_occupancy_hours_day_end.value = "closed";}
+                        
+            
+            
+        }
+        </script>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="js/building101Data.js"></script>
         <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -122,7 +169,7 @@
                                             </td>
                                             <td class="span7">
                                                 <div class="pull-right text-right">
-                                                <button type="button" onclick="building101Data()" class="btn">
+                                                <button type="button" onclick="building101DataSubstantial()" class="btn">
                                                     <i class="icon-plus"></i><b>Building 101 Data</b></button>
                                                 </div>
                                             </td>
@@ -261,16 +308,14 @@
                             <h4>Number of Floors</h4>
                             <input type="number" name="number_of_floors"
                             min="0" step="1" />
-                            <h4>Window/Wall Ratio</h4>
+                            <h4>Window to Wall Area</h4>
                                         <ul class="inline">
                                             <li>
-                                                <input type="range" ng-model="winwall" name="window_to_wall_ratio" min="0"
-                                                max="40" step="1" value=50/>
+                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50/>
                                             </li>
                                             <li>
                                                 <div class="input-append">
-                                                    <input class="span1" type="text" value={{winwall}} ng-model="winwall"
-                                                    />
+                                                    <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="window_to_wall_ratio">
                                                     <span class="add-on">%</span>
                                                 </div>
                                             </li>
@@ -800,7 +845,7 @@
                 <div class="box-unit">
                     <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
                     <!--<button type="button" class="btn btn-large btn-info"><i class="icon-plus"></i> Building 101 Data</button>-->
-                    <!--<a class="btn btn-large btn-info" href="substantialresults"><i class="icon-signal"></i> Example Outputs</a>-->
+                    <a class="btn btn-large btn-info" href="http://eebhub.minus.com/lICR2bdjxVvbP"><i class="icon-signal"></i> Example Outputs</a>
                     <h2 class="text-right"><small>powered by UTRC Energy Audit Tool Engine</small></h2>
                 
                 <!--<div id="progressbar"></div>-->
@@ -810,7 +855,7 @@
         
         
                 <div class="box-unit">
-                <a class="btn btn-large btn-info" href="http://developer.eebhub.org/upenn/"><i class="icon-star-empty"></i> Parametric Analysis Toolkit for System Control</a>
+                <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/upenn/"><i class="icon-star-empty"></i> Parametric Analysis Toolkit for System Control</a>
                 <h2 class="text-right"><small>powered by Parametric Analysis Toolkit (UPenn)</small></h2>
                 </div>
                 

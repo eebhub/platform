@@ -18,7 +18,9 @@ if (form.contains(form.weather_epw_location)) {form.weather_epw_location.value =
 if (form.contains(form.activity_type)) {form.activity_type.value = "Medium Office";}
 if (form.contains(form.activity_type_specific)) {form.activity_type_specific.value = "Administrative/professional office";}
 if (form.contains(form.year_completed)) {form.year_completed.value = "1911";}
-if (form.contains(form.building_location_address)) {form.building_location_address.value = "4747 South Broad Street, Philadelphia, PA 19112";}
+if (form.contains(form.building_location_address)) {form.building_location_address.value = "4747 South Broad Street";}
+if (form.contains(form.building_location_city)) {form.building_location_city.value = "Philadelphia";}
+if (form.contains(form.building_location_state)) {form.building_location_state.value = "PA";}
 
 //UTILITIES > excel
 //form.utility_startdate_electric.value = "01/15/2012";
@@ -51,13 +53,13 @@ if (form.contains(form.building_offset)) {form.building_offset.value = 38.1;}
 
 //MATERIALS
 if (form.contains(form.exterior_wall_type)) {form.exterior_wall_type.value = "Brick";}
-if (form.contains(form.wall_insulation_r_value)) {form.wall_insulation_r_value.value = "low";} //IP=4.6
+if (form.contains(form.wall_insulation_r_value)) {form.wall_insulation_r_value.value = "2";} //IP=4.6
 if (form.contains(form.thermal_mass)) {form.thermal_mass.value = "low";} //light wood
 if (form.contains(form.window_glass_type)) {form.window_glass_type.value = "dgu_nb";} //Windows Double Glazed
 if (form.contains(form.window_glass_coating)) {form.window_glass_coating.value = "clear";}
 if (form.contains(form.roof_type)) {form.roof_type.value = "none";}
 
-if (form.contains(form.roof_insulation_type)) {form.roof_insulation_type.value = 2;} //R=20
+if (form.contains(form.roof_insulation_type)) {form.roof_insulation_type.value = "2";} //R=20
 if (form.contains(form.roof_insulation_location)) {form.roof_insulation_location.value = "bottom";}
 
 //PEOPLE
@@ -75,7 +77,7 @@ if (form.contains(form.ceiling_reflectance)) {form.ceiling_reflectance.value = 0
 if (form.contains(form.wall_reflectance)) {form.wall_reflectance.value = 0.6;}
 
 //MECHANICAL
-if (form.contains(form.equipment_power_density)) {form.equipment_power_density.value = 15.00;} //1W/sqft
+if (form.contains(form.equipment_power_density)) {form.equipment_power_density.value = "15.00";} //1W/sqft
 if (form.contains(form.ventilation_system)) {form.ventilation_system.value = "natural";}
 if (form.contains(form.primary_hvac_type)) {form.primary_hvac_type.value = 500;}
 if (form.contains(form.demand_control_ventilation)) {form.demand_control_ventilation.value = "no";}
@@ -83,8 +85,8 @@ if (form.contains(form.airside_economizer)) {form.airside_economizer.value = "no
 if (form.contains(form.airside_energy_recovery)) {form.airside_energy_recovery.value = "no";}
 
 //SCHEDULES
-if (form.contains(form.weekday_occupancy_start)) {form.weekday_occupancy_start.value = 7.0;}
-if (form.contains(form.weekday_occupancy_end)) {form.weekday_occupancy_end.value = 18.0;}
+if (form.contains(form.weekday_occupancy_start)) {form.weekday_occupancy_start.value = "7.0";}
+if (form.contains(form.weekday_occupancy_end)) {form.weekday_occupancy_end.value = "18.0";}
 if (form.contains(form.saturday_occupancy_start)) {form.saturday_occupancy_start.value = "closed";}
 if (form.contains(form.saturday_occupancy_end)) {form.saturday_occupancy_end.value = "closed";}
 if (form.contains(form.sunday_occupancy_start)) {form.sunday_occupancy_start.value = "closed";}

@@ -10,6 +10,7 @@
         <link href="css/partial.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <link href="css/bootstrap-fileupload.css" rel="stylesheet">
         <script src="js/building101Data.js"></script>
         <script>
             function submitIMT() {
@@ -156,7 +157,7 @@
                                 </div>
                             </div>
                         </section>
-                        <section id="utility">
+                        <section id="utilities">
                             <div class="box-unit">
                                 <div class="page-header">
                                     <h2>Utility Data</h2>
@@ -495,7 +496,32 @@
                                 </div>
                             </div>
                         </section>
-                        
+                        <div class="box-unit">
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>EPA Portfolio Manager Score</h4>
+                                    <ul class="inline">
+                                        <li>
+                                            <input type="range" ng-model="portfolio" min="0" max="100" step="1" value={{portfolio}}/>
+                                        </li>
+                                        <li>
+                                            <input class="span1" type="text" value={{portfolio}} ng-model="portfolio" placeholder="optional"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="span4">
+                                    <h4>DOE Asset Rating Score</h4>
+                                    <ul class="inline">
+                                        <li>
+                                            <input type="range" ng-model="asset" min="0" max="100" step="1" value={{asset}}/>
+                                        </li>
+                                        <li>
+                                            <input class="span1" type="text" value={{asset}} ng-model="asset" placeholder="optional"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                         <div class="box-unit">
                             <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
                             <a class="btn btn-large btn-info" href="literesults"><i class="icon-signal"></i> Example Outputs</a>
@@ -504,36 +530,7 @@
                             </h2>
                              
                         </div>
-                        <div class="box-unit">
-                        <div class="row">
-                                <div class="span4">
-                                    <h4>EPA Portfolio Manager Score</h4>
-                                    <ul class="inline">
-                                        <li>
-                                            <input type="range" ng-model="portfolio" min="0" max="100" step="1"
-                                            value={{portfolio}}/>
-                                        </li>
-                                        <li>
-                                            <input class="span1" type="text" value={{portfolio}} 
-                                            ng-model="portfolio" />
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="span4">
-                                    <h4>DOE Asset Rating Score</h4>
-                                    <ul class="inline">
-                                        <li>
-                                            <input type="range" ng-model="asset" min="0" max="100" step="1"
-                                            value={{asset}}/>
-                                        </li>
-                                        <li>
-                                            <input class="span1" type="text" value={{asset}} 
-                                            ng-model="asset" />
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </form>
                     <div class="box-unit">
                         <button onclick="submitIBM()" class="btn btn-large btn-primary">SIMULATE</button>

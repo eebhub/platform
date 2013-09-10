@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>EEB Hub Simulation Tools: Comprehensive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/docs.css" rel="stylesheet">
+
+    <style>
+      body {
+        background: #fff;
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+
+      .container{
+        width: 90%;
+      }
+
+      .table-striped{
+        background: #eee;
+      }
+
+      .table{
+        text-align: center;
+      }
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src="js/jquery.js"></script>
+        
+        <script type="text/javascript">
+        $(function () {
+    
+        var colors = Highcharts.getOptions().colors,
+            categories = ['Demand Control Ventilation', 'Static Pressure Reset', 'Trees', 'Active External Shading', 'Upgraded Windows', 'Cool Roof', 'Waterside Economizer', 'Airside Energy Recovery', 'Chillerplant Optimization', 'Tankless Waterheating', 'Condensing Boilder', 'Solor Heating'],
+            name = '% Energy Savings',
+            data = [{
+                    y: 55.11,
+                    color: colors[0],
+                    drilldown: {
+                        name: 'MSIE versions',
+                        categories: ['MSIE 6.0', 'MSIE 7.0', 'MSIE 8.0', 'MSIE 9.0'],
+                        data: [10.85, 7.35, 33.06, 2.81],
+                        color: colors[0]
+                    }
+                }, {
+                    y: 21.63,
+                    color: colors[1],
+                    drilldown: {
+                        name: 'Firefox versions',
+                        categories: ['Firefox 2.0', 'Firefox 3.0', 'Firefox 3.5', 'Firefox 3.6', 'Firefox 4.0'],
+                        data: [0.20, 0.83, 1.58, 13.12, 5.43],
+                        color: colors[1]
+                    }
+                }, {
+                    y: 11.94,
+                    color: colors[2],
+                    drilldown: {
+                        name: 'Chrome versions',
+                        categories: ['Chrome 5.0', 'Chrome 6.0', 'Chrome 7.0', 'Chrome 8.0', 'Chrome 9.0',
+                            'Chrome 10.0', 'Chrome 11.0', 'Chrome 12.0'],
+                        data: [0.12, 0.19, 0.12, 0.36, 0.32, 9.91, 0.50, 0.22],
+                        color: colors[2]
+                    }
+                }, {
+                    y: 7.15,
+                    color: colors[3],
+                    drilldown: {
+                        name: 'Safari versions',
+                        categories: ['Safari 5.0', 'Safari 4.0', 'Safari Win 5.0', 'Safari 4.1', 'Safari/Maxthon',
+                            'Safari 3.1', 'Safari 4.1'],
+                        data: [4.55, 1.42, 0.23, 0.21, 0.20, 0.19, 0.14],
+                        color: colors[3]
+                    }
+                }, {
+                    y: 6.14,
+                    color: colors[4],
+                    drilldown: {
+                        name: 'Opera versions',
+                        categories: ['Opera 9.x', 'Opera 10.x', 'Opera 11.x'],
+                        data: [ 0.12, 0.37, 1.65],
+                        color: colors[4]
+                    }
+                }, {
+                    y: 5.02,
+                    color: colors[4],
+                    drilldown: {
+                        name: 'Opera versions',
+                        categories: ['Opera 9.x', 'Opera 10.x', 'Opera 11.x'],
+                        data: [ 0.12, 0.37, 1.65],
+                        color: colors[4]
+                    }
+                }, {
+                    y: 5.01,
+                    color: colors[4],
+                    drilldown: {
+                        name: 'Opera versions',
+                        categories: ['Opera 9.x', 'Opera 10.x', 'Opera 11.x'],
+                        data: [ 0.12, 0.37, 1.65],
+                        color: colors[4]
+                    }
+                }, {
+                    y: 3.22,
+                    color: colors[4],
+                    drilldown: {
+                        name: 'Opera versions',
+                        categories: ['Opera 9.x', 'Opera 10.x', 'Opera 11.x'],
+                        data: [ 0.12, 0.37, 1.65],
+                        color: colors[4]
+                    }
+                }, {
+                    y: 2.14,
+                    color: colors[4],
+                    drilldown: {
+                        name: 'Opera versions',
+                        categories: ['Opera 9.x', 'Opera 10.x', 'Opera 11.x'],
+                        data: [ 0.12, 0.37, 1.65],
+                        color: colors[4]
+                    }
+                }, {
+                    y: 1.99,
+                    color: colors[4],
+                    drilldown: {
+                        name: 'Opera versions',
+                        categories: ['Opera 9.x', 'Opera 10.x', 'Opera 11.x'],
+                        data: [ 0.12, 0.37, 1.65],
+                        color: colors[4]
+                    }
+                }, {
+                    y: 0.14,
+                    color: colors[4],
+                    drilldown: {
+                        name: 'Opera versions',
+                        categories: ['Opera 9.x', 'Opera 10.x', 'Opera 11.x'],
+                        data: [ 0.12, 0.37, 1.65],
+                        color: colors[4]
+                    }
+                }, {
+                    y: 0.012,
+                    color: colors[4],
+                    drilldown: {
+                        name: 'Opera versions',
+                        categories: ['Opera 9.x', 'Opera 10.x', 'Opera 11.x'],
+                        data: [ 0.12, 0.37, 1.65],
+                        color: colors[4]
+                    }
+                }];
+    
+        function setChart(name, categories, data, color) {
+			chart.xAxis[0].setCategories(categories, false);
+			chart.series[0].remove(false);
+			chart.addSeries({
+				name: name,
+				data: data,
+				color: color || 'white'
+			}, false);
+			chart.redraw();
+        }
+    
+        var chart = $('#ecm').highcharts({
+            chart: {
+                type: 'column',
+                backgroundColor:{
+         linearGradient: [0, 0, 250, 500],
+         stops: [
+            [0, 'rgb(48, 96, 48)'],
+            [1, 'rgb(0, 0, 0)']
+         ]
+      },
+            },
+            title: {
+                text: '%Energy Savings by Independent ECMs vs. BL (kWh/kWh)',
+                style: {
+         color: 'white',
+      }
+            },
+            xAxis: {
+                categories: categories
+            },
+            yAxis: {
+                title: {
+                    text: '%'
+                }
+            },
+            plotOptions: {
+                column: {
+                    //cursor: 'pointer',
+                    // point: {
+                    //     events: {
+                    //         click: function() {
+                    //             var drilldown = this.drilldown;
+                    //             if (drilldown) { // drill down
+                    //                 setChart(drilldown.name, drilldown.categories, drilldown.data, drilldown.color);
+                    //             } else { // restore
+                    //                 setChart(name, categories, data);
+                    //             }
+                    //         }
+                    //     }
+                    // },
+                    dataLabels: {
+                        enabled: true,
+                        color: colors[0],
+                        style: {
+                            fontWeight: 'bold'
+                        },
+                        formatter: function() {
+                            return this.y +'%';
+                        }
+                    }
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    var point = this.point,
+                        s = this.x +':<b>'+ this.y +'% Saving</b><br/>';
+                    // if (point.drilldown) {
+                    //     s += 'Click to view '+ point.category +' versions';
+                    // } else {
+                    //     s += 'Click to return to browser brands';
+                    // }
+                    return s;
+                }
+            },
+            series: [{
+                name: name,
+                data: data,
+                color: 'white'
+            }],
+            exporting: {
+                enabled: true
+            }
+        })
+        .highcharts(); // return chart
+    });
+    </script>    
+        
+        
+
+  </head>
+
+  <body>
+          <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container" >
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand pull-left" href="./">EEB Hub Simulation Platform</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="/">Home</a>
+              </li>
+              <li class="">
+                <a href="/lite">Lite</a>
+              </li>
+              <li class="">
+                <a href="/partial">Partial</a>
+              </li>
+              <li class="active">
+                <a href="/substantial">Substantial</a>
+              </li>
+              <li class="">
+                <a href="/comprehensive">Comprehensive</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container">
+
+        <!-- Sub-Nav-bar -->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <a class="brand" href="/substantialsampleres">Energy Audit Tool</a>
+            <ul class="nav">
+              <li><a href="/substantialsampleres">My Model</a></li>
+              <li><a href="/substantialsampleres-energyuse">Energy Use</a></li>
+              <li><a href="/substantialsampleres-stage1">StageI (baseline)</a></li>
+              <li class="active"><a href="/substantialsampleres-stage2">Stage II (ECM)</a></li>
+            </ul>
+          </div>
+        </div>
+        
+
+
+        <div class="container">
+        <div class="page-header">
+            <h2>Energy Conservation Measures</h2>
+        </div>
+        <div id="ecm"></div>        
+        </div>
+        
+
+</div>
+
+  
+            <!-- Javascript -->
+            <script src="js/bootstrap-scrollspy.js"></script>
+            <script src="js/highcharts.js"></script>
+            <script src="js/modules/exporting.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
+

@@ -38,8 +38,10 @@ app.get('/literesults', routes.getLiteResults);
 app.get('/partial', routes.getPartial);
 app.get('/substantial', routes.getSubstantial);
 app.get('/comprehensive', routes.getComprehensive);
-//app.get('/substantialresults', substantial.getSubstantialResults);
-
+app.get('/substantialsampleres', substantial.getSubstantialSampleRes);
+app.get('/substantialsampleres-energyuse', substantial.getSubstantialSampleResEnergyUse);
+app.get('/substantialsampleres-stage1', substantial.getSubstantialSampleResStage1);
+app.get('/substantialsampleres-stage2', substantial.getSubstantialSampleResStage2);
 
 //Posts
 app.post('/partialanalysis', partial.partial);

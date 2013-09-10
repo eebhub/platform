@@ -3,6 +3,22 @@ var timestp = require("../lib/timestamp.js");
 var shelljs = require('shelljs');
 
 module.exports ={
+    
+    getSubstantialSampleRes:  function(request, response) {
+        response.render('substantialsampleres');
+    },
+    
+    getSubstantialSampleResEnergyUse:  function(request, response) {
+        response.render('substantialsampleres-energyuse');
+    },
+    
+    getSubstantialSampleResStage1:  function(request, response) {
+        response.render('substantialsampleres-stage1');
+    },
+    
+    getSubstantialSampleResStage2:  function(request, response) {
+        response.render('substantialsampleres-stage2');
+    },
 
     getSubstantialResults:  function(request, response) {
         console.log(request.body);

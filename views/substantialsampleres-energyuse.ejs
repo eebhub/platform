@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>EEB Hub Simulation Tools: Comprehensive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/docs.css" rel="stylesheet">
+
+    <style>
+      body {
+        background: #fff;
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+
+      .container{
+        width: 90%;
+      }
+
+      .table-striped{
+        background: #eee;
+      }
+
+      .table{
+        text-align: center;
+      }
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src="js/jquery.js"></script>
+        
+        <script type="text/javascript">
+            $(function() {
+                $('#electricityjs').highcharts({
+                    chart: {
+                      type: 'column'
+                  },
+                  title: {
+                      text: 'Electricity Consumption (kWh)'
+                  },
+                  xAxis: {
+                      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                  },
+                  yAxis: {
+                      min: 0,
+                      title: {
+                          text: ''
+                      },
+                      stackLabels: {
+                          enabled: true,
+                          style: {
+                              fontWeight: 'bold',
+                              color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                          }
+                      }
+                  },
+                  legend: {
+                      align: 'center',
+                      x: 0,
+                      verticalAlign: 'bottom',
+                      y: 0,
+                      floating: false,
+                      backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white',
+                      borderColor: '#CCC',
+                      borderWidth: 1,
+                      shadow: true
+                  },
+                  tooltip: {
+                      formatter: function() {
+                          return '<b>'+ this.x +'</b><br/>'+
+                              this.series.name +': '+ this.y +'<br/>'+
+                              'Total: '+ this.point.stackTotal;
+                      }
+                  },
+                  plotOptions: {
+                      column: {
+                          stacking: 'normal',
+                          dataLabels: {
+                              enabled: false,
+                              color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                          }
+                      }
+                  },
+                  series: [{
+                      name: 'Heat',
+                      data: [0,0,0,0,0,0,0,0,0,0,0,0]                  },{
+                      name: 'Pump',
+                      data: [1116,1008,1093,923,879,1037,1253,1161,884,1015,1072,1113]                  }, {
+                      name: 'Cool',
+                      data: [0,0,1,155,53928,64010,79129,75621,59464,100,0,0]                  }, {
+                      name: 'Light',
+                      data: [20685,18115,19987,19058,20685,19130,19915,20685,18360,20685,19828,19216]                  }, {
+                      name: 'Equip',
+                      data: [17416,15192,16765,15933,17416,16023,16675,17416,15282,17416,16675,16023]                  }, {
+                      name: 'Ref',            
+                      data: [2142,1935,2142,2073,2142,2073,2142,2142,2073,2142,2073,2142]                  }, {
+                      name: 'Fan',
+                      data: [8965,8127,8801,7033,7356,8325,10017,9285,7158,7782,8542,9123]                  }, {
+                      name: 'Water',
+                      data: [0,0,0,0,0,0,0,0,0,0,0,0]                  },  ]
+
+
+                });
+            });
+        </script>
+       
+       <script type="text/javascript">
+            $(function() {
+                $('#naturalgasjs').highcharts({
+                    chart: {
+                      type: 'column'
+                  },
+                  title: {
+                      text: 'Natural Gas Consumption (kWh)'
+                  },
+                  xAxis: {
+                      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                  },
+                  yAxis: {
+                      min: 0,
+                      title: {
+                          text: ''
+                      },
+                      stackLabels: {
+                          enabled: true,
+                          style: {
+                              fontWeight: 'bold',
+                              color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                          }
+                      }
+                  },
+                  legend: {
+                      align: 'center',
+                      x: 0,
+                      verticalAlign: 'bottom',
+                      y: 0,
+                      floating: false,
+                      backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white',
+                      borderColor: '#CCC',
+                      borderWidth: 1,
+                      shadow: true
+                  },
+                  tooltip: {
+                      formatter: function() {
+                          return '<b>'+ this.x +'</b><br/>'+
+                              this.series.name +': '+ this.y +'<br/>'+
+                              'Total: '+ this.point.stackTotal;
+                      }
+                  },
+                  plotOptions: {
+                      column: {
+                          stacking: 'normal',
+                          dataLabels: {
+                              enabled: false,
+                              color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                          }
+                      }
+                  },
+                  series: [{
+                      name: 'Water',
+                      data: [3337,2966,3337,3089,3337,3213,3213,3337,3089,3337,3213,3213]                  },{
+                      name: 'Cool',
+                      data: [0,0,0,0,0,0,0,0,0,0,0,0]                  }, {
+                      name: 'Heat',
+                      data: [95521,78355,57807,31588,0,0,0,0,0,37272,57833,77866]                  },   ]
+
+
+                });
+            });
+        </script>
+
+  </head>
+
+  <body>
+          <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container" >
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand pull-left" href="./">EEB Hub Simulation Platform</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="/">Home</a>
+              </li>
+              <li class="">
+                <a href="/lite">Lite</a>
+              </li>
+              <li class="">
+                <a href="/partial">Partial</a>
+              </li>
+              <li class="active">
+                <a href="/substantial">Substantial</a>
+              </li>
+              <li class="">
+                <a href="/comprehensive">Comprehensive</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container">
+
+        <!-- Sub-Nav-bar -->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <a class="brand" href="">Energy Audit Tool</a>
+            <ul class="nav">
+              <li><a href="/substantialsampleres">My Model</a></li>
+              <li class="active"><a href="/substantialsampleres-energyuse">Energy Use</a></li>
+              <li><a href="/substantialsampleres-stage1">StageI (baseline)</a></li>
+              <li><a href="/substantialsampleres-stage2">Stage II (ECM)</a></li>
+            </ul>
+          </div>
+        </div>
+        
+
+        <!-- Electricity Consumption Bar Chart -->
+        <div class="container">
+        
+        <div class="page-header">
+            <h2>Caculated Monthly Energy Use</h2>
+        </div>
+        
+        <div id="electricityjs" style="width: 50%; min-width: 400px; height: 500px; float:left;"></div>
+         
+        <!-- Natural Gas Consumption Bar Chart -->
+        <div id="naturalgasjs" style="width: 50%; min-width: 400px; height: 500px; float: left; margin-bottom: 25px;"></div>
+        </div>
+        
+
+</div>
+
+  
+            <!-- Javascript -->
+            <script src="js/bootstrap-scrollspy.js"></script>
+            <script src="js/highcharts.js"></script>
+            <script src="js/modules/exporting.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
+

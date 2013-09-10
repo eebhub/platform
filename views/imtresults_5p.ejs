@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>EEB Hub Simulation Platform Tools</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="css/partial.css" rel="stylesheet" />
+        <link href="css/stylesheet.css" rel="stylesheet" />
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+                background-color: rgb(229, 229, 229);
+            }
+        </style>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#euijs').highcharts({
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: 'Site Energy Use Intensity'
+                    },
+
+                    xAxis: {
+                        categories: ['<%= building_name %>', 'Industry Average', ],
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Energy Use Instensity (kBtu/m^2)',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' kBtu/m^2/yr'
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: true
+                    },
+                    series: [{
+                        name: 'EUI',
+                        data: [<%= EUI %>, <%=buildingTypeEUI %>]
+                    }]
+                });
+            });
+        </script>
+        <script type="text/javascript">
+$(function () {
+        $('#temphighjs').highcharts({
+            chart: {
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Average Monthly Temperature vs Monthly Utility Use'
+            },
+            subtitle: {
+                text: 'for <%= building_name%>'
+            },
+            xAxis: [{
+                
+            }],
+            yAxis: [{ // Primary yAxis
+                labels: {
+                    format: '{value}°F',
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'Temperature',
+                    style: {
+                        color: '#89A54E'
+                    }
+                }
+            }, { // Secondary yAxis
+                title: {
+                    text: 'Monthly Utility Energy Use',
+                    style: {
+                        color: '#4572A7'
+                    }
+                },
+                labels: {
+                    format: '{value} kBTU',
+                    style: {
+                        color: '#4572A7'
+                    }
+                },
+                opposite: true
+            }],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                x: 120,
+                verticalAlign: 'top',
+                y: 100,
+                floating: true,
+                backgroundColor: '#FFFFFF'
+            },
+            series: [{
+                name: 'Monthly Utility Energy Use',
+                color: '#4572A7',
+                type: 'column',
+                yAxis: 1,
+                data: [<%= energy %>],
+                tooltip: {
+                    valueSuffix: ' kBTU'
+                }
+    
+            }, {
+                name: 'Monthly Average Temperature',
+                color: '#89A54E',
+                type: 'spline',
+                data: [ <%= temperatures %>],
+                tooltip: {
+                    valueSuffix: '°F'
+                }
+            }]
+        });
+    });
+    $(function () {
+        $('#regression').highcharts({
+            chart: {
+            },
+            xAxis: { 
+                labels: {
+                    format: '{value}°F',
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'Temperature',
+                    style: {
+                        color: '#89A54E'
+                    }
+                }
+            },
+            yAxis: { 
+                labels: {
+                    format: '{value}kBTU',
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'Energy Use/Day (kBTU)',
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                min: 0
+            },
+            title: {
+                text: 'Building Energy Use Regression Analysis'
+            },
+            series: [{
+                type: 'line',
+                name: 'Base Load',
+                data: [[ <%= Xcp1 %> , <%= Ycp %> ],[ <%= Xcp2 %> , <%= Ycp %>]],
+                marker: {
+                    enabled: false
+                },
+                states: {
+                    hover: {
+                        lineWidth: 0
+                    }
+                },
+                enableMouseTracking: false
+            }, 
+                     {
+                type: 'line',
+                name: 'Heating Load',
+                data: [[ <%= X1 %> , <%= Y1 %>],[ <%= Xcp1 %> , <%= Ycp %> ]],
+                marker: {
+                    enabled: false
+                },
+                states: {
+                    hover: {
+                        lineWidth: 0
+                    }
+                },
+                enableMouseTracking: false
+            },{
+                type: 'line',
+                name: 'Cooling Load',
+                data: [[ <%= Xcp2 %> , <%= Ycp %>],[ <%= X2 %> , <%= Y2 %> ]],
+                marker: {
+                    enabled: false
+                },
+                states: {
+                    hover: {
+                        lineWidth: 0
+                    }
+                },
+                enableMouseTracking: false
+            },{
+                type: 'scatter',
+                name: 'Observations',
+                data: [[ <%= Xcp2 %> , <%= Ycp %>],[ <%= X2 %> , <%= Y2 %> ],[ <%= X1 %> , <%= Y1 %>],[ <%= Xcp1 %> , <%= Ycp %> ],[ <%= Xcp1 %> , <%= Ycp %> ],[ <%= Xcp2 %> , <%= Ycp %>]],
+                marker: {
+                    radius: 4
+                }
+            }]
+        });
+    });
+    
+    
+
+    	</script>
+    </head>
+    
+    <body data-spy="scroll" data-target="#sidebar">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="brand">EEB Hub Simulation Platform</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="/lite">Lite</a>
+                            </li>
+                            <li>
+                                <a href="/partial">Partial</a>
+                            </li>
+                            <li>
+                                <a href="/substantial">Substantial</a>
+                            </li>
+                            <li>
+                                <a href="/comprehensive">Comprehensive</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <!-- Intro -->
+        <div class="container">
+            <div class="row">
+                <div class="span3 bs-docs-sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav">
+                        <li>
+                            <h3>Lite
+                                <small>-ASHRAE IMT</small>
+                            </h3>
+                        </li>
+                        <li>
+                            <a href="#building"><i class="icon-chevron-right"></i> Building</a>
+                        </li>
+                        <li>
+                            <a href="#eui"><i class="icon-chevron-right"></i> Energy Use Intensity</a>
+                        </li>
+                        <li>
+                            <a href="#temp"><i class="icon-chevron-right"></i> Temperature vs Utilities</a>
+                        </li>
+                        <li>
+                            <a href="#regression"><i class="icon-chevron-right"></i> Regression Analysis</a>
+                        </li>
+                        <li>
+                            <a href="#files"><i class="icon-chevron-right"></i> IMT Files</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="span9">
+                        
+                        <div class="row">
+                            <section id="building">
+                                <div class="span9 box-unit">
+                                    <div class="page-header">
+                                        <h2>Building</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="span4">
+                                            <h4>Building Name</h4>
+                                            <input id="disabledInput" class="span3" type="text"
+                                            placeholder="<%= building_name%>" disabled>
+                                            <br/>
+                                            <h4>Year Built</h4>
+                                            <input id="disabledInput" class="span3" type="text" placeholder="<%= building_year %>"
+                                            disabled>
+                                        </div>
+                                        <div class="span4">
+                                            <h4>Function</h4>
+                                            <input id="disabledInput" class="span3" type="text" placeholder=""
+                                            disabled>
+                                            <h4>City</h4>
+                                            <input id="disabledInput" class="span3" type="text" placeholder=""
+                                            disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="row">
+                            <section id="eui">
+                                <div class="span9 box-unit">
+                                    <div class="page-header">
+                                        <h2>Site Energy Use Intensity</h2>
+                                    </div>
+                                    <div id="euijs" class="span8"></div>
+                                </div>
+                            </section>
+                            <section id="temp">
+                                <div class="span9 box-unit">
+                                    <div class="page-header">
+                                        <h2>Temperature Related Consumption</h2>
+                                    </div>
+                                    <div id="temphighjs" class="span8"></div>
+                                </div>
+                            </section>
+                            <section id="regression">
+                                <div class="span9 box-unit">
+                                    <div class="page-header">
+                                        <h2>Regression Analysis</h2>
+                                    </div>
+                                    <div id="regression" class="span8"></div>
+                                    <p>Ycp =<%= Ycp %></p> <br>
+        <p>LS =<%= LS %></p> <br>
+        <p>RS =<%= RS %></p> <br>
+        <p>Xcp1 = <%= Xcp1 %></p> <br>
+        <p>Xcp2 = <%= Xcp2 %></p> <br>
+        <h3>Building Equation</h3>
+        <p>kBTU/Day = <%= Ycp %> + <%= LS %>  * (Average Temperature - <%= Xcp1 %>) + <%= RS %> * (Average Temperature - <%= Xcp2 %>)</p>
+                                </div>
+                            </section>
+                            <section id="files">
+                                <div class="span9 box-unit">
+                                    <div class="page-header">
+                                        <h2>Inverse Modeling Toolkit Files</h2>
+                                    </div>
+                                    <a href='<%= insFile %>'><button class="btn btn-sm "> Instruction File</button></a>
+        <a href='<%= datFile %>'><button class="btn btn-sm "> Data File</button></a>
+        <a href='<%= outFile %>'><button class="btn btn-sm "> Outout File</button></a>
+        <a href='<%= resFile %>'><button class="btn btn-sm "> Residule File</button></a>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Javascript -->
+            <script src="js/bootstrap-scrollspy.js"></script>
+            <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+    </body>
+
+</html>

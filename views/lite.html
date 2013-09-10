@@ -13,52 +13,15 @@
         <script src="js/building101Data.js"></script>
         <script>
             function submitIMT() {
-                var form = document.forms.liteForm;
+                var form = document.forms.platformForm;
                 form.action = "/imtanalysis";
                 form.submit();
             }
 
             function submitIBM() {
-                var form = document.forms.liteForm;
+                var form = document.forms.platformForm;
                 form.action = "/ibmanalysis";
                 form.submit();
-            }
-
-            function updateData() {
-                //form
-                var form = document.forms.liteForm;
-                
-                //Utility Data
-                var electric_utility_startdate_building101 = ['2012-01-01', '2012-02-01', '2012-03-01', '2012-04-01', '2012-05-01', '2012-06-01', '2012-07-01', '2012-08-01', '2012-09-01', '2012-10-01', '2012-11-01', '2012-12-01', '2012-12-31'],
-                    utility_electric_building101 = [65280, 50400, 54600, 68160, 72240, 89280, 100560, 131400, 111000, 89880, 89040, 66120, '--'],
-                    gas_utility_startdate_building101 = ['2012-01-26', '2012-02-24', '2012-03-27', '2012-04-27', '2012-05-27', '2012-06-27', '2012-07-27', '2012-08-27', '2012-09-27', '2012-10-27', '2012-11-27', '2012-12-27', '2013-01-27'],
-                    utility_gas_building101 = [3641, 2166, 1019, 923, 30.5, 34.5, 85.7, 38.7, 989.7, 2824, 2385, 3500, '--'];
-
-                //Utility Inputs
-                var electric_utility_startdate = document.getElementsByName('electric_utility_startdate'),
-                    utility_electric = document.getElementsByName('utility_electric'),
-                    gas_utility_startdate = document.getElementsByName('gas_utility_startdate'),
-                    utility_gas = document.getElementsByName('utility_gas');
-
-                //Update Building Info
-                form.building_name.value = 'Building 101';
-                form.gross_floor_area.value = 20000;
-                form.building_height.value = 60;
-                form.building_width.value = 150;
-                form.building_length.value = 200;
-                form.building_orientation.value = 300;
-                form.building_location_address.value = '4747 South Broad Street';
-                form.building_location_city.value = 'Philadelphia';
-                form.building_location_state.selected = 'PA';
-
-                //Update the Utility Table
-                for (i in electric_utility_startdate) {
-                    electric_utility_startdate[i].value = electric_utility_startdate_building101[i];
-                    utility_electric[i].value = utility_electric_building101[i];
-                    gas_utility_startdate[i].value = gas_utility_startdate_building101[i];
-                    utility_gas[i].value = utility_gas_building101[i];
-                }
-
             }
         </script>
     </head>

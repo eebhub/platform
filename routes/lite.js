@@ -18,6 +18,7 @@ module.exports = {
         var building_name = request.body.building_name;
         var building_location = request.body.weather_epw_location;
         var building_function = request.body.activity_type;
+        var year_completed = request.body.year_completed;
         var building_size = request.body.gross_floor_area;
         var utility_gas = request.body.utility_gas;
         var utility_electric = request.body.utility_electric;
@@ -78,6 +79,9 @@ module.exports = {
                                 imt.calcSiteEUI(electric_utility_startdate, utility_electric_kBTU, building_size, function(EUI) {
                                     response.render('imtresults_5p', {
                                         'building_name': building_name,
+                                        'building_year': year_completed,
+                                        'building_location': building_location,
+                                        'building_function': building_function,
                                         'EUI': EUI,
                                         'buildingTypeEUI': buildingTypeEUI,
                                         'electric_utility_startdate': electric_utility_startdate,
@@ -92,11 +96,11 @@ module.exports = {
                                         'Y2': Y2,
                                         'X1': X1,
                                         'X2': X2,
-                                        'building_year': 1990,
-                                        'insFile': 'http://developer.eebhub.org/imt/intputs/' + insFileNameElectric,
-                                        'datFile': 'http://developer.eebhub.org/imt/inputs/' + dataFileNameElectric,
-                                        'outFile': 'http://developer.eebhub.org/imt/outputs/' + outFileNameElectric,
-                                        'resFile': 'http://developer.eebhub.org/imt/outputs/' + resFileNameElectric,
+                                        
+                                        'insFile': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ insFileNameElectric,
+                                        'datFile': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ dataFileNameElectric,
+                                        'outFile': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ outFileNameElectric,
+                                        'resFile': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ resFileNameElectric,
                                     });
                                 });
                             });
@@ -182,15 +186,17 @@ module.exports = {
                     'temperatures': temperatures_electric,
                     'utility_electric': electric[1][1],
                     'utility_gas': gas[1][1],
-                    'building_year': 1990,
-                    'insFileElectric': 'http://developer.eebhub.org/imt/intputs/' + insFileNameElectric,
-                    'datFileElectric': 'http://developer.eebhub.org/imt/inputs/' + dataFileNameElectric,
-                    'outFileElectric': 'http://developer.eebhub.org/imt/outputs/' + outFileNameElectric,
-                    'resFileElectric': 'http://developer.eebhub.org/imt/outputs/' + resFileNameElectric,
-                    'insFileGas': 'http://developer.eebhub.org/imt/intputs/' + insFileNameGas,
-                    'datFileGas': 'http://developer.eebhub.org/imt/inputs/' + dataFileNameGas,
-                    'outFileGas': 'http://developer.eebhub.org/imt/outputs/' + outFileNameGas,
-                    'resFileGas': 'http://developer.eebhub.org/imt/outputs/' + resFileNameGas,
+                    'building_year': year_completed,
+                    'building_function': building_function,
+                    'building_location': building_location,
+                    'insFileElectric': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ insFileNameElectric,
+                    'datFileElectric': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ dataFileNameElectric,
+                    'outFileElectric': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ outFileNameElectric,
+                    'resFileElectric': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ resFileNameElectric,
+                    'insFileGas': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ insFileNameGas,
+                    'datFileGas': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ dataFileNameGas,
+                    'outFileGas': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ outFileNameGas,
+                    'resFileGas': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ resFileNameGas,
                 });
             });
 
@@ -230,7 +236,7 @@ module.exports = {
             fs.mkdir(folderPath + building_name + timestamp, function() {
                 ibm.IBMbuildingData(ibmBuildingDataFileName, building_name, building_lat, building_long, orientation, building_length, building_width, building_height, gross_floor_area);
                 ibm.IBMutilityData(ibmUtilityDataFileName, electric_utility_startdate, utility_electric, utility_gas);
-                response.redirect('http://developer.eebhub.org/imt/' + building_name + timestamp);
+                response.redirect('http://developer.eebhub.org/ibm/' + building_name + timestamp);
             });
         });
 

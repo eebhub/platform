@@ -43,6 +43,9 @@ app.get('/substantialsampleres-energyuse', substantial.getSubstantialSampleResEn
 app.get('/substantialsampleres-stage1', substantial.getSubstantialSampleResStage1);
 app.get('/substantialsampleres-stage2', substantial.getSubstantialSampleResStage2);
 
+//test unit conversion
+app.get('/lite-conversion',lite.getLiteConversion);
+
 //Posts
 app.post('/partialanalysis', partial.partial);
 //app.post('/substantialresults', substantial.getSubstantialInput);

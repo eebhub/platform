@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html ng-app>
+    
+    <head>
+        <title>EEB Hub Simulation Platform Tools</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/stylesheet.css" rel="stylesheet">
+        <link href="css/partial.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="js/building101Data.js"></script>
+        <script>
+            function submitIMT() {
+                var form = document.forms.platformForm;
+                form.action = "/imtanalysis";
+                form.submit();
+            }
+
+            function submitIBM() {
+                var form = document.forms.platformForm;
+                form.action = "/ibmanalysis";
+                form.submit();
+            }
+            
+            function convert(){
+                
+                var content =  "<div class=\"box-unit\"><div class=\"page-header\"><h2>Architecture</h2></div><div class=\"row\"><div class=\"span4\"><h4>Gross Floor Area</h4><div class=\"input-append\"><input type=\"number\" min=\"0\" step=\"0.001\" placeholder=\"required\" name=\"gross_floor_area\" /><span class=\"add-on\">ft&#178;</span></div></div></div></div>"
+                var con = "<div class=\"box-unit\">"
+                        +"    <div class=\"page-header\">"
+                        +"    <h2>Architecture</h2>"
+                        +"        </div>"
+                        +"        <div class=\"row\">"
+                        +"            <div class=\"span4\">"
+                        +"                <h4>Gross Floor Area</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" min=\"0\" step=\"0.001\" placeholder=\"required\" name=\"gross_floor_area\" />"
+                        +"                    <span class=\"add-on\">ft&#178;</span>"
+                        +"                </div>"
+                        +"                <h4>Length</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" name=\"building_length\" min=\"0\" step=\"0.01\" />"
+                        +"                    <span class=\"add-on\">ft</span>"
+                        +"                </div>"
+                        +"                <h4>Width</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" name=\"building_width\" min=\"0\" step=\"0.01\" />"
+                        +"                    <span class=\"add-on\">ft</span>"
+                        +"                </div>"
+                        +"                <h4>Height</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" name=\"building_height\" min=\"0\" step=\"0.01\" />"
+                        +"                    <span class=\"add-on\">ft</span>"
+                        +"                </div>"
+                        +"            </div>"
+                        +"            <div class=\"span4\">"
+                        +"                <h4>Orientation <small>clockwise degrees from North</small></h4>"
+                        +"                <ul class=\"inline\">"
+                        +"                    <li>"
+                        +"                        <input type=\"range\" ng-model=\"orientation\" min=\"0\" max=\"360\" step=\"1\" value={{orientation}} />"
+                        +"                    </li>"
+                        +"                    <li>"
+                        +"                        <div class=\"input-append\">"
+                        +"                            <input class=\"span1\" type=\"text\" value={{orientation}} name=\"building_orientation\" ng-model=\"orientation\"/>"
+                        +"                            <span class=\"add-on\">&deg;</span>"
+                        +"                        </div>"
+                        +"                    </li>"
+                        +"                </ul>"
+                        +"            <h4>Address</h4>"
+                        +"                <input type=\"text\" name=\"building_location_address\">"
+                        +"                <h4>City</h4>"
+                        +"                <input type=\"text\" name=\"building_location_city\">"
+                        +"                <h4>State</h4>"
+                        +"                <select name=\"building_location_state\">"
+                        +"                    <option value=\"\" selected=\"selected\">Select a State</option>"
+                        +"                    <option value=\"AL\">Alabama</option>"
+                        +"                    <option value=\"AK\">Alaska</option>"
+                        +"                    <option value=\"AZ\">Arizona</option>"
+                        +"                    <option value=\"AR\">Arkansas</option>"
+                        +"                    <option value=\"CA\">California</option>"
+                        +"                    <option value=\"CO\">Colorado</option>"
+                        +"                    <option value=\"CT\">Connecticut</option>"
+                        +"                    <option value=\"DE\">Delaware</option>"
+                        +"                    <option value=\"DC\">District Of Columbia</option>"
+                        +"                    <option value=\"FL\">Florida</option>"
+                        +"                    <option value=\"GA\">Georgia</option>"
+                        +"                    <option value=\"HI\">Hawaii</option>"
+                        +"                    <option value=\"ID\">Idaho</option>"
+                        +"                    <option value=\"IL\">Illinois</option>"
+                        +"                    <option value=\"IN\">Indiana</option>"
+                        +"                    <option value=\"IA\">Iowa</option>"
+                        +"                    <option value=\"KS\">Kansas</option>"
+                        +"                    <option value=\"KY\">Kentucky</option>"
+                        +"                    <option value=\"LA\">Louisiana</option>"
+                        +"                    <option value=\"ME\">Maine</option>"
+                        +"                    <option value=\"MD\">Maryland</option>"
+                        +"                    <option value=\"MA\">Massachusetts</option>"
+                        +"                    <option value=\"MI\">Michigan</option>"
+                        +"                    <option value=\"MN\">Minnesota</option>"
+                        +"                    <option value=\"MS\">Mississippi</option>"
+                        +"                    <option value=\"MO\">Missouri</option>"
+                        +"                    <option value=\"MT\">Montana</option>"
+                        +"                    <option value=\"NE\">Nebraska</option>"
+                        +"                    <option value=\"NV\">Nevada</option>"
+                        +"                    <option value=\"NH\">New Hampshire</option>"
+                        +"                    <option value=\"NJ\">New Jersey</option>"
+                        +"                    <option value=\"NM\">New Mexico</option>"
+                        +"                    <option value=\"NY\">New York</option>"
+                        +"                    <option value=\"NC\">North Carolina</option>"
+                        +"                    <option value=\"ND\">North Dakota</option>"
+                        +"                    <option value=\"OH\">Ohio</option>"
+                        +"                    <option value=\"OK\">Oklahoma</option>"
+                        +"                    <option value=\"OR\">Oregon</option>"
+                        +"                    <option value=\"PA\" selected>Pennsylvania</option>"
+                        +"                    <option value=\"RI\">Rhode Island</option>"
+                        +"                    <option value=\"SC\">South Carolina</option>"
+                        +"                    <option value=\"SD\">South Dakota</option>"
+                        +"                    <option value=\"TN\">Tennessee</option>"
+                        +"                    <option value=\"TX\">Texas</option>"
+                        +"                    <option value=\"UT\">Utah</option>"
+                        +"                    <option value=\"VT\">Vermont</option>"
+                        +"                    <option value=\"VA\">Virginia</option>"
+                        +"                    <option value=\"WA\">Washington</option>"
+                        +"                    <option value=\"WV\">West Virginia</option>"
+                        +"                    <option value=\"WI\">Wisconsin</option>"
+                        +"                    <option value=\"WY\">Wyoming</option>"
+                        +"                </select>"
+                        +"            <button onclick=\"convert()\">convert unit</button>"
+                        +"            <div style=\"visibility:hidden\"><input name=\"si\" value = \"0\"/></div>"
+                        +"            </div>"
+                        +"        </div>"
+                        +"    </div>";
+                        
+                        var cont =        "<div class=\"span4\">"  
+                        +"               <h4>Gross Floor Area</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" min=\"0\" step=\"0.001\" placeholder=\"required\" name=\"gross_floor_area\" />"
+                        +"                    <span class=\"add-on\">ft&#178;</span>"
+                        +"                </div>"
+                        +"                <h4>Length</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" name=\"building_length\" min=\"0\" step=\"0.01\" />"
+                        +"                    <span class=\"add-on\">ft</span>"
+                        +"                </div>"
+                        +"                <h4>Width</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" name=\"building_width\" min=\"0\" step=\"0.01\" />"
+                        +"                    <span class=\"add-on\">ft</span>"
+                        +"                </div>"
+                        +"                <h4>Height</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" name=\"building_height\" min=\"0\" step=\"0.01\" />"
+                        +"                    <span class=\"add-on\">ft</span>"
+                        +"                </div>"
+                        +"<button onclick=\"convert()\">convert unit</button>"
+                        +"            <div style=\"visibility:hidden\"><input name=\"si\" value = \"0\"/></div>"
+                        +"           </div>"
+                        +"                </div>";
+                $('#replace').replaceWith(cont);
+                
+            }
+        </script>
+    </head>
+    
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="brand">EEB Hub Simulation Platform</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="/lite">Lite</a>
+                            </li>
+                            <li>
+                                <a href="/partial">Partial</a>
+                            </li>
+                            <li>
+                                <a href="/substantial">Substantial</a>
+                            </li>
+                            <li>
+                                <a href="/comprehensive">Comprehensive</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <!-- Intro -->
+        <div class="container">
+            <div class="row">
+                <div class="span3 bs-docs-sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav">
+                        <li>
+                            <h3>Lite
+                                <small>-ASHRAE, IBM</small>
+                            </h3>
+                        </li>
+                        <li>
+                            <a href="#building"><i class="icon-map-marker"></i> Building</a>
+                        </li>
+                        <li>
+                            <a href="#utilities"><i class="icon-list-alt"></i>Utilities</a>
+                        </li>
+                        <li>
+                            <a href="#architecture"><i class="icon-home"></i>Architecture</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="span9">
+                    <form action="" method="post" name="platformForm">
+                        <section id="building">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <h2>Building</h2>
+                                            </td>
+                                            <td class="span7">
+                                                <div class="pull-right text-right">
+                                                <button type="button" onclick="building101Data()" class="btn">
+                                                    <i class="icon-plus"></i><b>Building 101 Data</b></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <div class="span4">
+                                        <h4>Building Name</h4>
+                                        <input class="span3" type="text" name="building_name">
+                                        <br/>
+                                        <h4>Climate</h4>
+                                        <div class="input-append">
+                                            <select class="span3" name="weather_epw_location">
+                                                <option>Albuquerque, NM</option>
+                                                <option>Baltimore, MD</option>
+                                                <option>Boise, ID</option>
+                                                <option>Burlington, VT</option>
+                                                <option>Chicago, IL</option>
+                                                <option>Duluth, MN</option>
+                                                <option>El Paso, TX</option>
+                                                <option>Fairbanks, AK</option>
+                                                <option>Helena, MT</option>
+                                                <option>Houston, TX</option>
+                                                <option>Memphis, TN</option>
+                                                <option>Miami, FL</option>
+                                                <option>Pheonix, AZ</option>
+                                                <option selected>Philadelphia, PA</option>
+                                                <option>Riyadh, SAU</option>
+                                                <option>Salem, OR</option>
+                                                <option>San Francisco, CA</option>
+                                                <option>Vancouver, CAN</option>
+                                            </select>
+                                            <span class="add-on">
+                                                <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="span4">
+                                        <div>
+                                            <h4>Function</h4>
+                                            <select class="span3" name="activity_type">
+                                                <option>Small Office</option>
+                                                <option>Medium Office</option>
+                                                <option>Large Office</option>
+                                                <option>Stand-alone Retail</option>
+                                                <option>Strip Mall</option>
+                                                <option>Primary School</option>
+                                                <option>Secondary School</option>
+                                                <option>Outpatient Healthcare</option>
+                                                <option>Hospital</option>
+                                                <option>Small hotel</option>
+                                                <option>Large Hotel</option>
+                                                <option>Warehouse (non-refrigerated)</option>
+                                                <option>Quick Service Restaurant</option>
+                                                <option>Full Service Restaurant</option>
+                                                <option>Mid-Rise Apartment</option>
+                                                <option>High-Rise Apartment</option>
+                                            </select>
+                                        </div>
+                                        <h4>Year Built</h4>
+                                        <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="utility">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Utility Data</h2>
+                                </div>
+                                <table class="table table-hover" id="utltable">
+                                    <thead>
+                                        <th class="span2">Electric Billing Period Start Date</th>
+                                        <th class="span2">Electricity (kWh)</th>
+                                        <th class="span2">Gas Billing Period Start Date</th>
+                                        <th class="span2">Gas (CCF)</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <thead>
+                                            <th class="span2">Electric Billing Period End Date</th>
+                                            <th class="span2">Electricity (kWh)</th>
+                                            <th class="span2">Gas Billing Period End Date</th>
+                                            <th class="span2">Gas (CCF)</th>
+                                        </thead>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" disabled>
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" disabled>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                        <section id="architecture">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Architecture</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="span4" id="replace">
+                                        <h4>Gross Floor Area</h4>
+                                        <div class="input-append">
+                                            <input type="number" min="0" step="0.001" placeholder="required" name="gross_floor_area" />
+                                            <span class="add-on">m&#178;</span>
+                                        </div>
+                                        <h4>Length</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="building_length" min="0" step="0.01" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                        <h4>Width</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="building_width" min="0" step="0.01" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                        <h4>Height</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="building_height" min="0" step="0.01" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                        
+                                    <button onclick="convert()">convert unit</button>
+                                    <div style="visibility:hidden"><input name="si" value = "1"/></div>
+                                    </div>
+                                    
+                                    <div class="span4">
+                                        <h4>Orientation <small>clockwise degrees from North</small></h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" type="text" value={{orientation}} name="building_orientation" ng-model="orientation"/>
+                                                    <span class="add-on">&deg;</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    
+                                    <h4>Address</h4>
+                                        <input type="text" name="building_location_address">
+                                        <h4>City</h4>
+                                        <input type="text" name="building_location_city">
+                                        <h4>State</h4>
+                                        <select name="building_location_state">
+                                            <option value="" selected="selected">Select a State</option>
+                                            <option value="AL">Alabama</option>
+                                            <option value="AK">Alaska</option>
+                                            <option value="AZ">Arizona</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="CA">California</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="CT">Connecticut</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="DC">District Of Columbia</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="HI">Hawaii</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="ND">North Dakota</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="PA" selected>Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="UT">Utah</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WA">Washington</option>
+                                            <option value="WV">West Virginia</option>
+                                            <option value="WI">Wisconsin</option>
+                                            <option value="WY">Wyoming</option>
+                                        </select>
+                                        
+                         
+                                    </div>
+                                        
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <div class="box-unit">
+                            <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
+                            <a class="btn btn-large btn-info" href="literesults"><i class="icon-signal"></i> Example Outputs</a>
+                            <h2 class="text-right">
+                                <small>powered by ASHRAE Inverse Modeling Toolkit</small>
+                            </h2>
+                             
+                        </div>
+                        <div class="box-unit">
+                        <div class="row">
+                                <div class="span4">
+                                    <h4>EPA Portfolio Manager Score</h4>
+                                    <ul class="inline">
+                                        <li>
+                                            <input type="range" ng-model="portfolio" min="0" max="100" step="1"
+                                            value={{portfolio}}/>
+                                        </li>
+                                        <li>
+                                            <input class="span1" type="text" value={{portfolio}} 
+                                            ng-model="portfolio" />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="span4">
+                                    <h4>DOE Asset Rating Score</h4>
+                                    <ul class="inline">
+                                        <li>
+                                            <input type="range" ng-model="asset" min="0" max="100" step="1"
+                                            value={{asset}}/>
+                                        </li>
+                                        <li>
+                                            <input class="span1" type="text" value={{asset}} 
+                                            ng-model="asset" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="box-unit">
+                        <button onclick="submitIBM()" class="btn btn-large btn-primary">SIMULATE</button>
+                        <a class="btn btn-large btn-info" href="http://eebhub.minus.com/mbw8FJL02UdsL2"><i class="icon-signal"></i> Example Outputs</a>
+                        <h2 class="text-right">
+                            <small>powered by IBM Inverse Modeling Engine</small>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Javascript -->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-scrollspy.js"></script>
+    </body>
+
+</html>

@@ -13,13 +13,21 @@ module.exports = {
         response.sendfile('./views/lite.html');
     },
 
+    getLiteConversion: function(request, response) {
+        response.render('lite-conversion');
+    },
+
     runIMT: function(request, response) {
         //Get User Inputs
+        console.log(request.body);
+        var is_si = request.body.si;
         var building_name = request.body.building_name;
         var building_location = request.body.weather_epw_location;
         var building_function = request.body.activity_type;
         var year_completed = request.body.year_completed;
         var building_size = request.body.gross_floor_area;
+        if(is_si=='0') { var building_size_f = parseFloat(building_size);building_size_f = 0.09*building_size_f; building_size = building_size_f.toString();}
+        console.log(building_size);
         var utility_gas = request.body.utility_gas;
         var utility_electric = request.body.utility_electric;
         var electric_utility_startdate = request.body.electric_utility_startdate;

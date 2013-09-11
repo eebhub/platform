@@ -19,15 +19,11 @@ module.exports = {
 
     runIMT: function(request, response) {
         //Get User Inputs
-        console.log(request.body);
-        var is_si = request.body.si;
         var building_name = request.body.building_name;
         var building_location = request.body.weather_epw_location;
         var building_function = request.body.activity_type;
-        var year_completed = request.body.year_completed;
         var building_size = request.body.gross_floor_area;
-        if(is_si=='0') { var building_size_f = parseFloat(building_size);building_size_f = 0.09*building_size_f; building_size = building_size_f.toString();}
-        console.log(building_size);
+        var year_completed = request.body.year_completed;
         var utility_gas = request.body.utility_gas;
         var utility_electric = request.body.utility_electric;
         var electric_utility_startdate = request.body.electric_utility_startdate;
@@ -86,10 +82,11 @@ module.exports = {
                                 var Y2 = (RS * X2) + Ycp;
                                 imt.calcSiteEUI(electric_utility_startdate, utility_electric_kBTU, building_size, function(EUI) {
                                     response.render('imtresults_5p', {
+                                        //Building
                                         'building_name': building_name,
-                                        'building_year': year_completed,
-                                        'building_location': building_location,
+                                        'year_completed': year_completed,
                                         'building_function': building_function,
+                                        'building_location': building_location,
                                         'EUI': EUI,
                                         'buildingTypeEUI': buildingTypeEUI,
                                         'electric_utility_startdate': electric_utility_startdate,
@@ -104,11 +101,10 @@ module.exports = {
                                         'Y2': Y2,
                                         'X1': X1,
                                         'X2': X2,
-                                        
-                                        'insFile': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ insFileNameElectric,
-                                        'datFile': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ dataFileNameElectric,
-                                        'outFile': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ outFileNameElectric,
-                                        'resFile': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ resFileNameElectric,
+                                        'insFile': 'http://developer.eebhub.org/imt/intputs/' + insFileNameElectric,
+                                        'datFile': 'http://developer.eebhub.org/imt/inputs/' + dataFileNameElectric,
+                                        'outFile': 'http://developer.eebhub.org/imt/outputs/' + outFileNameElectric,
+                                        'resFile': 'http://developer.eebhub.org/imt/outputs/' + resFileNameElectric,
                                     });
                                 });
                             });
@@ -135,17 +131,10 @@ module.exports = {
                         imt.executeIMT(insFileNameElectric, outFileNameElectric, resFileNameElectric, function() {
                             imt.moveFiles(insFileNameElectric, dataFileNameElectric, outFileNameElectric, resFileNameElectric, filePath, function() {
                                 imt.parseIMT3p(resFileNameElectric, outFileNameElectric, filePath, function(parsedResults) {
-                                    var resultsIMT_electric = parsedResults[0];
+                                    var IMTresults_electric = parsedResults[0];
                                     var outputs_electric = parsedResults[1];
-                                    var Ycp_electric = outputs_electric[0],
-                                        LS_electric = outputs_electric[1],
-                                        RS_electric = outputs_electric[2],
-                                        Xcp_electric = outputs_electric[3];
-                                    var temperatures_electric = resultsIMT_electric[0];
-                                    var X1 = Math.min.apply(null, temperatures_electric);
-                                    var Y1 = (LS_electric * X1) + Ycp_electric;
                                     imt.calcSiteEUI(electric_utility_startdate, utility_electric_kBTU_dual, building_size, function(EUI_electric) {
-                                        callback(null, [EUI_electric, resultsIMT_electric, Ycp_electric, LS_electric, Xcp_electric, temperatures_electric, X1, Y1]);
+                                        callback(null, [EUI_electric, IMTresults_electric, outputs_electric]);
                                     });
 
                                 });
@@ -162,17 +151,10 @@ module.exports = {
                         imt.executeIMT(insFileNameGas, outFileNameGas, resFileNameGas, function() {
                             imt.moveFiles(insFileNameGas, dataFileNameGas, outFileNameGas, resFileNameGas, filePath, function() {
                                 imt.parseIMT3p(resFileNameGas, outFileNameGas, filePath, function(parsedResults) {
-                                    var resultsIMT_gas = parsedResults[0];
+                                    var IMTresults_gas = parsedResults[0];
                                     var outputs_gas = parsedResults[1];
-                                    var Ycp_gas = outputs_gas[0],
-                                        LS_gas = outputs_gas[1],
-                                        RS_gas = outputs_gas[2],
-                                        Xcp_gas = outputs_gas[3];
-                                    var temperatures_gas = resultsIMT_gas[0];
-                                    var X2 = Math.min.apply(null, temperatures_gas);
-                                    var Y2 = (RS_gas * X2) + Ycp_gas;
                                     imt.calcSiteEUI(gas_utility_startdate, utility_gas_kBTU_dual, building_size, function(EUI_gas) {
-                                        callback(null, [EUI_gas, resultsIMT_gas, Ycp_gas, LS_gas, RS_gas, Xcp_gas, temperatures_gas, X2, Y2]);
+                                        callback(null, [EUI_gas, IMTresults_gas, outputs_gas]);
                                     });
                                 });
                             });
@@ -180,31 +162,73 @@ module.exports = {
                     });
                 });
             }],
-            // optional callback
+            // oasync callback
             function(err, results) {
+                //Seperate Results
                 var electric = results[0];
                 var gas = results[1];
-                var totalEUI = parseFloat(electric[0]) + parseFloat(gas[0]);
-                var temperatures_electric = electric[5];
+                //EUI
+                var EUI_gas = parseFloat(gas[0]);
+                var EUI_electric = parseFloat(electric[0]);
+                var totalEUI = EUI_gas + EUI_electric;
+                //Temperature, Period, Utility Use Graph
+                var temperatures_electric = electric[1][0];
+                //Regression Plot
+                //Gas
+                var Ycp_gas = gas[2][0],
+                    LS_gas = gas[2][1],
+                    RS_gas = gas[2][2],
+                    Xcp_gas = gas[2][3];
+                var X_min_gas = Math.min.apply(null, gas[1][0]);
+                var X_max_gas = Math.max.apply(null, gas[1][0]);
+                var Y_intercept_gas = Ycp_gas - (LS_gas * Xcp_gas);
+                var Y_gas = LS_gas * X_min_gas + Y_intercept_gas;
+                //Electric
+                var Ycp_electric = electric[2][0],
+                    LS_electric = electric[2][1],
+                    RS_electric = electric[2][2],
+                    Xcp_electric = electric[2][3];
+                var X_min_electric = Math.min.apply(null, electric[1][0]);
+                var X_max_electric = Math.max.apply(null, electric[1][0]);
+                var Y_intercept_electric = Ycp_electric - (LS_gas * Xcp_electric);
+                var Y_electric = LS_electric * X_max_electric + Y_intercept_electric;
                 response.render('imtresults_3p', {
+                    //Building
                     'building_name': building_name,
+                    'year_completed': year_completed,
+                    'building_function': building_function,
+                    'building_location': building_location,
+                    //EUI
                     'EUI': totalEUI,
                     'buildingTypeEUI': buildingTypeEUI,
+                    //Temp vs Utility
                     'electric_utility_startdate': electric_utility_startdate,
                     'temperatures': temperatures_electric,
                     'utility_electric': electric[1][1],
                     'utility_gas': gas[1][1],
-                    'building_year': year_completed,
-                    'building_function': building_function,
-                    'building_location': building_location,
-                    'insFileElectric': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ insFileNameElectric,
-                    'datFileElectric': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ dataFileNameElectric,
-                    'outFileElectric': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ outFileNameElectric,
-                    'resFileElectric': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ resFileNameElectric,
-                    'insFileGas': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ insFileNameGas,
-                    'datFileGas': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ dataFileNameGas,
-                    'outFileGas': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ outFileNameGas,
-                    'resFileGas': 'http://developer.eebhub.org/imt/' + building_name + "_" + timestamp + '/'+ resFileNameGas,
+
+                    //Regression Plots
+                    //Gas
+                    'X_min_gas': X_min_gas,
+                    'X_max_gas': X_max_gas,
+                    'Xcp_gas': Xcp_gas,
+                    'Ycp_gas': Ycp_gas,
+                    'Y_gas': Y_gas,
+                    //Electric
+                    'X_min_electric': X_min_electric,
+                    'X_max_electric': X_max_electric,
+                    'Xcp_electric': Xcp_electric,
+                    'Ycp_electric': Ycp_electric,
+                    'Y_electric': Y_electric,
+                    //File Links
+                    'insFileElectric': 'http://developer.eebhub.org/imt/intputs/' + insFileNameElectric,
+                    'datFileElectric': 'http://developer.eebhub.org/imt/inputs/' + dataFileNameElectric,
+                    'outFileElectric': 'http://developer.eebhub.org/imt/outputs/' + outFileNameElectric,
+                    'resFileElectric': 'http://developer.eebhub.org/imt/outputs/' + resFileNameElectric,
+                    'insFileGas': 'http://developer.eebhub.org/imt/intputs/' + insFileNameGas,
+                    'datFileGas': 'http://developer.eebhub.org/imt/inputs/' + dataFileNameGas,
+                    'outFileGas': 'http://developer.eebhub.org/imt/outputs/' + outFileNameGas,
+                    'resFileGas': 'http://developer.eebhub.org/imt/outputs/' + resFileNameGas,
                 });
             });
 

@@ -59,101 +59,218 @@
                     },
                     series: [{
                         name: 'EUI',
-                        data: [<%= EUI %>, <%= buildingTypeEUI %>]
+                        data: [ <%= EUI %> , <%= buildingTypeEUI %> ]
                     }]
                 });
             });
         </script>
-         <script type="text/javascript">
-$(function () {
-        $('#temphighjs').highcharts({
-            chart: {
-                zoomType: 'xy'
-            },
-            title: {
-                text: 'Average Monthly Temperature vs Monthly Utility Use'
-            },
-            subtitle: {
-                text: 'for <%= building_name%>'
-            },
-            xAxis: [{
-                
-            }],
-            yAxis: [{ // Primary yAxis
-                labels: {
-                    format: '{value}°F',
-                    style: {
-                        color: '#89A54E'
-                    }
-                },
-                title: {
-                    text: 'Temperature',
-                    style: {
-                        color: '#89A54E'
-                    }
-                }
-            }, { // Secondary yAxis
-                title: {
-                    text: 'Monthly Utility Energy Use',
-                    style: {
-                        color: '#4572A7'
-                    }
-                },
-                labels: {
-                    format: '{value} kBTU',
-                    style: {
-                        color: '#4572A7'
-                    }
-                },
-                opposite: true
-            }],
-            tooltip: {
-                shared: true
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'left',
-                x: 120,
-                verticalAlign: 'top',
-                y: 100,
-                floating: true,
-                backgroundColor: '#FFFFFF'
-            },
-            series: [{
-                name: 'Monthly Electricity Utility Use',
-                color: '#4572A7',
-                type: 'column',
-                yAxis: 1,
-                data: [<%= utility_electric %>],
-                tooltip: {
-                    valueSuffix: ' kBTU'
-                }
-    
-            },
-            {
-                name: 'Monthly Gas Utility Use',
-                color: 'blue',
-                type: 'column',
-                yAxis: 1,
-                data: [<%= utility_gas %>],
-                tooltip: {
-                    valueSuffix: ' kBTU'
-                }
-    
-            }, {
-                name: 'Monthly Average Temperature',
-                color: '#89A54E',
-                type: 'spline',
-                data: [ <%= temperatures %>],
-                tooltip: {
-                    valueSuffix: '°F'
-                }
-            }]
-        });
-    });
-    
+        <script type="text/javascript">
+            $(function() {
+                $('#temphighjs').highcharts({
+                    chart: {
+                        zoomType: 'xy'
+                    },
+                    title: {
+                        text: 'Average Monthly Temperature vs Monthly Utility Use'
+                    },
+                    subtitle: {
+                        text: 'for <%= building_name%>'
+                    },
+                    xAxis: [{
 
-    	</script>
+                    }],
+                    yAxis: [{ // Primary yAxis
+                        labels: {
+                            format: '{value}°F',
+                            style: {
+                                color: '#89A54E'
+                            }
+                        },
+                        title: {
+                            text: 'Temperature',
+                            style: {
+                                color: '#89A54E'
+                            }
+                        }
+                    }, { // Secondary yAxis
+                        title: {
+                            text: 'Monthly Utility Energy Use',
+                            style: {
+                                color: '#4572A7'
+                            }
+                        },
+                        labels: {
+                            format: '{value} kBTU',
+                            style: {
+                                color: '#4572A7'
+                            }
+                        },
+                        opposite: true
+                    }],
+                    tooltip: {
+                        shared: true
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'left',
+                        x: 120,
+                        verticalAlign: 'top',
+                        y: 100,
+                        floating: true,
+                        backgroundColor: '#FFFFFF'
+                    },
+                    series: [{
+                        name: 'Monthly Electricity Utility Use',
+                        color: '#4572A7',
+                        type: 'column',
+                        yAxis: 1,
+                        data: [ <%= utility_electric %> ],
+                        tooltip: {
+                            valueSuffix: ' kBTU'
+                        }
+
+                    }, {
+                        name: 'Monthly Gas Utility Use',
+                        color: 'blue',
+                        type: 'column',
+                        yAxis: 1,
+                        data: [ <%= utility_gas %> ],
+                        tooltip: {
+                            valueSuffix: ' kBTU'
+                        }
+
+                    }, {
+                        name: 'Monthly Average Temperature',
+                        color: '#89A54E',
+                        type: 'spline',
+                        data: [ <%= temperatures %> ],
+                        tooltip: {
+                            valueSuffix: '°F'
+                        }
+                    }]
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(function() {
+                $('#regression').highcharts({
+                    chart: {},
+                    xAxis: {
+                        labels: {
+                            format: '{value}°F',
+                            style: {
+                                color: '#89A54E'
+                            }
+                        },
+                        title: {
+                            text: 'Temperature',
+                            style: {
+                                color: '#89A54E'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        labels: {
+                            format: '{value}kBTU',
+                            style: {
+                                color: '#89A54E'
+                            }
+                        },
+                        title: {
+                            text: 'Energy Use/Day (kBTU)',
+                            style: {
+                                color: '#89A54E'
+                            }
+                        },
+                        min: 0
+                    },
+                    title: {
+                        text: 'Building Energy Use Regression Analysis'
+                    },
+                    series: [{
+                        type: 'line',
+                        name: 'Gas Base Load',
+                        data: [
+                            [ <%= Xcp_gas %> , <%= Ycp_gas %> ],
+                            [ <%= X_max_gas %> , <%= Ycp_gas %> ]
+                        ],
+                        marker: {
+                            enabled: false
+                        },
+                        states: {
+                            hover: {
+                                lineWidth: 0
+                            }
+                        },
+                        enableMouseTracking: false
+                    }, {
+                        type: 'line',
+                        name: 'Heating Load',
+                        data: [
+                            [ <%= X_min_gas %> , <%= Y_gas %> ],
+                            [ <%= Xcp_gas %> , <%= Ycp_gas %> ]
+                        ],
+                        marker: {
+                            enabled: false
+                        },
+                        states: {
+                            hover: {
+                                lineWidth: 0
+                            }
+                        },
+                        enableMouseTracking: false
+                    }, {
+                        type: 'line',
+                        name: 'Electric Base Load',
+                        data: [
+                            [ <%= X_min_electric %> , <%= Ycp_electric %> ],
+                            [ <%= Xcp_electric %> , <%= Ycp_electric %> ]
+                        ],
+                        marker: {
+                            enabled: false
+                        },
+                        states: {
+                            hover: {
+                                lineWidth: 0
+                            }
+                        },
+                        enableMouseTracking: false
+                    }, {
+                        type: 'line',
+                        name: 'Cooling Load',
+                        data: [
+                            [ <%= Xcp_electric %> , <%= Ycp_electric %> ],
+                            [ <%= X_max_electric %> , <%= Y_electric %> ]
+                        ],
+                        marker: {
+                            enabled: false
+                        },
+                        states: {
+                            hover: {
+                                lineWidth: 0
+                            }
+                        },
+                        enableMouseTracking: false
+                    }, {
+                        type: 'scatter',
+                        name: 'Observations',
+                        data: [
+                            [ <%= Xcp_electric %> , <%= Ycp_electric %> ],
+                            [ <%= X_max_electric %> , <%= Y_electric %> ],
+                            [ <%= X_min_electric %> , <%= Ycp_electric %> ],
+                            [ <%= Xcp_electric %> , <%= Ycp_electric %> ],
+                            [ <%= X_min_gas %> , <%= Y_gas %> ],
+                            [ <%= Xcp_gas %> , <%= Ycp_gas %> ],
+                            [ <%= Xcp_gas %> , <%= Ycp_gas %> ],
+                            [ <%= X_max_gas %> , <%= Ycp_gas %> ]
+                        ],
+                        marker: {
+                            radius: 4
+                        }
+                    }]
+                });
+            });
+        </script>
     </head>
     
     <body data-spy="scroll" data-target="#sidebar">
@@ -211,12 +328,10 @@ $(function () {
                         <li>
                             <a href="#files"><i class="icon-chevron-right"></i> IMT Files</a>
                         </li>
-                        
                     </ul>
                 </div>
                 <div class="row">
                     <div class="span9">
-                        
                         <div class="row">
                             <section id="building">
                                 <div class="span9 box-unit">
@@ -230,15 +345,15 @@ $(function () {
                                             placeholder="<%= building_name%>" disabled>
                                             <br/>
                                             <h4>Year Built</h4>
-                                            <input id="disabledInput" class="span3" type="text" placeholder="<%= building_year %>"
+                                            <input id="disabledInput" class="span3" type="text" placeholder="<%= year_completed %>"
                                             disabled>
                                         </div>
                                         <div class="span4">
                                             <h4>Function</h4>
-                                            <input id="disabledInput" class="span3" type="text" placeholder=""
+                                            <input id="disabledInput" class="span3" type="text" value="<%= building_function %>"
                                             disabled>
                                             <h4>City</h4>
-                                            <input id="disabledInput" class="span3" type="text" placeholder=""
+                                            <input id="disabledInput" class="span3" type="text" value="<%= building_location %>"
                                             disabled>
                                         </div>
                                     </div>
@@ -262,9 +377,9 @@ $(function () {
                                     <div id="temphighjs" class="span8"></div>
                                 </div>
                             </section>
-                            <section id="regression">
+                            <section id="reg">
                                 <div class="span9 box-unit">
-                                    
+                                    <div id="regression" class="span8"></div>
                                 </div>
                             </section>
                             <section id="files">
@@ -273,15 +388,15 @@ $(function () {
                                         <h2>Inverse Modeling Toolkit Files</h2>
                                     </div>
                                     <h2>Electricity</h2>
-        <a href='<%= insFileElectric %>'>Instruction File</a>
-        <a href='<%= datFileElectric %>'>Data File</a>
-        <a href='<%= outFileElectric %>'>Output File</a>
-        <a href='<%= resFileElectric %>'>Residule File</a>
-        <h2>Gas</h2>
-        <a href='<%= insFileGas %>'>Instruction File</a>
-        <a href='<%= datFileGas %>'>Data File</a>
-        <a href='<%= outFileGas %>'>Output File</a>
-        <a href='<%= resFileGas %>'>Residule File</a>
+                                    <a href='<%= insFileElectric %>'>Instruction File</a>
+                                    <a href='<%= datFileElectric %>'>Data File</a>
+                                    <a href='<%= outFileElectric %>'>Output File</a>
+                                    <a href='<%= resFileElectric %>'>Residule File</a>
+                                    <h2>Gas</h2>
+                                    <a href='<%= insFileGas %>'>Instruction File</a>
+                                    <a href='<%= datFileGas %>'>Data File</a>
+                                    <a href='<%= outFileGas %>'>Output File</a>
+                                    <a href='<%= resFileGas %>'>Residule File</a>
                                 </div>
                             </section>
                         </div>
@@ -291,7 +406,7 @@ $(function () {
             <!-- Javascript -->
             <script src="js/bootstrap-scrollspy.js"></script>
             <script src="http://code.highcharts.com/highcharts.js"></script>
-        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+            <script src="http://code.highcharts.com/modules/exporting.js"></script>
             <script src="js/bootstrap.min.js"></script>
     </body>
 

@@ -17,7 +17,7 @@
             }
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script type="text/javascript">
+      <script type="text/javascript">
             $(function() {
                 $('#euijs').highcharts({
                     chart: {
@@ -180,6 +180,7 @@ $(function () {
                 type: 'line',
                 name: 'Base Load',
                 data: [[ <%= Xcp1 %> , <%= Ycp %> ],[ <%= Xcp2 %> , <%= Ycp %>]],
+                 color: 'green',
                 marker: {
                     enabled: false
                 },
@@ -194,6 +195,7 @@ $(function () {
                 type: 'line',
                 name: 'Heating Load',
                 data: [[ <%= X1 %> , <%= Y1 %>],[ <%= Xcp1 %> , <%= Ycp %> ]],
+                 color: 'red',
                 marker: {
                     enabled: false
                 },
@@ -207,6 +209,7 @@ $(function () {
                 type: 'line',
                 name: 'Cooling Load',
                 data: [[ <%= Xcp2 %> , <%= Ycp %>],[ <%= X2 %> , <%= Y2 %> ]],
+                color: 'blue',
                 marker: {
                     enabled: false
                 },
@@ -306,15 +309,15 @@ $(function () {
                                             placeholder="<%= building_name%>" disabled>
                                             <br/>
                                             <h4>Year Built</h4>
-                                            <input id="disabledInput" class="span3" type="text" placeholder="<%= building_year %>"
+                                            <input id="disabledInput" class="span3" type="text" placeholder="<%= year_completed %>"
                                             disabled>
                                         </div>
                                         <div class="span4">
                                             <h4>Function</h4>
-                                            <input id="disabledInput" class="span3" type="text" placeholder=""
+                                            <input id="disabledInput" class="span3" type="text" value="<%= building_function %>"
                                             disabled>
                                             <h4>City</h4>
-                                            <input id="disabledInput" class="span3" type="text" placeholder=""
+                                            <input id="disabledInput" class="span3" type="text" value="<%= building_location %>"
                                             disabled>
                                         </div>
                                     </div>

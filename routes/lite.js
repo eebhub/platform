@@ -18,15 +18,14 @@ module.exports = {
     },
 
     runIMT: function(request, response) {
-        //Get User Inputs
-        console.log(request.body);
+        //Check for SI Units and Convert
         var is_si = request.body.si;
+        if(is_si=='0') { var building_size_f = parseFloat(building_size);building_size_f = 0.09*building_size_f; building_size = building_size_f.toString();}
+        //Get User Inputs
         var building_name = request.body.building_name;
         var building_location = request.body.weather_epw_location;
         var building_function = request.body.activity_type;
         var building_size = request.body.gross_floor_area;
-        if(is_si=='0') { var building_size_f = parseFloat(building_size);building_size_f = 0.09*building_size_f; building_size = building_size_f.toString();}
-        console.log(building_size);
         var year_completed = request.body.year_completed;
         var utility_gas = request.body.utility_gas;
         var utility_electric = request.body.utility_electric;
@@ -85,6 +84,10 @@ module.exports = {
                                 var Y1 = (LS * X1) + Ycp;
                                 var Y2 = (RS * X2) + Ycp;
                                 imt.calcSiteEUI(electric_utility_startdate, utility_electric_kBTU, building_size, function(EUI) {
+                                    //Calc Source EUI
+                                    var EUI_source = parseFloat(EUI) * 3.14;
+                                    //Calc Utility Cost
+                                    
                                     response.render('imtresults_5p', {
                                         //Building
                                         'building_name': building_name,
@@ -92,6 +95,7 @@ module.exports = {
                                         'building_function': building_function,
                                         'building_location': building_location,
                                         'EUI': EUI,
+                                        'EUI_source': EUI_source,
                                         'buildingTypeEUI': buildingTypeEUI,
                                         'electric_utility_startdate': electric_utility_startdate,
                                         'temperatures': temperatures,
@@ -138,7 +142,8 @@ module.exports = {
                                     var IMTresults_electric = parsedResults[0];
                                     var outputs_electric = parsedResults[1];
                                     imt.calcSiteEUI(electric_utility_startdate, utility_electric_kBTU_dual, building_size, function(EUI_electric) {
-                                        callback(null, [EUI_electric, IMTresults_electric, outputs_electric]);
+                                        var EUI_electric_source = parseFloat(EUI_electric) * 3.14;
+                                        callback(null, [EUI_electric, IMTresults_electric, outputs_electric,EUI_electric_source]);
                                     });
 
                                 });
@@ -158,7 +163,9 @@ module.exports = {
                                     var IMTresults_gas = parsedResults[0];
                                     var outputs_gas = parsedResults[1];
                                     imt.calcSiteEUI(gas_utility_startdate, utility_gas_kBTU_dual, building_size, function(EUI_gas) {
-                                        callback(null, [EUI_gas, IMTresults_gas, outputs_gas]);
+                                        //Source EUI
+                                        var EUI_gas_source = parseFloat(EUI_gas) * 1.05;
+                                        callback(null, [EUI_gas, IMTresults_gas, outputs_gas,EUI_gas_source]);
                                     });
                                 });
                             });
@@ -175,6 +182,9 @@ module.exports = {
                 var EUI_gas = parseFloat(gas[0]);
                 var EUI_electric = parseFloat(electric[0]);
                 var totalEUI = EUI_gas + EUI_electric;
+                //EUI Source
+                var totalEUI_source = parseFloat(gas[3]) + parseFloat(electric[3]);
+                console.log(totalEUI_source);
                 //Temperature, Period, Utility Use Graph
                 var temperatures_electric = electric[1][0];
                 //Regression Plot
@@ -205,6 +215,8 @@ module.exports = {
                     //EUI
                     'EUI': totalEUI,
                     'buildingTypeEUI': buildingTypeEUI,
+                    'EUI_source': totalEUI_source,
+                    
                     //Temp vs Utility
                     'electric_utility_startdate': electric_utility_startdate,
                     'temperatures': temperatures_electric,

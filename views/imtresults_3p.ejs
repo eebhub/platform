@@ -173,13 +173,13 @@
                         labels: {
                             format: '{value}kBTU',
                             style: {
-                                color: '#89A54E'
+                                color: 'black'
                             }
                         },
                         title: {
                             text: 'Energy Use/Day (kBTU)',
                             style: {
-                                color: '#89A54E'
+                                color: 'black'
                             }
                         },
                         min: 0
@@ -190,6 +190,7 @@
                     series: [{
                         type: 'line',
                         name: 'Gas Base Load',
+                        color: 'green',
                         data: [
                             [ <%= Xcp_gas %> , <%= Ycp_gas %> ],
                             [ <%= X_max_gas %> , <%= Ycp_gas %> ]
@@ -206,6 +207,7 @@
                     }, {
                         type: 'line',
                         name: 'Heating Load',
+                        color: 'red',
                         data: [
                             [ <%= X_min_gas %> , <%= Y_gas %> ],
                             [ <%= Xcp_gas %> , <%= Ycp_gas %> ]
@@ -222,6 +224,7 @@
                     }, {
                         type: 'line',
                         name: 'Electric Base Load',
+                        color: 'green',
                         data: [
                             [ <%= X_min_electric %> , <%= Ycp_electric %> ],
                             [ <%= Xcp_electric %> , <%= Ycp_electric %> ]
@@ -238,6 +241,7 @@
                     }, {
                         type: 'line',
                         name: 'Cooling Load',
+                        color: 'blue',
                         data: [
                             [ <%= Xcp_electric %> , <%= Ycp_electric %> ],
                             [ <%= X_max_electric %> , <%= Y_electric %> ]
@@ -323,7 +327,10 @@
                             <a href="#temp"><i class="icon-chevron-right"></i> Temperature vs Utilities</a>
                         </li>
                         <li>
-                            <a href="#regression"><i class="icon-chevron-right"></i> Regression Analysis</a>
+                            <a href="#reg"><i class="icon-chevron-right"></i> Regression Plots</a>
+                        </li>
+                        <li>
+                            <a href="#regressionanalysis"><i class="icon-chevron-right"></i> Regression Analysis</a>
                         </li>
                         <li>
                             <a href="#files"><i class="icon-chevron-right"></i> IMT Files</a>
@@ -363,10 +370,28 @@
                         <div class="row">
                             <section id="eui">
                                 <div class="span9 box-unit">
-                                    <div class="page-header">
-                                        <h2>Site Energy Use Intensity</h2>
+                                    <ul class="nav nav-tabs">
+                                        <li>
+                                            <a href="#site" data-toggle="tab">Site Energy Use Intensity</a>
+                                        </li>
+                                        <li>
+                                            <a href="#source" data-toggle="tab">Source Energy Use Intensity</a>
+                                        </li>
+                                        <li>
+                                            <a href="#costs" data-toggle="tab">Utility Costs</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="site">
+                                            <div id="euijs" class="span8"></div>
+                                        </div>
+                                        <div class="tab-pane" id="source">
+                                            <h2>Coming Soon</h2>
+                                        </div>
+                                        <div class="tab-pane" id="cots">
+                                            <h2>Coming Soon</h2>
+                                        </div>
                                     </div>
-                                    <div id="euijs" class="span8"></div>
                                 </div>
                             </section>
                             <section id="temp">
@@ -379,7 +404,37 @@
                             </section>
                             <section id="reg">
                                 <div class="span9 box-unit">
+                                    <div class="page-header">
+                                        <h2>Building Regression Plots</h2>
+                                    </div>
                                     <div id="regression" class="span8"></div>
+                                </div>
+                            </section>
+                            <section id="regressionanalysis">
+                                <div class="span9 box-unit">
+                                    <h2>Regression Analysis</h2>
+                                    <ul class="nav nav-tabs">
+                                        <li>
+                                            <a href="#shell" data-toggle="tab">Shell Driven Building</a>
+                                        </li>
+                                        <li>
+                                            <a href="#internal" data-toggle="tab">Internal Load Driven Building</a>
+                                        </li>
+                                        <li>
+                                            <a href="#portfolio" data-toggle="tab">Portfolio Manager</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="shell">
+                                            <img src="img/lite/Picture1.png" class="img-polaroid" height="90%" width="90%">
+                                        </div>
+                                        <div class="tab-pane" id="internal">
+                                            <img src="img/lite/Picture2.png" class="img-polaroid" height="90%" width="90%">
+                                        </div>
+                                        <div class="tab-pane" id="portfolio">
+                                            <img src="img/lite/Picture3.png" class="img-polaroid" height="90%" width="90%">
+                                        </div>
+                                    </div>
                                 </div>
                             </section>
                             <section id="files">

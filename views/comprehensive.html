@@ -188,25 +188,30 @@
                                 </div>
                                 <div class="span4">
                                     <h4>Function</h4>
-                                    <select value="this.value" class="span3" id="activity_type" name="activity_type">
-                                        <option value="SmallOffice">Small Office</option>
-                                        <option value="MediumOffice">Medium Office</option>
-                                        <option value="LargeOffice">Large Office</option>
-                                        <option value="Warehouse">Warehouse (non-refrigerated)</option>
-                                        <option value="Retail">Core-Retail</option>
-                                        <option disabled>Stand-alone Retail</option>
-                                        <option disabled>Strip Mall</option>
-                                        <option disabled>Primary School</option>
-                                        <option disabled>Secondary School</option>
-                                        <option disabled>Outpatient Healthcare</option>
-                                        <option disabled>Hospital</option>
-                                        <option disabled>Small hotel</option>
-                                        <option disabled>Large Hotel</option>
-                                        <option disabled>Quick Service Restaurant</option>
-                                        <option disabled>Full Service Restaurant</option>
-                                        <option disabled>Mid-Rise Apartment</option>
-                                        <option disabled>High-Rise Apartment</option>
-                                    </select>
+                                        <div class="input-append">
+                                            <select value="this.value" class="span3" id="activity_type" name="activity_type">
+                                                <option value="SmallOffice">Small Office</option>
+                                                <option value="MediumOffice">Medium Office</option>
+                                                <option value="LargeOffice">Large Office</option>
+                                                <option value="Warehouse">Warehouse (non-refrigerated)</option>
+                                                <option value="Retail">Core-Retail</option>
+                                                <option disabled>Stand-alone Retail</option>
+                                                <option disabled>Strip Mall</option>
+                                                <option disabled>Primary School</option>
+                                                <option disabled>Secondary School</option>
+                                                <option disabled>Outpatient Healthcare</option>
+                                                <option disabled>Hospital</option>
+                                                <option disabled>Small hotel</option>
+                                                <option disabled>Large Hotel</option>
+                                                <option disabled>Quick Service Restaurant</option>
+                                                <option disabled>Full Service Restaurant</option>
+                                                <option disabled>Mid-Rise Apartment</option>
+                                                <option disabled>High-Rise Apartment</option>
+                                            </select>
+                                            <span class="add-on">
+                                                <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html" target="_blank"><i class="icon-info-sign"></i></a>
+                                            </span>
+                                        </div>
                                     <h4>Year Built</h4>
                                     <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
                                 </div>
@@ -536,11 +541,11 @@
                                     <small>Occupancy, lighting, equipment schedules are defaulted from building function</small>
                                 </h2>
                             </div>
-                            <a href="http://www.energycodes.gov/development/commercial/90.1_models">
+                            <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html">
                             <img src="img/schedules/large_office.png" class="img-polaroid"></a>
                             <div class="text-right">
                                 <h2><small>based off of
-                                    <a href="http://www.energycodes.gov/development/commercial/90.1_models">DOE's Commercial Reference Buildings</a>  
+                                    <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html">DOE's Commercial Reference Buildings</a>  
                                 </small></h2>
                                 <h6 style="color:gray;">[  <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html">NREL Reference</a> | <a href="http://www.energycodes.gov/development/commercial/90.1_models">PNNL Prototype</a> | <a href="http://www.eia.gov/consumption/commercial/building-type-definitions.cfm">EIA Survey</a>  ]</h6>
                             </div>

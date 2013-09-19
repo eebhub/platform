@@ -22,7 +22,7 @@ module.exports = {
         var is_si = request.body.si;
         if(is_si=='0') { var building_size_f = parseFloat(building_size);building_size_f = 0.09*building_size_f; building_size = building_size_f.toString();}
         //Get User Inputs
-        var building_name = request.body.building_name;
+        var building_name = request.body.building_name.replace(/\s+/g, '') || "NoName";
         var building_location = request.body.weather_epw_location;
         var building_function = request.body.activity_type;
         var building_size = request.body.gross_floor_area;

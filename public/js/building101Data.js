@@ -21,6 +21,8 @@ if (form.contains(form.year_completed)) {form.year_completed.value = "1911";}
 if (form.contains(form.building_location_address)) {form.building_location_address.value = "4747 South Broad Street";}
 if (form.contains(form.building_location_city)) {form.building_location_city.value = "Philadelphia";}
 if (form.contains(form.building_location_state)) {form.building_location_state.value = "PA";}
+if (form.contains(form.energystar_score)) {form.energystar_score.value = 60;}
+if (form.contains(form.asset_score)) {form.asset_score.value = 49;}
 
 //UTILITIES > excel
 //form.utility_startdate_electric.value = "01/15/2012";

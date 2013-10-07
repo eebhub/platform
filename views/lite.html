@@ -71,10 +71,10 @@
                             <a href="#building"><i class="icon-map-marker"></i> Building</a>
                         </li>
                         <li>
-                            <a href="#utilities"><i class="icon-list-alt"></i>Utilities</a>
+                            <a href="#utilities"><i class="icon-list-alt"></i> Utility Data</a>
                         </li>
                         <li>
-                            <a href="#architecture"><i class="icon-home"></i>Architecture</a>
+                            <a href="#architecture"><i class="icon-home"></i> Architecture</a>
                         </li>
                     </ul>
                 </div>
@@ -102,7 +102,7 @@
                                         <h4>Building Name</h4>
                                         <input class="span3" type="text" name="building_name">
                                         <br/>
-                                        <h4>Climate</h4>
+                                        <h4>Location</h4>
                                         <div class="input-append">
                                             <select class="span3" name="weather_epw_location">
                                                 <option>Albuquerque, NM</option>
@@ -130,8 +130,8 @@
                                         </div>
                                     </div>
                                     <div class="span4">
-                                        <div>
-                                            <h4>Function</h4>
+                                        <h4>Function</h4>
+                                        <div class="input-append">
                                             <select class="span3" name="activity_type">
                                                 <option>Small Office</option>
                                                 <option>Medium Office</option>
@@ -150,6 +150,9 @@
                                                 <option>Mid-Rise Apartment</option>
                                                 <option>High-Rise Apartment</option>
                                             </select>
+                                            <span class="add-on">
+                                                <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html" target="_blank"><i class="icon-info-sign"></i></a>
+                                            </span>
                                         </div>
                                         <h4>Year Built</h4>
                                         <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
@@ -386,33 +389,23 @@
                                         </tr>
                                         </tbody>
                                 </table>
-                                <br>
-                                <table class="table">
-                                    <tbody class="text-right">
+                                <div class="span8">
+                                    <table class="text-right" style="float:right;">
                                         <tr>
                                             <td>
-                                                <h5><a href="https://portfoliomanager.energystar.gov/pm/login.html">Porfolio Manager Login</a> > <a href="http://developer.eebhub.org/archives/utilities/Building%20101.xlsx">Download Property</a></h5>
+                                               <span><a href="http://developer.eebhub.org/archives/utilities/MeterConsumptionDataSpreadsheet_metered_en.xls">Spreadsheet Template</a>&nbsp;&nbsp;</span>
                                             </td>
                                             <td>
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                  <span class="btn btn-success btn-file"><span class="fileupload-new">Import Portfolio Manager</span><span class="fileupload-exists">Change</span><input type="file" /></span>
-                                                  <span class="fileupload-preview"></span>
-                                                  <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h5><a href="http://developer.eebhub.org/archives/utilities/MeterConsumptionDataSpreadsheet_metered_en.xls"> Template</a></h5>
-                                            </td>
-                                            <td>
-                                                <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                  <span class="btn btn-success btn-file"><span class="fileupload-new">Import Utility Data</span><span class="fileupload-exists">Change</span><input type="file" /></span>
+                                                  <span class="btn btn-file"><span class="fileupload-new"><b>Import Utility Data</b></span><span class="fileupload-exists">Change</span><input type="file" /></span>
                                                   <span class="fileupload-preview"></span>
                                                   <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
                                                 </div>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                </table>
+                                    </table>
+                                </div>
+                                <div class="row"></div>
                             </div>
                         </section>
                         <section id="architecture">
@@ -424,39 +417,106 @@
                                     <div class="span4">
                                         <h4>Gross Floor Area</h4>
                                         <div class="input-append">
-                                            <input type="number" min="0" step="0.001" placeholder="required" name="gross_floor_area" />
+                                            <input type="number" min="0" step="0.001" placeholder="required for benchmarking" name="gross_floor_area" />
                                             <span class="add-on">m&#178;</span>
                                         </div>
-                                        <h4>Length</h4>
-                                        <div class="input-append">
-                                            <input type="number" name="building_length" min="0" step="0.01" />
-                                            <span class="add-on">m</span>
-                                        </div>
-                                        <h4>Width</h4>
-                                        <div class="input-append">
-                                            <input type="number" name="building_width" min="0" step="0.01" />
-                                            <span class="add-on">m</span>
-                                        </div>
-                                        <h4>Height</h4>
-                                        <div class="input-append">
-                                            <input type="number" name="building_height" min="0" step="0.01" />
-                                            <span class="add-on">m</span>
-                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="import">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <table>
+                                        <tr>
+                                            <td class="span4">
+                                                <h2>Import Data <small>(optional)</small></h2>
+                                            </td>
+                                            <td class="span5">
+                                                <div class="pull-right text-right">
+                                                <button type="button" class="btn danger" data-toggle="collapse" data-target="#coming-soon">coming soon</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="coming-soon" class="row collapse in">
+                                    <div class="span4">
+                                        <table class="table-condensed">
+                                            <tr>
+                                                <td><h5>1.</h5></td>
+                                                <td><h5><a href="https://portfoliomanager.energystar.gov/pm/login.html" target="_blank">Portfolio Manager Login</a></h5></td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>2.</h5></td>
+                                                <td>Select Building Property</td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>3.</h5></td>
+                                                <td><img src="img/portfolio-download.png"></td>
+                                                <td><h5><a href="http://developer.eebhub.org/archives/utilities/Building%20101.xlsx">[example]</a></h5></td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>4.</h5></td>
+                                                <td>
+                                                    <div class="fileupload fileupload-new" data-provides="fileupload" style="float:right">
+                                                      <span class="btn btn-file"><span class="fileupload-new"><b>Import Excel of Property</b></span><span class="fileupload-exists">Change</span><input type="file" /></span>
+                                                      <span class="fileupload-preview"></span>
+                                                      <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
                                     </div>
                                     <div class="span4">
-                                        <h4>Orientation <small>clockwise degrees from North</small></h4>
+                                        
+                                        <h4>EPA EnergyStar Score  <small>[target=75, median=50]</small></h4>
                                         <ul class="inline">
                                             <li>
-                                                <input type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
+                                                <input type="range" ng-model="portfolio" min="0" max="100" step="1" value={{portfolio}}/>
                                             </li>
                                             <li>
-                                                <div class="input-append">
-                                                    <input class="span1" type="text" value={{orientation}} name="building_orientation" ng-model="orientation"/>
-                                                    <span class="add-on">&deg;</span>
-                                                </div>
+                                                <input class="span1" type="text" value={{portfolio}} ng-model="portfolio" placeholder="optional" name="energystar_score"/>
                                             </li>
                                         </ul>
-                                    
+                                       <h4>DOE Energy Asset Score</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="asset" min="0" max="100" step="1" value={{asset}}/>
+                                            </li>
+                                            <li>
+                                                <input class="span1" type="text" value={{asset}} ng-model="asset" placeholder="optional" name="asset_score" />
+                                            </li>
+                                        </ul>
+                                        
+                                    </div>
+                                    <div class="span8" style="text-align:right;float:right;">
+                                        <span>Learn More about
+                                        <a href="https://portfoliomanager.energystar.gov/pm/login.html" target="_blank"><img src="img/portfolio-manager.png" width="150" height="48"></a>
+                                        <a href="http://www1.eere.energy.gov/buildings/commercial/assetscore.html" target="_blank"><img src="img/asset-score.png" width="150" height="48"></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <div class="box-unit">
+                            <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
+                            <a class="btn btn-large btn-info" href="literesults"><i class="icon-signal"></i> Example Outputs</a>
+                            <img style="text-align:right;float:right;" src="img/ashrae.png" alt="ASHRAE" width="85" height="59">
+                            <br style="clear:both" />
+                            <h2 class="text-right">
+                                <small>powered by ASHRAE Inverse Modeling Toolkit</small>
+                            </h2>
+                        </div>
+                     <section>
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>Supplementary <small> inputs required for IBM Inverse Model</small></h2>
+                                </div>
+                                <div class="row">
+                                    <div class="span4">
                                     <h4>Address</h4>
                                         <input type="text" name="building_location_address">
                                         <h4>City</h4>
@@ -516,52 +576,45 @@
                                             <option value="WI">Wisconsin</option>
                                             <option value="WY">Wyoming</option>
                                         </select>
+                                       
                                     </div>
-
-                                    
-                                        
+                                    <div class="span4">
+                                         <h4>Length</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="building_length" min="0" step="0.01" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                        <h4>Width</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="building_width" min="0" step="0.01" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                        <h4>Height</h4>
+                                        <div class="input-append">
+                                            <input type="number" name="building_height" min="0" step="0.01" />
+                                            <span class="add-on">m</span>
+                                        </div>
+                                         <h4>Orientation <small>clockwise degrees from North</small></h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" type="text" value={{orientation}} name="building_orientation" ng-model="orientation"/>
+                                                    <span class="add-on">&deg;</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </section>
-                        <div class="box-unit">
-                            <div class="row">
-                                <div class="span4">
-                                    <h4>EPA Portfolio Manager Score</h4>
-                                    <ul class="inline">
-                                        <li>
-                                            <input type="range" ng-model="portfolio" min="0" max="100" step="1" value={{portfolio}}/>
-                                        </li>
-                                        <li>
-                                            <input class="span1" type="text" value={{portfolio}} ng-model="portfolio" placeholder="optional"/>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="span4">
-                                    <h4>DOE Asset Rating Score</h4>
-                                    <ul class="inline">
-                                        <li>
-                                            <input type="range" ng-model="asset" min="0" max="100" step="1" value={{asset}}/>
-                                        </li>
-                                        <li>
-                                            <input class="span1" type="text" value={{asset}} ng-model="asset" placeholder="optional"/>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-unit">
-                            <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
-                            <a class="btn btn-large btn-info" href="literesults"><i class="icon-signal"></i> Example Outputs</a>
-                            <h2 class="text-right">
-                                <small>powered by ASHRAE Inverse Modeling Toolkit</small>
-                            </h2>
-                             
-                        </div>
-                        
+                        </section> 
                     </form>
                     <div class="box-unit">
                         <button onclick="submitIBM()" class="btn btn-large btn-primary">SIMULATE</button>
                         <a class="btn btn-large btn-info" href="http://eebhub.minus.com/mbw8FJL02UdsL2"><i class="icon-signal"></i> Example Outputs</a>
+                         <img style="text-align:right;float:right;" src="img/ibm.png" alt="IBM" width="90" height="36">
                         <h2 class="text-right">
                             <small>powered by IBM Inverse Modeling Engine</small>
                         </h2>
@@ -573,6 +626,17 @@
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap-scrollspy.js"></script>
+        <script src="js/bootstrap-collapse.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        
+          ga('create', 'UA-26348074-7', 'eebhub.org');
+          ga('send', 'pageview');
+        
+        </script>
     </body>
 
 </html>

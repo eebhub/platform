@@ -209,7 +209,7 @@
                                     <input type="text" class="span3" ng-model="buildingName" name="building_name" 
                                     />
                                     <br/>
-                                    <h4>Climate</h4>
+                                    <h4>Location</h4>
                                     <div class="input-append">
                                         <select class="span3" name="weather_epw_location">
                                             <option value="ALBUQUERQUE INTL ARPT [ISIS]">Albuquerque, NM</option>
@@ -238,82 +238,92 @@
                                 </div>
                                 <div class="span4">
                                 <h4>Function</h4>
-                                    <select class="span2" name="activity_type">
-                                        <option value="Education">Education</option>
-                                        <option value="Enclosed mall">Enclosed mall</option>
-                                        <option value="Food sale">Food sale</option>
-                                        <option value="Food service">Food service</option>
-                                        <option value="Inpatient health care">Inpatient health care</option>
-                                        <option value="Laboratory">Laboratory</option>
-                                        <option value="Lodging">Lodging</option>
-                                        <option value="Non refriferation warehouse">Non refrigeration warehouse</option>
-                                        <option value="Nursing">Nursing</option>
-                                        <option value="Office">Office</option>
-                                        <option value="Other">Other</option>
-                                        <option value="Outpatient health care">Outpatient health care</option>
-                                        <option value="Public assembly">Public assembly</option>
-                                        <option value="Public order and safety">Public order and safety</option>
-                                        <option value="Refrigerated warehouse">Refrigerated warehouse</option>
-                                        <option value="Religious worship">Religious worship</option>
-                                        <option value="Retail other than mall">Retail other than mall</option>
-                                        <option value="Service">Service</option>
-                                        <option value="Strip shopping mall">Strip shopping mall</option>
-                                        <option value="vacant">vacant</option>
-                                    </select>
+                                    <div class="input-append">
+                                        <select class="span3" name="activity_type">
+                                            <option value="Education">Education</option>
+                                            <option value="Enclosed mall">Enclosed mall</option>
+                                            <option value="Food sale">Food sale</option>
+                                            <option value="Food service">Food service</option>
+                                            <option value="Inpatient health care">Inpatient health care</option>
+                                            <option value="Laboratory">Laboratory</option>
+                                            <option value="Lodging">Lodging</option>
+                                            <option value="Non refriferation warehouse">Non refrigeration warehouse</option>
+                                            <option value="Nursing">Nursing</option>
+                                            <option value="Office">Office</option>
+                                            <option value="Other">Other</option>
+                                            <option value="Outpatient health care">Outpatient health care</option>
+                                            <option value="Public assembly">Public assembly</option>
+                                            <option value="Public order and safety">Public order and safety</option>
+                                            <option value="Refrigerated warehouse">Refrigerated warehouse</option>
+                                            <option value="Religious worship">Religious worship</option>
+                                            <option value="Retail other than mall">Retail other than mall</option>
+                                            <option value="Service">Service</option>
+                                            <option value="Strip shopping mall">Strip shopping mall</option>
+                                            <option value="vacant">vacant</option>
+                                        </select>
+                                        <span class="add-on">
+                                                <a href="http://www.nrel.gov/docs/fy08osti/41956.pdf" target="_blank"><i class="icon-info-sign"></i></a>
+                                            </span>
+                                    </div>
                                 <h4>More Specific Building Activity</h4>
-                                    <select class="span2" name="activity_type_specific">
-                                        <option>Administrative/professional office</option>
-                                        <option>Bank/other financial</option>
-                                        <option>Clinic/other outpatient health</option>
-                                        <option>College/university</option>
-                                        <option>Convenience store</option>
-                                        <option>Convenience store with gas station</option>
-                                        <option>Distribution/shipping center</option>
-                                        <option>Dormitory/fraternity/sorority</option>
-                                        <option>Elementary/middle school</option>
-                                        <option>Enclosed mall</option>
-                                        <option>Entertainment/culture</option>
-                                        <option>Fast food</option>
-                                        <option>Fire station/police station</option>
-                                        <option>Government office</option>
-                                        <option>Grocery store/food market</option>
-                                        <option>High school</option>
-                                        <option>Hospital/inpatient health</option>
-                                        <option>Hotel</option>
-                                        <option>Laboratory</option>
-                                        <option>Library</option>
-                                        <option>Medical office(diagnostic)</option>
-                                        <option>Medical office(non-diagnostic)</option>
-                                        <option>Mixed-use office</option>
-                                        <option>Motel or inn</option>
-                                        <option>Non-refrigerated warehouse</option>
-                                        <option>Nursing house/assisted living</option>
-                                        <option>Other</option>
-                                        <option>Other classroom education</option>
-                                        <option>Other food sales</option>
-                                        <option>Other food service</option>
-                                        <option>Other lodging</option>
-                                        <option>Other office</option>
-                                        <option>Other public assembly</option>
-                                        <option>Other public order and safety</option>
-                                        <option>Other retail</option>
-                                        <option>Other service</option>
-                                        <option>Post office/postal center</option>
-                                        <option>Preschool/daycare</option>
-                                        <option>Recreation</option>
-                                        <option>Refrigerated warehouse</option>
-                                        <option>Religious worship</option>
-                                        <option>Repair shop</option>
-                                        <option>Restaurant/cafeteria</option>
-                                        <option>Retail store</option>
-                                        <option>Self-storage</option>
-                                        <option>Social/meeting</option>
-                                        <option>Strip shopping mall</option>
-                                        <option>vacant</option>
-                                        <option>Vehicle dealership/showroom</option>
-                                        <option>Vehicle service/repair shop</option>
-                                        <option>Vehicle storage/maintenance</option>
-                                    </select>
+                                     <div class="input-append">
+                                        <select class="span3" name="activity_type_specific">
+                                            <option>Administrative/professional office</option>
+                                            <option>Bank/other financial</option>
+                                            <option>Clinic/other outpatient health</option>
+                                            <option>College/university</option>
+                                            <option>Convenience store</option>
+                                            <option>Convenience store with gas station</option>
+                                            <option>Distribution/shipping center</option>
+                                            <option>Dormitory/fraternity/sorority</option>
+                                            <option>Elementary/middle school</option>
+                                            <option>Enclosed mall</option>
+                                            <option>Entertainment/culture</option>
+                                            <option>Fast food</option>
+                                            <option>Fire station/police station</option>
+                                            <option>Government office</option>
+                                            <option>Grocery store/food market</option>
+                                            <option>High school</option>
+                                            <option>Hospital/inpatient health</option>
+                                            <option>Hotel</option>
+                                            <option>Laboratory</option>
+                                            <option>Library</option>
+                                            <option>Medical office(diagnostic)</option>
+                                            <option>Medical office(non-diagnostic)</option>
+                                            <option>Mixed-use office</option>
+                                            <option>Motel or inn</option>
+                                            <option>Non-refrigerated warehouse</option>
+                                            <option>Nursing house/assisted living</option>
+                                            <option>Other</option>
+                                            <option>Other classroom education</option>
+                                            <option>Other food sales</option>
+                                            <option>Other food service</option>
+                                            <option>Other lodging</option>
+                                            <option>Other office</option>
+                                            <option>Other public assembly</option>
+                                            <option>Other public order and safety</option>
+                                            <option>Other retail</option>
+                                            <option>Other service</option>
+                                            <option>Post office/postal center</option>
+                                            <option>Preschool/daycare</option>
+                                            <option>Recreation</option>
+                                            <option>Refrigerated warehouse</option>
+                                            <option>Religious worship</option>
+                                            <option>Repair shop</option>
+                                            <option>Restaurant/cafeteria</option>
+                                            <option>Retail store</option>
+                                            <option>Self-storage</option>
+                                            <option>Social/meeting</option>
+                                            <option>Strip shopping mall</option>
+                                            <option>vacant</option>
+                                            <option>Vehicle dealership/showroom</option>
+                                            <option>Vehicle service/repair shop</option>
+                                            <option>Vehicle storage/maintenance</option>
+                                        </select>
+                                        <span class="add-on">
+                                                <a href="http://www.nrel.gov/docs/fy08osti/41956.pdf" target="_blank"><i class="icon-info-sign"></i></a>
+                                            </span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -873,6 +883,7 @@
                     <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
                     <!--<button type="button" class="btn btn-large btn-info"><i class="icon-plus"></i> Building 101 Data</button>-->
                     <a class="btn btn-large btn-info" href="/substantialsampleres"><i class="icon-signal"></i> Example Outputs</a>
+                    <img style="text-align:right;float:right;" src="img/utrc.png" alt="UTRC" width="120" height="42">
                     <h2 class="text-right"><small>powered by UTRC Energy Audit Tool Engine</small></h2>
                 
                 <!--<div id="progressbar"></div>-->
@@ -882,7 +893,8 @@
         
         
                 <div class="box-unit">
-                <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/upenn/"><i class="icon-star-empty"></i> Parametric Analysis Toolkit for System Control</a>
+                <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/upenn/"><i class="icon-wrench"></i> System Control Optimization</a>
+                <img style="text-align:right;float:right;" src="img/upenn.png" alt="UPENN" width="112" height="36">
                 <h2 class="text-right"><small>powered by UPenn Parametric Analysis Toolkit</small></h2>
                 </div>
                 
@@ -961,6 +973,16 @@
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/bootstrap-scrollspy.js"></script>
+                <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        
+          ga('create', 'UA-26348074-7', 'eebhub.org');
+          ga('send', 'pageview');
+        
+        </script>
     </body>
 
 </html>

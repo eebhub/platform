@@ -79,6 +79,9 @@
             var cont2 = "";
             var cont3 = "";
             var cont4 = "";
+            var cont5 = "";
+            var cont6 = "";
+            var cont7 = "";
            
             if(unitid=='si'){
                 cont1 = "m&#178;";
@@ -233,6 +236,31 @@
                         '            </div>   ';    
                 
                 cont4 = 'm';
+                cont5 = 'People/m&sup2;';
+                
+                cont6 = '<h4>Lighting Power Density</h4>'+
+                        '            <div class="input-append">'+
+                        '                <input disabled class="span2" id="appendedInput" type="text" name="lighting_power_density">'+
+                        '                <span class="add-on">W/m&sup2;</span>'+
+                        '            </div>'+
+                        '            <h4>Window Head Height</h4>'+
+                        '            <div class="input-append">'+
+                        '                <input disabled class="span2" id="appendedInput" type="text" placeholder="floor to top of window" name="window_head_height">'+
+                        '                <span class="add-on">m</span>'+
+                        '            </div>'+
+                        '            <h4>Wall Thickness</h4>'+
+                        '            <div class="input-append">'+
+                        '                <input disabled class="span2" id="appendedInput" type="text" name="wall_thickness">'+
+                        '                <span class="add-on">m</span>'+
+                        '            </div>'+
+                        '            <h4>Shading Device</h4>'+
+                        '            <select disabled class="span3" name="interior_shading_type">'+
+                        '                <option>Horizontal Blinds</option>'+
+                        '                <option>Fabric Shades</option>'+
+                        '                <option>None</option>'+
+                        '            </select>';
+                
+                    cont7 = 'W/m&sup2;';    
                 
                 document.getElementById("architect-replace1").innerHTML=cont1;
                 document.getElementById("extend-div").innerHTML=cont2;
@@ -242,9 +270,15 @@
                 document.getElementById("architect2-replace1").innerHTML=cont3;
                 document.getElementById("architect2-replace2").innerHTML=cont4;
 <<<<<<< HEAD
+<<<<<<< HEAD
                 
 >>>>>>> develop
 =======
+=======
+                document.getElementById("people-replace").innerHTML=cont5;
+                document.getElementById("lighting-replace").innerHTML=cont6;
+                document.getElementById("mechanical-replace").innerHTML=cont7;
+>>>>>>> develop
 
 >>>>>>> develop
             }else if(unitid=='ip'){
@@ -401,10 +435,40 @@
                 
                 cont4 = 'ft';
                 
+                cont5 = 'People/ft&sup2;';
+                
+                cont6 = '<h4>Lighting Power Density</h4>'+
+                        '            <div class="input-append">'+
+                        '                <input disabled class="span2" id="appendedInput" type="text" name="lighting_power_density">'+
+                        '                <span class="add-on">W/ft&sup2;</span>'+
+                        '            </div>'+
+                        '            <h4>Window Head Height</h4>'+
+                        '            <div class="input-append">'+
+                        '                <input disabled class="span2" id="appendedInput" type="text" placeholder="floor to top of window" name="window_head_height">'+
+                        '                <span class="add-on">ft</span>'+
+                        '            </div>'+
+                        '            <h4>Wall Thickness</h4>'+
+                        '            <div class="input-append">'+
+                        '                <input disabled class="span2" id="appendedInput" type="text" name="wall_thickness">'+
+                        '                <span class="add-on">ft</span>'+
+                        '            </div>'+
+                        '            <h4>Shading Device</h4>'+
+                        '            <select disabled class="span3" name="interior_shading_type">'+
+                        '                <option>Horizontal Blinds</option>'+
+                        '                <option>Fabric Shades</option>'+
+                        '                <option>None</option>'+
+                        '            </select>';
+                
+                    cont7 = 'W/ft&sup2;';    
+                
                 document.getElementById("architect-replace1").innerHTML=cont1;
                 document.getElementById("extend-div").innerHTML=cont2;
                 document.getElementById("architect2-replace1").innerHTML=cont3;
                 document.getElementById("architect2-replace2").innerHTML=cont4;
+                document.getElementById("people-replace").innerHTML=cont5;
+                document.getElementById("lighting-replace").innerHTML=cont6;
+                document.getElementById("mechanical-replace").innerHTML=cont7;
+                
             }
         }
         </script>
@@ -788,7 +852,7 @@
                                     <h4>People Density</h4>
                                     <div class="input-append">
                                         <input class="span2" id="appendedInput" type="text" placeholder="building type default" name="people_density" disabled>
-                                        <span class="add-on">People/m&sup2;</span>
+                                        <span class="add-on" id="people-replace">People/m&sup2;</span>
                                     </div>
                                 </div>
                             </div>
@@ -804,7 +868,7 @@
                                 </h2>
                             </div>
                             <div class="row">
-                                <div class="span4">
+                                <div class="span4" id="lighting-replace">
                                     <h4>Lighting Power Density</h4>
                                     <div class="input-append">
                                         <input disabled class="span2" id="appendedInput" type="text" name="lighting_power_density">
@@ -877,7 +941,7 @@
                                     <h4>Equipment Power Density</h4>
                                     <div class="input-append">
                                         <input class="span2" name="equipment_power_density" id="appendedInput" type="text" placeholder="building type default" disabled>
-                                        <span class="add-on">W/m&sup2;</span>
+                                        <span class="add-on" id="mechanical-repalce">W/m&sup2;</span>
                                     </div>
                                 </div>
                             </div>

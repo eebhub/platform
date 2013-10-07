@@ -13,6 +13,9 @@ module.exports = {
     getLite: function(request, response){
         response.render('lite');    
     },
+    getLiteConv: function(request, response){
+        response.sendfile('./views/liteconversion.html');    
+    },
     getLiteResults: function(request, response){
         response.render('literesults');    
     },

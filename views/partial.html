@@ -17,6 +17,7 @@
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="js/building101Data.js"></script>
     </head>
     
     <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -86,11 +87,23 @@
                     </ul>
                 </div>
                 <div class="span9">
-                    <form action="/partialanalysis" method="post">
+                    <form action="/partialanalysis" method="post" name="platformForm">
                         <section id="building">
                             <div class="box-unit">
                                 <div class="page-header">
-                                    <h2>Building</h2>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <h2>Building</h2>
+                                            </td>
+                                            <td class="span7">
+                                                <div class="pull-right text-right">
+                                                <button type="button" onclick="building101Data_partial()" class="btn">
+                                                    <i class="icon-plus"></i><b>Building 101 Data</b></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
                                 <div class="row">
                                     <div class="span4">
@@ -98,7 +111,7 @@
                                         <input class="span3" type="text" ng-model="buildingName"
                                         name="building_name">
                                         <br/>
-                                        <h4>City</h4>
+                                        <h4>Location</h4>
                                         <div class="input-append">
                                             <select class="span3" name="weather_epw_location">
                                                 <option value="USA_NM_Albuquerque.Intl.AP.723650_TMY3">Albuquerque, NM</option>
@@ -128,70 +141,31 @@
                                     </div>
                                     <div class="span4">
                                         <h4>Function</h4>
-                                        <select class="span3" name="activity_type">
-                                            <option>Small Office</option>
-                                            <option>Medium Office</option>
-                                            <option>Large Office</option>
-                                            <option>Stand-alone Retail</option>
-                                            <option>Strip Mall</option>
-                                            <option>Primary School</option>
-                                            <option>Secondary School</option>
-                                            <option>Outpatient Healthcare</option>
-                                            <option>Hospital</option>
-                                            <option>Small hotel</option>
-                                            <option>Large Hotel</option>
-                                            <option>Warehouse (non-refrigerated)</option>
-                                            <option>Quick Service Restaurant</option>
-                                            <option>Full Service Restaurant</option>
-                                            <option>Mid-Rise Apartment</option>
-                                            <option>High-Rise Apartment</option>
-                                        </select>
+                                         <div class="input-append">
+                                            <select class="span3" name="activity_type">
+                                                <option>Small Office</option>
+                                                <option>Medium Office</option>
+                                                <option>Large Office</option>
+                                                <option>Stand-alone Retail</option>
+                                                <option>Strip Mall</option>
+                                                <option>Primary School</option>
+                                                <option>Secondary School</option>
+                                                <option>Outpatient Healthcare</option>
+                                                <option>Hospital</option>
+                                                <option>Small hotel</option>
+                                                <option>Large Hotel</option>
+                                                <option>Warehouse (non-refrigerated)</option>
+                                                <option>Quick Service Restaurant</option>
+                                                <option>Full Service Restaurant</option>
+                                                <option>Mid-Rise Apartment</option>
+                                                <option>High-Rise Apartment</option>
+                                            </select>
+                                            <span class="add-on">
+                                                <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html" target="_blank"><i class="icon-info-sign"></i></a>
+                                            </span>
+                                        </div>
                                         <h4>Year Built</h4>
-                                        <select class="span2" name="year_completed">
-                                            <option>2013</option>
-                                            <option>2012</option>
-                                            <option>2011</option>
-                                            <option>2010</option>
-                                            <option>2009</option>
-                                            <option>2008</option>
-                                            <option>2007</option>
-                                            <option>2006</option>
-                                            <option>2005</option>
-                                            <option>2004</option>
-                                            <option>2003</option>
-                                            <option>2002</option>
-                                            <option>2001</option>
-                                            <option>2000</option>
-                                            <option>1999</option>
-                                            <option>1998</option>
-                                            <option>1997</option>
-                                            <option>1996</option>
-                                            <option>1995</option>
-                                            <option>1994</option>
-                                            <option>1993</option>
-                                            <option>1992</option>
-                                            <option>1991</option>
-                                            <option>1990</option>
-                                            <option>1989</option>
-                                            <option>1988</option>
-                                            <option>1987</option>
-                                            <option>1986</option>
-                                            <option>1985</option>
-                                            <option>1984</option>
-                                            <option>1983</option>
-                                            <option>1982</option>
-                                            <option>1981</option>
-                                            <option>1980</option>
-                                            <option>1979</option>
-                                            <option>1978</option>
-                                            <option>1977</option>
-                                            <option>1976</option>
-                                            <option>1974</option>
-                                            <option>1973</option>
-                                            <option>1972</option>
-                                            <option>1971</option>
-                                            <option>1970</option>
-                                        </select>
+                                        <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
                                     </div>
                                 </div>
                         </section>
@@ -209,19 +183,19 @@
                                     <div class="span3">
                                         <h4>Room Width</h4>
                                         <div class="input-append">
-                                            <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                            <input type="number" min="0" step="0.001" class="span2" id="appendedInput"
                                             name="room_width" />
                                             <span class="add-on">m</span>
                                         </div>
                                         <h4>Room Depth</h4>
                                         <div class="input-append">
-                                            <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                            <input type="number" min="0" step="0.001" class="span2" id="appendedInput"
                                             name="room_depth" />
                                             <span class="add-on">m</span>
                                         </div>
                                         <h4>Room Height</h4>
                                         <div class="input-append">
-                                            <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                            <input type="number" min="0" step="0.001" class="span2" id="appendedInput"
                                             name="room_height" />
                                             <span class="add-on">m</span>
                                         </div>
@@ -239,20 +213,20 @@
                                             <option>West</option>
                                             <option>North-West</option>
                                         </select>
-                                        <h4>Window Area</h4>
+                                        <h4>% Window to Wall Area</h4>
                                         <ul class="inline">
                                             <li>
-                                                <input type="range" ng-model="winwalltyp" name="window_to_wall_ratio_room"
-                                                min="0" max="100" step="1" value=50/>
+                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50 />
                                             </li>
                                             <li>
                                                 <div class="input-append">
-                                                    <input class="span1" type="text" value={{winwalltyp}} ng-model="winwalltyp"
-                                                    />
+                                                    <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="window_to_wall_ratio">
                                                     <span class="add-on">%</span>
                                                 </div>
                                             </li>
                                         </ul>
+                                        <h4>Number of Floors</h4>
+                                        <input type="number" id="number_of_floors" name="number_of_floors" min="0" step="1">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -485,12 +459,17 @@
                         </section>
                         <div class="box-unit">
                             <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
-                            <button type="button" class="btn btn-large btn-info">
-                                <i class="icon-plus"></i>Building 101 Data</button>
-                            <a class="btn btn-large btn-info" href="http://designadvisor.mit.edu/design/"><i class="icon-signal"></i> Example Outputs</a>
+                            <a class="btn btn-large btn-info" href="http://128.118.67.227/da_example_outputs.html"><i class="icon-signal"></i> Example Outputs</a>
+                            <img style="text-align:right;float:right;" src="img/mit.png" alt="MIT" width="80" height="41">
                             <h2 class="text-right">
                                 <small>powered by MIT Design Advisor Engine</small>
                             </h2>
+                        </div>
+                        <div class="box-unit">
+                                <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/utrc/uncertainty/riskanalysis.html"><i class="icon-exclamation-sign"></i> Risk Analysis </a>
+                                <img style="text-align:right;float:right;" src="img/utrc.png" alt="UTRC" width="120" height="42">
+                                <br>
+                                <h2 class="text-right"><small>powered by UTRC Uncertainty Quantification</small></h2>
                         </div>
                     </form>
                     </div>
@@ -501,6 +480,16 @@
             <script src="js/jquery.js"></script>
             <script src="js/bootstrap.min.js"></script>
             <script src="js/bootstrap-scrollspy.js"></script>
+            <script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            
+              ga('create', 'UA-26348074-7', 'eebhub.org');
+              ga('send', 'pageview');
+            
+            </script>
     </body>
 
 </html>

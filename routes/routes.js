@@ -2,7 +2,13 @@ var shell = require('shelljs');
 
 module.exports = {
     getHome: function(request, response){
-        response.render('home');    
+        response.sendfile('./views/home.html');    
+    },
+    getSignUp: function(request, response){
+        response.sendfile('./views/signup.html');  
+    },
+    getLogIn: function(request, response){
+        response.sendfile('./views/login.html');  
     },
     getLite: function(request, response){
         response.render('lite');    
@@ -19,7 +25,9 @@ module.exports = {
     },
     
     getComprehensive: function(request, response) {
-        response.render('comprehensive');
+
+        response.sendfile('./views/comprehensive.html');
+
     },
        
     

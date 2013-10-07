@@ -65,6 +65,294 @@
                 printValue('obstructionSlider', 'obstructionRangeValue');
             }
         </script>
+        
+        <!--convert unit-->
+        <script>
+        function convertUnit(){
+            var inputunitid = document.getElementById('input_unit_id');
+            var unitid = inputunitid.options[inputunitid.selectedIndex].value;
+            
+            var inputshapeid = document.getElementById('footprint_shape');
+            var shapeid = inputshapeid.options[inputshapeid.selectedIndex].value;
+            //var architecture_section = document.getElementById('replace');
+            var cont1 = "";
+            var cont2 = "";
+           
+            if(unitid=='si'){
+                cont1 = "m&#178;";
+            
+                switch(shapeid) {
+                case 'T':
+                    cont2 = '<br><br><br>' +
+                                        '<div class="control-group"> <label class="control-label" for="length">Length</label>'+
+            			                 '<div class="controls input-append"> <input type="number" min="1" step="0.001" name="length" id="length"> <span class="add-on">m</span></div> </div> '+ 
+            							 '<div class="control-group"> <label class="control-label" for="width">Width</label>'+
+            			                 '<div class="controls input-append"> <input type="number" min="1" step="0.001" name="width" id="width"> <span class="add-on">m</span></div> </div> '+ 
+            							 '<div class="control-group"> <label class="control-label" for="end_1">End 1</label>'+
+            			                 '<div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_1" id="end_1"> <span class="add-on">m</span></div> </div> '+ 
+            							 '<div class="control-group"> <label class="control-label" for="end_2">End 2</label>'+
+            			                 '<div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_2" id="end_2"> <span class="add-on">m</span></div> </div>  '+
+            							 '<div class="control-group"> <label class="control-label" for="offset">Offset</label>'+
+            			                 '<div class="controls input-append"> <input type="number" min="1" step="0.001" name="offset" id="offset"> <span class="add-on">m</span></div> </div>';
+                    
+        		case 'L':
+        		
+        			cont2 = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">m</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width" id="width"><span class="add-on">m</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_1" id="end_1"><span class="add-on">m</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_2" id="end_2"><span class="add-on">m</span></div> </div>' ;
+        		break;
+        
+        		case 'U':
+        			
+        			cont2 = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">m</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width_1">Width 1</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width_1" id="width_1"><span class="add-on">m</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width_2">Width 2</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width_2" id="width_2"><span class="add-on">m</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_1" id="end_1"><span class="add-on">m</span></div> </div>' +    
+        
+        							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_2" id="end_2"><span class="add-on">m</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="offset">OffSet</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="offset" id="offset"><span class="add-on">m</span></div> </div>';
+        		break;
+        
+        		case 'T':
+        			
+        			cont2 = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="length" id="length"><span class="add-on">m</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="width" id="width"><span class="add-on">m</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_1" id="end_1"><span class="add-on">m</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_2" id="end_2"><span class="add-on">m</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="offset">Offset</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="offset" id="offset"><span class="add-on">m</span></div> </div>' ;
+        		break;
+        
+        		case 'H':
+
+        
+        			cont2 = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">m</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width">Left Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_width" id="left_width"><span class="add-on">m</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="center_width">Center Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="center_width" id="center_width"><span class="add-on">m</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="right_width">Right Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_width" id="right_width"><span class="add-on">m</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="left_end_length">Left End Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_end_length" id="left_end_length"><span class="add-on">m</span> </div> </div>' +    
+        
+        							' <div class="control-group"> <label class="control-label" for="right_end_length">Right End Length </label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_end_length" id="right_end_length"><span class="add-on">m</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="left_upper_end_offset">Left Upper End Offset</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_upper_end_offset" id="left_upper_end_offset"><span class="add-on">m</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="right_upper_end_offset">Right Upper End OffSet</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_upper_end_offset" id="right_upper_end_offset"><span class="add-on">m</span> </div> </div>';
+        		break;
+        
+        		case 'Rectangle':
+        		
+        			cont2 = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">m</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width" id="width"><span class="add-on">m</span> </div> </div>';
+        		break;
+        
+        		case 'Pie':
+        		
+        			cont2 = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="radius_a">Radius A</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="radius_a" id="radius_a"><span class="add-on">m</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="radius_b">Radius B</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="radius_b" id="radius_b"><span class="add-on">m</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="num_points">Number Of Points</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="num_points" id="num_points"><span class="add-on">m</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="degree">Degree</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="degree" id="degree"><span class="add-on">m</span> </div> </div>' ;
+        		break;
+        		default:
+        			cont2 = '';
+        		break;
+        		}
+                       
+                 
+                document.getElementById("architect-replace1").innerHTML=cont1;
+                document.getElementById("extend-div").innerHTML=cont2;
+                document.getElementById("architect-replace3").innerHTML=cont2;
+            }else if(unitid=='ip'){
+                cont1 = "ft&#178;";
+                
+                switch(shapeid) {
+                case 'T':
+                    cont2 = '<br><br><br>' +
+                                        '<div class="control-group"> <label class="control-label" for="length">Length</label>'+
+            			                 '<div class="controls input-append"> <input type="number" min="1" step="0.001" name="length" id="length"> <span class="add-on">ft</span></div> </div> '+ 
+            							 '<div class="control-group"> <label class="control-label" for="width">Width</label>'+
+            			                 '<div class="controls input-append"> <input type="number" min="1" step="0.001" name="width" id="width"> <span class="add-on">ft</span></div> </div> '+ 
+            							 '<div class="control-group"> <label class="control-label" for="end_1">End 1</label>'+
+            			                 '<div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_1" id="end_1"> <span class="add-on">ft</span></div> </div> '+ 
+            							 '<div class="control-group"> <label class="control-label" for="end_2">End 2</label>'+
+            			                 '<div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_2" id="end_2"> <span class="add-on">ft</span></div> </div>  '+
+            							 '<div class="control-group"> <label class="control-label" for="offset">Offset</label>'+
+            			                 '<div class="controls input-append"> <input type="number" min="1" step="0.001" name="offset" id="offset"> <span class="add-on">ft</span></div> </div>';
+                    
+        		case 'L':
+        		
+        			cont2 = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">ft</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width" id="width"><span class="add-on">ft</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_1" id="end_1"><span class="add-on">ft</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_2" id="end_2"><span class="add-on">ft</span></div> </div>' ;
+        		break;
+        
+        		case 'U':
+        			
+        			cont2 = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">ft</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width_1">Width 1</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width_1" id="width_1"><span class="add-on">ft</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width_2">Width 2</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width_2" id="width_2"><span class="add-on">ft</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_1" id="end_1"><span class="add-on">ft</span></div> </div>' +    
+        
+        							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_2" id="end_2"><span class="add-on">ft</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="offset">OffSet</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="offset" id="offset"><span class="add-on">ft</span></div> </div>';
+        		break;
+        
+        		case 'T':
+        			
+        			cont2 = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="length" id="length"><span class="add-on">ft</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="width" id="width"><span class="add-on">ft</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_1" id="end_1"><span class="add-on">ft</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_2" id="end_2"><span class="add-on">ft</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="offset">Offset</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="offset" id="offset"><span class="add-on">ft</span></div> </div>' ;
+        		break;
+        
+        		case 'H':
+
+        
+        			cont2 = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">ft</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width">Left Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_width" id="left_width"><span class="add-on">ft</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="center_width">Center Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="center_width" id="center_width"><span class="add-on">ft</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="right_width">Right Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_width" id="right_width"><span class="add-on">ft</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="left_end_length">Left End Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_end_length" id="left_end_length"><span class="add-on">ft</span> </div> </div>' +    
+        
+        							' <div class="control-group"> <label class="control-label" for="right_end_length">Right End Length </label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_end_length" id="right_end_length"><span class="add-on">ft</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="left_upper_end_offset">Left Upper End Offset</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_upper_end_offset" id="left_upper_end_offset"><span class="add-on">ft</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="right_upper_end_offset">Right Upper End OffSet</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_upper_end_offset" id="right_upper_end_offset"><span class="add-on">ft</span> </div> </div>';
+        		break;
+        
+        		case 'Rectangle':
+        		
+        			cont2 = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">ft</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width" id="width"><span class="add-on">ft</span> </div> </div>';
+        		break;
+        
+        		case 'Pie':
+        		
+        			cont2 = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="radius_a">Radius A</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="radius_a" id="radius_a"><span class="add-on">ft</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="radius_b">Radius B</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="radius_b" id="radius_b"><span class="add-on">ft</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="num_points">Number Of Points</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="num_points" id="num_points"><span class="add-on">ft</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="degree">Degree</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="degree" id="degree"><span class="add-on">ft</span> </div> </div>' ;
+        		break;
+        		default:
+        			cont2 = '';
+        		break;
+        		}
+                
+                document.getElementById("architect-replace1").innerHTML=cont1;
+                document.getElementById("extend-div").innerHTML=cont2;
+            }
+        }
+        </script>
     </head>
     
     <body onload="changeShape(T)" data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -146,6 +434,13 @@
                                         </td>
                                         <td class="span7">
                                             <div class="pull-right text-right">
+                                                <div>
+                                                    <select class="span2" id="input_unit_id" name="input_unit" onChange="convertUnit();">
+                                                        <option value="default">--choose units--</option>
+                                                        <option value='ip'>IP</option>
+                                                        <option value='si'>SI</option>
+                                                    </select>
+                                                </div>
                                                 <button type="button" onclick="building101Data_comprehensive()" class="btn">
                                                     <i class="icon-plus"></i><b>Building 101 Data</b>
                                                 </button>
@@ -232,7 +527,7 @@
                                     <h4>Gross Floor Area</h4>
                                     <div class="input-append">
                                         <input type="number" id="gross_floor_area" name="gross_floor_area" step="0.001">
-                                        <span class="add-on">m&#178;</span>
+                                        <span class="add-on" id="architect-replace1">m&#178;</span>
                                     </div>
                                     <h4>Number of Floors</h4>
                                     <input type="number" id="number_of_floors" name="number_of_floors" min="0" step="1">

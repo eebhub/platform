@@ -18,6 +18,91 @@
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="js/building101Data.js"></script>
+        
+        <!--convert unit-->
+        <script>
+        function convertUnit(){
+            var inputunitid = document.getElementById('input_unit_id');
+            var unitid = inputunitid.options[inputunitid.selectedIndex].value;
+            var cont1 = "";
+            var cont2 = "";
+            var cont3 = "";
+            var cont4 = "";
+            if(unitid=='si'){
+                cont1 = "<h4>Room Width</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" min=\"0\" step=\"0.001\" class=\"span2\" id=\"appendedInput\""
+                        +"                    name=\"room_width\" />"
+                        +"                    <span class=\"add-on\">m</span>"
+                        +"                </div>"
+                        +"                <h4>Room Depth</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" min=\"0\" step=\"0.001\" class=\"span2\" id=\"appendedInput\""
+                        +"                    name=\"room_depth\" />"
+                        +"                    <span class=\"add-on\">m</span>"
+                        +"                </div>"
+                        +"                <h4>Room Height</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" min=\"0\" step=\"0.001\" class=\"span2\" id=\"appendedInput\""
+                        +"                    name=\"room_height\" />"
+                        +"                    <span class=\"add-on\">m</span>"
+                        +"                </div>";
+    
+                
+                cont2 = "<h4>Overhang Depth</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input class=\"span2\" id=\"appendedInput\" type=\"number\" name=\"overhang_depth\">"
+                        +"                    <span class=\"add-on\">m</span>"
+                        +"                </div>";
+                       
+                cont3 = "People/m&sup2";
+                cont4 = "W/m<sup>2</sup>";
+                 
+                document.getElementById("architect-replace1").innerHTML=cont1;
+                document.getElementById("architect-replace2").innerHTML=cont2;
+                document.getElementById("people-replace").innerHTML=cont3;
+                document.getElementById("mechanical-replace").innerHTML=cont4;
+                
+            }else if(unitid=='ip'){
+                cont1 = "<h4>Room Width</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" min=\"0\" step=\"0.001\" class=\"span2\" id=\"appendedInput\""
+                        +"                    name=\"room_width\" />"
+                        +"                    <span class=\"add-on\">ft</span>"
+                        +"                </div>"
+                        +"                <h4>Room Depth</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" min=\"0\" step=\"0.001\" class=\"span2\" id=\"appendedInput\""
+                        +"                    name=\"room_depth\" />"
+                        +"                    <span class=\"add-on\">ft</span>"
+                        +"                </div>"
+                        +"                <h4>Room Height</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input type=\"number\" min=\"0\" step=\"0.001\" class=\"span2\" id=\"appendedInput\""
+                        +"                    name=\"room_height\" />"
+                        +"                    <span class=\"add-on\">ft</span>"
+                        +"                </div>";
+    
+                
+                cont2 = "<h4>Overhang Depth</h4>"
+                        +"                <div class=\"input-append\">"
+                        +"                    <input class=\"span2\" id=\"appendedInput\" type=\"number\" name=\"overhang_depth\">"
+                        +"                    <span class=\"add-on\">ft</span>"
+                        +"                </div>";
+                       
+                cont3 = "People/ft&sup2";
+                cont4 = "W/ft<sup>2</sup>";
+                 
+                document.getElementById("architect-replace1").innerHTML=cont1;
+                document.getElementById("architect-replace2").innerHTML=cont2;
+                document.getElementById("people-replace").innerHTML=cont3;
+                document.getElementById("mechanical-replace").innerHTML=cont4;
+                
+            }
+            
+        }
+        </script>    
+        
     </head>
     
     <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -98,6 +183,13 @@
                                             </td>
                                             <td class="span7">
                                                 <div class="pull-right text-right">
+                                                <div>
+                                                    <select class="span2" id="input_unit_id" name="input_unit" onChange="convertUnit();">
+                                                        <option value="default">--choose units--</option>
+                                                        <option value='ip'>IP</option>
+                                                        <option value='si'>SI</option>
+                                                    </select>
+                                                </div>
                                                 <button type="button" onclick="building101Data_partial()" class="btn">
                                                     <i class="icon-plus"></i><b>Building 101 Data</b></button>
                                                 </div>
@@ -180,7 +272,7 @@
                                     <div class="span2">
                                         <img class="img-rounded" src="img/room_dimensions.png">
                                     </div>
-                                    <div class="span3">
+                                    <div class="span3" id="architect-replace1">
                                         <h4>Room Width</h4>
                                         <div class="input-append">
                                             <input type="number" min="0" step="0.001" class="span2" id="appendedInput"
@@ -233,7 +325,7 @@
                                     <div class="span2">
                                         <img class="img-rounded" src="img/overhang.gif" width="170">
                                     </div>
-                                    <div class="span3">
+                                    <div class="span3" id="architect-replace2">
                                         <h4>Overhang Depth</h4>
                                         <div class="input-append">
                                             <input class="span2" id="appendedInput" type="number" name="overhang_depth">
@@ -326,7 +418,7 @@
                                         <option>1.5</option>
                                         <option>2.0</option>
                                     </select>
-                                    <span class="add-on">People/m&sup2;</span>
+                                    <span class="add-on" id="people-replace">People/m&sup2;</span>
                                 </div>
                             </div>
                         </section>
@@ -372,7 +464,7 @@
                                                 <option value="50.00">50</option>
                                                 <option value="100.00">100</option>
                                             </select>
-                                            <span class="add-on">W/m
+                                            <span class="add-on" id="mechanical-replace">W/m
                                                 <sup>2</sup>
                                             </span>
                                         </div>

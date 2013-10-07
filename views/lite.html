@@ -101,9 +101,9 @@
             var unitid = inputunitid.options[inputunitid.selectedIndex].value;
             
             if(unitid == 'ip'){
-                $("#unit").html("ft");
+                $(".unit").html("ft");
             }else{
-                $("#unit").html("m");   
+                $(".unit").html("m");   
             }
             
         }
@@ -510,7 +510,7 @@
                                         <h4>Gross Floor Area</h4>
                                         <div class="input-append">
                                             <input type="number" min="0" step="0.001" placeholder="required for benchmarking" name="gross_floor_area" />
-                                            <span class="add-on"><span id="unit">m</span>&#178;</span>
+                                            <span class="add-on"><span class="unit">m</span>&#178;</span>
                                         </div>
                                     </div>
                                 </div>
@@ -675,17 +675,17 @@
                                         <h4>Length</h4>
                                         <div class="input-append">
                                             <input type="number" name="building_length" min="0" step="0.01" />
-                                            <span class="add-on">m</span>
+                                            <span class="add-on"><span class="unit">m</span></span>
                                         </div>
                                         <h4>Width</h4>
                                         <div class="input-append">
                                             <input type="number" name="building_width" min="0" step="0.01" />
-                                            <span class="add-on">m</span>
+                                            <span class="add-on"><span class="unit">m</span></span>
                                         </div>
                                         <h4>Height</h4>
                                         <div class="input-append">
                                             <input type="number" name="building_height" min="0" step="0.01" />
-                                            <span class="add-on">m</span>
+                                            <span class="add-on"><span class="unit">m</span></span>
                                         </div>
                                     </div>  
                                         <h4>Orientation <small>clockwise degrees from North</small></h4>

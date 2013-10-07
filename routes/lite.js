@@ -14,7 +14,11 @@ module.exports = {
     },
 
     getLiteConversion: function(request, response) {
-        response.render('lite-conversion');
+        response.sendfile('./views/lite-conversion.html');
+    },
+    
+    runLiteConversion: function(request, response){
+        console.log(request.body);    
     },
 
     runIMT: function(request, response) {

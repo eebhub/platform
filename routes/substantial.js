@@ -943,7 +943,7 @@ module.exports ={
         'bs_gas0': bs_gas0,
         'bs_gas1': bs_gas1,
      
-    });
+        });
     
     
     response.render('substantialresults', {

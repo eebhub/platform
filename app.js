@@ -33,7 +33,10 @@ if ('development' == app.get('env')) {
 //Get Routing
 app.get('/', routes.getHome);
 app.get('/', routes.getHome);
+app.get('/signup', routes.getSignUp);
+app.get('/login', routes.getLogIn);
 app.get('/lite', routes.getLite);
+app.get('/liteconv', routes.getLiteConv);
 app.get('/literesults', routes.getLiteResults);
 app.get('/partial', routes.getPartial);
 app.get('/substantial', routes.getSubstantial);
@@ -44,7 +47,7 @@ app.get('/substantialsampleres-stage1', substantial.getSubstantialSampleResStage
 app.get('/substantialsampleres-stage2', substantial.getSubstantialSampleResStage2);
 
 //test unit conversion
-app.get('/lite-conversion',lite.getLiteConversion);
+
 
 //Posts
 app.post('/partialanalysis', partial.partial);
@@ -53,6 +56,7 @@ app.post('/substantialresults', substantial.getSubstantialResults);
 
 app.post('/imtanalysis', lite.runIMT);
 app.post('/ibmanalysis', lite.ibm);
+app.post('/lite-conversion-res', lite.runLiteConversion);
 
 
 

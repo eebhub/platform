@@ -174,6 +174,12 @@
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
+                    <div class="pull-right text-right">
+
+                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#si-ip").val("si");'/><font color="yellow"> SI</font>
+                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");'/><font color="yellow"> IP</font>
+                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -227,13 +233,13 @@
                                             </td>
                                             <td class="span7">
                                                 <div class="pull-right text-right">
-                                                <div>
+                                                <!--div>
                                                     <select class="span2" id="input_unit_id" name="input_unit" onChange="convertUnit();">
                                                         <option value="default">--choose units--</option>
                                                         <option value='ip'>IP</option>
                                                         <option value='si'>SI</option>
                                                     </select>
-                                                </div>
+                                                </div-->
                                                 <button type="button" onclick="building101DataSubstantial()" class="btn">
                                                     <i class="icon-plus"></i><b>Building 101 Data</b></button>
                                                 </div>
@@ -378,7 +384,7 @@
                             <h4>Gross Floor Area</h4>
                             <div class="input-append">
                                 <input type="number" name="gross_floor_area" min="0" step="0.01" />
-                                <span class="add-on" id="architect-replace1">ft&#178;</span>
+                                <span class="add-on" id="architect-replace1"><span class="unit">m</span>&#178;</span>
                             </div>
                             <h4>Number of Floors</h4>
                             <input type="number" name="number_of_floors"
@@ -415,12 +421,12 @@
                             <h4>Total Building Height</h4>
                                 <div class="input-append">
                                 <input type="number" name="building_height" min="0" step="0.01" />
-                                <span class="add-on" id="architect-replace2">ft</span>
+                                <span class="add-on" id="architect-replace2"><span class="unit">m</span></span>
                                 </div>   
                             <h4>Perimeter</h4>
                                 <div class="input-append">
                                 <input type="number" name="perimeter" min="0" step="1" />
-                                <span class="add-on" id="architect-replace3">ft</span>
+                                <span class="add-on" id="architect-replace3"><span class="unit">m</span></span>
                                 </div>      
                         </div>
                     </div>
@@ -915,7 +921,7 @@
                     </section>
 
     
-
+                <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
 
                 <div class="box-unit">
                     <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>

@@ -61,8 +61,8 @@
                     
                     <div class="pull-right text-right">
 
-                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");'/><font color="yellow"> SI</font>
-                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");'/><font color="yellow"> IP</font>
+                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#si-ip").val("si");'/><font color="yellow"> SI</font>
+                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");'/><font color="yellow"> IP</font>
                     
                         <a> Sign In</a> | <a> Sign Up</a>
                     </div>
@@ -628,6 +628,9 @@
                                 </div>
                             </div>
                         </section> 
+                     
+                    <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
+                     
                     </form>
                     <div class="box-unit">
                         <button onclick="submitIBM()" class="btn btn-large btn-primary">SIMULATE</button>

@@ -23,6 +23,7 @@ module.exports = {
 
     runIMT: function(request, response) {
         //Check for SI Units and Convert
+        console.log(request.body);
         var is_si = request.body.si;
         if(is_si=='0') { var building_size_f = parseFloat(building_size);building_size_f = 0.09*building_size_f; building_size = building_size_f.toString();}
         //Get User Inputs

@@ -12,6 +12,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <link href="css/bootstrap-fileupload.css" rel="stylesheet">
         <script src="js/building101Data.js"></script>
+        <script src="js/convertUnit.js"></script>
         <script>
             function submitIMT() {
                 var form = document.forms.platformForm;
@@ -27,75 +28,7 @@
         </script>
         
         <!--convert unit-->
-        <script>
-        function convertUnit1(){
-            var inputunitid = document.getElementById('input_unit_id');
-            var unitid = inputunitid.options[inputunitid.selectedIndex].value;
-            //var architecture_section = document.getElementById('replace');
-            var cont1 = "";
-            var cont2 = "";
-            if(unitid=='si'){
-                cont1 = "               <h4>Gross Floor Area</h4>"
-                        +"                <div class=\"input-append\">"
-                        +"                    <input type=\"number\" min=\"0\" step=\"0.001\" placeholder=\"required for benchmarking\" name=\"gross_floor_area\" />"
-                        +"                    <span class=\"add-on\">m&#178;</span>"
-                        +"                </div>";
-                
-    
-                
-                cont2 = "                <h4>Length</h4>"
-                        +"                <div class=\"input-append\">"
-                        +"                    <input type=\"number\" name=\"building_length\" min=\"0\" step=\"0.01\" />"
-                        +"                    <span class=\"add-on\">m</span>"
-                        +"                </div>"
-                        +"                <h4>Width</h4>"
-                        +"                <div class=\"input-append\">"
-                        +"                    <input type=\"number\" name=\"building_width\" min=\"0\" step=\"0.01\" />"
-                        +"                    <span class=\"add-on\">m</span>"
-                        +"                </div>"
-                        +"                <h4>Height</h4>"
-                        +"                <div class=\"input-append\">"
-                        +"                    <input type=\"number\" name=\"building_height\" min=\"0\" step=\"0.01\" />"
-                        +"                    <span class=\"add-on\">m</span>"
-                        +"                </div>";
-                       
-                 
-                document.getElementById("architect-replace").innerHTML=cont1;
-                document.getElementById("supplement-replace").innerHTML=cont2;
-                
-            }else if(unitid=='ip'){
-                
-                cont1 = "               <h4>Gross Floor Area</h4>"
-                        +"                <div class=\"input-append\">"
-                        +"                    <input type=\"number\" min=\"0\" step=\"0.001\" placeholder=\"required for benchmarking\" name=\"gross_floor_area\" />"
-                        +"                    <span class=\"add-on\">ft&#178;</span>"
-                        +"                </div>";
-                
-    
-                
-                cont2 = "                <h4>Length</h4>"
-                        +"                <div class=\"input-append\">"
-                        +"                    <input type=\"number\" name=\"building_length\" min=\"0\" step=\"0.01\" />"
-                        +"                    <span class=\"add-on\">ft</span>"
-                        +"                </div>"
-                        +"                <h4>Width</h4>"
-                        +"                <div class=\"input-append\">"
-                        +"                    <input type=\"number\" name=\"building_width\" min=\"0\" step=\"0.01\" />"
-                        +"                    <span class=\"add-on\">ft</span>"
-                        +"                </div>"
-                        +"                <h4>Height</h4>"
-                        +"                <div class=\"input-append\">"
-                        +"                    <input type=\"number\" name=\"building_height\" min=\"0\" step=\"0.01\" />"
-                        +"                    <span class=\"add-on\">ft</span>"
-                        +"                </div>";
-                       
-                 
-                document.getElementById("architect-replace").innerHTML=cont1;
-                document.getElementById("supplement-replace").innerHTML=cont2;
-            }
-            
-        }
-        
+        <!--script>
         function convertUnit(){
             var inputunitid = document.getElementById('input_unit_id');
             var unitid = inputunitid.options[inputunitid.selectedIndex].value;
@@ -107,7 +40,7 @@
             }
             
         }
-        </script>
+        </script-->
         
     </head>
     

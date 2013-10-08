@@ -6,6 +6,7 @@ var timestp = require("../lib/timestamp.js");
 module.exports = {
 
     partial: function(request, response) {
+        console.log(request.body);
         //Common Body Variables, missing building orientation and Footprint
         var building_name = request.body.building_name.replace(/\s+/g, '') || "NoName";
         var year_completed = request.body.year_completed;

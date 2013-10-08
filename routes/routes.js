@@ -11,26 +11,24 @@ module.exports = {
         response.sendfile('./views/login.html');  
     },
     getLite: function(request, response){
-        response.render('lite');    
+        response.sendfile('./views/lite.html');    
     },
     getLiteConv: function(request, response){
         response.sendfile('./views/liteconversion.html');    
     },
     getLiteResults: function(request, response){
-        response.render('literesults');    
+        response.sendfile('./views/literesults.html');    
     },
     getPartial: function(request, response){
-        response.render('partial');    
+        response.sendfile('./views/partial.html');    
     },
     
     getSubstantial: function(request, response) {
-        response.render('substantial');
+        response.sendfile('./views/substantial.html');
     },
     
     getComprehensive: function(request, response) {
-
         response.sendfile('./views/comprehensive.html');
-
     },
        
 

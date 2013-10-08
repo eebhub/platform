@@ -1,4 +1,4 @@
-module.exports.convertUnit = convertUnit;
+
 
 function convertUnit(){
             var inputunitid = document.getElementById('input_unit_id');

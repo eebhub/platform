@@ -27,6 +27,21 @@
             }
         </script>
         
+         <!--script>
+        // var sz = document.getElementsByName['unitoption'];
+        // var unit = 'si';
+
+        // for (var i=0, len=sz.length; i<len; i++) {
+        // sz[i].onclick = function() {
+        //     alert(this.value);
+        //     //this.form.total.value = this.value;
+        //     unit = this.value;
+        //     console.log(this.value);
+        // };
+        // }
+
+        <script-->
+        
         <!--convert unit-->
         <!--script>
         function convertUnit(){
@@ -71,6 +86,16 @@
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
+                    
+                    <div class="pull-right text-right">
+
+                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");'/><font color="yellow"> SI</font>
+                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");'/><font color="yellow"> IP</font>
+                    
+                        <a> Sign In</a> | <a> Sign Up</a>
+                    </div>
+                    
+                    
                 </div>
             </div>
         </div>
@@ -107,13 +132,13 @@
                                             </td>
                                             <td class="span7">
                                                 <div class="pull-right text-right">
-                                                <div>
+                                                <!--div>
                                                     <select class="span2" id="input_unit_id" name="input_unit" onChange="convertUnit();">
                                                         <option value="default">--choose units--</option>
                                                         <option value='ip'>IP</option>
                                                         <option value='si'>SI</option>
                                                     </select>
-                                                </div>
+                                                </div-->
                                                 <button type="button" onclick="building101Data()" class="btn">
                                                     <i class="icon-plus"></i><b>Building 101 Data</b></button>
                                                 </div>

@@ -16,7 +16,8 @@
                 background-color: rgb(229, 229, 229);
             }
         </style>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.4.0/ui-bootstrap-tpls.min.js"></script>
         <link href="css/bootstrap-fileupload.css" rel="stylesheet">
         <script src="js/building101Data.js"></script>
         <script src="js/unit-convert.js"></script>
@@ -33,12 +34,18 @@
                 form.submit();
             }
         </script>
+        <script type="text/javascript">
+            var myApp = angular.module('myApp', ['ui.bootstrap']);
         
+            function CollapseDemoCtrl($scope) {
+                $scope.isCollapsed = true;
+            }
+        </script>
 
         
     </head>
     
-    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <body data-spy="scroll" data-target=".bs-docs-sidebar" ng-app="myApp" class="ng-scope">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -69,7 +76,7 @@
                     <div class="pull-right text-right">
 
                         <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#si-ip").val("si");$("body").css("background", "rgb(229, 229, 229)");'/><font color="yellow"> SI</font>
-                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");$("body").css("background", "rgb(234, 234, 234)");'/><font color="yellow"> IP</font>
+                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font>
                     
                         <a> Sign In</a> | <a> Sign Up</a>
                     </div>
@@ -447,82 +454,84 @@
                                 </div>
                             </div>
                         </section>
-                        <section id="import">
-                            <div class="box-unit">
-                                <div class="page-header">
-                                    <table>
-                                        <tr>
-                                            <td class="span4">
-                                                <h2>Import Data <small>(optional)</small></h2>
-                                            </td>
-                                            <td class="span5">
-                                                <div class="pull-right text-right">
-                                                <button type="button" class="btn danger" data-toggle="collapse" data-target="#coming-soon">coming soon</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div id="coming-soon" class="row collapse in">
-                                    <div class="span4">
-                                        <table class="table-condensed">
+                        <div ng-controller="CollapseDemoCtrl"><!--BEGIN EXPAND COLLAPSE BUTTON by Angular-->
+                            <section id="import">
+                                <div class="box-unit">
+                                    <div class="page-header">
+                                        <table>
                                             <tr>
-                                                <td><h5>1.</h5></td>
-                                                <td><h5><a href="https://portfoliomanager.energystar.gov/pm/login.html" target="_blank">Portfolio Manager Login</a></h5></td>
-                                            </tr>
-                                            <tr>
-                                                <td><h5>2.</h5></td>
-                                                <td>Select Building Property</td>
-                                            </tr>
-                                            <tr>
-                                                <td><h5>3.</h5></td>
-                                                <td><img src="img/portfolio-download.png"></td>
-                                                <td><h5><a href="http://developer.eebhub.org/archives/utilities/Building%20101.xlsx">[example]</a></h5></td>
-                                            </tr>
-                                            <tr>
-                                                <td><h5>4.</h5></td>
-                                                <td>
-                                                    <div class="fileupload fileupload-new" data-provides="fileupload" style="float:right">
-                                                      <span class="btn btn-file"><span class="fileupload-new"><b>Import Excel of Property</b></span><span class="fileupload-exists">Change</span><input type="file" /></span>
-                                                      <span class="fileupload-preview"></span>
-                                                      <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+                                                <td class="span4">
+                                                    <h2>Import Data <small>(optional)</small></h2>
+                                                </td>
+                                                <td class="span5">
+                                                    <div class="pull-right text-right">
+                                                        <button type="button" class="btn" ng-click="isCollapsed = !isCollapsed">coming soon</button>
                                                     </div>
                                                 </td>
                                             </tr>
                                         </table>
-                                        
                                     </div>
-                                    <div class="span4">
-                                        
-                                        <h4>EPA EnergyStar Score  <small>[target=75, median=50]</small></h4>
-                                        <ul class="inline">
-                                            <li>
-                                                <input type="range" ng-model="portfolio" min="0" max="100" step="1" value={{portfolio}}/>
-                                            </li>
-                                            <li>
-                                                <input class="span1" type="text" value={{portfolio}} ng-model="portfolio" placeholder="optional" name="energystar_score"/>
-                                            </li>
-                                        </ul>
-                                       <h4>DOE Energy Asset Score</h4>
-                                        <ul class="inline">
-                                            <li>
-                                                <input type="range" ng-model="asset" min="0" max="100" step="1" value={{asset}}/>
-                                            </li>
-                                            <li>
-                                                <input class="span1" type="text" value={{asset}} ng-model="asset" placeholder="optional" name="asset_score" />
-                                            </li>
-                                        </ul>
-                                        
-                                    </div>
-                                    <div class="span8" style="text-align:right;float:right;">
-                                        <span>Learn More about
-                                        <a href="https://portfoliomanager.energystar.gov/pm/login.html" target="_blank"><img src="img/portfolio-manager.png" width="150" height="48"></a>
-                                        <a href="http://www1.eere.energy.gov/buildings/commercial/assetscore.html" target="_blank"><img src="img/asset-score.png" width="150" height="48"></a>
-                                        </span>
+                                    <div class="row" collapse="isCollapsed">
+                                        <div class="span4">
+                                            <table class="table-condensed">
+                                                <tr>
+                                                    <td><h5>1.</h5></td>
+                                                    <td><h5><a href="https://portfoliomanager.energystar.gov/pm/login.html" target="_blank">Portfolio Manager Login</a></h5></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><h5>2.</h5></td>
+                                                    <td>Select Building Property</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><h5>3.</h5></td>
+                                                    <td><img src="img/portfolio-download.png"></td>
+                                                    <td><h5><a href="http://developer.eebhub.org/archives/utilities/Building%20101.xlsx">[example]</a></h5></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><h5>4.</h5></td>
+                                                    <td>
+                                                        <div class="fileupload fileupload-new" data-provides="fileupload" style="float:right">
+                                                          <span class="btn btn-file"><span class="fileupload-new"><b>Import Excel of Property</b></span><span class="fileupload-exists">Change</span><input type="file" /></span>
+                                                          <span class="fileupload-preview"></span>
+                                                          <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            
+                                        </div>
+                                        <div class="span4">
+                                            
+                                            <h4>EPA EnergyStar Score  <small>[target=75, median=50]</small></h4>
+                                            <ul class="inline">
+                                                <li>
+                                                    <input type="range" ng-model="portfolio" min="0" max="100" step="1" value={{portfolio}}/>
+                                                </li>
+                                                <li>
+                                                    <input class="span1" type="text" value={{portfolio}} ng-model="portfolio" placeholder="optional" name="energystar_score"/>
+                                                </li>
+                                            </ul>
+                                           <h4>DOE Energy Asset Score</h4>
+                                            <ul class="inline">
+                                                <li>
+                                                    <input type="range" ng-model="asset" min="0" max="100" step="1" value={{asset}}/>
+                                                </li>
+                                                <li>
+                                                    <input class="span1" type="text" value={{asset}} ng-model="asset" placeholder="optional" name="asset_score" />
+                                                </li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <div class="span8" style="text-align:right;float:right;">
+                                            <span>Learn More about
+                                            <a href="https://portfoliomanager.energystar.gov/pm/login.html" target="_blank"><img src="img/portfolio-manager.png" width="150" height="48"></a>
+                                            <a href="http://www1.eere.energy.gov/buildings/commercial/assetscore.html" target="_blank"><img src="img/asset-score.png" width="150" height="48"></a>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
+                        </div><!--END EXPAND COLLAPSE BUTTON by Angular-->
                         
                         <div class="box-unit">
                             <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
@@ -636,9 +645,7 @@
                             </div>
                         </section> 
                      
-                    <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
-                     
-                    </form>
+                   
                     <div class="box-unit">
                         <button onclick="submitIBM()" class="btn btn-large btn-primary">SIMULATE</button>
                         <a class="btn btn-large btn-info" href="http://eebhub.minus.com/mbw8FJL02UdsL2"><i class="icon-signal"></i> Example Outputs</a>
@@ -647,6 +654,9 @@
                             <small>powered by IBM Inverse Modeling Engine</small>
                         </h2>
                     </div>
+                    <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
+                     
+                    </form>
                 </div>
             </div>
         </div>

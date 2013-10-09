@@ -490,6 +490,12 @@
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
+                    <div class="pull-right text-right">
+
+                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#si-ip").val("si");'/><font color="yellow"> SI</font>
+                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");'/><font color="yellow"> IP</font>
+                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -542,13 +548,13 @@
                                         </td>
                                         <td class="span7">
                                             <div class="pull-right text-right">
-                                                <div>
+                                                <!--div>
                                                     <select class="span2" id="input_unit_id" name="input_unit" onChange="convertUnit();">
                                                         <option value="default">--choose units--</option>
                                                         <option value='ip'>IP</option>
                                                         <option value='si'>SI</option>
                                                     </select>
-                                                </div>
+                                                </div-->
                                                 <button type="button" onclick="building101Data_comprehensive()" class="btn">
                                                     <i class="icon-plus"></i><b>Building 101 Data</b>
                                                 </button>
@@ -636,7 +642,7 @@
                                     <div class="input-append">
                                         <input type="number" id="gross_floor_area" name="gross_floor_area" step="0.001">
 
-                                        <span class="add-on" id="architect-replace1">m&#178;</span>
+                                        <span class="add-on" id="architect-replace1"><span class="unit">m</span>&#178;</span>
                                     </div>
                                     <h4>Number of Floors</h4>
                                     <input type="number" id="number_of_floors" name="number_of_floors" min="0" step="1">
@@ -708,19 +714,19 @@
                                     <div id="extend-div" >
                                         <br><br><br>
                                         <div class="control-group"> <label class="control-label" for="length">Length</label>
-            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="length" id="length"> <span class="add-on">m</span></div> </div>  
+            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="length" id="length"> <span class="add-on"><span class="unit">m</span></span></div> </div>  
             
             							 <div class="control-group"> <label class="control-label" for="width">Width</label>
-            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="width" id="width"> <span class="add-on">m</span></div> </div>  
+            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="width" id="width"> <span class="add-on"><span class="unit">m</span></span></div> </div>  
             
             							 <div class="control-group"> <label class="control-label" for="end_1">End 1</label>
-            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_1" id="end_1"> <span class="add-on">m</span></div> </div>  
+            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_1" id="end_1"> <span class="add-on"><span class="unit">m</span></span></div> </div>  
             
             							 <div class="control-group"> <label class="control-label" for="end_2">End 2</label>
-            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_2" id="end_2"> <span class="add-on">m</span></div> </div>  
+            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_2" id="end_2"> <span class="add-on"><span class="unit">m</span></span></div> </div>  
             
             							 <div class="control-group"> <label class="control-label" for="offset">Offset</label>
-            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="offset" id="offset"> <span class="add-on">m</span></div> </div>
+            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="offset" id="offset"> <span class="add-on"><span class="unit">m</span></span></div> </div>
                                     </div>
                                 </div>
                             </div>
@@ -744,19 +750,19 @@
                                     <div class="input-append">
                                         <input disabled type="number" min="0" step="0.1" class="span2" id="appendedInput"
                                         name="room_width" />
-                                        <span class="add-on">m</span>
+                                        <span class="add-on"><span class="unit">m</span></span>
                                     </div>
                                     <h4>Room Depth</h4>
                                     <div class="input-append">
                                         <input disabled type="number" min="0" step="0.1" class="span2" id="appendedInput"
                                         name="room_depth" />
-                                        <span class="add-on">m</span>
+                                        <span class="add-on"><span class="unit">m</span></span>
                                     </div>
                                     <h4>Room Height</h4>
                                     <div class="input-append">
                                         <input disabled type="number" min="0" step="0.1" class="span2" id="appendedInput"
                                         name="room_height" />
-                                        <span class="add-on">m</span>
+                                        <span class="add-on"><span class="unit">m</span></span>
                                     </div>
                                 </div>
                                 <div class="span3">
@@ -782,7 +788,7 @@
                                     <h4>Overhang Depth</h4>
                                     <div class="input-append">
                                         <input disabled class="span2" id="appendedInput" type="number" name="overhang_depth">
-                                        <span class="add-on" id="architect2-replace2">m</span>
+                                        <span class="add-on" id="architect2-replace2"><span class="unit">m</span></span>
                                     </div>
                                 </div>
                             </div>
@@ -838,7 +844,7 @@
                                     <h4>People Density</h4>
                                     <div class="input-append">
                                         <input class="span2" id="appendedInput" type="text" placeholder="building type default" name="people_density" disabled>
-                                        <span class="add-on" id="people-replace">People/m&sup2;</span>
+                                        <span class="add-on" id="people-replace">People/<span class="unit">m</span>&sup2;</span>
                                     </div>
                                 </div>
                             </div>
@@ -858,17 +864,17 @@
                                     <h4>Lighting Power Density</h4>
                                     <div class="input-append">
                                         <input disabled class="span2" id="appendedInput" type="text" name="lighting_power_density">
-                                        <span class="add-on">W/m&sup2;</span>
+                                        <span class="add-on">W/<span class="unit">m</span>&sup2;</span>
                                     </div>
                                     <h4>Window Head Height</h4>
                                     <div class="input-append">
                                         <input disabled class="span2" id="appendedInput" type="text" placeholder="floor to top of window" name="window_head_height">
-                                        <span class="add-on">m</span>
+                                        <span class="add-on"><span class="unit">m</span></span>
                                     </div>
                                     <h4>Wall Thickness</h4>
                                     <div class="input-append">
                                         <input disabled class="span2" id="appendedInput" type="text" name="wall_thickness">
-                                        <span class="add-on">m</span>
+                                        <span class="add-on"><span class="unit">m</span></span>
                                     </div>
                                     <h4>Shading Device</h4>
                                     <select disabled class="span3" name="interior_shading_type">
@@ -927,7 +933,7 @@
                                     <h4>Equipment Power Density</h4>
                                     <div class="input-append">
                                         <input class="span2" name="equipment_power_density" id="appendedInput" type="text" placeholder="building type default" disabled>
-                                        <span class="add-on" id="mechanical-replace">W/m&sup2;</span>
+                                        <span class="add-on" id="mechanical-replace">W/<span class="unit">m</span>&sup2;</span>
                                     </div>
                                 </div>
                             </div>
@@ -974,6 +980,8 @@
                         </div>
                     </section>
                     
+                    <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
+                    
                     <!-- ###################################### Buttons Group ############################################# -->
                     <div id="box-unit">
                         <input type="submit" class="btn btn-large btn-primary" value="SIMULATE">
@@ -1016,8 +1024,9 @@
         		var extend_inputs= '';                  // additional shape info
         		var img_scr = '';                       // image source for the shape
                 
-                var inputunitid = document.getElementById('input_unit_id');
-                var unitid = inputunitid.options[inputunitid.selectedIndex].value;
+                //var inputunitid = document.getElementById('input_unit_id');
+                //var unitid = inputunitid.options[inputunitid.selectedIndex].value;
+                var unitid = $("#si-ip").val();
                 var unit = 'm';
                 if(unitid=='ip'){
                     unit = 'ft';
@@ -1030,57 +1039,57 @@
         			img_scr = 'L_Shape';
         			extend_inputs = ' <br><br><br>' +
         			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">'+unit+'</span> </div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="width" id="width"><span class="add-on">'+unit+'</span> </div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width" id="width"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_1" id="end_1"><span class="add-on">'+unit+'</span></div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_1" id="end_1"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_2" id="end_2"><span class="add-on">'+unit+'</span></div> </div>' ;
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_2" id="end_2"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' ;
         		break;
         
         		case 'U':
         			img_scr = 'U_Shape';
         			extend_inputs = ' <br><br><br>' +
         			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">'+unit+'</span></div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="width_1">Width 1</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="width_1" id="width_1"><span class="add-on">'+unit+'</span></div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width_1" id="width_1"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="width_2">Width 2</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="width_2" id="width_2"><span class="add-on">'+unit+'</span></div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width_2" id="width_2"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_1" id="end_1"><span class="add-on">'+unit+'</span></div> </div>' +    
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_1" id="end_1"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +    
         
         							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_2" id="end_2"><span class="add-on">'+unit+'</span></div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_2" id="end_2"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="offset">OffSet</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="offset" id="offset"><span class="add-on">'+unit+'</span></div> </div>';
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="offset" id="offset"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>';
         		break;
         
         		case 'T':
         			img_scr = 'T_Shape';
         			extend_inputs = ' <br><br><br>' +
         			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="length" id="length"><span class="add-on">'+unit+'</span></div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="length" id="length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="width" id="width"><span class="add-on">'+unit+'</span></div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="width" id="width"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_1" id="end_1"><span class="add-on">'+unit+'</span></div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_1" id="end_1"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_2" id="end_2"><span class="add-on">'+unit+'</span></div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_2" id="end_2"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="offset">Offset</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="offset" id="offset"><span class="add-on">'+unit+'</span></div> </div>' ;
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="offset" id="offset"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' ;
         		break;
         
         		case 'H':
@@ -1089,54 +1098,54 @@
         
         			extend_inputs = ' <br><br><br>' +
         			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">'+unit+'</span> </div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="width">Left Width</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_width" id="left_width"><span class="add-on">'+unit+'</span> </div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_width" id="left_width"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="center_width">Center Width</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="center_width" id="center_width"><span class="add-on">'+unit+'</span> </div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="center_width" id="center_width"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="right_width">Right Width</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_width" id="right_width"><span class="add-on">'+unit+'</span> </div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_width" id="right_width"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="left_end_length">Left End Length</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_end_length" id="left_end_length"><span class="add-on">'+unit+'</span> </div> </div>' +    
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_end_length" id="left_end_length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +    
         
         							' <div class="control-group"> <label class="control-label" for="right_end_length">Right End Length </label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_end_length" id="right_end_length"><span class="add-on">'+unit+'</span> </div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_end_length" id="right_end_length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="left_upper_end_offset">Left Upper End Offset</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_upper_end_offset" id="left_upper_end_offset"><span class="add-on">'+unit+'</span> </div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_upper_end_offset" id="left_upper_end_offset"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="right_upper_end_offset">Right Upper End OffSet</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_upper_end_offset" id="right_upper_end_offset"><span class="add-on">'+unit+'</span> </div> </div>';
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_upper_end_offset" id="right_upper_end_offset"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>';
         		break;
         
         		case 'Rectangle':
         			img_scr = 'Rectangle';
         			extend_inputs = ' <br><br><br>' +
         			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">'+unit+'</span> </div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="width" id="width"><span class="add-on">'+unit+'</span> </div> </div>';
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width" id="width"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>';
         		break;
         
         		case 'Pie':
         			img_scr = 'Pie_Shape';
         			extend_inputs = ' <br><br><br>' +
         			                ' <div class="control-group"> <label class="control-label" for="radius_a">Radius A</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="radius_a" id="radius_a"><span class="add-on">'+unit+'</span> </div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="radius_a" id="radius_a"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="radius_b">Radius B</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="radius_b" id="radius_b"><span class="add-on">'+unit+'</span> </div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="radius_b" id="radius_b"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="num_points">Number Of Points</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="num_points" id="num_points"><span class="add-on">'+unit+'</span> </div> </div>' +  
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="num_points" id="num_points"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
         
         							' <div class="control-group"> <label class="control-label" for="degree">Degree</label>' +
-        			                ' <div class="controls input-append"> <input type="number" min="1" name="degree" id="degree"><span class="add-on">'+unit+'</span> </div> </div>' ;
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="degree" id="degree"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' ;
         		break;
         		default:
         			extend_inputs = '';

@@ -12,6 +12,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <link href="css/bootstrap-fileupload.css" rel="stylesheet">
         <script src="js/building101Data.js"></script>
+        <script src="js/unit-convert.js"></script>
         <script>
             function submitIMT() {
                 var form = document.forms.platformForm;
@@ -25,6 +26,9 @@
                 form.submit();
             }
         </script>
+        
+
+        
     </head>
     
     <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -54,6 +58,16 @@
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
+                    
+                    <div class="pull-right text-right">
+
+                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#si-ip").val("si");'/><font color="yellow"> SI</font>
+                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");'/><font color="yellow"> IP</font>
+                    
+                        <a> Sign In</a> | <a> Sign Up</a>
+                    </div>
+                    
+                    
                 </div>
             </div>
         </div>
@@ -90,6 +104,7 @@
                                             </td>
                                             <td class="span7">
                                                 <div class="pull-right text-right">
+                                               
                                                 <button type="button" onclick="building101Data()" class="btn">
                                                     <i class="icon-plus"></i><b>Building 101 Data</b></button>
                                                 </div>
@@ -156,6 +171,7 @@
                                         </div>
                                         <h4>Year Built</h4>
                                         <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -414,11 +430,11 @@
                                     <h2>Architecture</h2>
                                 </div>
                                 <div class="row">
-                                    <div class="span4">
+                                    <div class="span4" id="architect-replace">
                                         <h4>Gross Floor Area</h4>
                                         <div class="input-append">
                                             <input type="number" min="0" step="0.001" placeholder="required for benchmarking" name="gross_floor_area" />
-                                            <span class="add-on">m&#178;</span>
+                                            <span class="add-on"><span class="unit">m</span>&#178;</span>
                                         </div>
                                     </div>
                                 </div>
@@ -579,22 +595,24 @@
                                        
                                     </div>
                                     <div class="span4">
-                                         <h4>Length</h4>
+                                    <div id="supplement-replace">
+                                        <h4>Length</h4>
                                         <div class="input-append">
                                             <input type="number" name="building_length" min="0" step="0.01" />
-                                            <span class="add-on">m</span>
+                                            <span class="add-on"><span class="unit">m</span></span>
                                         </div>
                                         <h4>Width</h4>
                                         <div class="input-append">
                                             <input type="number" name="building_width" min="0" step="0.01" />
-                                            <span class="add-on">m</span>
+                                            <span class="add-on"><span class="unit">m</span></span>
                                         </div>
                                         <h4>Height</h4>
                                         <div class="input-append">
                                             <input type="number" name="building_height" min="0" step="0.01" />
-                                            <span class="add-on">m</span>
+                                            <span class="add-on"><span class="unit">m</span></span>
                                         </div>
-                                         <h4>Orientation <small>clockwise degrees from North</small></h4>
+                                    </div>  
+                                        <h4>Orientation <small>clockwise degrees from North</small></h4>
                                         <ul class="inline">
                                             <li>
                                                 <input type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
@@ -610,6 +628,9 @@
                                 </div>
                             </div>
                         </section> 
+                     
+                    <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
+                     
                     </form>
                     <div class="box-unit">
                         <button onclick="submitIBM()" class="btn btn-large btn-primary">SIMULATE</button>

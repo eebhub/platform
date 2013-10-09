@@ -18,6 +18,8 @@
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="js/building101Data.js"></script>
+        
+        
     </head>
     
     <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -47,6 +49,12 @@
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
+                    <div class="pull-right text-right">
+
+                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#si-ip").val("si");'/><font color="yellow"> SI</font>
+                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");'/><font color="yellow"> IP</font>
+                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -98,6 +106,7 @@
                                             </td>
                                             <td class="span7">
                                                 <div class="pull-right text-right">
+                                                
                                                 <button type="button" onclick="building101Data_partial()" class="btn">
                                                     <i class="icon-plus"></i><b>Building 101 Data</b></button>
                                                 </div>
@@ -180,24 +189,24 @@
                                     <div class="span2">
                                         <img class="img-rounded" src="img/room_dimensions.png">
                                     </div>
-                                    <div class="span3">
+                                    <div class="span3" id="architect-replace1">
                                         <h4>Room Width</h4>
                                         <div class="input-append">
                                             <input type="number" min="0" step="0.001" class="span2" id="appendedInput"
                                             name="room_width" />
-                                            <span class="add-on">m</span>
+                                            <span class="add-on"><span class="unit">m</span></span>
                                         </div>
                                         <h4>Room Depth</h4>
                                         <div class="input-append">
                                             <input type="number" min="0" step="0.001" class="span2" id="appendedInput"
                                             name="room_depth" />
-                                            <span class="add-on">m</span>
+                                            <span class="add-on"><span class="unit">m</span></span>
                                         </div>
                                         <h4>Room Height</h4>
                                         <div class="input-append">
                                             <input type="number" min="0" step="0.001" class="span2" id="appendedInput"
                                             name="room_height" />
-                                            <span class="add-on">m</span>
+                                            <span class="add-on"><span class="unit">m</span></span>
                                         </div>
                                     </div>
                                     <div class="span3">
@@ -233,11 +242,11 @@
                                     <div class="span2">
                                         <img class="img-rounded" src="img/overhang.gif" width="170">
                                     </div>
-                                    <div class="span3">
+                                    <div class="span3" id="architect-replace2">
                                         <h4>Overhang Depth</h4>
                                         <div class="input-append">
                                             <input class="span2" id="appendedInput" type="number" name="overhang_depth">
-                                            <span class="add-on">m</span>
+                                            <span class="add-on"><span class="unit">m</span></span>
                                         </div>
                                     </div>
                                 </div>
@@ -326,7 +335,7 @@
                                         <option>1.5</option>
                                         <option>2.0</option>
                                     </select>
-                                    <span class="add-on">People/m&sup2;</span>
+                                    <span class="add-on" id="people-replace">People/<span class="unit">m</span>&sup2;</span>
                                 </div>
                             </div>
                         </section>
@@ -372,9 +381,7 @@
                                                 <option value="50.00">50</option>
                                                 <option value="100.00">100</option>
                                             </select>
-                                            <span class="add-on">W/m
-                                                <sup>2</sup>
-                                            </span>
+                                            <span class="add-on" id="mechanical-replace">W/<span class="unit">m</span><sup>2</sup></span>
                                         </div>
                                     </div>
                                     <div class="span4">
@@ -471,6 +478,8 @@
                                 <br>
                                 <h2 class="text-right"><small>powered by UTRC Uncertainty Quantification</small></h2>
                         </div>
+                        
+                        <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
                     </form>
                     </div>
                 </div>

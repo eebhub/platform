@@ -110,37 +110,6 @@
         }
         </script>
         
-        <!--convert unit-->
-        <script>
-        function convertUnit(){
-            var inputunitid = document.getElementById('input_unit_id');
-            var unitid = inputunitid.options[inputunitid.selectedIndex].value;
-            //var architecture_section = document.getElementById('replace');
-            var cont1 = "";
-            var cont2 = "";
-           
-            if(unitid=='si'){
-                cont1 = "m&#178;";
-            
-                cont2 = "m";
-                       
-                 
-                document.getElementById("architect-replace1").innerHTML=cont1;
-                document.getElementById("architect-replace2").innerHTML=cont2;
-                document.getElementById("architect-replace3").innerHTML=cont2;
-            }else if(unitid=='ip'){
-                cont1 = "ft&#178;";
-            
-                cont2 = "ft";
-                       
-                 
-                document.getElementById("architect-replace1").innerHTML=cont1;
-                document.getElementById("architect-replace2").innerHTML=cont2;
-                document.getElementById("architect-replace3").innerHTML=cont2;
-            }
-        }
-        </script>
-        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="js/building101Data.js"></script>
         <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -233,13 +202,7 @@
                                             </td>
                                             <td class="span7">
                                                 <div class="pull-right text-right">
-                                                <!--div>
-                                                    <select class="span2" id="input_unit_id" name="input_unit" onChange="convertUnit();">
-                                                        <option value="default">--choose units--</option>
-                                                        <option value='ip'>IP</option>
-                                                        <option value='si'>SI</option>
-                                                    </select>
-                                                </div-->
+                                               
                                                 <button type="button" onclick="building101DataSubstantial()" class="btn">
                                                     <i class="icon-plus"></i><b>Building 101 Data</b></button>
                                                 </div>

@@ -23,6 +23,20 @@ module.exports ={
     getSubstantialResults:  function(request, response) {
         console.log(request.body);
         console.log(request.body.electricity_used_for_cooling);
+        
+        //pre-process dual unit
+        var unit = request.body.unit;
+        var totalbuildingheight = request.body.building_height;
+        var buildingperimeter = request.body.perimeter;
+        var grossfloorarea = request.body.gross_floor_area;
+        if(unit=='si') { 
+            var grossfloorarea_f = parseFloat(grossfloorarea);grossfloorarea_f = grossfloorarea_f/0.09; grossfloorarea = grossfloorarea_f.toString();
+            var buildingperimeter_f = parseFloat(buildingperimeter);buildingperimeter_f = buildingperimeter_f/0.3; buildingperimeter = buildingperimeter_f.toString();
+            var totalbuildingheight_f = parseFloat(totalbuildingheight);totalbuildingheight_f = totalbuildingheight_f/0.3; totalbuildingheight = totalbuildingheight_f.toString();
+            
+        }
+        
+        
         var buildingname = request.body.building_name;
         var buildingclimate = request.body.weather_epw_location;
         var buildingstate = "";
@@ -81,7 +95,7 @@ module.exports ={
         break;        
         }
 
-        var grossfloorarea = request.body.gross_floor_area;
+        //var grossfloorarea = request.body.gross_floor_area;
         var numberoffloors = request.body.number_of_floors;
         var shape = request.body.footprint_shape;
         var shapenum;
@@ -123,8 +137,8 @@ module.exports ={
                 shapenum = 12;
                 break;
         }
-        var totalbuildingheight = request.body.building_height;
-        var buildingperimeter = request.body.perimeter;
+        //var totalbuildingheight = request.body.building_height;
+        //var buildingperimeter = request.body.perimeter;
         var buildingfunction = request.body.activity_type;
         var buildingfunctionnum;
         switch(buildingfunction){

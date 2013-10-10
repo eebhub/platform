@@ -7,6 +7,23 @@ module.exports = {
 
     partial: function(request, response) {
         console.log(request.body);
+        //pre-process dual unit
+        var unit = request.body.unit;
+        var room_depth = request.body.room_depth;
+        var room_width = request.body.room_width;
+        var room_height = request.body.room_height;
+        var overhang_depth = request.body.overhang_depth;
+        //var people_density = request.body.people_density;
+        //var equipment_power_density = request.body.equipment_power_density;
+        if(unit=='ip') { 
+            var room_depth_f = parseFloat(room_depth);room_depth_f = 0.3*room_depth_f; room_depth = room_depth_f.toString();
+            var room_width_f = parseFloat(room_width);room_width_f = 0.3*room_width_f; room_width = room_width_f.toString();
+            var room_height_f = parseFloat(room_height);room_height_f = 0.3*room_height_f; room_height = room_height_f.toString();
+            var overhang_depth_f = parseFloat(overhang_depth);overhang_depth_f = 0.3*overhang_depth_f; overhang_depth = overhang_depth_f.toString();
+        }
+        
+        
+        
         //Common Body Variables, missing building orientation and Footprint
         var building_name = request.body.building_name.replace(/\s+/g, '') || "NoName";
         var year_completed = request.body.year_completed;
@@ -28,12 +45,12 @@ module.exports = {
         var illuminance = request.body.illuminance;
 
         //Typical Room Inputs
-        var room_depth = request.body.room_depth;
-        var room_width = request.body.room_width;
-        var room_height = request.body.room_height;
+        // var room_depth = request.body.room_depth;
+        // var room_width = request.body.room_width;
+        // var room_height = request.body.room_height;
         var exterior_shading_orientation = request.body.exterior_shading_orientation;
         var window_glass_coating = request.body.window_glass_coating;
-        var overhang_depth = request.body.overhang_depth;
+        //var overhang_depth = request.body.overhang_depth;
 
         //Inputs
         var timestamp = timestp.createTimestamp();

@@ -16,10 +16,10 @@ module.exports = {
         //var people_density = request.body.people_density;
         //var equipment_power_density = request.body.equipment_power_density;
         if(unit=='ip') { 
-            var room_depth_f = parseFloat(room_depth);room_depth_f = 0.09*room_depth_f; room_depth = room_depth_f.toString();
-            var room_width_f = parseFloat(room_width);room_width_f = 0.09*room_width_f; room_width = room_width_f.toString();
-            var room_height_f = parseFloat(room_height);room_height_f = 0.09*room_height_f; room_height = room_height_f.toString();
-            var overhang_depth_f = parseFloat(overhang_depth);overhang_depth_f = 0.09*overhang_depth_f; overhang_depth = overhang_depth_f.toString();
+            var room_depth_f = parseFloat(room_depth);room_depth_f = 0.3*room_depth_f; room_depth = room_depth_f.toString();
+            var room_width_f = parseFloat(room_width);room_width_f = 0.3*room_width_f; room_width = room_width_f.toString();
+            var room_height_f = parseFloat(room_height);room_height_f = 0.3*room_height_f; room_height = room_height_f.toString();
+            var overhang_depth_f = parseFloat(overhang_depth);overhang_depth_f = 0.3*overhang_depth_f; overhang_depth = overhang_depth_f.toString();
         }
         
         

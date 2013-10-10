@@ -267,9 +267,9 @@ module.exports = {
         var unit = request.body.unit;
         if(unit=='ip'){
             var gross_floor_area_f = parseFloat(gross_floor_area);gross_floor_area_f = 0.09*gross_floor_area_f; gross_floor_area = gross_floor_area_f.toString();
-            var building_width_f = parseFloat(building_width);building_width_f = 0.09*building_width_f; building_width = building_width.toString();
-            var building_height_f = parseFloat(building_height);building_height_f = 0.09*building_height_f; building_height = building_height_f.toString();
-            var building_length_f = parseFloat(building_length);building_length_f = 0.09*building_length_f; building_length = building_length_f.toString();
+            var building_width_f = parseFloat(building_width);building_width_f = 0.3*building_width_f; building_width = building_width.toString();
+            var building_height_f = parseFloat(building_height);building_height_f = 0.3*building_height_f; building_height = building_height_f.toString();
+            var building_length_f = parseFloat(building_length);building_length_f = 0.3*building_length_f; building_length = building_length_f.toString();
         
             
         }

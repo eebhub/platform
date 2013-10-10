@@ -24,13 +24,14 @@ module.exports = {
     runIMT: function(request, response) {
         //Check for SI Units and Convert
         console.log(request.body);
-        var is_si = request.body.si;
-        if(is_si=='0') { var building_size_f = parseFloat(building_size);building_size_f = 0.09*building_size_f; building_size = building_size_f.toString();}
+        var unit = request.body.unit;
+        var building_size = request.body.gross_floor_area;
+        if(unit=='ip') { var building_size_f = parseFloat(building_size);building_size_f = 0.09*building_size_f; building_size = building_size_f.toString();}
         //Get User Inputs
         var building_name = request.body.building_name.replace(/\s+/g, '') || "NoName";
         var building_location = request.body.weather_epw_location;
         var building_function = request.body.activity_type;
-        var building_size = request.body.gross_floor_area;
+        //var building_size = request.body.gross_floor_area;
         var year_completed = request.body.year_completed;
         var utility_gas = request.body.utility_gas;
         var utility_electric = request.body.utility_electric;
@@ -257,16 +258,33 @@ module.exports = {
 
     },
     ibm: function(request, response) {
+        //pre-process dual unit conversion
+        var building_length = request.body.building_length;
+        var building_width = request.body.building_width;
+        var building_height = request.body.building_height;
+        var gross_floor_area = request.body.gross_floor_area;
+        
+        var unit = request.body.unit;
+        if(unit=='ip'){
+            var gross_floor_area_f = parseFloat(gross_floor_area);gross_floor_area_f = 0.09*gross_floor_area_f; gross_floor_area = gross_floor_area_f.toString();
+            var building_width_f = parseFloat(building_width);building_width_f = 0.09*building_width_f; building_width = building_width.toString();
+            var building_height_f = parseFloat(building_height);building_height_f = 0.09*building_height_f; building_height = building_height_f.toString();
+            var building_length_f = parseFloat(building_length);building_length_f = 0.09*building_length_f; building_length = building_length_f.toString();
+        
+            
+        }
+        
+        
         //Get User Inputs
         var building_name = request.body.building_name;
         var electric_utility_startdate = request.body.electric_utility_startdate;
         var utility_electric = request.body.utility_electric;
         var utility_gas = request.body.utility_gas;
         var orientation = request.body.building_orientation;
-        var building_length = request.body.building_length;
-        var building_width = request.body.building_width;
-        var building_height = request.body.building_height;
-        var gross_floor_area = request.body.gross_floor_area;
+        // var building_length = request.body.building_length;
+        // var building_width = request.body.building_width;
+        // var building_height = request.body.building_height;
+        // var gross_floor_area = request.body.gross_floor_area;
         var building_location_address = request.body.building_location_address;
         var building_location_city = request.body.building_location_city;
         var building_location_state = request.body.building_location_state;

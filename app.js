@@ -131,7 +131,9 @@ if ('development' == app.get('env')) {
 //Get Routing
 app.get('/', routes.getHome);
 app.get('/', routes.getHome);
-app.get('/signup', routes.getSignUp);
+app.get("/signup", function (req, res) {
+    res.render("signup");
+});
 app.get("/signin", function (req, res) {
     res.render("signin");
 });
@@ -170,6 +172,42 @@ app.post('/substantialresults', substantial.getSubstantialResults);
 
 app.post('/imtanalysis', lite.runIMT);
 app.post('/ibmanalysis', lite.ibm);
+
+app.post("/signup", function (req, res) {
+	
+	    User.count({
+	        username: req.body.username
+	    }, function (err, count) {
+			console.log(count);
+	        if (count === 0) {
+			    //hash(req.body.password, function (err, salt, hash) {
+			        //if (err) throw err;
+			        var user = new User({
+			            username: req.body.username,
+			            password : req.body.userpassword,
+			            salt: '',
+			            hash: '',
+			        }).save(); 
+			                //res.redirect('/');
+					//res.send("Welcome "+req.body.username);		
+					req.session.username = req.body.username;
+					console.log(req.session);
+			     //   res.render('substantialwelcome', {
+			     //   'username': req.body.username,     
+			     //   });
+			     res.send("Success!");
+			       
+	            
+	        } else {
+	            req.session.error = "User Exist";
+				console.log(req.session.error);
+				res.send(req.session.error);
+	            //res.redirect("/signup");
+	        }
+	    });
+	
+
+});
 
 app.post("/mydashboard", function (req, res) {
     authenticate(req.body.username, req.body.password, function (err, user) {

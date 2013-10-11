@@ -70,16 +70,25 @@
                                 <a href="/comprehensive">Comprehensive</a>
                             </li>
                         </ul>
-                    </div>
-                    <!--/.nav-collapse -->
-                    
-                    <div class="pull-right text-right">
+                        
+                        <div class="pull-right text-right">
 
                         <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#si-ip").val("si");$("body").css("background", "rgb(229, 229, 229)");'/><font color="yellow"> SI</font>
                         <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font>
                     
-                        <a href="/signin"> Sign In</a> | <a> Sign Up</a>
+                        <!--a href="/signin"> Sign In</a> | <a> Sign Up</a-->
+                        <ul class="nav pull-right">
+						      <li><a href="/signup">Sign Up</a>
+						      </li>
+						      <li><a href="/signin">Sign In</a>
+						      </li>
+						</ul>
+                        </div>
+                        
                     </div>
+                    <!--/.nav-collapse -->
+                    
+                  
                     
                     
                 </div>

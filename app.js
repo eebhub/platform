@@ -146,7 +146,21 @@ app.get('/substantialsampleres-energyuse', substantial.getSubstantialSampleResEn
 app.get('/substantialsampleres-stage1', substantial.getSubstantialSampleResStage1);
 app.get('/substantialsampleres-stage2', substantial.getSubstantialSampleResStage2);
 
-//test unit conversion
+app.get("/mybuildings", function(req, res){
+    Building.find({username: req.session.username}, function (err, docs) {
+    console.log(docs.length);    
+     res.send(docs.length+ "buildings:\n"+docs);
+});
+    
+});
+
+app.get("/mymodels", function(req, res){
+    Buildingmodel.find({username: req.session.username}, function (err, docs) {
+    console.log(docs.length);    
+     res.send(docs.length+ "building models:\n"+docs);
+});
+    
+});
 
 
 //Posts
@@ -169,7 +183,13 @@ app.post("/mydashboard", function (req, res) {
 			 //       'username': req.body.username,     
 			 //   });
 			 
+<<<<<<< HEAD
 			 res.send("welcome"+req.body.username);
+=======
+			 res.render('dashboard', {
+			       'username': req.session.username,     
+			    });
+>>>>>>> develop
             });
         } else {
             req.session.error = 'Authentication failed, please check your ' + ' username and password.';

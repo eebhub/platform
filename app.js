@@ -137,8 +137,15 @@ app.get("/signup", function (req, res) {
 app.get("/signin", function (req, res) {
     res.render("signin");
 });
-app.get('/lite', routes.getLite);
+//app.get('/lite', routes.getLite);
 //app.get('/liteconv', routes.getLiteConv);
+app.get('/lite', function(req, res){
+    if(req.session.username){
+        res.render('lite_auth');  
+    }else{
+        res.sendfile('./views/lite.html');    
+    } 
+});
 app.get('/literesults', routes.getLiteResults);
 app.get('/partial', routes.getPartial);
 app.get('/substantial', routes.getSubstantial);
@@ -147,6 +154,12 @@ app.get('/substantialsampleres', substantial.getSubstantialSampleRes);
 app.get('/substantialsampleres-energyuse', substantial.getSubstantialSampleResEnergyUse);
 app.get('/substantialsampleres-stage1', substantial.getSubstantialSampleResStage1);
 app.get('/substantialsampleres-stage2', substantial.getSubstantialSampleResStage2);
+
+app.get("/mydashboard", function(req, res){
+    res.render('dashboard', {
+			       'username': req.session.username,     
+			    });
+});
 
 app.get("/mybuildings", function(req, res){
     Building.find({username: req.session.username}, function (err, docs) {

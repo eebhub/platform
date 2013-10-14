@@ -137,6 +137,12 @@ app.get("/signup", function (req, res) {
 app.get("/signin", function (req, res) {
     res.render("signin");
 });
+
+app.get('/logout',function(req,res){
+  req.session.destroy();
+  res.send("Logged out!");
+});
+
 //app.get('/lite', routes.getLite);
 //app.get('/liteconv', routes.getLiteConv);
 app.get('/lite', function(req, res){

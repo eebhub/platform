@@ -183,12 +183,9 @@ app.get('/substantialsampleres-stage1', substantial.getSubstantialSampleResStage
 app.get('/substantialsampleres-stage2', substantial.getSubstantialSampleResStage2);
 
 app.get("/mydashboard", function(req, res){
-    if(req.session.username){
-        res.render('dashboard', {
-			 'username': req.session.username,     
-		});}else{
-			    res.redirect('/signin');    
-			    }
+    res.render('dashboard', {
+			       'username': req.session.username,     
+			    });
 });
 
 app.get("/mybuildings", function(req, res){
@@ -263,7 +260,7 @@ app.post("/mydashboard", function (req, res) {
     //             res.render('substantialwelcome', {
 			 //       'username': req.body.username,     
 			 //   });
-			 
+
 			 res.render('dashboard', {
 			       'username': req.session.username,     
 			    });

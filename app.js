@@ -263,14 +263,10 @@ app.post("/mydashboard", function (req, res) {
     //             res.render('substantialwelcome', {
 			 //       'username': req.body.username,     
 			 //   });
-			 
-<<<<<<< HEAD
-			 res.send("welcome"+req.body.username);
-=======
+
 			 res.render('dashboard', {
 			       'username': req.session.username,     
 			    });
->>>>>>> develop
             });
         } else {
             req.session.error = 'Authentication failed, please check your ' + ' username and password.';

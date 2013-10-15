@@ -143,13 +143,6 @@ app.get('/logout',function(req,res){
   res.send("Logged out!");
 });
 
-//Reroutes
-app.get("/ideas", function (req, res) {
-    res.redirect("http://eebhub.uservoice.com/forums/224458-general");
-});
-app.get("/weather", function (req, res) {
-    res.redirect("http://developer.eebhub.org/weather.html");
-});
 
 //app.get('/lite', routes.getLite);
 //app.get('/liteconv', routes.getLiteConv);

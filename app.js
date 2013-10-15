@@ -183,9 +183,12 @@ app.get('/substantialsampleres-stage1', substantial.getSubstantialSampleResStage
 app.get('/substantialsampleres-stage2', substantial.getSubstantialSampleResStage2);
 
 app.get("/mydashboard", function(req, res){
-    res.render('dashboard', {
-			       'username': req.session.username,     
-			    });
+    if(req.session.username){
+        res.render('dashboard', {
+			 'username': req.session.username,     
+		});}else{
+			    res.redirect('/signin');    
+			    }
 });
 
 app.get("/mybuildings", function(req, res){

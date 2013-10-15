@@ -153,9 +153,30 @@ app.get('/lite', function(req, res){
     } 
 });
 app.get('/literesults', routes.getLiteResults);
-app.get('/partial', routes.getPartial);
-app.get('/substantial', routes.getSubstantial);
-app.get('/comprehensive', routes.getComprehensive);
+//app.get('/partial', routes.getPartial);
+app.get('/partial', function(req,res){
+    if(req.session.username){
+        res.render('partial_auth');
+    }else{
+        res.sendfile('./views/partial.html');
+    }
+});
+//app.get('/substantial', routes.getSubstantial);
+app.get('/substantial', function(req,res){
+    if(req.session.username){
+        res.render('substantial_auth');
+    }else{
+        res.sendfile('./views/substantial.html');
+    }
+});
+//app.get('/comprehensive', routes.getComprehensive);
+app.get('/comprehensive', function(req,res){
+   if(req.session.username){
+       res.render('comprehensive_auth');
+   }else{
+       res.sendfile('./views/comprehensive.html');
+   } 
+});
 app.get('/substantialsampleres', substantial.getSubstantialSampleRes);
 app.get('/substantialsampleres-energyuse', substantial.getSubstantialSampleResEnergyUse);
 app.get('/substantialsampleres-stage1', substantial.getSubstantialSampleResStage1);

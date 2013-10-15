@@ -130,7 +130,7 @@ if ('development' == app.get('env')) {
 
 //Get Routing
 app.get('/', routes.getHome);
-app.get('/', routes.getHome);
+app.get('/platform', routes.getHome); //added to reroute outdated tools.eebhub.org/platform link
 app.get("/signup", function (req, res) {
     res.render("signup");
 });
@@ -141,6 +141,14 @@ app.get("/signin", function (req, res) {
 app.get('/logout',function(req,res){
   req.session.destroy();
   res.send("Logged out!");
+});
+
+//Reroutes
+app.get("/ideas", function (req, res) {
+    res.redirect("http://eebhub.uservoice.com/forums/224458-general");
+});
+app.get("/weather", function (req, res) {
+    res.redirect("http://developer.eebhub.org/weather.html");
 });
 
 //app.get('/lite', routes.getLite);
@@ -183,9 +191,12 @@ app.get('/substantialsampleres-stage1', substantial.getSubstantialSampleResStage
 app.get('/substantialsampleres-stage2', substantial.getSubstantialSampleResStage2);
 
 app.get("/mydashboard", function(req, res){
-    res.render('dashboard', {
-			       'username': req.session.username,     
-			    });
+    if(req.session.username){
+        res.render('dashboard', {
+			 'username': req.session.username,     
+		});}else{
+			    res.redirect('/signin');    
+			    }
 });
 
 app.get("/mybuildings", function(req, res){

@@ -130,7 +130,7 @@ if ('development' == app.get('env')) {
 
 //Get Routing
 app.get('/', routes.getHome);
-app.get('/', routes.getHome);
+app.get('/platform', routes.getHome); //added to reroute outdated tools.eebhub.org/platform link
 app.get("/signup", function (req, res) {
     res.render("signup");
 });
@@ -273,7 +273,13 @@ app.post("/mydashboard", function (req, res) {
 });
 
 
-
+//Reroutes
+app.get("/ideas", function (req, res) {
+    res.redirect("http://eebhub.uservoice.com/forums/224458-general");
+});
+app.get("/weather", function (req, res) {
+    res.redirect("http://developer.eebhub.org/weather.html");
+});
 
 
 //Server

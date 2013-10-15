@@ -1,51 +1,122 @@
 <!DOCTYPE html>
-<html>
-    
+<html ng-app>
+    <!-- test-->
     <head>
-        <title>EEB Hub Simulation Platform Tools</title>
+<title>EEB Hub Simulation Platform Tools</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/stylesheet.css" rel="stylesheet">
-        <link href="css/partial.css" rel="stylesheet">
-        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/stylesheet.css" rel="stylesheet">
+        <link href="/css/partial.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/bootstrap-switch.css" />
         <style type="text/css">
             body {
                 padding-top: 60px;
                 padding-bottom: 40px;
                 background-color: rgb(229, 229, 229);
             }
+                        #filter {
+            	position: fixed;
+            	top: 0;
+            	left: 0;
+            	background: #111;
+            	min-width: 100%;
+            	min-height: 100%;
+            	opacity: 0.1;
+            }
+            
+            .progress{
+                height: 30px;
+            }
+            
+            .loading-div {
+                z-index: 100;
+            	position: fixed;
+                top: 55%;
+            	display: none;
+            	padding: 10px;
+            	text-align: center;
+            	margin: 0 20%;
+            	width: 60%;
+            	max-width: 800px;
+            	background: #fff;
+            }
+            
         </style>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.4.0/ui-bootstrap-tpls.min.js"></script>
-        <link href="css/bootstrap-fileupload.css" rel="stylesheet">
-        <script src="js/building101Data.js"></script>
-        <script src="js/unit-convert.js"></script>
         <script>
-            function submitIMT() {
-                var form = document.forms.platformForm;
-                form.action = "/imtanalysis";
-                form.submit();
+            function printValue(sliderID, textbox) {
+                var x = document.getElementById(textbox);
+                var y = document.getElementById(sliderID);
+                x.value = y.value;
             }
 
-            function submitIBM() {
-                var form = document.forms.platformForm;
-                form.action = "/ibmanalysis";
-                form.submit();
+            window.onload = function() {
+                printValue('ceilingSlider', 'ceilingRangeValue');
+                printValue('floorSlider', 'floorRangeValue');
+                printValue('groundSlider', 'groundRangeValue');
+                printValue('wallSlider', 'wallRangeValue');
+                printValue('shadingDeviceSlider', 'shadingDeviceRangeValue');
+                printValue('overhangSlider', 'overhangRangeValue');
+                printValue('exteriorSlider', 'exteriorRangeValue');
+                printValue('interiorSlider', 'interiorRangeValue');
+                printValue('obstructionSlider', 'obstructionRangeValue');
             }
         </script>
-        <script type="text/javascript">
-            var myApp = angular.module('myApp', ['ui.bootstrap']);
         
-            function CollapseDemoCtrl($scope) {
-                $scope.isCollapsed = true;
-            }
-        </script>
+        <script>
+        function building101DataSubstantial() {
+            var form = document.forms.platformForm;
 
+            //BUILDING
+            if (form.contains(form.building_name)) {form.building_name.value = "Building 101";}
+            if (form.contains(form.weather_epw_location)) {form.weather_epw_location.value = "PHILADELPHIA INTERNATIONAL AP";}
+            if (form.contains(form.activity_type)) {form.activity_type.value = "Office";}
+            if (form.contains(form.activity_type_specific)) {form.activity_type_specific.value = "Administrative/professional office";}
+            
+            //ARCHITECTURE
+            if (form.contains(form.gross_floor_area)) {form.gross_floor_area.value = 6967.72;} // attic & basement
+            if (form.contains(form.building_height)) {form.building_height.value = 15.54;} 
+            if (form.contains(form.window_to_wall_ratio)) {form.window_to_wall_ratio.value = 15;}
+            if (form.contains(form.number_of_floors)) {form.number_of_floors.value = 4;} //conditioned space, includes basement
+            if (form.contains(form.perimeter)) {form.perimeter.value = 800;} 
+            if (form.contains(form.footprint_shape)) {form.footprint_shape.value = "T shaped";}
+            
+
+            //MATERIALS
+            if (form.contains(form.exterior_wall_type)) {form.exterior_wall_type.value = "Brick";}
+            if (form.contains(form.window_glass_type)) {form.window_glass_type.value = "Single Layer Glass";} //Windows Double Glazed
+            if (form.contains(form.roof_type)) {form.roof_type.value = "none";}
+
+            //PEOPLE
+            if (form.contains(form.number_of_employees_during_main_shift)) {form.number_of_employees_during_main_shift.value = 55;}
+
+            //MECHANICAL
+            if (form.contains(form.primary_hvac_type)) {form.primary_hvac_type.value = "VAV w/Reheat";}
+            if (form.contains(form.demand_control_ventilation)) {form.demand_control_ventilation.value = "no";}
+            if (form.contains(form.airside_economizer)) {form.airside_economizer.value = "no";}
+            if (form.contains(form.airside_energy_recovery)) {form.airside_energy_recovery.value = "no";}
+
+            //SCHEDULES
+            if (form.contains(form.average_weekly_operating_hours)) {form.average_weekly_operating_hours.value = 55;}
+            if (form.contains(form.weekday_occupancy_hours_day_start)) {form.weekday_occupancy_hours_day_start.value = "7AM";}
+            if (form.contains(form.weekday_occupancy_hours_day_end)) {form.weekday_occupancy_hours_day_end.value = "6PM";}
+            if (form.contains(form.saturday_occupancy_hours_day_start)) {form.saturday_occupancy_hours_day_start.value = "closed";}
+            if (form.contains(form.saturday_occupancy_hours_day_end)) {form.saturday_occupancy_hours_day_end.value = "closed";}
+            if (form.contains(form.sunday_occupancy_hours_day_start)) {form.sunday_occupancy_hours_day_start.value = "closed";}
+            if (form.contains(form.sunday_occupancy_hours_day_end)) {form.sunday_occupancy_hours_day_end.value = "closed";}
+                        
+            
+            
+        }
+        </script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="js/building101Data.js"></script>
+        <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
         
     </head>
     
-    <body data-spy="scroll" data-target=".bs-docs-sidebar" ng-app="myApp" class="ng-scope">
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -54,43 +125,36 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="/" class="brand">EEB Hub Simulation Platform</a>
+                    <a class="brand" href="/">EEB Hub Simulation Platform</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active">
+                            <li>
                                 <a href="/lite">Lite</a>
                             </li>
                             <li>
                                 <a href="/partial">Partial</a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="/substantial">Substantial</a>
                             </li>
                             <li>
                                 <a href="/comprehensive">Comprehensive</a>
                             </li>
                         </ul>
-                        
-                        <div class="pull-right text-right">
+                    </div>
+                    <!--/.nav-collapse -->
+                    <div class="pull-right text-right">
 
                         <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#si-ip").val("si");$("body").css("background", "rgb(229, 229, 229)");'/><font color="yellow"> SI</font>
                         <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font>
                     
-                        <!--a href="/signin"> Sign In</a> | <a> Sign Up</a-->
-                       <ul class="nav pull-right">
+                    <ul class="nav pull-right">
 						      <li><a href="/mydashboard">My Dashboard</a>
 						      </li>
 						      <li><a href="/logout">LOGOUT</a>
 						      </li>
 						</ul>
-                        </div>
-                        
                     </div>
-                    <!--/.nav-collapse -->
-                    
-                  
-                    
-                    
                 </div>
             </div>
         </div>
@@ -100,27 +164,44 @@
                 <div class="span3 bs-docs-sidebar">
                     <ul class="nav nav-list bs-docs-sidenav">
                         <li>
-                            <h3>Lite
-                                <small>-ASHRAE, IBM</small>
+                            <h3>Substantial
+                                <small>-UTRC</small>
                             </h3>
+                        </li>
+                        <li>
+                            <h4 ng-cloak>{{buildingName}}</h4>
                         </li>
                         <li>
                             <a href="#building"><i class="icon-map-marker"></i> Building</a>
                         </li>
                         <li>
-                            <a href="#utilities"><i class="icon-list-alt"></i> Utility Data</a>
+                            <a href="#architecture"><i class="icon-home"></i> Architecture</a>
                         </li>
                         <li>
-                            <a href="#architecture"><i class="icon-home"></i> Architecture</a>
+                            <a href="#materials"><i class="icon-th-large"></i> Materials</a>
+                        </li>
+                        <li>
+                            <a href="#people"><i class="icon-user"></i> People</a>
+                        </li>
+                        <li>
+                            <a href="#mechanical"><i class="icon-cog"></i> Mechanical</a>
+                        </li>
+                         <li>
+                            <a href="#schedules"><i class="icon-time"></i> Schedules</a>
                         </li>
                     </ul>
                 </div>
+                
+                
                 <div class="span9">
-                    <form action="" method="post" name="platformForm">
-                        <section id="building">
-                            <div class="box-unit">
-                                <div class="page-header">
-                                    <table>
+
+
+                <form action="/substantialresults" method="post" name="platformForm" onsubmit="$('#baseline-form, header, .top-nav, footer').fadeTo('slow', 0.33);$('.loading-div').fadeIn('slow'); $('html,body').css('overflow', 'hidden');loading();return true;">
+
+                    <section id="building">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <table>
                                         <tr>
                                             <td>
                                                 <h2>Building</h2>
@@ -128,554 +209,784 @@
                                             <td class="span7">
                                                 <div class="pull-right text-right">
                                                
-                                                <button type="button" onclick="building101Data()" class="btn">
+                                                <button type="button" onclick="building101DataSubstantial()" class="btn">
                                                     <i class="icon-plus"></i><b>Building 101 Data</b></button>
                                                 </div>
                                             </td>
                                         </tr>
                                     </table>
-                                </div>
-                                <div class="row">
-                                    <div class="span4">
-                                        <h4>Building Name</h4>
-                                        <input class="span3" type="text" name="building_name">
-                                        <br/>
-                                        <h4>Location</h4>
-                                        <div class="input-append">
-                                            <select class="span3" name="weather_epw_location">
-                                                <option>Albuquerque, NM</option>
-                                                <option>Baltimore, MD</option>
-                                                <option>Boise, ID</option>
-                                                <option>Burlington, VT</option>
-                                                <option>Chicago, IL</option>
-                                                <option>Duluth, MN</option>
-                                                <option>El Paso, TX</option>
-                                                <option>Fairbanks, AK</option>
-                                                <option>Helena, MT</option>
-                                                <option>Houston, TX</option>
-                                                <option>Memphis, TN</option>
-                                                <option>Miami, FL</option>
-                                                <option>Pheonix, AZ</option>
-                                                <option selected>Philadelphia, PA</option>
-                                                <option>Riyadh, SAU</option>
-                                                <option>Salem, OR</option>
-                                                <option>San Francisco, CA</option>
-                                                <option>Vancouver, CAN</option>
-                                            </select>
-                                            <span class="add-on">
-                                                <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="span4">
-                                        <h4>Function</h4>
-                                        <div class="input-append">
-                                            <select class="span3" name="activity_type">
-                                                <option>Small Office</option>
-                                                <option>Medium Office</option>
-                                                <option>Large Office</option>
-                                                <option>Stand-alone Retail</option>
-                                                <option>Strip Mall</option>
-                                                <option>Primary School</option>
-                                                <option>Secondary School</option>
-                                                <option>Outpatient Healthcare</option>
-                                                <option>Hospital</option>
-                                                <option>Small hotel</option>
-                                                <option>Large Hotel</option>
-                                                <option>Warehouse (non-refrigerated)</option>
-                                                <option>Quick Service Restaurant</option>
-                                                <option>Full Service Restaurant</option>
-                                                <option>Mid-Rise Apartment</option>
-                                                <option>High-Rise Apartment</option>
-                                            </select>
-                                            <span class="add-on">
-                                                <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html" target="_blank"><i class="icon-info-sign"></i></a>
-                                            </span>
-                                        </div>
-                                        <h4>Year Built</h4>
-                                        <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
-                                        
-                                    </div>
-                                </div>
                             </div>
-                        </section>
-                        <section id="utilities">
-                            <div class="box-unit">
-                                <div class="page-header">
-                                    <h2>Utility Data</h2>
-                                </div>
-                                <table class="table table-hover" id="utltable">
-                                    <thead>
-                                        <th class="span2">Electric Billing Period Start Date</th>
-                                        <th class="span2">Electricity (kWh)</th>
-                                        <th class="span2">Gas Billing Period Start Date</th>
-                                        <th class="span2">Gas (CCF)</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" />
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" />
-                                            </td>
-                                        </tr>
-                                        <thead>
-                                            <th class="span2">Electric Billing Period End Date</th>
-                                            <th class="span2">Electricity (kWh)</th>
-                                            <th class="span2">Gas Billing Period End Date</th>
-                                            <th class="span2">Gas (CCF)</th>
-                                        </thead>
-                                        <tr>
-                                            <td>
-                                                <input type="date" class="span2" name="electric_utility_startdate" required>
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
-                                                name="utility_electric" disabled>
-                                            </td>
-                                            <td>
-                                                <input type="date" class="span2" name="gas_utility_startdate">
-                                            </td>
-                                            <td>
-                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
-                                                name="utility_gas" disabled>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                </table>
-                                <div class="span8">
-                                    <table class="text-right" style="float:right;">
-                                        <tr>
-                                            <td>
-                                               <span><a href="http://developer.eebhub.org/archives/utilities/MeterConsumptionDataSpreadsheet_metered_en.xls">Spreadsheet Template</a>&nbsp;&nbsp;</span>
-                                            </td>
-                                            <td>
-                                                <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                  <span class="btn btn-file"><span class="fileupload-new"><b>Import Utility Data</b></span><span class="fileupload-exists">Change</span><input type="file" /></span>
-                                                  <span class="fileupload-preview"></span>
-                                                  <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="row"></div>
-                            </div>
-                        </section>
-                        <section id="architecture">
-                            <div class="box-unit">
-                                <div class="page-header">
-                                    <h2>Architecture</h2>
-                                </div>
-                                <div class="row">
-                                    <div class="span4" id="architect-replace">
-                                        <h4>Gross Floor Area</h4>
-                                        <div class="input-append">
-                                            <input type="number" min="0" step="0.001" placeholder="required for benchmarking" name="gross_floor_area" />
-                                            <span class="add-on"><span class="unit">m</span>&#178;</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <div ng-controller="CollapseDemoCtrl"><!--BEGIN EXPAND COLLAPSE BUTTON by Angular-->
-                            <section id="import">
-                                <div class="box-unit">
-                                    <div class="page-header">
-                                        <table>
-                                            <tr>
-                                                <td class="span4">
-                                                    <h2>Import Data <small>(optional)</small></h2>
-                                                </td>
-                                                <td class="span5">
-                                                    <div class="pull-right text-right">
-                                                        <button type="button" class="btn" ng-click="isCollapsed = !isCollapsed">coming soon</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div class="row" collapse="isCollapsed">
-                                        <div class="span4">
-                                            <table class="table-condensed">
-                                                <tr>
-                                                    <td><h5>1.</h5></td>
-                                                    <td><h5><a href="https://portfoliomanager.energystar.gov/pm/login.html" target="_blank">Portfolio Manager Login</a></h5></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><h5>2.</h5></td>
-                                                    <td>Select Building Property</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><h5>3.</h5></td>
-                                                    <td><img src="img/portfolio-download.png"></td>
-                                                    <td><h5><a href="http://developer.eebhub.org/archives/utilities/Building%20101.xlsx">[example]</a></h5></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><h5>4.</h5></td>
-                                                    <td>
-                                                        <div class="fileupload fileupload-new" data-provides="fileupload" style="float:right">
-                                                          <span class="btn btn-file"><span class="fileupload-new"><b>Import Excel of Property</b></span><span class="fileupload-exists">Change</span><input type="file" /></span>
-                                                          <span class="fileupload-preview"></span>
-                                                          <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            
-                                        </div>
-                                        <div class="span4">
-                                            
-                                            <h4>EPA EnergyStar Score  <small>[target=75, median=50]</small></h4>
-                                            <ul class="inline">
-                                                <li>
-                                                    <input type="range" ng-model="portfolio" min="0" max="100" step="1" value={{portfolio}}/>
-                                                </li>
-                                                <li>
-                                                    <input class="span1" type="text" value={{portfolio}} ng-model="portfolio" placeholder="optional" name="energystar_score"/>
-                                                </li>
-                                            </ul>
-                                           <h4>DOE Energy Asset Score</h4>
-                                            <ul class="inline">
-                                                <li>
-                                                    <input type="range" ng-model="asset" min="0" max="100" step="1" value={{asset}}/>
-                                                </li>
-                                                <li>
-                                                    <input class="span1" type="text" value={{asset}} ng-model="asset" placeholder="optional" name="asset_score" />
-                                                </li>
-                                            </ul>
-                                            
-                                        </div>
-                                        <div class="span8" style="text-align:right;float:right;">
-                                            <span>Learn More about
-                                            <a href="https://portfoliomanager.energystar.gov/pm/login.html" target="_blank"><img src="img/portfolio-manager.png" width="150" height="48"></a>
-                                            <a href="http://www1.eere.energy.gov/buildings/commercial/assetscore.html" target="_blank"><img src="img/asset-score.png" width="150" height="48"></a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div><!--END EXPAND COLLAPSE BUTTON by Angular-->
-                        
-                        <div class="box-unit">
-                            <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
-                            <a class="btn btn-large btn-info" href="literesults"><i class="icon-signal"></i> Example Outputs</a>
-                            <img style="text-align:right;float:right;" src="img/ashrae.png" alt="ASHRAE" width="85" height="59">
-                            <br style="clear:both" />
-                            <h2 class="text-right">
-                                <small>powered by ASHRAE Inverse Modeling Toolkit</small>
-                            </h2>
-                        </div>
-                     <section>
-                            <div class="box-unit">
-                                <div class="page-header">
-                                    <h2>Supplementary <small> inputs required for IBM Inverse Model</small></h2>
-                                </div>
-                                <div class="row">
-                                    <div class="span4">
-                                    <h4>Address</h4>
-                                        <input type="text" name="building_location_address">
-                                        <h4>City</h4>
-                                        <input type="text" name="building_location_city">
-                                        <h4>State</h4>
-                                        <select name="building_location_state">
-                                            <option value="" selected="selected">Select a State</option>
-                                            <option value="AL">Alabama</option>
-                                            <option value="AK">Alaska</option>
-                                            <option value="AZ">Arizona</option>
-                                            <option value="AR">Arkansas</option>
-                                            <option value="CA">California</option>
-                                            <option value="CO">Colorado</option>
-                                            <option value="CT">Connecticut</option>
-                                            <option value="DE">Delaware</option>
-                                            <option value="DC">District Of Columbia</option>
-                                            <option value="FL">Florida</option>
-                                            <option value="GA">Georgia</option>
-                                            <option value="HI">Hawaii</option>
-                                            <option value="ID">Idaho</option>
-                                            <option value="IL">Illinois</option>
-                                            <option value="IN">Indiana</option>
-                                            <option value="IA">Iowa</option>
-                                            <option value="KS">Kansas</option>
-                                            <option value="KY">Kentucky</option>
-                                            <option value="LA">Louisiana</option>
-                                            <option value="ME">Maine</option>
-                                            <option value="MD">Maryland</option>
-                                            <option value="MA">Massachusetts</option>
-                                            <option value="MI">Michigan</option>
-                                            <option value="MN">Minnesota</option>
-                                            <option value="MS">Mississippi</option>
-                                            <option value="MO">Missouri</option>
-                                            <option value="MT">Montana</option>
-                                            <option value="NE">Nebraska</option>
-                                            <option value="NV">Nevada</option>
-                                            <option value="NH">New Hampshire</option>
-                                            <option value="NJ">New Jersey</option>
-                                            <option value="NM">New Mexico</option>
-                                            <option value="NY">New York</option>
-                                            <option value="NC">North Carolina</option>
-                                            <option value="ND">North Dakota</option>
-                                            <option value="OH">Ohio</option>
-                                            <option value="OK">Oklahoma</option>
-                                            <option value="OR">Oregon</option>
-                                            <option value="PA" selected>Pennsylvania</option>
-                                            <option value="RI">Rhode Island</option>
-                                            <option value="SC">South Carolina</option>
-                                            <option value="SD">South Dakota</option>
-                                            <option value="TN">Tennessee</option>
-                                            <option value="TX">Texas</option>
-                                            <option value="UT">Utah</option>
-                                            <option value="VT">Vermont</option>
-                                            <option value="VA">Virginia</option>
-                                            <option value="WA">Washington</option>
-                                            <option value="WV">West Virginia</option>
-                                            <option value="WI">Wisconsin</option>
-                                            <option value="WY">Wyoming</option>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Building Name</h4>
+                                    <input type="text" class="span3" ng-model="buildingName" name="building_name" 
+                                    />
+                                    <br/>
+                                    <h4>Location</h4>
+                                    <div class="input-append">
+                                        <select class="span3" name="weather_epw_location">
+                                            <option value="ALBUQUERQUE INTL ARPT [ISIS]">Albuquerque, NM</option>
+                                            <option value="BALTIMORE BLT-WASHNGTN INT'L">Baltimore, MD</option>
+                                            <option value="BOISE AIR TERMINAL [UO]">Boise, ID</option>
+                                            <option value="BURLINGTON INTERNATIONAL AP">Burlingotn, NH</option>
+                                            <option value="CHICAGO OHARE INTL AP">Chicago, IL</option>
+                                            <option value="DULUTH INTERNATIONAL ARPT">Duluth, MN</option>
+                                            <option value="EL PASO INTERNATIONAL AP [UT]">El Paso, TX</option>
+                                            <option value="FAIRBANKS INTL ARPT">Fairbanks, AK</option>
+                                            <option value="HELENA REGIONAL AIRPORT">Helena, MT</option>
+                                            <option value="HOUSTON BUSH INTERCONTINENTAL">Houston, TX</option>
+                                            <option value="MEMPHIS INTERNATIONAL AP">Memphis, TN</option>
+                                            <option value="MIAMI INTL AP">Miami, FL</option>
+                                            <option value="PHOENIX SKY HARBOR INTL AP">Pheonix, AZ</option>
+                                            <option value="PHILADELPHIA INTERNATIONAL AP" selected>Philadelphia, PA</option>
+                                            <option value="">Riyadh, SAU</option>
+                                            <option value="SALEM MCNARY FIELD">Salem, MA</option>
+                                            <option value="SAN FRANCISCO INTL AP">San Francisco, CA</option>
+                                            <option value="">Vancouver, CAN</option>
                                         </select>
-                                       
+                                        <span class="add-on">
+                                            <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
+                                        </span>
                                     </div>
-                                    <div class="span4">
-                                    <div id="supplement-replace">
-                                        <h4>Length</h4>
-                                        <div class="input-append">
-                                            <input type="number" name="building_length" min="0" step="0.01" />
-                                            <span class="add-on"><span class="unit">m</span></span>
-                                        </div>
-                                        <h4>Width</h4>
-                                        <div class="input-append">
-                                            <input type="number" name="building_width" min="0" step="0.01" />
-                                            <span class="add-on"><span class="unit">m</span></span>
-                                        </div>
-                                        <h4>Height</h4>
-                                        <div class="input-append">
-                                            <input type="number" name="building_height" min="0" step="0.01" />
-                                            <span class="add-on"><span class="unit">m</span></span>
-                                        </div>
-                                    </div>  
-                                        <h4>Orientation <small>clockwise degrees from North</small></h4>
+                                </div>
+                                <div class="span4">
+                                <h4>Function</h4>
+                                    <div class="input-append">
+                                        <select class="span3" name="activity_type">
+                                            <option value="Education">Education</option>
+                                            <option value="Enclosed mall">Enclosed mall</option>
+                                            <option value="Food sale">Food sale</option>
+                                            <option value="Food service">Food service</option>
+                                            <option value="Inpatient health care">Inpatient health care</option>
+                                            <option value="Laboratory">Laboratory</option>
+                                            <option value="Lodging">Lodging</option>
+                                            <option value="Non refriferation warehouse">Non refrigeration warehouse</option>
+                                            <option value="Nursing">Nursing</option>
+                                            <option value="Office">Office</option>
+                                            <option value="Other">Other</option>
+                                            <option value="Outpatient health care">Outpatient health care</option>
+                                            <option value="Public assembly">Public assembly</option>
+                                            <option value="Public order and safety">Public order and safety</option>
+                                            <option value="Refrigerated warehouse">Refrigerated warehouse</option>
+                                            <option value="Religious worship">Religious worship</option>
+                                            <option value="Retail other than mall">Retail other than mall</option>
+                                            <option value="Service">Service</option>
+                                            <option value="Strip shopping mall">Strip shopping mall</option>
+                                            <option value="vacant">vacant</option>
+                                        </select>
+                                        <span class="add-on">
+                                                <a href="http://www.nrel.gov/docs/fy08osti/41956.pdf" target="_blank"><i class="icon-info-sign"></i></a>
+                                            </span>
+                                    </div>
+                                <h4>More Specific Building Activity</h4>
+                                     <div class="input-append">
+                                        <select class="span3" name="activity_type_specific">
+                                            <option>Administrative/professional office</option>
+                                            <option>Bank/other financial</option>
+                                            <option>Clinic/other outpatient health</option>
+                                            <option>College/university</option>
+                                            <option>Convenience store</option>
+                                            <option>Convenience store with gas station</option>
+                                            <option>Distribution/shipping center</option>
+                                            <option>Dormitory/fraternity/sorority</option>
+                                            <option>Elementary/middle school</option>
+                                            <option>Enclosed mall</option>
+                                            <option>Entertainment/culture</option>
+                                            <option>Fast food</option>
+                                            <option>Fire station/police station</option>
+                                            <option>Government office</option>
+                                            <option>Grocery store/food market</option>
+                                            <option>High school</option>
+                                            <option>Hospital/inpatient health</option>
+                                            <option>Hotel</option>
+                                            <option>Laboratory</option>
+                                            <option>Library</option>
+                                            <option>Medical office(diagnostic)</option>
+                                            <option>Medical office(non-diagnostic)</option>
+                                            <option>Mixed-use office</option>
+                                            <option>Motel or inn</option>
+                                            <option>Non-refrigerated warehouse</option>
+                                            <option>Nursing house/assisted living</option>
+                                            <option>Other</option>
+                                            <option>Other classroom education</option>
+                                            <option>Other food sales</option>
+                                            <option>Other food service</option>
+                                            <option>Other lodging</option>
+                                            <option>Other office</option>
+                                            <option>Other public assembly</option>
+                                            <option>Other public order and safety</option>
+                                            <option>Other retail</option>
+                                            <option>Other service</option>
+                                            <option>Post office/postal center</option>
+                                            <option>Preschool/daycare</option>
+                                            <option>Recreation</option>
+                                            <option>Refrigerated warehouse</option>
+                                            <option>Religious worship</option>
+                                            <option>Repair shop</option>
+                                            <option>Restaurant/cafeteria</option>
+                                            <option>Retail store</option>
+                                            <option>Self-storage</option>
+                                            <option>Social/meeting</option>
+                                            <option>Strip shopping mall</option>
+                                            <option>vacant</option>
+                                            <option>Vehicle dealership/showroom</option>
+                                            <option>Vehicle service/repair shop</option>
+                                            <option>Vehicle storage/maintenance</option>
+                                        </select>
+                                        <span class="add-on">
+                                                <a href="http://www.nrel.gov/docs/fy08osti/41956.pdf" target="_blank"><i class="icon-info-sign"></i></a>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                    
+        <section id="architecture">
+                <div id="box-unit">
+                    <div class="page-header">
+                        <h2>Architecture <small>shape of building</small></h2>
+                    </div>
+                    <div class="row">
+                        <div class="span4">
+                            <h4>Gross Floor Area</h4>
+                            <div class="input-append">
+                                <input type="number" name="gross_floor_area" min="0" step="0.01" />
+                                <span class="add-on" id="architect-replace1"><span class="unit">m</span>&#178;</span>
+                            </div>
+                            <h4>Number of Floors</h4>
+                            <input type="number" name="number_of_floors"
+                            min="0" step="1" />
+                            <h4>Window to Wall Area</h4>
                                         <ul class="inline">
                                             <li>
-                                                <input type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
+                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50/>
                                             </li>
                                             <li>
                                                 <div class="input-append">
-                                                    <input class="span1" type="text" value={{orientation}} name="building_orientation" ng-model="orientation"/>
-                                                    <span class="add-on">&deg;</span>
+                                                    <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="window_to_wall_ratio">
+                                                    <span class="add-on">%</span>
                                                 </div>
                                             </li>
                                         </ul>
-                                    </div>
+                        </div>
+                        <div class="span4">
+                            <h4>Shape</h4>
+                            <select name="footprint_shape" ng-model="shapeimage">
+                                <option>E Shaped</option>
+                                <option>H Shaped</option>
+                                <option>L Shaped</option>
+                                <option>Narrow rectangle</option>
+                                <option>Other Shape</option>
+                                <option>plug sign or cross shaped</option>
+                                <option>Rectangle/square with courtyard</option>
+                                <option>Square</option>
+                                <option>T shaped</option>
+                                <option>U shaped</option>
+                                <option>Unspecified</option>
+                                <option>Wide rectangle</option>
+                            </select>
+                            <h4>Total Building Height</h4>
+                                <div class="input-append">
+                                <input type="number" name="building_height" min="0" step="0.01" />
+                                <span class="add-on" id="architect-replace2"><span class="unit">m</span></span>
+                                </div>   
+                            <h4>Perimeter</h4>
+                                <div class="input-append">
+                                <input type="number" name="perimeter" min="0" step="1" />
+                                <span class="add-on" id="architect-replace3"><span class="unit">m</span></span>
+                                </div>      
+                        </div>
+                    </div>
+                </div>
+        </section>
+                    
+
+        
+
+
+                    <section id="materials">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Materials</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Walls</h4>
+                                    <select class="span2" name="exterior_wall_type">
+                                        <option>Brick</option>
+                                        <option>Stone</option>
+                                        <option>Stucco</option>
+                                        <option>other</option>
+                                    </select>
+                                    <h4>Windows</h4>
+                                    <select class="span2 " name="window_glass_type">
+                                        <option>Multi-layer Glass</option>
+                                        <option>Single Layer Glass</option>
+                                        <option>Combination</option>
+                                        <option>No Windows</option>
+                                        <option>Unknown</option>
+                                    </select>
+                                </div>
+                                <div class="span4">
+                                    <h4>Roof</h4>
+                                    <select class="span2" name="roof_type">
+                                        <option>Brick</option>
+                                        <option>Stone</option>
+                                        <option>Stucco</option>
+                                        <option>other</option>
+                                    </select>                                    
                                 </div>
                             </div>
-                        </section> 
+                        </div>
+                    </section>   
 
-                    <div class="box-unit">
-                        <button onclick="submitIBM()" class="btn btn-large btn-primary">SIMULATE</button>
-                        <a class="btn btn-large btn-info" href="http://eebhub.minus.com/mbw8FJL02UdsL2"><i class="icon-signal"></i> Example Outputs</a>
-                         <img style="text-align:right;float:right;" src="img/ibm.png" alt="IBM" width="90" height="36">
-                        <h2 class="text-right">
-                            <small>powered by IBM Inverse Modeling Engine</small>
-                        </h2>
-                    </div>
-                    <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
+                        <section id="people">
+                            <div class="box-unit">
+                                <div class="page-header">
+                                    <h2>People</h2>           
+                                </div>
+                                
+                                <h4>Number of Employees During Main Shift</h4>
+                                <input type="number" class="span2" name="number_of_employees_during_main_shift" min="0" step="1" />
+                                <span class="add-on"></span>
+                                
+                            </div>
+                        </section>
+                
+            
+                    <section id="mechanical">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Mechanical</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Primary HVAC System Type</h4>
+                                    <select name="primary_hvac_type">
+                                        <option>Direct evap cooler</option>
+                                        <option>Direct evap cooler, unit heaters</option>
+                                        <option>Direct chilled water fan coil</option>
+                                        <option>Direct hot water baseboards</option>
+                                        <option>Direct hot water baseboards, direct evap cooler</option>
+                                        <option>Dual-duct CAV</option>
+                                        <option>Dual-duct VAV</option>
+                                        <option>Electric baseboards</option>
+                                        <option>Electric baseboards, direct evap cooler</option>
+                                        <option>Fan coil chiller</option>
+                                        <option>Fan coil, district chilled water and boiler</option>
+                                        <option>Fan coil, district chilled water, electric baseboards</option>
+                                        <option>Fan coil, district chilled water, unit heaters</option>
+                                        <option>Fan coil, district hot and cold water</option>
+                                        <option>Fan coil, District hot water and chiller</option>
+                                        <option>Forced air furnace</option>
+                                        <option>Forced air furnace, direct evap cooler</option>
+                                        <option>Forced air furnace, district chilled water fan coil</option>
+                                        <option>Heat pump heating</option>
+                                        <option>Heat pump heating, direct evap cooler</option>
+                                        <option>Hot water baseboards</option>
+                                        <option>Hot water baseboards, direct evap cooler</option>
+                                        <option>Package VAV w/PFP boxes</option>
+                                        <option>Package VAV w/reheat</option>
+                                        <option>PSZ-A/C w/electric baseboards</option>
+                                        <option>PSZ-AC</option>
+                                        <option>PSZ-AC (no heat)</option>
+                                        <option>PSZ-AC w/district hot water</option>
+                                        <option>PSZ-HP</option>
+                                        <option>PTAC (no heat)</option>
+                                        <option>PTAC air source</option>
+                                        <option>PTAC w/district hot water</option>
+                                        <option>PTAC w/electric baseboards</option>
+                                        <option>PTAC with gas coil heat</option>
+                                        <option>PTHP air source</option>
+                                        <option>Radiantial heating and cooling</option>
+                                        <option>Residential A/C (no heat)</option>
+                                        <option>Residential A/C w/electric baseboards</option>
+                                        <option>Residential forced air</option>
+                                        <option>Residential forced air cooling, hot water baseboards</option>
+                                        <option>Residential forced air w/district hot water</option>
+                                        <option>Residential heat pump</option>
+                                        <option>Unit heaters</option>
+                                        <option>VAV cool with zone heat pump heating</option>
+                                        <option>VAV w/electric baseboards</option>
+                                        <option>VAV w/gas reheat</option>
+                                        <option>VAV w/PFP boxes</option>
+                                        <option>VAV w/Reheat</option>
+                                        <option>VAV w/zone unit heaters</option>
+                                        <option>Window A/C</option>
+                                        <option>Window A/C w/district hot water</option>
+                                        <option>Window A/C w/forced air furnace</option>
+                                        <option>Window A/C w/hot water baseboards</option>
+                                        <option>Window A/C, electric baseboards</option>
+                                        <option>Window A/C, unit heater</option>
+                                    </select>
+                                    
+                                    <h4>Main Heating</h4>
 
-                     
-                    </form>
+                                    <input type="checkbox" checked name="electricity_used_for_main_heating"> Electricity
 
+                                    <input type="checkbox" name="natural_gas_used_for_main_heating"> Natural Gas</br>
+                                    
+                                    <input type="checkbox" name="fuel_oil_used_for_main_heating"> Fuel Oil
+                                    
+                                    <input type="checkbox" name="propane_used_for_main_heating"> Propane</br>
+                                    
+                                    <input type="checkbox" name="district_steam_used_for_main_heating"> District Steam
+                                    
+                                    <input type="checkbox" name="district_hot_water_used_for_main_heating"> District Hot Water</br>
+                                    <!--<h4>Electricity used for main heating</h4>-->
+                                
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="electricity_used_for_main_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>Natural gas used for main heating</h4>-->
+                                
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="natural_gas_used_for_main_heating">-->
+                                    <!--</div>-->
+                                
+                                    <!--<h4>Fuel oil used for main heating</h4>-->
+                                
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="fuel_oil_used_for_main_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>Propane used for main heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="propane_used_for_main_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>District steam used for main heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_steam_used_for_main_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>District hot water used for main heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_hot_water_used_for_main_heating">-->
+                                    <!--</div>-->
+                                    
+                                    
+                                    <h4>Cooling</h4>
+                                    
+                                    <input type="checkbox" checked name="electricity_used_for_cooling"> Electricity
+                                    
+                                    <input type="checkbox" name="natural_gas_used_for_cooling"> Natural Gas</br>
+                                    
+                                    <input type="checkbox" name="fuel_oil_used_for_cooling"> Fuel Oil
+                                    
+                                    <input type="checkbox" name="propane_used_for_cooling"> Propane</br>
+                                    
+                                    <input type="checkbox" name="district_steam_used_for_cooling"> District Steam
+                                    
+                                    <input type="checkbox" name="district_hot_water_used_for_cooling"> District Hot Water</br>
+                                    
+                                    <input type="checkbox" name="district_chilled_water_used_for_cooling"> District Chilled Water</br>
+                                    
+                                    
+                                    <!--<h4>Electricity used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="electricity_used_for_cooling">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>Natural gas used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="natural_gas_used_for_cooling">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>Fuel oil used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="fuel_oil_used_for_cooling">-->
+                                    <!--</div>-->
+                                
+                                </div>
+                                <div class="span4">
+                                    <!--<h4>Propane used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="propane_used_for_cooling">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>District steam used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_steam_used_for_cooling">-->
+                                    <!--</div>-->
+                        
+                                    <!--<h4>District hot water used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_hot_water_used_for_cooling">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>District chilled water used for cooling</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_chilled_water_used_for_cooling">-->
+                                    <!--</div>-->
+                                    </br>
+                                    </br>
+                                    </br>
+                                    </br>
+                                    <h4>Water Heating</h4>
+                                    
+                                    <input type="checkbox" name="electricity_used_for_water_heating"> Electricity
+                                    <input type="checkbox" name="natural_gas_used_for_water_heating"> Natural Gas</br>
+                                    <input type="checkbox" name="fuel_oil_used_for_water_heating"> Fuel Oil
+                                    <input type="checkbox" name="propane_used_for_water_heating"> Propane</br>
+                                    <input type="checkbox" name="district_steam_used_for_water_heating"> District Steam
+                                    <input type="checkbox" name="district_hot_water_used_for_water_heating"> District Hot Water</br>
+                                    
+                                    <!--<h4>Electricity used for water heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="electricity_used_for_water_heating">-->
+                                    <!--</div>-->
+                        
+                                    <!--<h4>Natural gas used for water heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="natural_gas_used_for_water_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>Fuel oil used for water heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="fuel_water_used_for_water_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>Propane used for water heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="propane_used_for_water_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>District steam used for water heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_steam_used_for_water_heating">-->
+                                    <!--</div>-->
+                                    
+                                    <!--<h4>District hot water used for water heating</h4>-->
+                               
+                                    <!--<div class="make-switch">-->
+                                    <!--<input type="checkbox" name="district_hot_water_used_for_water_heating">-->
+                                    <!--</div>-->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    
+                    <section id="schedules">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Schedules</h2>
+                            </div>
+                            <div class="row">
+                            <div class="span4">
+                            
+                            <h4>Open 24 hours a day</h4>
+                            <div class="make-switch">
+                            <input name="open_24_hours_a_day" type="checkbox"/>
+                            </div>
+                                                        
+                            <h4>Total Weekly Operating Hours</h4>
+                            <div class="input-append">
+                            <input class="span2" type="number" name="average_weekly_operating_hours"><span class="add-on">hrs</span>
+                            </div>
+                            
+                            <h4>Open During Week</h4>
+                            <div class="make-switch">
+                            <input name="open_during_week" type="checkbox" checked />
+                            </div>
+                            
+                            <h4>Open On Weekend</h4>
+                            <div class="make-switch">
+                            <input name="open_on_weekend" type="checkbox" />
+                            </div>
+                            
+                            <h4>Weekday Occupancy Hours</h4>
+                            <h5>Day Start</h5>
+                            <select name="weekday_occupancy_hours_day_start">
+                            <option value="12AM">12AM</option>
+                            <option value="1AM">1AM</option>
+                            <option value="2AM">2AM</option>
+                            <option value="3AM">3AM</option>
+                            <option value="4AM">4AM</option>
+                            <option value="5AM">5AM</option>
+                            <option value="6AM">6AM</option>
+                            <option value="7AM">7AM</option>
+                            <option value="8AM">8AM</option>
+                            <option value="9AM">9AM</option>
+                            <option value="10AM">10AM</option>
+                            <option value="11AM">11AM</option>
+                            <option value="12PM">12PM</option>
+                            <option value="1PM">1PM</option>
+                            <option value="2PM">2PM</option>
+                            <option value="3PM">3PM</option>
+                            <option value="4PM">4PM</option>
+                            <option value="5PM">5PM</option>
+                            <option value="6PM">6PM</option>
+                            <option value="7PM">7PM</option>
+                            <option value="8PM">8PM</option>
+                            <option value="9PM">9PM</option>
+                            <option value="10PM">10PM</option>
+                            <option value="11PM">11PM</option>
+                            <select/>
+                            <h5>Day End</h5>
+                            <select name="weekday_occupancy_hours_day_end">
+                            <option>12AM</option>
+                            <option>1AM</option>
+                            <option>2AM</option>
+                            <option>3AM</option>
+                            <option>4AM</option>
+                            <option>5AM</option>
+                            <option>6AM</option>
+                            <option>7AM</option>
+                            <option>8AM</option>
+                            <option>9AM</option>
+                            <option>10AM</option>
+                            <option>11AM</option>
+                            <option>12PM</option>
+                            <option>1PM</option>
+                            <option>2PM</option>
+                            <option>3PM</option>
+                            <option>4PM</option>
+                            <option>5PM</option>
+                            <option>6PM</option>
+                            <option>7PM</option>
+                            <option>8PM</option>
+                            <option>9PM</option>
+                            <option>10PM</option>
+                            <option>11PM</option>
+                            </select>
+                            </div>
+                            
+                            <div class="span4">
+                                
+                                <h4>Saturday Occupancy Hours</h4>
+                                <h5>Day Start</h5>
+                                <select name="saturday_occupancy_hours_day_start">
+                                <option>12AM</option>
+                                <option>1AM</option>
+                                <option>2AM</option>
+                                <option>3AM</option>
+                                <option>4AM</option>
+                                <option>5AM</option>
+                                <option>6AM</option>
+                                <option>7AM</option>
+                                <option>8AM</option>
+                                <option>9AM</option>
+                                <option>10AM</option>
+                                <option>11AM</option>
+                                <option>12PM</option>
+                                <option>1PM</option>
+                                <option>2PM</option>
+                                <option>3PM</option>
+                                <option>4PM</option>
+                                <option>5PM</option>
+                                <option>6PM</option>
+                                <option>7PM</option>
+                                <option>8PM</option>
+                                <option>9PM</option>
+                                <option>10PM</option>
+                                <option>11PM</option>
+                                </select>
+                                <h5>Day End</h5>
+                                <select name="saturday_occupancy_hours_day_end">
+                                <option>12AM</option>
+                                <option>1AM</option>
+                                <option>2AM</option>
+                                <option>3AM</option>
+                                <option>4AM</option>
+                                <option>5AM</option>
+                                <option>6AM</option>
+                                <option>7AM</option>
+                                <option>8AM</option>
+                                <option>9AM</option>
+                                <option>10AM</option>
+                                <option>11AM</option>
+                                <option>12PM</option>
+                                <option>1PM</option>
+                                <option>2PM</option>
+                                <option>3PM</option>
+                                <option>4PM</option>
+                                <option>5PM</option>
+                                <option>6PM</option>
+                                <option>7PM</option>
+                                <option>8PM</option>
+                                <option>9PM</option>
+                                <option>10PM</option>
+                                <option>11PM</option>
+                                </select>
+                                <h4>Sunday Occupancy Hours</h4>
+                                <h5>Day Start</h5>
+                                <select name="sunday_occupancy_hours_day_start">
+                                <option>12AM</option>
+                                <option>1AM</option>
+                                <option>2AM</option>
+                                <option>3AM</option>
+                                <option>4AM</option>
+                                <option>5AM</option>
+                                <option>6AM</option>
+                                <option>7AM</option>
+                                <option>8AM</option>
+                                <option>9AM</option>
+                                <option>10AM</option>
+                                <option>11AM</option>
+                                <option>12PM</option>
+                                <option>1PM</option>
+                                <option>2PM</option>
+                                <option>3PM</option>
+                                <option>4PM</option>
+                                <option>5PM</option>
+                                <option>6PM</option>
+                                <option>7PM</option>
+                                <option>8PM</option>
+                                <option>9PM</option>
+                                <option>10PM</option>
+                                <option>11PM</option>
+                                </select>
+                                <h5>Day End</h5>
+                                <select name="sunday_occupancy_hours_day_end">
+                                <option>12AM</option>
+                                <option>1AM</option>
+                                <option>2AM</option>
+                                <option>3AM</option>
+                                <option>4AM</option>
+                                <option>5AM</option>
+                                <option>6AM</option>
+                                <option>7AM</option>
+                                <option>8AM</option>
+                                <option>9AM</option>
+                                <option>10AM</option>
+                                <option>11AM</option>
+                                <option>12PM</option>
+                                <option>1PM</option>
+                                <option>2PM</option>
+                                <option>3PM</option>
+                                <option>4PM</option>
+                                <option>5PM</option>
+                                <option>6PM</option>
+                                <option>7PM</option>
+                                <option>8PM</option>
+                                <option>9PM</option>
+                                <option>10PM</option>
+                                <option>11PM</option>
+                                </select>
+                            </div>    
+                        </div>        
+                        </div>
+                    </section>
+
+    
+              
+
+                <div class="box-unit">
+                    <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
+                    <!--<button type="button" class="btn btn-large btn-info"><i class="icon-plus"></i> Building 101 Data</button>-->
+                    <a class="btn btn-large btn-info" href="/substantialsampleres"><i class="icon-signal"></i> Example Outputs</a>
+                    <img style="text-align:right;float:right;" src="img/utrc.png" alt="UTRC" width="120" height="42">
+                    <h2 class="text-right"><small>powered by UTRC Energy Audit Tool Engine</small></h2>
+                
+                <!--<div id="progressbar"></div>-->
+           
+               
+                </div>
+        
+        
+                <div class="box-unit">
+                <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/upenn/"><i class="icon-wrench"></i> System Control Optimization</a>
+                <img style="text-align:right;float:right;" src="img/upenn.png" alt="UPENN" width="112" height="36">
+                <h2 class="text-right"><small>powered by UPenn Parametric Analysis Toolkit</small></h2>
+                </div>
+                
+
+            
+            <!--  Testing Loading Bar -->
+            <!--<button class="button" onclick="$('input, select, a, button').attr('disabled', 'disabled'); $('.main-div, header, .top-nav, footer').fadeTo('slow', 0.33);$('.loading-div').fadeIn('slow');  loading();"> Loading </button>-->
+            
+            <!-- Javascript: HighChart, Bootstrap, Jquery -->
+            <script src="http://code.jquery.com/jquery.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/bootstrap-scrollspy.js"></script>
+            <script src="js/bootstrap-fileupload.js"></script>
+            <script>
+        	
+        	// update loading bar
+        	function loading() {
+        	    
+        	    // current progress number in pixel
+            	var num = 0;
+            	
+            	// update the progress every second
+            	var update = setInterval(function(){
+            	    
+            	    // update the loading-status (text)
+            	    $("#loading-status").html("Simulation In Progress "+parseInt(num/$(".loading-div").width()*100)+"%");
+            		
+            		// loading to the next process
+            		if(num>=$(".loading-div").width()) { 
+            				$("#loading-status").html("Loading...");
+            				clearInterval(update);
+            		}
+            		
+            		// update the loading bar 
+            		$(".bar").width(num);
+                    
+                    // increase the loading bar 3 pixes per second.
+            		num=num+3;
+            	},1000);
+            }
+       
+           
+        	</script>
+        
+                 <!-- ################################ Loading Bar end##################################################### -->
+           
+        
+        <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
+        
+        </form>                
+                    
+                    
+            
+                    
+                    
                 </div>
             </div>
         </div>
         <!-- Javascript -->
+        
+                    <!-- ################################ Loading Bar ##################################################### -->
+            <div class="loading-div container-fluid">
+            	<div id="filter" > 
+            	</div>
+            
+            	<div class="progress progress-striped active">
+            	  <div class="bar" ></div>
+            	</div>
+            
+            	<h4 id="loading-status">Simulation In Progress ...</h4>
+            </div>
+            
+            
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="/js/bootstrap-switch.min.js"></script>  
         <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/bootstrap-scrollspy.js"></script>
-        <script src="js/bootstrap-collapse.js"></script>
-        <script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap-scrollspy.js"></script>
+                <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

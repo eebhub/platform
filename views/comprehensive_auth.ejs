@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html ng-app>
+    
+    <head>
+        <title>EEB Hub Simulation Platform Tools</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/stylesheet.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="css/bootstrap-fileupload.css" rel="stylesheet">
+        <link href="css/partial.css" rel="stylesheet">
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+                background-color: rgb(229, 229, 229);
+            }
+            
+            #filter {
+            	position: fixed;
+            	top: 0;
+            	left: 0;
+            	background: #111;
+            	min-width: 100%;
+            	min-height: 100%;
+            	opacity: 0.1;
+            }
+            
+            .progress{
+                height: 30px;
+            }
+            
+            .loading-div {
+                z-index: 100;
+            	position: fixed;
+                top: 55%;
+            	display: none;
+            	padding: 10px;
+            	text-align: center;
+            	margin: 0 20%;
+            	width: 60%;
+            	max-width: 800px;
+            	background: #fff;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="js/building101Data.js"></script>
+        <script>
+            function printValue(sliderID, textbox) {
+                var x = document.getElementById(textbox);
+                var y = document.getElementById(sliderID);
+                x.value = y.value;
+            }
+
+            window.onload = function() {
+                printValue('ceilingSlider', 'ceilingRangeValue');
+                printValue('floorSlider', 'floorRangeValue');
+                printValue('groundSlider', 'groundRangeValue');
+                printValue('wallSlider', 'wallRangeValue');
+                printValue('shadingDeviceSlider', 'shadingDeviceRangeValue');
+                printValue('overhangSlider', 'overhangRangeValue');
+                printValue('exteriorSlider', 'exteriorRangeValue');
+                printValue('interiorSlider', 'interiorRangeValue');
+                printValue('obstructionSlider', 'obstructionRangeValue');
+            }
+        </script>
+
+    </head>
+    
+    <body onload="changeShape(T)" data-spy="scroll" data-target=".bs-docs-sidebar">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="/">EEB Hub Simulation Platform</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li>
+                                <a href="/lite">Lite</a>
+                            </li>
+                            <li class="">
+                                <a href="/partial">Partial</a>
+                            </li>
+                            <li>
+                                <a href="/substantial">Substantial</a>
+                            </li>
+                            <li class="active">
+                                <a href="/comprehensive">Comprehensive</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                    <div class="pull-right text-right">
+
+                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#si-ip").val("si");$("body").css("background", "rgb(229, 229, 229)");'/><font color="yellow"> SI</font>
+                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font>
+                    
+                     <ul class="nav pull-right">
+						      <li><a href="/mydashboard">My Dashboard</a>
+						      </li>
+						      <li><a href="/logout">LOGOUT</a>
+						      </li>
+						</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Intro -->
+        <div class="container">
+            <div class="row">
+                <div class="span3 bs-docs-sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav">
+                        <h3>Comprehensive
+                            <small>-PSU</small>
+                        </h3>
+                        <li>
+                            <a href="#building"><i class="icon-map-marker"></i> Building</a>
+                        </li>
+                        <li>
+                            <a href="#architecture"><i class="icon-home"></i>Architecture</a>
+                        </li>
+                        <li>
+                            <a href="#materials"><i class="icon-th-large"></i>Materials</a>
+                        </li>
+                        <li>
+                            <a href="#people"><i class="icon-user"></i>People</a>
+                        </li>
+                        <li>
+                            <a href="#lighting"><i class="icon-asterisk"></i>Lighting</a>
+                        </li>
+                        <li>
+                            <a href="#mechanical"><i class="icon-cog"></i>Mechanical</a>
+                        </li>
+                        <li>
+                            <a href="#schedules"><i class="icon-time"></i>Schedules</a>
+                        </li>
+                        <li>
+                            <a href="#conservation"><i class="icon-leaf"></i>Conservation</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- ################################### Building Section ################################################## -->
+                <div class="span9">
+                    <form name="platformForm" id="comprehensive-form" action="http://128.118.67.241/openstudio/eeb_rb/simulate-openstudio.php" method="post" onsubmit="return valForm('comprehensive-form');">
+                    <section id="building">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <h2>Building</h2>
+                                        </td>
+                                        <td class="span7">
+                                            <div class="pull-right text-right">
+                                                
+                                                <button type="button" onclick="building101Data_comprehensive()" class="btn">
+                                                    <i class="icon-plus"></i><b>Building 101 Data</b>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Building Name</h4>
+                                    <input class="span3" type="text" id="building_name" name="building_name">
+                                    <br/>
+                                    <h4>Location</h4>
+                                    <div class="input-append">
+                                        <select class="span3" value="this.value" id="weather_epw_location" name="weather_epw_location">
+                                            <option value="USA_NM_Albuquerque.Intl.AP.723650_TMY3">Albuquerque, NM</option>
+                                            <option value="USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3">Baltimore, MD</option>
+                                            <option value="USA_ID_Boise.Air.Terminal.726810_TMY3">Boise, ID</option>
+                                            <option value="USA_VT_Burlington.Intl.AP.726170_TMY3">Burlington, VT</option>
+                                            <option value="USA_IL_Chicago-OHare.Intl.AP.725300_TMY3">Chicago, IL</option>
+                                            <option value="USA_MN_Duluth.Intl.AP.727450_TMY3">Duluth, MN</option>
+                                            <option value="USA_TX_El.Paso.Intl.AP.722700_TMY3">El Paso, TX</option>
+                                            <option value="USA_AK_Fairbanks.Intl.AP.702610_TMY3">Fairbanks, AK</option>
+                                            <option value="USA_MT_Helena.Rgnl.AP.727720_TMY3">Helena, MT</option>
+                                            <option value="USA_TX_Houston-Bush.Intercontinental.AP.722430_TMY3">Houston, TX</option>
+                                            <option value="USA_TN_Memphis.Intl.AP.723340_TMY3">Memphis, TN</option>
+                                            <option value="USA_FL_Miami.Intl.AP.722020_TMY3">Miami, FL</option>
+                                            <option value="USA_AZ_Phoenix-Sky.Harbor.Intl.AP.722780_TMY3">Pheonix, AZ</option>
+                                            <option value="USA_PA_Philadelphia.Intl.AP.724080_TMY3" selected>Philadelphia, PA</option>
+                                            <option value="SAU_Riyadh.404380_IWEC">Riyadh, SAU</option>
+                                            <option value="USA_OR_Salem-McNary.Field.726940_TMY3">Salem, OR</option>
+                                            <option value="USA_CA_San.Francisco.Intl.AP.724940_TMY3">San Francisco, CA</option>
+                                            <option value="CAN_BC_Vancouver.718920_CWEC">Vancouver, CAN</option>
+                                        </select>
+                                        <span class="add-on">
+                                            <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="span4">
+                                    <h4>Function</h4>
+                                        <div class="input-append">
+                                            <select value="this.value" class="span3" id="activity_type" name="activity_type">
+                                                <option value="SmallOffice">Small Office</option>
+                                                <option value="MediumOffice">Medium Office</option>
+                                                <option value="LargeOffice">Large Office</option>
+                                                <option value="Warehouse">Warehouse (non-refrigerated)</option>
+                                                <option value="Retail">Core-Retail</option>
+                                                <option disabled>Stand-alone Retail</option>
+                                                <option disabled>Strip Mall</option>
+                                                <option disabled>Primary School</option>
+                                                <option disabled>Secondary School</option>
+                                                <option disabled>Outpatient Healthcare</option>
+                                                <option disabled>Hospital</option>
+                                                <option disabled>Small hotel</option>
+                                                <option disabled>Large Hotel</option>
+                                                <option disabled>Quick Service Restaurant</option>
+                                                <option disabled>Full Service Restaurant</option>
+                                                <option disabled>Mid-Rise Apartment</option>
+                                                <option disabled>High-Rise Apartment</option>
+                                            </select>
+                                            <span class="add-on">
+                                                <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html" target="_blank"><i class="icon-info-sign"></i></a>
+                                            </span>
+                                        </div>
+                                    <h4>Year Built</h4>
+                                    <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- ################################## Architecture Section 1 ############################################## -->
+                    <section id="architecture">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Architecture
+                                    <small>shape / geometry</small>
+                                </h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Gross Floor Area</h4>
+                                    <div class="input-append">
+                                        <input type="number" id="gross_floor_area" name="gross_floor_area" step="0.001">
+
+                                        <span class="add-on" id="architect-replace1"><span class="unit">m</span>&#178;</span>
+                                    </div>
+                                    <h4>Number of Floors</h4>
+                                    <input type="number" id="number_of_floors" name="number_of_floors" min="0" step="1">
+                                    <h4>% Window to Wall Area</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="window_to_wall_ratio">
+                                                    <span class="add-on">%</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    <br>
+                                    <br>
+                                    <h4>Airtightness Assessment <small>by CONTAM</small></h4>
+                                    <select class="span3" name="tightness">
+                                        <option>Leaky</option>
+                                        <option selected>Average</option>
+                                        <option>Tight</option>
+                                    </select>
+                                </div>
+                                <div class="span4">
+                                    <h4>Geometry Import</h4>
+                                    <img src="img/BuildingGEO.jpg" class="img-polaroid">
+                                    <!--UPLOAD IFC-->
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="input-append">
+                                            <div class="uneditable-input span2">
+                                                <i class="icon-file fileupload-exists"></i>
+                                                <span class="fileupload-preview">coming soon</span>
+                                            </div>
+                                            <span class="btn btn-file">
+                                                <span class="fileupload-new">Upload Building Model (.IFC)</span>
+                                                <span class="fileupload-exists"></span>
+                                                <input type="file" />
+                                            </span>
+                                            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                        </div>
+                                    </div>
+                                    <!--UPLOAD IFC-->
+                                    <h2 class="text-right">
+                                        <small>BIMserver will extract &
+                                            <a href="http://www.virtualpulse.us/V1">visualize </a>external walls, windows, numbers of floors, gross floor area for simulation.</small>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span4" >
+                                    <h4>Shape</h4>
+                        			<select onchange="changeShape(this.value)" name="footprint_shape" id="footprint_shape" placeholder="footprint_shape">
+                        				<option value=""> - </option>
+                        				<option value="Rectangle"> Rectangle </option>
+                        				<option value="L">L Shape</option>
+                        				<option value="T" selected>T Shape</option>
+                        				<option value="U">U Shape</option>
+                        				<option value="H" >H Shape</option>
+                        				<option value="Pie" >Pie</option>
+                                        <option value="Polygon" disabled>Geometry From Import</option>
+                                    </select>
+                                
+                                    <div id="extend-img" >
+                                        <img style="width: 500px;" src="./img/T_Shape.png" class="img-rounded">
+                                    </div>
+                                </div>
+                                <div class="span4">
+                                    <div id="extend-div" >
+                                        <br><br><br>
+                                        <div class="control-group"> <label class="control-label" for="length">Length</label>
+            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="length" id="length"> <span class="add-on"><span class="unit">m</span></span></div> </div>  
+            
+            							 <div class="control-group"> <label class="control-label" for="width">Width</label>
+            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="width" id="width"> <span class="add-on"><span class="unit">m</span></span></div> </div>  
+            
+            							 <div class="control-group"> <label class="control-label" for="end_1">End 1</label>
+            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_1" id="end_1"> <span class="add-on"><span class="unit">m</span></span></div> </div>  
+            
+            							 <div class="control-group"> <label class="control-label" for="end_2">End 2</label>
+            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_2" id="end_2"> <span class="add-on"><span class="unit">m</span></span></div> </div>  
+            
+            							 <div class="control-group"> <label class="control-label" for="offset">Offset</label>
+            			                 <div class="controls input-append"> <input type="number" min="1" step="0.001" name="offset" id="offset"> <span class="add-on"><span class="unit">m</span></span></div> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- ####################################### Architecture Seciton 2 ################################################## -->
+                    <section>
+                        <div class="box-unit">
+                            <div class="page-header">
+                                <h2>Architecture
+                                    <small>typical room</small>
+                                </h2>
+                            </div>
+                            <div class="row">
+                                <div class="span2">
+                                    <img class="img-rounded" src="img/room_dimensions.png">
+                                </div>
+                                <div class="span3" id="architect2-replace1">
+                                    <h4>Room Width</h4>
+                                    <div class="input-append">
+                                        <input disabled type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                        name="room_width" />
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                    <h4>Room Depth</h4>
+                                    <div class="input-append">
+                                        <input disabled type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                        name="room_depth" />
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                    <h4>Room Height</h4>
+                                    <div class="input-append">
+                                        <input disabled type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                        name="room_height" />
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <h4>Window Facade Orientation</h4>
+                                    <select disabled name="exterior_shading_orientation"
+                                    class="span2">
+                                        <option>North</option>
+                                        <option>North-East</option>
+                                        <option>East</option>
+                                        <option>South-East</option>
+                                        <option>South</option>
+                                        <option>South-West</option>
+                                        <option>West</option>
+                                        <option>North-West</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span2">
+                                    <img class="img-rounded" src="img/overhang.gif" width="170">
+                                </div>
+                                <div class="span3">
+                                    <h4>Overhang Depth</h4>
+                                    <div class="input-append">
+                                        <input disabled class="span2" id="appendedInput" type="number" name="overhang_depth">
+                                        <span class="add-on" id="architect2-replace2"><span class="unit">m</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- #################################### Materials Section ############################################### -->
+                    <section id="materials">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Materials</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Windows</h4>
+                                    <select class="span3" name="window_glass_type" disabled>
+                                        <option>Multi-layer Glass</option>
+                                        <option>Single Layer Clear Glass</option>
+                                        <option>Reflective Glass</option>
+                                        <option>Dark Tint Glass</option>
+                                        <option>Combination</option>
+                                        <option>No Windows</option>
+                                        <option>Unknown</option>
+                                    </select>
+                                    <h4>Roof</h4>
+                                    <select value="this.value" name="roof_type" class="span3">
+                                        <option value="Metal" selected>Metal Roof</option>
+                                        <option disabled>Insulation Entirely Above Deck</option>
+                                        <option disabled>Attic and Other</option>
+                                    </select>
+                                </div>
+                                <div class="span4">
+                                    <h4>Walls</h4>
+                                    <select value="this.value" name="exterior_wall_type" class="span3">
+                                        <option value="Concrete Mass" selected>Concrete Mass</option>
+                                        <option value="Metal" >Metal</option>
+                                        <option value="Steel Framed">Steel Framed</option>
+                                        <option value="Wood Framed" disabled>Wood Framed and Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- ##################################### People Section ############################################# -->
+                    <section id="people">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>People</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>People Density</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" placeholder="building type default" name="people_density" disabled>
+                                        <span class="add-on" id="people-replace">People/<span class="unit">m</span>&sup2;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- ########################################## Lighting Section ##################################### -->
+                    <section id="lighting">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Lighting
+                                    <small>by DAYSIM</small>
+                                </h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4" id="lighting-replace">
+                                    <h4>Lighting Power Density</h4>
+                                    <div class="input-append">
+                                        <input disabled class="span2" id="appendedInput" type="text" name="lighting_power_density">
+                                        <span class="add-on">W/<span class="unit">m</span>&sup2;</span>
+                                    </div>
+                                    <h4>Window Head Height</h4>
+                                    <div class="input-append">
+                                        <input disabled class="span2" id="appendedInput" type="text" placeholder="floor to top of window" name="window_head_height">
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                    <h4>Wall Thickness</h4>
+                                    <div class="input-append">
+                                        <input disabled class="span2" id="appendedInput" type="text" name="wall_thickness">
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                    <h4>Shading Device</h4>
+                                    <select disabled class="span3" name="interior_shading_type">
+                                        <option>Horizontal Blinds</option>
+                                        <option>Fabric Shades</option>
+                                        <option>None</option>
+                                    </select>
+                                </div>
+                                <div class="span4">
+                                    <h4>Floor Reflectance</h4>
+                                    <input disabled id="floorSlider" type="range" class="span2"
+                                    min="0" max="1" step="0.01" onchange="printValue('floorSlider','floorRangeValue')"
+                                    />
+                                    <input disabled id="floorRangeValue" name="floor_reflectance" type="number" class="span1" min="0" max="1"
+                                    step="0.01" />
+                                    <h4>Ceiling Reflectance</h4>
+                                    <input disabled id="ceilingSlider" type="range" class="span2"
+                                    min="0" max="1" step="0.01" onchange="printValue('ceilingSlider','ceilingRangeValue')"
+                                    />
+                                    <input disabled id="ceilingRangeValue" name="ceiling_reflectance" type="number" class="span1" min="0" max="1"
+                                    step="0.01" />
+                                    <h4>Wall Reflectance</h4>
+                                    <input disabled id="wallSlider" type="range" class="span2"
+                                    min="0" max="1" step="0.01" onchange="printValue('wallSlider','wallRangeValue')"
+                                    />
+                                    <input disabled id="wallRangeValue" name="wall_reflectance" type="number" class="span1" min="0" max="1"
+                                    step="0.01" />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- ######################################### Mechanical Section ########################################### -->
+                    <section id="mechanical">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Mechanical</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Primary HVAC System</h4>
+                                    <select value="this.value" name="primary_hvac_type" disabled>
+                                        <option value="SystemType1">PTAC Packaged Terminal Air Conditioner</option>
+                                        <option value="SystemType2">PTHP Packaged Terminal Heat Pump</option>
+                                        <option value="SystemType3">PSZ-AC Packaged Rooftop Air Conditioner</option>
+                                        <option value="SystemType4">PSZ-HP Packaged Rooftop Heat Pump</option>
+                                        <option value="SystemType5">Packaged Rooftop VAV with Reheat & DX Refrigerant</option>
+                                        <option value="SystemType6">Packaged Rooftop VAV with parallel fan power boxes & reheat</option>
+                                        <option value="SystemType7">Packaged Rooftop VAV with Reheat & Chiller</option>
+                                        <option value="SystemType8" selected>VAV with parallel fan-powered boxes and reheat</option>
+                                        <option value="SystemType9">Warm Air Furnace Gas Fired</option>
+                                        <option value="SystemType10">Warm Air Furnace Electric</option>
+                                    </select>
+                                </div>
+                                <div class="span4">
+                                    <h4>Equipment Power Density</h4>
+                                    <div class="input-append">
+                                        <input class="span2" name="equipment_power_density" id="appendedInput" type="text" placeholder="building type default" disabled>
+                                        <span class="add-on" id="mechanical-replace">W/<span class="unit">m</span>&sup2;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <h2 class="text-right">
+                                <small>HVAC system type & efficiency are based on building type defaults</small>
+                            </h2>
+                    </section>
+                    
+                    <!-- ########################################### Schedules Section ########################################## -->
+                    <section id="schedules">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Schedules</h2>
+                                <h2>
+                                    <small>Occupancy, lighting, equipment schedules are defaulted from building function</small>
+                                </h2>
+                            </div>
+                            <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html">
+                            <img src="img/schedules/large_office.png" class="img-polaroid"></a>
+                            <div class="text-right">
+                                <h2><small>based off of
+                                    <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html">DOE's Commercial Reference Buildings</a>  
+                                </small></h2>
+                                <h6 style="color:gray;">[  <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html">NREL Reference</a> | <a href="http://www.energycodes.gov/development/commercial/90.1_models">PNNL Prototype</a> | <a href="http://www.eia.gov/consumption/commercial/building-type-definitions.cfm">EIA Survey</a>  ]</h6>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- ######################################### Energy Conservation Section ######################################### -->
+                    <section id="conservation">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Energy Conservation Measures</h2>
+                                <h2>
+                                    <small>Choose ECMs to add to your baseline (coming soon)</small>
+                                </h2>
+                            </div>
+                            <label class="checkbox">
+                                <input name="conservation_lighting" type="checkbox" disabled>Lighting Upgrade</label>
+                            <label class="checkbox">
+                                <input name="conservation_window" type="checkbox" disabled>Window Upgrade</label>
+                            <label class="checkbox">
+                                <input name="conservation_economizer" type="checkbox" disabled>Economizer</label>
+                        </div>
+                    </section>
+                    
+                    <!-- ###################################### Buttons Group ############################################# -->
+                    <div id="box-unit">
+                        <input type="submit" class="btn btn-large btn-primary" value="SIMULATE">
+                        <a class="btn btn-large btn-info" href="http://128.118.67.241/tools.eebhub.org/energy-use.php"><i class="icon-signal"></i> Example Outputs</a>
+                        <img style="text-align:right;float:right;" src="img/doe-engines.png" alt="DOE" width="250" height="58">
+                        <br style="clear:both" />
+                        <h2 class="text-right">
+                            <small>powered by OpenStudio SDK + EnergyPlus, DAYSIM, CONTAM Engines</small>
+                        </h2>
+                    </div>
+                    
+                    <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
+                    
+                    </form>
+                </div>
+            </div>
+            
+            
+            <!-- ################################ Loading Bar ##################################################### -->
+            <div class="loading-div container-fluid">
+            	<div id="filter" > 
+            	</div>
+            
+            	<div class="progress progress-striped active">
+            	  <div class="bar" ></div>
+            	</div>
+            
+            	<h4 id="loading-status">Simulation In Progress ...</h4>
+            </div>
+            
+            <!--  Testing Loading Bar 
+            <button class="button" onclick="$('input, select, a, button').attr('disabled', 'disabled'); $('.main-div, header, .top-nav, footer').fadeTo('slow', 0.33);$('.loading-div').fadeIn('slow');  loading();"> Loading </button>
+            -->
+            
+            
+            <!-- Javascript: HighChart, Bootstrap, Jquery -->
+            <script src="http://code.jquery.com/jquery.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/bootstrap-scrollspy.js"></script>
+            <script src="js/bootstrap-fileupload.js"></script>
+            <script>
+        	function changeShape(shape) {
+        		var extend_inputs= '';                  // additional shape info
+        		var img_scr = '';                       // image source for the shape
+                
+                //var inputunitid = document.getElementById('input_unit_id');
+                //var unitid = inputunitid.options[inputunitid.selectedIndex].value;
+                var unitid = $("#si-ip").val();
+                var unit = 'm';
+                if(unitid=='ip'){
+                    unit = 'ft';
+                }else if(unitid=='si'){
+                    unit = 'm';
+                }
+        
+        		switch(shape) {
+        		case 'L':
+        			img_scr = 'L_Shape';
+        			extend_inputs = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width" id="width"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_1" id="end_1"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_2" id="end_2"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' ;
+        		break;
+        
+        		case 'U':
+        			img_scr = 'U_Shape';
+        			extend_inputs = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width_1">Width 1</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width_1" id="width_1"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width_2">Width 2</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width_2" id="width_2"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_1" id="end_1"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +    
+        
+        							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="end_2" id="end_2"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="offset">OffSet</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="offset" id="offset"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>';
+        		break;
+        
+        		case 'T':
+        			img_scr = 'T_Shape';
+        			extend_inputs = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="length" id="length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="width" id="width"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_1">End 1</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_1" id="end_1"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="end_2">End 2</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="end_2" id="end_2"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="offset">Offset</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" step="0.001" name="offset" id="offset"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span></div> </div>' ;
+        		break;
+        
+        		case 'H':
+        
+        			img_scr = 'H_Shape';
+        
+        			extend_inputs = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width">Left Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_width" id="left_width"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="center_width">Center Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="center_width" id="center_width"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="right_width">Right Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_width" id="right_width"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="left_end_length">Left End Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_end_length" id="left_end_length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +    
+        
+        							' <div class="control-group"> <label class="control-label" for="right_end_length">Right End Length </label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_end_length" id="right_end_length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="left_upper_end_offset">Left Upper End Offset</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="left_upper_end_offset" id="left_upper_end_offset"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="right_upper_end_offset">Right Upper End OffSet</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="right_upper_end_offset" id="right_upper_end_offset"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>';
+        		break;
+        
+        		case 'Rectangle':
+        			img_scr = 'Rectangle';
+        			extend_inputs = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="length">Length</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="length" id="length"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="width">Width</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="width" id="width"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>';
+        		break;
+        
+        		case 'Pie':
+        			img_scr = 'Pie_Shape';
+        			extend_inputs = ' <br><br><br>' +
+        			                ' <div class="control-group"> <label class="control-label" for="radius_a">Radius A</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="radius_a" id="radius_a"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="radius_b">Radius B</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="radius_b" id="radius_b"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="num_points">Number Of Points</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="num_points" id="num_points"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' +  
+        
+        							' <div class="control-group"> <label class="control-label" for="degree">Degree</label>' +
+        			                ' <div class="controls input-append"> <input type="number" min="1" name="degree" id="degree"><span class="add-on">'+'<span class="unit">'+unit+'</span>'+'</span> </div> </div>' ;
+        		break;
+        		default:
+        			extend_inputs = '';
+        			$('#extend-div').html(extend_inputs);
+        			return 0;
+        		break;
+        		}
+        		var img = '<img style="width: 500px;" src="./img/'+img_scr+'.png" class="img-rounded">';
+        		$('#extend-img').html(img);
+        		$('#extend-div').html(extend_inputs);
+        	}
+        	
+        	// update loading bar
+        	function loading() {
+        	    
+        	    // current progress number in pixel
+            	var num = 0;
+            	
+            	// update the progress every second
+            	var update = setInterval(function(){
+            	    
+            	    // update the loading-status (text)
+            	    $("#loading-status").html("Simulation In Progress "+parseInt(num/$(".loading-div").width()*100)+"%");
+            		
+            		// loading to the next process
+            		if(num>=$(".loading-div").width()) { 
+            				$("#loading-status").html("Loading...");
+            				clearInterval(update);
+            		}
+            		
+            		// update the loading bar 
+            		$(".bar").width(num);
+                    
+                    // increase the loading bar 3 pixes per second.
+            		num=num+3;
+            	},1000);
+            }
+        	
+        	
+            // Verify the form inputs.
+            // if the input is invalid, it popups an alert to warn the user.
+            function valForm(theForm)
+            {
+            	var f = document.getElementById(theForm);	
+            	var buildingName =	f.building_name.value;
+            	var locationID = f.weather_epw_location.value;
+            	var functionID = f.activity_type.value;
+            	var numberFloors = f.number_of_floors.value;
+            	var floorArea = f.gross_floor_area.value;
+            	var roofMaterial= f.roof_type.value;
+            	var wallMaterial = f.exterior_wall_type.value;
+            	var windowPercent = f.window_to_wall_ratio.value;
+                var shape = f.footprint_shape.value;
+            
+                // error message
+            	var err_msg = "Please Enter Valid: \n\n";
+            	
+            	if(buildingName ==""){
+            		err_msg+="Building - Building Name \n";
+            	}
+            	if(locationID ==""){
+            		err_msg+="Building - City \n";
+            	}
+            	if(functionID ==""){
+            		err_msg+="Building - Function \n";
+            	}
+            	
+            	if(windowPercent =="" || windowPercent > 99 || windowPercent < 10){
+            		err_msg+="Architecture - % Window to Wall Area \n";
+            	}
+            	if(numberFloors =="" || numberFloors < 0 || numberFloors > 300){
+            		err_msg+="Architecture - Number of Floors \n";
+            	}
+            	if(floorArea =="" ||floorArea < 50 || floorArea > 7000000){
+            		err_msg+="Architecture - Gross Floor Area \n";
+            	}
+            	if(shape == "") {
+                    err_msg+="Architecture - Shape \n";            	    
+            	}
+            	
+            	switch(shape){
+            	    case 'Rectangle':
+            	        if(f.length.value == "") {
+            	            err_msg+="Architecture - Shape - Length \n";
+            	        }
+            	        if(f.width.value == "") {
+            	            err_msg+="Architecture - Shape - Width \n";
+            	        }
+            	    break;
+            	    
+            	    case 'H':
+            	        if(f.length.value == "") {
+            	            err_msg+="Architecture - Shape - Length \n";
+            	        }
+            	        if(f.left_width.value == "") {
+            	            err_msg+="Architecture - Shape - Left Width \n";
+            	        }
+            	        if(f.center_width.value == "") {
+            	            err_msg+="Architecture - Shape - Center Width \n";
+            	        }
+            	        if(f.right_width.value == "") {
+            	            err_msg+="Architecture - Shape - Right Width \n";
+            	        }
+            	        if(f.left_end_length.value == "") {
+            	            err_msg+="Architecture - Shape - Left End Length \n";
+            	        }
+            	        if(f.right_end_length.value == "") {
+            	            err_msg+="Architecture - Shape - Right End Length \n";
+            	        }
+            	        if(f.left_upper_end_offset.value == "") {
+            	            err_msg+="Architecture - Shape - Left Upper End Offset \n";
+            	        }
+            	        if(f.right_upper_end_offset.value == "") {
+            	            err_msg+="Architecture - Shape - Right Upper End Offset \n";
+            	        }
+            	    break;
+            	    
+            	    case 'L':
+            	        if(f.length.value == "") {
+            	            err_msg+="Architecture - Shape - Length \n";
+            	        }
+            	        if(f.width.value == "") {
+            	            err_msg+="Architecture - Shape - Width \n";
+            	        }
+            	        if(f.end_1.value == "") {
+            	            err_msg+="Architecture - Shape - End 1 \n";
+            	        }
+            	        if(f.end_2.value == "") {
+            	            err_msg+="Architecture - Shape - End 2 \n";
+            	        }
+            	    break;
+            	    
+                    case 'T':
+            	        if(f.length.value == "") {
+            	            err_msg+="Architecture - Shape - Length \n";
+            	        }
+            	        if(f.width.value == "") {
+            	            err_msg+="Architecture - Shape - Width \n";
+            	        }
+            	        if(f.end_1.value == "") {
+            	            err_msg+="Architecture - Shape - End 1 \n";
+            	        }
+            	        if(f.end_2.value == "") {
+            	            err_msg+="Architecture - Shape - End 2 \n";
+            	        }
+            	        if(f.offset.value == "") {
+            	            err_msg+="Architecture - Shape - offset \n";
+            	        }
+            	    break;
+            	    
+            	    case 'U':
+            	        if(f.length.value == "") {
+            	            err_msg+="Architecture - Shape - Length \n";
+            	        }
+            	        if(f.width_1.value == "") {
+            	            err_msg+="Architecture - Shape - Width 1 \n";
+            	        }
+            	        if(f.width_2.value == "") {
+            	            err_msg+="Architecture - Shape - Width 2 \n";
+            	        }
+            	        if(f.end_1.value == "") {
+            	            err_msg+="Architecture - Shape - End 1 \n";
+            	        }
+            	        if(f.end_2.value == "") {
+            	            err_msg+="Architecture - Shape - End 2 \n";
+            	        }
+            	        if(f.offset.value == "") {
+            	            err_msg+="Architecture - Shape - Offset \n";
+            	        }
+            	    break;
+            	    
+            	    case 'Pie':
+            	        if(f.radius_a.value == "") {
+            	            err_msg+="Architecture - Shape - Radius A \n";
+            	        }
+            	        if(f.radius_b.value == "") {
+            	            err_msg+="Architecture - Shape - Radius B \n";
+            	        }
+            	        if(f.num_points.value == "") {
+            	            err_msg+="Architecture - Shape - Number Of Points \n";
+            	        }
+            	        if(f.degree.value == "") {
+            	            err_msg+="Architecture - Shape - Degree \n";
+            	        }
+            	    break;
+            	    
+            	    
+            	    
+            	}
+            	
+            	if(roofMaterial ==""){
+            		err_msg+="Materials - Roof \n";
+            	}
+            	if(wallMaterial ==""){
+            		err_msg+="Materials - Walls \n";
+            	}
+            
+                // handle the submission success
+            	if(err_msg == "Please Enter Valid: \n\n") 
+            	{ 
+                    $('#baseline-form, header, .top-nav, footer').fadeTo('slow', 0.33);
+                    $('.loading-div').fadeIn('slow');  
+            		$('html,body').css('overflow', 'hidden');
+                    loading(); 
+            		
+            		return true; 
+            	}	
+            
+                // handle the submission is failed 
+            	else {      
+            		alert(err_msg); 
+            		return false;
+            	}
+            }
+           
+        	</script>
+        	   <script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            
+              ga('create', 'UA-26348074-7', 'eebhub.org');
+              ga('send', 'pageview');
+            
+            </script>
+    </body>
+
+</html>

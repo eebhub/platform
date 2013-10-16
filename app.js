@@ -29,53 +29,82 @@ var User = mongoose.model('users', UserSchema);
 var BuildingSchema = new mongoose.Schema({
     username: String,
     building: {
-          building_info: {building_name: String,
-                          weather_epw_location: String,
-                          activity_type: String,
-                          activity_type_specific: String},
-          architecture:  {gross_floor_area: String,
-                          number_of_floors: String,
-                          window_to_wall_ratio: String,
-                          footprint_shape: String,
-                          building_height: String,
-                          perimeter: String},
-          materials:      {exterior_wall_type: String,
-                           window_glass_type: String,
-                           roof_type: String},
+          building_info: {building_name: String,  //4
+                          weather_epw_location: String,  //4
+                          year_completed: String, //l,p,c
+                          activity_type: String, //4
+                          activity_type_specific: String   //s
+                          },
+          architecture:  {gross_floor_area: String,    //l,s,c
+                          number_of_floors: String,    //s,c
+                          window_to_wall_ratio: String,   //s,c
+                          footprint_shape: String,        //s,c
+                          building_height: String,        //s
+                          perimeter: String,              //s
+                          tightness: String                //c
+                          },  
+          typical_room:   {room_width: String,      //p
+                           room_depth: String,      //p
+                           room_height: String,     //p
+                           exterior_shading_orientation: String,   //p
+                           window_to_wall_ratio: String,     //p
+                           number_of_floors: String,  //p
+                           overhang_depth: String   //p
+                           },                  
+          materials:      {wall_insulation_r_value: String,  //p
+                           thermal_mass: String,    //p
+                           window_glass_coating: String,    //p
+                           window_glass_type: String,    //p,s,c
+                           roof_type: String,        //p,s,c
+                           roof_insulation_type: String,   //p
+                           roof_insulation_location: String,     //p
+                           exterior_wall_type: String          //s,c
+                           },
             
-          people:         {number_of_employees_during_main_shift: String},
-          
-          mechanical:     {primary_hvac_type: String,
-                           electricity_used_for_main_heating: String,
-                           natural_gas_used_for_main_heating: String,
-                           fuel_oil_used_for_main_heating: String,
-                           propane_used_for_main_heating: String,
-                           district_steam_used_for_main_heating: String,
-                           district_hot_water_used_for_main_heating: String,
-                           electricity_used_for_cooling: String,
-                           natural_gas_used_for_cooling: String,
-                           fuel_oil_used_for_cooling: String,
-                           propane_used_for_cooling: String,
-                           district_steam_used_for_cooling: String,
-                           district_hot_water_used_for_cooling: String,
-                           district_chilled_water_used_for_cooling: String,
-                           electricity_used_for_water_heating: String,
-                           natural_gas_used_for_water_heating: String,
-                           fuel_oil_used_for_water_heating: String,
-                           propane_used_for_water_heating: String,
-                           district_steam_used_for_water_heating: String,
-                           district_hot_water_used_for_water_heating: String},
+          people:         {people_density: String,    //p
+                           number_of_employees_during_main_shift: String     //s
+                           },
                            
-          schedules:      {open_24_hours_a_day: String,
-                           average_weekly_operating_hours: String,
-                           open_during_week: String,
-                           open_on_weekend: String,
-                           weekday_occupancy_hours_day_start: String,
-                           weekday_occupancy_hours_day_end: String,
-                           saturday_occupancy_hours_day_start: String,
-                           saturday_occupancy_hours_day_end: String,
-                           sunday_occupancy_hours_day_start: String,
-                           sunday_occupancy_hours_day_end: String}
+          lighting:       {illuminance: String        //p
+                           },                      
+          
+          mechanical:     {equipment_power_density: String,     //p
+                           ventilation_system: String,          //p
+                           primary_hvac_type: String,           //s
+                           electricity_used_for_main_heating: String,      //s
+                           natural_gas_used_for_main_heating: String,      //s
+                           fuel_oil_used_for_main_heating: String,         //s
+                           propane_used_for_main_heating: String,          //s
+                           district_steam_used_for_main_heating: String,    //s
+                           district_hot_water_used_for_main_heating: String,   //s
+                           electricity_used_for_cooling: String,               //s
+                           natural_gas_used_for_cooling: String,               //s
+                           fuel_oil_used_for_cooling: String,                  //s
+                           propane_used_for_cooling: String,                   //s
+                           district_steam_used_for_cooling: String,            //s
+                           district_hot_water_used_for_cooling: String,        //s
+                           district_chilled_water_used_for_cooling: String,    //s
+                           electricity_used_for_water_heating: String,         //s
+                           natural_gas_used_for_water_heating: String,         //s
+                           fuel_oil_used_for_water_heating: String,            //s
+                           propane_used_for_water_heating: String,             //s
+                           district_steam_used_for_water_heating: String,      //s
+                           district_hot_water_used_for_water_heating: String   //s
+                           }, 
+                           
+          schedules:      {weekday_occupancy_start: String,    //p
+                           weekday_occupancy_end: String,      //p
+                           open_24_hours_a_day: String,        //s
+                           average_weekly_operating_hours: String,   //s
+                           open_during_week: String,                 //s
+                           open_on_weekend: String,                  //s
+                           weekday_occupancy_hours_day_start: String,     //s
+                           weekday_occupancy_hours_day_end: String,       //s
+                           saturday_occupancy_hours_day_start: String,    //s
+                           saturday_occupancy_hours_day_end: String,      //s
+                           sunday_occupancy_hours_day_start: String,      //s
+                           sunday_occupancy_hours_day_end: String         //s
+                           }
           }                  
    
 });

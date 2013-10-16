@@ -353,35 +353,35 @@
                                 <div class="span3" id="architect2-replace1">
                                     <h4>Room Width</h4>
                                     <div class="input-append">
-                                        <input disabled type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                        <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
                                         name="room_width" />
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
                                     <h4>Room Depth</h4>
                                     <div class="input-append">
-                                        <input disabled type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                        <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
                                         name="room_depth" />
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
                                     <h4>Room Height</h4>
                                     <div class="input-append">
-                                        <input disabled type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                        <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
                                         name="room_height" />
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
                                 </div>
                                 <div class="span3">
                                     <h4>Window Facade Orientation</h4>
-                                    <select disabled name="exterior_shading_orientation"
+                                    <select name="exterior_shading_orientation"
                                     class="span2">
-                                        <option>North</option>
-                                        <option>North-East</option>
-                                        <option>East</option>
-                                        <option>South-East</option>
-                                        <option>South</option>
-                                        <option>South-West</option>
-                                        <option>West</option>
-                                        <option>North-West</option>
+                                        <option value="0">North</option>
+                                        <option value="45">North-East</option>
+                                        <option value="90">East</option>
+                                        <option value="135">South-East</option>
+                                        <option value="180">South</option>
+                                        <option value="225">South-West</option>
+                                        <option value="270">West</option>
+                                        <option value="315">North-West</option>
                                     </select>
                                 </div>
                             </div>
@@ -392,7 +392,7 @@
                                 <div class="span3">
                                     <h4>Overhang Depth</h4>
                                     <div class="input-append">
-                                        <input disabled class="span2" id="appendedInput" type="number" name="overhang_depth">
+                                        <input class="span2" id="appendedInput" type="number" name="overhang_depth">
                                         <span class="add-on" id="architect2-replace2"><span class="unit">m</span></span>
                                     </div>
                                 </div>
@@ -409,14 +409,11 @@
                             <div class="row">
                                 <div class="span4">
                                     <h4>Windows</h4>
-                                    <select class="span3" name="window_glass_type" disabled>
-                                        <option>Multi-layer Glass</option>
-                                        <option>Single Layer Clear Glass</option>
-                                        <option>Reflective Glass</option>
-                                        <option>Dark Tint Glass</option>
-                                        <option>Combination</option>
-                                        <option>No Windows</option>
-                                        <option>Unknown</option>
+                                    <select class="span3" name="window_transmittance">
+                                        <option value="0.89">Single Clear</option>
+                                        <option value="0.80">Double Clear</option>
+                                        <option value="0.60">Double Light Tint</option>
+                                        <option value="0.44">Triple Low-E</option>
                                     </select>
                                     <h4>Roof</h4>
                                     <select value="this.value" name="roof_type" class="span3">
@@ -468,44 +465,49 @@
                                 <div class="span4" id="lighting-replace">
                                     <h4>Lighting Power Density</h4>
                                     <div class="input-append">
-                                        <input disabled class="span2" id="appendedInput" type="text" name="lighting_power_density">
+                                        <input class="span2" id="appendedInput" type="text" name="lighting_power_density">
                                         <span class="add-on">W/<span class="unit">m</span>&sup2;</span>
+                                    </div>
+                                    <h4>Target Illuminance</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" name="illuminance">
+                                        <span class="add-on"><span class="unit">lux</span></span>
                                     </div>
                                     <h4>Window Head Height</h4>
                                     <div class="input-append">
-                                        <input disabled class="span2" id="appendedInput" type="text" placeholder="floor to top of window" name="window_head_height">
+                                        <input class="span2" id="appendedInput" type="text" placeholder="floor to top of window" name="window_head_height">
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
                                     <h4>Wall Thickness</h4>
                                     <div class="input-append">
-                                        <input disabled class="span2" id="appendedInput" type="text" name="wall_thickness">
+                                        <input class="span2" id="appendedInput" type="text" name="wall_thickness">
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
-                                    <h4>Shading Device</h4>
-                                    <select disabled class="span3" name="interior_shading_type">
-                                        <option>Horizontal Blinds</option>
-                                        <option>Fabric Shades</option>
-                                        <option>None</option>
-                                    </select>
                                 </div>
                                 <div class="span4">
+                                    <h4>Shading Device</h4>
+                                    <select class="span3" name="interior_shading_type">
+                                        <option value="Horizontal_Blinds">Horizontal Blinds</option>
+                                        <option value="Fabric_Shades">Fabric Shades</option>
+                                        <option value="None">None</option>
+                                    </select>
                                     <h4>Floor Reflectance</h4>
-                                    <input disabled id="floorSlider" type="range" class="span2"
+                                    <input id="floorSlider" type="range" class="span2"
                                     min="0" max="1" step="0.01" onchange="printValue('floorSlider','floorRangeValue')"
                                     />
-                                    <input disabled id="floorRangeValue" name="floor_reflectance" type="number" class="span1" min="0" max="1"
+                                    <input id="floorRangeValue" name="floor_reflectance" type="number" class="span1" min="0" max="1"
                                     step="0.01" />
                                     <h4>Ceiling Reflectance</h4>
-                                    <input disabled id="ceilingSlider" type="range" class="span2"
+                                    <input id="ceilingSlider" type="range" class="span2"
                                     min="0" max="1" step="0.01" onchange="printValue('ceilingSlider','ceilingRangeValue')"
                                     />
-                                    <input disabled id="ceilingRangeValue" name="ceiling_reflectance" type="number" class="span1" min="0" max="1"
+                                    <input id="ceilingRangeValue" name="ceiling_reflectance" type="number" class="span1" min="0" max="1"
                                     step="0.01" />
                                     <h4>Wall Reflectance</h4>
-                                    <input disabled id="wallSlider" type="range" class="span2"
+                                    <input id="wallSlider" type="range" class="span2"
                                     min="0" max="1" step="0.01" onchange="printValue('wallSlider','wallRangeValue')"
                                     />
-                                    <input disabled id="wallRangeValue" name="wall_reflectance" type="number" class="span1" min="0" max="1"
+                                    <input id="wallRangeValue" name="wall_reflectance" type="number" class="span1" min="0" max="1"
                                     step="0.01" />
                                 </div>
                             </div>

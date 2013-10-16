@@ -172,6 +172,7 @@
                                 <div class="span4">
                                     <h4>Building Name</h4>
                                     <input class="span3" type="text" id="building_name" name="building_name">
+									<input type="hidden" id="random_number" name="random_number">
                                     <br/>
                                     <h4>Location</h4>
                                     <div class="input-append">
@@ -628,7 +629,8 @@
              <div class="bar" ></div>
              </div>
             
-             <h4 id="loading-status">Simulation In Progress ...</h4>
+             <h4 id="loading-status">Simulation In Progress ...
+				<h6 id="real-time-output"></h4>
             </div>
             
             <!-- Testing Loading Bar
@@ -648,7 +650,7 @@
             <script src="js/bootstrap.min.js"></script>
             <script src="js/bootstrap-scrollspy.js"></script>
             <script src="js/bootstrap-fileupload.js"></script>
-        <script>
+<script>
 			
             	var chart = new Highcharts.Chart
 				({
@@ -755,6 +757,8 @@
 
 			var currentRanNum = Math.floor((Math.random()*10000)+1);									// random number 1->10,000 sent to simulate-openstudio.php to designate a path 
 			document.getElementById("random_number").value = currentRanNum;								// set hidden div "random_number" so that it can be retrieved by ruby script
+
+			document.write(document.getElementById("random_number").value);
 
 			console.log("%d", document.getElementById("random_number").value);
 
@@ -929,7 +933,7 @@
 					var Req = getXmlHttpRequestObject();				// get xml request based off of browser
 
 					// currentRanNum is created in this js and sent to simulate-openstudio.php to designate path to save output
-					var filename = "http://localhost/openstudio/outputs/ENERGYPLUS/idf/Simulation_"+currentRanNum+".idf/EnergyPlusPreProcess/EnergyPlus-0/stdout"; 				
+					var filename = "http://128.118.67.241/openstudio/outputs/ENERGYPLUS/idf/Simulation_"+currentRanNum+".idf/EnergyPlusPreProcess/EnergyPlus-0/stdout"; 				
 		
 
 					Req.open("GET",filename,false);		
@@ -965,8 +969,8 @@
         		    		}						
 					}			
 				}
-					Req.send();															// send the request to the browser
-				}, 1);																	// loadingBar function interval set to fire every 1 millisecond
+					Req.send();												// send the request to the browser
+				}, 1);														// loadingBar function interval set to fire every 1 millisecond
             }
         
             // Verify the form inputs.

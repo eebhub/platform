@@ -65,10 +65,24 @@
                 printValue('obstructionSlider', 'obstructionRangeValue');
             }
         </script>
+        
+        <script>
+        function buildingInfoPop(){
+            
+                var form = document.forms.platformForm;
+                console.log("<%= bldname %>");
+                form.building_name.value = "<%= bldname %>";
+                form.activity_type.value = "<%=  bld_function %>";
+                form.weather_epw_location.value = "<%= bld_location %>";
+                form.year_completed.value = "<%= bld_year %>";
+            
+        }
+        
+        </script>
 
     </head>
     
-    <body onload="changeShape(T)" data-spy="scroll" data-target=".bs-docs-sidebar">
+    <body onload="buildingInfoPop();" data-spy="scroll" data-target=".bs-docs-sidebar">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -204,9 +218,9 @@
                                     <h4>Function</h4>
                                         <div class="input-append">
                                             <select value="this.value" class="span3" id="activity_type" name="activity_type">
-                                                <option value="SmallOffice">Small Office</option>
-                                                <option value="MediumOffice">Medium Office</option>
-                                                <option value="LargeOffice">Large Office</option>
+                                                <option value="Small Office">Small Office</option>
+                                                <option value="Medium Office">Medium Office</option>
+                                                <option value="Large Office">Large Office</option>
                                                 <option value="Warehouse">Warehouse (non-refrigerated)</option>
                                                 <option value="Retail">Core-Retail</option>
                                                 <option disabled>Stand-alone Retail</option>

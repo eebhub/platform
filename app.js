@@ -10,7 +10,6 @@ var express = require('express')
   , lite = require("./routes/lite.js")
   , partial = require("./routes/partial.js")
   , substantial=require("./routes/substantial.js")
-  , shjs = require('shelljs/global')
   , mongoose = require('mongoose');
 
 
@@ -173,11 +172,45 @@ app.get('/logout',function(req,res){
 });
 
 
-//app.get('/lite', routes.getLite);
-//app.get('/liteconv', routes.getLiteConv);
 app.get('/lite', function(req, res){
     if(req.session.username){
-        res.render('lite_auth');  
+        //res.render('lite_auth');  
+        
+        var bldname = '';
+        var bld_location = '';
+        var bld_function = '';
+        var bld_year = '';
+        
+        if(req.session.buildingname) {
+            //var buildingname = req.session.buildingname;
+            Building.findOne({username: req.session.username, "building.building_info.building_name": req.session.buildingname}, function(err, building) {
+                if( err || !building) console.log("No Building found");
+                else {
+                    console.log(building);
+                    bldname = building.building.building_info.building_name;
+                    console.log(bldname);
+                    bld_location = building.building.building_info.weather_epw_location;
+                    bld_function = building.building.building_info.activity_type;
+                    bld_year = building.building.building_info.year_completed;
+                    
+                     res.render('lite_auth', {
+                         'bldname': bldname,
+                         'bld_location': bld_location,
+                         'bld_function': bld_function,
+                         'bld_year': bld_year
+                     });
+                }    
+            });
+        }else{
+          res.render('lite_auth', {
+              'bldname': '',
+              'bld_function': '',
+              'bld_year': '',
+              'bld_location': ''
+          });
+        }
+        
+        
     }else{
         res.sendfile('./views/lite.html');    
     } 
@@ -186,7 +219,39 @@ app.get('/literesults', routes.getLiteResults);
 //app.get('/partial', routes.getPartial);
 app.get('/partial', function(req,res){
     if(req.session.username){
-        res.render('partial_auth');
+        var bldname = '';
+        var bld_location = '';
+        var bld_function = '';
+        var bld_year = '';
+        
+        if(req.session.buildingname) {
+            //var buildingname = req.session.buildingname;
+            Building.findOne({username: req.session.username, "building.building_info.building_name": req.session.buildingname}, function(err, building) {
+                if( err || !building) console.log("No Building found");
+                else {
+                    console.log(building);
+                    bldname = building.building.building_info.building_name;
+                    console.log(bldname);
+                    bld_location = building.building.building_info.weather_epw_location;
+                    bld_function = building.building.building_info.activity_type;
+                    bld_year = building.building.building_info.year_completed;
+                    
+                     res.render('partial_auth', {
+                         'bldname': bldname,
+                         'bld_location': bld_location,
+                         'bld_function': bld_function,
+                         'bld_year': bld_year
+                     });
+                }    
+            });
+        }else{
+          res.render('partial_auth', {
+              'bldname': '',
+              'bld_function': '',
+              'bld_year': '',
+              'bld_location': ''
+          });
+        }
     }else{
         res.sendfile('./views/partial.html');
     }
@@ -194,7 +259,37 @@ app.get('/partial', function(req,res){
 //app.get('/substantial', routes.getSubstantial);
 app.get('/substantial', function(req,res){
     if(req.session.username){
-        res.render('substantial_auth');
+        var bldname = '';
+        var bld_location = '';
+        var bld_function = '';
+        var bld_year = '';
+        
+        if(req.session.buildingname) {
+            //var buildingname = req.session.buildingname;
+            Building.findOne({username: req.session.username, "building.building_info.building_name": req.session.buildingname}, function(err, building) {
+                if( err || !building) console.log("No Building found");
+                else {
+                    console.log(building);
+                    bldname = building.building.building_info.building_name;
+                    console.log(bldname);
+                    bld_location = building.building.building_info.weather_epw_location;
+                    bld_function = building.building.building_info.activity_type;
+                    bld_year = building.building.building_info.year_completed;
+                    
+                     res.render('substantial_auth', {
+                         'bldname': bldname,
+                         'bld_location': bld_location,
+                         'bld_function': bld_function
+                     });
+                }    
+            });
+        }else{
+          res.render('substantial_auth', {
+              'bldname': '',
+              'bld_function': '',
+              'bld_location': ''
+          });
+        }
     }else{
         res.sendfile('./views/substantial.html');
     }
@@ -202,7 +297,42 @@ app.get('/substantial', function(req,res){
 //app.get('/comprehensive', routes.getComprehensive);
 app.get('/comprehensive', function(req,res){
    if(req.session.username){
-       res.render('comprehensive_auth');
+       //res.render('comprehensive_auth');
+       
+               var bldname = '';
+        var bld_location = '';
+        var bld_function = '';
+        var bld_year = '';
+        
+        if(req.session.buildingname) {
+            //var buildingname = req.session.buildingname;
+            Building.findOne({username: req.session.username, "building.building_info.building_name": req.session.buildingname}, function(err, building) {
+                if( err || !building) console.log("No Building found");
+                else {
+                    console.log(building);
+                    bldname = building.building.building_info.building_name;
+                    console.log(bldname);
+                    bld_location = building.building.building_info.weather_epw_location;
+                    bld_function = building.building.building_info.activity_type;
+                    bld_year = building.building.building_info.year_completed;
+                    
+                     res.render('comprehensive_auth', {
+                         'bldname': bldname,
+                         'bld_location': bld_location,
+                         'bld_function': bld_function,
+                         'bld_year': bld_year
+                     });
+                }    
+            });
+        }else{
+          res.render('comprehensive_auth', {
+              'bldname': '',
+              'bld_function': '',
+              'bld_location': '',
+              'bld_year': ''
+          });
+        }
+       
    }else{
        res.sendfile('./views/comprehensive.html');
    } 

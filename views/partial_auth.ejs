@@ -19,10 +19,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="js/building101Data.js"></script>
         
-        
+        <script>
+        function buildingInfoPop(){
+            
+                var form = document.forms.platformForm;
+                form.building_name.value = "<%= bldname %>";
+                form.activity_type.value = "<%=  bld_function %>";
+                form.weather_epw_location.value = "<%= bld_location %>";
+                form.year_completed.value = "<%= bld_year %>";
+            
+        }
+        </script>
     </head>
     
-    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <body data-spy="scroll" data-target=".bs-docs-sidebar" onload="buildingInfoPop();">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -124,7 +134,7 @@
                                     <div class="span4">
                                         <h4>Building Name</h4>
                                         <input class="span3" type="text" ng-model="buildingName"
-                                        name="building_name">
+                                        name="building_name" >
                                         <br/>
                                         <h4>Location</h4>
                                         <div class="input-append">

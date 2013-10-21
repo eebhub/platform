@@ -159,7 +159,7 @@ if ('development' == app.get('env')) {
 
 //Get Routing
 app.get('/', routes.getHome);
-app.get('/platform', routes.getHome); //added to reroute outdated tools.eebhub.org/platform link
+app.get('/news', routes.getNews);
 app.get("/signup", function (req, res) {
     res.render("signup");
 });
@@ -306,12 +306,28 @@ app.post("/mydashboard", function (req, res) {
 });
 
 
-//Reroutes
+//ReRoutes / ReDirects
+app.get('/platform', routes.getHome); //added to reroute outdated tools.eebhub.org/platform link
 app.get("/ideas", function (req, res) {
     res.redirect("http://eebhub.uservoice.com/forums/224458-general");
 });
 app.get("/weather", function (req, res) {
     res.redirect("http://developer.eebhub.org/weather.html");
+});
+app.get("/graphics", function (req, res) {
+    res.redirect("http://eebhub.minus.com/");
+});
+app.get("/inspiration", function (req, res) {
+    res.redirect("http://eebhub.minus.com/uploads");
+});
+app.get("/software", function (req, res) {
+    res.redirect("http://software.buildsci.us/");
+});
+app.get("/infrastructure", function (req, res) {
+    res.redirect("https://www.lucidchart.com/documents/edit/4a52-bee4-519e6f3c-9e75-655c0a009c81");
+});
+app.get("/integration", function (req, res) {
+    res.redirect("https://skydrive.live.com/view.aspx?resid=16B20B2C9752FBFF!202&app=PowerPoint");
 });
 
 

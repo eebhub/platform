@@ -34,6 +34,13 @@
                 form.submit();
             }
         </script>
+        <script>
+            function submitBuilding() {
+                var form = document.forms.platformForm;
+                form.action = "/savebuildinglite";
+                form.submit();
+            }
+        </script>
         <script type="text/javascript">
             var myApp = angular.module('myApp', ['ui.bootstrap']);
         
@@ -543,6 +550,7 @@
                         </div><!--END EXPAND COLLAPSE BUTTON by Angular-->
                         
                         <div class="box-unit">
+                            <button type="submit" onclick="submitBuilding()" class="btn btn-large btn-success">Save Building (lite)</button>
                             <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
                             <a class="btn btn-large btn-info" href="literesults"><i class="icon-signal"></i> Example Outputs</a>
                             <img style="text-align:right;float:right;" src="img/ashrae.png" alt="ASHRAE" width="85" height="59">
@@ -655,6 +663,7 @@
                         </section> 
 
                     <div class="box-unit">
+                        
                         <button onclick="submitIBM()" class="btn btn-large btn-primary">SIMULATE</button>
                         <a class="btn btn-large btn-info" href="http://eebhub.minus.com/mbw8FJL02UdsL2"><i class="icon-signal"></i> Example Outputs</a>
                          <img style="text-align:right;float:right;" src="img/ibm.png" alt="IBM" width="90" height="36">

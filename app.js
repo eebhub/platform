@@ -305,7 +305,7 @@ app.post("/mydashboard", function (req, res) {
     });
 });
 
-app.post("/savebuilding-lite", function (req, res) {
+app.post("/savebuildinglite", function (req, res) {
 	
 	    if (req.session.username){
 			        var building = new Building({

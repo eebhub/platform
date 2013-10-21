@@ -30,7 +30,9 @@ module.exports = {
     getComprehensive: function(request, response) {
         response.sendfile('./views/comprehensive.html');
     },
-       
+    getNews: function(request, response){
+        response.sendfile('./views/news.html');  
+    }, 
 
     
 };

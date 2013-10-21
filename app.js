@@ -405,7 +405,9 @@ app.post("/savebuildinglite", function (req, res) {
 
 
 //ReRoutes / ReDirects
-app.get('/platform', routes.getHome); //added to reroute outdated tools.eebhub.org/platform link
+app.get("/platform", function (req, res) {  //added to reroute outdated tools.eebhub.org/platform link
+    res.redirect("http://tools.eebhub.org");
+});
 app.get("/ideas", function (req, res) {
     res.redirect("http://eebhub.uservoice.com/forums/224458-general");
 });

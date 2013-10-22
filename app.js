@@ -172,6 +172,8 @@ app.get('/logout',function(req,res){
 });
 
 
+//app.get('/lite', routes.getLite);
+//app.get('/liteconv', routes.getLiteConv);
 app.get('/lite', function(req, res){
     if(req.session.username){
         //res.render('lite_auth');  
@@ -520,9 +522,9 @@ app.post("/savebuildinglite", function (req, res) {
           } 
    
                         }).save(); 
-
+                    req.session.buildingname = req.body.building_name;
 					console.log(req.session);
-			        res.send("building info saved!");
+			        res.send("building info (lite) saved!");
 			       
 	            
 	        } else {
@@ -534,7 +536,8 @@ app.post("/savebuildinglite", function (req, res) {
 });
 
 
-//ReRoutes / ReDirects
+//Reroutes
+
 app.get("/platform", function (req, res) {  //added to reroute outdated tools.eebhub.org/platform link
     res.redirect("http://tools.eebhub.org");
 });

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html ng-app>
-    <!-- test-->
+<html>
+    
     <head>
 <title>EEB Hub Simulation Platform Tools</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -110,13 +110,25 @@
         }
         </script>
         
+        <script>
+        function buildingInfoPop(){
+            
+                var form = document.forms.platformForm;
+                form.building_name.value = "<%= bldname %>";
+                form.activity_type.value = "<%=  bld_function %>";
+                form.weather_epw_location.value = "<%= bld_location %>";
+                form.activity_type_specific.value = "";
+            
+        }
+        </script>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="js/building101Data.js"></script>
         <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
         
     </head>
     
-    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <body data-spy="scroll" data-target=".bs-docs-sidebar" onload="buildingInfoPop();">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -149,9 +161,9 @@
                         <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font>
                     
                     <ul class="nav pull-right">
-						      <li><a href="/signup">SIGNUP</a>
+						      <li><a href="/mydashboard">My Dashboard</a>
 						      </li>
-						      <li><a href="/signin">LOGIN</a>
+						      <li><a href="/logout">LOGOUT</a>
 						      </li>
 						</ul>
                     </div>
@@ -225,24 +237,25 @@
                                     <h4>Location</h4>
                                     <div class="input-append">
                                         <select class="span3" name="weather_epw_location">
-                                            <option value="ALBUQUERQUE INTL ARPT [ISIS]">Albuquerque, NM</option>
-                                            <option value="BALTIMORE BLT-WASHNGTN INT'L">Baltimore, MD</option>
-                                            <option value="BOISE AIR TERMINAL [UO]">Boise, ID</option>
-                                            <option value="BURLINGTON INTERNATIONAL AP">Burlingotn, NH</option>
-                                            <option value="CHICAGO OHARE INTL AP">Chicago, IL</option>
-                                            <option value="DULUTH INTERNATIONAL ARPT">Duluth, MN</option>
-                                            <option value="EL PASO INTERNATIONAL AP [UT]">El Paso, TX</option>
-                                            <option value="FAIRBANKS INTL ARPT">Fairbanks, AK</option>
-                                            <option value="HELENA REGIONAL AIRPORT">Helena, MT</option>
-                                            <option value="HOUSTON BUSH INTERCONTINENTAL">Houston, TX</option>
-                                            <option value="MEMPHIS INTERNATIONAL AP">Memphis, TN</option>
-                                            <option value="MIAMI INTL AP">Miami, FL</option>
-                                            <option value="PHOENIX SKY HARBOR INTL AP">Pheonix, AZ</option>
-                                            <option value="PHILADELPHIA INTERNATIONAL AP" selected>Philadelphia, PA</option>
-                                            <option value="">Riyadh, SAU</option>
-                                            <option value="SALEM MCNARY FIELD">Salem, MA</option>
-                                            <option value="SAN FRANCISCO INTL AP">San Francisco, CA</option>
-                                            <option value="">Vancouver, CAN</option>
+                                                <option value="USA_NM_Albuquerque.Intl.AP.723650_TMY3">Albuquerque, NM</option>
+                                                <option value="USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3">Baltimore, MD</option>
+                                                <option value="USA_ID_Boise.Air.Terminal.726810_TMY3">Boise, ID</option>
+                                                <option value="USA_VT_Burlington.Intl.AP.726170_TMY3">Burlington, VT</option>
+                                                <option value="USA_IL_Chicago-OHare.Intl.AP.725300_TMY3">Chicago, IL</option>
+                                                <option value="USA_MN_Duluth.Intl.AP.727450_TMY3">Duluth, MN</option>
+                                                <option value="USA_TX_El.Paso.Intl.AP.722700_TMY3">El Paso, TX</option>
+                                                <option value="USA_AK_Fairbanks.Intl.AP.702610_TMY3">Fairbanks, AK</option>
+                                                <option value="USA_MT_Helena.Rgnl.AP.727720_TMY3">Helena, MT</option>
+                                                <option value="USA_TX_Houston-Bush.Intercontinental.AP.722430_TMY3">Houston, TX</option>
+                                                <option value="USA_TN_Memphis.Intl.AP.723340_TMY3.epw">Memphis, TN</option>
+                                                <option value="USA_FL_Miami.Intl.AP.722020_TMY3">Miami, FL</option>
+                                                <option value="USA_AZ_Phoenix-Sky.Harbor.Intl.AP.722780_TMY3">Pheonix, AZ</option>
+                                                <option value="USA_PA_Philadelphia.Intl.AP.724080_TMY3"
+                                                selected>Philadelphia, PA</option>
+                                                <option value="SAU_Riyadh.404380_IWEC">Riyadh, SAU</option>
+                                                <option value="USA_OR_Salem-McNary.Field.726940_TMY3">Salem, OR</option>
+                                                <option value="USA_CA_San.Francisco.Intl.AP.724940_TMY3">San Francisco, CA</option>
+                                                <option value="CAN_BC_Vancouver.718920_CWEC">Vancouver, CAN</option>
                                         </select>
                                         <span class="add-on">
                                             <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
@@ -253,26 +266,22 @@
                                 <h4>Function</h4>
                                     <div class="input-append">
                                         <select class="span3" name="activity_type">
-                                            <option value="Education">Education</option>
-                                            <option value="Enclosed mall">Enclosed mall</option>
-                                            <option value="Food sale">Food sale</option>
-                                            <option value="Food service">Food service</option>
-                                            <option value="Inpatient health care">Inpatient health care</option>
-                                            <option value="Laboratory">Laboratory</option>
-                                            <option value="Lodging">Lodging</option>
-                                            <option value="Non refriferation warehouse">Non refrigeration warehouse</option>
-                                            <option value="Nursing">Nursing</option>
-                                            <option value="Office">Office</option>
-                                            <option value="Other">Other</option>
-                                            <option value="Outpatient health care">Outpatient health care</option>
-                                            <option value="Public assembly">Public assembly</option>
-                                            <option value="Public order and safety">Public order and safety</option>
-                                            <option value="Refrigerated warehouse">Refrigerated warehouse</option>
-                                            <option value="Religious worship">Religious worship</option>
-                                            <option value="Retail other than mall">Retail other than mall</option>
-                                            <option value="Service">Service</option>
-                                            <option value="Strip shopping mall">Strip shopping mall</option>
-                                            <option value="vacant">vacant</option>
+                                                <option>Small Office</option>
+                                                <option>Medium Office</option>
+                                                <option>Large Office</option>
+                                                <option>Stand-alone Retail</option>
+                                                <option>Strip Mall</option>
+                                                <option>Primary School</option>
+                                                <option>Secondary School</option>
+                                                <option>Outpatient Healthcare</option>
+                                                <option>Hospital</option>
+                                                <option>Small hotel</option>
+                                                <option>Large Hotel</option>
+                                                <option>Warehouse (non-refrigerated)</option>
+                                                <option>Quick Service Restaurant</option>
+                                                <option>Full Service Restaurant</option>
+                                                <option>Mid-Rise Apartment</option>
+                                                <option>High-Rise Apartment</option>
                                         </select>
                                         <span class="add-on">
                                                 <a href="http://www.nrel.gov/docs/fy08osti/41956.pdf" target="_blank"><i class="icon-info-sign"></i></a>

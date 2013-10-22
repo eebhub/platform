@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="login-bg">
+<head>
+	<title>EEB Hub Simulation Platform - Sign in</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <!-- bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap-overrides.css" type="text/css" rel="stylesheet">
+
+    <!-- global styles -->
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/elements.css">
+    <link rel="stylesheet" type="text/css" href="css/icons.css">
+
+    <!-- libraries -->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="css/signin.css" type="text/css" media="screen" />
+
+    <!-- open sans font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+
+    <form action="/mydashboard" method="post">
+    <div class="row-fluid login-wrapper">
+        <h3>
+            EEB Hub Simulation Platform
+        </h3>
+        </br>
+        
+        <div class="span4 box">
+            <div class="content-wrap">
+                <h6>LOGIN</h6>
+                <input class="span12" type="text" name="username" placeholder="Your username">
+                <input class="span12" type="password" name="password" placeholder="Your password">
+                <input type="submit" class="btn btn-large btn-primary" value="LOGIN"/>
+            </div>
+        </div>
+        
+
+        <div class="span4 no-account">
+            <p>Don't have an account?</p>
+            <a href="/signup">SIGNUP</a>
+        </div>
+    </div>
+    </form>
+
+	<!-- scripts -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/theme.js"></script>
+
+
+</body>
+</html>

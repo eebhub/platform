@@ -438,9 +438,26 @@ app.post("/mydashboard", function (req, res) {
 });
 
 app.post("/savebuildinglite", function (req, res) {
-	
-	    if (req.session.username){
-			        var building = new Building({
+    if (req.session.buildingname){
+        Building.update(
+            { username: req.session.username,
+              "building.building_info.building_name": req.session.buildingname},
+            { $set: {
+                "building.building_info.year_completed": req.body.year_completed,
+                "building.architecture.gross_floor_area": req.body.gross_floor_area
+                }
+            },{upsert:true,safe:false},
+              function(err,data){
+                if (err){
+                    console.log(err);
+                }else{
+                    res.send("building info (lite) saved!");
+                }
+              }
+        );
+        //res.send("building info (partial) saved!");
+    }else{
+		var building = new Building({
                             username: req.session.username,
                                 building: {
           building_info: {building_name: req.body.building_name,  //4
@@ -524,15 +541,148 @@ app.post("/savebuildinglite", function (req, res) {
                         }).save(); 
                     req.session.buildingname = req.body.building_name;
 					console.log(req.session);
-			        res.send("building info (lite) saved!");
-			       
-	            
-	        } else {
-	            res.redirect("/signup");
-	        }
-	    
-	
+			        res.send("building info (lite) created!");
 
+    }    
+});
+
+
+app.post('/savebuildingpartial', function(req,res){
+    
+    if (req.session.buildingname){
+        Building.update(
+            { username: req.session.username,
+              "building.building_info.building_name": req.session.buildingname},
+            { $set: {
+                "building.building_info.year_completed": req.body.year_completed,
+                "building.typical_room.room_width": req.body.room_width,      
+                "building.typical_room.room_depth": req.body.room_depth,
+                "building.typical_room.room_height": req.body.room_height,     
+                "building.typical_room.exterior_shading_orientation": req.body.exterior_shading_orientation,
+                "building.typical_room.window_to_wall_ratio": req.body.window_to_wall_ratio,
+                "building.typical_room.number_of_floors": req.body.number_of_floors,
+                "building.typical_room.overhang_depth": req.body.overhang_depth,
+                "building.materials.wall_insulation_r_value": req.body.wall_insulation_r_value,
+                "building.materials.thermal_mass": req.body.thermal_mass,
+                "building.materials.window_glass_coating": req.body.window_glass_coating,
+                "building.materials.window_glass_type": req.body.window_glass_type,
+                "building.materials.roof_type": req.body.roof_type,
+                "building.materials.roof_insulation_type": req.body.roof_insulation_type,
+                "building.materials.roof_insulation_location": req.body.roof_insulation_location,
+                "building.people.people_density": req.body.people_density,
+                "building.lighting.illuminance": req.body.illuminance,
+                "building.mechanical.equipment_power_density": req.body.equipment_power_density,
+                "building.mechanical.ventilation_system": req.body.ventilation_system, 
+                "building.schedules.weekday_occupancy_start": req.body.weekday_occupancy_start,
+                "building.schedules.weekday_occupancy_end": req.body.weekday_occupancy_end
+                }
+            },{upsert:true,safe:false},
+              function(err,data){
+                if (err){
+                    console.log(err);
+                }else{
+                    res.send("building info (partial) saved!");
+                }
+              }
+        );
+        //res.send("building info (partial) saved!");
+    }else{
+    
+    var building = new Building({
+          username: req.session.username,
+          building: {
+          building_info: {building_name: req.body.building_name,  //4
+                          weather_epw_location: req.body.weather_epw_location,  //4
+                          year_completed: req.body.year_completed, //l,p,c
+                          activity_type: req.body.activity_type, //4
+                          activity_type_specific: ''   //s
+                          },
+          architecture:  {gross_floor_area: '',    //l,s,c
+                          number_of_floors: '',    //s,c
+                          window_to_wall_ratio: '',   //s,c
+                          footprint_shape: '',        //s,c
+                          building_height: '',        //s
+                          perimeter: '',              //s
+                          tightness: ''                //c
+                          },  
+          typical_room:   {room_width: req.body.room_width,      //p
+                           room_depth: req.body.room_depth,      //p
+                           room_height: req.body.room_height,     //p
+                           exterior_shading_orientation: req.body.exterior_shading_orientation,   //p
+                           window_to_wall_ratio: req.body.window_to_wall_ratio,     //p
+                           number_of_floors: req.body.number_of_floors,  //p
+                           overhang_depth: req.body.overhang_depth   //p
+                           },                  
+          materials:      {wall_insulation_r_value: req.body.wall_insulation_r_value,  //p
+                           thermal_mass: req.body.thermal_mass,    //p
+                           window_glass_coating: req.body.window_glass_coating,    //p
+                           window_glass_type: req.body.window_glass_type,    //p,s,c
+                           roof_type: req.body.roof_type,        //p,s,c
+                           roof_insulation_type: req.body.roof_insulation_type,   //p
+                           roof_insulation_location: req.body.roof_insulation_location,     //p
+                           exterior_wall_type: ''          //s,c
+                           },
+            
+          people:         {people_density: req.body.people_density,    //p
+                           number_of_employees_during_main_shift: ''     //s
+                           },
+                           
+          lighting:       {illuminance: req.body.illuminance        //p
+                           },                      
+          
+          mechanical:     {equipment_power_density: req.body.equipment_power_density,     //p
+                           ventilation_system: req.body.ventilation_system,          //p
+                           primary_hvac_type: '',           //s
+                           electricity_used_for_main_heating: '',      //s
+                           natural_gas_used_for_main_heating: '',      //s
+                           fuel_oil_used_for_main_heating: '',         //s
+                           propane_used_for_main_heating: '',          //s
+                           district_steam_used_for_main_heating: '',    //s
+                           district_hot_water_used_for_main_heating: '',   //s
+                           electricity_used_for_cooling: '',               //s
+                           natural_gas_used_for_cooling: '',               //s
+                           fuel_oil_used_for_cooling: '',                  //s
+                           propane_used_for_cooling: '',                   //s
+                           district_steam_used_for_cooling: '',            //s
+                           district_hot_water_used_for_cooling: '',        //s
+                           district_chilled_water_used_for_cooling: '',    //s
+                           electricity_used_for_water_heating: '',         //s
+                           natural_gas_used_for_water_heating: '',         //s
+                           fuel_oil_used_for_water_heating: '',            //s
+                           propane_used_for_water_heating: '',             //s
+                           district_steam_used_for_water_heating: '',      //s
+                           district_hot_water_used_for_water_heating: ''   //s
+                           }, 
+                           
+          schedules:      {weekday_occupancy_start: req.body.weekday_occupancy_start,    //p
+                           weekday_occupancy_end: req.body.weekday_occupancy_end,      //p
+                           open_24_hours_a_day: '',        //s
+                           average_weekly_operating_hours: '',   //s
+                           open_during_week: '',                 //s
+                           open_on_weekend: '',                  //s
+                           weekday_occupancy_hours_day_start: '',     //s
+                           weekday_occupancy_hours_day_end: '',       //s
+                           saturday_occupancy_hours_day_start: '',    //s
+                           saturday_occupancy_hours_day_end: '',      //s
+                           sunday_occupancy_hours_day_start: '',      //s
+                           sunday_occupancy_hours_day_end: ''         //s
+                           }
+          } 
+   
+        }).save(); 
+        req.session.buildingname = req.body.building_name;
+		console.log(req.session);
+		res.send("building info (partial) created!");
+    }	
+   
+});
+
+app.post('/savebuildingsubstantial', function(req, res){
+    res.send("save substantial");
+});
+
+app.post('/savebuildingcomprehensive', function(req, res){
+    res.send("save comprehensive");
 });
 
 

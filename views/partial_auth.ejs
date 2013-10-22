@@ -30,6 +30,15 @@
             
         }
         </script>
+        <script>
+            function saveBuildingPartial() {
+                var form = document.forms.platformForm;
+                form.action = "/savebuildingpartial";
+                form.submit();
+            }
+
+        </script>
+        
     </head>
     
     <body data-spy="scroll" data-target=".bs-docs-sidebar" onload="buildingInfoPop();">
@@ -481,6 +490,7 @@
                             </div>
                         </section>
                         <div class="box-unit">
+                            <button type="submit" onclick="saveBuildingPartial();" class="btn btn-large btn-success">Save Building (partial)</button>
                             <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
                             <a class="btn btn-large btn-info" href="http://128.118.67.227/da_example_outputs.html"><i class="icon-signal"></i> Example Outputs</a>
                             <img style="text-align:right;float:right;" src="img/mit.png" alt="MIT" width="80" height="41">

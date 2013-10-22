@@ -79,6 +79,15 @@
         }
         
         </script>
+        
+        <script>
+            function saveBuildingComprehensive() {
+                var form = document.forms.platformForm;
+                form.action = "/savebuildingcomprehensive";
+                form.submit();
+            }
+
+        </script>
 
     </head>
     
@@ -601,6 +610,7 @@
                     
                     <!-- ###################################### Buttons Group ############################################# -->
                     <div id="box-unit">
+                        <button type="submit" onclick="saveBuildingComprehensive();" class="btn btn-large btn-success">Save Building (comprehensive)</button>
                         <input type="submit" class="btn btn-large btn-primary" value="SIMULATE">
                         <a class="btn btn-large btn-info" href="http://128.118.67.241/tools.eebhub.org/energy-use.php"><i class="icon-signal"></i> Example Outputs</a>
                         <img style="text-align:right;float:right;" src="img/doe-engines.png" alt="DOE" width="250" height="58">

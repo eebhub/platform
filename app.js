@@ -69,26 +69,26 @@ var BuildingSchema = new mongoose.Schema({
           
           mechanical:     {equipment_power_density: String,     //p
                            ventilation_system: String,          //p
-                           primary_hvac_type: String,           //s
-                           electricity_used_for_main_heating: String,      //s
-                           natural_gas_used_for_main_heating: String,      //s
-                           fuel_oil_used_for_main_heating: String,         //s
-                           propane_used_for_main_heating: String,          //s
-                           district_steam_used_for_main_heating: String,    //s
-                           district_hot_water_used_for_main_heating: String,   //s
-                           electricity_used_for_cooling: String,               //s
-                           natural_gas_used_for_cooling: String,               //s
-                           fuel_oil_used_for_cooling: String,                  //s
-                           propane_used_for_cooling: String,                   //s
-                           district_steam_used_for_cooling: String,            //s
-                           district_hot_water_used_for_cooling: String,        //s
-                           district_chilled_water_used_for_cooling: String,    //s
-                           electricity_used_for_water_heating: String,         //s
-                           natural_gas_used_for_water_heating: String,         //s
-                           fuel_oil_used_for_water_heating: String,            //s
-                           propane_used_for_water_heating: String,             //s
-                           district_steam_used_for_water_heating: String,      //s
-                           district_hot_water_used_for_water_heating: String   //s
+                           primary_hvac_type: String           //s
+                        //   electricity_used_for_main_heating: String,      //s
+                        //   natural_gas_used_for_main_heating: String,      //s
+                        //   fuel_oil_used_for_main_heating: String,         //s
+                        //   propane_used_for_main_heating: String,          //s
+                        //   district_steam_used_for_main_heating: String,    //s
+                        //   district_hot_water_used_for_main_heating: String,   //s
+                        //   electricity_used_for_cooling: String,               //s
+                        //   natural_gas_used_for_cooling: String,               //s
+                        //   fuel_oil_used_for_cooling: String,                  //s
+                        //   propane_used_for_cooling: String,                   //s
+                        //   district_steam_used_for_cooling: String,            //s
+                        //   district_hot_water_used_for_cooling: String,        //s
+                        //   district_chilled_water_used_for_cooling: String,    //s
+                        //   electricity_used_for_water_heating: String,         //s
+                        //   natural_gas_used_for_water_heating: String,         //s
+                        //   fuel_oil_used_for_water_heating: String,            //s
+                        //   propane_used_for_water_heating: String,             //s
+                        //   district_steam_used_for_water_heating: String,      //s
+                        //   district_hot_water_used_for_water_heating: String   //s
                            }, 
                            
           schedules:      {weekday_occupancy_start: String,    //p
@@ -501,26 +501,26 @@ app.post("/savebuildinglite", function (req, res) {
           
           mechanical:     {equipment_power_density: '',     //p
                            ventilation_system: '',          //p
-                           primary_hvac_type: '',           //s
-                           electricity_used_for_main_heating: '',      //s
-                           natural_gas_used_for_main_heating: '',      //s
-                           fuel_oil_used_for_main_heating: '',         //s
-                           propane_used_for_main_heating: '',          //s
-                           district_steam_used_for_main_heating: '',    //s
-                           district_hot_water_used_for_main_heating: '',   //s
-                           electricity_used_for_cooling: '',               //s
-                           natural_gas_used_for_cooling: '',               //s
-                           fuel_oil_used_for_cooling: '',                  //s
-                           propane_used_for_cooling: '',                   //s
-                           district_steam_used_for_cooling: '',            //s
-                           district_hot_water_used_for_cooling: '',        //s
-                           district_chilled_water_used_for_cooling: '',    //s
-                           electricity_used_for_water_heating: '',         //s
-                           natural_gas_used_for_water_heating: '',         //s
-                           fuel_oil_used_for_water_heating: '',            //s
-                           propane_used_for_water_heating: '',             //s
-                           district_steam_used_for_water_heating: '',      //s
-                           district_hot_water_used_for_water_heating: ''   //s
+                           primary_hvac_type: ''           //s
+                        //   electricity_used_for_main_heating: '',      //s
+                        //   natural_gas_used_for_main_heating: '',      //s
+                        //   fuel_oil_used_for_main_heating: '',         //s
+                        //   propane_used_for_main_heating: '',          //s
+                        //   district_steam_used_for_main_heating: '',    //s
+                        //   district_hot_water_used_for_main_heating: '',   //s
+                        //   electricity_used_for_cooling: '',               //s
+                        //   natural_gas_used_for_cooling: '',               //s
+                        //   fuel_oil_used_for_cooling: '',                  //s
+                        //   propane_used_for_cooling: '',                   //s
+                        //   district_steam_used_for_cooling: '',            //s
+                        //   district_hot_water_used_for_cooling: '',        //s
+                        //   district_chilled_water_used_for_cooling: '',    //s
+                        //   electricity_used_for_water_heating: '',         //s
+                        //   natural_gas_used_for_water_heating: '',         //s
+                        //   fuel_oil_used_for_water_heating: '',            //s
+                        //   propane_used_for_water_heating: '',             //s
+                        //   district_steam_used_for_water_heating: '',      //s
+                        //   district_hot_water_used_for_water_heating: ''   //s
                            }, 
                            
           schedules:      {weekday_occupancy_start: '',    //p
@@ -632,26 +632,26 @@ app.post('/savebuildingpartial', function(req,res){
           
           mechanical:     {equipment_power_density: req.body.equipment_power_density,     //p
                            ventilation_system: req.body.ventilation_system,          //p
-                           primary_hvac_type: '',           //s
-                           electricity_used_for_main_heating: '',      //s
-                           natural_gas_used_for_main_heating: '',      //s
-                           fuel_oil_used_for_main_heating: '',         //s
-                           propane_used_for_main_heating: '',          //s
-                           district_steam_used_for_main_heating: '',    //s
-                           district_hot_water_used_for_main_heating: '',   //s
-                           electricity_used_for_cooling: '',               //s
-                           natural_gas_used_for_cooling: '',               //s
-                           fuel_oil_used_for_cooling: '',                  //s
-                           propane_used_for_cooling: '',                   //s
-                           district_steam_used_for_cooling: '',            //s
-                           district_hot_water_used_for_cooling: '',        //s
-                           district_chilled_water_used_for_cooling: '',    //s
-                           electricity_used_for_water_heating: '',         //s
-                           natural_gas_used_for_water_heating: '',         //s
-                           fuel_oil_used_for_water_heating: '',            //s
-                           propane_used_for_water_heating: '',             //s
-                           district_steam_used_for_water_heating: '',      //s
-                           district_hot_water_used_for_water_heating: ''   //s
+                           primary_hvac_type: ''           //s
+                        //   electricity_used_for_main_heating: '',      //s
+                        //   natural_gas_used_for_main_heating: '',      //s
+                        //   fuel_oil_used_for_main_heating: '',         //s
+                        //   propane_used_for_main_heating: '',          //s
+                        //   district_steam_used_for_main_heating: '',    //s
+                        //   district_hot_water_used_for_main_heating: '',   //s
+                        //   electricity_used_for_cooling: '',               //s
+                        //   natural_gas_used_for_cooling: '',               //s
+                        //   fuel_oil_used_for_cooling: '',                  //s
+                        //   propane_used_for_cooling: '',                   //s
+                        //   district_steam_used_for_cooling: '',            //s
+                        //   district_hot_water_used_for_cooling: '',        //s
+                        //   district_chilled_water_used_for_cooling: '',    //s
+                        //   electricity_used_for_water_heating: '',         //s
+                        //   natural_gas_used_for_water_heating: '',         //s
+                        //   fuel_oil_used_for_water_heating: '',            //s
+                        //   propane_used_for_water_heating: '',             //s
+                        //   district_steam_used_for_water_heating: '',      //s
+                        //   district_hot_water_used_for_water_heating: ''   //s
                            }, 
                            
           schedules:      {weekday_occupancy_start: req.body.weekday_occupancy_start,    //p
@@ -678,11 +678,226 @@ app.post('/savebuildingpartial', function(req,res){
 });
 
 app.post('/savebuildingsubstantial', function(req, res){
-    res.send("save substantial");
+        if (req.session.buildingname){
+        Building.update(
+            { username: req.session.username,
+              "building.building_info.building_name": req.session.buildingname},
+            { $set: {
+                "building.building_info.activity_type_specific": req.body.activity_type_specific,   //s
+                "building.architecture.gross_floor_area": req.body.gross_floor_area,    //l,s,c
+                "building.architecture.number_of_floors": req.body.number_of_floors,    //s,c
+                "building.architecture.window_to_wall_ratio": req.body.window_to_wall_ratio,   //s,c
+                "building.architecture.footprint_shape": req.body.footprint_shape,        //s,c
+                "building.architecture.building_height": req.body.building_height,        //s
+                "building.architecture.perimeter": req.body.perimeter,              //s   
+                "building.materials.window_glass_type": req.body.window_glass_type,    //p,s,c
+                "building.materials.roof_type": req.body.roof_type,        //p,s,c
+                "building.materials.exterior_wall_type": req.body.exterior_wall_type,          //s,c
+                "building.people.number_of_employees_during_main_shift": req.body.number_of_employees_during_main_shift,     //s
+                "building.mechanical.primary_hvac_type": req.body.primary_hvac_type,           //s
+            
+                "building.schedules.average_weekly_operating_hours": req.body.average_weekly_operating_hours,   //s
+                "building.schedules.open_during_week": req.body.open_during_week,                 //s
+                
+                "building.schedules.weekday_occupancy_hours_day_start": req.body.weekday_occupancy_hours_day_start,     //s
+                "building.schedules.weekday_occupancy_hours_day_end": req.body.weekday_occupancy_hours_day_end      //s
+                //other 6 attributes of schedules are not saved
+                }
+            },{upsert:true,safe:false},
+              function(err,data){
+                if (err){
+                    console.log(err);
+                    res.send(err);
+                }else{
+                    res.send("building info (substantial) saved!");
+                }
+              }
+        );
+        //res.send("building info (substantial) saved!");
+    }else{
+    var open_24_hours_a_day = 'off';
+    var open_during_week = 'off';
+    var open_on_weekend = 'off';
+    if (req.body.open_24_hours_a_day) open_24_hours_a_day = req.body.open_24_hours_a_day;
+    if (req.body.open_during_week) open_during_week = req.body.open_during_week;
+    if (req.body.open_on_weekend) open_on_weekend = req.body.open_on_weekend;
+    
+    var building = new Building({
+          username: req.session.username,
+          building: {
+          building_info: {building_name: req.body.building_name,  //4
+                          weather_epw_location: req.body.weather_epw_location,  //4
+                          year_completed: '', //l,p,c
+                          activity_type: req.body.activity_type, //4
+                          activity_type_specific: req.body.activity_type_specific   //s
+                          },
+          architecture:  {gross_floor_area: req.body.gross_floor_area,    //l,s,c
+                          number_of_floors: req.body.number_of_floors,    //s,c
+                          window_to_wall_ratio: req.body.window_to_wall_ratio,   //s,c
+                          footprint_shape: req.body.footprint_shape,        //s,c
+                          building_height: req.body.building_height,        //s
+                          perimeter: req.body.perimeter,              //s
+                          tightness: ''                //c
+                          },  
+          typical_room:   {room_width: '',      //p
+                           room_depth:'',      //p
+                           room_height: '',     //p
+                           exterior_shading_orientation: '',   //p
+                           window_to_wall_ratio: '',     //p
+                           number_of_floors: '',  //p
+                           overhang_depth: ''   //p
+                           },                  
+          materials:      {wall_insulation_r_value: '',  //p
+                           thermal_mass: '',    //p
+                           window_glass_coating: '',    //p
+                           window_glass_type: req.body.window_glass_type,    //p,s,c
+                           roof_type: req.body.roof_type,        //p,s,c
+                           roof_insulation_type: '',   //p
+                           roof_insulation_location: '',     //p
+                           exterior_wall_type: req.body.exterior_wall_type          //s,c
+                           },
+            
+          people:         {people_density: '',    //p
+                           number_of_employees_during_main_shift: req.body.number_of_employees_during_main_shift     //s
+                           },
+                           
+          lighting:       {illuminance: ''        //p
+                           },                      
+          
+          mechanical:     {equipment_power_density: '',     //p
+                           ventilation_system: '',          //p
+                           primary_hvac_type: req.body.primary_hvac_type           //s
+                           }, 
+                           
+          schedules:      {weekday_occupancy_start: '',    //p
+                           weekday_occupancy_end: '',      //p
+                           open_24_hours_a_day: open_24_hours_a_day,        //s
+                           average_weekly_operating_hours: req.body.average_weekly_operating_hours,   //s
+                           open_during_week: open_during_week,                 //s
+                           open_on_weekend: open_on_weekend,                  //s
+                           weekday_occupancy_hours_day_start: req.body.weekday_occupancy_hours_day_start,     //s
+                           weekday_occupancy_hours_day_end: req.body.weekday_occupancy_hours_day_end,       //s
+                           saturday_occupancy_hours_day_start: req.body.saturday_occupancy_hours_day_start,    //s
+                           saturday_occupancy_hours_day_end: req.body.saturday_occupancy_hours_day_end,      //s
+                           sunday_occupancy_hours_day_start: req.body.sunday_occupancy_hours_day_start,      //s
+                           sunday_occupancy_hours_day_end: req.body.sunday_occupancy_hours_day_end         //s
+                           }
+          } 
+   
+        }).save(); 
+        req.session.buildingname = req.body.building_name;
+		console.log(req.session);
+		res.send("building info (substantial) created!");
+    }
 });
 
 app.post('/savebuildingcomprehensive', function(req, res){
-    res.send("save comprehensive");
+    if (req.session.buildingname){
+        Building.update(
+            { username: req.session.username,
+              "building.building_info.building_name": req.session.buildingname},
+            { $set: {
+                "building.building_info.year_completed": req.body.year_completed,
+                "building.architecture.tightness": req.body.tightness                //c
+                }
+            },{upsert:true,safe:false},
+              function(err,data){
+                if (err){
+                    res.send(err);
+                }else{
+                    res.send("building info (comprehensive) saved!");
+                }
+              }
+        );
+        
+    }else{
+    
+    var building = new Building({
+          username: req.session.username,
+          building: {
+          building_info: {building_name: req.body.building_name,  //4
+                          weather_epw_location: req.body.weather_epw_location,  //4
+                          year_completed: req.body.year_completed, //l,p,c
+                          activity_type: req.body.activity_type, //4
+                          activity_type_specific: ''   //s
+                          },
+          architecture:  {gross_floor_area: req.body.gross_floor_area,    //l,s,c
+                          number_of_floors: req.body.number_of_floors,    //s,c
+                          window_to_wall_ratio: req.body.window_to_wall_ratio,   //s,c
+                          footprint_shape: req.body.footprint_shape,        //s,c
+                          building_height: '',        //s
+                          perimeter: '',              //s
+                          tightness: req.body.tightness                //c
+                          },  
+          typical_room:   {room_width: '',      //p
+                           room_depth: '',      //p
+                           room_height: '',     //p
+                           exterior_shading_orientation: '',   //p
+                           window_to_wall_ratio: '',     //p
+                           number_of_floors: '',  //p
+                           overhang_depth: ''   //p
+                           },                  
+          materials:      {wall_insulation_r_value: '',  //p
+                           thermal_mass: '',    //p
+                           window_glass_coating: '',    //p
+                           window_glass_type: req.body.window_glass_type,    //p,s,c
+                           roof_type: req.body.roof_type,        //p,s,c
+                           roof_insulation_type: '',   //p
+                           roof_insulation_location: '',     //p
+                           exterior_wall_type: req.body.exterior_wall_type          //s,c
+                           },
+            
+          people:         {people_density: '',    //p
+                           number_of_employees_during_main_shift: ''     //s
+                           },
+                           
+          lighting:       {illuminance: ''        //p
+                           },                      
+          
+          mechanical:     {equipment_power_density: '',     //p
+                           ventilation_system: '',          //p
+                           primary_hvac_type: ''           //s
+                        //   electricity_used_for_main_heating: '',      //s
+                        //   natural_gas_used_for_main_heating: '',      //s
+                        //   fuel_oil_used_for_main_heating: '',         //s
+                        //   propane_used_for_main_heating: '',          //s
+                        //   district_steam_used_for_main_heating: '',    //s
+                        //   district_hot_water_used_for_main_heating: '',   //s
+                        //   electricity_used_for_cooling: '',               //s
+                        //   natural_gas_used_for_cooling: '',               //s
+                        //   fuel_oil_used_for_cooling: '',                  //s
+                        //   propane_used_for_cooling: '',                   //s
+                        //   district_steam_used_for_cooling: '',            //s
+                        //   district_hot_water_used_for_cooling: '',        //s
+                        //   district_chilled_water_used_for_cooling: '',    //s
+                        //   electricity_used_for_water_heating: '',         //s
+                        //   natural_gas_used_for_water_heating: '',         //s
+                        //   fuel_oil_used_for_water_heating: '',            //s
+                        //   propane_used_for_water_heating: '',             //s
+                        //   district_steam_used_for_water_heating: '',      //s
+                        //   district_hot_water_used_for_water_heating: ''   //s
+                           }, 
+                           
+          schedules:      {weekday_occupancy_start: '',    //p
+                           weekday_occupancy_end: '',      //p
+                           open_24_hours_a_day: '',        //s
+                           average_weekly_operating_hours: '',   //s
+                           open_during_week: '',                 //s
+                           open_on_weekend: '',                  //s
+                           weekday_occupancy_hours_day_start: '',     //s
+                           weekday_occupancy_hours_day_end: '',       //s
+                           saturday_occupancy_hours_day_start: '',    //s
+                           saturday_occupancy_hours_day_end: '',      //s
+                           sunday_occupancy_hours_day_start: '',      //s
+                           sunday_occupancy_hours_day_end: ''         //s
+                           }
+          } 
+   
+        }).save(); 
+        req.session.buildingname = req.body.building_name;
+		console.log(req.session);
+		res.send("building info (comprehensive) created!");
+    }	
 });
 
 

@@ -354,19 +354,36 @@ app.get("/mydashboard", function(req, res){
 });
 
 app.get("/mybuildings", function(req, res){
+    var buildinglist = [];
     Building.find({username: req.session.username}, function (err, docs) {
-    console.log(docs.length);    
-     res.send(docs.length+ "buildings:\n"+docs);
+    if (err) res.send(err);
+    else {
+        docs.forEach( function(doc) {
+        buildinglist.push(doc._id);
+        });
+        
+        //res.send(buildinglist);
+        res.render('buildings', {'username': req.session.username,
+                                  'buildinglist': buildinglist});
+    }
+    });
 });
+
+app.get("/myresults", function(req, res){
+//     Buildingmodel.find({username: req.session.username}, function (err, docs) {
+//     console.log(docs.length);    
+//      res.send(docs.length+ "building models:\n"+docs);
+// });
+    res.render('results', {'username': req.session.username});
     
 });
 
-app.get("/mymodels", function(req, res){
-    Buildingmodel.find({username: req.session.username}, function (err, docs) {
-    console.log(docs.length);    
-     res.send(docs.length+ "building models:\n"+docs);
-});
-    
+app.get('/mybuildings/:id', function(req, res) {
+    //res.send('user' + req.params.id);
+   Building.findOne({_id: req.params.id}, function(e, result){
+     if (e) res.send(e);
+     else res.send(result);
+   });
 });
 
 

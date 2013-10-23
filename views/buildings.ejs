@@ -35,10 +35,12 @@
     <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
     <![endif]-->
+    
+
 
   </head>
 
-  <body>
+  <body onload="$("#list").html("hello here");">
           <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -82,19 +84,38 @@ Welcome, <script>
           <div class="navbar-inner">
             <a class="brand" href="/mydashboard">My Dashboard</a>
             <ul class="nav">
-              <li class="active"><a href="/mydashboard">My profile</a></li>
-              <li><a href="/mybuildings">My buildings</a></li>
+              <li><a href="/mydashboard">My profile</a></li>
+              <li class="active"><a href="/mybuildings">My buildings</a></li>
               <li><a href="/myresults">My results</a></li>
             </ul>
           </div>
         </div>
         
-<h2><a href="/mybuildings">My Buildings</a></h2>
-<h2><a href="/myresults">My Results</a></h2>
+        <div id="list">
         
+        <script>
+        var buildinglist = "<%= buildinglist %>";
+        //console.log(buildinglist.length);
+        var array = buildinglist.split(',');
+        //console.log(array);
+        for (var i=0; i<array.length; i++){
+            var buildinglink = "/" + array[i];
+            document.write("<a href=\"/mybuildings/"+array[i]+"\">building "+(i+1)+"</a><br>");
+        }
+        
+        </script>
+
+        
+        </div>
 
 </div>
 
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap-scrollspy.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   
   </body>
 </html>

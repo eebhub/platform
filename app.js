@@ -901,7 +901,7 @@ app.post('/savebuildingcomprehensive', function(req, res){
 });
 
 
-//Reroutes
+//ReRoutes / ReDirects / Easy Links
 
 app.get("/platform", function (req, res) {  //added to reroute outdated tools.eebhub.org/platform link
     res.redirect("http://tools.eebhub.org");

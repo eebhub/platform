@@ -918,7 +918,7 @@ app.post('/savebuildingcomprehensive', function(req, res){
 });
 
 
-//Reroutes
+//ReRoutes / ReDirects / Easy Links
 
 app.get("/platform", function (req, res) {  //added to reroute outdated tools.eebhub.org/platform link
     res.redirect("http://tools.eebhub.org");
@@ -943,6 +943,30 @@ app.get("/infrastructure", function (req, res) {
 });
 app.get("/integration", function (req, res) {
     res.redirect("https://skydrive.live.com/view.aspx?resid=16B20B2C9752FBFF!202&app=PowerPoint");
+});
+app.get("/code", function (req, res) {
+    res.redirect("https://github.com/eebhub/platform/tree/master");
+});
+app.get("/files", function (req, res) {
+    res.redirect("http://developer.eebhub.org/");
+});
+app.get("/variables", function (req, res) {
+    res.redirect("http://www1.eere.energy.gov/buildings/commercial/bedes.html");
+});
+app.get("/database", function (req, res) {
+    res.redirect("https://docs.google.com/document/d/1sL0Km4AzIGoDF-OWU3EBOFI0MIibu1fmum5VHNVsayQ/edit?usp=sharing");
+});
+app.get("/game", function (req, res) {
+    res.redirect("http://developer.eebhub.org/retrofit-game/");
+});
+app.get("/vision", function (req, res) {
+    res.redirect("http://simulation.eebhub.org");
+});
+app.get("/license", function (req, res) {
+    res.redirect("https://github.com/eebhub/platform/blob/master/LICENSE");
+});
+app.get("/visits", function (req, res) {
+    res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
 });
 
 

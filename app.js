@@ -355,16 +355,25 @@ app.get("/mydashboard", function(req, res){
 
 app.get("/mybuildings", function(req, res){
     var buildinglist = [];
+    var buildingnamelist = [];
+    var yearlist = [];
+    var locationlist = [];
     Building.find({username: req.session.username}, function (err, docs) {
     if (err) res.send(err);
     else {
         docs.forEach( function(doc) {
         buildinglist.push(doc._id);
+        buildingnamelist.push(doc.building.building_info.building_name);
+        yearlist.push(doc.building.building_info.year_completed);
+        locationlist.push(doc.building.building_info.weather_epw_location);
         });
         
         //res.send(buildinglist);
         res.render('buildings', {'username': req.session.username,
-                                  'buildinglist': buildinglist});
+                                  'buildinglist': buildinglist,
+                                  'buildingnamelist': buildingnamelist,
+                                  'yearlist': yearlist,
+                                  'locationlist': locationlist});
     }
     });
 });

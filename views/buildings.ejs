@@ -30,6 +30,7 @@
         text-align: center;
       }
     </style>
+    
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -93,18 +94,47 @@ Welcome, <script>
         
         <div id="list">
         
-        <script>
+        
+        
+        <table cellpadding="0" cellspacing="0" border="0" background="http://sustainability.emory.edu/html/images/leaf_bg.gif" width="100%">
+        <caption><h4>My Building List</h4></caption>
+		<tbody>
+			
+			<tr>
+				<td><strong>Year Completed</strong></td>
+				<td><strong>Building Name</strong></td>
+				<td><strong>Weather EPW Location</strong></td>
+				<td>View Building File</td>
+				<td>Go Simulation</td>
+			</tr>
+			
+			<script>
         var buildinglist = "<%= buildinglist %>";
+        var buildingnamelist = "<%= buildingnamelist %>";
+        var yearlist = "<%= yearlist %>";
+        var locationlist = "<%= locationlist %>";
         //console.log(buildinglist.length);
         var array = buildinglist.split(',');
+        var buildingnamelist_a = buildingnamelist.split(',');
+        var yearlist_a = yearlist.split(',');
+        var locationlist_a = locationlist.split(',');
+
         //console.log(array);
         for (var i=0; i<array.length; i++){
-            var buildinglink = "/" + array[i];
-            document.write("<a href=\"/mybuildings/"+array[i]+"\">building "+(i+1)+"</a><br>");
+            document.write("<tr><td>"+yearlist_a[i]+"</td><td>"+buildingnamelist_a[i]+"</td><td>"+locationlist_a[i]+"</td>");
+            document.write("<td>");
+            document.write("<a href=\"/mybuildings/"+array[i]+"\">view jason file</a>");
+            document.write("</td><td></td></tr>")
         }
         
         </script>
-
+			
+			
+		</tbody>
+		
+        </table>
+        
+        
         
         </div>
 

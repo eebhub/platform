@@ -199,7 +199,8 @@ app.get('/lite', function(req, res){
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
-                         'bld_year': bld_year
+                         'bld_year': bld_year,
+                         'gross_floor_area': ''
                      });
                 }    
             });
@@ -208,7 +209,8 @@ app.get('/lite', function(req, res){
               'bldname': '',
               'bld_function': '',
               'bld_year': '',
-              'bld_location': ''
+              'bld_location': '',
+              'gross_floor_area': ''
           });
         }
         

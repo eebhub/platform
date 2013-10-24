@@ -218,6 +218,33 @@ app.get('/lite', function(req, res){
     } 
 });
 app.get('/literesults', routes.getLiteResults);
+
+app.get('/lite/:id', function(req, res){
+    //res.send(req.params.id);
+    req.session.buildingid = req.params.id;
+    Building.findOne({_id: req.params.id}, function(e, bld_lite){
+     if (e) res.send(e);
+     else {//res.send(bld_lite);
+        var bldname = bld_lite.building.building_info.building_name;
+        var bld_location = bld_lite.building.building_info.weather_epw_location;
+        var bld_year = bld_lite.building.building_info.year_completed;
+        var bld_function = bld_lite.building.building_info.activity_type;
+        var gross_floor_area = bld_lite.building.architecture.gross_floor_area;
+        //console.log(building_name);
+        res.render('lite_auth', {'bldname': bldname,
+                                 'bld_location': bld_location,
+                                 'bld_year': bld_year,
+                                 'bld_function': bld_function,
+                                 'gross_floor_area': gross_floor_area
+                                 });
+        
+     }
+  });
+    
+});
+
+
+
 //app.get('/partial', routes.getPartial);
 app.get('/partial', function(req,res){
     if(req.session.username){
@@ -225,6 +252,26 @@ app.get('/partial', function(req,res){
         var bld_location = '';
         var bld_function = '';
         var bld_year = '';
+        var room_width = ''; 
+        var room_depth = '';
+        var room_height = '';
+        var exterior_shading_orientation = '';
+        var window_to_wall_ratio = '';
+        var number_of_floors = '';
+        var overhang_depth = '';
+        var wall_insulation_r_value = '';
+        var thermal_mass = '';
+        var window_glass_coating = '';
+        var window_glass_type = '';
+        var roof_type = '';
+        var roof_insulation_type = '';
+        var roof_insulation_location ='';
+        var people_density ='';
+        var illuminance = '';
+        var equipment_power_density = '';
+        var ventilation_system = '';
+        var weekday_occupancy_start = '';
+        var weekday_occupancy_end = '';
         
         if(req.session.buildingname) {
             //var buildingname = req.session.buildingname;
@@ -242,10 +289,90 @@ app.get('/partial', function(req,res){
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
-                         'bld_year': bld_year
+                         'bld_year': bld_year,
+                         'room_width': room_width,
+                         'room_depth': room_depth,
+                         'room_height': room_height,
+                         'exterior_shading_orientation': exterior_shading_orientation,
+                         'window_to_wall_ratio': window_to_wall_ratio,
+                         'number_of_floors':number_of_floors,
+                         'overhang_depth': overhang_depth,
+                         'wall_insulation_r_value': wall_insulation_r_value,
+                         'thermal_mass': thermal_mass,
+                         'window_glass_coating': window_glass_coating,
+                         'window_glass_type': window_glass_type,
+                         'roof_type': roof_type,
+                         'roof_insulation_type': roof_insulation_type,
+                         'roof_insulation_location': roof_insulation_location,
+                         'people_density': people_density,
+                         'illuminance': illuminance,
+                         'equipment_power_density': equipment_power_density,
+                         'ventilation_system': ventilation_system,
+                         'weekday_occupancy_start': weekday_occupancy_start,
+                         'weekday_occupancy_end': weekday_occupancy_end
                      });
                 }    
             });
+        }else if(req.session.buildingid){
+            Building.findOne({_id: req.session.buildingid}, function(err, building) {
+                if( err || !building) console.log("No Building found");
+                else {
+                    console.log(building);
+                    bldname = building.building.building_info.building_name;
+                    console.log(bldname);
+                    bld_location = building.building.building_info.weather_epw_location;
+                    bld_function = building.building.building_info.activity_type;
+                    bld_year = building.building.building_info.year_completed;
+                    room_width = building.building.typical_room.room_width;
+                    room_depth = building.building.typical_room.room_depth;
+                    room_height = building.building.typical_room.room_height;
+                    exterior_shading_orientation = building.building.typical_room.exterior_shading_orientation;
+                    window_to_wall_ratio = building.building.typical_room.window_to_wall_ratio;
+                    number_of_floors = building.building.typical_room.number_of_floors;
+                    overhang_depth = building.building.typical_room.overhang_depth;
+                    wall_insulation_r_value = building.building.materials.wall_insulation_r_value;
+                    thermal_mass = building.building.materials.thermal_mass;
+                    window_glass_coating = building.building.materials.window_glass_coating;
+                    window_glass_type = building.building.materials.window_glass_type;
+                    roof_type = building.building.materials.roof_type;
+                    roof_insulation_type = building.building.materials.roof_insulation_type;
+                    roof_insulation_location = building.building.materials.roof_insulation_location;
+                    people_density = building.building.people.people_density;
+                    illuminance = building.building.lighting.illuminance;
+                    equipment_power_density = building.building.mechanical.equipment_power_density;
+                    ventilation_system = building.building.mechanical.ventilation_system;
+                    weekday_occupancy_start = building.building.schedules.weekday_occupancy_start;
+                    weekday_occupancy_end = building.building.schedules.weekday_occupancy_end;
+                    
+                     res.render('partial_auth', {
+                         'bldname': bldname,
+                         'bld_location': bld_location,
+                         'bld_function': bld_function,
+                         'bld_year': bld_year,
+                         'room_width': room_width,
+                         'room_depth': room_depth,
+                         'room_height': room_height,
+                         'exterior_shading_orientation': exterior_shading_orientation,
+                         'window_to_wall_ratio': window_to_wall_ratio,
+                         'number_of_floors':number_of_floors,
+                         'overhang_depth': overhang_depth,
+                         'wall_insulation_r_value': wall_insulation_r_value,
+                         'thermal_mass': thermal_mass,
+                         'window_glass_coating': window_glass_coating,
+                         'window_glass_type': window_glass_type,
+                         'roof_type': roof_type,
+                         'roof_insulation_type': roof_insulation_type,
+                         'roof_insulation_location': roof_insulation_location,
+                         'people_density': people_density,
+                         'illuminance': illuminance,
+                         'equipment_power_density': equipment_power_density,
+                         'ventilation_system': ventilation_system,
+                         'weekday_occupancy_start': weekday_occupancy_start,
+                         'weekday_occupancy_end': weekday_occupancy_end
+                     });
+                }    
+            });
+            
         }else{
           res.render('partial_auth', {
               'bldname': '',
@@ -258,6 +385,7 @@ app.get('/partial', function(req,res){
         res.sendfile('./views/partial.html');
     }
 });
+
 //app.get('/substantial', routes.getSubstantial);
 app.get('/substantial', function(req,res){
     if(req.session.username){

@@ -87,7 +87,7 @@ Welcome, <script>
             <ul class="nav">
               <li><a href="/mydashboard">My profile</a></li>
               <li class="active"><a href="/mybuildings">My buildings</a></li>
-              <li><a href="/myresults">My results</a></li>
+              <li><a href="/myresults">My simulation results</a></li>
             </ul>
           </div>
         </div>
@@ -124,7 +124,7 @@ Welcome, <script>
             document.write("<tr><td>"+yearlist_a[i]+"</td><td>"+buildingnamelist_a[i]+"</td><td>"+locationlist_a[i]+"</td>");
             document.write("<td>");
             document.write("<a href=\"/mybuildings/"+array[i]+"\">view jason file</a>");
-            document.write("</td><td></td></tr>")
+            document.write("</td><td><a href=\"/lite/"+array[i]+"\">go to form</a></td></tr>")
         }
         
         </script>

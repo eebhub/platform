@@ -951,6 +951,9 @@ app.get("/license", function (req, res) {
 app.get("/visits", function (req, res) {
     res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
 });
+app.get("/measures", function (req, res) {
+    res.redirect("https://docs.google.com/document/d/1wrO0552T2dODzvKNWTP_CsDHKaudnBGs4ulwSbsDx6w/edit?usp=sharing");
+});
 
 
 //Server

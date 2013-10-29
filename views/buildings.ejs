@@ -120,13 +120,14 @@ Welcome, <script>
         var locationlist_a = locationlist.split(',');
 
         //console.log(array);
+        if (buildinglist!=''){
         for (var i=0; i<array.length; i++){
             document.write("<tr><td>"+yearlist_a[i]+"</td><td>"+buildingnamelist_a[i]+"</td><td>"+locationlist_a[i]+"</td>");
             document.write("<td>");
             document.write("<a href=\"/mybuildings/"+array[i]+"\">view json file</a>");
             document.write("</td><td><a href=\"/lite/"+array[i]+"\">go to form</a></td></tr>")
         }
-        
+        }
         </script>
 			
 			

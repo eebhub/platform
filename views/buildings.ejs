@@ -93,8 +93,7 @@ Welcome, <script>
         </div>
         
         <div id="list">
-        
-        
+        <p><a href='/addnewbuilding'>+ Add A New Building</a></p>
         
         <table cellpadding="0" cellspacing="0" border="0" background="http://sustainability.emory.edu/html/images/leaf_bg.gif" width="100%">
         <caption><h4>My Building List</h4></caption>
@@ -106,6 +105,7 @@ Welcome, <script>
 				<td><strong>Weather EPW Location</strong></td>
 				<td>View Building File</td>
 				<td>Go Simulation</td>
+				<td>Delete</td>
 			</tr>
 			
 			<script>
@@ -118,14 +118,14 @@ Welcome, <script>
         var buildingnamelist_a = buildingnamelist.split(',');
         var yearlist_a = yearlist.split(',');
         var locationlist_a = locationlist.split(',');
-
-        //console.log(array);
         if (buildinglist!=''){
+        //console.log(array);
         for (var i=0; i<array.length; i++){
             document.write("<tr><td>"+yearlist_a[i]+"</td><td>"+buildingnamelist_a[i]+"</td><td>"+locationlist_a[i]+"</td>");
             document.write("<td>");
             document.write("<a href=\"/mybuildings/"+array[i]+"\">view json file</a>");
-            document.write("</td><td><a href=\"/lite/"+array[i]+"\">go to form</a></td></tr>")
+            document.write("</td><td><a href=\"/lite/"+array[i]+"\">go to form</a></td>");
+            document.write("<td><a href=\"/removebuilding/"+array[i]+"\">delete</a></td></tr>");
         }
         }
         </script>

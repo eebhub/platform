@@ -246,6 +246,7 @@ app.get('/lite/:id', function(req, res){
     
 });
 
+
 //app.get('/partial', routes.getPartial);
 app.get('/partial', function(req,res){
     if(req.session.username){
@@ -598,12 +599,27 @@ app.get("/myresults", function(req, res){
     
 });
 
+app.get("/addnewbuilding", function(req, res){
+    if (!req.session.buildingid) {res.redirect('/lite');}
+    else {
+        req.session.buildingid = null;
+        res.redirect('/lite');
+    }
+});
+
 app.get('/mybuildings/:id', function(req, res) {
     //res.send('user' + req.params.id);
    Building.findOne({_id: req.params.id}, function(e, result){
      if (e) res.send(e);
      else res.send(result);
    });
+});
+
+app.get('/removebuilding/:id', function(req,res){
+    Building.remove({_id: req.params.id}, function(e,result){
+        if(e) res.send(e);
+        else res.redirect('/mybuildings');
+    });
 });
 
 

@@ -1122,7 +1122,7 @@ app.post('/savebuildingcomprehensive', function(req, res){
 
 
 
-//ReRoutes / ReDirects / Easy Links
+//ReRoutes / ReDirects / Easy Links for Task 2
 
 app.get("/platform", function (req, res) {  //added to reroute outdated tools.eebhub.org/platform link
     res.redirect("http://tools.eebhub.org");
@@ -1175,8 +1175,35 @@ app.get("/visits", function (req, res) {
 app.get("/visitors", function (req, res) {
     res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
 });
+app.get("/views", function (req, res) {
+    res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
+});
 app.get("/measures", function (req, res) {
     res.redirect("https://docs.google.com/document/d/1wrO0552T2dODzvKNWTP_CsDHKaudnBGs4ulwSbsDx6w/edit?usp=sharing");
+});
+
+//ReRoutes / ReDirects / Easy Links for Task 3
+
+app.get("/controls", function (req, res) {
+    res.redirect("http://67.102.239.250:8282/");
+});
+app.get("/monitoring", function (req, res) {
+    res.redirect("http://cloud.cdhenergy.com/bldg101/");
+});
+app.get("/middleware", function (req, res) {
+    res.redirect("http://128.118.67.231:8080/PBTC/home.xhtml");
+});
+app.get("/dashboard", function (req, res) {
+    res.redirect("http://128.118.67.231:8888/dglux/");
+});
+app.get("/piserversharepoint", function (req, res) {
+    res.redirect("http://128.118.67.245/SitePages/Home.aspx");
+});
+app.get("/piservercharts", function (req, res) {
+    res.redirect("http://128.118.67.245:81/coresight/#");
+});
+app.get("/piserverdashboard", function (req, res) {
+    res.redirect("http://eebcmu.coeaccess.psu.edu:85/PIsystemV0.0/IEQ.php?floor=1");
 });
 
 

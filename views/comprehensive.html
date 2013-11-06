@@ -249,8 +249,6 @@
 
                                         <span class="add-on" id="architect-replace1"><span class="unit">m</span>&#178;</span>
                                     </div>
-                                    <h4>Number of Floors</h4>
-                                    <input type="number" id="number_of_floors" name="number_of_floors" min="0" step="1">
                                     <h4>% Window to Wall Area</h4>
                                         <ul class="inline">
                                             <li>
@@ -263,8 +261,14 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                    <br>
-                                    <br>
+                                    <h4>Number of Floors</h4>
+                                    <input type="number" id="number_of_floors" name="number_of_floors" min="1" min="170" step="1">
+                                    <h4>Floor to Floor Height</h4>
+                                    <div class="input-append">
+                                        <input type="number" id="floor_to_floor_height" name="floor_to_floor_height" step="0.001">
+
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
                                     <h4>Airtightness Assessment <small>by CONTAM</small></h4>
                                     <select class="span3" name="tightness">
                                         <option>Leaky</option>
@@ -335,6 +339,23 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="span9">
+                                    <h4>Orientation <small>clockwise degrees from North</small></h4>
+                                            <ul class="inline">
+                                                
+                                                <li>
+                                                    <div class="input-append">
+                                                        <input class="span1" type="text" value={{orientation}} name="building_orientation" ng-model="orientation"/>
+                                                        <span class="add-on">&deg;</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <input class="span7" type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
+                                                </li>
+                                            </ul>
+                                </div>
+                            </div>
                         </div>
                     </section>
                     
@@ -357,6 +378,8 @@
                                         name="room_width" />
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
+                                </div>
+                                <div class="span3">
                                     <h4>Room Depth</h4>
                                     <div class="input-append">
                                         <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
@@ -369,20 +392,6 @@
                                         name="room_height" />
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
-                                </div>
-                                <div class="span3">
-                                    <h4>Window Facade Orientation</h4>
-                                    <select name="exterior_shading_orientation"
-                                    class="span2">
-                                        <option value="0">North</option>
-                                        <option value="45">North-East</option>
-                                        <option value="90">East</option>
-                                        <option value="135">South-East</option>
-                                        <option value="180">South</option>
-                                        <option value="225">South-West</option>
-                                        <option value="270">West</option>
-                                        <option value="315">North-West</option>
-                                    </select>
                                 </div>
                             </div>
                             <div class="row">
@@ -470,7 +479,13 @@
                                     </div>
                                     <h4>Target Illuminance</h4>
                                     <div class="input-append">
-                                        <input class="span2" id="appendedInput" type="text" name="illuminance">
+                                        <select class="span2" id="appendedInput" type="text" name="illuminance">
+                                                <option value="150">150 - storage</option>
+                                                <option value="200">200 - casual work</option>
+                                                <option value="300">300 - rough work</option>
+                                                <option value="400">400 - office work (EU)</option>
+                                                <option value="500" selected>500 - office work (US)</option>
+                                            </select>
                                         <span class="add-on"><span class="unit">lux</span></span>
                                     </div>
                                     <h4>Window Head Height</h4>

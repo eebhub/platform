@@ -1170,6 +1170,11 @@ app.get("/vision", function (req, res) {
 app.get("/license", function (req, res) {
     res.redirect("https://github.com/eebhub/platform/blob/master/LICENSE");
 });
+app.get("/measures", function (req, res) {
+    res.redirect("https://docs.google.com/document/d/1wrO0552T2dODzvKNWTP_CsDHKaudnBGs4ulwSbsDx6w/edit?usp=sharing");
+});
+
+// Google Analytics
 app.get("/visits", function (req, res) {
     res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
 });
@@ -1179,9 +1184,7 @@ app.get("/visitors", function (req, res) {
 app.get("/views", function (req, res) {
     res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
 });
-app.get("/measures", function (req, res) {
-    res.redirect("https://docs.google.com/document/d/1wrO0552T2dODzvKNWTP_CsDHKaudnBGs4ulwSbsDx6w/edit?usp=sharing");
-});
+
 
 //ReRoutes / ReDirects / Easy Links for Task 3
 

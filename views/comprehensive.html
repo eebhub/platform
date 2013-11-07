@@ -97,8 +97,8 @@
                     <!--/.nav-collapse -->
                     <div class="pull-right text-right">
 
-                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#si-ip").val("si");$("body").css("background", "rgb(229, 229, 229)");'/><font color="yellow"> SI</font>
-                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font>
+                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$(".illu-unit").html("lux");$("#illuminance").html("<option value=\"150\">150 - storage</option><option value=\"200\">200 - casual work</option><option value=\"300\">300 - rough work</option><option value=\"400\">400 - office work (EU)</option><option value=\"500\" selected>500 - office work (US)</option>");$("#si-ip").val("si");$("body").css("background", "rgb(229, 229, 229)");'/><font color="yellow"> SI</font>
+                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$(".illu-unit").html("lm/ft&#178;");$("#illuminance").html("<option value=\"150\">15 - storage</option><option value=\"200\">20 - casual work</option><option value=\"300\">30 - rough work</option><option value=\"400\">40 - office work (EU)</option><option value=\"500\" selected>50 - office work (US)</option>");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font>
                     
                     <ul class="nav pull-right">
 						      <li><a href="/signup">SIGNUP</a>
@@ -479,14 +479,14 @@
                                     </div>
                                     <h4>Target Illuminance</h4>
                                     <div class="input-append">
-                                        <select class="span2" id="appendedInput" type="text" name="illuminance">
+                                        <select class="span2" id="illuminance" type="text" name="illuminance">
                                                 <option value="150">150 - storage</option>
                                                 <option value="200">200 - casual work</option>
                                                 <option value="300">300 - rough work</option>
                                                 <option value="400">400 - office work (EU)</option>
                                                 <option value="500" selected>500 - office work (US)</option>
                                             </select>
-                                        <span class="add-on"><span class="unit">lux</span></span>
+                                        <span class="add-on"><span class="illu-unit">lux</span></span>
                                     </div>
                                     <h4>Window Head Height</h4>
                                     <div class="input-append">

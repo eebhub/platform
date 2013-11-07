@@ -182,33 +182,36 @@ app.get('/lite', function(req, res){
         var bld_location = '';
         var bld_function = '';
         var bld_year = '';
+        var gross_floor_area = '';
         
-        if(req.session.buildingname) {
-            //var buildingname = req.session.buildingname;
-            Building.findOne({username: req.session.username, "building.building_info.building_name": req.session.buildingname}, function(err, building) {
+        if(req.session.buildingid){
+            Building.findOne({_id: req.session.buildingid}, function(err, building) {
                 if( err || !building) console.log("No Building found");
                 else {
-                    console.log(building);
                     bldname = building.building.building_info.building_name;
-                    console.log(bldname);
                     bld_location = building.building.building_info.weather_epw_location;
                     bld_function = building.building.building_info.activity_type;
                     bld_year = building.building.building_info.year_completed;
+                    gross_floor_area = building.building.architecture.gross_floor_area;
+                    
                     
                      res.render('lite_auth', {
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
-                         'bld_year': bld_year
+                         'bld_year': bld_year,
+                         'gross_floor_area': gross_floor_area
                      });
                 }    
             });
+            
         }else{
           res.render('lite_auth', {
               'bldname': '',
               'bld_function': '',
               'bld_year': '',
-              'bld_location': ''
+              'bld_location': '',
+              'gross_floor_area': ''
           });
         }
         
@@ -218,6 +221,32 @@ app.get('/lite', function(req, res){
     } 
 });
 app.get('/literesults', routes.getLiteResults);
+
+app.get('/lite/:id', function(req, res){
+    //res.send(req.params.id);
+    req.session.buildingid = req.params.id;
+    Building.findOne({_id: req.params.id}, function(e, bld_lite){
+     if (e) res.send(e);
+     else {//res.send(bld_lite);
+        var bldname = bld_lite.building.building_info.building_name;
+        var bld_location = bld_lite.building.building_info.weather_epw_location;
+        var bld_year = bld_lite.building.building_info.year_completed;
+        var bld_function = bld_lite.building.building_info.activity_type;
+        var gross_floor_area = bld_lite.building.architecture.gross_floor_area;
+        //console.log(building_name);
+        res.render('lite_auth', {'bldname': bldname,
+                                 'bld_location': bld_location,
+                                 'bld_year': bld_year,
+                                 'bld_function': bld_function,
+                                 'gross_floor_area': gross_floor_area
+                                 });
+        
+     }
+  });
+    
+});
+
+
 //app.get('/partial', routes.getPartial);
 app.get('/partial', function(req,res){
     if(req.session.username){
@@ -225,10 +254,29 @@ app.get('/partial', function(req,res){
         var bld_location = '';
         var bld_function = '';
         var bld_year = '';
+        var room_width = ''; 
+        var room_depth = '';
+        var room_height = '';
+        var exterior_shading_orientation = '';
+        var window_to_wall_ratio = '';
+        var number_of_floors = '';
+        var overhang_depth = '';
+        var wall_insulation_r_value = '';
+        var thermal_mass = '';
+        var window_glass_coating = '';
+        var window_glass_type = '';
+        var roof_type = '';
+        var roof_insulation_type = '';
+        var roof_insulation_location ='';
+        var people_density ='';
+        var illuminance = '';
+        var equipment_power_density = '';
+        var ventilation_system = '';
+        var weekday_occupancy_start = '';
+        var weekday_occupancy_end = '';
         
-        if(req.session.buildingname) {
-            //var buildingname = req.session.buildingname;
-            Building.findOne({username: req.session.username, "building.building_info.building_name": req.session.buildingname}, function(err, building) {
+        if(req.session.buildingid){
+            Building.findOne({_id: req.session.buildingid}, function(err, building) {
                 if( err || !building) console.log("No Building found");
                 else {
                     console.log(building);
@@ -237,21 +285,82 @@ app.get('/partial', function(req,res){
                     bld_location = building.building.building_info.weather_epw_location;
                     bld_function = building.building.building_info.activity_type;
                     bld_year = building.building.building_info.year_completed;
+                    room_width = building.building.typical_room.room_width;
+                    room_depth = building.building.typical_room.room_depth;
+                    room_height = building.building.typical_room.room_height;
+                    exterior_shading_orientation = building.building.typical_room.exterior_shading_orientation;
+                    window_to_wall_ratio = building.building.typical_room.window_to_wall_ratio;
+                    number_of_floors = building.building.typical_room.number_of_floors;
+                    overhang_depth = building.building.typical_room.overhang_depth;
+                    wall_insulation_r_value = building.building.materials.wall_insulation_r_value;
+                    thermal_mass = building.building.materials.thermal_mass;
+                    window_glass_coating = building.building.materials.window_glass_coating;
+                    window_glass_type = building.building.materials.window_glass_type;
+                    roof_type = building.building.materials.roof_type;
+                    roof_insulation_type = building.building.materials.roof_insulation_type;
+                    roof_insulation_location = building.building.materials.roof_insulation_location;
+                    people_density = building.building.people.people_density;
+                    illuminance = building.building.lighting.illuminance;
+                    equipment_power_density = building.building.mechanical.equipment_power_density;
+                    ventilation_system = building.building.mechanical.ventilation_system;
+                    weekday_occupancy_start = building.building.schedules.weekday_occupancy_start;
+                    weekday_occupancy_end = building.building.schedules.weekday_occupancy_end;
                     
                      res.render('partial_auth', {
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
-                         'bld_year': bld_year
+                         'bld_year': bld_year,
+                         'room_width': room_width,
+                         'room_depth': room_depth,
+                         'room_height': room_height,
+                         'exterior_shading_orientation': exterior_shading_orientation,
+                         'window_to_wall_ratio': window_to_wall_ratio,
+                         'number_of_floors':number_of_floors,
+                         'overhang_depth': overhang_depth,
+                         'wall_insulation_r_value': wall_insulation_r_value,
+                         'thermal_mass': thermal_mass,
+                         'window_glass_coating': window_glass_coating,
+                         'window_glass_type': window_glass_type,
+                         'roof_type': roof_type,
+                         'roof_insulation_type': roof_insulation_type,
+                         'roof_insulation_location': roof_insulation_location,
+                         'people_density': people_density,
+                         'illuminance': illuminance,
+                         'equipment_power_density': equipment_power_density,
+                         'ventilation_system': ventilation_system,
+                         'weekday_occupancy_start': weekday_occupancy_start,
+                         'weekday_occupancy_end': weekday_occupancy_end
                      });
                 }    
             });
+            
         }else{
           res.render('partial_auth', {
               'bldname': '',
               'bld_function': '',
               'bld_year': '',
-              'bld_location': ''
+              'bld_location': '',
+              'room_width': '',
+              'room_depth': '',
+              'room_height': '',
+              'exterior_shading_orientation': '',
+              'window_to_wall_ratio': '',
+              'number_of_floors':'',
+              'overhang_depth': '',
+              'wall_insulation_r_value': '',
+              'thermal_mass': '',
+              'window_glass_coating': '',
+              'window_glass_type': '',
+              'roof_type': '',
+              'roof_insulation_type': '',
+              'roof_insulation_location': '',
+              'people_density': '',
+              'illuminance': '',
+              'equipment_power_density': '',
+              'ventilation_system': '',
+              'weekday_occupancy_start': '',
+              'weekday_occupancy_end': ''
           });
         }
     }else{
@@ -264,32 +373,100 @@ app.get('/substantial', function(req,res){
         var bldname = '';
         var bld_location = '';
         var bld_function = '';
-        var bld_year = '';
+        var activity_type_specific = '';
+        var gross_floor_area = '';
+        var number_of_floors = '';
+        var window_to_wall_ratio = '';
+        var footprint_shape = '';
+        var building_height = '';
+        var perimeter = '';
+        var window_glass_type = '';
+        var roof_type = '';
+        var exterior_wall_type = '';
+        var number_of_employees_during_main_shift = '';
+        var primary_hvac_type = '';
+            
+        var average_weekly_operating_hours = '';
+        var open_during_week = '';
+                
+        var weekday_occupancy_hours_day_start = '';
+        var weekday_occupancy_hours_day_end = '';
         
-        if(req.session.buildingname) {
-            //var buildingname = req.session.buildingname;
-            Building.findOne({username: req.session.username, "building.building_info.building_name": req.session.buildingname}, function(err, building) {
+        
+        if (req.session.buildingid) {
+            
+                Building.findOne({_id: req.session.buildingid}, function(err, building) {
                 if( err || !building) console.log("No Building found");
                 else {
-                    console.log(building);
                     bldname = building.building.building_info.building_name;
-                    console.log(bldname);
                     bld_location = building.building.building_info.weather_epw_location;
                     bld_function = building.building.building_info.activity_type;
-                    bld_year = building.building.building_info.year_completed;
+                    gross_floor_area = building.building.architecture.gross_floor_area;
+                    activity_type_specific = building.building.building_info.activity_type_specific;
+                    number_of_floors = building.building.architecture.number_of_floors;
+                    window_to_wall_ratio = building.building.architecture.window_to_wall_ratio;
+                    footprint_shape = building.building.architecture.footprint_shape;
+                    building_height = building.building.architecture.building_height;
+                    perimeter = building.building.architecture.perimeter;
+                    window_glass_type = building.building.materials.window_glass_type;
+                    roof_type = building.building.materials.roof_type;
+                    exterior_wall_type = building.building.materials.exterior_wall_type;
+                    number_of_employees_during_main_shift = building.building.people.number_of_employees_during_main_shift;
+                    primary_hvac_type = building.building.mechanical.primary_hvac_type;
+            
+                    average_weekly_operating_hours = building.building.schedules.average_weekly_operating_hours;
+                    open_during_week = building.building.schedules.open_during_week;
+                
+                    weekday_occupancy_hours_day_start = building.building.schedules.weekday_occupancy_hours_day_start;
+                    weekday_occupancy_hours_day_end = building.building.schedules.weekday_occupancy_hours_day_end;
                     
                      res.render('substantial_auth', {
                          'bldname': bldname,
                          'bld_location': bld_location,
-                         'bld_function': bld_function
+                         'bld_function': bld_function,
+                         'activity_type_specific': activity_type_specific,
+                         'gross_floor_area': gross_floor_area,
+                         'number_of_floors': number_of_floors,
+                         'window_to_wall_ratio': window_to_wall_ratio,
+                         'footprint_shape': footprint_shape,
+                         'building_height': building_height,
+                         'perimeter': perimeter,
+                         'window_glass_type': window_glass_type,
+                         'roof_type': roof_type,
+                         'exterior_wall_type': exterior_wall_type,
+                         'number_of_employees_during_main_shift': number_of_employees_during_main_shift,
+                         'primary_hvac_type': primary_hvac_type,
+                         'average_weekly_operating_hours': average_weekly_operating_hours,
+                         'open_during_week': open_during_week,
+                         'weekday_occupancy_hours_day_start': weekday_occupancy_hours_day_start, 
+                         'weekday_occupancy_hours_day_end': weekday_occupancy_hours_day_end
                      });
-                }    
-            });
-        }else{
+                    }    
+                });
+            
+            
+            
+        }else {
           res.render('substantial_auth', {
               'bldname': '',
               'bld_function': '',
-              'bld_location': ''
+              'bld_location': '',
+              'activity_type_specific': '',
+              'gross_floor_area': '',
+              'number_of_floors': '',
+              'window_to_wall_ratio': '',
+              'footprint_shape': '',
+              'building_height': '',
+              'perimeter': '',
+              'window_glass_type': '',
+              'roof_type': '',
+              'exterior_wall_type': '',
+              'number_of_employees_during_main_shift': '',
+              'primary_hvac_type': '',
+              'average_weekly_operating_hours': '',
+              'open_during_week': '',
+              'weekday_occupancy_hours_day_start': '', 
+              'weekday_occupancy_hours_day_end': ''
           });
         }
     }else{
@@ -301,37 +478,71 @@ app.get('/comprehensive', function(req,res){
    if(req.session.username){
        //res.render('comprehensive_auth');
        
-               var bldname = '';
+        var bldname = '';
         var bld_location = '';
         var bld_function = '';
         var bld_year = '';
+        var gross_floor_area = '';
+        var number_of_floors = '';
+        var window_to_wall_ratio = '';
+        var footprint_shape = '';
+        var tightness = '';
+        var window_glass_type = '';
+        var roof_type = '';
+        var exterior_wall_type = '';
         
-        if(req.session.buildingname) {
-            //var buildingname = req.session.buildingname;
-            Building.findOne({username: req.session.username, "building.building_info.building_name": req.session.buildingname}, function(err, building) {
+        if (req.session.buildingid) {
+            
+            
+            Building.findOne({_id: req.session.buildingid}, function(err, building) {
                 if( err || !building) console.log("No Building found");
                 else {
-                    console.log(building);
                     bldname = building.building.building_info.building_name;
-                    console.log(bldname);
                     bld_location = building.building.building_info.weather_epw_location;
                     bld_function = building.building.building_info.activity_type;
                     bld_year = building.building.building_info.year_completed;
-                    
+                    gross_floor_area = building.building.architecture.gross_floor_area;
+                    number_of_floors = building.building.architecture.number_of_floors;
+                    window_to_wall_ratio = building.building.architecture.window_to_wall_ratio;
+                    footprint_shape = building.building.architecture.footprint_shape;
+                    tightness = building.building.architecture.tightness;
+                    window_glass_type = building.building.materials.window_glass_type;
+                    roof_type = building.building.materials.roof_type;
+                    exterior_wall_type = building.building.materials.exterior_wall_type;
                      res.render('comprehensive_auth', {
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
-                         'bld_year': bld_year
+                         'bld_year': bld_year,
+                         'gross_floor_area': gross_floor_area,
+                         'number_of_floors': number_of_floors, 
+                         'window_to_wall_ratio': window_to_wall_ratio,
+                         'footprint_shape': footprint_shape, 
+                         'tightness': tightness, 
+                         'window_glass_type': window_glass_type,
+                         'roof_type': roof_type,
+                         'exterior_wall_type': exterior_wall_type
                      });
-                }    
-            });
+                    }    
+                });
+            
+            
+            
+            
         }else{
           res.render('comprehensive_auth', {
-              'bldname': '',
-              'bld_function': '',
-              'bld_location': '',
-              'bld_year': ''
+              'bldname': bldname,
+              'bld_location': bld_location,
+               'bld_function': bld_function,
+               'bld_year': bld_year,
+               'gross_floor_area': gross_floor_area,
+               'number_of_floors': number_of_floors, 
+               'window_to_wall_ratio': window_to_wall_ratio,
+               'footprint_shape': footprint_shape, 
+               'tightness': tightness, 
+               'window_glass_type': window_glass_type,
+               'roof_type': roof_type,
+               'exterior_wall_type': exterior_wall_type
           });
         }
        
@@ -339,6 +550,7 @@ app.get('/comprehensive', function(req,res){
        res.sendfile('./views/comprehensive.html');
    } 
 });
+
 app.get('/substantialsampleres', substantial.getSubstantialSampleRes);
 app.get('/substantialsampleres-energyuse', substantial.getSubstantialSampleResEnergyUse);
 app.get('/substantialsampleres-stage1', substantial.getSubstantialSampleResStage1);
@@ -354,19 +566,60 @@ app.get("/mydashboard", function(req, res){
 });
 
 app.get("/mybuildings", function(req, res){
+    var buildinglist = [];
+    var buildingnamelist = [];
+    var yearlist = [];
+    var locationlist = [];
     Building.find({username: req.session.username}, function (err, docs) {
-    console.log(docs.length);    
-     res.send(docs.length+ "buildings:\n"+docs);
+    if (err) res.send(err);
+    else {
+        docs.forEach( function(doc) {
+        buildinglist.push(doc._id);
+        buildingnamelist.push(doc.building.building_info.building_name);
+        yearlist.push(doc.building.building_info.year_completed);
+        locationlist.push(doc.building.building_info.weather_epw_location);
+        });
+        
+        //res.send(buildinglist);
+        res.render('buildings', {'username': req.session.username,
+                                  'buildinglist': buildinglist,
+                                  'buildingnamelist': buildingnamelist,
+                                  'yearlist': yearlist,
+                                  'locationlist': locationlist});
+    }
+    });
 });
+
+app.get("/myresults", function(req, res){
+//     Buildingmodel.find({username: req.session.username}, function (err, docs) {
+//     console.log(docs.length);    
+//      res.send(docs.length+ "building models:\n"+docs);
+// });
+    res.render('results', {'username': req.session.username});
     
 });
 
-app.get("/mymodels", function(req, res){
-    Buildingmodel.find({username: req.session.username}, function (err, docs) {
-    console.log(docs.length);    
-     res.send(docs.length+ "building models:\n"+docs);
+app.get("/addnewbuilding", function(req, res){
+    if (!req.session.buildingid) {res.redirect('/lite');}
+    else {
+        req.session.buildingid = null;
+        res.redirect('/lite');
+    }
 });
-    
+
+app.get('/mybuildings/:id', function(req, res) {
+    //res.send('user' + req.params.id);
+   Building.findOne({_id: req.params.id}, function(e, result){
+     if (e) res.send(e);
+     else res.send(result);
+   });
+});
+
+app.get('/removebuilding/:id', function(req,res){
+    Building.remove({_id: req.params.id}, function(e,result){
+        if(e) res.send(e);
+        else res.redirect('/mybuildings');
+    });
 });
 
 
@@ -438,11 +691,14 @@ app.post("/mydashboard", function (req, res) {
 });
 
 app.post("/savebuildinglite", function (req, res) {
-    if (req.session.buildingname){
+    if (req.session.buildingid){
         Building.update(
             { username: req.session.username,
-              "building.building_info.building_name": req.session.buildingname},
+              _id: req.session.buildingid},
             { $set: {
+                "building.building_info.building_name": req.body.building_name,
+                "building.building_info.weather_epw_location": req.body.weather_epw_location,
+                "building.building_info.activity_type": req.body.activity_type,
                 "building.building_info.year_completed": req.body.year_completed,
                 "building.architecture.gross_floor_area": req.body.gross_floor_area
                 }
@@ -455,9 +711,9 @@ app.post("/savebuildinglite", function (req, res) {
                 }
               }
         );
-        //res.send("building info (partial) saved!");
+        
     }else{
-		var building = new Building({
+		new Building({
                             username: req.session.username,
                                 building: {
           building_info: {building_name: req.body.building_name,  //4
@@ -475,73 +731,59 @@ app.post("/savebuildinglite", function (req, res) {
                           tightness: ''                //c
                           },  
           typical_room:   {room_width: '',      //p
-                           room_depth: '',      //p
-                           room_height: '',     //p
-                           exterior_shading_orientation: '',   //p
-                           window_to_wall_ratio: '',     //p
-                           number_of_floors: '',  //p
-                           overhang_depth: ''   //p
-                           },                  
+                          room_depth: '',      //p
+                          room_height: '',     //p
+                          exterior_shading_orientation: '',   //p
+                          window_to_wall_ratio: '',     //p
+                          number_of_floors: '',  //p
+                          overhang_depth: ''   //p
+                          },                  
           materials:      {wall_insulation_r_value: '',  //p
-                           thermal_mass: '',    //p
-                           window_glass_coating: '',    //p
-                           window_glass_type: '',    //p,s,c
-                           roof_type: '',        //p,s,c
-                           roof_insulation_type: '',   //p
-                           roof_insulation_location: '',     //p
-                           exterior_wall_type: ''          //s,c
-                           },
+                          thermal_mass: '',    //p
+                          window_glass_coating: '',    //p
+                          window_glass_type: '',    //p,s,c
+                          roof_type: '',        //p,s,c
+                          roof_insulation_type: '',   //p
+                          roof_insulation_location: '',     //p
+                          exterior_wall_type: ''          //s,c
+                          },
             
           people:         {people_density: '',    //p
-                           number_of_employees_during_main_shift: ''     //s
-                           },
+                          number_of_employees_during_main_shift: ''     //s
+                          },
                            
           lighting:       {illuminance: ''        //p
-                           },                      
+                          },                      
           
           mechanical:     {equipment_power_density: '',     //p
-                           ventilation_system: '',          //p
-                           primary_hvac_type: ''           //s
-                        //   electricity_used_for_main_heating: '',      //s
-                        //   natural_gas_used_for_main_heating: '',      //s
-                        //   fuel_oil_used_for_main_heating: '',         //s
-                        //   propane_used_for_main_heating: '',          //s
-                        //   district_steam_used_for_main_heating: '',    //s
-                        //   district_hot_water_used_for_main_heating: '',   //s
-                        //   electricity_used_for_cooling: '',               //s
-                        //   natural_gas_used_for_cooling: '',               //s
-                        //   fuel_oil_used_for_cooling: '',                  //s
-                        //   propane_used_for_cooling: '',                   //s
-                        //   district_steam_used_for_cooling: '',            //s
-                        //   district_hot_water_used_for_cooling: '',        //s
-                        //   district_chilled_water_used_for_cooling: '',    //s
-                        //   electricity_used_for_water_heating: '',         //s
-                        //   natural_gas_used_for_water_heating: '',         //s
-                        //   fuel_oil_used_for_water_heating: '',            //s
-                        //   propane_used_for_water_heating: '',             //s
-                        //   district_steam_used_for_water_heating: '',      //s
-                        //   district_hot_water_used_for_water_heating: ''   //s
-                           }, 
+                          ventilation_system: '',          //p
+                          primary_hvac_type: ''           //s
+                          }, 
                            
           schedules:      {weekday_occupancy_start: '',    //p
-                           weekday_occupancy_end: '',      //p
-                           open_24_hours_a_day: '',        //s
-                           average_weekly_operating_hours: '',   //s
-                           open_during_week: '',                 //s
-                           open_on_weekend: '',                  //s
-                           weekday_occupancy_hours_day_start: '',     //s
-                           weekday_occupancy_hours_day_end: '',       //s
-                           saturday_occupancy_hours_day_start: '',    //s
-                           saturday_occupancy_hours_day_end: '',      //s
-                           sunday_occupancy_hours_day_start: '',      //s
-                           sunday_occupancy_hours_day_end: ''         //s
-                           }
+                          weekday_occupancy_end: '',      //p
+                          open_24_hours_a_day: '',        //s
+                          average_weekly_operating_hours: '',   //s
+                          open_during_week: '',                 //s
+                          open_on_weekend: '',                  //s
+                          weekday_occupancy_hours_day_start: '',     //s
+                          weekday_occupancy_hours_day_end: '',       //s
+                          saturday_occupancy_hours_day_start: '',    //s
+                          saturday_occupancy_hours_day_end: '',      //s
+                          sunday_occupancy_hours_day_start: '',      //s
+                          sunday_occupancy_hours_day_end: ''         //s
+                          }
           } 
    
-                        }).save(); 
-                    req.session.buildingname = req.body.building_name;
-					console.log(req.session);
-			        res.send("building info (lite) created!");
+                        }).save(function(err, building){
+                            if (err||!building) res.send(err);
+                            else {
+                                req.session.buildingid = building._id; 
+			                    res.send("building info (lite) created!");
+                            }
+
+                        }); 
+
 
     }    
 });
@@ -549,11 +791,14 @@ app.post("/savebuildinglite", function (req, res) {
 
 app.post('/savebuildingpartial', function(req,res){
     
-    if (req.session.buildingname){
+    if (req.session.buildingid){
         Building.update(
             { username: req.session.username,
-              "building.building_info.building_name": req.session.buildingname},
+              _id: req.session.buildingid},
             { $set: {
+                "building.building_info.building_name": req.body.building_name,
+                "building.building_info.activity_type": req.body.activity_type,
+                "building.building_info.weather_epw_location": req.body.weather_epw_location,
                 "building.building_info.year_completed": req.body.year_completed,
                 "building.typical_room.room_width": req.body.room_width,      
                 "building.typical_room.room_depth": req.body.room_depth,
@@ -585,10 +830,9 @@ app.post('/savebuildingpartial', function(req,res){
                 }
               }
         );
-        //res.send("building info (partial) saved!");
     }else{
     
-    var building = new Building({
+    new Building({
           username: req.session.username,
           building: {
           building_info: {building_name: req.body.building_name,  //4
@@ -633,25 +877,6 @@ app.post('/savebuildingpartial', function(req,res){
           mechanical:     {equipment_power_density: req.body.equipment_power_density,     //p
                            ventilation_system: req.body.ventilation_system,          //p
                            primary_hvac_type: ''           //s
-                        //   electricity_used_for_main_heating: '',      //s
-                        //   natural_gas_used_for_main_heating: '',      //s
-                        //   fuel_oil_used_for_main_heating: '',         //s
-                        //   propane_used_for_main_heating: '',          //s
-                        //   district_steam_used_for_main_heating: '',    //s
-                        //   district_hot_water_used_for_main_heating: '',   //s
-                        //   electricity_used_for_cooling: '',               //s
-                        //   natural_gas_used_for_cooling: '',               //s
-                        //   fuel_oil_used_for_cooling: '',                  //s
-                        //   propane_used_for_cooling: '',                   //s
-                        //   district_steam_used_for_cooling: '',            //s
-                        //   district_hot_water_used_for_cooling: '',        //s
-                        //   district_chilled_water_used_for_cooling: '',    //s
-                        //   electricity_used_for_water_heating: '',         //s
-                        //   natural_gas_used_for_water_heating: '',         //s
-                        //   fuel_oil_used_for_water_heating: '',            //s
-                        //   propane_used_for_water_heating: '',             //s
-                        //   district_steam_used_for_water_heating: '',      //s
-                        //   district_hot_water_used_for_water_heating: ''   //s
                            }, 
                            
           schedules:      {weekday_occupancy_start: req.body.weekday_occupancy_start,    //p
@@ -669,20 +894,25 @@ app.post('/savebuildingpartial', function(req,res){
                            }
           } 
    
-        }).save(); 
-        req.session.buildingname = req.body.building_name;
-		console.log(req.session);
-		res.send("building info (partial) created!");
+        }).save(function(err, building){
+            if (err) res.send(err);
+            else {req.session.buildingid = building._id;
+		    res.send("building info (partial) created!");
+		    }
+        }); 
     }	
    
 });
 
 app.post('/savebuildingsubstantial', function(req, res){
-        if (req.session.buildingname){
+        if (req.session.buildingid){
         Building.update(
             { username: req.session.username,
-              "building.building_info.building_name": req.session.buildingname},
+              _id: req.session.buildingid},
             { $set: {
+                "building.building_info.building_name": req.body.building_name,
+                "building.building_info.activity_type": req.body.activity_type,
+                "building.building_info.weather_epw_location": req.body.weather_epw_location,
                 "building.building_info.activity_type_specific": req.body.activity_type_specific,   //s
                 "building.architecture.gross_floor_area": req.body.gross_floor_area,    //l,s,c
                 "building.architecture.number_of_floors": req.body.number_of_floors,    //s,c
@@ -698,22 +928,20 @@ app.post('/savebuildingsubstantial', function(req, res){
             
                 "building.schedules.average_weekly_operating_hours": req.body.average_weekly_operating_hours,   //s
                 "building.schedules.open_during_week": req.body.open_during_week,                 //s
-                
+
                 "building.schedules.weekday_occupancy_hours_day_start": req.body.weekday_occupancy_hours_day_start,     //s
                 "building.schedules.weekday_occupancy_hours_day_end": req.body.weekday_occupancy_hours_day_end      //s
-                //other 6 attributes of schedules are not saved
+                //other 6 attributes of schedules are not saveds
                 }
             },{upsert:true,safe:false},
               function(err,data){
                 if (err){
-                    console.log(err);
                     res.send(err);
                 }else{
                     res.send("building info (substantial) saved!");
                 }
               }
         );
-        //res.send("building info (substantial) saved!");
     }else{
     var open_24_hours_a_day = 'off';
     var open_during_week = 'off';
@@ -722,7 +950,7 @@ app.post('/savebuildingsubstantial', function(req, res){
     if (req.body.open_during_week) open_during_week = req.body.open_during_week;
     if (req.body.open_on_weekend) open_on_weekend = req.body.open_on_weekend;
     
-    var building = new Building({
+    new Building({
           username: req.session.username,
           building: {
           building_info: {building_name: req.body.building_name,  //4
@@ -784,21 +1012,32 @@ app.post('/savebuildingsubstantial', function(req, res){
                            }
           } 
    
-        }).save(); 
-        req.session.buildingname = req.body.building_name;
-		console.log(req.session);
-		res.send("building info (substantial) created!");
+        }).save(function(err, building){
+            req.session.buildingid = building._id;
+		    res.send("building info (substantial) created!");
+        }); 
+
     }
 });
 
 app.post('/savebuildingcomprehensive', function(req, res){
-    if (req.session.buildingname){
+    if (req.session.buildingid){
         Building.update(
             { username: req.session.username,
-              "building.building_info.building_name": req.session.buildingname},
+              _id: req.session.buildingid},
             { $set: {
+                "building.building_info.building_name": req.body.building_name,
+                "building.building_info.weather_epw_location": req.body.weather_epw_location,
+                "building.building_info.activity_type": req.body.activity_type,
                 "building.building_info.year_completed": req.body.year_completed,
-                "building.architecture.tightness": req.body.tightness                //c
+                "building.architecture.tightness": req.body.tightness,
+                "building.architecture.gross_floor_area": req.body.gross_floor_area,
+                "building.architecture.number_of_floors": req.body.number_of_floors, 
+                "building.architecture.window_to_wall_ratio": req.body.window_to_wall_ratio,
+                "building.architecture.footprint_shape": req.body.footprint_shape, 
+                "building.architecture.window_glass_type": req.body.window_glass_type,
+                "building.materials.roof_type": req.body.roof_type,
+                "building.materials.exterior_wall_type": req.body.exterior_wall_type
                 }
             },{upsert:true,safe:false},
               function(err,data){
@@ -812,7 +1051,7 @@ app.post('/savebuildingcomprehensive', function(req, res){
         
     }else{
     
-    var building = new Building({
+    new Building({
           username: req.session.username,
           building: {
           building_info: {building_name: req.body.building_name,  //4
@@ -857,25 +1096,6 @@ app.post('/savebuildingcomprehensive', function(req, res){
           mechanical:     {equipment_power_density: '',     //p
                            ventilation_system: '',          //p
                            primary_hvac_type: ''           //s
-                        //   electricity_used_for_main_heating: '',      //s
-                        //   natural_gas_used_for_main_heating: '',      //s
-                        //   fuel_oil_used_for_main_heating: '',         //s
-                        //   propane_used_for_main_heating: '',          //s
-                        //   district_steam_used_for_main_heating: '',    //s
-                        //   district_hot_water_used_for_main_heating: '',   //s
-                        //   electricity_used_for_cooling: '',               //s
-                        //   natural_gas_used_for_cooling: '',               //s
-                        //   fuel_oil_used_for_cooling: '',                  //s
-                        //   propane_used_for_cooling: '',                   //s
-                        //   district_steam_used_for_cooling: '',            //s
-                        //   district_hot_water_used_for_cooling: '',        //s
-                        //   district_chilled_water_used_for_cooling: '',    //s
-                        //   electricity_used_for_water_heating: '',         //s
-                        //   natural_gas_used_for_water_heating: '',         //s
-                        //   fuel_oil_used_for_water_heating: '',            //s
-                        //   propane_used_for_water_heating: '',             //s
-                        //   district_steam_used_for_water_heating: '',      //s
-                        //   district_hot_water_used_for_water_heating: ''   //s
                            }, 
                            
           schedules:      {weekday_occupancy_start: '',    //p
@@ -893,15 +1113,16 @@ app.post('/savebuildingcomprehensive', function(req, res){
                            }
           } 
    
-        }).save(); 
-        req.session.buildingname = req.body.building_name;
-		console.log(req.session);
-		res.send("building info (comprehensive) created!");
+        }).save(function(err, building){
+            req.session.buildingid = building._id;
+		    res.send("building info (comprehensive) created!");
+        }); 
     }	
 });
 
 
-//ReRoutes / ReDirects / Easy Links
+
+//ReRoutes / ReDirects / Easy Links for Task 2
 
 app.get("/platform", function (req, res) {  //added to reroute outdated tools.eebhub.org/platform link
     res.redirect("http://tools.eebhub.org");
@@ -940,7 +1161,7 @@ app.get("/database", function (req, res) {
     res.redirect("https://docs.google.com/document/d/1sL0Km4AzIGoDF-OWU3EBOFI0MIibu1fmum5VHNVsayQ/edit?usp=sharing");
 });
 app.get("/game", function (req, res) {
-    res.redirect("http://developer.eebhub.org/retrofit-game/");
+    res.redirect("http://128.118.67.241/Retrofit_Game/tracking-sheet.php");
 });
 app.get("/vision", function (req, res) {
     res.redirect("http://simulation.eebhub.org");
@@ -948,8 +1169,44 @@ app.get("/vision", function (req, res) {
 app.get("/license", function (req, res) {
     res.redirect("https://github.com/eebhub/platform/blob/master/LICENSE");
 });
+app.get("/measures", function (req, res) {
+    res.redirect("https://docs.google.com/document/d/1wrO0552T2dODzvKNWTP_CsDHKaudnBGs4ulwSbsDx6w/edit?usp=sharing");
+});
+
+// Google Analytics
 app.get("/visits", function (req, res) {
     res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
+});
+app.get("/visitors", function (req, res) {
+    res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
+});
+app.get("/views", function (req, res) {
+    res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
+});
+
+
+//ReRoutes / ReDirects / Easy Links for Task 3
+
+app.get("/controls", function (req, res) {
+    res.redirect("http://67.102.239.250:8282/");
+});
+app.get("/monitoring", function (req, res) {
+    res.redirect("http://cloud.cdhenergy.com/bldg101/");
+});
+app.get("/middleware", function (req, res) {
+    res.redirect("http://128.118.67.231:8080/PBTC/home.xhtml");
+});
+app.get("/dashboard", function (req, res) {
+    res.redirect("http://128.118.67.231:8888/dglux/");
+});
+app.get("/piserversharepoint", function (req, res) {
+    res.redirect("http://128.118.67.245/SitePages/Home.aspx");
+});
+app.get("/piservercharts", function (req, res) {
+    res.redirect("http://128.118.67.245:81/coresight/#");
+});
+app.get("/piserverdashboard", function (req, res) {
+    res.redirect("http://eebcmu.coeaccess.psu.edu:85/PIsystemV0.0/IEQ.php?floor=1");
 });
 
 

@@ -32,11 +32,41 @@ module.exports = {
         var building_location = request.body.weather_epw_location;
         var building_function = request.body.activity_type;
         //var building_size = request.body.gross_floor_area;
+        
+        //utility data input text area
+        var utility_gas = [];
+        var utility_electric = [];
+        var electric_utility_startdate = [];
+        var gas_utility_startdate = [];
+        
+        if ((request.body.utility_electric[0]=='')||(request.body.utility_gas[0]=='')){
+        var utility_data_time_series = request.body.utility_data_time_series;
+        var utility_rows = utility_data_time_series.split("\r\n");
+        for (var i=1; i<utility_rows.length;i++){
+            console.log(utility_rows[i]);
+            var row_split = utility_rows[i].split("\t");
+            electric_utility_startdate.push(row_split[0]);
+            utility_electric.push(row_split[1]);
+            gas_utility_startdate.push(row_split[2]);
+            utility_gas.push(row_split[3]);
+        }
+        utility_electric.pop();
+        utility_gas.pop();
+        console.log(electric_utility_startdate);
+        console.log(utility_electric);
+        console.log(gas_utility_startdate);
+        console.log(utility_gas);
+        
+        }else{
+
+        utility_gas = request.body.utility_gas;
+        utility_electric = request.body.utility_electric;
+        electric_utility_startdate = request.body.electric_utility_startdate;
+        gas_utility_startdate = request.body.gas_utility_startdate;
+        
+        }
+
         var year_completed = request.body.year_completed;
-        var utility_gas = request.body.utility_gas;
-        var utility_electric = request.body.utility_electric;
-        var electric_utility_startdate = request.body.electric_utility_startdate;
-        var gas_utility_startdate = request.body.gas_utility_startdate;
 
         //Make Timespamp
         var timestamp = createTimestamp();

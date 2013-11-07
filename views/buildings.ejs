@@ -30,15 +30,18 @@
         text-align: center;
       }
     </style>
+    
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
     <![endif]-->
+    
+
 
   </head>
 
-  <body>
+  <body onload="$("#list").html("hello here");">
           <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -82,17 +85,68 @@ Welcome, <script>
           <div class="navbar-inner">
             <a class="brand" href="/mydashboard">My Dashboard</a>
             <ul class="nav">
-              <li class="active"><a href="/mydashboard">My profile</a></li>
-              <li><a href="/mybuildings">My buildings</a></li>
+              <li><a href="/mydashboard">My profile</a></li>
+              <li class="active"><a href="/mybuildings">My buildings</a></li>
               <li><a href="/myresults">My simulation results</a></li>
             </ul>
           </div>
         </div>
-
         
+        <div id="list">
+        <p><a href='/addnewbuilding'>+ Add A New Building</a></p>
+        
+        <table cellpadding="0" cellspacing="0" border="0" background="http://sustainability.emory.edu/html/images/leaf_bg.gif" width="100%">
+        <caption><h4>My Building List</h4></caption>
+		<tbody>
+			
+			<tr>
+				<td><strong>Year Completed</strong></td>
+				<td><strong>Building Name</strong></td>
+				<td><strong>Weather EPW Location</strong></td>
+				<td>View Building File</td>
+				<td>Go Simulation</td>
+				<td>Delete</td>
+			</tr>
+			
+			<script>
+        var buildinglist = "<%= buildinglist %>";
+        var buildingnamelist = "<%= buildingnamelist %>";
+        var yearlist = "<%= yearlist %>";
+        var locationlist = "<%= locationlist %>";
+        //console.log(buildinglist.length);
+        var array = buildinglist.split(',');
+        var buildingnamelist_a = buildingnamelist.split(',');
+        var yearlist_a = yearlist.split(',');
+        var locationlist_a = locationlist.split(',');
+        if (buildinglist!=''){
+        //console.log(array);
+        for (var i=0; i<array.length; i++){
+            document.write("<tr><td>"+yearlist_a[i]+"</td><td>"+buildingnamelist_a[i]+"</td><td>"+locationlist_a[i]+"</td>");
+            document.write("<td>");
+            document.write("<a href=\"/mybuildings/"+array[i]+"\">view json file</a>");
+            document.write("</td><td><a href=\"/lite/"+array[i]+"\">go to form</a></td>");
+            document.write("<td><a href=\"/removebuilding/"+array[i]+"\">delete</a></td></tr>");
+        }
+        }
+        </script>
+			
+			
+		</tbody>
+		
+        </table>
+        
+        
+        
+        </div>
 
 </div>
 
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap-scrollspy.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   
   </body>
 </html>

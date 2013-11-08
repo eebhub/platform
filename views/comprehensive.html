@@ -173,7 +173,7 @@
                                     <h4>Building Name</h4>
                                     <input class="span3" type="text" id="building_name" name="building_name">
                                     <br/>
-									<input type="hidden" id="random_number" name="random_number">
+									<input type="hidden" id="random_number" name="random_number" style="color:gray;">
                                     <h4>Location</h4>
                                     <div class="input-append">
                                         <select class="span3" value="this.value" id="weather_epw_location" name="weather_epw_location">
@@ -571,7 +571,7 @@
                             <div class="page-header">
                                 <h2>Schedules</h2>
                                 <h2>
-                                    <small>Occupancy, lighting, equipment schedules are defaulted from building function</small>
+                                    <small>Occupancy, lighting, equipment, HVAC schedules are defaulted by building function.</small>
                                 </h2>
                             </div>
     							<div id="graph-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
@@ -601,7 +601,7 @@
     							<input type='hidden' name='schedule[]' id='schedule_val23' value=''> </input>
                             <div class="text-right">
                                 <h2>
-                                    <small>based off of
+                                    <small>Schedules Editor coming soon!  Defaults currently based off
                                         <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html">DOE's Commercial Reference Buildings</a>
                                     </small>
                                 </h2>
@@ -691,7 +691,7 @@
 				    },
 					title: 
 					{
-						text: 'Schedules Editor (mockup, not yet active)'
+						text: 'Occupancy Weekdays'
 					},
 				    xAxis: 
 					{
@@ -721,11 +721,11 @@
 							'22',
 							'23',
 							'24'	
-						]
-						title:
-    					{
-    						text: 'Time in Day'
-    					}
+						],
+						title: 
+						{
+						    text: 'Hour'
+						 }
     				},
 			    yAxis:
 				{
@@ -767,6 +767,9 @@
         			yDecimals: 2,
 					valueDecimals:2
     			},
+    			legend: {
+                    enabled: false
+                },
     			series: 
 				[{
 				id: 'series-1',

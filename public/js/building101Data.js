@@ -286,6 +286,7 @@ if (form.contains(form.building_orientation)) {form.building_orientation.value =
 if (form.contains(form.window_to_wall_ratio)) {form.window_to_wall_ratio.value = 15;}
 if (form.contains(form.number_of_floors)) {form.number_of_floors.value = 4;} //conditioned space, includes basement
 if (form.contains(form.perimeter)) {form.perimeter.value = 800;} 
+if (form.contains(form.floor_to_floor_height)) {form.floor_to_floor_height.value = 3.66;} 
 
 
 //ROOM
@@ -321,7 +322,7 @@ if (form.contains(form.illuminance)) {form.illuminance.value = 500;}
 if (form.contains(form.lighting_power_density)) {form.lighting_power_density.value = 2;} //2W/sqft
 if (form.contains(form.window_head_height)) {form.window_head_height.value = 10.25;}
 if (form.contains(form.wall_thickness)) {form.wall_thickness.value = 1.5;}
-if (form.contains(form.interior_shading_type)) {form.interior_shading_type.value = "Fabric Shades";}
+if (form.contains(form.interior_shading_type)) {form.interior_shading_type.value = "Fabric_Shades";}
 if (form.contains(form.floor_reflectance)) {form.floor_reflectance.value = 0.2;}
 if (form.contains(form.ceiling_reflectance)) {form.ceiling_reflectance.value = 0.4;}
 if (form.contains(form.wall_reflectance)) {form.wall_reflectance.value = 0.6;}

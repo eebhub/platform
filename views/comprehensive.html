@@ -270,12 +270,6 @@
 
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
-                                    <h4>Airtightness Assessment <small>by CONTAM</small></h4>
-                                    <select class="span3" name="tightness">
-                                        <option>Leaky</option>
-                                        <option selected>Average</option>
-                                        <option>Tight</option>
-                                    </select>
                                 </div>
                                 <div class="span4">
                                     <h4>Geometry Import</h4>
@@ -375,7 +369,7 @@
                                 <div class="span3" id="architect2-replace1">
                                     <h4>Room Width</h4>
                                     <div class="input-append">
-                                        <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput"
                                         name="room_width" />
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
@@ -383,13 +377,13 @@
                                 <div class="span3">
                                     <h4>Room Depth</h4>
                                     <div class="input-append">
-                                        <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput"
                                         name="room_depth" />
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
                                     <h4>Room Height</h4>
                                     <div class="input-append">
-                                        <input type="number" min="0" step="0.1" class="span2" id="appendedInput"
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput"
                                         name="room_height" />
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
@@ -551,13 +545,19 @@
                                         <option value="SystemType9">Warm Air Furnace Gas Fired</option>
                                         <option value="SystemType10">Warm Air Furnace Electric</option>
                                     </select>
-                                </div>
-                                <div class="span4">
-                                    <h4>Equipment Power Density</h4>
+                                     <h4>Equipment Power Density</h4>
                                     <div class="input-append">
                                         <input class="span2" name="equipment_power_density" id="appendedInput" type="text" placeholder="building type default" disabled>
                                         <span class="add-on" id="mechanical-replace">W/<span class="unit">m</span>&sup2;</span>
                                     </div>
+                                </div>
+                                <div class="span4">
+                                    <h4>Airtightness Assessment <small>by CONTAM</small></h4>
+                                    <select class="span3" name="tightness">
+                                        <option>Leaky</option>
+                                        <option selected>Average</option>
+                                        <option>Tight</option>
+                                    </select>
                                 </div>
                             </div>
                             <h2 class="text-right">
@@ -570,35 +570,47 @@
                         <div id="box-unit">
                             <div class="page-header">
                                 <h2>Schedules</h2>
-									<div id="graph-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-									<input type='hidden' name='schedule[]' id='schedule_val0' value=''> </input>
-                                	<input type='hidden' name='schedule[]' id='schedule_val1' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val2' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val3' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val4' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val5' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val6' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val7' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val8' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val9' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val10' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val11' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val12' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val13' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val14' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val15' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val16' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val17' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val18' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val19' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val20' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val21' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val22' value=''> </input>
-									<input type='hidden' name='schedule[]' id='schedule_val23' value=''> </input>
-								<h2>
+                                <h2>
                                     <small>Occupancy, lighting, equipment schedules are defaulted from building function</small>
                                 </h2>
                             </div>
+    							<div id="graph-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    							<input type='hidden' name='schedule[]' id='schedule_val0' value=''> </input>
+                            	<input type='hidden' name='schedule[]' id='schedule_val1' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val2' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val3' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val4' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val5' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val6' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val7' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val8' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val9' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val10' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val11' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val12' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val13' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val14' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val15' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val16' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val17' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val18' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val19' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val20' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val21' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val22' value=''> </input>
+    							<input type='hidden' name='schedule[]' id='schedule_val23' value=''> </input>
+                            <div class="text-right">
+                                <h2>
+                                    <small>based off of
+                                        <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html">DOE's Commercial Reference Buildings</a>
+                                    </small>
+                                </h2>
+                                <h6 style="color:gray;">[
+                                    <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html">NREL Reference</a>|
+                                    <a href="http://www.energycodes.gov/development/commercial/90.1_models">PNNL Prototype</a>|
+                                    <a href="http://www.eia.gov/consumption/commercial/building-type-definitions.cfm">EIA Survey</a>]</h6>
+                            </div>
+                        </div>
 					</section>
                     
                     <!-- ######################################### Energy Conservation Section ######################################### -->
@@ -679,7 +691,7 @@
 				    },
 					title: 
 					{
-						text: 'Schedules'
+						text: 'Schedules Editor (mockup, not yet active)'
 					},
 				    xAxis: 
 					{
@@ -710,6 +722,10 @@
 							'23',
 							'24'	
 						]
+						title:
+    					{
+    						text: 'Time in Day'
+    					}
     				},
 			    yAxis:
 				{
@@ -717,7 +733,7 @@
 					max: 1.0,
 					title:
 					{
-						text: 'Lighting & Plug'
+						text: 'Percent Load'
 					}
 				},
 			    plotOptions: 

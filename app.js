@@ -1282,7 +1282,7 @@ app.get("/database", function (req, res) {
     res.redirect("https://docs.google.com/document/d/1sL0Km4AzIGoDF-OWU3EBOFI0MIibu1fmum5VHNVsayQ/edit?usp=sharing");
 });
 app.get("/game", function (req, res) {
-    res.redirect("http://128.118.67.241/Retrofit_Game/tracking-sheet.php");
+    res.redirect("http://128.118.67.241/Retrofit_Game/about.php");
 });
 app.get("/vision", function (req, res) {
     res.redirect("http://simulation.eebhub.org");

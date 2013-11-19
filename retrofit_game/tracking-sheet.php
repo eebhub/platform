@@ -128,14 +128,12 @@ $MeasureIndex =array("none"=>"none","bmsSBChecked"=>"Building Management System"
         background: linear-gradient(to bottom, #999, #fff);
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
-
+      .label-name{
+      color:rgb(135, 174, 154);
+      /*font-size:14px*/
+      }
       .container{
         width: 2400px;
-      }
-      .divFooter{
-        width: 120px;
-        height: 41px;
-        margin: 0 auto;
       }
 
       .table-striped{
@@ -214,9 +212,6 @@ $MeasureIndex =array("none"=>"none","bmsSBChecked"=>"Building Management System"
   background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
   background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
 }
-.label-name{
-  color: #b2b200;
-}
     </style>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -281,6 +276,36 @@ $MeasureIndex =array("none"=>"none","bmsSBChecked"=>"Building Management System"
         <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand pull-left" href="tracking-sheet18.php">EEB Hub Energy Retrofit Game</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li>
+                                <a href="about.php">About</a>
+                            </li>
+                            <li>
+                                <a href="#tutorial">Tutorial</a>
+                            </li>
+                            <li>
+                                <a href="building-fact.php">Building101</a>
+                            </li>
+                            <li>
+                                <a href="feedback.php">Feedback</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+    <!--
+    <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container" >
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -311,35 +336,34 @@ $MeasureIndex =array("none"=>"none","bmsSBChecked"=>"Building Management System"
         </div>
       </div>
     </div>
-
+-->
     <!-- Container -->
     <div class="container">
+     <h5>You have an annual budget of $50,000 to install energy retrofit measures onto <a href="building-fact.php">Building 101</a>, plus any capital you choose to invest from the energy cost savings from prior years.  You can install up to three measures per year.  Once you’ve selected your measures, click the "1st year" button under the Simulate column to calculate the energy and cost savings from the newly installed measures.  Once you’ve simulated the building, you can compare your results against your % energy savings and investment return goals.  All simulations are powered by DOE's OpenStudio SDK & EnergyPlus Engine.</h5>
 
         <!-- Sub-Nav-bar -->
         <div class="navbar">
           <div class="navbar-inner">
-            <a class="brand" href="#">Open Studio SDK And Energy Plus</a>
+            <a class="brand" href="#">Tracking Sheet</a>
             <ul class="nav">
-              <li><a href="./energy-use.php">Energy Use</a></li>
-              <li><a href="./zone-component-load.php">Zone Component Load</a></li>
+              <li><a href="eem_measure.php">Measures</a></li>
+              <li><a href="./energy-use.php">Energy</a></li>
+              <li><a href="./energy-cost.php">Energy Costs</a></li>
+              <li><a href="./zone-component-load.php">Zone Loads</a></li>
+              <li><a href="eem_scheduler.php">Measure Planning</a></li>
+              <li>NEED COMBINED>></li>
               <li><a href="./energy-intensity.php">Energy Intensity</a></li>
-              <li><a href="./energy-cost.php">Energy Cost</a></li>
-              <li><a href="#">GHG Emissions</a></li>
-              <li class="active"><a href="tracking-sheet.php">Tracking Sheet</a></li>
-              <li><a href="eem_measure.php">EEM Measure List</a></li>
-              <li><a href="eem_scheduler.php">EEM Scheduler</a></li>
               <li><a href="all-site-energy.php">EEM Model Example</a></li>
               <li><a href="./summary.php">Summary</a></li>
             </ul>
           </div>
         </div>
 
-     <h1 style="text-shadow: 0px 1px 5px golden; color: #fff;"><center>Energy Retrofit Game - Building 101 Tracking Sheet</center></h1>
-     <p><a href="#tutorial">Tutorial</a> | <a href="#factsheet">Building Fact Sheet</a></p>
-     
-     <p style="font-size: 1.5em; color: #800000; ">Available Capital: $ <?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0) print(number_format($_SESSION['availableCap2'][1])); 
-   else {$currentyear = $_SESSION['current_yr'];$temp = $_SESSION['availableCap2'][$currentyear]-$_SESSION['installationCost'][$currentyear]+132968-$_SESSION['newCost'][$currentyear]+ 50000;echo number_format($temp);} ?></p>
-     <p style="font-size: 1.5em; color: yellow; ">Baseline Annual Energy Cost: $ 132,968</p>
+     <!--<h1 style="text-shadow: 0px 1px 5px golden; color: #fff;"><center>Energy Retrofit Game - Building 101 Tracking Sheet</center></h1>-->
+     <h4>$<?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0) print(number_format($_SESSION['availableCap2'][1])); 
+   else {$currentyear = $_SESSION['current_yr'];$temp = $_SESSION['availableCap2'][$currentyear]-$_SESSION['installationCost'][$currentyear]+132968-$_SESSION['newCost'][$currentyear]+ 50000;echo number_format($temp);} ?>
+     <span style="color: rgb(45, 149, 143);"> Current Available Capital  |  </span> 
+     $132,968 <span style="color: rgb(45, 149, 143);"> Baseline Annual Energy Costs</span> </h4>
 	 
 <form>
 <button type="submit" name="reset" value="0" formaction="" formmethod="post" id="restart-game-button" style="">RESTART</button>
@@ -347,16 +371,19 @@ $MeasureIndex =array("none"=>"none","bmsSBChecked"=>"Building Management System"
 <!--button type="submit" name="end-game" formaction="feedback.php" formethod="post" id="restart-game-button" style=""> END GAME</button-->
 
 <table border='1' class="table table-bordered table-striped">
-
 <tr>
-<th data-title="The year when you will install the retrofit measure(s)">Year</th>
-<th data-title="A list of available retrofit measures. You can install one or more at any year.">Installed 1</th>
-<th data-title="A list of available retrofit measures. You can install one or more at any year.">Installed 2</th>
-<th data-title="A list of available retrofit measures. You can install one or more at any year.">Installed 3</th>
-<th data-title="A list of available retrofit measures. You can install one or more at any year." style="display:none;">Installed 4</th>
-<th data-title="A list of available retrofit measures. You can install one or more at any year." style="display:none;">Installed 5</th>
-<th data-title="The total cost of the chosen measure(s) to be installed">Installation Cost</th>
-<th data-title="Simulation button to determine the new annual energy use of the building after installing measure(s)">Simulation</th>
+  <th rowspan="2" data-title="The year when you will install the retrofit measure(s)" style="vertical-align:middle;">Year</th>
+  <th colspan="5">ENERGY EFFICIENCY MEASURES</th>
+  <th colspan="3">COSTS</th>
+  <th colspan="4">SAVINGS</th>
+<tr>
+<th data-title="A list of available retrofit measures. You can install one or more at any year.">Install Measure #1</th>
+<th data-title="A list of available retrofit measures. You can install one or more at any year.">Install Measure #2</th>
+<th data-title="A list of available retrofit measures. You can install one or more at any year.">Install Measure #3</th>
+<th data-title="A list of available retrofit measures. You can install one or more at any year.">Installed 4</th>
+<th data-title="A list of available retrofit measures. You can install one or more at any year.">Installed 5</th>
+<th data-title="The total cost of the chosen measure(s) to be installed">Installation Cost*</th>
+<th data-title="Simulation button to determine the new annual energy use of the building after installing measure(s)">Simulate</th>
 <th data-title="New annual energy cost after installing all measures from the beginning of the game">New Annual Energy Cost</th>
 <th data-title="Cumulative energy cost savings for simulation years">Cumulative Savings</th>
 <th data-title="The remaining capital plus the cumulative energy cost savings">$ Remaining Capital + Saving</th>
@@ -379,8 +406,7 @@ if($current_yr > $j-1){
 echo "</th>";
 
 for($i=0; $i < 5; $i++) {
-  if (($i==3)||($i==4)){echo '<td style="display:none;">';}
-   else echo '<td>';
+    echo '<td>';
     selectedList($current_yr, $j-1, $_SESSION['installed_measures'][$j-1][$i], $_SESSION['measureFinished'],$i);
     echo '</td>';
 }
@@ -445,13 +471,13 @@ echo " %</td>
 
 
 <tr>
-<td colspan="11">
+<td colspan="13">
 <strong>If the game ran 5 more years...</strong>
 </td>
 </tr>
 <tr>
 <th>2025</th>
-<td colspan="5" style="border: 0px"></td>
+<td colspan="7" style="border: 0px"></td>
 <td>$ 
 <?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0) {echo '132,968';}else {$currentyear = $_SESSION['current_yr'];echo number_format($_SESSION['newCost'][$currentyear]);}
 ?>
@@ -461,7 +487,7 @@ echo " %</td>
 ?>
 </td>
 <td>$ 
-<?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0){echo number_format(50000*11);}else {$currentyear = $_SESSION['current_yr'];$temp = $_SESSION['availableCap2'][$currentyear]-$_SESSION['installationCost'][$currentyear]+(11+1-$currentyear)*(132968-$_SESSION['newCost'][$currentyear])+(10-$currentyear)*50000;echo number_format($temp);}
+<?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0){echo number_format(50000*11);}else {$currentyear = $_SESSION['current_yr'];$temp = $_SESSION['availableCap2'][$currentyear]-$_SESSION['installationCost'][$currentyear]+(11+1-$currentyear)*(132968-$_SESSION['newCost'][$currentyear])+(11-$currentyear)*50000;echo number_format($temp);}
 ?>
 </td>
 <td>$ 590,390</td>
@@ -472,7 +498,7 @@ echo " %</td>
 </tr>
 <tr>
 <th>2026</th>
-<td colspan="5" style="border: 0px"></td>
+<td colspan="7" style="border: 0px"></td>
 
 <td>
 $ 
@@ -484,7 +510,7 @@ $
 ?>
 </td>
 <td>$ 
-<?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0){echo number_format(50000*12);}else {$currentyear = $_SESSION['current_yr'];$temp = $_SESSION['availableCap2'][$currentyear]-$_SESSION['installationCost'][$currentyear]+(12+1-$currentyear)*(132968-$_SESSION['newCost'][$currentyear])+(10-$currentyear)*50000;echo number_format($temp);}
+<?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0){echo number_format(50000*12);}else {$currentyear = $_SESSION['current_yr'];$temp = $_SESSION['availableCap2'][$currentyear]-$_SESSION['installationCost'][$currentyear]+(12+1-$currentyear)*(132968-$_SESSION['newCost'][$currentyear])+(12-$currentyear)*50000;echo number_format($temp);}
 ?>
 </td>
 <td>$ 608,101</td>
@@ -494,7 +520,7 @@ $
 </tr>
 <tr>
 <th>2027</th>
-<td colspan="5" style="border: 0px"></td>
+<td colspan="7" style="border: 0px"></td>
 
 <td>
 $ 
@@ -506,7 +532,7 @@ $
 ?>
 </td>
 <td>$ 
-<?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0){echo number_format(50000*13);}else {$currentyear = $_SESSION['current_yr'];$temp = $_SESSION['availableCap2'][$currentyear]-$_SESSION['installationCost'][$currentyear]+(13+1-$currentyear)*(132968-$_SESSION['newCost'][$currentyear])+(10-$currentyear)*50000;echo number_format($temp);}
+<?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0){echo number_format(50000*13);}else {$currentyear = $_SESSION['current_yr'];$temp = $_SESSION['availableCap2'][$currentyear]-$_SESSION['installationCost'][$currentyear]+(13+1-$currentyear)*(132968-$_SESSION['newCost'][$currentyear])+(13-$currentyear)*50000;echo number_format($temp);}
 ?>
 </td>
 <td>$ 626,345</td>
@@ -516,7 +542,7 @@ $
 </tr>
 <tr>
 <th>2028</th>
-<td colspan="5" style="border: 0px"></td>
+<td colspan="7" style="border: 0px"></td>
 
 <td>
 $ 
@@ -528,7 +554,7 @@ $
 ?>
 </td>
 <td>$ 
-<?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0){echo number_format(50000*14);}else {$currentyear = $_SESSION['current_yr'];$temp = $_SESSION['availableCap2'][$currentyear]-$_SESSION['installationCost'][$currentyear]+(14+1-$currentyear)*(132968-$_SESSION['newCost'][$currentyear])+(10-$currentyear)*50000;echo number_format($temp);}
+<?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0){echo number_format(50000*14);}else {$currentyear = $_SESSION['current_yr'];$temp = $_SESSION['availableCap2'][$currentyear]-$_SESSION['installationCost'][$currentyear]+(14+1-$currentyear)*(132968-$_SESSION['newCost'][$currentyear])+(14-$currentyear)*50000;echo number_format($temp);}
 ?>
 </td>
 <td>$ 645,135</td>
@@ -538,7 +564,7 @@ $
 </tr>
 <tr>
 <th>2029</th>
-<td colspan="5" style="border: 0px"></td>
+<td colspan="7" style="border: 0px"></td>
 
 <td>
 $ 
@@ -550,7 +576,7 @@ $
 ?>
 </td>
 <td>$ 
-<?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0){echo number_format(50000*15);}else {$currentyear = $_SESSION['current_yr'];$temp = $_SESSION['availableCap2'][$currentyear]-$_SESSION['installationCost'][$currentyear]+(15+1-$currentyear)*(132968-$_SESSION['newCost'][$currentyear])+(10-$currentyear)*50000;echo number_format($temp);}
+<?php if($_SESSION['current_yr']==''||$_SESSION['current_yr']==0){echo number_format(50000*15);}else {$currentyear = $_SESSION['current_yr'];$temp = $_SESSION['availableCap2'][$currentyear]-$_SESSION['installationCost'][$currentyear]+(15+1-$currentyear)*(132968-$_SESSION['newCost'][$currentyear])+(15-$currentyear)*50000;echo number_format($temp);}
 ?>
 </td>
 <td>$ 664,489</td>
@@ -563,42 +589,37 @@ $
 </table>
 </form>
 
-<br>
-<div class="pull-right"><a href="feedback.php" class="btn btn-large btn-success"> End Play</a></div> 
-<p>* Disclaimer: These measure costs are not actual estimates, rather, they are generalized cost figures based on author judgments. Individual measure payback is not included in an effort to emphasize the integrated staging approach.</p>
+<div class="pull-right">
+  <a href="feedback.php" class="btn btn-large btn-success"> End Game</a>
+</div> 
 <br>
 <h3 id="tutorial">Tutorial</h3>
-<p>You have an annual budget of $50,000 to install retrofit measures, plus any capital you choose to invest from the energy cost savings from prior years.  You can install up to three measures per year.  Once you’ve selected your measures, simulate the building to calculate the energy and cost savings from the newly installed measures.  Once you’ve simulated the building, you can compare your results against your % energy savings and investment return goals.</p>
  <dl>
-<dt style="color:#339933;font-size:14px">1. Building101 Pre-Loaded</dt>
-<p>The current version of the game is pre-loaded with data from Building101 (the EEB Hub Headquarters at the Philadelphia Navy Yard).  Building 101 Details below may give you clues on which strategy to pursue.</p>
+<h4><dt class="label-name">1. Building 101 Data Pre-Loaded</dt></h4>
+<dd>The current version of the game is pre-loaded with baseline energy data from Building101 (the EEB Hub Headquarters at the Philadelphia Navy Yard).  <a href="building-fact.php">Building 101 Statistics & System Details linked here</a> may give you clues on which strategy to pursue.</dd>
 
- <dt style="color:#339933;font-size:14px">2. Steps to Simulate Energy Each Year</dt>
+ <h4><dt class="label-name">2. Steps to Simulate Building Energy Each Year</dt></h4>
   <dd>
-<ol type="a">
-<li>Set your cost-% savings target (say you want to accomplish 20% energy savings over the whole period of the game which is 10 years)</li>
-
-<li>In the Row of 2015, you have starting capital for investment of $50,000</li>
-
-<li>Within your capital budget, choose the retrofit measure(s) that you would like to install from retrofit-list in columns 3-7 (say Bathroom Lighting Upgrade)</li> 
-
-<li>There are two measures – the metered interval data and the energy audit – which are not installed in the building.   Instead, these provide you with more information to make strategic investment decisions.</li>  
-
-<li>After choosing the retrofit measure(s) , Column 8 “Installation Cost” will automatically change to the total cost of installation</li>
-
-<li>Click the “1st year” button to run the simulation (Note the pink tacking line at the top of the screen indicating whether the simulation is complete or not)</li>
-
-<li>When simulation is complete, columns 10-15 are automatically populated with simulation cost results</li>
-
-<li>Now you can compare the “remaining capital and cumulative savings” (Column 13) if it is higher than Column 14 and the “% savings” (Column 15) if it meets your target savings percentage that you set at the beginning</li>
-</ol>
-</dd>
-<dt style="color:#339933;font-size:14px">3. Play for 10 years. </dt>
+  <ol type="a">
+    <li>Set your cost-% savings target (say you want to accomplish 20% energy savings over the whole period of the game which is 10 years)</li>
+    <li>In the Row of 2015, you have starting capital for investment of $50,000</li>
+    <li>Within your capital budget, choose the retrofit measure(s) that you would like to install from retrofit-list in columns 3-7 (say Bathroom Lighting Upgrade)</li> 
+    <li>There are two measures – the metered interval data and the energy audit – which are not installed in the building.   Instead, these provide you with more information to make strategic investment decisions.</li>  
+    <li>After choosing the retrofit measure(s) , Column 8 “Installation Cost” will automatically change to the total cost of installation</li>
+    <li>Click the “1st year” button to run the simulation (Note the pink tacking line at the top of the screen indicating whether the simulation is complete or not)</li>
+    <li>When simulation is complete, columns 10-15 are automatically populated with simulation cost results</li>
+    <li>Now you can compare the “remaining capital and cumulative savings” (Column 13) if it is higher than Column 14 and the “% savings” (Column 15) if it meets your target savings percentage that you set at the beginning</li>
+  </ol>
+  </dd>
+ <h4><dt class="label-name">3. Play for 10 Years</dt></h4>
   <dd>To win this game, you need to have the value of Column 13 of the 10th year to be larger than the value in Column 14, and have the value in Column 15 to be the same or higher than your target percent savings.  You can also go for a higher savings target and see how the game would change if you track energy savings out to 15 years instead.  Enjoy!</dd>
 </dl>
+<p><i>* Installation Cost Disclaimer: Measure costs are not actual estimates, rather, they are generalized cost figures based on author judgments.</i></p>
+<br>
+<!--
 <h3 id="factsheet">Building101 Details</h3>
-<p><strong class="label-name">Property Description: </strong>Building 101 at the Philadelphia Navy Yard was built in 1911 as a barracks, and underwent renovation in 1999.  It now serves an office for the Energy Efficient Buildings Hub and other businesses.  The third floor and parts of the basement and second floor south wing were unoccupied in 2012, except for occasional large events.</p>   
-<p><strong class="label-name">Owner Goals: </strong>The building owner has three goals: 
+<p><strong class="label-name">PROPERTY HISTORY: </strong>Building 101 at the Philadelphia Navy Yard was built in 1911 as a barracks, and underwent renovation in 1999.  It now serves an office for the Energy Efficient Buildings Hub and other businesses.  The third floor and parts of the basement and second floor south wing were unoccupied in 2012, except for occasional large events.</p>   
+<p><strong class="label-name">OWNER GOALS: </strong>The building owner has three goals: 
   <ol>
 <li>Reduce energy costs by at least <strong>20% by 2020</strong>.</li>
 <li>Project expenditures do not exceed <strong>$50,000</strong> in any one year, but capital can roll-over from previous years.</li>
@@ -606,30 +627,28 @@ $
 </ol>
 </p>
 <p>
-<strong class="label-name">Size: </strong>78,000 ft&#178; (61,000 ft&#178; Conditioned)     
+<strong class="label-name">SIZE: </strong>78,000 ft&#178; (61,000 ft&#178; Conditioned)     
 </p>
-<p><strong class="label-name">Spaces: </strong>3 floors of office space (42,000 ft&#178;), bathrooms (2,000 ft&#178;), lobby areas and stairs (12,000 ft&#178;), a basement (5,000 ft&#178;), and an attic area (unconditioned, 17,000 ft&#178;)
+<p><strong class="label-name">SPACES: </strong>3 floors of office space (42,000 ft&#178;), bathrooms (2,000 ft&#178;), lobby areas and stairs (12,000 ft&#178;), a basement (5,000 ft&#178;), and an attic area (unconditioned, 17,000 ft&#178;)
 </p>
-<p><strong class="label-name">Construction: </strong>18” uninsulated brick exterior walls, 6” concrete ground floor, clay tile roof with R-30 rated fiberglass batt insulation underneath, clear, air-filled, double-panes windows.
-</p><p><strong class="label-name">Ventilation: </strong>Variable-air-volume (VAV) air handling units (AHUs), providing <strong>53,240 CFM (ft&#179;/min)</strong> design capacity to 25 VAV terminal units each equipped with a hot water reheat coil.       
-</p><p><strong class="label-name">Cooling: </strong>Air-cooled condensing units (CUs) with a combined cooling capacity of <strong>156 tons</strong> serve direct-expansion (DX) cooling coils in each AHU.  
-</p><p><strong class="label-name">Heating: </strong><strong>2,049 gross MBH</strong>, 83% rated-efficiency natural-gas boiler supplies 180°F water to the AHU heating coils, VAV terminal units, and to hot water radiators that serve the west-facing offices on the second floor. 
-</p><p><strong class="label-name">Hot Water: </strong>199 MBH natural-gas water heaters.
-</p><p><strong class="label-name">Lighting: </strong> A typical 2,000 ft&#178; office in Building 101 contains 16 fixtures, each with eight 40-watt CFLs.  
-</p><p><strong class="label-name">Plug Loads:  </strong> The office spaces contain a computer and dual monitors at each workstation, photocopiers, projectors, teleconference equipment, a small server room, and kitchen appliances.
-</p><p><strong class="label-name">Controls: </strong>The heating and cooling thermostat set points are 70°F and 75°F, respectively.  The control sequence for the ventilation system is currently unknown, but a custodian has reported hearing the system running during the Sunday evening shift.  The heating system is shut off early-May through mid-October.   
+<p><strong class="label-name">CONSTRUCTION: </strong>18” uninsulated brick exterior walls, 6” concrete ground floor, clay tile roof with R-30 rated fiberglass batt insulation underneath, clear, air-filled, double-panes windows.
+</p><p><strong class="label-name">VENTILATION: </strong>Variable-air-volume (VAV) air handling units (AHUs), providing <strong>53,240 CFM (ft&#179;/min)</strong> design capacity to 25 VAV terminal units each equipped with a hot water reheat coil.       
+</p><p><strong class="label-name">COOLING: </strong>Air-cooled condensing units (CUs) with a combined cooling capacity of <strong>156 tons</strong> serve direct-expansion (DX) cooling coils in each AHU.  
+</p><p><strong class="label-name">HEATING: </strong><strong>2,049 gross MBH</strong>, 83% rated-efficiency natural-gas boiler supplies 180°F water to the AHU heating coils, VAV terminal units, and to hot water radiators that serve the west-facing offices on the second floor. 
+</p><p><strong class="label-name">HOT WATER: </strong>199 MBH natural-gas water heaters.
+</p><p><strong class="label-name">LIGHTING: </strong> A typical 2,000 ft&#178; office in Building 101 contains 16 fixtures, each with eight 40-watt CFLs.  
+</p><p><strong class="label-name">PLUGS:  </strong> The office spaces contain a computer and dual monitors at each workstation, photocopiers, projectors, teleconference equipment, a small server room, and kitchen appliances.
+</p><p><strong class="label-name">CONTROLS: </strong>The heating and cooling thermostat set points are 70°F and 75°F, respectively.  The control sequence for the ventilation system is currently unknown, but a custodian has reported hearing the system running during the Sunday evening shift.  The heating system is shut off early-May through mid-October.   
 </p>
-
-
+<br>
+-->
+<h5 class="text-left">Built by the <a href="http://www.eebhub.org">Energy Efficient Buildings HUB</a>, a <a href="http://energy.gov/science-innovation/innovation/hubs">U.S. Department of Energy Innovation HUB</a>.  Powered by DOE's OpenStudio SDK & EnergyPlus Engine.  </h5>
+<h5 class="text-left">Our Retrofit Manager Tool team includes PSU, UMaryland, & NREL.  <a href="https://github.com/eebhub/platform/blob/master/ACKNOWLEDGEMENT_DISCLAIMER">DOE Acknowledgement & Disclaimer</a>.</h5>
+<br>
 </div> <!-- /container -->
   
-  <br><br><br><hr>
   <div id="loading-bar" style="left: 0%; z-index: 99999; box-shadow: 0px 1px 3px #999; height: 3px; width: 0px; background: red; position: fixed; top: 0%;"> </div>
   </body>
-  <footer>
-  <div class="divFooter"><a href="http://tools.eebhub.org"><img src="http://www.eebhub.org/images/assets/eebhub-logo.png"/></a></div>
-  <br><br>
-</footer>
   
   <script>  
   
@@ -670,6 +689,7 @@ $
   } 
 </script>
 </html>
+
 
 
 

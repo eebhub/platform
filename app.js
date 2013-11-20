@@ -116,6 +116,44 @@ var BuildingModelSchema = new mongoose.Schema({
    
 });
 
+var LiteResultSchema = new mongoose.Schema({
+    username: String,
+    literesult: {
+        building_name: String,
+        utility_electric: [{ type: String } ],
+        year_completed: String,
+        building_function: String,
+        building_location: String,
+        EUI: String,
+        buildingTypeEUI: String,
+        EUI_source: String,
+        electric_utility_startdate: [{type: String }],
+        temperatures: [{type: String}],
+        utility_gas: [{type: String}],
+        X_min_gas: String,
+        X_max_gas: String,
+        Xcp_gas: String,
+        Ycp_gas: String,
+        Y_gas: String,
+        X_min_electric: String,
+        X_max_electric: String,
+        Xcp_electric: String,
+        Ycp_electric: String,
+        Y_electric: String,
+        insFileElectric: String,
+        datFileElectric: String,
+        outFileElectric: String,
+        resFileElectric: String,
+        insFileGas: String,
+        datFileGas: String,
+        outFileGas: String,
+        resFileGas: String
+    }
+        
+});
+
+var LiteResult = mongoose.model('literesults', LiteResultSchema);
+
 var Buildingmodel = mongoose.model('buildingmodels', BuildingModelSchema);
 
 function authenticate(name, pass, fn) {
@@ -616,6 +654,47 @@ app.get('/mybuildings/:id', function(req, res) {
    });
 });
 
+app.get('/literesult/:id',function(req,res){
+    LiteResult.findOne({_id: req.params.id}, function(e,result){
+        if(e) res.send(e);
+        else {
+            //res.send(result.literesult);
+            res.render('imtresults_3p', {
+                    'username': 'undefined',
+                    'building_name': result.literesult.building_name,
+                    'year_completed': result.literesult.year_completed,
+                    'building_function': result.literesult.building_function,
+                    'building_location': result.literesult.building_location,
+                    'EUI': result.literesult.EUI,
+                    'buildingTypeEUI': result.literesult.buildingTypeEUI,
+                    'EUI_source': result.literesult.EUI_source,
+                    'electric_utility_startdate': result.literesult.electric_utility_startdate,
+                    'temperatures': result.literesult.temperatures,
+                    'utility_electric': result.literesult.utility_electric,
+                    'utility_gas': result.literesult.utility_gas,
+                    'X_min_gas': result.literesult.X_min_gas,
+                    'X_max_gas': result.literesult.X_max_gas,
+                    'Xcp_gas': result.literesult.Xcp_gas,
+                    'Ycp_gas': result.literesult.Ycp_gas,
+                    'Y_gas': result.literesult.Y_gas,
+                    'X_min_electric': result.literesult.X_min_electric,
+                    'X_max_electric': result.literesult.X_max_electric,
+                    'Xcp_electric': result.literesult.Xcp_electric,
+                    'Ycp_electric': result.literesult.Ycp_electric,
+                    'Y_electric': result.literesult.Y_electric,
+                    'insFileElectric': result.literesult.insFileElectric,
+                    'datFileElectric': result.literesult.dataFileElectric,
+                    'outFileElectric': result.literesult.outFileElectric,
+                    'resFileElectric': result.literesult.resFileElectric,
+                    'insFileGas': result.literesult.insFileGas,
+                    'datFileGas': result.literesult.dataFileGas,
+                    'outFileGas': result.literesult.outFileGas,
+                    'resFileGas': result.literesult.resFileGas
+            });
+    }
+});    
+});
+
 app.get('/removebuilding/:id', function(req,res){
     Building.remove({_id: req.params.id}, function(e,result){
         if(e) res.send(e);
@@ -789,6 +868,47 @@ app.post("/savebuildinglite", function (req, res) {
     }    
 });
 
+app.post('/saveimtresult', function(req, res){
+    //res.send(req.body);
+    new LiteResult({
+        username: req.session.username,
+        literesult: {
+        building_name: req.body.building_name,
+        utility_electric: req.body.utility_electric,
+        year_completed: req.body.year_completed,
+        building_function: req.body.building_function,
+        building_location: req.body.building_location,
+        EUI: req.body.EUI,
+        buildingTypeEUI: req.body.buildingTypeEUI,
+        EUI_source: req.body.EUI_source,
+        electric_utility_startdate: req.body.electric_utility_startdate,
+        temperatures: req.body.temperatures,
+        utility_gas: req.body.utility_gas,
+        X_min_gas: req.body.X_min_gas,
+        X_max_gas: req.body.X_max_gas,
+        Xcp_gas: req.body.Xcp_gas,
+        Ycp_gas: req.body.Ycp_gas,
+        Y_gas: req.body.Y_gas,
+        X_min_electric: req.body.X_min_electric,
+        X_max_electric: req.body.X_max_electric,
+        Xcp_electric: req.body.Xcp_electric,
+        Ycp_electric: req.body.Ycp_electric,
+        Y_electric: req.body.Y_electric,
+        insFileElectric: req.body.insFileElectric,
+        datFileElectric: req.body.datFileElectric,
+        outFileElectric: req.body.outFileElectric,
+        resFileElectric: req.body.resFileElectric,
+        insFileGas: req.body.insFileGas,
+        datFileGas: req.body.datFileGas,
+        outFileGas: req.body.outFileGas,
+        resFileGas: req.body.resFileGas
+    }
+        
+    }).save(function(err,literesult){
+        if (err) res.send(err);
+        else res.send(literesult);
+    });
+});
 
 app.post('/savebuildingpartial', function(req,res){
     
@@ -1162,7 +1282,7 @@ app.get("/database", function (req, res) {
     res.redirect("https://docs.google.com/document/d/1sL0Km4AzIGoDF-OWU3EBOFI0MIibu1fmum5VHNVsayQ/edit?usp=sharing");
 });
 app.get("/game", function (req, res) {
-    res.redirect("http://128.118.67.241/Retrofit_Game/tracking-sheet.php");
+    res.redirect("http://rmt.eebhub.org/game/");
 });
 app.get("/vision", function (req, res) {
     res.redirect("http://simulation.eebhub.org");

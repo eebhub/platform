@@ -5,10 +5,10 @@
         <title>EEB Hub Simulation Platform Tools</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="css/partial.css" rel="stylesheet" />
-        <link href="css/stylesheet.css" rel="stylesheet" />
+        <link href="http://tools.eebhub.org/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://tools.eebhub.org/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://tools.eebhub.org/css/partial.css" rel="stylesheet" />
+        <link href="http://tools.eebhub.org/css/stylesheet.css" rel="stylesheet" />
         <style type="text/css">
             body {
                 padding-top: 60px;
@@ -17,6 +17,13 @@
             }
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+        function saveIMTResult() {
+                var form = document.forms.IMTResultForm;
+                form.action = "/saveimtresult";
+                form.submit();
+        }
+        </script>
         <script type="text/javascript">
             $(function() {
                 $('#euijs').highcharts({
@@ -343,7 +350,102 @@
                             <section id="building">
                                 <div class="span9 box-unit">
                                     <div class="page-header">
-                                        <h2>Building</h2>
+                                    <form action="" method="post" name="IMTResultForm">
+                                    <input type="hidden" name="building_name" value="<%= building_name %>">
+                                    <script>
+                                    var elec_str = "<%= utility_electric %>";
+                                    var utility_electric = elec_str.split(",");
+                                     for(var i=0; i<utility_electric.length; i++){
+                                         document.write('<input type="hidden" name="utility_electric[]" value="'+utility_electric[i]+'">');
+                                     }
+                                    var year_completed = "<%= year_completed %>";
+                                    document.write('<input type="hidden" name="year_completed" value="'+year_completed+'">');
+                                    var building_function = "<%= building_function %>";
+                                    document.write('<input type="hidden" name="building_function" value="'+building_function+'">');
+                                    var building_location = "<%= building_location %>";
+                                    document.write('<input type="hidden" name="building_location" value="'+building_location+'">');
+                                    //EUI
+                                    var EUI = "<%= EUI %>";
+                                    document.write('<input type="hidden" name="EUI" value="'+EUI+'">');
+                                    var buildingTypeEUI = "<%= buildingTypeEUI %>";
+                                    document.write('<input type="hidden" name="buildingTypeEUI" value="'+buildingTypeEUI+'">');
+                                    var EUI_source = "<%= EUI_source %>";
+                                    document.write('<input type="hidden" name="EUI_source" value="'+EUI_source+'">');
+                                    //Temp vs Utility
+                                    var electric_utility_startdate1 = "<%= electric_utility_startdate %>";
+                                    var electric_utility_startdate = electric_utility_startdate1.split(',');
+                                     for (var i=0; i<electric_utility_startdate.length; i++){
+                                         document.write('<input type="hidden" name="electric_utility_startdate[]" value="'+electric_utility_startdate[i]+'">');
+                                     }
+                                    var temperatures1 = "<%= temperatures %>";
+                                    var temperatures = temperatures1.split(",");
+                                    for (var i=0;i<temperatures.length;i++){
+                                    document.write('<input type="hidden" name="temperatures[]" value="'+temperatures[i]+'">');
+                                    }
+                                    var utility_gas1 = "<%= utility_gas %>";
+                                    var utility_gas = utility_gas1.split(',');
+                                     for (var i=0; i<utility_gas.length; i++){
+                                     document.write('<input type="hidden" name="utility_gas[]" value="'+utility_gas[i]+'">');
+                                     }
+                                    //Regression Plots
+                                    //Gas
+                                    var X_min_gas = "<%= X_min_gas %>";
+                                    var X_max_gas = "<%= X_max_gas %>";
+                                    var Xcp_gas = "<%= Xcp_gas %>";
+                                    var Ycp_gas = "<%= Ycp_gas %>";
+                                    var Y_gas = "<%= Y_gas %>";
+                                    document.write('<input type="hidden" name="X_min_gas" value="'+X_min_gas+'">');
+                                    document.write('<input type="hidden" name="X_max_gas" value="'+X_max_gas+'">');
+                                    document.write('<input type="hidden" name="Xcp_gas" value="'+Xcp_gas+'">');
+                                    document.write('<input type="hidden" name="Ycp_gas" value="'+Ycp_gas+'">');
+                                    document.write('<input type="hidden" name="Y_gas" value="'+Y_gas+'">');
+                                    //Electric
+                                    var X_min_electric = "<%= X_min_electric %>";
+                                    var X_max_electric = "<%= X_max_electric %>";
+                                    var Xcp_electric = "<%= Xcp_electric %>";
+                                    var Ycp_electric = "<%= Ycp_electric %>";
+                                    var Y_electric = "<%= Y_electric %>";
+                                    document.write('<input type="hidden" name="X_min_electric" value="'+X_min_electric+'">');
+                                    document.write('<input type="hidden" name="X_max_electric" value="'+X_max_electric+'">');
+                                    document.write('<input type="hidden" name="Xcp_electric" value="'+Xcp_electric+'">');
+                                    document.write('<input type="hidden" name="Ycp_electric" value="'+Ycp_electric+'">');
+                                    document.write('<input type="hidden" name="Y_electric" value="'+Y_electric+'">');
+                                    var insFileElectric = "<%= insFileElectric %>";
+                                    var datFileElectric = "<%= datFileElectric %>";
+                                    var outFileElectric = "<%= outFileElectric %>";
+                                    var resFileElectric = "<%= resFileElectric %>";
+                                    var insFileGas = "<%= insFileGas %>";
+                                    var datFileGas = "<%= datFileGas %>";
+                                    var outFileGas = "<%= outFileGas %>";
+                                    var resFileGas = "<%= resFileGas %>";
+                                    document.write('<input type="hidden" name="insFileElectric" value="'+insFileElectric+'">');
+                                    document.write('<input type="hidden" name="datFileElectric" value="'+datFileElectric+'">');
+                                    document.write('<input type="hidden" name="outFileElectric" value="'+outFileElectric+'">');
+                                    document.write('<input type="hidden" name="resFileElectric" value="'+resFileElectric+'">');
+                                    document.write('<input type="hidden" name="insFileGas" value="'+insFileGas+'">');
+                                    document.write('<input type="hidden" name="datFileGas" value="'+datFileGas+'">');
+                                    document.write('<input type="hidden" name="outFileGas" value="'+outFileGas+'">');
+                                    document.write('<input type="hidden" name="resFileGas" value="'+resFileGas+'">');
+                                    </script>
+                                    </form>
+                                    <table>
+                                    <tbody>
+                                    <tr>
+                                    <td>
+                                    <h2>Building</h2></td>
+                                    <td class="span7">
+                                        <div class="pull-right text-right">
+                                        <script>
+                                        var username = "<%= username %>";
+                                        if (username!='undefined'){
+                                        document.write('<button type="submit" onclick="saveIMTResult();">Save Result</button>');
+                                        }
+                                        </script>
+                                        </div>
+                                    </td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
                                     </div>
                                     <div class="row">
                                         <div class="span4">
@@ -426,13 +528,13 @@
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="shell">
-                                            <img src="img/lite/Picture1.png" class="img-polaroid" height="90%" width="90%">
+                                            <img src="http://tools.eebhub.org/img/lite/Picture1.png" class="img-polaroid" height="90%" width="90%">
                                         </div>
                                         <div class="tab-pane" id="internal">
-                                            <img src="img/lite/Picture2.png" class="img-polaroid" height="90%" width="90%">
+                                            <img src="http://tools.eebhub.org/img/lite/Picture2.png" class="img-polaroid" height="90%" width="90%">
                                         </div>
                                         <div class="tab-pane" id="portfolio">
-                                            <img src="img/lite/Picture3.png" class="img-polaroid" height="90%" width="90%">
+                                            <img src="http://tools.eebhub.org/img/lite/Picture3.png" class="img-polaroid" height="90%" width="90%">
                                         </div>
                                     </div>
                                 </div>
@@ -459,10 +561,10 @@
                 </div>
             </div>
             <!-- Javascript -->
-            <script src="js/bootstrap-scrollspy.js"></script>
+            <script src="http://tools.eebhub.org/js/bootstrap-scrollspy.js"></script>
             <script src="http://code.highcharts.com/highcharts.js"></script>
             <script src="http://code.highcharts.com/modules/exporting.js"></script>
-            <script src="js/bootstrap.min.js"></script>
+            <script src="http://tools.eebhub.org/js/bootstrap.min.js"></script>
     </body>
 
 </html>

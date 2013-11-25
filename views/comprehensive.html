@@ -334,7 +334,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <!--div class="row">
                                 <div class="span9">
                                     <h4>Orientation <small>clockwise degrees from North</small></h4>
                                             <ul class="inline">
@@ -348,6 +348,24 @@
                                                 <li>
                                                     <input class="span7" type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
                                                 </li>
+                                            </ul>
+                                </div>
+                            </div-->
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Orientation <small>clockwise degrees from North</small></h4>
+                                            <ul class="inline">
+                                                
+                                                <li>
+                                                        <input type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
+                    
+                                                    
+                                                </li>
+                                                <li>
+                                                  <input class="span1" type="text" value={{orientation}} name="building_orientation" ng-model="orientation"/>
+                                                        <span class="add-on">&deg;</span>
+                                                            
+                                                        </li>
                                             </ul>
                                 </div>
                             </div>

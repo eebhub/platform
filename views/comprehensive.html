@@ -126,10 +126,10 @@
                             <a href="#architecture"><i class="icon-home"></i>Architecture</a>
                         </li>
                         <li>
-                            <a href="#materials"><i class="icon-th-large"></i>Materials</a>
+                            <a href="#materials"><i class="icon-th-large"></i>Enclosure</a>
                         </li>
                         <li>
-                            <a href="#people"><i class="icon-user"></i>People</a>
+                            <a href="#typical_room"><i class="icon-user"></i>Typical Room</a>
                         </li>
                         <li>
                             <a href="#lighting"><i class="icon-asterisk"></i>Lighting</a>
@@ -148,7 +148,7 @@
                 
                 <!-- ################################### Building Section ################################################## -->
                 <div class="span9">
-                    <form name="platformForm" id="comprehensive-form" action="http://rmt.eebhub.org/comprehensive/eeb_rb/simulate-openstudio.php" method="post" onsubmit="return valForm('comprehensive-form');">
+                    <form name="platformForm" id="comprehensive-form" action="http://rmt.eebhub.org/openstudio/eeb_rb/simulate-openstudio.php" method="post" onsubmit="return valForm('comprehensive-form');">
                     <section id="building">
                         <div id="box-unit">
                             <div class="page-header">
@@ -250,18 +250,7 @@
 
                                         <span class="add-on" id="architect-replace1"><span class="unit">m</span>&#178;</span>
                                     </div>
-                                    <h4>% Window to Wall Area</h4>
-                                        <ul class="inline">
-                                            <li>
-                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50/>
-                                            </li>
-                                            <li>
-                                                <div class="input-append">
-                                                    <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="window_to_wall_ratio">
-                                                    <span class="add-on">%</span>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                    
                                     <h4>Number of Floors</h4>
                                     <input type="number" id="number_of_floors" name="number_of_floors" min="1" min="170" step="1">
                                     <h4>Floor to Floor Height</h4>
@@ -270,6 +259,21 @@
 
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
+                                    <h4>Orientation <small>clockwise degrees from North</small></h4>
+                                            <ul class="inline">
+                                                
+                                                <li>
+                                                        <input type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
+                    
+                                                    
+                                                </li>
+                                                <li>
+                                                  <input class="span1" type="text" value={{orientation}} name="building_orientation" ng-model="orientation"/>
+                                                        <span class="add-on">&deg;</span>
+                                                            
+                                                        </li>
+                                            </ul>
+                                    
                                 </div>
                                 <div class="span4">
                                     <h4>Geometry Import</h4>
@@ -351,34 +355,95 @@
                                             </ul>
                                 </div>
                             </div-->
+                          
+                        </div>
+                    </section>
+                    
+                    <!-- #################################### Materials Section ############################################### -->
+                    <section id="materials">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>Enclosure</h2>
+                            </div>
                             <div class="row">
                                 <div class="span4">
-                                    <h4>Orientation <small>clockwise degrees from North</small></h4>
-                                            <ul class="inline">
-                                                
-                                                <li>
-                                                        <input type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
-                    
-                                                    
-                                                </li>
-                                                <li>
-                                                  <input class="span1" type="text" value={{orientation}} name="building_orientation" ng-model="orientation"/>
-                                                        <span class="add-on">&deg;</span>
-                                                            
-                                                        </li>
-                                            </ul>
+                                    <h4>Windows</h4>
+                                    <select class="span3" name="window_transmittance">
+                                        <option value="0.89">Single Clear</option>
+                                        <option value="0.80">Double Clear</option>
+                                        <option value="0.60">Double Light Tint</option>
+                                        <option value="0.44">Triple Low-E</option>
+                                    </select>
+                                    <h4>Walls</h4>
+                                    <select value="this.value" name="exterior_wall_type" class="span3">
+                                        <option value="Concrete Mass" selected>Concrete Mass</option>
+                                        <option value="Metal" >Metal</option>
+                                        <option value="Steel Framed">Steel Framed</option>
+                                        <option value="Wood Framed" disabled>Wood Framed and Other</option>
+                                    </select>
+                                    <h4>Roof</h4>
+                                    <select value="this.value" name="roof_type" class="span3">
+                                        <option value="Metal" selected>Metal Roof</option>
+                                        <option disabled>Insulation Entirely Above Deck</option>
+                                        <option disabled>Attic and Other</option>
+                                    </select>
+                                </div>
+                                <div class="span4">
+                                
+                                <h4>% Window to Wall Area</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="window_to_wall_ratio">
+                                                    <span class="add-on">%</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                
+                                <h4>Wall Thickness</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" name="wall_thickness">
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                <h4>Airtightness Assessment <small>by CONTAM</small></h4>
+                                    <select class="span3" name="tightness">
+                                        <option>Leaky</option>
+                                        <option selected>Average</option>
+                                        <option>Tight</option>
+                                    </select>
+                                
                                 </div>
                             </div>
                         </div>
                     </section>
                     
+                    <!-- ##################################### People Section ############################################# -->
+                    <!--section id="people">
+                        <div id="box-unit">
+                            <div class="page-header">
+                                <h2>People</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>People Density</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" placeholder="building type default" name="people_density" disabled>
+                                        <span class="add-on" id="people-replace">People/<span class="unit">m</span>&sup2;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section-->
+                    
+                    
                     <!-- ####################################### Architecture Seciton 2 ################################################## -->
-                    <section>
+                    <section id="typical_room">
                         <div class="box-unit">
                             <div class="page-header">
-                                <h2>Architecture
-                                    <small>typical room</small>
-                                </h2>
+                                <h2>Typical Room</h2>
                             </div>
                             <div class="row">
                                 <div class="span2">
@@ -419,58 +484,16 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    
-                    <!-- #################################### Materials Section ############################################### -->
-                    <section id="materials">
-                        <div id="box-unit">
-                            <div class="page-header">
-                                <h2>Materials</h2>
-                            </div>
                             <div class="row">
-                                <div class="span4">
-                                    <h4>Windows</h4>
-                                    <select class="span3" name="window_transmittance">
-                                        <option value="0.89">Single Clear</option>
-                                        <option value="0.80">Double Clear</option>
-                                        <option value="0.60">Double Light Tint</option>
-                                        <option value="0.44">Triple Low-E</option>
-                                    </select>
-                                    <h4>Roof</h4>
-                                    <select value="this.value" name="roof_type" class="span3">
-                                        <option value="Metal" selected>Metal Roof</option>
-                                        <option disabled>Insulation Entirely Above Deck</option>
-                                        <option disabled>Attic and Other</option>
-                                    </select>
-                                </div>
-                                <div class="span4">
-                                    <h4>Walls</h4>
-                                    <select value="this.value" name="exterior_wall_type" class="span3">
-                                        <option value="Concrete Mass" selected>Concrete Mass</option>
-                                        <option value="Metal" >Metal</option>
-                                        <option value="Steel Framed">Steel Framed</option>
-                                        <option value="Wood Framed" disabled>Wood Framed and Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <!-- ##################################### People Section ############################################# -->
-                    <section id="people">
-                        <div id="box-unit">
-                            <div class="page-header">
-                                <h2>People</h2>
-                            </div>
-                            <div class="row">
-                                <div class="span4">
-                                    <h4>People Density</h4>
+                            <div class="span2"></div>
+                            <div class="span3">
+                                <h4>People Density</h4>
                                     <div class="input-append">
                                         <input class="span2" id="appendedInput" type="text" placeholder="building type default" name="people_density" disabled>
                                         <span class="add-on" id="people-replace">People/<span class="unit">m</span>&sup2;</span>
                                     </div>
-                                </div>
+                            </div>
+                                
                             </div>
                         </div>
                     </section>
@@ -563,19 +586,39 @@
                                         <option value="SystemType9">Warm Air Furnace Gas Fired</option>
                                         <option value="SystemType10">Warm Air Furnace Electric</option>
                                     </select>
-                                     <h4>Equipment Power Density</h4>
+                                    <h4>Fan Efficiency</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" class="span2" id="appendedInput"
+                                        name="fan_efficiency" />
+                                        <span class="add-on">%</span>
+                                    </div>
+                                    <h4>Boiler Efficiency</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" class="span2" id="appendedInput"
+                                        name="boiler_efficiency" />
+                                        <span class="add-on">%</span>
+                                    </div>
+                                     
+                                </div>
+                                <div class="span4">
+                                <h4>Heating Set Point</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" class="span2" id="appendedInput"
+                                        name="heating_setpoint" />
+                                        <span class="add-on">&#8457;</span>
+                                    </div>
+                                    <h4>Cooling Set Point</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" class="span2" id="appendedInput"
+                                        name="cooling_setpoint" />
+                                        <span class="add-on">&#8457;</span>
+                                    </div>
+                                    
+                                    <h4>Equipment Power Density</h4>
                                     <div class="input-append">
                                         <input class="span2" name="equipment_power_density" id="appendedInput" type="text" placeholder="building type default" disabled>
                                         <span class="add-on" id="mechanical-replace">W/<span class="unit">m</span>&sup2;</span>
                                     </div>
-                                </div>
-                                <div class="span4">
-                                    <h4>Airtightness Assessment <small>by CONTAM</small></h4>
-                                    <select class="span3" name="tightness">
-                                        <option>Leaky</option>
-                                        <option selected>Average</option>
-                                        <option>Tight</option>
-                                    </select>
                                 </div>
                             </div>
                             <h2 class="text-right">
@@ -632,7 +675,7 @@
 					</section>
                     
                     <!-- ######################################### Energy Conservation Section ######################################### -->
-                    <section id="conservation">
+                    <!--section id="conservation">
                         <div id="box-unit">
                             <div class="page-header">
                                 <h2>Energy Efficient Measures</h2>
@@ -647,7 +690,7 @@
                             <label class="checkbox">
                                 <input name="conservation_economizer" type="checkbox" disabled>Economizer</label>
                         </div>
-                    </section>
+                    </section-->
                     
                     <!-- ###################################### Buttons Group ############################################# -->
                     <div id="box-unit">
@@ -658,8 +701,26 @@
                         <h2 class="text-right">
                             <small>powered by OpenStudio SDK + EnergyPlus, DAYSIM, CONTAM Engines</small>
                         </h2>
-                        <p><div class="text-right"><small>* progress bar may not pop out in Safari browser</small></div></p>
+                        
                     </div>
+                    
+                     <section id="conservation">
+                        <div id="box-unit">
+                            
+                                <h2>Energy Efficient Measures</h2>
+                                <h2>
+                                    <small>EEM selection will be enabled after the baseline simulation is over.</small>
+                                </h2>
+                           
+                            <!--label class="checkbox">
+                                <input name="conservation_lighting" type="checkbox" disabled>Lighting Upgrade</label>
+                            <label class="checkbox">
+                                <input name="conservation_window" type="checkbox" disabled>Window Upgrade</label>
+                            <label class="checkbox">
+                                <input name="conservation_economizer" type="checkbox" disabled>Economizer</label-->
+                        </div>
+                    </section>
+                    
                     
                     <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
                     

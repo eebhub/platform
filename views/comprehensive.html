@@ -97,9 +97,9 @@
                     <!--/.nav-collapse -->
                     <div class="pull-right text-right">
 
-                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$(".illu-unit").html("lux");$("#illuminance").html("<option value=\"150\">150 - storage</option><option value=\"200\">200 - casual work</option><option value=\"300\">300 - rough work</option><option value=\"400\">400 - office work (EU)</option><option value=\"500\" selected>500 - office work (US)</option>");$("#si-ip").val("si");$("body").css("background", "rgb(229, 229, 229)");'/><font color="yellow"> SI</font>
-                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$(".illu-unit").html("lm/ft&#178;");$("#illuminance").html("<option value=\"150\">15 - storage</option><option value=\"200\">20 - casual work</option><option value=\"300\">30 - rough work</option><option value=\"400\">40 - office work (EU)</option><option value=\"500\" selected>50 - office work (US)</option>");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font>
-                    
+                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"24\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;C</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"26\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;C</span>");$(".illu-unit").html("lux");$("#illuminance").html("<option value=\"150\">150 - storage</option><option value=\"200\">200 - casual work</option><option value=\"300\">300 - rough work</option><option value=\"400\">400 - office work (EU)</option><option value=\"500\" selected>500 - office work (US)</option>");$("#si-ip").val("si");$("body").css("background", "rgb(229, 229, 229)");'/><font color="yellow"> SI</font>
+                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"75\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;F</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"79\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;F</span>");$(".illu-unit").html("lm/ft&#178;");$("#illuminance").html("<option value=\"150\">15 - storage</option><option value=\"200\">20 - casual work</option><option value=\"300\">30 - rough work</option><option value=\"400\">40 - office work (EU)</option><option value=\"500\" selected>50 - office work (US)</option>");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font>
+                
                     <ul class="nav pull-right">
 						      <li><a href="/signup">SIGNUP</a>
 						      </li>
@@ -489,8 +489,8 @@
                             <div class="span3">
                                 <h4>People Density</h4>
                                     <div class="input-append">
-                                        <input class="span2" id="appendedInput" type="text" placeholder="building type default" name="people_density" disabled>
-                                        <span class="add-on" id="people-replace">People/<span class="unit">m</span>&sup2;</span>
+                                        <input class="span2" id="appendedInput" type="number" min="0" step="0.001" name="people_density" value="0.005">
+                                        <span class="add-on" id="people-replace">People/ft&sup2;</span>
                                     </div>
                             </div>
                                 
@@ -573,6 +573,52 @@
                             </div>
                             <div class="row">
                                 <div class="span4">
+                                
+                                    <h4>Fan Efficiency</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" class="span2" id="appendedInput" value="50"
+                                        name="fan_efficiency" />
+                                        <span class="add-on">%</span>
+                                    </div>
+                                    <h4>Boiler Efficiency</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" class="span2" id="appendedInput" value="66"
+                                        name="boiler_efficiency" />
+                                        <span class="add-on">%</span>
+                                    </div>
+                                    <h4>Cooling coil rated high speed COP</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.1" class="span2" id="appendedInput" value="6.6"
+                                        name="coolingcoil_highspeed" />
+                                        <span class="add-on">Ratio</span>
+                                    </div>
+                                    <h4>Cooling coil rated high speed COP</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.1" class="span2" id="appendedInput" value="5.5"
+                                        name="coolingcoil_highspeed" />
+                                        <span class="add-on">Ratio</span>
+                                    </div> 
+                                </div>
+                                <div class="span4">
+                                <h4>Heating Set Point</h4>
+                                    <div class="input-append" id="heating-setpoint">
+                                        <input type="number" min="0" class="span2" id="appendedInput" value="24"
+                                        name="heating_setpoint" />
+                                        <span class="add-on">&#186;C</span>
+                                    </div>
+                                    <h4>Cooling Set Point</h4>
+                                    <div class="input-append" id="cooling-setpoint">
+                                        <input type="number" min="0" class="span2" id="appendedInput" value="26"
+                                        name="cooling_setpoint" />
+                                        <span class="add-on">&#186;C</span>
+                                    </div>
+                                    
+                                    <h4>Equipment Power Density</h4>
+                                    <div class="input-append">
+                                        <input class="span2" type="number" name="equipment_power_density" id="appendedInput" min="0" step="0.01" value="1.00">
+                                        <span class="add-on" id="mechanical-replace">W/ft&sup2;</span>
+                                    </div>
+                                    
                                     <h4>Primary HVAC System</h4>
                                     <select value="this.value" name="primary_hvac_type" disabled>
                                         <option value="SystemType1">PTAC Packaged Terminal Air Conditioner</option>
@@ -586,39 +632,6 @@
                                         <option value="SystemType9">Warm Air Furnace Gas Fired</option>
                                         <option value="SystemType10">Warm Air Furnace Electric</option>
                                     </select>
-                                    <h4>Fan Efficiency</h4>
-                                    <div class="input-append">
-                                        <input type="number" min="0" class="span2" id="appendedInput"
-                                        name="fan_efficiency" />
-                                        <span class="add-on">%</span>
-                                    </div>
-                                    <h4>Boiler Efficiency</h4>
-                                    <div class="input-append">
-                                        <input type="number" min="0" class="span2" id="appendedInput"
-                                        name="boiler_efficiency" />
-                                        <span class="add-on">%</span>
-                                    </div>
-                                     
-                                </div>
-                                <div class="span4">
-                                <h4>Heating Set Point</h4>
-                                    <div class="input-append">
-                                        <input type="number" min="0" class="span2" id="appendedInput"
-                                        name="heating_setpoint" />
-                                        <span class="add-on">&#8457;</span>
-                                    </div>
-                                    <h4>Cooling Set Point</h4>
-                                    <div class="input-append">
-                                        <input type="number" min="0" class="span2" id="appendedInput"
-                                        name="cooling_setpoint" />
-                                        <span class="add-on">&#8457;</span>
-                                    </div>
-                                    
-                                    <h4>Equipment Power Density</h4>
-                                    <div class="input-append">
-                                        <input class="span2" name="equipment_power_density" id="appendedInput" type="text" placeholder="building type default" disabled>
-                                        <span class="add-on" id="mechanical-replace">W/<span class="unit">m</span>&sup2;</span>
-                                    </div>
                                 </div>
                             </div>
                             <h2 class="text-right">

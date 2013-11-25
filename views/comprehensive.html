@@ -483,18 +483,16 @@
                                         <span class="add-on" id="architect2-replace2"><span class="unit">m</span></span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                            <div class="span2"></div>
-                            <div class="span3">
+                                <div class="span3">
                                 <h4>People Density</h4>
                                     <div class="input-append">
                                         <input class="span2" id="appendedInput" type="number" min="0" step="0.001" name="people_density" value="0.005">
                                         <span class="add-on" id="people-replace">People/ft&sup2;</span>
                                     </div>
+                                    
+                                </div>
                             </div>
-                                
-                            </div>
+                            
                         </div>
                     </section>
                     
@@ -529,19 +527,15 @@
                                         <input class="span2" id="appendedInput" type="text" placeholder="floor to top of window" name="window_head_height">
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
-                                    <h4>Wall Thickness</h4>
-                                    <div class="input-append">
-                                        <input class="span2" id="appendedInput" type="text" name="wall_thickness">
-                                        <span class="add-on"><span class="unit">m</span></span>
-                                    </div>
-                                </div>
-                                <div class="span4">
                                     <h4>Shading Device</h4>
                                     <select class="span3" name="interior_shading_type">
                                         <option value="Horizontal_Blinds">Horizontal Blinds</option>
                                         <option value="Fabric_Shades">Fabric Shades</option>
                                         <option value="None">None</option>
                                     </select>
+                                </div>
+                                <div class="span4">
+                                    
                                     <h4>Floor Reflectance</h4>
                                     <input id="floorSlider" type="range" class="span2"
                                     min="0" max="1" step="0.01" onchange="printValue('floorSlider','floorRangeValue')"
@@ -588,13 +582,13 @@
                                     </div>
                                     <h4>Cooling coil rated high speed COP</h4>
                                     <div class="input-append">
-                                        <input type="number" min="0" step="0.1" class="span2" id="appendedInput" value="6.6"
+                                        <input type="number" min="0" step="0.1" class="span2" id="appendedInput" value="5.5"
                                         name="coolingcoil_highspeed" disabled/>
                                         <span class="add-on">Ratio</span>
                                     </div>
                                     <h4>Cooling coil rated high speed COP</h4>
                                     <div class="input-append">
-                                        <input type="number" min="0" step="0.1" class="span2" id="appendedInput" value="5.5"
+                                        <input type="number" min="0" step="0.1" class="span2" id="appendedInput" value="6.6"
                                         name="coolingcoil_highspeed" disabled/>
                                         <span class="add-on">Ratio</span>
                                     </div> 

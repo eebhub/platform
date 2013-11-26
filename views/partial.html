@@ -10,11 +10,7 @@
         <link href="css/partial.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
         <style type="text/css">
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-                background-color: rgb(229, 229, 229);
-            }
+
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="js/building101Data.js"></script>
@@ -51,8 +47,8 @@
                     <!--/.nav-collapse -->
                     <div class="pull-right text-right">
 
-                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#si-ip").val("si");$("body").css("background", "rgb(229, 229, 229)");'/><font color="yellow"> SI</font>
-                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font>
+                        <!--input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#si-ip").val("si");$("body").css("background", "rgb(229, 229, 229)");'/><font color="yellow"> SI</font>
+                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font-->
                     
                         <ul class="nav pull-right">
 						      <li><a href="/signup">SIGNUP</a>
@@ -97,13 +93,20 @@
                         </li>
                          <li>
                             <a href="#schedules"><i class="icon-time"></i>Schedules</a>
+                        </li><li><hr></li>
+                        <li>
+                            <a href="#units">
+                             <i class="icon-adjust"></i>  Units &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
+                             <input type="button" id="unitoptionSI" name="unitoption" value="SI" class="btn active" onclick='$(".unit").html("m");$("#si-ip").val("si");'>
+                             <input type="button" id="unitoptionIP" name="unitoption" value="IP" class="btn" onclick='$(".unit").html("ft");$("#si-ip").val("ip");'>
+                         </div></a>
                         </li>
                     </ul>
                 </div>
                 <div class="span9">
                     <form action="/partialanalysis" method="post" name="platformForm">
                         <section id="building">
-                            <div class="box-unit">
+                            <div class="box-unit building">
                                 <div class="page-header">
                                     <table>
                                         <tr>
@@ -185,7 +188,7 @@
                                 </div>
                         </section>
                         <section id="architecture">
-                            <div class="box-unit">
+                            <div class="box-unit architecture">
                                 <div class="page-header">
                                     <h2>Architecture
                                         <small>typical room</small>
@@ -262,7 +265,7 @@
                             </div>
                         </section>
                         <section id="materials">
-                            <div class="box-unit">
+                            <div class="box-unit materials">
                                 <div class="page-header">
                                     <h2>Materials</h2>
                                 </div>
@@ -322,7 +325,7 @@
                             </div>
                         </section>
                         <section id="people">
-                            <div class="box-unit">
+                            <div class="box-unit people">
                                 <div class="page-header">
                                     <h2>People</h2>
                                 </div>
@@ -346,7 +349,7 @@
                             </div>
                         </section>
                         <section id="lighting">
-                            <div class="box-unit">
+                            <div class="box-unit lighting">
                                 <div class="page-header">
                                     <h2>Lighting</h2>
                                 </div>
@@ -368,7 +371,7 @@
                             </div>
                         </section>
                         <section id="mechanical">
-                            <div class="box-unit">
+                            <div class="box-unit mechanical">
                                 <div class="page-header">
                                     <h2>Mechanical</h2>
                                 </div>
@@ -402,7 +405,7 @@
                             </div>
                         </section>
                         <section id="schedules">
-                            <div class="box-unit ">
+                            <div class="box-unit schedules">
                                 <div class="page-header ">
                                     <h2>Schedules</h2>
                                 </div>

@@ -390,30 +390,18 @@
                                 </div>
                                 <div class="span4">
                                 
-                                <h4>% Window to Wall Area</h4>
-                                        <ul class="inline">
-                                            <li>
-                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50/>
-                                            </li>
-                                            <li>
-                                                <div class="input-append">
-                                                    <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="window_to_wall_ratio">
-                                                    <span class="add-on">%</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                
-                                <h4>Wall Thickness</h4>
-                                    <div class="input-append">
-                                        <input class="span2" id="appendedInput" type="text" name="wall_thickness">
-                                        <span class="add-on"><span class="unit">m</span></span>
-                                    </div>
                                 <h4>Airtightness Assessment <small>by CONTAM</small></h4>
                                     <select class="span3" name="tightness">
                                         <option>Leaky</option>
                                         <option selected>Average</option>
                                         <option>Tight</option>
                                     </select>
+                                
+                                <h4>Wall Thickness</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" name="wall_thickness">
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
                                 
                                 </div>
                             </div>
@@ -443,8 +431,28 @@
                     <section id="typical_room">
                         <div class="box-unit">
                             <div class="page-header">
-                                <h2>Typical Room</h2>
+                                <h2>Typical Room
+                                    <small>by DAYSIM</small></h2>
                             </div>
+                            
+                            <ul class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#north" data-toggle="tab">North</a>
+                                        </li>
+                                        <li>
+                                            <a href="#east" data-toggle="tab">East</a>
+                                        </li>
+                                        <li>
+                                            <a href="#south" data-toggle="tab">South</a>
+                                        </li>
+                                        <li>
+                                            <a href="#west" data-toggle="tab">West</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="north">
+                                            
+                                            
                             <div class="row">
                                 <div class="span2">
                                     <img class="img-rounded" src="img/room_dimensions.png">
@@ -484,14 +492,264 @@
                                     </div>
                                 </div>
                                 <div class="span3">
-                                <h4>People Density</h4>
+                                <h4>Window Head Height</h4>
                                     <div class="input-append">
-                                        <input class="span2" id="appendedInput" type="number" min="0" step="0.001" name="people_density" value="0.005">
-                                        <span class="add-on" id="people-replace">People/ft&sup2;</span>
+                                        <input class="span2" id="appendedInput" type="text" placeholder="floor to top of window" name="window_head_height">
+                                        <span class="add-on"><span class="unit">m</span></span>
                                     </div>
                                     
                                 </div>
+                            </div>    
+                            <div class="row">
+                                <div class="span2">
+                                </div>
+                                <div class="span3">
+                                    <h4>% Window to Wall Ratio</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="window_to_wall_ratio">
+                                                    <span class="add-on">%</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                </div>
                             </div>
+                                            
+                                            
+                                            
+                                            
+                                        </div>
+                                        <div class="tab-pane" id="east">
+                                            
+                                            
+                                <div class="row">
+                                <div class="span2">
+                                    <img class="img-rounded" src="img/room_dimensions.png">
+                                </div>
+                                <div class="span3" id="architect2-replace1">
+                                    <h4>Room Width</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput"
+                                        name="" disabled/>
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <h4>Room Depth</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput"
+                                        name="" disabled/>
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                    <h4>Room Height</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput"
+                                        name="" disabled/>
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span2">
+                                    <img class="img-rounded" src="img/overhang.gif" width="170">
+                                </div>
+                                <div class="span3">
+                                    <h4>Overhang Depth</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" name="" disabled>
+                                        <span class="add-on" id="architect2-replace2"><span class="unit">m</span></span>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                <h4>Window Head Height</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" placeholder="floor to top of window" name="" disabled>
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                    
+                                </div>
+                            </div>    
+                            <div class="row">
+                                <div class="span2">
+                                </div>
+                                <div class="span3">
+                                    <h4>% Window to Wall Ratio</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="" disabled>
+                                                    <span class="add-on">%</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                </div>
+                            </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                        </div>
+                                        <div class="tab-pane" id="south">
+                                            
+                                            
+
+                                <div class="row">
+                                <div class="span2">
+                                    <img class="img-rounded" src="img/room_dimensions.png">
+                                </div>
+                                <div class="span3" id="architect2-replace1">
+                                    <h4>Room Width</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput"
+                                        name="" disabled/>
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <h4>Room Depth</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput"
+                                        name="" disabled/>
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                    <h4>Room Height</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput"
+                                        name="" disabled/>
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span2">
+                                    <img class="img-rounded" src="img/overhang.gif" width="170">
+                                </div>
+                                <div class="span3">
+                                    <h4>Overhang Depth</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" name="" disabled>
+                                        <span class="add-on" id="architect2-replace2"><span class="unit">m</span></span>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                <h4>Window Head Height</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" placeholder="floor to top of window" name="" disabled>
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                    
+                                </div>
+                            </div>    
+                            <div class="row">
+                                <div class="span2">
+                                </div>
+                                <div class="span3">
+                                    <h4>% Window to Wall Ratio</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="" disabled>
+                                                    <span class="add-on">%</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                </div>
+                            </div>
+
+                                            
+                                            
+                                            
+                                            
+                                            
+                                        </div>
+                                        <div class="tab-pane" id="west">
+                                            
+                                            
+                                <div class="row">
+                                <div class="span2">
+                                    <img class="img-rounded" src="img/room_dimensions.png">
+                                </div>
+                                <div class="span3" id="architect2-replace1">
+                                    <h4>Room Width</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput"
+                                        name="" disabled/>
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <h4>Room Depth</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput"
+                                        name="" disabled/>
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                    <h4>Room Height</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput"
+                                        name="" disabled/>
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span2">
+                                    <img class="img-rounded" src="img/overhang.gif" width="170">
+                                </div>
+                                <div class="span3">
+                                    <h4>Overhang Depth</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" name="" disabled>
+                                        <span class="add-on" id="architect2-replace2"><span class="unit">m</span></span>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                <h4>Window Head Height</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="text" placeholder="floor to top of window" name="" disabled>
+                                        <span class="add-on"><span class="unit">m</span></span>
+                                    </div>
+                                    
+                                </div>
+                            </div>    
+                            <div class="row">
+                                <div class="span2">
+                                </div>
+                                <div class="span3">
+                                    <h4>% Window to Wall Ratio</h4>
+                                        <ul class="inline">
+                                            <li>
+                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50/>
+                                            </li>
+                                            <li>
+                                                <div class="input-append">
+                                                    <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="" disabled>
+                                                    <span class="add-on">%</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                </div>
+                            </div>
+
+                                            
+                                            
+                                            
+                                        </div>
+                                    </div>
+                            
+
                             
                         </div>
                     </section>
@@ -522,11 +780,7 @@
                                             </select>
                                         <span class="add-on"><span class="illu-unit">lux</span></span>
                                     </div>
-                                    <h4>Window Head Height</h4>
-                                    <div class="input-append">
-                                        <input class="span2" id="appendedInput" type="text" placeholder="floor to top of window" name="window_head_height">
-                                        <span class="add-on"><span class="unit">m</span></span>
-                                    </div>
+                                    
                                     <h4>Shading Device</h4>
                                     <select class="span3" name="interior_shading_type">
                                         <option value="Horizontal_Blinds">Horizontal Blinds</option>
@@ -567,7 +821,19 @@
                             </div>
                             <div class="row">
                                 <div class="span4">
-                                
+                                    <h4>Primary HVAC System</h4>
+                                    <select value="this.value" name="primary_hvac_type" disabled>
+                                        <option value="SystemType1">PTAC Packaged Terminal Air Conditioner</option>
+                                        <option value="SystemType2">PTHP Packaged Terminal Heat Pump</option>
+                                        <option value="SystemType3">PSZ-AC Packaged Rooftop Air Conditioner</option>
+                                        <option value="SystemType4">PSZ-HP Packaged Rooftop Heat Pump</option>
+                                        <option value="SystemType5">Packaged Rooftop VAV with Reheat & DX Refrigerant</option>
+                                        <option value="SystemType6">Packaged Rooftop VAV with parallel fan power boxes & reheat</option>
+                                        <option value="SystemType7">Packaged Rooftop VAV with Reheat & Chiller</option>
+                                        <option value="SystemType8" selected>VAV with parallel fan-powered boxes and reheat</option>
+                                        <option value="SystemType9">Warm Air Furnace Gas Fired</option>
+                                        <option value="SystemType10">Warm Air Furnace Electric</option>
+                                    </select>
                                     <h4>Fan Efficiency</h4>
                                     <div class="input-append">
                                         <input type="number" min="0" class="span2" id="appendedInput" value="50"
@@ -613,19 +879,13 @@
                                         <span class="add-on" id="mechanical-replace">W/ft&sup2;</span>
                                     </div>
                                     
-                                    <h4>Primary HVAC System</h4>
-                                    <select value="this.value" name="primary_hvac_type" disabled>
-                                        <option value="SystemType1">PTAC Packaged Terminal Air Conditioner</option>
-                                        <option value="SystemType2">PTHP Packaged Terminal Heat Pump</option>
-                                        <option value="SystemType3">PSZ-AC Packaged Rooftop Air Conditioner</option>
-                                        <option value="SystemType4">PSZ-HP Packaged Rooftop Heat Pump</option>
-                                        <option value="SystemType5">Packaged Rooftop VAV with Reheat & DX Refrigerant</option>
-                                        <option value="SystemType6">Packaged Rooftop VAV with parallel fan power boxes & reheat</option>
-                                        <option value="SystemType7">Packaged Rooftop VAV with Reheat & Chiller</option>
-                                        <option value="SystemType8" selected>VAV with parallel fan-powered boxes and reheat</option>
-                                        <option value="SystemType9">Warm Air Furnace Gas Fired</option>
-                                        <option value="SystemType10">Warm Air Furnace Electric</option>
-                                    </select>
+                                    <h4>People Density</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" min="0" step="0.001" name="people_density" value="0.005">
+                                        <span class="add-on" id="people-replace">People/ft&sup2;</span>
+                                    </div>
+                                    
+                                    
                                 </div>
                             </div>
                             <h2 class="text-right">

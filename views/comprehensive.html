@@ -11,12 +11,8 @@
         <link href="css/bootstrap-fileupload.css" rel="stylesheet">
         <link href="css/partial.css" rel="stylesheet">
         <style type="text/css">
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-                background-color: rgb(229, 229, 229);
-            }
-            
+
+
             #filter {
             	position: fixed;
             	top: 0;
@@ -104,8 +100,8 @@
                     <!--/.nav-collapse -->
                     <div class="pull-right text-right">
 
-                        <input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"24\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;C</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"26\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;C</span>");$(".illu-unit").html("lux");$("#illuminance").html("<option value=\"150\">150 - storage</option><option value=\"200\">200 - casual work</option><option value=\"300\">300 - rough work</option><option value=\"400\">400 - office work (EU)</option><option value=\"500\" selected>500 - office work (US)</option>");$("#si-ip").val("si");$("body").css("background", "rgb(229, 229, 229)");'/><font color="yellow"> SI</font>
-                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"75\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;F</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"79\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;F</span>");$(".illu-unit").html("lm/ft&#178;");$("#illuminance").html("<option value=\"150\">15 - storage</option><option value=\"200\">20 - casual work</option><option value=\"300\">30 - rough work</option><option value=\"400\">40 - office work (EU)</option><option value=\"500\" selected>50 - office work (US)</option>");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font>
+                        <!--input type="radio" name="unitoption" value="si" checked="checked" onclick='$(".unit").html("m");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"24\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;C</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"26\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;C</span>");$(".illu-unit").html("lux");$("#illuminance").html("<option value=\"150\">150 - storage</option><option value=\"200\">200 - casual work</option><option value=\"300\">300 - rough work</option><option value=\"400\">400 - office work (EU)</option><option value=\"500\" selected>500 - office work (US)</option>");$("#si-ip").val("si");$("body").css("background", "rgb(229, 229, 229)");'/><font color="yellow"> SI</font>
+                        <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"75\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;F</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"79\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;F</span>");$(".illu-unit").html("lm/ft&#178;");$("#illuminance").html("<option value=\"150\">15 - storage</option><option value=\"200\">20 - casual work</option><option value=\"300\">30 - rough work</option><option value=\"400\">40 - office work (EU)</option><option value=\"500\" selected>50 - office work (US)</option>");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font-->
                 
                     <ul class="nav pull-right">
 						      <li><a href="/signup">SIGNUP</a>
@@ -130,26 +126,35 @@
                             <a href="#building"><i class="icon-map-marker"></i> Building</a>
                         </li>
                         <li>
-                            <a href="#architecture"><i class="icon-home"></i>Architecture</a>
+                            <a href="#architecture"><i class="icon-home"></i> Architecture</a>
                         </li>
                         <li>
-                            <a href="#materials"><i class="icon-th-large"></i>Enclosure</a>
+                            <a href="#materials"><i class="icon-th-large"></i> Enclosure</a>
                         </li>
                         <li>
-                            <a href="#typical_room"><i class="icon-user"></i>Typical Room</a>
+                            <a href="#typical_room"><i class="icon-user"></i> Typical Room</a>
                         </li>
                         <li>
-                            <a href="#lighting"><i class="icon-asterisk"></i>Lighting</a>
+                            <a href="#lighting"><i class="icon-asterisk"></i> Lighting</a>
                         </li>
                         <li>
-                            <a href="#mechanical"><i class="icon-cog"></i>Mechanical</a>
+                            <a href="#mechanical"><i class="icon-cog"></i> Mechanical</a>
                         </li>
                         <li>
-                            <a href="#schedules"><i class="icon-time"></i>Schedules</a>
+                            <a href="#schedules"><i class="icon-time"></i> Schedules</a>
                         </li>
                         <li>
-                            <a href="#conservation"><i class="icon-leaf"></i>Conservation</a>
+                            <a href="#conservation"><i class="icon-leaf"></i> Conservation</a>
                         </li>
+                        <li><hr></li>
+                        <li style="padding-left:5px;">
+                         <a href="#units">
+                             <i class="icon-adjust"></i>  Units &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
+                             <input type="button" id="unitoptionSI" name="unitoption" value="SI" class="btn active" onclick='$(".unit").html("m");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"24\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;C</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"26\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;C</span>");$(".illu-unit").html("lux");$("#illuminance").html("<option value=\"150\">150 - storage</option><option value=\"200\">200 - casual work</option><option value=\"300\">300 - rough work</option><option value=\"400\">400 - office work (EU)</option><option value=\"500\" selected>500 - office work (US)</option>");$("#si-ip").val("si");'>
+                             <input type="button" id="unitoptionIP" name="unitoption" value="IP" class="btn" onclick='$(".unit").html("ft");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"75\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;F</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"79\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;F</span>");$(".illu-unit").html("lm/ft&#178;");$("#illuminance").html("<option value=\"150\">15 - storage</option><option value=\"200\">20 - casual work</option><option value=\"300\">30 - rough work</option><option value=\"400\">40 - office work (EU)</option><option value=\"500\" selected>50 - office work (US)</option>");$("#si-ip").val("ip");'>
+                         </div></a>
+                         
+                     </li>
                     </ul>
                 </div>
                 
@@ -157,7 +162,7 @@
                 <div class="span9">
                     <form name="platformForm" id="comprehensive-form" action="http://rmt.eebhub.org/openstudio/eeb_rb/simulate-openstudio.php" method="post" onsubmit="return valForm('comprehensive-form');">
                     <section id="building">
-                        <div id="box-unit">
+                        <div class="box-unit building">
                             <div class="page-header">
                                 <table>
                                     <tr>
@@ -243,7 +248,7 @@
                     
                     <!-- ################################## Architecture Section 1 ############################################## -->
                     <section id="architecture">
-                        <div id="box-unit">
+                        <div class="box-unit architecture">
                             <div class="page-header">
                                 <h2>Architecture
                                     <small>shape / geometry</small>
@@ -368,7 +373,7 @@
                     
                     <!-- #################################### Materials Section ############################################### -->
                     <section id="materials">
-                        <div id="box-unit">
+                        <div class="box-unit materials">
                             <div class="page-header">
                                 <h2>Enclosure</h2>
                             </div>
@@ -436,7 +441,7 @@
                     
                     <!-- ####################################### Architecture Seciton 2 ################################################## -->
                     <section id="typical_room">
-                        <div class="box-unit">
+                        <div class="box-unit typicalroom">
                             <div class="page-header">
                                 <h2>Typical Room
                                     <small>by DAYSIM</small></h2>
@@ -822,7 +827,7 @@
                     
                     <!-- ######################################### Mechanical Section ########################################### -->
                     <section id="mechanical">
-                        <div id="box-unit">
+                        <div class="box-unit mechanical">
                             <div class="page-header">
                                 <h2>Mechanical</h2>
                             </div>
@@ -907,7 +912,7 @@
                     
                     <!-- ########################################### Schedules Section ########################################## -->
                     <section id="schedules">
-                        <div id="box-unit">
+                        <div class="box-unit schedules">
                             <div class="page-header">
                                 <h2>Schedules</h2>
                                 <h2>
@@ -985,7 +990,7 @@
                     </div>
                     
                      <section id="conservation">
-                        <div id="box-unit">
+                        <div class="box-unit conservation">
                             
                                 <h2>Energy Efficient Measures</h2>
                                 <h2>

@@ -43,6 +43,13 @@
             	max-width: 800px;
             	background: #fff;
             }
+            #detailed-output-description {
+    display: none;
+}
+
+#detailed-output:hover~#detailed-output-description{
+    display: block;
+}
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="js/building101Data.js"></script>
@@ -962,8 +969,9 @@
                     <!-- ###################################### Buttons Group ############################################# -->
                     <div id="box-unit">
                         <input type="submit" class="btn btn-large btn-primary" value="SIMULATE">
-                        <a class="btn btn-large btn-info" href="http://128.118.67.241/tools.eebhub.org/energy-use.php"><i class="icon-signal"></i> Example Outputs</a>
+                        <a id="detailed-output" class="btn btn-large btn-info" href="http://rmt.eebhub.org/tools.eebhub.org/energy-use.php"><i class="icon-signal"></i> Detailed Outputs</a>
                         <img style="text-align:right;float:right;" src="img/doe-engines.png" alt="DOE" width="250" height="58">
+                        <div id="detailed-output-description" style="padding-left:130px;"><p>Detailed outputs entail monthly energy end-uses, monthly energy cost, zone component, and energy use intensity as well as EEM selections.</p></div>
                         <br style="clear:both" />
                         <h2 class="text-right">
                             <small>powered by OpenStudio SDK + EnergyPlus, DAYSIM, CONTAM Engines</small>

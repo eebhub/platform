@@ -48,7 +48,9 @@
 $(function() {
 $('#utilityDataFile').change(function(){
     //alert($('#utility-data-file').val());
-    var gas_unit = ' CCF';
+    var elec_unit = $('#elec_unit').val();
+    var gas_unit = $('#gas_unit').val();
+    //var gas_unit = ' CCF';
                     $('#displayImage').highcharts({
                     chart: {
                         zoomType: 'xy'
@@ -91,7 +93,7 @@ $('#utilityDataFile').change(function(){
 
                         labels: {
                             formatter: function() {
-                                return this.value + gas_unit;
+                                return this.value + ' '+gas_unit;
                             },
                             style: {
                                 color: 'red'
@@ -109,7 +111,7 @@ $('#utilityDataFile').change(function(){
 
                         labels: {
                             formatter: function() {
-                                return this.value + ' kWh';
+                                return this.value + ' '+elec_unit;
                             },
                             style: {
                                 color: '#4572A7'
@@ -128,7 +130,7 @@ $('#utilityDataFile').change(function(){
                         yAxis: 2,
                         data: [65280, 50400, 54600, 68160, 72240, 89280, 100560, 131400, 111000, 89880, 89040, 66120],
                         tooltip: {
-                            valueSuffix: ' kWh'
+                            valueSuffix: ''
                         }
 
                     }, {
@@ -138,7 +140,7 @@ $('#utilityDataFile').change(function(){
                         yAxis: 1,
                         data: [3641, 2166, 1019, 923, 30.5, 34.5, 85.7, 38.7, 989.7, 2824, 2385, 3500],
                         tooltip: {
-                            valueSuffix: ' CCF'
+                            valueSuffix: ''
                         }
 
                     }]
@@ -343,7 +345,7 @@ $('#utilityDataFile').change(function(){
                                     <select id="gas_unit" name="gas_unit">
                                         <option value="Ccf">Ccf</option>
                                         <option value="Therm">Therm</option>
-                                        <option value="MMBTU">gallon</option>
+                                        <option value="gallon">gallon</option>
                                     </select>
                                     </div>
                                 </div>

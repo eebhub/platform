@@ -7,10 +7,12 @@
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
+
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/stylesheet.css" rel="stylesheet">
         <link href="css/partial.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+
         <style type="text/css">
 
         </style>
@@ -46,6 +48,7 @@
 $(function() {
 $('#utilityDataFile').change(function(){
     //alert($('#utility-data-file').val());
+    var gas_unit = ' CCF';
                     $('#displayImage').highcharts({
                     chart: {
                         zoomType: 'xy'
@@ -88,7 +91,7 @@ $('#utilityDataFile').change(function(){
 
                         labels: {
                             formatter: function() {
-                                return this.value + ' CCF';
+                                return this.value + gas_unit;
                             },
                             style: {
                                 color: 'red'
@@ -220,11 +223,11 @@ $('#utilityDataFile').change(function(){
                         </li-->
                         <li><hr></li>
                         <li>
-                        <a href="#units">
+                        
                              <i class="icon-adjust"></i>  Units &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
                              <input type="button" id="unitoptionSI" name="unitoption" value="SI" class="btn active" onclick='$(".unit").html("m");$("#si-ip").val("si");'>
                              <input type="button" id="unitoptionIP" name="unitoption" value="IP" class="btn" onclick='$(".unit").html("ft");$("#si-ip").val("ip");'>
-                         </div></a>
+                         </div>
                         </li>
                     </ul>
                 </div>
@@ -324,11 +327,286 @@ $('#utilityDataFile').change(function(){
                                 <div class="page-header">
                                     <h2>Utility Data</h2>
                                 </div>
-                                <h4>Import Utility Data File</h4>
+                                
+                                <p><b>Choose utility data units:</b></p> 
+                                <div class="row">
+                                    <div class="span3">
+                                    <label for="elec_unit">Electricity: </label>
+                                    <select id="elec_unit" name="elec_unit">
+                                        <option value="kWh">kWh</option>
+                                        <option value="kBTU">kBTU</option>
+                                        <option value="MJ">MJ</option>
+                                    </select>
+                                    </div>
+                                    <div class="span3">
+                                    <label for="gas_unit">Gas: </label>
+                                    <select id="gas_unit" name="gas_unit">
+                                        <option value="Ccf">Ccf</option>
+                                        <option value="Therm">Therm</option>
+                                        <option value="MMBTU">gallon</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                
+                                <h4>Upload your utility file</h4>
+                                <table>
+                                    <tr>
+                                            
+                                            <td>
+                                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                  <span class="btn btn-file"><span class="fileupload-new"><a href="http://developer.eebhub.org/archives/utilities/MeterConsumptionData.xlsx"><b><i class="icon-arrow-down"></i></i>Download Utility Data Speadsheet (Example)</b></a></span>
+                                                 </div>
+                                            </td>
+                                            <td>
+                                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                  <span class="btn btn-file"><span class="fileupload-new"><b><i class="icon-arrow-up"></i>Import Utility Data</b></span><span class="fileupload-exists">Change</span><input type="file" name="utilityDataFile" id="utilityDataFile" /></span>
+                                                  <span class="fileupload-preview"></span>
+                                                  <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                <!--h4>Import Utility Data File</h4>
                              
-                                  <input type="file" name="utilityDataFile" id="utilityDataFile" />
+                                  <input type="file" name="utilityDataFile" id="utilityDataFile" /-->
                         
                                   <div id="displayImage"></div>
+                                  <div ng-controller="CollapseDemoCtrl">
+                                  <h4>- Or, <button type="button" class="btn" ng-click="isCollapsed = !isCollapsed"><b>Fill in the utility data table below manually</b></button></h4>
+                                
+                                    <div collapse="isCollapsed">
+                                    <table class="table table-hover" id="utltable">
+                                    <thead>
+                                        <th class="span2">Electric Billing Period Start Date</th>
+                                        <th class="span2">Electricity (kWh)</th>
+                                        <th class="span2">Gas Billing Period Start Date</th>
+                                        <th class="span2">Gas (CCF)</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" />
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" />
+                                            </td>
+                                        </tr>
+                                        <thead>
+                                            <th class="span2">Electric Billing Period End Date</th>
+                                            <th class="span2">Electricity (kWh)</th>
+                                            <th class="span2">Gas Billing Period End Date</th>
+                                            <th class="span2">Gas (CCF)</th>
+                                        </thead>
+                                        <tr>
+                                            <td>
+                                                <input type="date" class="span2" name="electric_utility_startdate" required>
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="kWh"
+                                                name="utility_electric" disabled>
+                                            </td>
+                                            <td>
+                                                <input type="date" class="span2" name="gas_utility_startdate">
+                                            </td>
+                                            <td>
+                                                <input class="span2" type="number" min="0" step="0.1" placeholder="CCF"
+                                                name="utility_gas" disabled>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                                        
+                                       
+                                    </div>
+                              
+                            
+                                </div>
+                        
+                        
                                 
                                 <!--table class="table table-hover" id="utltable">
                                     <thead>
@@ -666,7 +944,7 @@ $('#utilityDataFile').change(function(){
                                     </div>
                                 </div>
                             </section>
-                        </div--><!--END EXPAND COLLAPSE BUTTON by Angular-->
+                        </div><!--END EXPAND COLLAPSE BUTTON by Angular-->
                         
                         <div class="box-unit">
                             <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>

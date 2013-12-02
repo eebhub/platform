@@ -321,14 +321,14 @@ module.exports = {
                     'Ycp_electric': Ycp_electric,
                     'Y_electric': Y_electric,
                     //File Links
-                    'insFileElectric': 'http://developer.eebhub.org/imt/intputs/' + insFileNameElectric,
-                    'datFileElectric': 'http://developer.eebhub.org/imt/inputs/' + dataFileNameElectric,
-                    'outFileElectric': 'http://developer.eebhub.org/imt/outputs/' + outFileNameElectric,
-                    'resFileElectric': 'http://developer.eebhub.org/imt/outputs/' + resFileNameElectric,
-                    'insFileGas': 'http://developer.eebhub.org/imt/intputs/' + insFileNameGas,
-                    'datFileGas': 'http://developer.eebhub.org/imt/inputs/' + dataFileNameGas,
-                    'outFileGas': 'http://developer.eebhub.org/imt/outputs/' + outFileNameGas,
-                    'resFileGas': 'http://developer.eebhub.org/imt/outputs/' + resFileNameGas,
+                    'insFileElectric': 'http://developer.eebhub.org/imt/'+building_name + "_" + timestamp + '/'+insFileNameElectric,
+                    'datFileElectric': 'http://developer.eebhub.org/imt/' +building_name + "_" + timestamp + '/'+ dataFileNameElectric,
+                    'outFileElectric': 'http://developer.eebhub.org/imt/' +building_name + "_" + timestamp + '/'+ outFileNameElectric,
+                    'resFileElectric': 'http://developer.eebhub.org/imt/' +building_name + "_" + timestamp + '/'+ resFileNameElectric,
+                    'insFileGas': 'http://developer.eebhub.org/imt/' +building_name + "_" + timestamp + '/'+ insFileNameGas,
+                    'datFileGas': 'http://developer.eebhub.org/imt/' +building_name + "_" + timestamp + '/'+ dataFileNameGas,
+                    'outFileGas': 'http://developer.eebhub.org/imt/' +building_name + "_" + timestamp + '/'+ outFileNameGas,
+                    'resFileGas': 'http://developer.eebhub.org/imt/' +building_name + "_" + timestamp + '/'+ resFileNameGas,
                 });
             });
 

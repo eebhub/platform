@@ -1077,6 +1077,36 @@ $('#utilityDataFile').change(function(){
                             <small>powered by IBM Inverse Modeling Engine</small>
                         </h2>
                     </div>
+                    <div class="box-unit">
+                        <div class="page-header">
+                        <h2>Other Resources</h2>
+                        </div>
+                        <div class="row">
+                        <div class="span4">
+                        <h4>EPA EnergyStar Score  <small>[target=75, median=50]</small></h4>
+                                            <ul class="inline">
+                                                <li>
+                                                    <input type="range" ng-model="portfolio" min="0" max="100" step="1" value={{portfolio}}/>
+                                                </li>
+                                                <li>
+                                                    <input class="span1" type="text" value={{portfolio}} ng-model="portfolio" placeholder="optional" name="energystar_score"/>
+                                                </li>
+                                            </ul>
+                        </div>
+                        <div class="span4">
+                                           <h4>DOE Energy Asset Score</h4>
+                                            <ul class="inline">
+                                                <li>
+                                                    <input type="range" ng-model="asset" min="0" max="100" step="1" value={{asset}}/>
+                                                </li>
+                                                <li>
+                                                    <input class="span1" type="text" value={{asset}} ng-model="asset" placeholder="optional" name="asset_score" />
+                                                </li>
+                                            </ul>
+                        </div>                    
+                        </div>
+                    </div>
+                    
                     <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
 
                      

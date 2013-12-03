@@ -74,7 +74,7 @@ if (form.contains(form.number_of_employees_during_main_shift)) {form.number_of_e
 //LIGHTING
 if (form.contains(form.illuminance)) {form.illuminance.value = 500;}
 if (form.contains(form.lighting_power_density)) {form.lighting_power_density.value = 2;} //2W/sqft
-if (form.contains(form.window_head_height)) {form.window_head_height.value = 10.25;}
+if (form.contains(form.window_head_height)) {form.window_head_height.value = 3.12;}
 if (form.contains(form.wall_thickness)) {form.wall_thickness.value = 1.5;}
 if (form.contains(form.interior_shading_type)) {form.interior_shading_type.value = "Fabric Shades";}
 if (form.contains(form.floor_reflectance)) {form.floor_reflectance.value = 0.2;}
@@ -243,7 +243,7 @@ if (form.contains(form.number_of_employees_during_main_shift)) {form.number_of_e
 //LIGHTING
 if (form.contains(form.illuminance)) {form.illuminance.value = 500;}
 if (form.contains(form.lighting_power_density)) {form.lighting_power_density.value = 2;} //2W/sqft
-if (form.contains(form.window_head_height)) {form.window_head_height.value = 10.25;}
+if (form.contains(form.window_head_height)) {form.window_head_height.value = 13.12;}
 if (form.contains(form.wall_thickness)) {form.wall_thickness.value = 1.5;}
 if (form.contains(form.interior_shading_type)) {form.interior_shading_type.value = "Fabric Shades";}
 if (form.contains(form.floor_reflectance)) {form.floor_reflectance.value = 0.2;}
@@ -291,7 +291,7 @@ if (form.contains(form.floor_to_floor_height)) {form.floor_to_floor_height.value
 
 //ROOM
 if (form.contains(form.exterior_shading_orientation)) {form.exterior_shading_orientation.value = "East";}
-if (form.contains(form.room_width)) {form.room_width.value = 21.6;}
+if (form.contains(form.room_width)) {form.room_width.value = 10;} //actual=71ft=21.6, reduced to half (10m) for daysim
 if (form.contains(form.room_depth)) {form.room_depth.value = 9.37;}
 if (form.contains(form.room_height)) {form.room_height.value = 4.04;}
 if (form.contains(form.overhang_depth)) {form.overhang_depth.value = 0;}
@@ -320,7 +320,7 @@ if (form.contains(form.number_of_employees_during_main_shift)) {form.number_of_e
 //LIGHTING
 if (form.contains(form.illuminance)) {form.illuminance.value = 500;}
 if (form.contains(form.lighting_power_density)) {form.lighting_power_density.value = 2;} //2W/sqft
-if (form.contains(form.window_head_height)) {form.window_head_height.value = 10.25;}
+if (form.contains(form.window_head_height)) {form.window_head_height.value = 3.12;} //10.25ft
 if (form.contains(form.wall_thickness)) {form.wall_thickness.value = 1.5;}
 if (form.contains(form.interior_shading_type)) {form.interior_shading_type.value = "Fabric_Shades";}
 if (form.contains(form.floor_reflectance)) {form.floor_reflectance.value = 0.2;}

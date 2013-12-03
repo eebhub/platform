@@ -34,6 +34,9 @@ module.exports = {
         var building_function = request.body.activity_type;
         //var building_size = request.body.gross_floor_area;
         
+        var elec_unit = request.body.elec_unit;
+        var gas_unit = request.body.gas_unit;
+        
         //utility data input text area
         var utility_gas = [];
         var utility_electric = [];
@@ -132,6 +135,22 @@ module.exports = {
             utility_gas = [gas_data1, gas_data2, gas_data3, gas_data4, gas_data5, gas_data6, gas_data7, gas_data8, gas_data9, gas_data10, gas_data11, gas_data12];
             console.log(utility_gas);
         
+        
+           if (elec_unit=='kBTU'){
+                for (var i=0; i< utility_electric.length; i++){
+                    utility_electric[i] = utility_electric[i]/3.41;
+                }
+            }else if (elec_unit=='MJ'){
+                for (var i=0; i< utility_electric.length; i++){
+                    utility_electric[i] = utility_electric[i]/3.6;
+                }
+            }
+            
+            if (gas_unit=='Therm'){
+                for (var i=0; i< utility_gas.length; i++){
+                    utility_gas[i] = utility_gas[i]/1.023;
+                }
+            }
             
         //Get Building Type EUI
         var buildingTypeEUI = imt.buildingEUI(building_function);

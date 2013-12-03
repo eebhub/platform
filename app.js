@@ -256,7 +256,8 @@ app.get('/lite', function(req, res){
         
         
     }else{
-        res.sendfile('./views/lite.html');    
+        //res.sendfile('./views/lite.html');    
+        res.render('lite');
     } 
 });
 app.get('/literesults', routes.getLiteResults);

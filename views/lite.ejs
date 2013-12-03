@@ -283,13 +283,13 @@ $('#utilityDataFile').change(function(){
                                             <span class="add-on">
                                                 <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
                                             </span>
-                                            </div>
                                             <br>
-                                            <h4>Gross Floor Area</h4>
-                                            <div class="input-append">
-                                            <input class="span3" type="number" min="0" step="0.001" placeholder="required for benchmarking" name="gross_floor_area" />
-                                            <span class="add-on"><span class="unit">m</span>&#178;</span>
+                                            <h4>Year Built</h4>
+                                        <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
+                                        
+                                            
                                             </div>
+                                            
 
                                     </div>
                                     <div class="span4">
@@ -317,9 +317,12 @@ $('#utilityDataFile').change(function(){
                                                 <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html" target="_blank"><i class="icon-info-sign"></i></a>
                                             </span>
                                         </div>
-                                        <h4>Year Built</h4>
-                                        <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
                                         
+                                            <h4>Gross Floor Area</h4>
+                                            <div class="input-append">
+                                            <input class="span3" type="number" min="0" step="0.001" name="gross_floor_area" />
+                                            <span class="add-on"><span class="unit">m</span>&#178;</span>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -352,29 +355,29 @@ $('#utilityDataFile').change(function(){
                                 
                                 <h4>Upload your utility file</h4>
                                 <table>
-                                    <tr>
+                                <tr>    
                                             
-                                            <td>
+                                <td>            
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                  <span class="btn btn-file"><span class="fileupload-new"><a href="http://developer.eebhub.org/archives/utilities/MeterConsumptionData.xlsx"><b><i class="icon-arrow-down"></i></i>Download Utility Data Speadsheet (Example)</b></a></span>
+                                                  <span class="btn btn-file"><span class="fileupload-new"><a href="http://developer.eebhub.org/archives/utilities/MeterConsumptionData.xlsx"><b><i class="icon-arrow-down"></i></i>Speadsheet Template</b></a></span>
                                                  </div>
-                                            </td>
-                                            <td>
+                                </td>            
+                                <td>            
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                  <span class="btn btn-file"><span class="fileupload-new"><b><i class="icon-arrow-up"></i>Import Utility Data</b></span><span class="fileupload-exists">Change</span><input type="file" name="utilityDataFile" id="utilityDataFile" /></span>
+                                                  <span class="btn btn-file"><span class="fileupload-new"><b><i class="icon-arrow-up"></i>Import Spreadsheet</b></span><span class="fileupload-exists">Change</span><input type="file" name="utilityDataFile" id="utilityDataFile" /></span>
                                                   <span class="fileupload-preview"></span>
                                                   <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                </td>        
+                                </tr>        
+                                </table>
                                 <!--h4>Import Utility Data File</h4>
                              
                                   <input type="file" name="utilityDataFile" id="utilityDataFile" /-->
                         
                                   <div id="displayImage"></div>
                                   <div ng-controller="CollapseDemoCtrl">
-                                  <h4>- Or, <button type="button" class="btn" ng-click="isCollapsed = !isCollapsed"><b>Fill in the utility data table below manually</b></button></h4>
+                                  <h4>- Or, <button type="button" class="btn" ng-click="isCollapsed = !isCollapsed"><b>fill in the utility data table below</b></button></h4>
                                 
                                     <div collapse="isCollapsed">
                                     <table class="table table-hover" id="utltable">
@@ -958,7 +961,7 @@ $('#utilityDataFile').change(function(){
                             </h2>
                         </div>
                      <section>
-                            <div class="box-unit">
+                            <div class="box-unit other">
                                 <div class="page-header">
                                     <h2>Supplementary <small> inputs required for IBM Inverse Model</small></h2>
                                 </div>
@@ -1079,7 +1082,7 @@ $('#utilityDataFile').change(function(){
                             <small>powered by IBM Inverse Modeling Engine</small>
                         </h2>
                     </div>
-                    <div class="box-unit">
+                    <div class="box-unit other">
                         <div class="page-header">
                         <h2>Other Resources</h2>
                         </div>
@@ -1105,8 +1108,17 @@ $('#utilityDataFile').change(function(){
                                                     <input class="span1" type="text" value={{asset}} ng-model="asset" placeholder="optional" name="asset_score" />
                                                 </li>
                                             </ul>
-                        </div>                    
+                        </div> 
+                        
+                        <div class="span8" style="text-align:right;float:right;">
+                                            <span>Learn more about
+                                            <a href="https://portfoliomanager.energystar.gov/pm/login.html" target="_blank"><img src="img/portfolio-manager.png" width="150" height="48"></a>
+                                            <a href="http://www1.eere.energy.gov/buildings/commercial/assetscore.html" target="_blank"><img src="img/asset-score.png" width="150" height="48"></a>
+                                            </span>
+                                        </div>
+                        
                         </div>
+                        
                     </div>
                     
                     <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>

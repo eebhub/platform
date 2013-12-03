@@ -58,6 +58,10 @@
     border-top:5px solid;
     border-color:#03c383;
 }
+.other {
+    border-top:5px solid;
+    border-color:#808080;
+}
 input.right {
     float:right;
 }

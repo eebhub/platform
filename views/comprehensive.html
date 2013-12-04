@@ -48,8 +48,9 @@
             #detailed-output:hover~#detailed-output-description{
                 display: block;
             }
-            a.nohover:hover { color: none;  }
-            a.nohover:focus { color: none;  }
+            .bs-docs-sidenav > li > a.nohover:hover{background-color:transparent;color:#08c;}
+            a.nohover:hover { color: inherit;  }
+            a.nohover:focus { color: inherit;  }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="js/building101Data.js"></script>
@@ -153,7 +154,7 @@
                         <li><hr style="color:lightgray;background-color:lightgray;height:1px;border:none;"/></li>
                         <li style="padding-left:13px;">
                         
-                             <i class="icon-adjust"></i>  Units &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
+                             <i class="icon-adjust"></i>  <b>Units</b> &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
                              <input type="button" id="unitoptionSI" name="unitoption" value="SI" class="btn active" onclick='$(".unit").html("m");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"24\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;C</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"26\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;C</span>");$(".illu-unit").html("lux");$("#illuminance").html("<option value=\"150\">150 - storage</option><option value=\"200\">200 - casual work</option><option value=\"300\">300 - rough work</option><option value=\"400\">400 - office work (EU)</option><option value=\"500\" selected>500 - office work (US)</option>");$("#si-ip").val("si");'>
                              <input type="button" id="unitoptionIP" name="unitoption" value="IP" class="btn" onclick='$(".unit").html("ft");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"75\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;F</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"79\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;F</span>");$(".illu-unit").html("lm/ft&#178;");$("#illuminance").html("<option value=\"150\">15 - storage</option><option value=\"200\">20 - casual work</option><option value=\"300\">30 - rough work</option><option value=\"400\">40 - office work (EU)</option><option value=\"500\" selected>50 - office work (US)</option>");$("#si-ip").val("ip");'>
                          </div>
@@ -161,7 +162,7 @@
                          <li><hr style="color:lightgray;background-color:lightgray;height:1px;border:none;"/></li>
                          <li>
                         
-                             <a class="nohover" href="http://rmt.eebhub.org/tools.eebhub.org/energy-use.php" target="_blank"><i class="icon-signal"></i>  Example Outputs</a>
+                             <a class="nohover" href="http://rmt.eebhub.org/tools.eebhub.org/energy-use.php" target="_blank"><i class="icon-signal"></i>  <b>Example Outputs</b></a>
                          </li>
                     </ul>
                 </div>
@@ -520,7 +521,7 @@
                                     <h4>% Window to Wall Ratio</h4>
                                         <ul class="inline">
                                             <li>
-                                                <input class="span2" type="range" ng-model="winwall" min="10" max="60" step="1" value=50/>
+                                                <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50/>
                                             </li>
                                             <li>
                                                 <div class="input-append">
@@ -993,8 +994,6 @@
                     </form>
                 </div>
             </div>
-            
-            
          <!-- ################################ Loading Bar ##################################################### -->
             <div class="loading-div container-fluid">
              <div id="filter" >

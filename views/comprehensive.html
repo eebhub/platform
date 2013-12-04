@@ -42,12 +42,15 @@
             	background: #fff;
             }
             #detailed-output-description {
-    display: none;
-}
-
-#detailed-output:hover~#detailed-output-description{
-    display: block;
-}
+            display: none;
+            }
+            
+            #detailed-output:hover~#detailed-output-description{
+                display: block;
+            }
+            .bs-docs-sidenav > li > a.nohover:hover{background-color:transparent;color:#08c;}
+            a.nohover:hover { color: inherit;  }
+            a.nohover:focus { color: inherit;  }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="js/building101Data.js"></script>
@@ -148,15 +151,19 @@
                         <li>
                             <a href="#conservation"><i class="icon-leaf"></i> Conservation</a>
                         </li>
-                        <li><hr></li>
+                        <li><hr style="color:lightgray;background-color:lightgray;height:1px;border:none;"/></li>
                         <li style="padding-left:13px;">
                         
-                             <i class="icon-adjust"></i>  Units &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
+                             <i class="icon-adjust"></i>  <b>Units</b> &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
                              <input type="button" id="unitoptionSI" name="unitoption" value="SI" class="btn active" onclick='$(".unit").html("m");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"24\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;C</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"26\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;C</span>");$(".illu-unit").html("lux");$("#illuminance").html("<option value=\"150\">150 - storage</option><option value=\"200\">200 - casual work</option><option value=\"300\">300 - rough work</option><option value=\"400\">400 - office work (EU)</option><option value=\"500\" selected>500 - office work (US)</option>");$("#si-ip").val("si");'>
                              <input type="button" id="unitoptionIP" name="unitoption" value="IP" class="btn" onclick='$(".unit").html("ft");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"75\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;F</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"79\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;F</span>");$(".illu-unit").html("lm/ft&#178;");$("#illuminance").html("<option value=\"150\">15 - storage</option><option value=\"200\">20 - casual work</option><option value=\"300\">30 - rough work</option><option value=\"400\">40 - office work (EU)</option><option value=\"500\" selected>50 - office work (US)</option>");$("#si-ip").val("ip");'>
                          </div>
-                         
-                     </li>
+                         </li>
+                         <li><hr style="color:lightgray;background-color:lightgray;height:1px;border:none;"/></li>
+                         <li>
+                        
+                             <a class="nohover" href="http://rmt.eebhub.org/tools.eebhub.org/energy-use.php" target="_blank"><i class="icon-signal"></i>  <b>Example Outputs</b></a>
+                         </li>
                     </ul>
                 </div>
                 
@@ -219,11 +226,11 @@
                                     <h4>Function</h4>
                                         <div class="input-append">
                                             <select value="this.value" class="span3" id="activity_type" name="activity_type">
-                                                <option value="SmallOffice">Small Office</option>
+                                                <option value="SmallOffice" disabled>Small Office</option>
                                                 <option value="MediumOffice">Medium Office</option>
-                                                <option value="LargeOffice">Large Office</option>
-                                                <option value="Warehouse">Warehouse (non-refrigerated)</option>
-                                                <option value="Retail">Core-Retail</option>
+                                                <option value="LargeOffice" disabled>Large Office</option>
+                                                <option value="Warehouse" disabled>Warehouse (non-refrigerated)</option>
+                                                <option value="Retail" disabled>Core-Retail</option>
                                                 <option disabled>Stand-alone Retail</option>
                                                 <option disabled>Strip Mall</option>
                                                 <option disabled>Primary School</option>
@@ -258,62 +265,19 @@
                             </div>
                             <div class="row">
                                 <div class="span4">
-                                    <h4>Gross Floor Area</h4>
-                                    <div class="input-append">
-                                        <input type="number" id="gross_floor_area" name="gross_floor_area" step="0.001">
-
-                                        <span class="add-on" id="architect-replace1"><span class="unit">m</span>&#178;</span>
-                                    </div>
-                                    
                                     <h4>Number of Floors</h4>
                                     <input type="number" id="number_of_floors" name="number_of_floors" min="1" min="170" step="1">
+                                </div>
+                                <div class="span4">
                                     <h4>Floor to Floor Height</h4>
                                     <div class="input-append">
                                         <input type="number" id="floor_to_floor_height" name="floor_to_floor_height" step="0.001">
 
                                         <span class="add-on"><span class="unit">m</span></span>
                                     </div>
-                                    <h4>Orientation <small>clockwise degrees from North</small></h4>
-                                            <ul class="inline">
-                                                
-                                                <li>
-                                                        <input type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
-                    
-                                                    
-                                                </li>
-                                                <li>
-                                                  <input class="span1" type="text" value={{orientation}} name="building_orientation" ng-model="orientation"/>
-                                                        <span class="add-on">&deg;</span>
-                                                            
-                                                        </li>
-                                            </ul>
-                                    
-                                </div>
-                                <div class="span4">
-                                    <h4>Geometry Import</h4>
-                                    <img src="img/BuildingGEO.jpg" class="img-polaroid">
-                                    <!--UPLOAD IFC-->
-                                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                                        <div class="input-append">
-                                            <div class="uneditable-input span2">
-                                                <i class="icon-file fileupload-exists"></i>
-                                                <span class="fileupload-preview">coming soon</span>
-                                            </div>
-                                            <span class="btn btn-file">
-                                                <span class="fileupload-new">Upload Building Model (.IFC)</span>
-                                                <span class="fileupload-exists"></span>
-                                                <input type="file" />
-                                            </span>
-                                            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
-                                        </div>
-                                    </div>
-                                    <!--UPLOAD IFC-->
-                                    <h2 class="text-right">
-                                        <small>BIMserver will extract &
-                                            <a href="http://www.virtualpulse.us/V1">visualize </a>external walls, windows, numbers of floors, gross floor area for simulation.</small>
-                                    </h2>
                                 </div>
                             </div>
+                            
                             <div class="row">
                                 <div class="span4" >
                                     <h4>Shape</h4>
@@ -352,7 +316,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--div class="row">
+                            <div class="row">
                                 <div class="span9">
                                     <h4>Orientation <small>clockwise degrees from North</small></h4>
                                             <ul class="inline">
@@ -367,8 +331,44 @@
                                                     <input class="span7" type="range" ng-model="orientation" min="0" max="360" step="1" value={{orientation}}/>
                                                 </li>
                                             </ul>
+                                <br>
                                 </div>
-                            </div-->
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <!--<h4>Gross Floor Area</h4>
+                                    <div class="input-append">
+                                        <input type="number" id="gross_floor_area" name="gross_floor_area" step="0.001">
+
+                                        <span class="add-on" id="architect-replace1"><span class="unit">m</span>&#178;</span>
+                                    </div>-->
+                                    <h4>Geometry Import <small>coming soon</small></h4>
+                                    <h2 class="text-right">
+                                        <small>BIMserver will soon extract &
+                                            <a href="http://www.virtualpulse.us/V1">visualize </a>external walls, windows, numbers of floors, gross floor area for simulation.</small>
+                                    </h2>
+                                </div>
+                                <div class="span4">
+                                    <img src="img/BuildingGEO-black.jpg" class="img-polaroid">
+                                    <!--UPLOAD IFC-->
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="input-append">
+                                            <div class="uneditable-input span2">
+                                                <i class="icon-file fileupload-exists"></i>
+                                                <span class="fileupload-preview">not yet active</span>
+                                            </div>
+                                            <span class="btn btn-file">
+                                                <span class="fileupload-new">Upload Building Model (.IFC)</span>
+                                                <span class="fileupload-exists"></span>
+                                                <input type="file" />
+                                            </span>
+                                            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                        </div>
+                                    </div>
+                                    <!--UPLOAD IFC-->
+                                </div>
+                            </div>
+                            
                           
                         </div>
                     </section>
@@ -404,7 +404,7 @@
                                 </div>
                                 <div class="span4">
                                 
-                                <h4>Airtightness Assessment <small>by CONTAM</small></h4>
+                                <h4>Airtightness Assessment</h4>
                                     <select class="span3" name="tightness">
                                         <option>Leaky</option>
                                         <option selected>Average</option>
@@ -446,7 +446,6 @@
                         <div class="box-unit typicalroom">
                             <div class="page-header">
                                 <h2>Typical Room
-                                    <small>for DAYSIM</small></h2>
                             </div>
                             
                             <ul class="nav nav-tabs">
@@ -454,13 +453,14 @@
                                             <a href="#north" data-toggle="tab">North</a>
                                         </li>
                                         <li>
-                                            <a href="#east" data-toggle="tab">East</a>
+                                            <!--<a href="#east" data-toggle="tab">East</a>-->
+                                            <a style="cursor:not-allowed;">East</a>
                                         </li>
                                         <li>
-                                            <a href="#south" data-toggle="tab">South</a>
+                                            <a style="cursor:not-allowed;">South</a>
                                         </li>
                                         <li>
-                                            <a href="#west" data-toggle="tab">West</a>
+                                            <a style="cursor:not-allowed;">West</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content">
@@ -517,7 +517,7 @@
                             <div class="row">
                                 <div class="span2">
                                 </div>
-                                <div class="span3">
+                                <div class="span4">
                                     <h4>% Window to Wall Ratio</h4>
                                         <ul class="inline">
                                             <li>
@@ -961,14 +961,15 @@
 					</section>
                     
                     <!-- ######################################### Energy Conservation Section ######################################### -->
-                     <section id="conservation">
+                    <section id="conservation">
                         <div class="box-unit conservation">
-                            
-                                <h2>Energy Efficient Measures</h2>
+                                <h2>Energy Efficiency Measures</h2>
                                 <h2>
-                                    <small>EEM selection will be enabled after the baseline simulation is over.</small>
+                                    <small><b>1st</b> Simulate baseline model below. (Outputs include monthly energy, costs, zone component loads.)</small>
                                 </h2>
-                           
+                                <h2>
+                                    <small><b>2nd</b> Choose Energy Efficiency Measures on next page.&#160;&#160;&#160;<b>3rd</b> Stage Installation.</small>
+                                </h2>
                             <!--label class="checkbox">
                                 <input name="conservation_lighting" type="checkbox" disabled>Lighting Upgrade</label>
                             <label class="checkbox">
@@ -977,30 +978,22 @@
                                 <input name="conservation_economizer" type="checkbox" disabled>Economizer</label-->
                         </div>
                     </section>
-                    
                     <!-- ###################################### Buttons Group ############################################# -->
                     <div id="box-unit">
                         <input type="submit" class="btn btn-large btn-primary" value="SIMULATE">
-                        <a id="detailed-output" class="btn btn-large btn-info" href="http://rmt.eebhub.org/tools.eebhub.org/energy-use.php"><i class="icon-signal"></i> Detailed Outputs</a>
                         <img style="text-align:right;float:right;" src="img/doe-engines.png" alt="DOE" width="250" height="58">
-                        <div id="detailed-output-description" style="padding-left:130px;"><p>Detailed outputs entail monthly energy end-uses, monthly energy cost, zone component, and energy use intensity as well as EEM selections.</p></div>
                         <br style="clear:both" />
                         <h2 class="text-right">
                             <small>powered by OpenStudio SDK + EnergyPlus, DAYSIM, CONTAM Engines</small>
                         </h2>
                         
+                        
                     </div>
-                    
-                    
-                    
-                    
                     <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
                     
                     </form>
                 </div>
             </div>
-            
-            
          <!-- ################################ Loading Bar ##################################################### -->
             <div class="loading-div container-fluid">
              <div id="filter" >

@@ -285,33 +285,32 @@ app.get('/lite/:id', function(req, res){
 
 //app.get('/partial', routes.getPartial);
 app.get('/partial', function(req,res){
-    if(req.session.username){
-        var bldname = '';
-        var bld_location = '';
-        var bld_function = '';
-        var bld_year = '';
-        var room_width = ''; 
-        var room_depth = '';
-        var room_height = '';
-        var exterior_shading_orientation = '';
-        var window_to_wall_ratio = '';
-        var number_of_floors = '';
-        var overhang_depth = '';
-        var wall_insulation_r_value = '';
-        var thermal_mass = '';
-        var window_glass_coating = '';
-        var window_glass_type = '';
-        var roof_type = '';
-        var roof_insulation_type = '';
-        var roof_insulation_location ='';
-        var people_density ='';
-        var illuminance = '';
-        var equipment_power_density = '';
-        var ventilation_system = '';
-        var weekday_occupancy_start = '';
-        var weekday_occupancy_end = '';
+    var bldname = '';
+    var bld_location = '';
+    var bld_function = '';
+    var bld_year = '';
+    var room_width = ''; 
+    var room_depth = '';
+    var room_height = '';
+    var exterior_shading_orientation = '';
+    var window_to_wall_ratio = '';
+    var number_of_floors = '';
+    var overhang_depth = '';
+    var wall_insulation_r_value = '';
+    var thermal_mass = '';
+    var window_glass_coating = '';
+    var window_glass_type = '';
+    var roof_type = '';
+    var roof_insulation_type = '';
+    var roof_insulation_location ='';
+    var people_density ='';
+    var illuminance = '';
+    var equipment_power_density = '';
+    var ventilation_system = '';
+    var weekday_occupancy_start = '';
+    var weekday_occupancy_end = '';
+    if(req.session.username&&req.session.buildingid){
         
-        if(req.session.buildingid){
             Building.findOne({_id: req.session.buildingid}, function(err, building) {
                 if( err || !building) console.log("No Building found");
                 else {
@@ -342,7 +341,8 @@ app.get('/partial', function(req,res){
                     weekday_occupancy_start = building.building.schedules.weekday_occupancy_start;
                     weekday_occupancy_end = building.building.schedules.weekday_occupancy_end;
                     
-                     res.render('partial_auth', {
+                     res.render('partial', {
+                         'username': req.session.username,
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
@@ -369,10 +369,10 @@ app.get('/partial', function(req,res){
                          'weekday_occupancy_end': weekday_occupancy_end
                      });
                 }    
-            });
-            
+                });
         }else{
-          res.render('partial_auth', {
+          res.render('partial', {
+              'username': req.session.username,
               'bldname': '',
               'bld_function': '',
               'bld_year': '',
@@ -398,11 +398,10 @@ app.get('/partial', function(req,res){
               'weekday_occupancy_start': '',
               'weekday_occupancy_end': ''
           });
-        }
-    }else{
-        res.sendfile('./views/partial.html');
     }
 });
+
+
 //app.get('/substantial', routes.getSubstantial);
 app.get('/substantial', function(req,res){
     if(req.session.username){

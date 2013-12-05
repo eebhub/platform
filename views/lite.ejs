@@ -43,7 +43,8 @@
                 form.submit();
             }
             function buildingInfoPop(){
-            
+                var username = "<%= username %>";
+                if (username!='undefined') {
                     var form = document.forms.platformForm;
                     form.building_name.value = "<%= bldname %>";
                     form.activity_type.value = "<%=  bld_function %>";
@@ -51,7 +52,7 @@
                     form.year_completed.value = "<%= bld_year %>";
                     var gross_floor_area = "<%= gross_floor_area %>";
                     form.gross_floor_area.value = parseFloat(gross_floor_area);
-                
+                }
             }
 
         </script>

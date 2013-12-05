@@ -509,9 +509,6 @@ app.get('/substantial', function(req,res){
 
 //app.get('/comprehensive', routes.getComprehensive);
 app.get('/comprehensive', function(req,res){
-   if(req.session.username){
-       //res.render('comprehensive_auth');
-       
         var bldname = '';
         var bld_location = '';
         var bld_function = '';
@@ -523,11 +520,14 @@ app.get('/comprehensive', function(req,res){
         var tightness = '';
         var window_glass_type = '';
         var roof_type = '';
-        var exterior_wall_type = '';
+        var exterior_wall_type = '';   
+        var room_width = '';
+        var room_depth = '';
+        var room_height = '';
+        var overhang_depth = '';
         
-        if (req.session.buildingid) {
-            
-            
+        if(req.session.username&&req.session.buildingid){
+
             Building.findOne({_id: req.session.buildingid}, function(err, building) {
                 if( err || !building) console.log("No Building found");
                 else {
@@ -543,7 +543,13 @@ app.get('/comprehensive', function(req,res){
                     window_glass_type = building.building.materials.window_glass_type;
                     roof_type = building.building.materials.roof_type;
                     exterior_wall_type = building.building.materials.exterior_wall_type;
-                     res.render('comprehensive_auth', {
+                    room_width = building.building.typical_room.room_width;
+                    room_depth = building.building.typical_room.room_depth;
+                    room_height = building.building.typical_room.room_height;
+                    overhang_depth = building.building.typical_room.overhang_depth;
+                    
+                     res.render('comprehensive', {
+                         'username': req.session.username,
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
@@ -555,16 +561,18 @@ app.get('/comprehensive', function(req,res){
                          'tightness': tightness, 
                          'window_glass_type': window_glass_type,
                          'roof_type': roof_type,
-                         'exterior_wall_type': exterior_wall_type
+                         'exterior_wall_type': exterior_wall_type,
+                         'room_width': room_width,
+                         'room_depth': room_depth,
+                         'room_height': room_height,
+                         'overhang_depth': overhang_depth
                      });
                     }    
                 });
-            
-            
-            
-            
-        }else{
-          res.render('comprehensive_auth', {
+    
+            }else{
+                res.render('comprehensive', {
+              'username': req.session.username,
               'bldname': bldname,
               'bld_location': bld_location,
                'bld_function': bld_function,
@@ -576,13 +584,14 @@ app.get('/comprehensive', function(req,res){
                'tightness': tightness, 
                'window_glass_type': window_glass_type,
                'roof_type': roof_type,
-               'exterior_wall_type': exterior_wall_type
+               'exterior_wall_type': exterior_wall_type,
+               'room_width': room_width,
+               'room_depth': room_depth,
+               'room_height': room_height,
+               'overhang_depth': overhang_depth
           });
         }
-       
-   }else{
-       res.sendfile('./views/comprehensive.html');
-   } 
+
 });
 
 app.get('/substantialsampleres', substantial.getSubstantialSampleRes);
@@ -1147,11 +1156,9 @@ app.post('/savebuildingcomprehensive', function(req, res){
                 "building.building_info.activity_type": req.body.activity_type,
                 "building.building_info.year_completed": req.body.year_completed,
                 "building.architecture.tightness": req.body.tightness,
-                "building.architecture.gross_floor_area": req.body.gross_floor_area,
                 "building.architecture.number_of_floors": req.body.number_of_floors, 
                 "building.architecture.window_to_wall_ratio": req.body.window_to_wall_ratio,
                 "building.architecture.footprint_shape": req.body.footprint_shape, 
-                "building.architecture.window_glass_type": req.body.window_glass_type,
                 "building.materials.roof_type": req.body.roof_type,
                 "building.materials.exterior_wall_type": req.body.exterior_wall_type
                 }
@@ -1176,7 +1183,7 @@ app.post('/savebuildingcomprehensive', function(req, res){
                           activity_type: req.body.activity_type, //4
                           activity_type_specific: ''   //s
                           },
-          architecture:  {gross_floor_area: req.body.gross_floor_area,    //l,s,c
+          architecture:  {gross_floor_area: '',    //l,s,c
                           number_of_floors: req.body.number_of_floors,    //s,c
                           window_to_wall_ratio: req.body.window_to_wall_ratio,   //s,c
                           footprint_shape: req.body.footprint_shape,        //s,c
@@ -1195,7 +1202,7 @@ app.post('/savebuildingcomprehensive', function(req, res){
           materials:      {wall_insulation_r_value: '',  //p
                            thermal_mass: '',    //p
                            window_glass_coating: '',    //p
-                           window_glass_type: req.body.window_glass_type,    //p,s,c
+                           window_glass_type: '',    //p,s,c
                            roof_type: req.body.roof_type,        //p,s,c
                            roof_insulation_type: '',   //p
                            roof_insulation_location: '',     //p

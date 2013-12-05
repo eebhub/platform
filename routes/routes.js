@@ -2,7 +2,10 @@ var shell = require('shelljs');
 
 module.exports = {
     getHome: function(request, response){
-        response.sendfile('./views/home.html');    
+        //response.sendfile('./views/home.html');    
+        response.render('home',{
+            'username': request.session.username
+        });
     },
     getSignUp: function(request, response){
         response.sendfile('./views/signup.html');  

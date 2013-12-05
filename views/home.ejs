@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>EEB Hub Simulation Platform Tools</title>
+    <!--<meta http-equiv="refresh"
+        content="0; url=http://tools.eebhub.org/lite"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+                padding-top: 50px;
+                background-color: rgb(229, 229, 229);
+            }
+        .levels {
+            background:rgb(229, 229, 229);
+            padding-top:25px;
+            padding-bottom:25px;
+            color:black;
+            -moz-box-shadow: 0 4px 4px #999;
+            -webkit-box-shadow: 0 4px 4px #999;
+            box-shadow: 0 4px 4px #999;
+           
+        }
+        .about {
+            background: rgba(78, 179, 211, 0.70);
+            padding: 25px 0;
+            color: #ffffff;
+            -moz-box-shadow: 0 4px 4px #999;
+            -webkit-box-shadow: 0 4px 4px #999;
+            box-shadow: 0 4px 4px #999;
+        }
+        .collaborate {
+            background: rgba(116,196,147,0.7);
+            padding: 25px 0;
+            color: #000;
+             -moz-box-shadow: 0 4px 4px #999;
+            -webkit-box-shadow: 0 4px 4px #999;
+            box-shadow: 0 4px 4px #999;
+        }
+        .contact {
+            background: rgba(225,101,82,0.7);
+            padding: 25px 0;
+            color: #000;
+            -moz-box-shadow: 0 4px 4px #999;
+            -webkit-box-shadow: 0 4px 4px #999;
+            box-shadow: 0 4px 4px #999;
+        }
+        .subscribe {
+            background: inherit;
+            padding: 25px 0;
+            color: #000;
+            -moz-box-shadow: 0 4px 4px #999;
+            -webkit-box-shadow: 0 4px 4px #999;
+            box-shadow: 0 4px 4px #999;
+        }
+        .aboutus {
+            color: #000;
+            display: table;
+            height: 400px;
+            width: 100%;
+            background: url(img/task2.jpg) no-repeat center center fixed; 
+            background-position:right;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            -moz-box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);
+            -webkit-box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);
+            box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);
+        }
+        h1.bottom {
+            position:relative;
+            top:340px;
+            
+            color:rgb(229, 229, 229);
+        }
+        @media (min-width:500px) and (max-width:768px) {
+            .aboutus {
+                height:300px;
+                background: url(img/task2.jpg) no-repeat left left fixed; 
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+        h1.bottom {
+            top:240px;
+        }
+        }
+        .institutions {
+            background: inherit;
+            padding: 25px 0;
+            color: #000;
+            -moz-box-shadow: 0 4px 4px #999,0 -4px 4px rgba(0, 0, 0, 0.4);
+            -webkit-box-shadow: 0 4px 4px #999,0 -4px 4px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 4px #999,0 -4px 4px rgba(0, 0, 0, 0.4);
+        }
+        .institutions img.grey {
+            -webkit-filter: grayscale(1);
+            -ms-filter: grayscale(1);
+            -moz-filter: grayscale(1);
+            -o-filter: grayscale(1);
+        }
+        .nogrey{
+            
+        }
+        
+        .bottomimg {
+            margin-left:41%;
+        }
+        .learn {
+            background: rgba(241,150,112,1);
+            padding: 25px 0;
+            color: #000;
+            -moz-box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);
+            -webkit-box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);
+            box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);
+        }
+        .learn button {
+            position:relative;
+            right:45%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="/">EEB Hub Simulation Platform</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="/lite">LITE</a>
+                        </li>
+                        <li>
+                            <a href="/partial">PARTIAL</a>
+                        </li>
+                        <li>
+                            <a href="/substantial">SUBSTANTIAL</a>
+                        </li>
+                        <li>
+                            <a href="/comprehensive">COMPREHENSIVE</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="pull-right text-right">
+
+                        <ul class="nav pull-right">
+                        
+                        <script>
+                                        var username = "<%= username %>";
+                                        if (username!='undefined'){
+                                        document.write('<li><a href="/mydashboard">My Dashboard</a></li><li><a href="/logout">LOGOUT</a></li>');
+                                        }else {
+                                            document.write('<li><a href="/signup">SIGNUP</a></li><li><a href="/signin">LOGIN</a></li>');
+                                        }
+                             
+                                        
+                        </script>
+						      
+					          
+						</ul>
+                        </div>
+                    
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    <!--Main Page-->
+
+    <h1 class="text-center">Simulate building energy online.</h1>
+
+    <div class="row-fluid levels">
+        <div class="span3">
+            <h3 class="text-center">Lite</h3>
+            <span class="house-center">
+                <a class="svg" href="/lite">
+                    <img src="img/lite-house.svg" alt="lite simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h6 class="text-center gray-small">utility bills</h6>
+            <h6 class="text-center gray-small">energy use intensity</h6>
+            <h5 class="text-center">for building owners</h5>
+        </div>
+        <div class="span3">
+            <h3 class="text-center">Partial</h3>
+            <span class="house-center">
+                <a href="/partial">
+                    <img src="img/partial-house.svg" alt="partial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h6 class="text-center gray-small">typical room</h6>
+            <h6 class="text-center gray-small">systems benchmark</h6>
+            <h5 class="text-center">for building designers</h5>
+        </div>
+        <div class="span3">
+            <h3 class="text-center">Substantial</h3>
+            <span class="house-center">
+                <a href="/substantial">
+                    <img src="img/substantial-house.svg" alt="substantial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h6 class="text-center gray-small">shape of building</h6>
+            <h6 class="text-center gray-small">subsystem audit</h6>
+            <h5 class="text-center">for building auditors</h5>
+        </div>
+        <div class="span3">
+            <h3 class="text-center">Comprehensive</h3>
+            <span class="house-center">
+                <a href="/comprehensive">
+                    <img src="img/comprehensive-house.svg" alt="comprehensive simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h6 class="text-center gray-small">import 3D geometry</h6>
+            <h6 class="text-center gray-small">installation staging</h6>
+            <h5 class="text-center">for building analysts</h5>
+        </div>
+    </div>
+
+    <div class="about">
+        <h2 class="text-center">What is a simulation platform?</h2>
+        <div class="pagination-centered">
+            <img src="img/simulation.png" alt="simulation" />
+        </div>
+        <h4 class="text-center">a SIMULATION is a technique of representing the real world with the virtual world.</h4>
+        <br/>
+        <div class="pagination-centered">
+            <img src="img/cloud.png" alt="cloud" />
+        </div>
+        <h4 class="text-center">the PLATFORM includes server hardware, a cloud operating system, & a suite of interconnected software tools.</h4>
+        <br/>
+        <div class="pagination-centered">
+            <img src="img/buildings.png" alt="buildings" />
+        </div>
+        <h4 class="text-center">Building industry stakeholders will be empowered to make informed decisions on how to reduce energy consumption in buildings.</h4>
+    </div>
+    <div class="learn">
+        <div>
+            <h1 class="text-center">Learn More</h1>
+        </div>
+        <div class="pagination-centered">
+        <iframe src='https://skydrive.live.com/embed?cid=16B20B2C9752FBFF&resid=16B20B2C9752FBFF%21214&authkey=ALtCkkH41pF9YQY&em=2&wdAr=1.3333333333333333'
+        width='610px' height='480px' frameborder='0'>This is an embedded
+            <a target='_blank' href='http://office.com'>Microsoft Office</a>presentation, powered by
+            <a target='_blank' href='http://office.com/webapps'>Office Web Apps</a>.</iframe>
+        </div>
+    </div>
+    <div class="aboutus">
+        <div>
+            <h1 class="bottom text-center">People</h1>
+        </div>
+
+    </div>
+
+    <div class="institutions row-fluid">
+        <div class="span12">
+            <img class="bottomimg" src="img/EEB-transparent.png" style="width:20%;">
+        </div>
+        <div class="span12">&nbsp;</div>
+        <div class="span2 offset1">
+            <img class="grey" src="img/Logos/200px-Carnegie_Mellon_University_seal.svg.png">
+        </div>
+        <div class="span2">
+            <img class="grey" src="img/Logos/250px-UPenn_shield_with_banner.svg.png">
+        </div>
+        <div class="span2">
+            <img class="grey" src="img/Logos/mit-seal_400x400.gif">
+        </div>
+        <div class="span2">
+            <img class="grey" src="img/Logos/ts-575x567.png">
+        </div>
+        <div class="span2">
+            <img class="grey" src="img/Logos/seal.gif">
+        </div>
+        <div class="span12">&nbsp;</div>
+        
+            <div class="span2 offset1">
+                <img class="grey" src="img/Logos/645px-NIST_logo.svg_.png">
+            </div>
+            <div class="span2">
+                <img class="grey" src="img/Logos/balfour-beatty-logo.png">
+            </div>
+            <div class="span2">
+                <img class="grey" src="img/Logos/IBM_logo.svg">
+            </div>
+            <div class="span2">
+                <img class="grey" src="img/Logos/utrc_blue.png">
+            </div>
+            <div class="span2">
+                <img class="grey" src="img/Logos/NREL_Logo.gif">
+            </div>
+        
+
+    </div>
+    <div class="collaborate row-fluid">
+        <h1 class="text-center">COLLABORATE</h1>
+        <div style="width:12.5%;float:left;">&nbsp;</div>
+        <div style="width:25%;float:left;">
+            <figure>
+                <a href="https://github.com/eebhub/platform">
+                    <img src="img/iconmonstr-info-2-icon.svg">
+                </a>
+                <figcaption>
+                    <h2 class="text-center">wiki</h2>
+                </figcaption>
+
+            </figure>
+        </div>
+        <div style="width:25%;float:left;">
+            <figure>
+                <a href="">
+                    <img src="img/iconmonstr-html-code-icon.svg">
+                </a>
+                <figcaption>
+                    <h2 class="text-center">code</h2>
+                </figcaption>
+            </figure>
+        </div>
+        <div style="width:25%;float:left;">
+            <figure>
+                <a href="">
+                    <img src="img/iconmonstr-window-layout-icon.svg">
+                </a>
+                <figcaption>
+                    <h2 class="text-center">ui</h2>
+                </figcaption>
+            </figure>
+        </div>
+        <div style="width:12.5%;float:left;">&nbsp;</div>
+    </div>
+
+    <div class="contact row-fluid">
+        <h1 class="text-center">CONTACT US</h1>
+        <div style="width:12.5%;float:left;">&nbsp;</div>
+        <div style="width:25%;float:left;">
+            <figure>
+                <a href="https://eebhub.uservoice.com/clients/widgets/classic_widget?mode=support&locale=en&forum_id=224458&contact_us=true&custom_template_id=16740&context=site2&embed_type=lightbox&contact_enabled=true&feedback_enabled=false&smartvote=true&default_mode=support&referrer=http%3A%2F%2Feebhub.uservoice.com%2F#contact_us">
+                    <img src="img/iconmonstr-help-3-icon.svg">
+                </a>
+                <figcaption>
+                    <h2 class="text-center">questions</h2>
+                </figcaption>
+            </figure>
+        </div>
+        <div style="width:25%;float:left;">
+            <figure>
+                <a href="http://tools.eebhub.org/ideas">
+                    <img src="img/iconmonstr-light-bulb-18-icon.svg">
+                </a>
+                <figcaption>
+                    <h2 class="text-center">new ideas</h2>
+                </figcaption>
+            </figure>
+        </div>
+        <div style="width:25%;float:left;">
+            <figure>
+                <a href="https://github.com/eebhub/platform/issues">
+                    <img src="img/iconmonstr-warning-4-icon.svg">
+                </a>
+                <figcaption>
+                    <h2 class="text-center">report issue</h2>
+                </figcaption>
+            </figure>
+        </div>
+        <div style="width:12.5%;float:left;">&nbsp;</div>
+    </div>
+    <div class="Subscribe">
+        <h1 class="text-center">Subscribe</h1>
+        
+        <button class="btn-block btn btn-primary btn-large">Current News</button>
+        
+        <button class="btn-block btn btn-primary btn-large">Mailchimp</button>
+        
+        <button class="btn-block btn btn-primary btn-large">Subscribe</button>
+            </div>
+        
+    </div>
+    <hr style="color:black;background-color:black;">
+    <div class="footer">
+        <h5 class="text-center">Built by the <a href="http://www.eebhub.org">Energy Efficient Buildings HUB</a>, a <a href="http://energy.gov/science-innovation/innovation/hubs">U.S. Department of Energy Innovation HUB</a>.</h5>
+        <h5 class="text-center">Our simulation & modeling team includes PSU, MIT, CMU, UMaryland, UPenn, IBM, UTRC, Balfour Beatty, NIST, & NREL.</h5>
+        <h5 class="text-center"><a href="https://github.com/eebhub/platform/blob/master/ACKNOWLEDGEMENT_DISCLAIMER">Acknowledgement & Disclaimer</a>. &#8194;</h5>
+    </div>
+
+
+
+    <!-- Javascript -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/skrollr.js"></script>
+
+</body>
+
+</html>

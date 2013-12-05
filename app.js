@@ -214,16 +214,14 @@ app.get('/logout',function(req,res){
 //app.get('/lite', routes.getLite);
 //app.get('/liteconv', routes.getLiteConv);
 app.get('/lite', function(req, res){
-    if(req.session.username){
-        //res.render('lite_auth');  
-        
-        var bldname = '';
-        var bld_location = '';
-        var bld_function = '';
-        var bld_year = '';
-        var gross_floor_area = '';
-        
-        if(req.session.buildingid){
+    var bldname = '';
+    var bld_location = '';
+    var bld_function = '';
+    var bld_year = '';
+    var gross_floor_area = '';
+    
+    if(req.session.username&&req.session.buildingid){
+
             Building.findOne({_id: req.session.buildingid}, function(err, building) {
                 if( err || !building) console.log("No Building found");
                 else {
@@ -234,7 +232,8 @@ app.get('/lite', function(req, res){
                     gross_floor_area = building.building.architecture.gross_floor_area;
                     
                     
-                     res.render('lite_auth', {
+                     res.render('lite', {
+                         'username':req.session.username,
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
@@ -244,22 +243,18 @@ app.get('/lite', function(req, res){
                 }    
             });
             
-        }else{
-          res.render('lite_auth', {
+    }else{
+          res.render('lite', {
+              'username':req.session.username,
               'bldname': '',
               'bld_function': '',
               'bld_year': '',
               'bld_location': '',
               'gross_floor_area': ''
           });
-        }
-        
-        
-    }else{
-        //res.sendfile('./views/lite.html');    
-        res.render('lite');
-    } 
+    }
 });
+
 app.get('/literesults', routes.getLiteResults);
 
 app.get('/lite/:id', function(req, res){
@@ -274,7 +269,8 @@ app.get('/lite/:id', function(req, res){
         var bld_function = bld_lite.building.building_info.activity_type;
         var gross_floor_area = bld_lite.building.architecture.gross_floor_area;
         //console.log(building_name);
-        res.render('lite_auth', {'bldname': bldname,
+        res.render('lite', {'username':req.session.username,
+                                 'bldname': bldname,
                                  'bld_location': bld_location,
                                  'bld_year': bld_year,
                                  'bld_function': bld_function,

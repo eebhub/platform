@@ -36,6 +36,24 @@
                 form.action = "/ibmanalysis";
                 form.submit();
             }
+            
+            function submitBuilding() {
+                var form = document.forms.platformForm;
+                form.action = "/savebuildinglite";
+                form.submit();
+            }
+            function buildingInfoPop(){
+            
+                    var form = document.forms.platformForm;
+                    form.building_name.value = "<%= bldname %>";
+                    form.activity_type.value = "<%=  bld_function %>";
+                    form.weather_epw_location.value = "<%= bld_location %>";
+                    form.year_completed.value = "<%= bld_year %>";
+                    var gross_floor_area = "<%= gross_floor_area %>";
+                    form.gross_floor_area.value = parseFloat(gross_floor_area);
+                
+            }
+
         </script>
         <script type="text/javascript">
             var myApp = angular.module('myApp', ['ui.bootstrap']);
@@ -155,7 +173,7 @@ $('#utilityDataFile').change(function(){
         <script src="js/dist/html5shiv-printshiv.js"></script>
     </head>
     
-    <body data-spy="scroll" data-target=".bs-docs-sidebar" ng-app="myApp" class="ng-scope">
+    <body data-spy="scroll" data-target=".bs-docs-sidebar" ng-app="myApp" class="ng-scope" onload="buildingInfoPop();">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -188,10 +206,16 @@ $('#utilityDataFile').change(function(){
                     
                         <!--a href="/signin"> Sign In</a> | <a> Sign Up</a-->
                         <ul class="nav pull-right">
-						      <li><a href="/signup">SIGNUP</a>
-						      </li>
-						      <li><a href="/signin">LOGIN</a>
-						      </li>
+						      <script>
+                                        var username = "<%= username %>";
+                                        if (username!='undefined'){
+                                        document.write('<li><a href="/mydashboard">My Dashboard</a></li><li><a href="/logout">LOGOUT</a></li>');
+                                        }else {
+                                            document.write('<li><a href="/signup">SIGNUP</a></li><li><a href="/signin">LOGIN</a></li>');
+                                        }
+                             
+                                        
+                                </script>
 						</ul>
                         </div>
                         
@@ -952,6 +976,12 @@ $('#utilityDataFile').change(function(){
                         </div><!--END EXPAND COLLAPSE BUTTON by Angular-->
                         
                         <div class="box-unit">
+                        <script>
+                        var username = "<%= username %>";
+                        if (username!='undefined'){
+                            document.write('<button type="submit" onclick="submitBuilding()" class="btn btn-large btn-success">Save Building (lite)</button>');
+                        }
+                        </script>
                             <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
                             <a class="btn btn-large btn-info" href="literesults"><i class="icon-signal"></i> Example Outputs</a>
                             <img style="text-align:right;float:right;" src="img/ashrae.png" alt="ASHRAE" width="85" height="59">

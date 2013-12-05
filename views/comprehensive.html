@@ -1308,60 +1308,6 @@
 				}
 			}	 
         	
-        	// JS function to update loading bar
-        	function loading() 
-			{
-				var num = 0;											// number to update loading bar to
-				var fileLines = 0;										// current amount of file lines in file 
-				var maxFileLines = 503;									// maximum amount of lines written to stdout
-				var percentage = 100;									// multiplie to obtain percentage
-				var addNum = 0;
-        	    
-				var loadingBar = setInterval(function()					// update loading bar every millisecond
-				{
-
-					var Req = getXmlHttpRequestObject();				// get xml request based off of browser
-
-					// currentRanNum is created in this js and sent to simulate-openstudio.php to designate path to save output
-					var filename = "http://128.118.67.241/openstudio/outputs/ENERGYPLUS/idf/Simulation_"+currentRanNum+".idf/EnergyPlusPreProcess/EnergyPlus-0/stdout"; 				
-		
-
-					Req.open("get", filename, false);		
-
-					Req.onreadystatechange = function() 			// fires every time there is a change in the request state					
-					{
-
-						if (Req.readyState == 4 && Req.status==200) 					// request is opened and ready to be parsed
-						{
-							var output = Req.responseText;								// cast request to string
-												
-							fileLines = output.split("\n");								// get number of lines in file
-							var index = fileLines.length -2;
-
-							console.log('File lines: %i',fileLines.length);			
-							console.log( fileLines[index] );
-
-		            		
-							num= (fileLines.length/maxFileLines)*$(".loading-div").width();		// number to update loading bar, dynamic based off of loading bar width
-															
-							$(".bar").width(num);    									// update the loading bar
-
-							$("#loading-status").html("Simulation In Progress "+parseInt(num/$(".loading-div").width()*percentage)+"%");	// set loading bar title with percentage cmplete
-							$("#real-time-output").html(fileLines[index]);
-
-						
-
-            				if(fileLines.length>=maxFileLines) 								// EnergyPlus has finished 
-							{ 
-            					$("#loading-status").html("Loading...");			// set loading bar title to loading
-								$("#real-time-output").html("");
-            					clearInterval(loadingBar);							// stop loadingBar function from firing every 1 millisecond
-        		    		}						
-					}			
-				}
-					Req.send();												// send the request to the browser
-				}, 1);														// loadingBar function interval set to fire every 1 millisecond
-            }
             
          	// JS function to update loading bar
         	function loading() 

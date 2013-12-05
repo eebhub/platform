@@ -404,7 +404,6 @@ app.get('/partial', function(req,res){
 
 //app.get('/substantial', routes.getSubstantial);
 app.get('/substantial', function(req,res){
-    if(req.session.username){
         var bldname = '';
         var bld_location = '';
         var bld_function = '';
@@ -427,8 +426,7 @@ app.get('/substantial', function(req,res){
         var weekday_occupancy_hours_day_start = '';
         var weekday_occupancy_hours_day_end = '';
         
-        
-        if (req.session.buildingid) {
+        if(req.session.username&&req.session.buildingid){
             
                 Building.findOne({_id: req.session.buildingid}, function(err, building) {
                 if( err || !building) console.log("No Building found");
@@ -455,7 +453,8 @@ app.get('/substantial', function(req,res){
                     weekday_occupancy_hours_day_start = building.building.schedules.weekday_occupancy_hours_day_start;
                     weekday_occupancy_hours_day_end = building.building.schedules.weekday_occupancy_hours_day_end;
                     
-                     res.render('substantial_auth', {
+                    res.render('substantial', {
+                         'username': req.session.username,
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
@@ -475,14 +474,15 @@ app.get('/substantial', function(req,res){
                          'open_during_week': open_during_week,
                          'weekday_occupancy_hours_day_start': weekday_occupancy_hours_day_start, 
                          'weekday_occupancy_hours_day_end': weekday_occupancy_hours_day_end
-                     });
-                    }    
+                    });
+                }    
                 });
             
             
             
         }else {
-          res.render('substantial_auth', {
+          res.render('substantial', {
+              'username':req.session.username,
               'bldname': '',
               'bld_function': '',
               'bld_location': '',
@@ -504,10 +504,9 @@ app.get('/substantial', function(req,res){
               'weekday_occupancy_hours_day_end': ''
           });
         }
-    }else{
-        res.sendfile('./views/substantial.html');
-    }
 });
+
+
 //app.get('/comprehensive', routes.getComprehensive);
 app.get('/comprehensive', function(req,res){
    if(req.session.username){

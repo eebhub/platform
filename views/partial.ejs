@@ -16,11 +16,50 @@
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="js/building101Data.js"></script>
-        
+        <script>
+        function buildingInfoPop(){
+            var username = "<%= username %>";
+            if (username!='undefined') {
+                var form = document.forms.platformForm;
+                form.building_name.value = "<%= bldname %>";
+                form.activity_type.value = "<%=  bld_function %>";
+                form.weather_epw_location.value = "<%= bld_location %>";
+                form.year_completed.value = "<%= bld_year %>";
+                form.room_width.value = "<%= room_width %>";
+                form.room_depth.value = "<%= room_depth %>";
+                form.room_height.value = "<%= room_height %>";
+                form.exterior_shading_orientation.value = "<%= exterior_shading_orientation %>";
+                form.window_to_wall_ratio.value = "<%= window_to_wall_ratio %>";
+                form.number_of_floors.value = "<%= number_of_floors %>";
+                form.overhang_depth.value = "<%= overhang_depth %>";
+                form.wall_insulation_r_value.value = "<%= wall_insulation_r_value %>";
+                form.thermal_mass.value = "<%= thermal_mass %>";
+                form.window_glass_coating.value = "<%= window_glass_coating %>";
+                form.window_glass_type.value = "<%= window_glass_type %>";
+                form.roof_type.value = "<%= roof_type %>";
+                form.roof_insulation_type.value = "<%= roof_insulation_type %>";
+                form.roof_insulation_location.value= "<%= roof_insulation_location %>";
+                form.people_density.value= "<%= people_density %>";
+                form.illuminance.value= "<%= illuminance %>";
+                form.equipment_power_density.value= "<%= equipment_power_density %>";
+                form.ventilation_system.value= "<%= ventilation_system %>";
+                form.weekday_occupancy_start.value = "<%= weekday_occupancy_start %>"; 
+                form.weekday_occupancy_end.value = "<%= weekday_occupancy_end %>";
+            }
+        }
+        </script>
+        <script>
+            function saveBuildingPartial() {
+                var form = document.forms.platformForm;
+                form.action = "/savebuildingpartial";
+                form.submit();
+            }
+
+        </script>
         
     </head>
-    
-    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <body data-spy="scroll" data-target=".bs-docs-sidebar" onload="buildingInfoPop()">
+
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -53,10 +92,16 @@
                         <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font-->
                     
                         <ul class="nav pull-right">
-						      <li><a href="/signup">SIGNUP</a>
-						      </li>
-						      <li><a href="/signin">LOGIN</a>
-						      </li>
+						      <script>
+                                        var username = "<%= username %>";
+                                        if (username!='undefined'){
+                                        document.write('<li><a href="/mydashboard">My Dashboard</a></li><li><a href="/logout">LOGOUT</a></li>');
+                                        }else {
+                                            document.write('<li><a href="/signup">SIGNUP</a></li><li><a href="/signin">LOGIN</a></li>');
+                                        }
+                             
+                                        
+                                </script>
 						</ul>
                     </div>
                 </div>
@@ -95,10 +140,11 @@
                         </li>
                          <li>
                             <a href="#schedules"><i class="icon-time"></i> Schedules</a>
-                        </li><li><hr></li>
+                        </li>
+                         <li><hr style="color:lightgray;background-color:lightgray;height:1px;border:none;"/></li>
                         <li style="padding-left:13px;">
                             
-                             <i class="icon-adjust"></i>  Units &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
+                             <i class="icon-adjust"></i>  <b>Units</b> &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
                              <input type="button" id="unitoptionSI" name="unitoption" value="SI" class="btn active" onclick='$(".unit").html("m");$("#si-ip").val("si");'>
                              <input type="button" id="unitoptionIP" name="unitoption" value="IP" class="btn" onclick='$(".unit").html("ft");$("#si-ip").val("ip");'>
                          </div>
@@ -480,6 +526,11 @@
                             </div>
                         </section>
                         <div class="box-unit">
+                        <script>
+                        if (username!='undefined'){
+                            document.write('<button type="submit" onclick="saveBuildingPartial()" class="btn btn-large btn-success">Save Building (partial)</button>');
+                        }
+                        </script>
                             <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
                             <a class="btn btn-large btn-info" href="http://developer.eebhub.org/mit/designadvisor/"><i class="icon-signal"></i> Example Outputs</a>
                             <img style="text-align:right;float:right;" src="img/mit.png" alt="MIT" width="80" height="41">
@@ -488,10 +539,18 @@
                             </h2>
                         </div>
                         <div class="box-unit">
-                                <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/utrc/uncertainty/riskanalysis.html"><i class="icon-exclamation-sign"></i> Risk Analysis </a>
-                                <img style="text-align:right;float:right;" src="img/utrc.png" alt="UTRC" width="120" height="42">
+                                <a class="btn btn-large btn-warning" href="http://web.mit.edu/bt/urbanmicroclimate/download.html" target="_blank"> Urban Weather Generator </a>
+                                <a class="btn btn-large btn-warning" href="http://coolvent.mit.edu/" target="_blank"> CoolVent Natural Ventilation </a>
+                                <img style="text-align:right;float:right;" src="img/mit.png" alt="MIT" width="80" height="41">
                                 <br>
-                                <h2 class="text-right"><small>powered by UTRC Uncertainty Quantification</small></h2>
+                                <h2 class="text-right"><small>developed by MIT Building Technology Lab</small></h2>
+                        </div>
+                         <div class="box-unit">
+                                <a class="btn btn-large btn-warning" href="http://128.2.109.83:8888/ProductData/Acquisition.html" target="_blank"> Industry Materials </a>
+                                <a class="btn btn-large btn-warning" href="http://128.2.109.83:8888/WBEPATool/NYParametric.html?sessionfix" target="_blank"> Material Parametrics </a>
+                                <img style="text-align:right;float:right;" src="img/cmu.png" alt="CMU" width="79" height="51">
+                                <br>
+                                <h2 class="text-right"><small>developed by CMU Architecture</small></h2>
                         </div>
                         
                         <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>

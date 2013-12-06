@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+    <title>EEB Hub Simulation Platform Tools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <link href="css/partial.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+                padding-top: 70px;
+                padding-bottom: 40px;
+                /*background-color: rgb(229, 229, 229);*/
+                background: url(img/wood1.jpg) fixed;
+            }
+        .sidenav {
+            padding: 15px;
+            color: inherit;
+            background-color: #ffffff;
+            -moz-box-shadow: 0 2px 2px #999;
+            -webkit-box-shadow: 0 2px 2px #999;
+            box-shadow: 0 2px 2px #999;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            }
+
+        .building {
+                border-top:5px solid;
+                border-color:#084081;
+            }
+        .architecture {
+                border-top:5px solid;
+                border-color:#0868ac ;
+            }
+        .materials {
+                border-top:5px solid;
+                border-color:#2b8cbe;
+            }
+        .people {
+                border-top:5px solid;
+                border-color:#710162;
+            }
+        .lighting {
+                border-top:5px solid;
+                border-color:#fbbf45;
+            }
+        .mechanical {
+                border-top:5px solid;
+                border-color:#ef6a32;
+            }
+        .schedules {
+                border-top:5px solid;
+                border-color:#ed0345;
+            }
+        .utilities {
+                border-top:5px solid;
+                border-color:#01545a;
+            }
+        .typicalroom {
+                border-top:5px solid;
+                border-color:#4eb3d3;
+            }
+        .conservation {
+                border-top:5px solid;
+                border-color:#03c383;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="js/building101Data.js"></script>
+    <script src="js/jquery.js"></script>
+    <script>
+        $('#unitpotionSI').prop('checked', true);
+    </script>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="brand">EEB Hub Simulation Platform</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="">
+                            <a href="/lite">LITE</a>
+                        </li>
+                        <li class="active">
+                            <a href="/partial">PARTIAL</a>
+                        </li>
+                        <li>
+                            <a href="/substantial">SUBSTANTIAL</a>
+                        </li>
+                        <li>
+                            <a href="/comprehensive">COMPREHENSIVE</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+                <div class="pull-right text-right">
+
+
+                    <ul class="nav pull-right">
+                        <li>
+                            <a href="/signup">SIGNUP</a>
+                        </li>
+                        <li>
+                            <a href="/signin">LOGIN</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Intro -->
+    <div class="container">
+        <div class="row">
+
+            <div class="span3 bs-docs-sidebar ">
+                <ul class="nav nav-list bs-docs-sidenav sidenav">
+                    <li>
+                        <h3 class="text-center">Partial
+                            <small>-MIT</small>
+                        </h3>
+                    </li>
+                    <li>
+                        <h4 ng-cloak>{{buildingName}}</h4>
+                    </li>
+                    <li>
+                        <a href="#building">
+                            <i class="icon-map-marker"></i>  Building</a>
+                    </li>
+                    <li>
+                        <a href="#architecture">
+                            <i class="icon-home"></i>  Architecture</a>
+                    </li>
+                    <li>
+                        <a href="#materials">
+                            <i class="icon-th-large"></i>  Materials</a>
+                    </li>
+                    <li>
+                        <a href="#people">
+                            <i class="icon-user"></i>  People</a>
+                    </li>
+                    <li>
+                        <a href="#lighting">
+                            <i class="icon-asterisk"></i>  Lighting</a>
+                    </li>
+                    <li>
+                        <a href="#mechanical">
+                            <i class="icon-cog"></i>  Mechanical</a>
+                    </li>
+                    <li>
+                        <a href="#schedules">
+                            <i class="icon-time"></i>  Schedules</a>
+                    </li><li>
+                        <hr>
+                    </li>
+                    <li style="padding-left:5px;">
+                        <a href="#units">
+                            <i class="icon-adjust"></i>  Units &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
+                            <input type="button" id="unitoptionSI" name="unitoption" value="SI" class="btn" checked="checked">
+                            <input type="button" id="unitoptionIP" name="unitoption" value="IP" class="btn">
+                        </div></a>
+                        
+                    </li>
+                    
+                   
+                   
+
+                </ul>
+
+            </div>
+            <div class="span9">
+                <form action="/partialanalysis" method="post" name="platformForm">
+                    <section id="building">
+                        <div class="box-unit building">
+                            <div class="page-header">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <h2>Building</h2>
+                                        </td>
+                                        <td class="span7">
+                                            <div class="pull-right text-right">
+
+                                                <button type="button" onclick="building101Data_partial()" class="btn">
+                                                    <i class="icon-plus"></i>
+                                                    <b>Building 101 Data</b>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Building Name</h4>
+                                    <input class="span3" type="text" ng-model="buildingName" name="building_name">
+                                    <br/>
+                                    <h4>Location</h4>
+                                    <div class="input-append">
+                                        <select class="span3" name="weather_epw_location">
+                                            <option value="USA_NM_Albuquerque.Intl.AP.723650_TMY3">Albuquerque, NM</option>
+                                            <option value="USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3">Baltimore, MD</option>
+                                            <option value="USA_ID_Boise.Air.Terminal.726810_TMY3">Boise, ID</option>
+                                            <option value="USA_VT_Burlington.Intl.AP.726170_TMY3">Burlington, VT</option>
+                                            <option value="USA_IL_Chicago-OHare.Intl.AP.725300_TMY3">Chicago, IL</option>
+                                            <option value="USA_MN_Duluth.Intl.AP.727450_TMY3">Duluth, MN</option>
+                                            <option value="USA_TX_El.Paso.Intl.AP.722700_TMY3">El Paso, TX</option>
+                                            <option value="USA_AK_Fairbanks.Intl.AP.702610_TMY3">Fairbanks, AK</option>
+                                            <option value="USA_MT_Helena.Rgnl.AP.727720_TMY3">Helena, MT</option>
+                                            <option value="USA_TX_Houston-Bush.Intercontinental.AP.722430_TMY3">Houston, TX</option>
+                                            <option value="USA_TN_Memphis.Intl.AP.723340_TMY3.epw">Memphis, TN</option>
+                                            <option value="USA_FL_Miami.Intl.AP.722020_TMY3">Miami, FL</option>
+                                            <option value="USA_AZ_Phoenix-Sky.Harbor.Intl.AP.722780_TMY3">Pheonix, AZ</option>
+                                            <option value="USA_PA_Philadelphia.Intl.AP.724080_TMY3" selected>Philadelphia, PA</option>
+                                            <option value="SAU_Riyadh.404380_IWEC">Riyadh, SAU</option>
+                                            <option value="USA_OR_Salem-McNary.Field.726940_TMY3">Salem, OR</option>
+                                            <option value="USA_CA_San.Francisco.Intl.AP.724940_TMY3">San Francisco, CA</option>
+                                            <option value="CAN_BC_Vancouver.718920_CWEC">Vancouver, CAN</option>
+                                        </select>
+                                        <span class="add-on">
+                                            <a href="http://developer.eebhub.org/weather.html" target="_blank">
+                                                <i class="icon-map-marker"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="span4">
+                                    <h4>Function</h4>
+                                    <div class="input-append">
+                                        <select class="span3" name="activity_type">
+                                            <option>Small Office</option>
+                                            <option>Medium Office</option>
+                                            <option>Large Office</option>
+                                            <option>Stand-alone Retail</option>
+                                            <option>Strip Mall</option>
+                                            <option>Primary School</option>
+                                            <option>Secondary School</option>
+                                            <option>Outpatient Healthcare</option>
+                                            <option>Hospital</option>
+                                            <option>Small hotel</option>
+                                            <option>Large Hotel</option>
+                                            <option>Warehouse (non-refrigerated)</option>
+                                            <option>Quick Service Restaurant</option>
+                                            <option>Full Service Restaurant</option>
+                                            <option>Mid-Rise Apartment</option>
+                                            <option>High-Rise Apartment</option>
+                                        </select>
+                                        <span class="add-on">
+                                            <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html" target="_blank">
+                                                <i class="icon-info-sign"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <h4>Year Built</h4>
+                                    <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
+                                </div>
+                            </div>
+                    </section>
+                    <section id="architecture">
+                        <div class=" architecture box-unit">
+                            <div class="page-header">
+                                <h2>Architecture
+                                    <small>typical room</small>
+                                </h2>
+                            </div>
+                            <div class="row">
+                                <div class="span2">
+                                    <img class="img-rounded" src="img/room_dimensions.png">
+                                </div>
+                                <div class="span3" id="architect-replace1">
+                                    <h4>Room Width</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.001" class="span2" id="appendedInput" name="room_width" />
+                                        <span class="add-on">
+                                            <span class="unit">m</span>
+                                        </span>
+                                    </div>
+                                    <h4>Room Depth</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.001" class="span2" id="appendedInput" name="room_depth" />
+                                        <span class="add-on">
+                                            <span class="unit">m</span>
+                                        </span>
+                                    </div>
+                                    <h4>Room Height</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.001" class="span2" id="appendedInput" name="room_height" />
+                                        <span class="add-on">
+                                            <span class="unit">m</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <h4>Window Facade Orientation</h4>
+                                    <select name="exterior_shading_orientation" class="span2">
+                                        <option>North</option>
+                                        <option>North-East</option>
+                                        <option>East</option>
+                                        <option>South-East</option>
+                                        <option>South</option>
+                                        <option>South-West</option>
+                                        <option>West</option>
+                                        <option>North-West</option>
+                                    </select>
+                                    <h4>% Window to Wall Area</h4>
+                                    <ul class="inline">
+                                        <li>
+                                            <input type="range" ng-model="winwall" min="10" max="60" step="1" value=50 />
+                                        </li>
+                                        <li>
+                                            <div class="input-append">
+                                                <input class="span1" id="window_to_wall_ratio" type="text" value={{winwall}} ng-model="winwall" name="window_to_wall_ratio">
+                                                <span class="add-on">%</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <h4>Number of Floors</h4>
+                                    <input type="number" id="number_of_floors" name="number_of_floors" min="0" step="1">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span2">
+                                    <img class="img-rounded" src="img/overhang.gif" width="170">
+                                </div>
+                                <div class="span3" id="architect-replace2">
+                                    <h4>Overhang Depth</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" name="overhang_depth">
+                                        <span class="add-on">
+                                            <span class="unit">m</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <h2 class="text-right">
+                                <small>Single Zone (1 facade) defaulted</small>
+                            </h2>
+                        </div>
+                    </section>
+                    <section id="materials">
+                        <div class="materials box-unit">
+                            <div class="page-header">
+                                <h2>Materials</h2>
+                            </div>
+                            <div class="row ">
+                                <div class="span4 ">
+                                    <h4>Wall Insulation</h4>
+                                    <select class="span3 " name="wall_insulation_r_value">
+                                        <option value="1">Commercial (Low Insulation): 1(m2-&deg;C)/W</option>
+                                        <option value="2">Commercial (Medium Insulation): 2(m2-&deg;C)/W</option>
+                                        <option value="5">Commercial (High Insulation): 5(m2-&deg;C)/W</option>
+                                    </select>
+                                    <h4>Floor Thermal Mass</h4>
+                                    <select class="span3 " name="thermal_mass">
+                                        <option value="high">High: think concrete slab or iron girder construction</option>
+                                        <option value="low">Low: lightweight or wood framed with no concrete</option>
+                                        <option value="zero">Zero</option>
+                                    </select>
+                                    <h4>Windows</h4>
+                                    <select class="span3 " name="window_glass_type">
+                                        <option value="sgu_nb">Single Glazed</option>
+                                        <option value="dgu_nb">Double Glazed</option>
+                                        <option value="tgu_nb">Triple Glazed</option>
+                                    </select>
+                                    <h4>Glass Coating</h4>
+                                    <select name="window_glass_coating">
+                                        <option>clear</option>
+                                        <option>low-e</option>
+                                        <option>High Performance</option>
+                                        <option>Blue</option>
+                                        <option>Bronze</option>
+                                        <option>Green</option>
+                                        <option>Grey</option>
+                                    </select>
+                                </div>
+                                <div class="span4 ">
+                                    <h4>Roof</h4>
+                                    <select class="span3 " name="roof_type">
+                                        <option value="none">Do Not Consider</option>
+                                        <option value="bitumen">Modified Bitumen Roof</option>
+                                        <option value="green">Green Roof</option>
+                                        <option value="cool">Cool Roof</option>
+                                    </select>
+                                    <h4>Roof Insulation</h4>
+                                    <select class="span3 " name="roof_insulation_type">
+                                        <option value="1">Commercial (Low Insulation): 1(m2-&deg;C)/W</option>
+                                        <option value="2">Commercial (Medium Insulation): 2(m2-&deg;C)/W</option>
+                                        <option value="5">Commercial (High Insulation): 5(m2-&deg;C)/W</option>
+                                    </select>
+                                    <h4>Roof Insulation Location</h4>
+                                    <select class="span3" name="roof_insulation_location">
+                                        <option value="top">Top of Roof Slab</option>
+                                        <option value="bottom">Bottom of Roof Slab</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="people">
+                        <div class="people box-unit">
+                            <div class="page-header">
+                                <h2>People</h2>
+                            </div>
+                            <h4>People Density</h4>
+                            <div class="input-append">
+                                <select class="span2" id="appendedInput" name="people_density">
+                                    <option>0.000</option>
+                                    <option>0.025</option>
+                                    <option>0.050</option>
+                                    <option>0.075</option>
+                                    <option>0.10</option>
+                                    <option>0.25</option>
+                                    <option>0.50</option>
+                                    <option>0.75</option>
+                                    <option>1.0</option>
+                                    <option>1.5</option>
+                                    <option>2.0</option>
+                                </select>
+                                <span class="add-on" id="people-replace">People/m&sup2;</span>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="lighting">
+                        <div class="lighting box-unit">
+                            <div class="page-header">
+                                <h2>Lighting</h2>
+                            </div>
+                            <h4>Lighting Intensity</h4>
+                            <div class="input-append">
+                                <select class="span2" id="appendedInput" name="illuminance">
+                                    <option value="0">0 (Darkness)</option>
+                                    <option value="150">150 (Storage)</option>
+                                    <option value="200">200 (Casual Work)</option>
+                                    <option value="300">300 (Rough Work)</option>
+                                    <option value="400">400 Office Work-EU)</option>
+                                    <option value="500">500 (Office Work-US)</option>
+                                    <option value="750">750 (Fine Work)</option>
+                                    <option value="1000">1000 (Fine Assembly)</option>
+                                    <option value="1500">1500 (Very Fine Work)</option>
+                                </select>
+                                <span class="add-on">lux</span>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="mechanical">
+                        <div class="mechanical box-unit">
+                            <div class="page-header">
+                                <h2>Mechanical</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>Equipment Density</h4>
+                                    <div class="input-append">
+                                        <select class="span2" id="appendedInput" name="equipment_power_density">
+                                            <option value="0.00">0.0 No Equipment</option>
+                                            <option value="1.00">1.0</option>
+                                            <option value="5.00">5.0 Office (light)</option>
+                                            <option value="10.00">10 Office (medium)</option>
+                                            <option value="15.00">15 Office (medium-high)</option>
+                                            <option value="20.00">20 Office (high)</option>
+                                            <option value="25.00">25</option>
+                                            <option value="50.00">50</option>
+                                            <option value="100.00">100</option>
+                                        </select>
+                                        <span class="add-on" id="mechanical-replace">W/m
+                                            <sup>2</sup>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="span4">
+                                    <h4>Ventilation System</h4>
+                                    <select name="ventilation_system">
+                                        <option value="mechanical">Mechanical Cooling & Heating</option>
+                                        <option value="natural">Natural ventilation cooling, Mechanical Heating</option>
+                                        <option value="joint">Joint natural ventilation cooling and mechanical heating</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="schedules">
+                        <div class="schedules box-unit ">
+                            <div class="page-header ">
+                                <h2>Schedules</h2>
+                            </div>
+                            <div class="row ">
+                                <div class="span4 ">
+                                    <h4>Occupancy Start</h4>
+                                    <select name="weekday_occupancy_start">
+                                        <option value="0.0">12:00 midnight</option>
+                                        <option value="1.0">&nbsp;1:00 AM</option>
+                                        <option value="2.0">&nbsp;2:00 AM</option>
+                                        <option value="3.0">&nbsp;3:00 AM</option>
+                                        <option value="4.0">&nbsp;4:00 AM</option>
+                                        <option value="5.0">&nbsp;5:00 AM</option>
+                                        <option value="6.0">&nbsp;6:00 AM</option>
+                                        <option value="7.0">&nbsp;7:00 AM</option>
+                                        <option value="8.0">&nbsp;8:00 AM</option>
+                                        <option value="9.0">&nbsp;9:00 AM</option>
+                                        <option value="10.0">10:00 AM</option>
+                                        <option value="11.0">11:00 AM</option>
+                                        <option value="12.0">12:00 noon</option>
+                                        <option value="13.0">&nbsp;1:00 PM</option>
+                                        <option value="14.0">&nbsp;2:00 PM</option>
+                                        <option value="15.0">&nbsp;3:00 PM</option>
+                                        <option value="16.0">&nbsp;4:00 PM</option>
+                                        <option value="17.0">&nbsp;5:00 PM</option>
+                                        <option value="18.0">&nbsp;6:00 PM</option>
+                                        <option value="19.0">&nbsp;7:00 PM</option>
+                                        <option value="20.0">&nbsp;8:00 PM</option>
+                                        <option value="21.0">&nbsp;9:00 PM</option>
+                                        <option value="22.0">10:00 PM</option>
+                                        <option value="23.0">11:00 PM</option>
+                                        <option value="24.0">12:00 midnight</option>
+                                    </select>
+                                </div>
+                                <div class="span4 ">
+                                    <h4>Occupancy End</h4>
+                                    <select name="weekday_occupancy_end">
+                                        <option value="0.0">12:00 midnight</option>
+                                        <option value="1.0">&nbsp;1:00 AM</option>
+                                        <option value="2.0">&nbsp;2:00 AM</option>
+                                        <option value="3.0">&nbsp;3:00 AM</option>
+                                        <option value="4.0">&nbsp;4:00 AM</option>
+                                        <option value="5.0">&nbsp;5:00 AM</option>
+                                        <option value="6.0">&nbsp;6:00 AM</option>
+                                        <option value="7.0">&nbsp;7:00 AM</option>
+                                        <option value="8.0">&nbsp;8:00 AM</option>
+                                        <option value="9.0">&nbsp;9:00 AM</option>
+                                        <option value="10.0">10:00 AM</option>
+                                        <option value="11.0">11:00 AM</option>
+                                        <option value="12.0">12:00 noon</option>
+                                        <option value="13.0">&nbsp;1:00 PM</option>
+                                        <option value="14.0">&nbsp;2:00 PM</option>
+                                        <option value="15.0">&nbsp;3:00 PM</option>
+                                        <option value="16.0">&nbsp;4:00 PM</option>
+                                        <option value="17.0">&nbsp;5:00 PM</option>
+                                        <option value="18.0">&nbsp;6:00 PM</option>
+                                        <option value="19.0">&nbsp;7:00 PM</option>
+                                        <option value="20.0">&nbsp;8:00 PM</option>
+                                        <option value="21.0">&nbsp;9:00 PM</option>
+                                        <option value="22.0">10:00 PM</option>
+                                        <option value="23.0">11:00 PM</option>
+                                        <option value="24.0">12:00 midnight</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="utilities">
+                        <div class="utilities box-unit">
+                            <div class="page-header">
+                                <h2>Utility Data</h2>
+                            </div>
+                            <table class="table table-hover" id="utltable">
+                                <thead>
+                                    <th class="span2">Electric Billing Period Start Date</th>
+                                    <th class="span2">Electricity (kWh)</th>
+                                    <th class="span2">Gas Billing Period Start Date</th>
+                                    <th class="span2">Gas (CCF)</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" />
+                                        </td>
+                                    </tr>
+                                    <thead>
+                                        <th class="span2">Electric Billing Period End Date</th>
+                                        <th class="span2">Electricity (kWh)</th>
+                                        <th class="span2">Gas Billing Period End Date</th>
+                                        <th class="span2">Gas (CCF)</th>
+                                    </thead>
+                                    <tr>
+                                        <td>
+                                            <input type="date" class="span2" name="electric_utility_startdate" required>
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="kWh" name="utility_electric" disabled>
+                                        </td>
+                                        <td>
+                                            <input type="date" class="span2" name="gas_utility_startdate">
+                                        </td>
+                                        <td>
+                                            <input class="span2" type="number" min="0" step="0.1" placeholder="CCF" name="utility_gas" disabled>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="span8">
+                                <table class="text-right" style="float:right;">
+                                    <tr>
+                                        <td>
+                                            <span>
+                                                <a href="http://developer.eebhub.org/archives/utilities/MeterConsumptionDataSpreadsheet_metered_en.xls">Spreadsheet Template</a>&nbsp;&nbsp;</span>
+                                        </td>
+                                        <td>
+                                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <span class="btn btn-file">
+                                                    <span class="fileupload-new">
+                                                        <b>Import Utility Data</b>
+                                                    </span>
+                                                    <span class="fileupload-exists">Change</span>
+                                                    <input type="file" />
+                                                </span>
+                                                <span class="fileupload-preview"></span>
+                                                <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row"></div>
+                        </div>
+                    </section>
+                    <section id="typical_room">
+                        <div class="typicalroom box-unit">
+                            <div class="page-header">
+                                <h2>Typical Room</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span2">
+                                    <img class="img-rounded" src="img/room_dimensions.png">
+                                </div>
+                                <div class="span3" id="architect2-replace1">
+                                    <h4>Room Width</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput" name="room_width" />
+                                        <span class="add-on">
+                                            <span class="unit">m</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <h4>Room Depth</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput" name="room_depth" />
+                                        <span class="add-on">
+                                            <span class="unit">m</span>
+                                        </span>
+                                    </div>
+                                    <h4>Room Height</h4>
+                                    <div class="input-append">
+                                        <input type="number" min="0" step="0.01" class="span2" id="appendedInput" name="room_height" />
+                                        <span class="add-on">
+                                            <span class="unit">m</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span2">
+                                    <img class="img-rounded" src="img/overhang.gif" width="170">
+                                </div>
+                                <div class="span3">
+                                    <h4>Overhang Depth</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" name="overhang_depth">
+                                        <span class="add-on" id="architect2-replace2">
+                                            <span class="unit">m</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span2"></div>
+                                <div class="span3">
+                                    <h4>People Density</h4>
+                                    <div class="input-append">
+                                        <input class="span2" id="appendedInput" type="number" min="0" step="0.001" name="people_density" value="0.005">
+                                        <span class="add-on" id="people-replace">People/ft&sup2;</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                    <section id="conservation">
+                        <div class="conservation box-unit">
+
+                            <h2>Energy Efficient Measures</h2>
+                            <h2>
+                                <small>EEM selection will be enabled after the baseline simulation is over.</small>
+                            </h2>
+
+                            <!--label class="checkbox">
+                                <input name="conservation_lighting" type="checkbox" disabled>Lighting Upgrade</label>
+                            <label class="checkbox">
+                                <input name="conservation_window" type="checkbox" disabled>Window Upgrade</label>
+                            <label class="checkbox">
+                                <input name="conservation_economizer" type="checkbox" disabled>Economizer</label-->
+                        </div>
+                    </section>
+                    <div class="box-unit">
+                        <input type="submit" class="btn btn-large btn-primary" value="SIMULATE" />
+                        <a class="btn btn-large btn-info" href="http://128.118.67.227/da_example_outputs.html">
+                            <i class="icon-signal"></i>Example Outputs</a>
+                        <img style="text-align:right;float:right;" src="img/mit.png" alt="MIT" width="80" height="41">
+                        <h2 class="text-right">
+                            <small>powered by MIT Design Advisor Engine</small>
+                        </h2>
+                    </div>
+                    <div class="box-unit">
+                        <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/utrc/uncertainty/riskanalysis.html">
+                            <i class="icon-exclamation-sign"></i>Risk Analysis</a>
+                        <img style="text-align:right;float:right;" src="img/utrc.png" alt="UTRC" width="120" height="42">
+                        <br>
+                        <h2 class="text-right">
+                            <small>powered by UTRC Uncertainty Quantification</small>
+                        </h2>
+                    </div>
+
+                    <div style="visibility:hidden">
+                        <input name="unit" value="si" id="si-ip" />
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+        <!-- Javascript -->
+        <script src="js/ui-bootstrap.js"></script>
+
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-scrollspy.js"></script>
+        <script>
+            $('.btn-group').button('toggle');
+        </script>
+
+</body>
+
+</html>

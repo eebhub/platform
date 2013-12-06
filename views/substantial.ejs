@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="/css/bootstrap-switch.css" />
         <style type="text/css">
 
-                        #filter {
+            #filter {
             	position: fixed;
             	top: 0;
             	left: 0;
@@ -107,14 +107,49 @@
             
         }
         </script>
+        <script>
+        function buildingInfoPop(){
+            var username = "<%= username %>";
+            if (username!='undefined'){
+                var form = document.forms.platformForm;
+                form.building_name.value = "<%= bldname %>";
+                form.activity_type.value = "<%=  bld_function %>";
+                form.weather_epw_location.value = "<%= bld_location %>";
+                form.activity_type_specific.value = "<%= activity_type_specific %>";
+                form.gross_floor_area.value = "<%= gross_floor_area %>";
+                form.number_of_floors.value = "<%= number_of_floors %>";
+                form.window_to_wall_ratio.value = "<%= window_to_wall_ratio %>";
+                form.footprint_shape.value = "<%= footprint_shape %>";
+                form.building_height.value = "<%= building_height %>";
+                form.perimeter.value = "<%= perimeter %>";
+                form.window_glass_type.value = "<%= window_glass_type %>";
+                form.roof_type.value = "<%= roof_type %>";
+                form.exterior_wall_type.value = "<%= exterior_wall_type %>";
+                form.number_of_employees_during_main_shift.value = "<%= number_of_employees_during_main_shift %>";
+                form.primary_hvac_type.value = "<%= primary_hvac_type %>";
+                form.average_weekly_operating_hours.value = "<%= average_weekly_operating_hours %>";
+                form.open_during_week.value = "<%= open_during_week %>";
+                form.weekday_occupancy_hours_day_start.value = "<%= weekday_occupancy_hours_day_start %>";
+                form.weekday_occupancy_hours_day_end.value = "<%= weekday_occupancy_hours_day_end %>";
+            }
+        }
+        </script>
         
+        <script>
+            function saveBuildingSubstantial() {
+                var form = document.forms.platformForm;
+                form.action = "/savebuildingsubstantial";
+                form.submit();
+            }
+
+        </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="js/building101Data.js"></script>
         <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
         
     </head>
     
-    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <body data-spy="scroll" data-target=".bs-docs-sidebar" onload="buildingInfoPop()">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -147,10 +182,16 @@
                         <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font-->
                     
                     <ul class="nav pull-right">
-						      <li><a href="/signup">SIGNUP</a>
-						      </li>
-						      <li><a href="/signin">LOGIN</a>
-						      </li>
+						      <script>
+                                        var username = "<%= username %>";
+                                        if (username!='undefined'){
+                                        document.write('<li><a href="/mydashboard">My Dashboard</a></li><li><a href="/logout">LOGOUT</a></li>');
+                                        }else {
+                                            document.write('<li><a href="/signup">SIGNUP</a></li><li><a href="/signin">LOGIN</a></li>');
+                                        }
+                             
+                                        
+                                </script>
 						</ul>
                     </div>
                 </div>
@@ -186,10 +227,11 @@
                         </li>
                          <li>
                             <a href="#schedules"><i class="icon-time"></i> Schedules</a>
-                        </li><li><hr></li>
+                        </li>
+                        <li><hr style="color:lightgray;background-color:lightgray;height:1px;border:none;"/></li>
                         <li style="padding-left:13px;">
                            
-                             <i class="icon-adjust"></i>  Units &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
+                             <i class="icon-adjust"></i>  <b>Units</b> &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
                              <input type="button" id="unitoptionSI" name="unitoption" value="SI" class="btn active" onclick='$(".unit").html("m");$("#si-ip").val("si");'>
                              <input type="button" id="unitoptionIP" name="unitoption" value="IP" class="btn" onclick='$(".unit").html("ft");$("#si-ip").val("ip");'>
                          </div>
@@ -903,6 +945,12 @@
               
 
                 <div class="box-unit">
+                    <script>
+                    var username = "<%= username %>";
+                    if (username!='undefined'){
+                        document.write('<button type="submit" onclick="saveBuildingSubstantial();" class="btn btn-large btn-success">Save Building (substantial)</button>');
+                    }
+                    </script>
                     <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
                     <!--<button type="button" class="btn btn-large btn-info"><i class="icon-plus"></i> Building 101 Data</button>-->
                     <a class="btn btn-large btn-info" href="/substantialsampleres"><i class="icon-signal"></i> Example Outputs</a>
@@ -914,7 +962,15 @@
                
                 </div>
         
-        
+                 <div class="box-unit">
+                     <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/utrc/uncertainty/riskanalysis.html"><i class="icon-exclamation-sign"></i> Risk Analysis </a>
+                     <img style="text-align:right;float:right;" src="img/utrc.png" alt="UTRC"
+                     width="120" height="42">
+                     <br>
+                     <h2 class="text-right">
+                         <small>powered by UTRC Uncertainty Quantification</small>
+                     </h2>
+                 </div>
                 <div class="box-unit">
                 <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/upenn/"><i class="icon-wrench"></i> System Control Optimization</a>
                 <img style="text-align:right;float:right;" src="img/upenn.png" alt="UPENN" width="112" height="36">

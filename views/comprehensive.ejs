@@ -73,10 +73,46 @@
                 printValue('obstructionSlider', 'obstructionRangeValue');
             }
         </script>
+        
+        <script>
+        function buildingInfoPop(){
+            var username = "<%= username %>";
+            if (username!='undefined'){
+                var form = document.forms.platformForm;
+                console.log("<%= bldname %>");
+                form.building_name.value = "<%= bldname %>";
+                form.activity_type.value = "<%=  bld_function %>";
+                form.weather_epw_location.value = "<%= bld_location %>";
+                form.year_completed.value = "<%= bld_year %>";
+  
+                form.number_of_floors.value = "<%= number_of_floors %>"; 
+                form.window_to_wall_ratio.value = "<%= window_to_wall_ratio %>";
+                form.footprint_shape.value = "<%= footprint_shape %>"; 
+                form.tightness.value = "<%= tightness %>"; 
+             
+                form.roof_type.value = "<%= roof_type %>";
+                form.exterior_wall_type.value = "<%= exterior_wall_type %>";
+                form.room_width.value = "<%= room_width %>";
+                form.room_depth.value = "<%= room_depth %>";
+                form.room_height.value = "<%= room_height %>";
+                form.overhang_depth.value = "<%= overhang_depth %>";
+            }
+        }
+        
+        </script>
+        
+        <script>
+            function saveBuildingComprehensive() {
+                var form = document.forms.platformForm;
+                form.action = "/savebuildingcomprehensive";
+                form.submit();
+            }
+
+        </script>
 
     </head>
     
-    <body onload="changeShape(T)" data-spy="scroll" data-target=".bs-docs-sidebar">
+    <body onload="buildingInfoPop();changeShape(T);" data-spy="scroll" data-target=".bs-docs-sidebar">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -109,10 +145,16 @@
                         <input type="radio" name="unitoption" value="ip" onclick='$(".unit").html("ft");$("#heating-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"75\" name=\"heating_setpoint\" /><span class=\"add-on\">&#186;F</span>");$("#cooling-setpoint").html("<input type=\"number\" min=\"0\" class=\"span2\" id=\"appendedInput\" value=\"79\" name=\"cooling_setpoint\" /><span class=\"add-on\">&#186;F</span>");$(".illu-unit").html("lm/ft&#178;");$("#illuminance").html("<option value=\"150\">15 - storage</option><option value=\"200\">20 - casual work</option><option value=\"300\">30 - rough work</option><option value=\"400\">40 - office work (EU)</option><option value=\"500\" selected>50 - office work (US)</option>");$("#si-ip").val("ip");$("body").css("background", "rgb(194, 194, 194)");'/><font color="yellow"> IP</font-->
                 
                     <ul class="nav pull-right">
-						      <li><a href="/signup">SIGNUP</a>
-						      </li>
-						      <li><a href="/signin">LOGIN</a>
-						      </li>
+						      <script>
+                                        var username = "<%= username %>";
+                                        if (username!='undefined'){
+                                        document.write('<li><a href="/mydashboard">My Dashboard</a></li><li><a href="/logout">LOGOUT</a></li>');
+                                        }else {
+                                            document.write('<li><a href="/signup">SIGNUP</a></li><li><a href="/signin">LOGIN</a></li>');
+                                        }
+                             
+                                        
+                                </script>
 						</ul>
                     </div>
                 </div>
@@ -169,7 +211,7 @@
                 
                 <!-- ################################### Building Section ################################################## -->
                 <div class="span9">
-                    <form name="platformForm" id="comprehensive-form" action="http://rmt.eebhub.org/openstudio/eeb_rb/simulate-openstudio.php" method="post" onsubmit="return valForm('comprehensive-form');">
+                    <form name="platformForm" id="comprehensive-form" action="http://rmt.eebhub.org/openstudio/eeb_rb/simulate-openstudio.php" method="post" onsubmit="$('#baseline-form, header, .top-nav, footer').fadeTo('slow', 0.33);$('.loading-div').fadeIn('slow');$('html,body').css('overflow', 'hidden');loading();return true;">
                     <section id="building">
                         <div class="box-unit building">
                             <div class="page-header">
@@ -978,10 +1020,10 @@
                         <div class="box-unit conservation">
                                 <h2>Energy Efficiency Measures</h2>
                                 <h2>
-                                    <small><b>1st</b> Simulate baseline model below. (Outputs include monthly energy, costs, zone component loads.)</small>
+                                    <small><b>Step 1:</b> Simulate baseline model below. (Outputs include monthly energy, costs, zone component loads.)</small>
                                 </h2>
                                 <h2>
-                                    <small><b>2nd</b> Choose Energy Efficiency Measures on next page.&#160;&#160;&#160;<b>3rd</b> Stage Installation.</small>
+                                    <small><b>Step 2:</b> Choose Energy Efficiency Measures on next page.&#160;&#160;&#160;</small>
                                 </h2>
                             <!--label class="checkbox">
                                 <input name="conservation_lighting" type="checkbox" disabled>Lighting Upgrade</label>
@@ -993,6 +1035,12 @@
                     </section>
                     <!-- ###################################### Buttons Group ############################################# -->
                     <div id="box-unit">
+                    <script>
+                        var username = "<%= username %>";
+                        if (username!='undefined'){
+                            document.write('<button type="submit" onclick="saveBuildingComprehensive()" class="btn btn-large btn-success">Save Building (comprehensive)</button>');
+                        }
+                    </script>  
                         <input type="submit" class="btn btn-large btn-primary" value="SIMULATE">
                         <img style="text-align:right;float:right;" src="img/doe-engines.png" alt="DOE" width="250" height="58">
                         <br style="clear:both" />

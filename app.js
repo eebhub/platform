@@ -214,16 +214,14 @@ app.get('/logout',function(req,res){
 //app.get('/lite', routes.getLite);
 //app.get('/liteconv', routes.getLiteConv);
 app.get('/lite', function(req, res){
-    if(req.session.username){
-        //res.render('lite_auth');  
-        
-        var bldname = '';
-        var bld_location = '';
-        var bld_function = '';
-        var bld_year = '';
-        var gross_floor_area = '';
-        
-        if(req.session.buildingid){
+    var bldname = '';
+    var bld_location = '';
+    var bld_function = '';
+    var bld_year = '';
+    var gross_floor_area = '';
+    
+    if(req.session.username&&req.session.buildingid){
+
             Building.findOne({_id: req.session.buildingid}, function(err, building) {
                 if( err || !building) console.log("No Building found");
                 else {
@@ -234,7 +232,8 @@ app.get('/lite', function(req, res){
                     gross_floor_area = building.building.architecture.gross_floor_area;
                     
                     
-                     res.render('lite_auth', {
+                     res.render('lite', {
+                         'username':req.session.username,
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
@@ -244,21 +243,18 @@ app.get('/lite', function(req, res){
                 }    
             });
             
-        }else{
-          res.render('lite_auth', {
+    }else{
+          res.render('lite', {
+              'username':req.session.username,
               'bldname': '',
               'bld_function': '',
               'bld_year': '',
               'bld_location': '',
               'gross_floor_area': ''
           });
-        }
-        
-        
-    }else{
-        res.sendfile('./views/lite.html');    
-    } 
+    }
 });
+
 app.get('/literesults', routes.getLiteResults);
 
 app.get('/lite/:id', function(req, res){
@@ -273,7 +269,8 @@ app.get('/lite/:id', function(req, res){
         var bld_function = bld_lite.building.building_info.activity_type;
         var gross_floor_area = bld_lite.building.architecture.gross_floor_area;
         //console.log(building_name);
-        res.render('lite_auth', {'bldname': bldname,
+        res.render('lite', {'username':req.session.username,
+                                 'bldname': bldname,
                                  'bld_location': bld_location,
                                  'bld_year': bld_year,
                                  'bld_function': bld_function,
@@ -288,33 +285,32 @@ app.get('/lite/:id', function(req, res){
 
 //app.get('/partial', routes.getPartial);
 app.get('/partial', function(req,res){
-    if(req.session.username){
-        var bldname = '';
-        var bld_location = '';
-        var bld_function = '';
-        var bld_year = '';
-        var room_width = ''; 
-        var room_depth = '';
-        var room_height = '';
-        var exterior_shading_orientation = '';
-        var window_to_wall_ratio = '';
-        var number_of_floors = '';
-        var overhang_depth = '';
-        var wall_insulation_r_value = '';
-        var thermal_mass = '';
-        var window_glass_coating = '';
-        var window_glass_type = '';
-        var roof_type = '';
-        var roof_insulation_type = '';
-        var roof_insulation_location ='';
-        var people_density ='';
-        var illuminance = '';
-        var equipment_power_density = '';
-        var ventilation_system = '';
-        var weekday_occupancy_start = '';
-        var weekday_occupancy_end = '';
+    var bldname = '';
+    var bld_location = '';
+    var bld_function = '';
+    var bld_year = '';
+    var room_width = ''; 
+    var room_depth = '';
+    var room_height = '';
+    var exterior_shading_orientation = '';
+    var window_to_wall_ratio = '';
+    var number_of_floors = '';
+    var overhang_depth = '';
+    var wall_insulation_r_value = '';
+    var thermal_mass = '';
+    var window_glass_coating = '';
+    var window_glass_type = '';
+    var roof_type = '';
+    var roof_insulation_type = '';
+    var roof_insulation_location ='';
+    var people_density ='';
+    var illuminance = '';
+    var equipment_power_density = '';
+    var ventilation_system = '';
+    var weekday_occupancy_start = '';
+    var weekday_occupancy_end = '';
+    if(req.session.username&&req.session.buildingid){
         
-        if(req.session.buildingid){
             Building.findOne({_id: req.session.buildingid}, function(err, building) {
                 if( err || !building) console.log("No Building found");
                 else {
@@ -345,7 +341,8 @@ app.get('/partial', function(req,res){
                     weekday_occupancy_start = building.building.schedules.weekday_occupancy_start;
                     weekday_occupancy_end = building.building.schedules.weekday_occupancy_end;
                     
-                     res.render('partial_auth', {
+                     res.render('partial', {
+                         'username': req.session.username,
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
@@ -372,10 +369,10 @@ app.get('/partial', function(req,res){
                          'weekday_occupancy_end': weekday_occupancy_end
                      });
                 }    
-            });
-            
+                });
         }else{
-          res.render('partial_auth', {
+          res.render('partial', {
+              'username': req.session.username,
               'bldname': '',
               'bld_function': '',
               'bld_year': '',
@@ -401,14 +398,12 @@ app.get('/partial', function(req,res){
               'weekday_occupancy_start': '',
               'weekday_occupancy_end': ''
           });
-        }
-    }else{
-        res.sendfile('./views/partial.html');
     }
 });
+
+
 //app.get('/substantial', routes.getSubstantial);
 app.get('/substantial', function(req,res){
-    if(req.session.username){
         var bldname = '';
         var bld_location = '';
         var bld_function = '';
@@ -431,8 +426,7 @@ app.get('/substantial', function(req,res){
         var weekday_occupancy_hours_day_start = '';
         var weekday_occupancy_hours_day_end = '';
         
-        
-        if (req.session.buildingid) {
+        if(req.session.username&&req.session.buildingid){
             
                 Building.findOne({_id: req.session.buildingid}, function(err, building) {
                 if( err || !building) console.log("No Building found");
@@ -459,7 +453,8 @@ app.get('/substantial', function(req,res){
                     weekday_occupancy_hours_day_start = building.building.schedules.weekday_occupancy_hours_day_start;
                     weekday_occupancy_hours_day_end = building.building.schedules.weekday_occupancy_hours_day_end;
                     
-                     res.render('substantial_auth', {
+                    res.render('substantial', {
+                         'username': req.session.username,
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
@@ -479,14 +474,15 @@ app.get('/substantial', function(req,res){
                          'open_during_week': open_during_week,
                          'weekday_occupancy_hours_day_start': weekday_occupancy_hours_day_start, 
                          'weekday_occupancy_hours_day_end': weekday_occupancy_hours_day_end
-                     });
-                    }    
+                    });
+                }    
                 });
             
             
             
         }else {
-          res.render('substantial_auth', {
+          res.render('substantial', {
+              'username':req.session.username,
               'bldname': '',
               'bld_function': '',
               'bld_location': '',
@@ -508,15 +504,11 @@ app.get('/substantial', function(req,res){
               'weekday_occupancy_hours_day_end': ''
           });
         }
-    }else{
-        res.sendfile('./views/substantial.html');
-    }
 });
+
+
 //app.get('/comprehensive', routes.getComprehensive);
 app.get('/comprehensive', function(req,res){
-   if(req.session.username){
-       //res.render('comprehensive_auth');
-       
         var bldname = '';
         var bld_location = '';
         var bld_function = '';
@@ -528,11 +520,14 @@ app.get('/comprehensive', function(req,res){
         var tightness = '';
         var window_glass_type = '';
         var roof_type = '';
-        var exterior_wall_type = '';
+        var exterior_wall_type = '';   
+        var room_width = '';
+        var room_depth = '';
+        var room_height = '';
+        var overhang_depth = '';
         
-        if (req.session.buildingid) {
-            
-            
+        if(req.session.username&&req.session.buildingid){
+
             Building.findOne({_id: req.session.buildingid}, function(err, building) {
                 if( err || !building) console.log("No Building found");
                 else {
@@ -548,7 +543,13 @@ app.get('/comprehensive', function(req,res){
                     window_glass_type = building.building.materials.window_glass_type;
                     roof_type = building.building.materials.roof_type;
                     exterior_wall_type = building.building.materials.exterior_wall_type;
-                     res.render('comprehensive_auth', {
+                    room_width = building.building.typical_room.room_width;
+                    room_depth = building.building.typical_room.room_depth;
+                    room_height = building.building.typical_room.room_height;
+                    overhang_depth = building.building.typical_room.overhang_depth;
+                    
+                     res.render('comprehensive', {
+                         'username': req.session.username,
                          'bldname': bldname,
                          'bld_location': bld_location,
                          'bld_function': bld_function,
@@ -560,16 +561,18 @@ app.get('/comprehensive', function(req,res){
                          'tightness': tightness, 
                          'window_glass_type': window_glass_type,
                          'roof_type': roof_type,
-                         'exterior_wall_type': exterior_wall_type
+                         'exterior_wall_type': exterior_wall_type,
+                         'room_width': room_width,
+                         'room_depth': room_depth,
+                         'room_height': room_height,
+                         'overhang_depth': overhang_depth
                      });
                     }    
                 });
-            
-            
-            
-            
-        }else{
-          res.render('comprehensive_auth', {
+    
+            }else{
+                res.render('comprehensive', {
+              'username': req.session.username,
               'bldname': bldname,
               'bld_location': bld_location,
                'bld_function': bld_function,
@@ -581,13 +584,14 @@ app.get('/comprehensive', function(req,res){
                'tightness': tightness, 
                'window_glass_type': window_glass_type,
                'roof_type': roof_type,
-               'exterior_wall_type': exterior_wall_type
+               'exterior_wall_type': exterior_wall_type,
+               'room_width': room_width,
+               'room_depth': room_depth,
+               'room_height': room_height,
+               'overhang_depth': overhang_depth
           });
         }
-       
-   }else{
-       res.sendfile('./views/comprehensive.html');
-   } 
+
 });
 
 app.get('/substantialsampleres', substantial.getSubstantialSampleRes);
@@ -1152,11 +1156,9 @@ app.post('/savebuildingcomprehensive', function(req, res){
                 "building.building_info.activity_type": req.body.activity_type,
                 "building.building_info.year_completed": req.body.year_completed,
                 "building.architecture.tightness": req.body.tightness,
-                "building.architecture.gross_floor_area": req.body.gross_floor_area,
                 "building.architecture.number_of_floors": req.body.number_of_floors, 
                 "building.architecture.window_to_wall_ratio": req.body.window_to_wall_ratio,
                 "building.architecture.footprint_shape": req.body.footprint_shape, 
-                "building.architecture.window_glass_type": req.body.window_glass_type,
                 "building.materials.roof_type": req.body.roof_type,
                 "building.materials.exterior_wall_type": req.body.exterior_wall_type
                 }
@@ -1181,7 +1183,7 @@ app.post('/savebuildingcomprehensive', function(req, res){
                           activity_type: req.body.activity_type, //4
                           activity_type_specific: ''   //s
                           },
-          architecture:  {gross_floor_area: req.body.gross_floor_area,    //l,s,c
+          architecture:  {gross_floor_area: '',    //l,s,c
                           number_of_floors: req.body.number_of_floors,    //s,c
                           window_to_wall_ratio: req.body.window_to_wall_ratio,   //s,c
                           footprint_shape: req.body.footprint_shape,        //s,c
@@ -1200,7 +1202,7 @@ app.post('/savebuildingcomprehensive', function(req, res){
           materials:      {wall_insulation_r_value: '',  //p
                            thermal_mass: '',    //p
                            window_glass_coating: '',    //p
-                           window_glass_type: req.body.window_glass_type,    //p,s,c
+                           window_glass_type: '',    //p,s,c
                            roof_type: req.body.roof_type,        //p,s,c
                            roof_insulation_type: '',   //p
                            roof_insulation_location: '',     //p

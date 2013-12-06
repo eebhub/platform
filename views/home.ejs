@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>EEB Hub Simulation Platform Tools</title>
+    <!--<meta http-equiv="refresh"
+        content="0; url=http://tools.eebhub.org/lite"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+
+<body style="background:url('../img/wood1.jpg') fixed;">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="/">EEB Hub Simulation Platform</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="/lite">LITE</a>
+                        </li>
+                        <li>
+                            <a href="/partial">PARTIAL</a>
+                        </li>
+                        <li>
+                            <a href="/substantial">SUBSTANTIAL</a>
+                        </li>
+                        <li>
+                            <a href="/comprehensive">COMPREHENSIVE</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="pull-right text-right">
+
+                        <ul class="nav pull-right">
+                        
+                        <script>
+                                        var username = "<%= username %>";
+                                        if (username!='undefined'){
+                                        document.write('<li><a href="/mydashboard">My Dashboard</a></li><li><a href="/logout">LOGOUT</a></li>');
+                                        }else {
+                                            document.write('<li><a href="/signup">SIGNUP</a></li><li><a href="/signin">LOGIN</a></li>');
+                                        }
+                             
+                                        
+                        </script>
+						      
+					          
+						</ul>
+                        </div>
+                    
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    <!--Main Page-->
+    
+    <div class="tagline row-fluid">
+        <h1 class="text-center">Simulate building energy online.</h1>
+    </div>
+    <div class="row-fluid levels">
+        <div class="span3">
+            <h3 class="text-center">Lite</h3>
+            <span class="house-center">
+                <a class="svg" href="/lite">
+                    <img src="img/lite-house.svg" alt="lite simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h6 class="text-center gray-small">utility bills</h6>
+            <h6 class="text-center gray-small">energy use intensity</h6>
+            <h5 class="text-center">for building owners</h5>
+        </div>
+        <div class="span3">
+            <h3 class="text-center">Partial</h3>
+            <span class="house-center">
+                <a href="/partial">
+                    <img src="img/partial-house.svg" alt="partial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h6 class="text-center gray-small">typical room</h6>
+            <h6 class="text-center gray-small">systems benchmark</h6>
+            <h5 class="text-center">for building designers</h5>
+        </div>
+        <div class="span3">
+            <h3 class="text-center">Substantial</h3>
+            <span class="house-center">
+                <a href="/substantial">
+                    <img src="img/substantial-house.svg" alt="substantial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h6 class="text-center gray-small">shape of building</h6>
+            <h6 class="text-center gray-small">subsystem audit</h6>
+            <h5 class="text-center">for building auditors</h5>
+        </div>
+        <div class="span3">
+            <h3 class="text-center">Comprehensive</h3>
+            <span class="house-center">
+                <a href="/comprehensive">
+                    <img src="img/comprehensive-house.svg" alt="comprehensive simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h6 class="text-center gray-small">import 3D geometry</h6>
+            <h6 class="text-center gray-small">installation staging</h6>
+            <h5 class="text-center">for building analysts</h5>
+        </div>
+    </div>
+
+    <div class="about row-fluid">
+        <h2 class="text-center">What is a simulation platform?</h2>
+        <div class="pagination-centered">
+            <img src="img/simulation.png" alt="simulation" />
+        </div>
+        <h4 class="text-center">a SIMULATION is a technique of representing the real world with the virtual world.</h4>
+        <br/>
+        <div class="pagination-centered">
+            <img src="img/cloud.png" alt="cloud" />
+        </div>
+        <h4 class="text-center">the PLATFORM includes server hardware, a cloud operating system, & a suite of interconnected software tools.</h4>
+        <br/>
+        <div class="pagination-centered">
+            <img src="img/buildings.png" alt="buildings" />
+        </div>
+        <h4 class="text-center">Building industry stakeholders will be empowered to make informed decisions on how to reduce energy consumption in buildings.</h4>
+        <br>
+    </div>
+    <div class="learn row-fluid">
+        <div>
+            <div class="pagination-centered"><img src="img/eebhub-gray.png" width="120" height="86" alt="eebhub"/></div>
+            <h4 class="text-center">The EEB Hub is pioneering the web tool to make this possible, proven, &amp; easy.</h4>
+        </div>
+        <div class="pagination-centered">
+        <iframe src='https://skydrive.live.com/embed?cid=16B20B2C9752FBFF&resid=16B20B2C9752FBFF%21214&authkey=ALtCkkH41pF9YQY&em=2&wdAr=1.3333333333333333'
+        width='610px' height='480px' frameborder='0'>This is an embedded
+            <a target='_blank' href='http://office.com'>Microsoft Office</a>presentation, powered by
+            <a target='_blank' href='http://office.com/webapps'>Office Web Apps</a>.</iframe>
+        </div>
+    </div> 
+    <div class="subscribe row-fluid">
+        <h2 class="text-center">SUBSCRIBE</h2>
+            <br>
+            <!-- Begin MailChimp Signup Form --> 
+            <!--<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">-->
+             <div class="pagination-centered">
+                 <div id="mc_embed_signup"> 
+                    <form action="http://eebhub.us7.list-manage.com/subscribe/post?u=2368150e5ed73d7788cb50531&amp;id=83b4ba8ea6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> 
+                    <input type="email" value="" name="EMAIL" class="email text-center" id="mce-EMAIL" placeholder="email address" style="width:500px;" required> 
+                    <div class="clear">
+                        <input type="submit" value="Subscribe to News & Updates" name="subscribe" id="mc-embedded-subscribe" class="btn" style="font-weight:bold;width:515px;">
+                    </div> 
+                    </form> 
+                 </div> <!--End mc_embed_signup-->
+                 <a href="news"><input type="button" value="Current News" class="btn" style="font-weight:bold;width:515px;"></a>
+             </div>
+    </div>
+    <div class="collaborate row-fluid">
+        <h2 class="text-center">COLLABORATE</h2>
+        <br>
+        <div class="span4">
+            <span class="house-center">
+                <a href="code">
+                    <img src="img/iconmonstr-html-code-icon.svg" alt="substantial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h3 class="text-center">code</h3>
+        </div>
+        <div class="span4">
+            <span class="house-center">
+                <a href="inspiration">
+                    <img src="img/iconmonstr-window-layout-icon.svg" alt="substantial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h3 class="text-center">user interface</h3>
+        </div>
+        <div class="span4">
+            <span class="house-center">
+                <a href="visitors">
+                    <img src="img/iconmonstr-user-14-icon.svg" alt="substantial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h3 class="text-center">visitors</h3>
+        </div>
+    </div>
+    <div class="team row-fluid">
+        <h2 class="text-center">TEAM</h2>
+    </div>
+    
+    <div class="row-fluid">
+    <img class="team-image" src="img/task2-small.jpg" />
+    </div>
+    
+    <div class="institutions row-fluid">
+        <div class="span12 pagination-centered" style="padding-bottom:40px;">
+            <img class="grey" src="img/EEB-transparent.png" style="width:200px;">
+        </div>
+        <div class="span2 offset1 pagination-centered">
+            <img class="grey" src="img/Logos/200px-Carnegie_Mellon_University_seal.svg.png">
+        </div>
+        <div class="span2 pagination-centered">
+            <img class="grey" src="img/Logos/250px-UPenn_shield_with_banner.svg.png">
+        </div>
+        <div class="span2 pagination-centered">
+            <img class="grey" src="img/Logos/mit-seal_400x400.gif">
+        </div>
+        <div class="span2 pagination-centered">
+            <img class="grey" src="img/Logos/ts-575x567.png">
+        </div>
+        <div class="span2 pagination-centered">
+            <img class="grey" src="img/Logos/seal.gif">
+        </div>
+        <div class="span12">&nbsp;</div>
+        
+            <div class="span2 offset1 pagination-centered">
+                <img class="grey" src="img/Logos/645px-NIST_logo.svg_.png">
+            </div>
+            <div class="span2 pagination-centered">
+                <img class="grey" src="img/Logos/balfour-beatty-logo.png">
+            </div>
+            <div class="span2 pagination-centered">
+                <img class="grey" src="img/Logos/IBM_logo.svg">
+            </div>
+            <div class="span2 pagination-centered">
+                <img class="grey" src="img/Logos/utrc_blue.png">
+            </div>
+            <div class="span2 pagination-centered">
+                <img class="grey" src="img/Logos/NREL_Logo.gif">
+            </div>
+        
+    
+    </div>
+        <div class="contact row-fluid">
+        <h2 class="text-center">CONTACT US</h2>
+        <br>
+        <div class="span4">
+            <span class="house-center">
+                <a href="https://eebhub.uservoice.com/clients/widgets/classic_widget?mode=support&locale=en&forum_id=224458&support_tab_name=Contact%20EEB%20Hub%20Software%20Support&contact_us=true&custom_template_id=16740&context=site2&embed_type=lightbox&contact_enabled=true&feedback_enabled=false&smartvote=true&default_mode=support&referrer=http%3A%2F%2Feebhub.uservoice.com%2F#contact_us">
+                    <img src="img/iconmonstr-help-3-icon.svg" alt="substantial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h3 class="text-center">question</h3>
+        </div>
+        <div class="span4">
+            <span class="house-center">
+                <a href="ideas">
+                    <img src="img/iconmonstr-light-bulb-18-icon.svg" alt="substantial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h3 class="text-center">new idea</h3>
+        </div>
+        <div class="span4">
+            <span class="house-center">
+                <a href="https://github.com/eebhub/platform/issues">
+                    <img src="img/iconmonstr-warning-4-icon.svg" alt="substantial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h3 class="text-center">report issue</h3>
+        </div>
+    </div>
+    <div class="footer">
+        <br>
+        <h5 class="text-center">Built by the <a href="http://www.eebhub.org">Energy Efficient Buildings HUB</a>, a <a href="http://energy.gov/science-innovation/innovation/hubs">U.S. Department of Energy Innovation HUB</a>.</h5>
+        <h5 class="text-center">Our simulation & modeling team includes PSU, MIT, CMU, UMaryland, UPenn, IBM, UTRC, Balfour Beatty, NIST, & NREL.</h5>
+        <h5 class="text-center"><a href="https://github.com/eebhub/platform/blob/master/LICENSE">Open Source License</a>.&#8194;&#8194;<a href="https://github.com/eebhub/platform/blob/master/ACKNOWLEDGEMENT_DISCLAIMER">Acknowledgement & Disclaimer</a>.</h5>
+        <h6 class="text-center" style="color:gray;">Note:&#8194;&#8194;We recommend Chrome, Firefox, Safari web browsers.&#8194;&#8194;Internet Explorer not fully supported.</h6>
+        <br>
+    </div>
+
+
+
+    <!-- Javascript -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/skrollr.js"></script>
+
+</body>
+
+</html>

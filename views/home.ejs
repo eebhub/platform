@@ -6,125 +6,12 @@
     <!--<meta http-equiv="refresh"
         content="0; url=http://tools.eebhub.org/lite"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/stylesheet.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <style type="text/css">
-        body {
-                padding-top: 50px;
-                background-color: rgb(229, 229, 229);
-            }
-        .levels {
-            background:rgb(229, 229, 229);
-            padding-top:25px;
-            padding-bottom:25px;
-            color:black;
-            -moz-box-shadow: 0 4px 4px #999;
-            -webkit-box-shadow: 0 4px 4px #999;
-            box-shadow: 0 4px 4px #999;
-           
-        }
-        .about {
-            background: rgba(78, 179, 211, 0.70);
-            padding: 25px 0;
-            color: #ffffff;
-            -moz-box-shadow: 0 4px 4px #999;
-            -webkit-box-shadow: 0 4px 4px #999;
-            box-shadow: 0 4px 4px #999;
-        }
-        .collaborate {
-            background: rgba(116,196,147,0.7);
-            padding: 25px 0;
-            color: #000;
-             -moz-box-shadow: 0 4px 4px #999;
-            -webkit-box-shadow: 0 4px 4px #999;
-            box-shadow: 0 4px 4px #999;
-        }
-        .contact {
-            background: rgba(225,101,82,0.7);
-            padding: 25px 0;
-            color: #000;
-            -moz-box-shadow: 0 4px 4px #999;
-            -webkit-box-shadow: 0 4px 4px #999;
-            box-shadow: 0 4px 4px #999;
-        }
-        .subscribe {
-            background: inherit;
-            padding: 25px 0;
-            color: #000;
-            -moz-box-shadow: 0 4px 4px #999;
-            -webkit-box-shadow: 0 4px 4px #999;
-            box-shadow: 0 4px 4px #999;
-        }
-        .aboutus {
-            color: #000;
-            display: table;
-            height: 400px;
-            width: 100%;
-            background: url(img/task2.jpg) no-repeat center center fixed; 
-            background-position:right;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            -moz-box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);
-            -webkit-box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);
-            box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);
-        }
-        h1.bottom {
-            position:relative;
-            top:340px;
-            
-            color:rgb(229, 229, 229);
-        }
-        @media (min-width:500px) and (max-width:768px) {
-            .aboutus {
-                height:300px;
-                background: url(img/task2.jpg) no-repeat left left fixed; 
-                -webkit-background-size: cover;
-                -moz-background-size: cover;
-                -o-background-size: cover;
-                background-size: cover;
-            }
-        h1.bottom {
-            top:240px;
-        }
-        }
-        .institutions {
-            background: inherit;
-            padding: 25px 0;
-            color: #000;
-            -moz-box-shadow: 0 4px 4px #999,0 -4px 4px rgba(0, 0, 0, 0.4);
-            -webkit-box-shadow: 0 4px 4px #999,0 -4px 4px rgba(0, 0, 0, 0.4);
-            box-shadow: 0 4px 4px #999,0 -4px 4px rgba(0, 0, 0, 0.4);
-        }
-        .institutions img.grey {
-            -webkit-filter: grayscale(1);
-            -ms-filter: grayscale(1);
-            -moz-filter: grayscale(1);
-            -o-filter: grayscale(1);
-        }
-        .nogrey{
-            
-        }
-        
-        .bottomimg {
-            margin-left:41%;
-        }
-        .learn {
-            background: rgba(241,150,112,1);
-            padding: 25px 0;
-            color: #000;
-            -moz-box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);
-            -webkit-box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);
-            box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);
-        }
-        .learn button {
-            position:relative;
-            right:45%;
-        }
-    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
 </head>
 
 <body style="background:url('../img/wood1.jpg') fixed;">
@@ -178,12 +65,11 @@
         </div>
     </div>
     <!--Main Page-->
-    <div style="height:480px;">
-    <br>
-    <h1 class="text-center">Simulate building energy online.</h1>
-
-    <br><br>
-    <div class="row-fluid">
+    
+    <div class="tagline row-fluid">
+        <h1 class="text-center">Simulate building energy online.</h1>
+    </div>
+    <div class="row-fluid levels">
         <div class="span3">
             <h3 class="text-center">Lite</h3>
             <span class="house-center">
@@ -228,10 +114,9 @@
             <h6 class="text-center gray-small">installation staging</h6>
             <h5 class="text-center">for building analysts</h5>
         </div>
-        </div>
     </div>
 
-    <div class="about">
+    <div class="about row-fluid">
         <h2 class="text-center">What is a simulation platform?</h2>
         <div class="pagination-centered">
             <img src="img/simulation.png" alt="simulation" />
@@ -247,10 +132,12 @@
             <img src="img/buildings.png" alt="buildings" />
         </div>
         <h4 class="text-center">Building industry stakeholders will be empowered to make informed decisions on how to reduce energy consumption in buildings.</h4>
+        <br>
     </div>
-    <div class="learn">
+    <div class="learn row-fluid">
         <div>
-            <h1 class="text-center">Learn More</h1>
+            <div class="pagination-centered"><img src="img/eebhub-gray.png" width="120" height="86" alt="eebhub"/></div>
+            <h4 class="text-center">The EEB Hub is pioneering the web tool to make this possible, proven, &amp; easy.</h4>
         </div>
         <div class="pagination-centered">
         <iframe src='https://skydrive.live.com/embed?cid=16B20B2C9752FBFF&resid=16B20B2C9752FBFF%21214&authkey=ALtCkkH41pF9YQY&em=2&wdAr=1.3333333333333333'
@@ -258,142 +145,134 @@
             <a target='_blank' href='http://office.com'>Microsoft Office</a>presentation, powered by
             <a target='_blank' href='http://office.com/webapps'>Office Web Apps</a>.</iframe>
         </div>
+    </div> 
+    <div class="subscribe row-fluid">
+        <h2 class="text-center">SUBSCRIBE</h2>
+            <br>
+            <!-- Begin MailChimp Signup Form --> 
+            <!--<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">-->
+             <div class="pagination-centered">
+                 <div id="mc_embed_signup"> 
+                    <form action="http://eebhub.us7.list-manage.com/subscribe/post?u=2368150e5ed73d7788cb50531&amp;id=83b4ba8ea6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> 
+                    <input type="email" value="" name="EMAIL" class="email text-center" id="mce-EMAIL" placeholder="email address" style="width:500px;" required> 
+                    <div class="clear">
+                        <input type="submit" value="Subscribe to News & Updates" name="subscribe" id="mc-embedded-subscribe" class="btn" style="font-weight:bold;width:515px;">
+                    </div> 
+                    </form> 
+                 </div> <!--End mc_embed_signup-->
+                 <a href="news"><input type="button" value="Current News" class="btn" style="font-weight:bold;width:515px;"></a>
+             </div>
     </div>
-    <div class="aboutus">
-        <div>
-            <h1 class="bottom text-center">People</h1>
+    <div class="collaborate row-fluid">
+        <h2 class="text-center">COLLABORATE</h2>
+        <br>
+        <div class="span4">
+            <span class="house-center">
+                <a href="code">
+                    <img src="img/iconmonstr-html-code-icon.svg" alt="substantial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h3 class="text-center">code</h3>
         </div>
-
+        <div class="span4">
+            <span class="house-center">
+                <a href="inspiration">
+                    <img src="img/iconmonstr-window-layout-icon.svg" alt="substantial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h3 class="text-center">user interface</h3>
+        </div>
+        <div class="span4">
+            <span class="house-center">
+                <a href="visitors">
+                    <img src="img/iconmonstr-user-14-icon.svg" alt="substantial simulation" width="130" height="130" />
+                </a>
+            </span>
+            <h3 class="text-center">visitors</h3>
+        </div>
     </div>
-
+    <div class="team row-fluid">
+        <h2 class="text-center">TEAM</h2>
+    </div>
+    
+    <div class="row-fluid">
+    <img class="team-image" src="img/task2-small.jpg" />
+    </div>
+    
     <div class="institutions row-fluid">
-        <div class="span12">
-            <img class="bottomimg" src="img/EEB-transparent.png" style="width:20%;">
+        <div class="span12 pagination-centered" style="padding-bottom:40px;">
+            <img class="grey" src="img/EEB-transparent.png" style="width:200px;">
         </div>
-        <div class="span12">&nbsp;</div>
-        <div class="span2 offset1">
+        <div class="span2 offset1 pagination-centered">
             <img class="grey" src="img/Logos/200px-Carnegie_Mellon_University_seal.svg.png">
         </div>
-        <div class="span2">
+        <div class="span2 pagination-centered">
             <img class="grey" src="img/Logos/250px-UPenn_shield_with_banner.svg.png">
         </div>
-        <div class="span2">
+        <div class="span2 pagination-centered">
             <img class="grey" src="img/Logos/mit-seal_400x400.gif">
         </div>
-        <div class="span2">
+        <div class="span2 pagination-centered">
             <img class="grey" src="img/Logos/ts-575x567.png">
         </div>
-        <div class="span2">
+        <div class="span2 pagination-centered">
             <img class="grey" src="img/Logos/seal.gif">
         </div>
         <div class="span12">&nbsp;</div>
         
-            <div class="span2 offset1">
+            <div class="span2 offset1 pagination-centered">
                 <img class="grey" src="img/Logos/645px-NIST_logo.svg_.png">
             </div>
-            <div class="span2">
+            <div class="span2 pagination-centered">
                 <img class="grey" src="img/Logos/balfour-beatty-logo.png">
             </div>
-            <div class="span2">
+            <div class="span2 pagination-centered">
                 <img class="grey" src="img/Logos/IBM_logo.svg">
             </div>
-            <div class="span2">
+            <div class="span2 pagination-centered">
                 <img class="grey" src="img/Logos/utrc_blue.png">
             </div>
-            <div class="span2">
+            <div class="span2 pagination-centered">
                 <img class="grey" src="img/Logos/NREL_Logo.gif">
             </div>
         
-
+    
     </div>
-    <div class="collaborate row-fluid">
-        <h1 class="text-center">COLLABORATE</h1>
-        <div style="width:12.5%;float:left;">&nbsp;</div>
-        <div style="width:25%;float:left;">
-            <figure>
-                <a href="https://github.com/eebhub/platform">
-                    <img src="img/iconmonstr-info-2-icon.svg">
+        <div class="contact row-fluid">
+        <h2 class="text-center">CONTACT US</h2>
+        <br>
+        <div class="span4">
+            <span class="house-center">
+                <a href="https://eebhub.uservoice.com/clients/widgets/classic_widget?mode=support&locale=en&forum_id=224458&support_tab_name=Contact%20EEB%20Hub%20Software%20Support&contact_us=true&custom_template_id=16740&context=site2&embed_type=lightbox&contact_enabled=true&feedback_enabled=false&smartvote=true&default_mode=support&referrer=http%3A%2F%2Feebhub.uservoice.com%2F#contact_us">
+                    <img src="img/iconmonstr-help-3-icon.svg" alt="substantial simulation" width="130" height="130" />
                 </a>
-                <figcaption>
-                    <h2 class="text-center">wiki</h2>
-                </figcaption>
-
-            </figure>
+            </span>
+            <h3 class="text-center">question</h3>
         </div>
-        <div style="width:25%;float:left;">
-            <figure>
-                <a href="">
-                    <img src="img/iconmonstr-html-code-icon.svg">
+        <div class="span4">
+            <span class="house-center">
+                <a href="ideas">
+                    <img src="img/iconmonstr-light-bulb-18-icon.svg" alt="substantial simulation" width="130" height="130" />
                 </a>
-                <figcaption>
-                    <h2 class="text-center">code</h2>
-                </figcaption>
-            </figure>
+            </span>
+            <h3 class="text-center">new idea</h3>
         </div>
-        <div style="width:25%;float:left;">
-            <figure>
-                <a href="">
-                    <img src="img/iconmonstr-window-layout-icon.svg">
-                </a>
-                <figcaption>
-                    <h2 class="text-center">ui</h2>
-                </figcaption>
-            </figure>
-        </div>
-        <div style="width:12.5%;float:left;">&nbsp;</div>
-    </div>
-
-    <div class="contact row-fluid">
-        <h1 class="text-center">CONTACT US</h1>
-        <div style="width:12.5%;float:left;">&nbsp;</div>
-        <div style="width:25%;float:left;">
-            <figure>
-                <a href="https://eebhub.uservoice.com/clients/widgets/classic_widget?mode=support&locale=en&forum_id=224458&contact_us=true&custom_template_id=16740&context=site2&embed_type=lightbox&contact_enabled=true&feedback_enabled=false&smartvote=true&default_mode=support&referrer=http%3A%2F%2Feebhub.uservoice.com%2F#contact_us">
-                    <img src="img/iconmonstr-help-3-icon.svg">
-                </a>
-                <figcaption>
-                    <h2 class="text-center">questions</h2>
-                </figcaption>
-            </figure>
-        </div>
-        <div style="width:25%;float:left;">
-            <figure>
-                <a href="http://tools.eebhub.org/ideas">
-                    <img src="img/iconmonstr-light-bulb-18-icon.svg">
-                </a>
-                <figcaption>
-                    <h2 class="text-center">new ideas</h2>
-                </figcaption>
-            </figure>
-        </div>
-        <div style="width:25%;float:left;">
-            <figure>
+        <div class="span4">
+            <span class="house-center">
                 <a href="https://github.com/eebhub/platform/issues">
-                    <img src="img/iconmonstr-warning-4-icon.svg">
+                    <img src="img/iconmonstr-warning-4-icon.svg" alt="substantial simulation" width="130" height="130" />
                 </a>
-                <figcaption>
-                    <h2 class="text-center">report issue</h2>
-                </figcaption>
-            </figure>
+            </span>
+            <h3 class="text-center">report issue</h3>
         </div>
-        <div style="width:12.5%;float:left;">&nbsp;</div>
     </div>
-    <div class="Subscribe">
-        <h1 class="text-center">Subscribe</h1>
-        
-        <button class="btn-block btn btn-primary btn-large">Current News</button>
-        
-        <button class="btn-block btn btn-primary btn-large">Mailchimp</button>
-        
-        <button class="btn-block btn btn-primary btn-large">Subscribe</button>
-            </div>
-        
-    </div>
-    <hr style="color:black;background-color:black;">
     <div class="footer">
+        <br>
         <h5 class="text-center">Built by the <a href="http://www.eebhub.org">Energy Efficient Buildings HUB</a>, a <a href="http://energy.gov/science-innovation/innovation/hubs">U.S. Department of Energy Innovation HUB</a>.</h5>
         <h5 class="text-center">Our simulation & modeling team includes PSU, MIT, CMU, UMaryland, UPenn, IBM, UTRC, Balfour Beatty, NIST, & NREL.</h5>
-        <h5 class="text-center"><a href="https://github.com/eebhub/platform/blob/master/ACKNOWLEDGEMENT_DISCLAIMER">Acknowledgement & Disclaimer</a>. &#8194;</h5>
+        <h5 class="text-center"><a href="https://github.com/eebhub/platform/blob/master/LICENSE">Open Source License</a>.&#8194;&#8194;<a href="https://github.com/eebhub/platform/blob/master/ACKNOWLEDGEMENT_DISCLAIMER">Acknowledgement & Disclaimer</a>.</h5>
+        <h6 class="text-center" style="color:gray;">Note:&#8194;&#8194;We recommend Chrome, Firefox, Safari web browsers.&#8194;&#8194;Internet Explorer not fully supported.</h6>
+        <br>
     </div>
 
 

@@ -16,7 +16,7 @@ The idea is that empowered stakeholders will be able to make better informed dec
 to reduce energy consumption in buildings. The interconnected aspect of tools in the 
 platform should also facilitate negotiations among different stakeholders in the efforts 
 to improve the overall building performance.
-Learn More at simulation.eebhub.org
+Learn More at http://simulation.eebhub.org
 
 Software Stack
 --------------

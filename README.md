@@ -12,6 +12,7 @@ integrated design, construction, commissioning, and operation. A modeling platfo
 can be viewed as a suite of interconnected tools that are strategically deployed to 
 different stakeholders responsible for a building in different periods of its 
 lifecycle. 
+
 The idea is that empowered stakeholders will be able to make better informed decisions 
 to reduce energy consumption in buildings. The interconnected aspect of tools in the 
 platform should also facilitate negotiations among different stakeholders in the efforts 
@@ -45,6 +46,7 @@ Learn More at http://www1.eere.energy.gov/buildings/commercial/bedes.html
 Team
 -----
 Built by the Energy Efficient Buildings Hub, a U.S. Department of Energy Innovation Hub.
+
 Our simulation & modeling team includes PSU, MIT, CMU, UMaryland, UPenn, IBM, UTRC, 
 Balfour Beatty, NIST, & NREL.
 

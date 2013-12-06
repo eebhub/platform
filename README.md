@@ -29,7 +29,7 @@ Open Source Software Community to which it is built upon:
 * Node.js Server Side Language
 * MongoDB Database
 * Ubuntu Operating System
-* 
+
 To contribute to this community, this code is released under an open source license
 based off of the MIT License.
 

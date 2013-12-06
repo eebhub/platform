@@ -23,11 +23,11 @@ Software Stack
 
 This simulation platform for buildings would not have been possible without the 
 Open Source Software Community to which it is built upon:
-Bootstrap Styling
-Express Web Framework
-Node.js Server Side Language
-MongoDB Database
-Ubuntu Operating System
+*Bootstrap Styling
+*Express Web Framework
+*Node.js Server Side Language
+*MongoDB Database
+*Ubuntu Operating System
 To contribute to this community, this code is released under an open source license
 based off of the MIT License.
 

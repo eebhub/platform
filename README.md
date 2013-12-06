@@ -1,11 +1,12 @@
 Energy Efficient Buildings Hub Simulation Platform
-==================================================
-tools.eebhub.org
+--------------------------------------------------
+web software to support decision making in building retrofit projects
 
-Vision
--------
 
-The main objective of this EEB HUB Modeling and Simulation task is to develop and 
+Objective
+---------
+
+The main objective of this EEB Hub Modeling and Simulation project is to develop and 
 deploy a state-of-the-art modeling platform to the building industry in support of 
 integrated design, construction, commissioning, and operation. A modeling platform 
 can be viewed as a suite of interconnected tools that are strategically deployed to 
@@ -20,13 +21,15 @@ Learn More at simulation.eebhub.org
 Software Stack
 --------------
 
-This platform would not have been possible without the Open Source Community to which
-it is built upon:
+This simulation platform for buildings would not have been possible without the 
+Open Source Software Community to which it is built upon:
 Bootstrap Styling
 Express Web Framework
 Node.js Server Side Language
 MongoDB Database
 Ubuntu Operating System
+To contribute to this community, this code is released under an open source license
+based off of the MIT License.
 
 Form & Database Attributes
 --------------------------

@@ -125,7 +125,7 @@
   [class*="span"] {
     float: left;
     min-height: 1px;
-    margin-left: 30px;
+    /*margin-left: 30px;*/
   }
   .container,
   .navbar-static-top .container,
@@ -223,8 +223,8 @@
     float: left;
     width: 100%;
     min-height: 30px;
-    margin-left: 2.564102564102564%;
-    *margin-left: 2.5109110747408616%;
+    /*margin-left: 2.564102564102564%;*/
+    /**margin-left: 2.5109110747408616%;*/
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
@@ -801,8 +801,8 @@
 
 @media (max-width: 767px) {
   body {
-    padding-right: 20px;
-    padding-left: 20px;
+    /*padding-right: 20px;*/
+    /*padding-left: 20px;*/
   }
   .navbar-fixed-top,
   .navbar-fixed-bottom,
@@ -958,7 +958,7 @@
     position: static;
   }
   .navbar-fixed-top {
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
   }
   .navbar-fixed-bottom {
     margin-top: 20px;

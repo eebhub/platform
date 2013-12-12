@@ -101,8 +101,13 @@ module.exports = {
 
             var newPath = folderPath + "/"+request.files.utilityDataFile.name;
             fs.writeFile(newPath, data, function (err) {
-            if (err) throw err;
-            console.log('file uploaded');
+            //if (err) throw err;
+            if (err) {//utility_electric = [65280, 50400, 54600, 68160, 72240, 89280, 100560, 131400, 111000, 89880, 89040, 66120];
+                      //utility_gas = [3641, 2166, 1019, 923, 30.5, 34.5, 85.7, 38.7, 989.7, 2824, 2385, 3500];
+                      utility_electric = request.body.utility_electric;
+                      utility_gas = request.body.utility_gas;
+                      }
+            else {console.log('file uploaded');
              var xlsx = require('node-xlsx');
             var utility_data = xlsx.parse(newPath); 
             var elec_data1 = utility_data.worksheets[0].data[1][2].value;
@@ -134,7 +139,7 @@ module.exports = {
             var gas_data12 = utility_data.worksheets[2].data[12][2].value;
             utility_gas = [gas_data1, gas_data2, gas_data3, gas_data4, gas_data5, gas_data6, gas_data7, gas_data8, gas_data9, gas_data10, gas_data11, gas_data12];
             console.log(utility_gas);
-        
+            }
         
            if (elec_unit=='kBTU'){
                 for (var i=0; i< utility_electric.length; i++){

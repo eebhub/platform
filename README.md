@@ -1,8 +1,8 @@
 Energy Efficient Buildings Hub Simulation Platform
 --------------------------------------------------
-http://tools.eebhub.org
-
 web software to support decision making in building retrofit projects
+
+http://tools.eebhub.org
 
 
 Objective
@@ -19,6 +19,7 @@ The idea is that empowered stakeholders will be able to make better informed dec
 to reduce energy consumption in buildings. The interconnected aspect of tools in the 
 platform should also facilitate negotiations among different stakeholders in the efforts 
 to improve the overall building performance.
+
 Learn More at http://simulation.eebhub.org
 
 Software Stack
@@ -27,7 +28,7 @@ Software Stack
 This simulation platform for buildings would not have been possible without the 
 Open Source Software Community to which it is built upon: 
 
-* Bootstrap Styling
+* Bootstrap Front End Styling
 * Express Web Framework
 * Node.js Server Side Language
 * MongoDB Database
@@ -43,6 +44,7 @@ Attributes are based off of DOE's Building Energy Data Exchange Specification (B
 BEDES provides a common data format for building characteristics, efficiency measures, 
 and energy data definitions.  BEDES facilitates the utilization and sharing of empirical 
 building energy performance data among software tools and data collection projects.
+
 Learn More at http://www1.eere.energy.gov/buildings/commercial/bedes.html
 
 Team

@@ -15,7 +15,7 @@ var express = require('express')
 
 var app = express();
 
-mongoose.connect("mongodb://128.118.67.242/test");
+//mongoose.connect("mongodb://128.118.67.242/test");
 var UserSchema = new mongoose.Schema({
     username: String,
     password: String,
@@ -197,6 +197,7 @@ if ('development' == app.get('env')) {
 //Get Routing
 app.get('/', routes.getHome);
 app.get('/news', routes.getNews);
+app.get('/presentation', routes.getPresentation);
 app.get("/signup", function (req, res) {
     res.render("signup");
 });
@@ -1292,9 +1293,25 @@ app.get("/vision", function (req, res) {
 app.get("/license", function (req, res) {
     res.redirect("https://github.com/eebhub/platform/blob/master/LICENSE");
 });
+app.get("/disclaimer", function (req, res) {
+    res.redirect("https://github.com/eebhub/platform/blob/master/ACKNOWLEDGEMENT_DISCLAIMER");
+});
+app.get("/wiki", function (req, res) {
+    res.redirect("https://github.com/eebhub/platform/wiki");
+});
+app.get("/developers", function (req, res) {
+    res.redirect("http://developer.eebhub.org");
+});
+// app.get("/presentation", function (req, res) {
+//     res.redirect("https://skydrive.live.com/redir?resid=16B20B2C9752FBFF%21214");
+// });
 app.get("/measures", function (req, res) {
     res.redirect("https://docs.google.com/document/d/1wrO0552T2dODzvKNWTP_CsDHKaudnBGs4ulwSbsDx6w/edit?usp=sharing");
 });
+app.get("/meetings", function (req, res) {
+    res.redirect("https://drive.google.com/folderview?id=0B2pmAq6B1uv_WGVwSjNhaVdMeHM&usp=sharing");
+});
+
 
 // Google Analytics
 app.get("/visits", function (req, res) {

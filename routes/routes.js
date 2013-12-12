@@ -36,6 +36,9 @@ module.exports = {
     getNews: function(request, response){
         response.sendfile('./views/news.html');  
     }, 
+    getPresentation: function(request, response){
+        response.sendfile('./views/presentation.html');  
+    }, 
 
     
 };

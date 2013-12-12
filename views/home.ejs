@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="modal">
 
 <head>
     <title>EEB Hub Simulation Platform Tools</title>
@@ -12,6 +12,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/stylesheet.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.7.0.js"></script>
+    <script src="js/modal.js"></script>
 </head>
 
 <body style="background:url('../img/wood1.jpg') fixed;">
@@ -41,23 +44,19 @@
                     </ul>
                     
                     <div class="pull-right text-right">
-
                         <ul class="nav pull-right">
-                        
-                        <script>
-                                        var username = "<%= username %>";
-                                        if (username!='undefined'){
-                                        document.write('<li><a href="/mydashboard">My Dashboard</a></li><li><a href="/logout">LOGOUT</a></li>');
-                                        }else {
-                                            document.write('<li><a href="/signup">SIGNUP</a></li><li><a href="/signin">LOGIN</a></li>');
-                                        }
-                             
-                                        
-                        </script>
-						      
-					          
+                            <script>
+                                            var username = "<%= username %>";
+                                            if (username!='undefined'){
+                                            document.write('<li><a href="/mydashboard">My Dashboard</a></li><li><a href="/logout">LOGOUT</a></li>');
+                                            }else {
+                                                document.write('<li><a href="/signup">SIGNUP</a></li><li><a href="/signin">LOGIN</a></li>');
+                                            }
+                                 
+                                            
+                            </script>
 						</ul>
-                        </div>
+                    </div>
                     
                 </div>
                 <!--/.nav-collapse -->
@@ -135,16 +134,27 @@
         <br>
     </div>
     <div class="learn row-fluid">
-        <div>
-            <div class="pagination-centered"><img src="img/eebhub-gray.png" width="120" height="86" alt="eebhub"/></div>
-            <h4 class="text-center">The EEB Hub is pioneering the web tool to make this possible, proven, &amp; easy.</h4>
-        </div>
+        <div class="pagination-centered"><img src="img/platform2.png" width="193" height="86" alt="eebhub"/></div>
+        <h4 class="text-center">The EEB Hub is pioneering the web tool to make this possible, proven, &amp; easy.</h4>
+        <br>
         <div class="pagination-centered">
-        <iframe src='https://skydrive.live.com/embed?cid=16B20B2C9752FBFF&resid=16B20B2C9752FBFF%21214&authkey=ALtCkkH41pF9YQY&em=2&wdAr=1.3333333333333333'
-        width='610px' height='480px' frameborder='0'>This is an embedded
-            <a target='_blank' href='http://office.com'>Microsoft Office</a>presentation, powered by
-            <a target='_blank' href='http://office.com/webapps'>Office Web Apps</a>.</iframe>
+            <div ng-controller="ModalDemoCtrl">
+                <script type="text/ng-template" id="myModalContent.html">
+                    <div class="modal" style="width:600px;">
+                    <div class="modal-body" style="max-height:480px;">
+                        <iframe src='https://skydrive.live.com/embed?cid=16B20B2C9752FBFF&resid=16B20B2C9752FBFF%21214&authkey=ALtCkkH41pF9YQY&em=2&wdAr=1.3333333333333333'
+                    width='570px' height='450px' frameborder='0'>This is an embedded
+                        <a target='_blank' href='http://office.com'>Microsoft Office</a>presentation, powered by
+                        <a target='_blank' href='http://office.com/webapps'>Office Web Apps</a>.</iframe>
+                    </div>
+                    </div>
+                </script>
+                <img class="img-polaroid" src="img/workflow.png" width="650" style="cursor:pointer;padding:20px;" ng-click="open()">
+            </div>
         </div>
+        <br>
+        <h4 class="text-center gray">Data flow above shows 4 platform tools with increasing analytical capabilities</h4>
+        <h4 class="text-center">designed to engage the owner throughout a building retrofit lifecycle</h4>
     </div> 
     <div class="subscribe row-fluid">
         <h2 class="text-center">SUBSCRIBE</h2>
@@ -154,13 +164,13 @@
              <div class="pagination-centered">
                  <div id="mc_embed_signup"> 
                     <form action="http://eebhub.us7.list-manage.com/subscribe/post?u=2368150e5ed73d7788cb50531&amp;id=83b4ba8ea6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> 
-                    <input type="email" value="" name="EMAIL" class="email text-center" id="mce-EMAIL" placeholder="email address" style="width:500px;" required> 
+                    <input type="email" value="" name="EMAIL" class="email text-center" id="mce-EMAIL" placeholder="email address" style="width:300px;" required> 
                     <div class="clear">
-                        <input type="submit" value="Subscribe to News & Updates" name="subscribe" id="mc-embedded-subscribe" class="btn" style="font-weight:bold;width:515px;">
+                        <input type="submit" value="Subscribe to News & Updates" name="subscribe" id="mc-embedded-subscribe" class="btn" style="font-weight:bold;width:310px;">
                     </div> 
                     </form> 
                  </div> <!--End mc_embed_signup-->
-                 <a href="news"><input type="button" value="Current News" class="btn" style="font-weight:bold;width:515px;"></a>
+                 <a href="news"><input type="button" value="Current News" class="btn" style="font-weight:bold;width:310px;"></a>
              </div>
     </div>
     <div class="collaborate row-fluid">
@@ -195,9 +205,9 @@
         <h2 class="text-center">TEAM</h2>
     </div>
     
-    <div class="row-fluid">
+    
     <img class="team-image" src="img/task2-small.jpg" />
-    </div>
+    
     
     <div class="institutions row-fluid">
         <div class="span12 pagination-centered" style="padding-bottom:40px;">
@@ -269,9 +279,20 @@
     <div class="footer">
         <br>
         <h5 class="text-center">Built by the <a href="http://www.eebhub.org">Energy Efficient Buildings HUB</a>, a <a href="http://energy.gov/science-innovation/innovation/hubs">U.S. Department of Energy Innovation HUB</a>.</h5>
-        <h5 class="text-center">Our simulation & modeling team includes PSU, MIT, CMU, UMaryland, UPenn, IBM, UTRC, Balfour Beatty, NIST, & NREL.</h5>
-        <h5 class="text-center"><a href="https://github.com/eebhub/platform/blob/master/LICENSE">Open Source License</a>.&#8194;&#8194;<a href="https://github.com/eebhub/platform/blob/master/ACKNOWLEDGEMENT_DISCLAIMER">Acknowledgement & Disclaimer</a>.</h5>
-        <h6 class="text-center" style="color:gray;">Note:&#8194;&#8194;We recommend Chrome, Firefox, Safari web browsers.&#8194;&#8194;Internet Explorer not fully supported.</h6>
+        <h6 class="text-center" style="color:gray; font-weight:normal;">NOTE | We recommend Chrome, Firefox, or Safari web browsers. Internet Explorer is not fully supported. |
+        COMMUNITY | <a href="http://area51.stackexchange.com/proposals/45232/building-performance-simulation-analysis?tab=votes&phase=definition">Building Performance Q&A</a> | <a href="https://bcl.nrel.gov/">NREL Building Component Library</a></h6>
+        <h6 class="text-center" style="color:gray; font-weight:normal;">LEARN MORE | 
+            <a href="vision">Vision</a> | 
+            <a href="infrastructure">Infrastructure</a> | 
+            <a href="integration">Integration</a> | 
+            <a href="developers">Developers</a> | 
+            <a href="weather">Weather</a> | 
+            <a href="variables">Variables</a> | 
+            <a href="database">Database</a> | 
+            <a href="wiki">Wiki</a> | 
+            <a href="license">Open Source License</a> |
+            <a href="disclaimer">Acknowledgement & Disclaimer</a>
+        </h6>
         <br>
     </div>
 

@@ -585,7 +585,7 @@ module.exports = {
         
         
         //Get User Inputs
-        var building_name = request.body.building_name;
+        var building_name = request.body.building_name.replace(/\s+/g, '') || "NoName";;
         var electric_utility_startdate = request.body.electric_utility_startdate;
         var utility_electric = request.body.utility_electric;
         var utility_gas = request.body.utility_gas;

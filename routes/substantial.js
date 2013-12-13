@@ -37,7 +37,7 @@ module.exports ={
         }
         
         
-        var buildingname = request.body.building_name;
+        var buildingname = request.body.building_name.replace(/\s+/g, '') || "NoName";;
         var buildingclimate = request.body.weather_epw_location;
         var buildingstate = "";
         switch (buildingclimate)

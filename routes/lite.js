@@ -585,7 +585,7 @@ module.exports = {
         
         
         //Get User Inputs
-        var building_name = request.body.building_name;
+        var building_name = request.body.building_name.replace(/\s+/g, '') || "NoName";;
         var electric_utility_startdate = request.body.electric_utility_startdate;
         var utility_electric = request.body.utility_electric;
         var utility_gas = request.body.utility_gas;
@@ -597,6 +597,7 @@ module.exports = {
         var building_location_address = request.body.building_location_address;
         var building_location_city = request.body.building_location_city;
         var building_location_state = request.body.building_location_state;
+        var window_to_wall_ratio = request.body.window_to_wall_ratio;
 
         //Location
 
@@ -614,9 +615,9 @@ module.exports = {
         //Make Simulation Run Folder
         ibm.geoCode(building_location_address, building_location_city, building_location_state, function(building_lat, building_long) {
             fs.mkdir(folderPath + building_name + timestamp, function() {
-                ibm.IBMbuildingData(ibmBuildingDataFileName, building_name, building_lat, building_long, orientation, building_length, building_width, building_height, gross_floor_area);
+                ibm.IBMbuildingData(ibmBuildingDataFileName, building_name, building_lat, building_long, orientation, building_length, building_width, building_height, gross_floor_area, window_to_wall_ratio);
                 ibm.IBMutilityData(ibmUtilityDataFileName, electric_utility_startdate, utility_electric, utility_gas);
-                response.redirect('http://developer.eebhub.org/ibm/' + building_name + timestamp);
+                response.redirect('http://128.118.67.244:8080/EEBHub/EEBHubDBServlet?Command=InsertData?Filename=http://developer.eebhub.org/ibm/' + building_name + timestamp);
             });
         });
 

@@ -15,7 +15,7 @@ var express = require('express')
 
 var app = express();
 
-//mongoose.connect("mongodb://128.118.67.242/test");
+mongoose.connect("mongodb://128.118.67.242/test");
 var UserSchema = new mongoose.Schema({
     username: String,
     password: String,
@@ -209,6 +209,37 @@ app.get('/logout',function(req,res){
   req.session.destroy();
   //res.send("Logged out!");
   res.redirect('/');
+});
+
+app.get('/eplus_out', function(req, res){
+    var fs = require('fs');
+   var sqlite3 = require('sqlite3').verbose();
+    var db = new sqlite3.Database('../openstudio/eem_1.sql');
+
+db.serialize(function() {
+  //db.run("CREATE TABLE lorem (info TEXT)");
+
+//   var stmt = db.prepare("INSERT INTO lorem VALUES (?)");
+//   for (var i = 0; i < 10; i++) {
+//       stmt.run("Ipsum " + i);
+//   }
+//   stmt.finalize();
+
+//   db.each("SELECT rowid AS id, info FROM lorem", function(err, row) {
+//       console.log(row.id + ": " + row.info);
+//   });
+var label = 0; 
+db.each("SELECT * FROM Surfaces", function(err, row){
+    var str = row.SurfaceIndex + ',' + row.SurfaceName + ',' + row.Area + '\n';
+  console.log(row);
+  //dbres = dbres + str;
+  if (label === 0) {fs.writeFileSync('eem_db.txt', str); label = 1;}
+  else fs.appendFileSync('eem_db.txt', str); 
+  
+});
+});
+db.close(); 
+res.sendfile('eem_db.txt');
 });
 
 
@@ -1311,6 +1342,9 @@ app.get("/measures", function (req, res) {
 app.get("/meetings", function (req, res) {
     res.redirect("https://drive.google.com/folderview?id=0B2pmAq6B1uv_WGVwSjNhaVdMeHM&usp=sharing");
 });
+app.get("/meeting", function (req, res) {
+    res.redirect("https://drive.google.com/folderview?id=0B2pmAq6B1uv_WGVwSjNhaVdMeHM&usp=sharing");
+});
 
 
 // Google Analytics
@@ -1333,8 +1367,17 @@ app.get("/controls", function (req, res) {
 app.get("/monitoring", function (req, res) {
     res.redirect("http://cloud.cdhenergy.com/bldg101/");
 });
-app.get("/middleware", function (req, res) {
-    res.redirect("http://128.118.67.231:8080/PBTC/home.xhtml");
+app.get("/building101", function (req, res) {
+    res.redirect("http://cloud.cdhenergy.com/bldg101/");
+});
+app.get("/harvestgrill", function (req, res) {
+    res.redirect("http://cloud.cdhenergy.com/harvest_grill/");
+});
+app.get("/building489", function (req, res) {
+    res.redirect("http://cloud.cdhenergy.com/bldg489/");
+});
+app.get("/montgomeryplaza", function (req, res) {
+    res.redirect("http://cloud.cdhenergy.com/1mp/#display_options");
 });
 app.get("/dashboard", function (req, res) {
     res.redirect("http://128.118.67.231:8888/dglux/");

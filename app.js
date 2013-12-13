@@ -1342,6 +1342,9 @@ app.get("/measures", function (req, res) {
 app.get("/meetings", function (req, res) {
     res.redirect("https://drive.google.com/folderview?id=0B2pmAq6B1uv_WGVwSjNhaVdMeHM&usp=sharing");
 });
+app.get("/meeting", function (req, res) {
+    res.redirect("https://drive.google.com/folderview?id=0B2pmAq6B1uv_WGVwSjNhaVdMeHM&usp=sharing");
+});
 
 
 // Google Analytics

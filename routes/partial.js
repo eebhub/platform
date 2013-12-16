@@ -70,20 +70,24 @@ module.exports = {
         //Run Engine & Show Console Output
         var sys = require('sys');
         var exec = require('child_process').exec;
-        function puts(error, stdout, stderr){sys.puts(stdout)}
-
+        
         var command = 
                     'ssh bitnami@128.118.67.227 \"' +
                     'cd /home/platform/;' +
                     'java -jar DATest.jar mit/'+BuildingInputName+'/'+BuildingInputName+'_input.txt;\"';
-                    
+        
+        function puts(error, stdout, stderr){
+            sys.puts(stdout);
+            response.redirect('http://developer.eebhub.org/mit/'+BuildingInputName+'/'+BuildingInputName+'_output.html');
+        }
+        
         exec(command, puts);
         
         //OLD RUN ENGINE
         //exec('ssh platform@128.118.67.227 \"cd /home/platform/; java -jar DATest.jar '+BuildingInputName+'_input.txt; cp '+BuildingInputName+'.txt /home/platform/mit/' + BuildingInputName + '/\"', function(err2, stdout2, stderr2));
         //});
 
-        response.redirect('http://developer.eebhub.org/mit/'+BuildingInputName+'/'+BuildingInputName+'_output.html');
+        //response.redirect('http://developer.eebhub.org/mit/'+BuildingInputName+'/'+BuildingInputName+'_output.html');
         
         //OLD RE-DIRECT TO ALL MIT FILES CREATED
         //response.redirect('http://developer.eebhub.org/mit/'+BuildingInputName+'/');

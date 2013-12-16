@@ -1342,6 +1342,9 @@ app.get("/measures", function (req, res) {
 app.get("/meetings", function (req, res) {
     res.redirect("https://drive.google.com/folderview?id=0B2pmAq6B1uv_WGVwSjNhaVdMeHM&usp=sharing");
 });
+app.get("/meeting", function (req, res) {
+    res.redirect("https://drive.google.com/folderview?id=0B2pmAq6B1uv_WGVwSjNhaVdMeHM&usp=sharing");
+});
 
 
 // Google Analytics
@@ -1364,8 +1367,17 @@ app.get("/controls", function (req, res) {
 app.get("/monitoring", function (req, res) {
     res.redirect("http://cloud.cdhenergy.com/bldg101/");
 });
-app.get("/middleware", function (req, res) {
-    res.redirect("http://128.118.67.231:8080/PBTC/home.xhtml");
+app.get("/building101", function (req, res) {
+    res.redirect("http://cloud.cdhenergy.com/bldg101/");
+});
+app.get("/harvestgrill", function (req, res) {
+    res.redirect("http://cloud.cdhenergy.com/harvest_grill/");
+});
+app.get("/building489", function (req, res) {
+    res.redirect("http://cloud.cdhenergy.com/bldg489/");
+});
+app.get("/montgomeryplaza", function (req, res) {
+    res.redirect("http://cloud.cdhenergy.com/1mp/#display_options");
 });
 app.get("/dashboard", function (req, res) {
     res.redirect("http://128.118.67.231:8888/dglux/");

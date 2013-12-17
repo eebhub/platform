@@ -74,10 +74,11 @@ module.exports = {
         var command = 
                     'ssh bitnami@128.118.67.227 \"' +
                     'cd /home/platform/;' +
-                    'java -jar DATest.jar mit/'+BuildingInputName+'/'+BuildingInputName+'_input.txt;\"';
+                    'java -jar DATest.jar mit/'+BuildingInputName+'/'+BuildingInputName+'_input.txt '+ 
+                    '2>&1 | tee mit/'+BuildingInputName+'/'+BuildingInputName+'_shellOutput.txt;\"';
         
         function puts(error, stdout, stderr){
-            sys.puts(stdout);
+    
             response.redirect('http://developer.eebhub.org/mit/'+BuildingInputName+'/'+BuildingInputName+'_output.html');
         }
         

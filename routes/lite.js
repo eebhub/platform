@@ -313,6 +313,32 @@ module.exports = {
                 var X_max_electric = Math.max.apply(null, electric[1][0]);
                 var Y_intercept_electric = Ycp_electric - (LS_gas * Xcp_electric);
                 var Y_electric = LS_electric * X_max_electric + Y_intercept_electric;
+                
+                var elec_res = electric[1][3];
+                var elec_1 = electric[1][1];
+                var gas_res = gas[1][3];
+                var gas_1 = gas[1][1];
+                var sum_1 = 0;
+                var sum_2 = 0;
+                var sum_3 = 0;
+                for (var i=0; i< elec_res.length; i++){
+                    sum_1 = sum_1 + elec_res[i]*elec_res[i];
+                    sum_2 = sum_2 + elec_1[i];
+                    sum_3 = sum_3 + elec_res[i];
+                }
+                var cv_elec = Math.round(Math.sqrt(sum_1/11)/(sum_2/12)*100);
+                var nmbe_elec = Math.round(sum_3/11/(sum_2/12)*100);
+                 sum_1 = 0;
+                 sum_2 = 0;
+                 sum_3 = 0;
+                for (i=0; i< gas_res.length; i++){
+                    sum_1 = sum_1 + gas_res[i]*gas_res[i];
+                    sum_2 = sum_2 + gas_1[i];
+                    sum_3 = sum_3 + gas_res[i];
+                }
+                var cv_gas = Math.round(Math.sqrt(sum_1/11)/(sum_2/12)*100);
+                var nmbe_gas = Math.round(sum_3/11/(sum_2/12)*100);
+                
                 response.render('imtresults_3p', {
                     //Building
                     'username': request.session.username,
@@ -344,6 +370,11 @@ module.exports = {
                     'Xcp_electric': Xcp_electric,
                     'Ycp_electric': Ycp_electric,
                     'Y_electric': Y_electric,
+                    //uncertainty index cv & nmbe
+                    'cv_elec': cv_elec,
+                    'nmbe_elec': nmbe_elec,
+                    'cv_gas': cv_gas,
+                    'nmbe_gas': nmbe_gas,
                     //File Links
                     'insFileElectric': 'http://developer.eebhub.org/imt/'+building_name + "_" + timestamp + '/'+insFileNameElectric,
                     'datFileElectric': 'http://developer.eebhub.org/imt/' +building_name + "_" + timestamp + '/'+ dataFileNameElectric,

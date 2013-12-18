@@ -2,7 +2,7 @@
 <html>
     
     <head>
-        <title>EEB Hub Simulation Platform Tools</title>
+        <title>EEB Hub Simulation Platform</title>
         <link rel="shortcut icon" href="http://tools.eebhub.org/img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="http://tools.eebhub.org/img/favicon.ico" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -249,13 +249,21 @@ $('#utilityDataFile').change(function(){
                             <a href="#architecture"><i class="icon-home"></i> Architecture</a>
                         </li-->
                         <li><hr style="color:lightgray;background-color:lightgray;height:1px;border:none;"/></li>
-                        <li style="padding-left:13px;padding-bottom:15px;">
+                        <li style="padding-left:13px;">
                         
                              <i class="icon-adjust"></i>  <b>Units</b> &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
                              <input type="button" id="unitoptionSI" name="unitoption" value="SI" class="btn active" onclick='$(".unit").html("m");$("#si-ip").val("si");'>
                              <input type="button" id="unitoptionIP" name="unitoption" value="IP" class="btn" onclick='$(".unit").html("ft");$("#si-ip").val("ip");'>
-                         </div>
                         </li>
+                        <li><hr style="color:lightgray;background-color:lightgray;height:1px;border:none;"/></li>
+                         <li>
+                             <a class="nohover" href="literesults" target="_blank"><i class="icon-signal"></i> Example ASHRAE Outputs</a>
+                         </li>
+                        <li><hr style="color:lightgray;background-color:lightgray;height:1px;border:none;"/></li>
+                         <li style="padding-bottom:15px;">
+                        
+                             <a class="nohover" href="http://128.118.67.244:8080/EEBESRI/index.html" target="_blank"><i class="icon-signal"></i> Example IBM Outputs</a>
+                         </li>
                     </ul>
                 </div>
                 <div class="span9">
@@ -308,15 +316,9 @@ $('#utilityDataFile').change(function(){
                                             <span class="add-on">
                                                 <a href="http://developer.eebhub.org/weather.html" target="_blank"><i class="icon-map-marker"></i></a>
                                             </span>
-                          
-                                           
-                                            
-                                            </div>
-                                            <br>
-                                            <h4>Year Built</h4>
-                                        <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
-                                        
-
+                                        </div>
+                                        <h4>Year Built</h4>
+                                            <input class="span3" type="number" min="1500" max="2020" step="1" id="year_completed" name="year_completed">
                                     </div>
                                     <div class="span4">
                                         <h4>Function</h4>
@@ -343,12 +345,12 @@ $('#utilityDataFile').change(function(){
                                                 <a href="http://www1.eere.energy.gov/buildings/commercial/ref_buildings.html" target="_blank"><i class="icon-info-sign"></i></a>
                                             </span>
                                         </div>
+                                        <h4>Gross Floor Area</h4>
+                                        <div class="input-append">
+                                        <input class="span3" type="number" min="0" step="0.001" name="gross_floor_area" />
+                                        <span class="add-on"><span class="unit">m</span>&#178;</span>
+                                        </div>
                                         
-                                            <h4>Gross Floor Area</h4>
-                                            <div class="input-append">
-                                            <input class="span3" type="number" min="0" step="0.001" name="gross_floor_area" />
-                                            <span class="add-on"><span class="unit">m</span>&#178;</span>
-                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -358,52 +360,53 @@ $('#utilityDataFile').change(function(){
                                 <div class="page-header">
                                     <h2>Utility Data</h2>
                                 </div>
-                                
-                                <p><b>Choose utility data units:</b></p> 
+                                <h4>1.  Choose Units</h4>
                                 <div class="row">
-                                    <div class="span3">
-                                    <label for="elec_unit">Electricity: </label>
-                                    <select id="elec_unit" name="elec_unit">
+                                    <div class="span4">
+                                    <h5 class="gray" for="elec_unit">Electricity</h5>
+                                    <!--label for="elec_unit">Electricity Units</label>-->
+                                    <select class="span4" id="elec_unit" name="elec_unit">
                                         <option value="kWh">kWh</option>
                                         <option value="kBTU">kBTU</option>
                                         <option value="MJ">MJ</option>
                                     </select>
                                     </div>
-                                    <div class="span3">
-                                    <label for="gas_unit">Gas: </label>
-                                    <select id="gas_unit" name="gas_unit">
+                                    <div class="span4">
+                                    <h5 class="gray" for="gas_unit">Gas</h5>
+                                    <!--label for="gas_unit">Gas Units</label>-->
+                                    <select class="span4" id="gas_unit" name="gas_unit">
                                         <option value="Ccf">Ccf</option>
                                         <option value="Therm">Therm</option>
                                     </select>
                                     </div>
                                 </div>
                                 
-                                <h4>Upload your utility file</h4>
-                                <table>
-                                <tr>    
-                                            
-                                <td>            
-                                                <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                  <span class="btn btn-file"><span class="fileupload-new"><a href="http://developer.eebhub.org/archives/utilities/MeterConsumptionData.xlsx"><b><i class="icon-arrow-down"></i></i>Speadsheet Template</b></a></span>
-                                                 </div>
-                                </td>            
-                                <td>            
-                                                <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                  <span class="btn btn-file"><span class="fileupload-new"><b><i class="icon-arrow-up"></i>Import Spreadsheet</b></span><span class="fileupload-exists">Change</span><input type="file" name="utilityDataFile" id="utilityDataFile" /></span>
-                                                  <span class="fileupload-preview"></span>
-                                                  <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
-                                                </div>
-                                </td>        
-                                </tr>        
-                                </table>
+                                <br>
+                                <h4>2.  Import Electricity & Gas Data&nbsp;&nbsp;<small>current feature limited to 12 months</small></h4>
+                                <br>
+                                <div class="row">
+                                    <div class="span4">            
+                                          <a href="http://developer.eebhub.org/archives/utilities/MeterConsumptionData.xlsx" class="btn btn-large btn-block"><i class="icon-arrow-down"></i><b>Speadsheet Template</b></a>
+                                    </div>            
+                                    <div class="span4">            
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                          <span class="btn btn-large btn-block btn-file"><span class="fileupload-new"><i class="icon-arrow-up"></i><b>Import Spreadsheet</b></span><span class="fileupload-exists">Change</span><input type="file" name="utilityDataFile" id="utilityDataFile" /></span>
+                                          <span class="fileupload-preview"></span>
+                                          <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+                                        </div>
+                                    </div>  
+                                </div> 
+                                <br>
                                 <!--h4>Import Utility Data File</h4>
                              
                                   <input type="file" name="utilityDataFile" id="utilityDataFile" /-->
-                        
                                   <div id="displayImage"></div>
                                   <div ng-controller="CollapseDemoCtrl">
-                                  <h4>- Or, <button type="button" class="btn" ng-click="isCollapsed = !isCollapsed"><b>fill in the utility data table below</b></button></h4>
-                                
+                                    <div class="row">
+                                        <div class="span8" >
+                                            <button type="button" class="btn btn-block" ng-click="isCollapsed = !isCollapsed"><b>OR Manually Enter Utility Data</b></button>
+                                        </div>
+                                    </div>
                                     <div collapse="isCollapsed">
                                     <table class="table table-hover" id="utltable">
                                     <thead>
@@ -984,7 +987,6 @@ $('#utilityDataFile').change(function(){
                         }
                         </script>
                             <button type="submit" onclick="submitIMT()" class="btn btn-large btn-primary">SIMULATE</button>
-                            <a class="btn btn-large btn-info" href="literesults"><i class="icon-signal"></i> Example Outputs</a>
                             <img style="text-align:right;float:right;" src="http://tools.eebhub.org/img/ashrae.png" alt="ASHRAE" width="85" height="59">
                             <br style="clear:both" />
                             <h2 class="text-right">
@@ -1107,19 +1109,18 @@ $('#utilityDataFile').change(function(){
 
                     <div class="box-unit">
                         <button onclick="submitIBM()" class="btn btn-large btn-primary">SIMULATE</button>
-                        <a class="btn btn-large btn-info" href="http://128.118.67.244:8080/EEBESRI/index.html"><i class="icon-signal"></i> Example Outputs</a>
                          <img style="text-align:right;float:right;" src="http://tools.eebhub.org/img/ibm.png" alt="IBM" width="90" height="36">
                         <h2 class="text-right">
                             <small>powered by IBM Inverse Modeling Engine</small>
                         </h2>
                     </div>
-                    <div class="box-unit other">
-                        <div class="page-header">
-                        <h2>Other Resources</h2>
-                        </div>
-                        <div class="row">
-                        <div class="span4">
-                        <h4>EPA EnergyStar Score  <small>[target=75, median=50]</small></h4>
+                            <section id="import">
+                            <h3 style="padding-left:20px;">Related Resources</h3>
+                                <div class="box-unit">
+                                    <div class="row">
+                                        <div class="span4">
+                                            
+                                            <h4>EPA EnergyStar Score  <small>[target=75, median=50]</small></h4>
                                             <ul class="inline">
                                                 <li>
                                                     <input type="range" ng-model="portfolio" min="0" max="100" step="1" value={{portfolio}}/>
@@ -1128,8 +1129,8 @@ $('#utilityDataFile').change(function(){
                                                     <input class="span1" type="text" value={{portfolio}} ng-model="portfolio" placeholder="optional" name="energystar_score"/>
                                                 </li>
                                             </ul>
-                        </div>
-                        <div class="span4">
+                                        </div>
+                                        <div class="span4">
                                            <h4>DOE Energy Asset Score</h4>
                                             <ul class="inline">
                                                 <li>
@@ -1139,18 +1140,62 @@ $('#utilityDataFile').change(function(){
                                                     <input class="span1" type="text" value={{asset}} ng-model="asset" placeholder="optional" name="asset_score" />
                                                 </li>
                                             </ul>
-                        </div> 
-                        
-                        <div class="span8" style="text-align:right;float:right;">
-                                            <span>Learn more about
-                                            <a href="https://portfoliomanager.energystar.gov/pm/login.html" target="_blank"><img src="http://tools.eebhub.org/img/portfolio-manager.png" width="150" height="48"></a>
-                                            <a href="http://www1.eere.energy.gov/buildings/commercial/assetscore.html" target="_blank"><img src="http://tools.eebhub.org/img/asset-score.png" width="150" height="48"></a>
-                                            </span>
+                                            
                                         </div>
-                        
-                        </div>
-                        
-                    </div>
+                                     </div>
+                                    <div class="row">
+                                         <div class="span7" style="text-align:right;float:right;">
+                                                <span>Learn more about
+                                                <a href="http://www.energystar.gov/buildings/facility-owners-and-managers/existing-buildings/use-portfolio-manager" target="_blank"><img src="http://tools.eebhub.org/img/portfolio-manager.png" width="150" height="48"></a>
+                                                <a href="http://www1.eere.energy.gov/buildings/commercial/assetscore.html" target="_blank"><img src="http://tools.eebhub.org/img/asset-score.png" width="150" height="48"></a>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div><!--END EXPAND COLLAPSE BUTTON by Angular-->
+                    <!--OTHER RESOURCES OLD
+                        <div class="box-unit other">
+                            <div class="page-header">
+                                <h2>Other Resources</h2>
+                            </div>
+                            <div class="row">
+                                <div class="span4">
+                                    <h4>EPA EnergyStar Score
+                                        <small>[target=75, median=50]</small>
+                                    </h4>
+                                    <ul class="inline">
+                                        <li>
+                                            <input type="range" ng-model="portfolio" min="0" max="100" step="1" value={{portfolio}}/>
+                                        </li>
+                                        <li>
+                                            <input class="span1" type="text" value={{portfolio}} ng-model="portfolio"
+                                            placeholder="optional" name="energystar_score" />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="span4">
+                                    <h4>DOE Energy Asset Score</h4>
+                                    <ul class="inline">
+                                        <li>
+                                            <input type="range" ng-model="asset" min="0" max="100" step="1" value={{asset}}/>
+                                        </li>
+                                        <li>
+                                            <input class="span1" type="text" value={{asset}} ng-model="asset" placeholder="optional"
+                                            name="asset_score" />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="span8" style="text-align:right;float:right;">
+                                    <span>Learn more about
+                                        <a href="https://portfoliomanager.energystar.gov/pm/login.html"
+                                        target="_blank"><img src="http://tools.eebhub.org/img/portfolio-manager.png" width="150" height="48"></a>
+                                        <a href="http://www1.eere.energy.gov/buildings/commercial/assetscore.html"
+                                        target="_blank"><img src="http://tools.eebhub.org/img/asset-score.png" width="150" height="48"></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>END OF OTHER RESOURCES-->
                     
                     <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
 

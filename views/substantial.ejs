@@ -2,7 +2,7 @@
 <html ng-app>
     <!-- test-->
     <head>
-        <title>EEB Hub Simulation Platform Tools</title>
+        <title>EEB Hub Simulation Platform</title>
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -229,13 +229,17 @@
                             <a href="#schedules"><i class="icon-time"></i> Schedules</a>
                         </li>
                         <li><hr style="color:lightgray;background-color:lightgray;height:1px;border:none;"/></li>
-                        <li style="padding-left:13px;padding-bottom:15px;">
+                        <li style="padding-left:13px;">
                            
                              <i class="icon-adjust"></i>  <b>Units</b> &ensp;&ensp;<div class="btn-group" data-toggle="buttons-radio">
                              <input type="button" id="unitoptionSI" name="unitoption" value="SI" class="btn active" onclick='$(".unit").html("m");$("#si-ip").val("si");'>
                              <input type="button" id="unitoptionIP" name="unitoption" value="IP" class="btn" onclick='$(".unit").html("ft");$("#si-ip").val("ip");'>
-                         </div>
                         </li>
+                        <li><hr style="color:lightgray;background-color:lightgray;height:1px;border:none;"/></li>
+                         <li style="padding-bottom:15px;">
+                        
+                             <a class="nohover" href="/substantialsampleres" target="_blank"><i class="icon-signal"></i>  <b>Example Outputs</b></a>
+                         </li>
                     </ul>
                 </div>
                 
@@ -247,7 +251,7 @@
 
 
                     <div class="box-unit">
-                        <p><b>NOTE: The UTRC DeepRetro simulation engine for the substantial retrofit analysis only simulates a baseline model. Energy Efficient Measure analysis must be conducted using the UTRC Energy Audit Tool in its original excel-based form. </b></p>
+                        <p><b>NOTE: The UTRC DeepRetro simulation engine for the substantial retrofit analysis below only simulates a baseline model. Energy Efficiency Measure analysis must be conducted using the UTRC Energy Audit Tool in its original excel-based form. </b></p>
                     </div>
                         
                     <section id="building">
@@ -953,7 +957,6 @@
                     </script>
                     <input type="submit" class="btn btn-large btn-primary" value="SIMULATE"/>
                     <!--<button type="button" class="btn btn-large btn-info"><i class="icon-plus"></i> Building 101 Data</button>-->
-                    <a class="btn btn-large btn-info" href="/substantialsampleres"><i class="icon-signal"></i> Example Outputs</a>
                     <img style="text-align:right;float:right;" src="img/utrc.png" alt="UTRC" width="120" height="42">
                     <h2 class="text-right"><small>powered by UTRC Energy Audit Tool Engine</small></h2>
                 
@@ -961,20 +964,21 @@
            
                
                 </div>
-        
-                 <div class="box-unit">
-                     <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/utrc/uncertainty/riskanalysis.html"><i class="icon-exclamation-sign"></i> Risk Analysis </a>
+                
+                <h3 style="padding-left:20px;">Related Resources</h3>
+               <div class="box-unit">
+                    <a class="btn btn-large gray" href="http://developer.eebhub.org/utrc/uncertainty/riskanalysis.html"> Risk Analysis </a>
                      <img style="text-align:right;float:right;" src="img/utrc.png" alt="UTRC"
                      width="120" height="42">
                      <br>
                      <h2 class="text-right">
                          <small>powered by UTRC Uncertainty Quantification</small>
                      </h2>
-                 </div>
-                <div class="box-unit">
-                <a class="btn btn-large btn-warning" href="http://developer.eebhub.org/upenn/"><i class="icon-wrench"></i> System Control Optimization</a>
-                <img style="text-align:right;float:right;" src="img/upenn.png" alt="UPENN" width="112" height="36">
-                <h2 class="text-right"><small>powered by UPenn Parametric Analysis Toolkit</small></h2>
+                </div>
+                 <div class="box-unit">
+                     <a class="btn btn-large gray" href="http://developer.eebhub.org/upenn/"> System Control Optimization</a>
+                    <img style="text-align:right;float:right;" src="img/upenn.png" alt="UPENN" width="112" height="36">
+                    <h2 class="text-right"><small>powered by UPenn Parametric Analysis Toolkit</small></h2>
                 </div>
                 
 

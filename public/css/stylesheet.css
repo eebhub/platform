@@ -122,6 +122,11 @@ h1.bottom {
     
 }
 
+/* Remove Highlight Color for Example Outputs */
+.bs-docs-sidenav > li > a.nohover:hover{background-color:transparent;color:#08c;}
+a.nohover:hover { color: inherit;  }
+a.nohover:focus { color: inherit;  }
+
 .learn button {
     position:relative;
     right:45%;

@@ -76,21 +76,13 @@ module.exports = {
                     'java -jar DATest.jar mit/'+BuildingInputName+'/'+BuildingInputName+'_input.txt '+ 
                     '2>&1 | tee mit/'+BuildingInputName+'/'+BuildingInputName+'_shellOutput.txt;\"'+ 
                     'scp -r ./mit/' + BuildingInputName + '/ bitnami@128.118.67.234:/home/bitnami/mit/';
-        
+
             exec(command, function(error, stdout, stderr){
             response.redirect('http://developer.eebhub.org/mit/'+BuildingInputName+'/'+BuildingInputName+'_output.html');
         });
         });
         
-        // var command = 
-        //             'ssh platform@128.118.67.227 \"' +
-        //             'java -jar DATest.jar mit/'+BuildingInputName+'/'+BuildingInputName+'_input.txt '+ 
-        //             '2>&1 | tee mit/'+BuildingInputName+'/'+BuildingInputName+'_shellOutput.txt;\"';
-        
-        // exec(command, function(error, stdout, stderr){
-        //     response.redirect('http://developer.eebhub.org/mit/'+BuildingInputName+'/'+BuildingInputName+'_output.html');
-        // });
-        
+
         //OLD RUN ENGINE
         //exec('ssh platform@128.118.67.227 \"cd /home/platform/; java -jar DATest.jar '+BuildingInputName+'_input.txt; cp '+BuildingInputName+'.txt /home/platform/mit/' + BuildingInputName + '/\"', function(err2, stdout2, stderr2));
         //});

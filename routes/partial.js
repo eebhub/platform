@@ -68,21 +68,28 @@ module.exports = {
         newShell.newShellMIT(BuildingInputName);
         
         //Run Engine & Show Console Output
-        var sys = require('sys');
+
         var exec = require('child_process').exec;
-        
-        var command = 
-                    'ssh bitnami@128.118.67.227 \"' +
-                    'cd /home/platform/;' +
+        exec('scp -r ../mit/'+ BuildingInputName +'/ platform@128.118.67.227:/home/platform/mit/', function(error, stdout, stderr){
+            var command = 
+                    'ssh platform@128.118.67.227 \"' +
                     'java -jar DATest.jar mit/'+BuildingInputName+'/'+BuildingInputName+'_input.txt '+ 
-                    '2>&1 | tee mit/'+BuildingInputName+'/'+BuildingInputName+'_shellOutput.txt;\"';
+                    '2>&1 | tee mit/'+BuildingInputName+'/'+BuildingInputName+'_shellOutput.txt;\"'+ 
+                    'scp -r ./mit/' + BuildingInputName + '/ bitnami@128.118.67.234:/home/bitnami/mit/';
         
-        function puts(error, stdout, stderr){
-    
+            exec(command, function(error, stdout, stderr){
             response.redirect('http://developer.eebhub.org/mit/'+BuildingInputName+'/'+BuildingInputName+'_output.html');
-        }
+        });
+        });
         
-        exec(command, puts);
+        // var command = 
+        //             'ssh platform@128.118.67.227 \"' +
+        //             'java -jar DATest.jar mit/'+BuildingInputName+'/'+BuildingInputName+'_input.txt '+ 
+        //             '2>&1 | tee mit/'+BuildingInputName+'/'+BuildingInputName+'_shellOutput.txt;\"';
+        
+        // exec(command, function(error, stdout, stderr){
+        //     response.redirect('http://developer.eebhub.org/mit/'+BuildingInputName+'/'+BuildingInputName+'_output.html');
+        // });
         
         //OLD RUN ENGINE
         //exec('ssh platform@128.118.67.227 \"cd /home/platform/; java -jar DATest.jar '+BuildingInputName+'_input.txt; cp '+BuildingInputName+'.txt /home/platform/mit/' + BuildingInputName + '/\"', function(err2, stdout2, stderr2));

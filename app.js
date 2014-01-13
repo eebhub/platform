@@ -1346,7 +1346,9 @@ app.get("/meetings", function (req, res) {
 app.get("/meeting", function (req, res) {
     res.redirect("https://drive.google.com/folderview?id=0B2pmAq6B1uv_WGVwSjNhaVdMeHM&usp=sharing");
 });
-
+app.get("/links", function (req, res) {
+    res.redirect("https://docs.google.com/spreadsheet/ccc?key=0AmpmAq6B1uv_dEZRVDBKZFZxWFQ5VVFvNXJmT3NkeFE&usp=sharing");
+});
 
 // Google Analytics
 app.get("/visits", function (req, res) {

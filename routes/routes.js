@@ -39,6 +39,9 @@ module.exports = {
     getPresentation: function(request, response){
         response.sendfile('./views/presentation.html');  
     }, 
+    getCaseStudies: function(request, response){
+        response.sendfile('./views/casestudy.html');
+    }
 
     
 };

@@ -1349,6 +1349,12 @@ app.get("/meeting", function (req, res) {
 app.get("/links", function (req, res) {
     res.redirect("https://docs.google.com/spreadsheet/ccc?key=0AmpmAq6B1uv_dEZRVDBKZFZxWFQ5VVFvNXJmT3NkeFE&usp=sharing");
 });
+app.get("/presentations", function (req, res) {
+    res.redirect("https://drive.google.com/folderview?id=0B2pmAq6B1uv_WGVwSjNhaVdMeHM&usp=sharing");
+});
+app.get("/reports", function (req, res) {
+    res.redirect("https://drive.google.com/folderview?id=0B5baO1rS2pjeUkJKVTFRNC1DQ00&usp=sharing");
+});
 
 // Google Analytics
 app.get("/visits", function (req, res) {

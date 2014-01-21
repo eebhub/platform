@@ -640,8 +640,8 @@ module.exports = {
         var folderPath = '../ibm/';
         var filePath = folderPath + building_name + timestamp + '/';
         //File Names
-        var ibmBuildingDataFileName = filePath + building_name + '_' + timestamp + '_buildingData.csv';
-        var ibmUtilityDataFileName = filePath + building_name + '_' + timestamp + '_utililtyData.csv';
+        var ibmBuildingDataFileName = filePath + building_name + timestamp + '_buildingData.csv';
+        var ibmUtilityDataFileName = filePath + building_name + timestamp + '_utililtyData.csv';
 
         //Make Simulation Run Folder
         ibm.geoCode(building_location_address, building_location_city, building_location_state, function(building_lat, building_long) {

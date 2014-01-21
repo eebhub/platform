@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
     <title>Platform Case Studies</title>
@@ -8,6 +8,7 @@
 
     <!-- Le styles -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/stylesheet.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -19,6 +20,12 @@
     <script type='text/javascript' src='http://glyphicons.com/wp-includes/js/jquery/jquery-migrate.min.js'></script>
     <script type='text/javascript' src='http://glyphicons.com/wp-content/plugins/retinamatic/script.js'></script>
     <script type='text/javascript' src='http://glyphicons.com/wp-content/themes/glyphicons/sk/public/js/libs/modernizr.js'></script>
+    
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.7.0.js"></script>
+    
+    
     <style>
       body {
 		width: 1200px;
@@ -31,9 +38,40 @@
     </style>  
 </head>
 <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="/">EEB Hub Simulation Platform</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="/lite">LITE</a>
+                        </li>
+                        <li>
+                            <a href="/partial">PARTIAL</a>
+                        </li>
+                        <li>
+                            <a href="/substantial">SUBSTANTIAL</a>
+                        </li>
+                        <li>
+                            <a href="/comprehensive">COMPREHENSIVE</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+
 <div class="container">
 <table border='1' class="table table-bordered table-striped">
-<h2>Platform Case Studies</h2>
+<h2>Case Studies</h2>
 <p><img src='img/glyphicons_041_charts.png' width='14' height='14'>: Mockups or sample outputs. <i class="icon-file"></i>: Detailed reports for the engines/tools. </p>
 
 <tr>
@@ -67,7 +105,7 @@
 <td></td>
 </tr>
 <tr>
-<th><a href='http://developer.eebhub.org/archives/casestudies/pdfs/PSU_casestudies.pdf'>Penn State</th>
+<th><a href='http://developer.eebhub.org/archives/casestudies/pdfs/PSU_casestudies.pdf'>PSU</th>
 <td><a href='http://rmt.eebhub.org/comprehensive2/energy-use_example.php'><img src='img/glyphicons_041_charts.png' width='16' height='16'></a> <a href='http://developer.eebhub.org/archives/casestudies/pdfs/PSU_casestudy1.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a></td>
 <td><a href='http://rmt.eebhub.org/comprehensive2/energy-use_example.php'><img src='img/glyphicons_041_charts.png' width='16' height='16'></a> <a href='http://developer.eebhub.org/archives/casestudies/pdfs/PSU_casestudy2.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a></td>
 <td></td>

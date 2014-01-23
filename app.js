@@ -199,6 +199,7 @@ app.get('/', routes.getHome);
 app.get('/news', routes.getNews);
 app.get('/presentation', routes.getPresentation);
 app.get('/casestudies',routes.getCaseStudies);
+app.get('/casestudy',routes.getCaseStudies);
 app.get("/signup", function (req, res) {
     res.render("signup");
 });
@@ -1357,6 +1358,27 @@ app.get("/reports", function (req, res) {
 });
 app.get("/weekly", function (req, res) {
     res.redirect("https://docs.google.com/document/d/1nCjCd7SVIq3rUR3QBrX5m0WqBQF6P8hqfVrY--DpqtI/edit");
+});
+app.get("/members", function (req, res) {
+    res.redirect("https://docs.google.com/spreadsheet/ccc?key=0AmpmAq6B1uv_dEthUjdWLS1tNjZmLWJOTTFPbVhGamc&usp=sharing");
+});
+app.get("/comments", function (req, res) {
+    res.redirect("http://eebhubsimulation.buildsci.us/");
+});
+app.get("/feedback", function (req, res) {
+    res.redirect("https://drive.google.com/folderview?id=0B2pmAq6B1uv_WVExS2lGUnBRajA&usp=drive_web");
+});
+app.get("/focusgroup", function (req, res) {
+    res.redirect("https://drive.google.com/folderview?id=0B2pmAq6B1uv_WVExS2lGUnBRajA&usp=drive_web");
+});
+app.get("/engagement", function (req, res) {
+    res.redirect("https://drive.google.com/folderview?id=0B2pmAq6B1uv_WVExS2lGUnBRajA&usp=drive_web");
+});
+app.get("/mockup", function (req, res) {
+    res.redirect("https://moqups.com/mgd165/J5BYH3V5");
+});
+app.get("/mockups", function (req, res) {
+    res.redirect("https://moqups.com/mgd165/J5BYH3V5");
 });
 
 // Google Analytics

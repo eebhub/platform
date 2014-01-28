@@ -365,10 +365,10 @@
     margin-left: 25.641025641025642%;
     *margin-left: 25.53464266230224%;
   }
-  .row-fluid .offset2 {
-    margin-left: 19.65811965811966%;
-    *margin-left: 19.551736679396257%;
-  }
+  /*.row-fluid .offset2 {*/
+  /*  margin-left: 19.65811965811966%;*/
+  /*  *margin-left: 19.551736679396257%;*/
+  /*}*/
   .row-fluid .offset2:first-child {
     margin-left: 17.094017094017094%;
     *margin-left: 16.98763411529369%;

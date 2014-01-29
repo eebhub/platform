@@ -206,7 +206,7 @@ a:hover, a:focus {
 [class*="span"] {
     float:left;
     min-height:1px;
-    /*margin-left:20px;*/
+    margin-left:20px;
 }
 .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
     width:940px

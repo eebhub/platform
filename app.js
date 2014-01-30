@@ -199,6 +199,7 @@ app.get('/', routes.getHome);
 app.get('/news', routes.getNews);
 app.get('/presentation', routes.getPresentation);
 app.get('/casestudies',routes.getCaseStudies);
+app.get('/engines',routes.getEngines);
 app.get('/casestudy',routes.getCaseStudies);
 app.get("/signup", function (req, res) {
     res.render("signup");

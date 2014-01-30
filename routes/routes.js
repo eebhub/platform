@@ -41,7 +41,9 @@ module.exports = {
     }, 
     getCaseStudies: function(request, response){
         response.sendfile('./views/casestudy.html');
+    },
+    getEngines: function(request, response){
+        response.sendfile('./views/engine.html');
     }
-
     
 };

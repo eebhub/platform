@@ -206,7 +206,7 @@ a:hover, a:focus {
 [class*="span"] {
     float:left;
     min-height:1px;
-    margin-left:20px
+    margin-left:20px;
 }
 .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
     width:940px
@@ -440,9 +440,9 @@ a:hover, a:focus {
     margin-left:25.53191489361702%;
     *margin-left:25.425531914893618%
 }
-.row-fluid .offset2 {
-    margin-left:19.148936170212764%;
-    *margin-left:19.04255319148936%
+/*.row-fluid .offset2 {*/
+/*    margin-left:19.148936170212764%;*/
+/*    *margin-left:19.04255319148936%*/
 }
 .row-fluid .offset2:first-child {
     margin-left:17.02127659574468%;

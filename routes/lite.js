@@ -648,7 +648,14 @@ module.exports = {
             fs.mkdir(folderPath + building_name + timestamp, function() {
                 ibm.IBMbuildingData(ibmBuildingDataFileName, building_name, building_lat, building_long, orientation, building_length, building_width, building_height, gross_floor_area, window_to_wall_ratio);
                 ibm.IBMutilityData(ibmUtilityDataFileName, electric_utility_startdate, utility_electric, utility_gas);
-                response.redirect('http://128.118.67.251:8080/EEBHubData/EEBHubDBServlet?Command=InsertData&FileName=' + building_name + timestamp);
+                //response.redirect('http://128.118.67.251:8080/EEBHubData/EEBHubDBServlet?Command=InsertData&FileName=' + building_name + timestamp);
+                //var url = 'http://128.118.67.251:8080/EEBHubData/EEBHubDBServlet?Command=InsertData&FileName=' + building_name + timestamp;
+                var request = require('request');
+                request.post({url:'http://128.118.67.251:8080/EEBHubData/EEBHubDBServlet', Command:'InsertData', Filename: building_name+timestamp}, function (e, r, body) {
+                    response.redirect('http://128.118.67.244:8080/EEBHubND/Main.html');
+                });
+                
+                
             });
         });
 

@@ -15,12 +15,11 @@
 .table th {
     font-size: 20px;     
    text-align: center;   
-   width: 90px;
 }
 .table td {
     font-weight:bold;
    text-align: center;   
-   width: 90px;
+   vertical-align:middle;
 }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
@@ -59,78 +58,80 @@
         </div>
         <!-- Intro -->
 <div class="container">
-<table class="table" style='background-color:transparent;'>
 <br>
 <h2><center>Platform Engine Comparison</center></h2>
 <br>
+<table class="table" style='background-color:transparent;'>
+
 <tr>
-<th style='width: 45px;'></th>
-<th>Lite<br><br>
+<th style='width: 10%;'></th>
+<th style='width: 20%;'>Lite<br><br>
     <a class="svg" href="/lite">
         <img src="img/lite-house.svg" alt="lite simulation" width="80" height="80" />
     </a>
 </th>
-<th>Partial<br><br>
+<th style='width: 20%;'>Partial<br><br>
     <a href="/partial">
         <img src="img/partial-house.svg" alt="partial simulation" width="80" height="80" />
     </a>
 </th>
-<th>Substantial<br><br>
+<th style='width: 20%;'>Substantial<br><br>
     <a href="/substantial">
         <img src="img/substantial-house.svg" alt="substantial simulation" width="80" height="80" />
     </a>
 </th>
-<th>Comprehensive<br><br>
+<th style='width: 20%;'>Comprehensive<br><br>
     <a href="/comprehensive">
         <img src="img/comprehensive-house.svg" alt="comprehensive simulation" width="80" height="80" />
     </a>
 </th>
+<th style='width: 10%;'></th>
 </tr>
 <tr>
-<td style='width: 45px; color: grey;'>Engine Name</td>
-<td>Inverse Modelings <i class="icon-play-circle"></i></td>
-<td>Design Advisor <i class="icon-play-circle"></i></td>
-<td>Energy Audit Tool <i class="icon-play-circle"></i></td>
-<td>Retrofit Manager <i class="icon-play-circle"></i></td>
+<td style='width: 45px; color: grey; text-align:left !important;'>Engine Name</td>
+<td>Inverse Modeling</td>
+<td>Design Advisor</td>
+<td>Energy Audit Tool</td>
+<td>Retrofit Manager</td>
 </tr>
 <tr>
-<td style='width: 45px; color: grey;'>User Group</td>
+<td style='width: 45px; color: grey; text-align:left !important;'>User Group</td>
 <td>Building Owners</td>
 <td>Building Designers</td>
 <td>Building Audits</td>
 <td>Facility Managers</td>
 </tr>
 <tr>
-<td style='width: 45px; color: grey;'>Simulation Scope</td>
+<td style='width: 45px; color: grey; text-align:left !important;'>Simulation Scope</td>
 <td>Recovers values and key building energy performance data</td>
 <td>Predict building energy usage</td>
 <td>Support the initial evaluation of deep retrofit options in early retrofit stage</td>
 <td>Identify and compare EEMs for several energy retrofit scenarios</td>
 </tr>
 <tr>
-<td style='width: 45px; color: grey;'>Key Inputs</td>
+<td style='width: 45px; color: grey; text-align:left !important;'>Key Inputs</td>
 <td>utility data</td>
 <td>typical room, occupancy schedules</td>
 <td>specific building activities, HVAC system type</td>
 <td>energy usage, airflow, daylighting</td>
 </tr>
-<td style='width: 45px; color: grey;'>Model Type</td>
+<td style='width: 45px; color: grey; text-align:left !important;'>Model Type</td>
 <td>Inverse Model</td>
 <td>Forward Model</td>
 <td>Forward Model</td>
 <td>Forward Model</td>
 </tr>
 <tr>
-<td style='width: 45px; color: grey;'>Time Cost</td>
+<td style='width: 45px; color: grey;text-align:left !important;'>Time Cost</td>
 <td>~10 ms</td>
 <td>~1 min</td>
 <td>~3 mins</td>
 <td>~10 mins</td>
 </tr>
 <tr>
-<td style='width: 45px; color: grey;'>Powered by</td>
+<td style='width: 45px; color: grey;text-align:left !important;'>Powered by</td>
 <td>
-<img src="img/ashrae-full.png">
+<img src="img/ibm-full.png" height="50%" width="50%">
 </td>
 <td>
 <a target="_blank" href="">

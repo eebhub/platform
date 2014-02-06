@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html ng-app>
     
@@ -12,7 +13,18 @@
         <link href="css/partial.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
         <style type="text/css">
-
+        .table th{
+               text-align: center;  
+               background-color:transparent;
+               }
+        .table td{
+               text-align: center;  
+               vertical-align:middle;
+               }  
+        .table td .stripe1{
+            background-color: white;
+            opacity: 0.6;
+        }       
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         
@@ -50,53 +62,88 @@
         </div>
         <!-- Intro -->
 <div class="container">
-<table border='1' class="table table-bordered table-striped" style='background-color:white;'>
-<h2>Case Studies</h2>
-<p><img src='img/glyphicons_041_charts.png' width='14' height='14'>: Mockups or sample outputs. <i class="icon-file"></i>: Detailed reports for the engines/tools. </p>
+<table class="table">
+<br>
+<h2>CASE STUDY</h2>
+<h4>These are energy models produced by six well respected parters of the Energy Efficient Building Hub throughout year 2013. </h4>
+<br>
+<p align="right"><img src='img/glyphicons_041_charts.png' width='14' height='14'>: Output Demos <i class="icon-file"></i>: Detailed Reports</p>
 
-<tr>
-<th></th>
-<th>Case study 1: Building 101</th>
-<th>Case study 2: One Montgomery Plaza</th>
-<th>Case study 3: Other Building</th>
+<tr style='background-color:transparent;'>
+<th style="width:12.5%;vertical-align:bottom;">Institutions</th>
+<th style="width:25%"><img src="img/Building101.jpg" width='170' height='90'><br><br>#1: Building 101</th>
+<th style="width:25%"><img src="img/OneMontgomeryPlaza.jpg" width='170' height='90'><br><br>#2: One Montgomery Plaza</th>
+<th style="width:25%"><img src="img/Building100.png" width='170' height='90'><br><br>#3: Other Building</th>
+<th style="width:12.5%;vertical-align:bottom;">Web Apps</th>
 </tr>
 <tr>
-<th><a href='http://developer.eebhub.org/archives/casestudies/pdfs/IBM_casestudies.pdf'>IBM</a></th>
-<td><a href='http://developer.eebhub.org/archives/casestudies/pdfs/IBM_casestudy1.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a></td>
-<td><a href='http://developer.eebhub.org/archives/casestudies/pdfs/IBM_casestudy2.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a></td>
-<td><a href='http://developer.eebhub.org/archives/casestudies/pdfs/IBM_casestudy3.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a></td>
+<th><a href='http://developer.eebhub.org/archives/casestudies/pdfs/IBM_casestudies.pdf'><img src="img/ibm-full.png" width='60%' height='60%'></a></th>
+<td  style="background-color:white;opacity:0.6;"><a href='http://developer.eebhub.org/archives/casestudies/pdfs/IBM_casestudy1.pdf'><img src='img/glyphicons_036_file.png' width='25' height='25'></a> <a href='http://128.118.67.251:8080/EEBHubData/EEBHubDBServlet?Command=OpenBuilding&BuildingName=B101'><img src='img/glyphicons_041_charts.png' width='25' height='25'></a></td>
+<td  style="background-color:white;opacity:0.6;"><a href='http://developer.eebhub.org/archives/casestudies/pdfs/IBM_casestudy2.pdf'><img src='img/glyphicons_036_file.png' width='25' height='25'></a> <a href='http://128.118.67.251:8080/EEBHubData/EEBHubDBServlet?Command=OpenBuilding&BuildingName=One Montgomery Plaza'><img src='img/glyphicons_041_charts.png' width='25' height='25'></a></td>
+<td  style="background-color:white;opacity:0.6;"><a href='http://developer.eebhub.org/archives/casestudies/pdfs/IBM_casestudy3.pdf'><img src='img/glyphicons_036_file.png' width='25' height='25'></a> <a href='http://128.118.67.251:8080/EEBHubData/EEBHubDBServlet?Command=OpenBuilding&BuildingName=Building 100'><img src='img/glyphicons_041_charts.png' width='25' height='25'></a></td>
+<td><a class="svg" href="/lite">
+        <img src="img/lite-house.svg" alt="lite simulation" width="25" height="25" />
+    </a> <a href="http://ibm.eebhub.org:8080/EEBESRI/">
+        <img src="img/home_icon_blue.png" alt="" width="25" height="25" />
+    </a>
+<td>
 </tr>
 <tr>
-<th><a href='http://developer.eebhub.org/archives/casestudies/pdfs/MIT_casestudies.pdf'>MIT</a></th>
-<td><a href='http://developer.eebhub.org/archives/casestudies/pdfs/MIT_casestudy1.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a></td>
-<td><a href='http://developer.eebhub.org/archives/casestudies/pdfs/MIT_casestudy2.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a></td>
-<td></td>
+<th><a href='http://developer.eebhub.org/archives/casestudies/pdfs/MIT_casestudies.pdf'><img src="http://tools.eebhub.org/img/mit-full.png" width='60%' height='60%'></a></th>
+<td style="background-color:white;opacity:0.5;"><a href='http://developer.eebhub.org/archives/casestudies/pdfs/MIT_casestudy1.pdf'><img src='img/glyphicons_036_file.png' width='25' height='25'></a></td>
+<td style="background-color:white;opacity:0.5;"><a href='http://developer.eebhub.org/archives/casestudies/pdfs/MIT_casestudy2.pdf'><img src='img/glyphicons_036_file.png' width='25' height='25'></a></td>
+<td style="background-color:white;opacity:0.5;"><h6>coming soon</h6 ></td>
+<td><a class="svg" href="/partial">
+        <img src="img/partial-house.svg" alt="partial simulation" width="25" height="25" />
+    </a> <a href="http://designadvisor.mit.edu/design/">
+        <img src="img/home_icon_blue.png" alt="" width="25" height="25" />
+    </a>
+<td>
 </tr>
 <tr>
-<th><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UTRC_casestudies.pdf'>UTRC</a></th>
-<td><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UTRC_casestudy1.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a></td>
-<td><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UTRC_casestudy2.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a></td>
-<td><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UTRC_casestudy3.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a></td>
+<th><img src="img/cmu-full.png" width='60%' height='60%'></th>
+<td style="background-color:white;opacity:0.6;"><a href='http://developer.eebhub.org/cmu/DesignAdvisor_CaseStudy_101.html'><img src='img/glyphicons_041_charts.png' width='25' height='25'></a></td>
+<td style="background-color:white;opacity:0.6;"><a href='http://developer.eebhub.org/cmu/DesignAdvisor_CaseStudy_Montgomery.html'><img src='img/glyphicons_041_charts.png' width='25' height='25'></a></td>
+<td style="background-color:white;opacity:0.6;"><a href='http://developer.eebhub.org/cmu/DesignAdvisor_CaseStudy_MCSI.html'><img src='img/glyphicons_041_charts.png' width='25' height='25'></a></td>
+<td><a class="svg" href="/partial">
+        <img src="img/partial-house.svg" alt="lite simulation" width="25" height="25" />
+    </a>
+<td>
 </tr>
 <tr>
-<th><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UPenn_casestudies.pdf'>U Penn</a></th>
-<td><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UPenn_casestudy1.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a> <a href='http://developer.eebhub.org/upenn/'><img src='img/glyphicons_041_charts.png' width='16' height='16'></a></td>
-<td><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UPenn_casestudy2.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a></td>
-<td></td>
+<th><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UTRC_casestudies.pdf'><img src="http://tools.eebhub.org/img/utrc-long.png" width='60%' height='60%'></a></th>
+<td style="background-color:white;opacity:0.5;"><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UTRC_casestudy1.pdf'><img src='img/glyphicons_036_file.png' width='25' height='25'></a></td>
+<td style="background-color:white;opacity:0.5;"><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UTRC_casestudy2.pdf'><img src='img/glyphicons_036_file.png' width='25' height='25'></a></td>
+<td style="background-color:white;opacity:0.5;"><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UTRC_casestudy3.pdf'><img src='img/glyphicons_036_file.png' width='25' height='25'></a></td>
+<td><a class="svg" href="/substantial">
+        <img src="img/substantial-house.svg" alt="lite simulation" width="25" height="25" />
+    </a>
+<td>
 </tr>
 <tr>
-<th><a href='http://developer.eebhub.org/archives/casestudies/pdfs/PSU_casestudies.pdf'>PSU</th>
-<td><a href='http://developer.eebhub.org/archives/casestudies/pdfs/PSU_casestudy1.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a> <a href='http://rmt.eebhub.org/comprehensive2/energy-use_example.php'><img src='img/glyphicons_041_charts.png' width='16' height='16'></a></td>
-<td><a href='http://developer.eebhub.org/archives/casestudies/pdfs/PSU_casestudy2.pdf'><img src='img/glyphicons_036_file.png' width='16' height='16'></a> <a href='http://rmt.eebhub.org/comprehensive2/energy-use_example.php'><img src='img/glyphicons_041_charts.png' width='16' height='16'></a></td>
-<td></td>
-</tr>
-<th>CMU</th>
-<td><a href='http://developer.eebhub.org/cmu/DesignAdvisor_CaseStudy.html'><img src='img/glyphicons_041_charts.png' width='16' height='16'></a></td>
-<td><a href='http://developer.eebhub.org/cmu/DesignAdvisor_CaseStudy.html'><img src='img/glyphicons_041_charts.png' width='16' height='16'></a></td>
-<td></td>
+<th><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UPenn_casestudies.pdf'><img src="img/upenn-full.png" width='60%' height='60%'></a></th>
+<td style="background-color:white;opacity:0.6;"><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UPenn_casestudy1.pdf'><img src='img/glyphicons_036_file.png' width='25' height='25'></a> <a href='http://developer.eebhub.org/upenn/'><img src='img/glyphicons_041_charts.png' width='25' height='25'></a></td>
+<td style="background-color:white;opacity:0.6;"><a href='http://developer.eebhub.org/archives/casestudies/pdfs/UPenn_casestudy2.pdf'><img src='img/glyphicons_036_file.png' width='25' height='25'></a></td>
+<td style="background-color:white;opacity:0.6;"><h5>--</h5></td>
+<td><a class="svg" href="/substantial">
+        <img src="img/substantial-house.svg" alt="lite simulation" width="25" height="25" />
+    </a>
+<td>
 </tr>
 <tr>
+<th><a href='http://developer.eebhub.org/archives/casestudies/pdfs/PSU_casestudies.pdf'><img src="http://tools.eebhub.org/img/psu-light2.png" width='60%' height='60%'></th>
+<td style="background-color:white;opacity:0.5;"><a href='http://developer.eebhub.org/archives/casestudies/pdfs/PSU_casestudy1.pdf'><img src='img/glyphicons_036_file.png' width='25' height='25'></a> <a href='http://rmt.eebhub.org/comprehensive2/energy-use_example.php'><img src='img/glyphicons_041_charts.png' width='25' height='25'></a></td>
+<td style="background-color:white;opacity:0.5;"><a href='http://developer.eebhub.org/archives/casestudies/pdfs/PSU_casestudy2.pdf'><img src='img/glyphicons_036_file.png' width='25' height='25'></a> <a href='http://rmt.eebhub.org/comprehensive2/energy-use_example.php'><img src='img/glyphicons_041_charts.png' width='25' height='25'></a></td>
+<td style="background-color:white;opacity:0.5;"><h6>coming soon</h6></td>
+<td><a class="svg" href="/comprehensive">
+        <img src="img/comprehensive-house.svg" alt="lite simulation" width="25" height="25" />
+    </a>
+<td>
+</tr>
+
+
 </table>
+<br><br><br>
 
 </div>
             <!-- Javascript -->

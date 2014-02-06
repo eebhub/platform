@@ -6,6 +6,8 @@ module.exports = {
         response.render('home',{
             'username': request.session.username
         });
+    },getTeam: function(request, response){
+        response.render('team');  
     },
     getSignUp: function(request, response){
         response.sendfile('./views/signup.html');  
@@ -41,7 +43,9 @@ module.exports = {
     }, 
     getCaseStudies: function(request, response){
         response.sendfile('./views/casestudy.html');
+    },
+    getEngines: function(request, response){
+        response.sendfile('./views/engine.html');
     }
-
     
 };

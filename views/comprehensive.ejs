@@ -50,7 +50,7 @@
             }
 
         </style>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
         <script src="js/building101Data.js"></script>
         <script>
             function printValue(sliderID, textbox) {
@@ -200,9 +200,11 @@
                          </div>
                          </li>
                          <li><hr style="color:lightgray;background-color:lightgray;height:1px;border:none;"/></li>
+                         <li>
+                             <a class="nohover" href="http://rmt.eebhub.org/comprehensive2/energy-use_example.php" target="_blank"><i class="icon-signal"></i><b>  Example Outputs</b></a>
+                         </li>
                          <li style="padding-bottom:15px;">
-                        
-                             <a class="nohover" href="http://rmt.eebhub.org/comprehensive2/energy-use_example.php" target="_blank"><i class="icon-signal"></i>  <b>Example Outputs</b></a>
+                             <a class="nohover" href="http://rmt.eebhub.org/game/tracking-sheet.php" target="_blank"><i class="icon-signal"></i><b>  Example Staging</b></a>
                          </li>
                     </ul>
                 </div>
@@ -333,7 +335,7 @@
                                     </select>
                                 
                                     <div id="extend-img" >
-                                        <img style="width: 500px;" src="./img/T_Shape.png" class="img-rounded">
+                                        <img style="width: 500px;" src="./img/geometry/T_Shape.png" class="img-rounded">
                                     </div>
                                 </div>
                                 <div class="span4">
@@ -1047,8 +1049,15 @@
                         <h2 class="text-right">
                             <small>powered by <a target='_blank' href="http://openstudio.nrel.gov/" style="color:inherit;">OpenStudio SDK</a> + <a target='_blank' href="http://apps1.eere.energy.gov/buildings/energyplus/" style="color:inherit;">EnergyPlus</a>, <a target='_blank' href="http://daysim.ning.com/" style="color:inherit;">DAYSIM</a>, <a target='_blank' href="http://www.bfrl.nist.gov/IAQanalysis/CONTAM/index.htm" style="color:inherit;">CONTAM</a> Engines</small>
                         </h2>
-                        
-                        
+                    </div>
+                  <h3 style="padding-left:20px;">Related Resources</h3>
+                   <div class="box-unit">
+                         <a class="btn btn-large gray" href="game" target="_blank">Energy Retrofit Game</a>
+                         <a target="_blank" href="http://www.engr.psu.edu/ae/">
+                        <img style="text-align:right;float:right;" src="img/psu-light2.png" alt="PSU" width="132" height="61"> </a>
+                        <br>
+                        <br>
+                        <h2 class="text-right"><small>powered by DOE's OpenStudio SDK & EnergyPlus Engine</small></h2>
                     </div>
                     <div style="visibility:hidden"><input name="unit" value = "si" id="si-ip" /></div>
                     
@@ -1334,7 +1343,7 @@
         			return 0;
         		break;
         		}
-        		var img = '<img style="width: 500px;" src="./img/'+img_scr+'.png" class="img-rounded">';
+        		var img = '<img style="width: 500px;" src="./img/geometry/'+img_scr+'.png" class="img-rounded">';
         		$('#extend-img').html(img);
         		$('#extend-div').html(extend_inputs);
         	}

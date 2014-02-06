@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html ng-app>
+    
+    <head>
+        <title>EEB Hub Simulation Platform</title>
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/stylesheet.css" rel="stylesheet">
+        <link href="css/partial.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <style type="text/css">
+.table th {
+    font-size: 20px;     
+   text-align: center;   
+}
+.table td {
+    font-weight:bold;
+   text-align: center;   
+   vertical-align:middle;
+}
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        
+    </head>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="brand">EEB Hub Simulation Platform</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="">
+                                <a href="/lite">LITE</a>
+                            </li>
+                            <li class="">
+                                <a href="/partial">PARTIAL</a>
+                            </li>
+                            <li>
+                                <a href="/substantial">SUBSTANTIAL</a>
+                            </li>
+                            <li>
+                                <a href="/comprehensive">COMPREHENSIVE</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <!-- Intro -->
+<div class="container">
+<br>
+<h2><center>Platform Engine Comparison</center></h2>
+<br>
+<table class="table" style='background-color:transparent;'>
+
+<tr>
+<th style='width: 10%;'></th>
+<th style='width: 20%;'>Lite<br><br>
+    <a class="svg" href="/lite">
+        <img src="img/lite-house.svg" alt="lite simulation" width="80" height="80" />
+    </a>
+</th>
+<th style='width: 20%;'>Partial<br><br>
+    <a href="/partial">
+        <img src="img/partial-house.svg" alt="partial simulation" width="80" height="80" />
+    </a>
+</th>
+<th style='width: 20%;'>Substantial<br><br>
+    <a href="/substantial">
+        <img src="img/substantial-house.svg" alt="substantial simulation" width="80" height="80" />
+    </a>
+</th>
+<th style='width: 20%;'>Comprehensive<br><br>
+    <a href="/comprehensive">
+        <img src="img/comprehensive-house.svg" alt="comprehensive simulation" width="80" height="80" />
+    </a>
+</th>
+<th style='width: 10%;'></th>
+</tr>
+<tr>
+<td style='width: 45px; color: grey; text-align:left !important;'>Engine Name</td>
+<td>Inverse Modeling</td>
+<td>Design Advisor</td>
+<td>Energy Audit Tool</td>
+<td>Retrofit Manager</td>
+</tr>
+<tr>
+<td style='width: 45px; color: grey; text-align:left !important;'>User Group</td>
+<td>Building Owners</td>
+<td>Building Designers</td>
+<td>Building Audits</td>
+<td>Facility Managers</td>
+</tr>
+<tr>
+<td style='width: 45px; color: grey; text-align:left !important;'>Simulation Scope</td>
+<td>Recovers values and key building energy performance data</td>
+<td>Predict building energy usage</td>
+<td>Support the initial evaluation of deep retrofit options in early retrofit stage</td>
+<td>Identify and compare EEMs for several energy retrofit scenarios</td>
+</tr>
+<tr>
+<td style='width: 45px; color: grey; text-align:left !important;'>Key Inputs</td>
+<td>utility data</td>
+<td>typical room, occupancy schedules</td>
+<td>specific building activities, HVAC system type</td>
+<td>energy usage, airflow, daylighting</td>
+</tr>
+<td style='width: 45px; color: grey; text-align:left !important;'>Model Type</td>
+<td>Inverse Model</td>
+<td>Forward Model</td>
+<td>Forward Model</td>
+<td>Forward Model</td>
+</tr>
+<tr>
+<td style='width: 45px; color: grey;text-align:left !important;'>Time Cost</td>
+<td>~10 ms</td>
+<td>~1 min</td>
+<td>~3 mins</td>
+<td>~10 mins</td>
+</tr>
+<tr>
+<td style='width: 45px; color: grey;text-align:left !important;'>Powered by</td>
+<td>
+<img src="img/ibm-full.png" height="50%" width="50%">
+</td>
+<td>
+<a target="_blank" href="">
+    <img src="http://tools.eebhub.org/img/mit-full.png">
+    </a>
+</td>
+<td><a target="_blank" href="">
+    <img src="http://tools.eebhub.org/img/utrc-long.png">
+    </a></td>
+<td>
+<a target="_blank" href="">
+    <img src="http://tools.eebhub.org/img/psu-light2.png">
+    </a></td>
+</tr>
+</table>
+
+</div>
+            <!-- Javascript -->
+            <script src="js/ui-bootstrap.js"></script>
+            <script src="js/jquery.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/bootstrap-scrollspy.js"></script>
+            <script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            
+              ga('create', 'UA-26348074-7', 'eebhub.org');
+              ga('send', 'pageview');
+            
+            </script>
+    </body>
+
+</html>

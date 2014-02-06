@@ -7,7 +7,7 @@ module.exports = {
             'username': request.session.username
         });
     },getTeam: function(request, response){
-        response.render('team');  
+        response.sendfile('./views/team.html');  
     },
     getSignUp: function(request, response){
         response.sendfile('./views/signup.html');  

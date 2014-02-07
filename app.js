@@ -1281,7 +1281,7 @@ app.post('/savebuildingcomprehensive', function(req, res){
 
 
 
-//ReRoutes / ReDirects / Easy Links for Task 2
+//ReRoutes / ReDirects / Easy Links for Task 2--------------------------------------------------------
 
 app.get("/platform", function (req, res) {  //added to reroute outdated tools.eebhub.org/platform link
     res.redirect("http://tools.eebhub.org");
@@ -1382,6 +1382,45 @@ app.get("/mockup", function (req, res) {
 app.get("/mockups", function (req, res) {
     res.redirect("https://moqups.com/mgd165/J5BYH3V5");
 });
+app.get("/documentation", function (req, res) {
+    res.redirect("https://drive.google.com/file/d/0B2pmAq6B1uv_eEZoYXFva28wc1k/edit?usp=sharing");
+});
+app.get("/servers", function (req, res) {
+    res.redirect("https://www.lucidchart.com/documents/edit/4a52-bee4-519e6f3c-9e75-655c0a009c81");
+});
+app.get("/levels", function (req, res) {
+    res.redirect("http://www.gliffy.com/go/publish/4706415");
+});
+app.get("/tiers", function (req, res) {
+    res.redirect("https://docs.google.com/spreadsheet/ccc?key=0AmpmAq6B1uv_dGVRcTBnX2ZSSmtRZjdEOFc5cFhfb2c&usp=sharing");
+});
+app.get("/inputs", function (req, res) {
+    res.redirect("https://docs.google.com/spreadsheet/ccc?key=0AmpmAq6B1uv_dGVRcTBnX2ZSSmtRZjdEOFc5cFhfb2c&usp=sharing");
+});
+app.get("/datastandard", function (req, res) {
+    res.redirect("http://www1.eere.energy.gov/buildings/commercial/bedes.html");
+});
+app.get("/data1", function (req, res) {
+    res.redirect("https://docs.google.com/spreadsheet/ccc?key=0AmpmAq6B1uv_dGVRcTBnX2ZSSmtRZjdEOFc5cFhfb2c&usp=sharing");
+});
+app.get("/data2", function (req, res) {
+    res.redirect("https://docs.google.com/document/d/1sL0Km4AzIGoDF-OWU3EBOFI0MIibu1fmum5VHNVsayQ/edit?usp=sharing");
+});
+app.get("/software1", function (req, res) {
+    res.redirect("https://www.lucidchart.com/documents/edit/4a52-bee4-519e6f3c-9e75-655c0a009c81");
+});
+app.get("/software2", function (req, res) {
+    res.redirect("http://www.gliffy.com/go/publish/4706415");
+});
+app.get("/software3", function (req, res) {
+    res.redirect("https://skydrive.live.com/redir?resid=16B20B2C9752FBFF%21228");
+});
+app.get("/software4", function (req, res) {
+    res.redirect("https://skydrive.live.com/redir?resid=16B20B2C9752FBFF%21229");
+});
+app.get("/software5", function (req, res) {
+    res.redirect("https://skydrive.live.com/view.aspx?resid=16B20B2C9752FBFF!202&app=PowerPoint");
+});
 
 // Google Analytics
 app.get("/visits", function (req, res) {
@@ -1395,7 +1434,7 @@ app.get("/views", function (req, res) {
 });
 
 
-//ReRoutes / ReDirects / Easy Links for Task 3
+//ReRoutes / ReDirects / Easy Links for Task 3--------------------------------------------------------
 
 app.get("/controls", function (req, res) {
     res.redirect("http://67.102.239.250:8282/");
@@ -1427,7 +1466,7 @@ app.get("/piservercharts", function (req, res) {
 app.get("/piserverdashboard", function (req, res) {
     res.redirect("http://eebcmu.coeaccess.psu.edu:85/PIsystemV0.0/IEQ.php?floor=1");
 });
-
+//End of Easy Links -------------------------------------------------------------------------------------
 
 //Server
 http.createServer(app).listen(app.get('port'), function(){

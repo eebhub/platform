@@ -1,102 +1,342 @@
 <!DOCTYPE html>
 <html ng-app="modal">
-
-<head>
-    <title>EEB Hub Simulation Platform</title>
-    <!--<meta http-equiv="refresh"
-        content="0; url=http://tools.eebhub.org/lite"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/stylesheet.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.7.0.js"></script>
-    <script src="js/modal.js"></script>
-</head>
-
-<body style="background:url('../img/wood1.jpg') fixed;">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="brand" href="/">EEB Hub Simulation Platform</a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li>
-                            <a href="/lite">LITE</a>
-                        </li>
-                        <li>
-                            <a href="/partial">PARTIAL</a>
-                        </li>
-                        <li>
-                            <a href="/substantial">SUBSTANTIAL</a>
-                        </li>
-                        <li>
-                            <a href="/comprehensive">COMPREHENSIVE</a>
-                        </li>
-                    </ul>
-                    
-                   
-                    
+    
+    <head>
+        <title>EEB Hub Simulation Platform</title>
+        <!--<meta http-equiv="refresh" content="0;
+        url=http://tools.eebhub.org/lite"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/stylesheet.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        
+        <style>
+        body {
+            padding-top:100px;
+            background:url('../img/wood1.jpg') fixed ;
+        }
+        li{
+            list-style-type:none;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+       
+    </head>
+    
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="/">EEB Hub Simulation Platform</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li>
+                                <a href="/lite">LITE</a>
+                            </li>
+                            <li>
+                                <a href="/partial">PARTIAL</a>
+                            </li>
+                            <li>
+                                <a href="/substantial">SUBSTANTIAL</a>
+                            </li>
+                            <li>
+                                <a href="/comprehensive">COMPREHENSIVE</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
                 </div>
-                <!--/.nav-collapse -->
             </div>
         </div>
-    </div>
-    <!--Main Page-->
-    
-    
-    <div class="footer">
-        <br>
-        <h5 class="text-center">Built by the <a href="http://www.eebhub.org">Energy Efficient Buildings HUB</a>, a <a href="http://energy.gov/science-innovation/innovation/hubs">U.S. Department of Energy Innovation HUB</a>.</h5>
-        <h6 class="text-center" style="color:gray; font-weight:normal;">NOTE | We recommend Chrome, Firefox, or Safari web browsers. Internet Explorer is not fully supported. |
-        COMMUNITY | 
-            <a href="http://area51.stackexchange.com/proposals/45232/building-performance-simulation-analysis?tab=votes&phase=definition">Building Performance Q&A</a> | 
-            <a href="https://bcl.nrel.gov/">NREL Building Component Library</a> |
-            <a href="game">Retrofit Game</a>    
+        <!--Main Page-->
+        <div class="container">
+        <div class="row">
+            <div class="span2">
+                <div class="accordion" id="accordionleft">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionleft" href="#psu">
+                                <img src="img/home/psu-home.png" id="ri">
+                            </a>
+                        </div>
+                        <div id="psu" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li>Jason W Degraw</li>
+                                <li>William Bahnfleth</li>
+                                <li>Miao Niu</li>
+                                <li>Tabitha Sprau Coulter</li>
+                                <li>Craig Casey</li>
+                                <li>Reza Sadeghi</li>
+                                <li>Richard Mistrick</li>
+                                <li>Matias Seibert</li>
+                                <li>Robert M Leicht</li>
+                                <li>Zahira Alhafi</li>
+                                <li>Ibrahim Alanqar</li>
+                                <li>Yan Liusheng</li>
+                                <li>Matthew G Dahlhausen</li>
+                                <li>Mohammad Heidarinejad</li>
+                                <li>Yang-Seon Kim</li>
+                                <li>Jin Bin Li</li>
+                                <li>Mujing Wang</li>
+                                <li>Josh Kuiros</li>
+                                <li>Ke Xu</li>
+                                <li>Payam Delgoshaei</li>
+                                <li>Ying Sun</li>
+                                <li>Nick Mattise</li>
+                                <li>Josh Wentz</li>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionleft" href="#mit">
+                                <img src="img/home/mit-home2.png" id="ri">
+                            </a>
+                        </div>
+                        <div id="mit" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li>Karine Ip Kiun Chong</li>
+                                <li>Andrew Mandelbaum</li>
+                                <li>Christoph Reinhart</li>
+                                <li>Aiko Nakano</li>
+                                <li>Leon Glicksman</li>
+                                <li>Leslie Norford</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionleft" href="#cmu">
+                                <img src="img/home/cmu-home.png" id="ri">
+                            </a>
+                        </div>
+                        <div id="cmu" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li>Adrian Chong</li>
+                                <li>Haopeng Wang</li>
+                                <li>Weili Xu</li>
+                                <li>Shalini Ramesh</li>
+                                <li>Rongpeng Zhang</li>
+                                <li>Chao Ding</li>
+                                <li>Khee Poh Lam</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionleft" href="#penn">
+                                <img src="img/home/upenn-home.png" id="ri">
+                            </a>
+                        </div>
+                        <div id="penn" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li>Ali Malkawi</li>
+                                <li>Bin Yan</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionleft" href="#maryland">
+                                <img src="img/home/maryland-home.png" id="ri">
+                            </a>
+                        </div>
+                        <div id="maryland" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li>Jelena Srebric</li>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionleft" href="#purdue">
+                                <img src="img/home/purdue-home.png" id="ri">
+                            </a>
+                        </div>
+                        <div id="purdue" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li>Qingyan Chen</li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span8">
+                <div class="venn"></div>
+            </div>
+            <div class="span2">
+                <div class="accordion" id="accordionright">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionright" href="#balfour">
+                                <img src="img/home/balfour-home2.png" id="ps">
+                            </a>
+                        </div>
+                        <div id="balfour" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li>Beavan Mace</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionright" href="#utrc">
+                                <img src="img/home/utrc-home.png" id="ps">
+                            </a>
+                        </div>
+                        <div id="utrc" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li>Russ Taylor</li>
+                                <li>Marija Trcka</li>
+                                <li>Stell Maris Oggianu</li>
+                                <li>Sunil Ahuja</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionright" href="#ibm">
+                                <img src="img/home/ibm-home.png" id="ps">
+                            </a>
+                        </div>
+                        <div id="ibm" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li>Young M Lee</li>
+                                <li>Steve E. Meliksetian</li>
+                                <li>Rui Zhang</li>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionright" href="#nrel">
+                                <img src="img/home/nrel-home.png" id="nl">
+                            </a>
+                        </div>
+                        <div id="nrel" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li>Kyle Benne</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionright" href="#nist">
+                                <img src="img/home/nist-home.png" id="nl">
+                            </a>
+                        </div>
+                        <div id="nist" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li>Andrew Persily</li>
+                                <li>Steven Emmerich</li>
+                                <li>William Dols</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionright" href="#doe">
+                                <img src="img/home/doe-home.png" id="nl">
+                            </a>
+                        </div>
+                        <div id="doe" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <li>Amir Roth</li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <br>
+            <h5 class="text-center">Built by the
+                <a href="http://www.eebhub.org">Energy Efficient Buildings HUB</a>, a
+                <a href="http://energy.gov/science-innovation/innovation/hubs">U.S. Department of Energy Innovation HUB</a>.</h5>
+            <h6 class="text-center" style="color:gray; font-weight:normal;">NOTE | We recommend Chrome, Firefox, or Safari web browsers. Internet
+                Explorer is not fully supported. | COMMUNITY |
+                <a href="http://area51.stackexchange.com/proposals/45232/building-performance-simulation-analysis?tab=votes&phase=definition">Building Performance Q&A</a>|
+                <a href="https://bcl.nrel.gov/">NREL Building Component Library</a>|
+                <a href="game">Retrofit Game</a>
             </h6>
-        <h6 class="text-center" style="color:gray; font-weight:normal;">PROJECT | 
-            <a href="vision">Vision</a> | 
-            <a href="reports">Reports</a> | 
-            <a href="casestudies">Case Studies</a> | 
-            <a href="presentations">Presentations</a> | 
-            <a href="inspiration">Inspiration</a> |
-            <a href="feedback">Stakeholder Feedback</a> | 
-            <a href="comments">Comments</a> |
-            IT | 
-            <a href="infrastructure">Infrastructure</a> | 
-            <a href="integration">Integration</a> | 
-            <a href="developers">Developers</a> | 
-            <a href="weather">Weather</a> | 
-            <a href="mockups">Mockups</a> | 
-            <a href="variables">Variables</a> | 
-            <a href="database">Database</a> | 
-            <a href="graphics">GUI Library</a> | 
-            <a href="visitors">Pageviews</a>
-        </h6>
-        <h6 class="text-center" style="color:gray; font-weight:normal;">
-            <a href="software">Existing Tools</a> | 
-            <a href="wiki">Wiki Documentation</a> | 
-            <a href="license">Open Source License</a> |
-            <a href="disclaimer">Acknowledgement & Disclaimer</a>
-        </h6>
-        <br>
-    </div>
+            <h6 class="text-center" style="color:gray; font-weight:normal;">PROJECT |
+                <a href="vision">Vision</a>|
+                <a href="reports">Reports</a>|
+                <a href="casestudies">Case Studies</a>|
+                <a href="presentations">Presentations</a>|
+                <a href="inspiration">Inspiration</a>|
+                <a href="feedback">Stakeholder Feedback</a>|
+                <a href="comments">Comments</a>| IT |
+                <a href="infrastructure">Infrastructure</a>|
+                <a href="integration">Integration</a>|
+                <a href="developers">Developers</a>|
+                <a href="weather">Weather</a>|
+                <a href="mockups">Mockups</a>|
+                <a href="variables">Variables</a>|
+                <a href="database">Database</a>|
+                <a href="graphics">GUI Library</a>|
+                <a href="visitors">Pageviews</a>
+            </h6>
+            <h6 class="text-center" style="color:gray; font-weight:normal;">
+                <a href="software">Existing Tools</a>|
+                <a href="wiki">Wiki Documentation</a>|
+                <a href="license">Open Source License</a>|
+                <a href="disclaimer">Acknowledgement & Disclaimer</a>
+            </h6>
+            <br>
+        </div>
+        </div>
+        <!-- Javascript -->
+        
+        
+    <script>
+        var vennData = [ { "cx": "33.3%", "cy": "33.3%", "radius": "25%", "radius1": "30%", "color": "rgba(115,115,115,0.5)", "label": "Research Institutions", "tx": "16.65%", "ty": "33.3%" }, { "cx": "66.6%", "cy": "33.3%", "radius": "25%", "radius1": "30%", "color": "rgba(115,115,115,0.5)", "label": "Private Sector", "tx": "66.6%", "ty": "33.3%" },{ "cx": "50%", "cy": "66.6%", "radius": "25%", "radius1": "30%", "color": "rgba(115,115,115,0.5)", "label": "National Labs", "tx": "44.4%", "ty": "70%" } ];
 
+            var svgContainer = d3.select("div.venn").append("svg").attr("width", "100%").attr("height", 600);
+            
+            var circles = svgContainer.selectAll("circles")
+                                        .data(vennData)
+                                        .enter()
+                                        .append("circle");
+            
+            var cenns = circles
+                                    .attr("cx", function(d){return d.cx;})
+                                    .attr("cy", function(d){return d.cy;})
+                                    .attr("r", function(d){return d.radius;})
+                                    .style("fill", function(d){return d.color;})
+                                    .style("cursor", "pointer")
+                                    .on("mouseover", function(d){
+                                        d3.select(this).transition().duration(500).attr("r", d.radius1);
+                                    })
+                                    .on("mouseout", function(d){
+                                        d3.select(this).transition().duration(500).attr("r", d.radius);});
+            
 
-
-    <!-- Javascript -->
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/skrollr.js"></script>
-
-</body>
+            var text = svgContainer.selectAll("text")
+                                    .data(vennData)
+                                    .enter()
+                                    .append("text");
+            var cricleLabels = text.attr("x", function(d) { return d.tx})
+                                    .attr("y", function(d) { return d.ty})
+                                    .text(function(d) {return d.label})
+                                    .attr("font-size", "1.5em")
+                                    .attr("fill", "rgb(59, 48, 196)")
+                                    .style("cursor", "pointer");
+    </script>
+       
+    </body>
 
 </html>

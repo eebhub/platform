@@ -1383,7 +1383,7 @@ app.get("/mockups", function (req, res) {
     res.redirect("https://moqups.com/mgd165/J5BYH3V5");
 });
 app.get("/documentation", function (req, res) {
-    res.redirect("https://drive.google.com/file/d/0B2pmAq6B1uv_eEZoYXFva28wc1k/edit?usp=sharing");
+    res.redirect("https://drive.google.com/file/d/0B2pmAq6B1uv_ZWRHUFp0aGtGZE0/edit?usp=sharing");
 });
 app.get("/servers", function (req, res) {
     res.redirect("https://www.lucidchart.com/documents/edit/4a52-bee4-519e6f3c-9e75-655c0a009c81");

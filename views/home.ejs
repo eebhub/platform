@@ -18,7 +18,7 @@
 </head>
 
 <body style="background:url('../img/wood1.jpg') fixed;">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="margin:0px;">
         <div class="navbar-inner">
             <div class="container-fluid">
                 <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -137,9 +137,9 @@
         <div class="span12 pagination-centered no-margin"><a href="/engines"><img src="img/platform2.png" width="193" height="86" alt="eebhub" style="margin-bottom:10px;"/></a>
         <h3 class="text-center">4 web tools &#9679; <a href="engines" style="color:inherit;text-decoration: none;">4 levels of complexity</a></h3></div>
         <br>
-        <div class="span12 pagination-centered no-margin">
-            <div ng-controller="ModalDemoCtrl">
-                <script type="text/ng-template" id="myModalContent.html">
+        <div class="span12 pagination-centered no-margin" style="margin-left:0px;">
+            <div ng-controller="ModalWorkflow">
+                <script type="text/ng-template" id="ModalWorkflow.html">
                     <div class="modal" style="width:600px;">
                     <div class="modal-body" style="max-height:480px;">
                         <iframe src='https://skydrive.live.com/embed?cid=16B20B2C9752FBFF&resid=16B20B2C9752FBFF%21214&authkey=ALtCkkH41pF9YQY&em=2&wdAr=1.3333333333333333'
@@ -154,11 +154,11 @@
                 </div>
             </div>
         </div>
-        <div class="span12 no-margin"><h3 class="text-center" style="padding-top:15px;padding-bottom:25px;">powered by 10+ building simulation software packages</h3></div>
-        <div class="span12 pagination-centered no-margin">
-            <div ng-controller="ModalDemoCtrl">
-                <script type="text/ng-template" id="myModalContent.html">
-                    <div class="modal" style="width:600px;">
+        <div class="span12 no-margin" style="margin-left:0px;"><h3 class="text-center" style="padding-top:15px;padding-bottom:25px;">powered by 10+ building simulation software packages</h3></div>
+        <div class="span12 pagination-centered no-margin" style="margin-left:0px;">
+            <div ng-controller="ModalIntegration">
+                <script type="text/ng-template" id="ModalIntegration.html">
+                    <div class="modal" style="width:90%;">
                     <div class="modal-body" style="max-height:480px;">
                         <iframe src='https://skydrive.live.com/embed?cid=16B20B2C9752FBFF&resid=16B20B2C9752FBFF%21202&authkey=&em=2&wdAr=1.7777777777777777'
                     width='570px' height='450px' frameborder='0'>This is an embedded
@@ -172,7 +172,7 @@
                 </div>
             </div>
         </div>
-        <div class="span12 no-margin">
+        <div class="span12 no-margin" style="margin-left:0px;">
         <h3 class="text-center" style="padding-top:15px;padding-bottom:25px;">designed to ENGAGE owners & SUPPORT decision making in building retrofit projects. <a href="presentation"> learn more.</a></h3>
         <h2 class="text-center"><a href="lite" class="btn btn-large btn-success">Start Now</a></h2>
         </div>
@@ -246,10 +246,9 @@
         <div class="span2 pagination-centered">
             <img class="grey" src="img/home/upenn-home.png">
         </div>
-        <div class="span2 pagination-centered">
+        <div class="span2 pagination-centered" style="padding-bottom:30px;">
             <img class="grey" src="img/home/maryland-home.png">
         </div>
-        <div class="span12 no-margin">&nbsp;</div>
         
             <div class="span2 offset1 pagination-centered">
                 <img class="grey" src="img/home/balfour-home2.png">

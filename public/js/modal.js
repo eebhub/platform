@@ -1,10 +1,21 @@
 angular.module('modal', ['ui.bootstrap']);
-var ModalDemoCtrl = function ($scope, $modal, $log) {
+var ModalWorkflow = function ($scope, $modal, $log) {
 
   $scope.open = function () {
 
     var modalInstance = $modal.open({
-      templateUrl: 'myModalContent.html',
+      templateUrl: 'ModalWorkflow.html',
+      controller: ModalInstanceCtrl,
+    });
+  };
+};
+
+var ModalIntegration = function ($scope, $modal, $log) {
+
+  $scope.open = function () {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'ModalIntegration.html',
       controller: ModalInstanceCtrl,
     });
   };

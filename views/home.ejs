@@ -66,7 +66,7 @@
     <!--Main Page-->
     
     <div class="tagline row-fluid">
-        <h1 class="text-center">Simulate building energy online.</h1>
+        <div class="span12 no-margin"><h1 class="text-center">Simulate building energy online.</h1></div>
     </div>
     <div class="row-fluid levels">
         <div class="span3">
@@ -134,10 +134,10 @@
         <h4 class="text-center">the Energy Efficient Buildings Hub is pioneering the tools to make this possible, proven, &amp; easy</h4>
     </div>
     <div class="learn row-fluid">
-        <div class="span12 pagination-centered"><a href="/engines"><img src="img/platform2.png" width="193" height="86" alt="eebhub" style="margin-bottom:10px;"/></a></div>
-        <h3 class="text-center">4 web tools &#9679; 4 levels of complexity</h3>
+        <div class="span12 pagination-centered no-margin"><a href="/engines"><img src="img/platform2.png" width="193" height="86" alt="eebhub" style="margin-bottom:10px;"/></a>
+        <h3 class="text-center">4 web tools &#9679; <a href="engines" style="color:inherit;text-decoration: none;">4 levels of complexity</a></h3></div>
         <br>
-        <div class="pagination-centered">
+        <div class="span12 pagination-centered no-margin">
             <div ng-controller="ModalDemoCtrl">
                 <script type="text/ng-template" id="myModalContent.html">
                     <div class="modal" style="width:600px;">
@@ -154,11 +154,28 @@
                 </div>
             </div>
         </div>
-        <br>
-        <h3 class="span12 text-center" style="padding:30px;">powered by 10+ building simulation software packages</h3>
-        <div class="span8 offset2 pagination-centered"><a href="integration"><img src="img/home/software2.png" style="cursor:pointer;"></a></div>
-        <h3 class="span12 text-center" style="padding:25px;">designed to ENGAGE owners & SUPPORT decision making in building retrofit projects. <a href="presentation"> learn more.</a></h3>
-        <h2 class="span12 text-center"><a href="lite" class="btn btn-large btn-success">Start Now</a></h2>
+        <div class="span12 no-margin"><h3 class="text-center" style="padding-top:15px;padding-bottom:25px;">powered by 10+ building simulation software packages</h3></div>
+        <div class="span12 pagination-centered no-margin">
+            <div ng-controller="ModalDemoCtrl">
+                <script type="text/ng-template" id="myModalContent.html">
+                    <div class="modal" style="width:600px;">
+                    <div class="modal-body" style="max-height:480px;">
+                        <iframe src='https://skydrive.live.com/embed?cid=16B20B2C9752FBFF&resid=16B20B2C9752FBFF%21202&authkey=&em=2&wdAr=1.7777777777777777'
+                    width='570px' height='450px' frameborder='0'>This is an embedded
+                        <a target='_blank' href='http://office.com'>Microsoft Office</a>presentation, powered by
+                        <a target='_blank' href='http://office.com/webapps'>Office Web Apps</a>.</iframe>
+                    </div>
+                    </div>
+                </script>
+                <div class="span8 offset2 pagination-centered">
+                <img src="img/home/software2.png" style="cursor:pointer;" ng-click="open()">
+                </div>
+            </div>
+        </div>
+        <div class="span12 no-margin">
+        <h3 class="text-center" style="padding-top:15px;padding-bottom:25px;">designed to ENGAGE owners & SUPPORT decision making in building retrofit projects. <a href="presentation"> learn more.</a></h3>
+        <h2 class="text-center"><a href="lite" class="btn btn-large btn-success">Start Now</a></h2>
+        </div>
     </div> 
     <div class="subscribe row-fluid">
         <h2 class="text-center">NEWS</h2>
@@ -187,19 +204,19 @@
         <div class="row-fluid">
         <div class="span4 pagination-centered">
                 <a href="casestudies">
-                    <img src="img/casestudy_icon.png" alt="" width="130" height="130" />
+                    <img src="img/iconmonstr-multi-files-2-icon.svg" alt="case studies" width="130" height="130" />
                 </a>
             <h3 class="text-center">case studies</h3>
         </div>
         <div class="span4 pagination-centered">
                 <a href="code">
-                    <img src="img/iconmonstr-html-code-icon.svg" alt="substantial simulation" width="130" height="130" />
+                    <img src="img/iconmonstr-html-code-icon.svg" alt="code" width="130" height="130" />
                 </a>
             <h3 class="text-center">code</h3>
         </div>
         <div class="span4 pagination-centered">
                 <a href="inspiration">
-                    <img src="img/iconmonstr-window-layout-icon.svg" alt="substantial simulation" width="130" height="130" />
+                    <img src="img/iconmonstr-window-layout-icon.svg" alt="user interface" width="130" height="130" />
                 </a>
             <h3 class="text-center">user interface</h3>
         </div>
@@ -232,7 +249,7 @@
         <div class="span2 pagination-centered">
             <img class="grey" src="img/home/maryland-home.png">
         </div>
-        <div class="span12">&nbsp;</div>
+        <div class="span12 no-margin">&nbsp;</div>
         
             <div class="span2 offset1 pagination-centered">
                 <img class="grey" src="img/home/balfour-home2.png">
@@ -284,7 +301,7 @@
         COMMUNITY | 
             <a href="http://area51.stackexchange.com/proposals/45232/building-performance-simulation-analysis?tab=votes&phase=definition">Building Performance Q&A</a> | 
             <a href="https://bcl.nrel.gov/">NREL Building Component Library</a> |
-            <a href="game">Retrofit Game</a>    
+            <a href="software">Existing Tools</a>
             </h6>
         <h6 class="text-center" style="color:gray; font-weight:normal;">PROJECT | 
             <a href="vision">Vision</a> | 
@@ -294,20 +311,26 @@
             <a href="inspiration">Inspiration</a> |
             <a href="feedback">Stakeholder Feedback</a> | 
             <a href="comments">Comments</a> |
-            IT | 
+            <a href="news">News</a> | 
+            <a href="ideas">Ideas</a> |
+            <a href="game">Retrofit Game</a>
+        </h6>
+         <h6 class="text-center" style="color:gray; font-weight:normal;">IT | 
             <a href="infrastructure">Infrastructure</a> | 
             <a href="integration">Integration</a> | 
             <a href="developers">Developers</a> | 
             <a href="weather">Weather</a> | 
+            <a href="inputs">Inputs</a> | 
+            <a href="datastandard">Data Standard</a> | 
             <a href="mockups">Mockups</a> | 
-            <a href="variables">Variables</a> | 
             <a href="database">Database</a> | 
             <a href="graphics">GUI Library</a> | 
-            <a href="visitors">Pageviews</a>
+            <a href="engines">Engines</a> | 
+            <a href="code">Code</a> | 
+            <a href="documentation">Documentation</a> | 
+            <a href="visitors">Visitors | Pageviews</a>
         </h6>
         <h6 class="text-center" style="color:gray; font-weight:normal;">
-            <a href="software">Existing Tools</a> | 
-            <a href="wiki">Wiki Documentation</a> | 
             <a href="license">Open Source License</a> |
             <a href="disclaimer">Acknowledgement & Disclaimer</a>
         </h6>

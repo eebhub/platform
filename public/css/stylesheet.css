@@ -101,6 +101,19 @@
     /*-webkit-box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);*/
     /*box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);*/
 }
+
+.no-margin{
+    margin-left: 0px;
+     /*
+    NOTE:  This class overwrites bootstrap.min.css:206.  It fixes right margin created with span12's on homepage.
+    [class*="span"] {
+    float: left;
+    min-height: 1px;
+    margin-left: 20px;
+    */
+}
+
+
 .institutions .grey {
     -webkit-filter: grayscale(1);
     -ms-filter: grayscale(1);

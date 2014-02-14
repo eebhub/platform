@@ -1,0 +1,22 @@
+{
+  "name": "platform",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.3.4",
+    "forever" : "*",
+    "shelljs" : "*",
+    "request": "2.26.0",
+    "cheerio":"0.12.1",
+    "async":"0.2.9",
+    "mv": "0.0.5",
+    "ejs" : "0.8.4",
+    "node-xlsx": "0.2.2",
+    "mongoose": "*",
+    "sqlite3": "*",
+    "request": "*"
+  }
+}

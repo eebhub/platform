@@ -10,13 +10,13 @@
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/stylesheet.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <link href="css/stylesheet.css" rel="stylesheet">
         <style>
             body {
                 background:url('img/wood1.jpg') fixed;
+                
             }
             li {
                 list-style-type:none;
@@ -94,8 +94,8 @@
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
-                height: 25%;
-                width: 25%;
+                height: 20%;
+                width: 20%;
             }
             div.credits-left {
                 text-align: right;
@@ -104,8 +104,9 @@
                 text-align: left;
             }
             div.vennLeft {
-                width: 20%;
+                width: 18%;
                 float: left;
+                padding-left:2%;
             }
             div.vennLeft img {
                 height: 75%;
@@ -119,8 +120,9 @@
                 float: left;
             }
             div.vennRight {
-                width: 20%;
+                width: 18%;
                 float: right;
+                
             }
             div.vennRight img {
                 height: 75%;
@@ -137,7 +139,7 @@
                 display: block;
             }
             .vennDiagram {
-                 background:rgb(223, 223, 223);
+                 background:rgb(51, 51, 51);;
             }
             .taskDiagram {
                 background:rgb(223, 223, 223);
@@ -178,60 +180,69 @@
         </div>
         <!--Main Page-->
         <div class="vennDiagram">
-            <div class="row">
-                <div class="span2 offset5">
-                    <a href="#" class="eebhub"> <img src="img/home/eebhub-home.png" id="nl"></a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="vennLeft">
-                    <a href="#" class="psu">
-                    <img src="img/home/psu-home.png" id="ri">
+
+        
+            <div class="credits">
+                <a href="#" class="eebhub">
+                    <img src="img/home/eebhub-home.png" id="nl">
                 </a>
-                    <a href="#" class="mit">
+            </div>
+        
+
+        <div class="row">
+            <div class="vennLeft">
+                <a href="#" class="mit">
                     <img src="img/home/mit-home2.png" id="ri">
                 </a>
-                    <a href="#" class="cmu">
+                <a href="#" class="cmu">
                     <img src="img/home/cmu-home.png" id="ri">
                 </a>
-                    <a href="#" class="upenn">
+                <a href="#" class="psu">
+                    <img src="img/home/psu-home.png" id="ri">
+                </a>
+                <a href="#" class="upenn">
                     <img src="img/home/upenn-home.png" id="ri">
                 </a>
-                    <a href="#" class="umd">
+                <a href="#" class="umd">
                     <img src="img/home/maryland-home.png" id="ri">
                 </a>
-                    <a href="#" class="purdue">
+                <a href="#" class="purdue">
                     <img src="img/home/purdue-home.png" id="ri">
                 </a>
-                </div>
-                <div class="vennCenter">
-                    <div class="venn"></div>
-                </div>
-                <div class="vennRight">
-                    <a href="#" class="balfour">
+
+            </div>
+            <div class="vennCenter">
+                <div class="venn"></div>
+            </div>
+            <div class="vennRight">
+                <a href="#" class="balfour">
                     <img src="img/home/balfour-home2.png" id="ps">
                 </a>
-                    <a href="#" class="utrc">
+                <a href="#" class="utrc">
                     <img src="img/home/utrc-home.png" id="ps">
 
                 </a>
-                    <a href="#" class="ibm">
+                <a href="#" class="ibm">
                     <img src="img/home/ibm-home.png" id="ps">
                 </a>
-                    <a href="#" class="nrel">
-                    <img src="img/home/nrel-home.png" id="nl">
-                </a>
-                    <a href="#" class="nist">
+                <a href="#" class="nist">
                     <img src="img/home/nist-home.png" id="nl">
                 </a>
-                    <a href="#" class="doe">
+                <a href="#" class="nrel">
+                    <img src="img/home/nrel-home.png" id="nl">
+                </a>
+                <a href="#" class="doe">
                     <img src="img/home/doe-home.png" id="nl">
                 </a>
-                </div>
+
             </div>
         </div>
+    </div>
         
         <div id="credits">
+        
+            <h1 style="text-align:center">Credits</h1>
+        
             <div class="row">
                 <div class="span8 offset2">
                     <div id="balfour">
@@ -460,8 +471,10 @@
                 </div>
             </div>
         </div>
-        
         <div class="taskDiagram">
+            <h1 style="text-align:center;padding-top:20px;">Task Structure</h1>
+        
+        
             <div class="tasks"></div>
         </div>
         <!--Scripts-->

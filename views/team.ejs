@@ -537,12 +537,12 @@
             .on("mouseover", function(d) {
                 d3.select(this).transition().duration(500).attr("r", d.radius1);
                 d3.selectAll(d.highlight).attr("class", d.shadow);
-                //document.getElementById(d.highlight).style.boxShadow=d.highlightColor;                            
+                                         
 
             }).on("mouseout", function(d) {
                 d3.select(this).transition().duration(500).attr("r", d.radius);
                 d3.selectAll(d.highlight).attr("class", "noshadow");
-                //document.getElementById(d.highlight).style.boxShadow="0px 0px 0px rgba(0, 11, 93, 0.5)";
+                
             });
 
 
@@ -554,7 +554,7 @@
                 return d.ty
             }).text(function(d) {
                 return d.label
-            }).attr("font-size", "1.5em").attr("fill", "rgb(0, 0, 0)").style("cursor", "pointer");
+            }).attr("font-size", "1.5em").attr("fill", "rgb(151, 151, 151)").style("cursor", "pointer");
             //text.attr("x", "47%").attr("y","45%" ).text("HUB");
         </script>
         <script type="text/javascript">

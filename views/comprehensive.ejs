@@ -1095,7 +1095,6 @@
             <script src="js/bootstrap.min.js"></script>
             <script src="js/bootstrap-scrollspy.js"></script>
             <script src="js/bootstrap-fileupload.js"></script>
-			<script src="js/socket.io/node_modules/socket.io-client/dist/socket.io.js"></script>
             	<script>
             	var chart = new Highcharts.Chart
 				({
@@ -1206,8 +1205,8 @@
 		</script>
 		
         <script>
-			//var currentRanNum = Math.floor((Math.random()*10000)+1);									// random number 1->10,000 sent to simulate-openstudio.php to designate a path 
-			//document.getElementById("random_number").value = currentRanNum;								// set hidden div "random_number" so that it can be retrieved by ruby script
+			var currentRanNum = Math.floor((Math.random()*10000)+1);									// random number 1->10,000 sent to simulate-openstudio.php to designate a path 
+			document.getElementById("random_number").value = currentRanNum;								// set hidden div "random_number" so that it can be retrieved by ruby script
 			//document.write(document.getElementById("random_number").value);
 			console.log("%d", document.getElementById("random_number").value);
 			
@@ -1366,48 +1365,61 @@
 				}
 			}	 
         	
-			var socket;
-			var count = 0;
-			var maxFileLines = 503;									// maximum amount of lines written to stdout
-			var percentage = 100;									// multiplie to obtain percentage
-			var currentRanNum = Math.floor((Math.random()*10000)+1);				// random number 1->10,000 sent to simulate-openstudio.php to designate a path 
-			document.getElementById("random_number").value = currentRanNum;			// set hidden div "random_number" so that it can be retrieved by ruby script
-
-			//console.log("%d", document.getElementById("random_number").value);
-
-			$(document).ready(function(){
-				var num;
-				$("#real-time-output").html("");
-				socket = io.connect('http://localhost:9099');
-				
-				socket.on('new-data', function(data) {
-					//console.log(data.value);
-					count++;					// increase log count
-					if(count == 1)				// server callback function return, simluation has started
-					{
-						$("#loading-status").html("Starting Simulation...");
-					}
-					else						// output from stdout
-					{
-						num= (count/maxFileLines)*$(".loading-div").width();
-						$(".bar").width(num);
-						$("#loading-status").html("Simulation in Progress " +parseInt(num/$(".loading-div").width()*percentage)+"%");
-						$("#real-time-output").html(data.value);
-					}
-				});	
-			});
-				
-
-
-			function loading() 
+            
+         	// JS function to update loading bar
+        	function loading() 
 			{
-				setTimeout(function(){				// wait 15 seconds until file is created to start loading bar
-					//console.log("waited");			
-					socket.emit('randomNumber', currentRanNum);
-				},15000);
-				
-							
-			}
+				var num = 0;											// number to update loading bar to
+				var fileLines = 0;										// current amount of file lines in file 
+				var maxFileLines = 503;									// maximum amount of lines written to stdout
+				var percentage = 100;									// multiplie to obtain percentage
+				var addNum = 0;
+        	    
+				var loadingBar = setInterval(function()					// update loading bar every millisecond
+				{
+
+					var Req = getXmlHttpRequestObject();				// get xml request based off of browser
+
+					// currentRanNum is created in this js and sent to simulate-openstudio.php to designate path to save output
+					var filename = "http://128.118.67.241/openstudio/outputs/ENERGYPLUS/idf/Simulation_"+currentRanNum+".idf/EnergyPlusPreProcess/EnergyPlus-0/stdout"; 				
+		
+
+					Req.open("get", filename, false);		
+
+					Req.onreadystatechange = function() 			// fires every time there is a change in the request state					
+					{
+
+						if (Req.readyState == 4 && Req.status==200) 					// request is opened and ready to be parsed
+						{
+							var output = Req.responseText;								// cast request to string
+												
+							fileLines = output.split("\n");								// get number of lines in file
+							var index = fileLines.length -2;
+
+							console.log('File lines: %i',fileLines.length);			
+							console.log( fileLines[index] );
+
+		            		
+							num= (fileLines.length/maxFileLines)*$(".loading-div").width();		// number to update loading bar, dynamic based off of loading bar width
+															
+							$(".bar").width(num);    									// update the loading bar
+
+							$("#loading-status").html("Simulation In Progress "+parseInt(num/$(".loading-div").width()*percentage)+"%");	// set loading bar title with percentage cmplete
+							$("#real-time-output").html(fileLines[index]);
+
+						
+
+            				if(fileLines.length>=maxFileLines) 								// EnergyPlus has finished 
+							{ 
+            					$("#loading-status").html("Loading...");			// set loading bar title to loading
+								$("#real-time-output").html("");
+            					clearInterval(loadingBar);							// stop loadingBar function from firing every 1 millisecond
+        		    		}						
+					}			
+				}
+					Req.send();												// send the request to the browser
+				}, 1);														// loadingBar function interval set to fire every 1 millisecond
+            }
         	
         	
             // Verify the form inputs.

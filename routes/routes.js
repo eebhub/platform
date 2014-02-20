@@ -6,8 +6,9 @@ module.exports = {
         response.render('home',{
             'username': request.session.username
         });
-    },getTeam: function(request, response){
-        response.sendfile('./views/team.html');  
+    },
+    getTeam: function(request, response){
+        response.render('team');  
     },
     getSignUp: function(request, response){
         response.sendfile('./views/signup.html');  
@@ -37,6 +38,9 @@ module.exports = {
     },
     getNews: function(request, response){
         response.sendfile('./views/news.html');  
+    }, 
+    getVisits: function(request, response){
+        response.sendfile('./views/visitors.html');  
     }, 
     getPresentation: function(request, response){
         response.sendfile('./views/presentation.html');  

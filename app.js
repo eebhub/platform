@@ -1426,7 +1426,7 @@ app.get("/software5", function (req, res) {
 });
 
 // Google Analytics
-app.get("/geckboard", function (req, res) {
+app.get("/geckoboard", function (req, res) {
     res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
 });
 

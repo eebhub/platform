@@ -1,0 +1,343 @@
+{
+    "name": "Simulation & Modeling",
+    "children": [
+
+        {
+            "name": "2.1 Design Advisor Tool",
+            "depth": "150",
+            "children": [
+                {
+                    "name": "CoolVent",
+                    
+                    "children": [
+                        {
+                            "name": "Karine Ip Kiun Chong",
+                            "children":[{"name":""}]
+                            
+                        }
+     ]
+    },
+                {
+                    "name": "Urban Weather Generator",
+                    
+                    "children": [
+                        {
+                            "name": "Leslie Norford",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Aiko Nakano",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Christoph Reinhart",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Leon Glicksman",
+                            "children":[{"name":""}]
+                        }
+     ]
+    },
+                {
+                    "name": "Mechanical Materials",
+                    
+                    "children": [
+                        {
+                            "name": "Adrian Chong",
+                            "children":[{"name":""}]
+                            
+                        },
+                        {
+                            "name": "Haopeng Wang",
+                            "children":[{"name":""}]
+                            
+                        },
+                        {
+                            "name": "Weili Xu",
+                            "children":[{"name":""}]
+                            
+                        },
+                        {
+                            "name": "Shalini Ramesh",
+                            "children":[{"name":""}]
+                            
+                        },
+                        {
+                            "name": "Rongpeng Zhang",
+                            "children":[{"name":""}]
+                            
+                        },
+                        {
+                            "name": "Chao Ding",
+                            "children":[{"name":""}]
+                            
+                        },
+                        {
+                            "name": "Kee Poh Lam",
+                            "children":[{"name":""}]
+                            
+                        }
+     ]
+    },
+                
+                {
+                    "name": "Design Advisor",
+                    
+                    "children": [
+                        {
+                            "name": "Andrew Mandelbaum",
+                            "children":[{"name":""}]
+                            
+                        }
+     ]
+    }
+
+   ]
+  },
+        {
+            "name": "2.2 Energy Audit Tool",
+            "children": [
+                {
+                    "name": "DeepRetro Engine",
+                    "children": [
+                        {
+                            "name": "Russ Taylor",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Marija Trcka",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Stella Maris Offianu",
+                            "children":[{"name":""}]
+                        }
+     ]
+    },
+                {
+                    "name": "Uncertainty Quantification",
+                    
+                    "children": [
+                        {
+                            "name": "Sunil Ahuja",
+                            "children":[{"name":""}]
+                        }
+     ]
+    },
+                {
+                    "name": "Costing",
+                    
+                    "children": [
+                        {
+                            "name": "Beavan Mace",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Miao Niu",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Tabitha Sprau Coulter",
+                            "children":[{"name":""}]
+                        }
+     ]
+    },
+                            {
+                    "name": "Energy Audit iPad App",
+                    
+                    "children": [
+                        {
+                            "name": "Rober M. Leicht",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Matias Seiber",
+                            "children":[{"name":""}]
+                        }
+     ]
+    }
+   ]
+  },
+        {
+            "name": "2.3 Retrofit Manager Tool",
+            
+            "children": [
+                {
+                    "name": "DaySim",
+                    "children": [
+                        {
+                            "name": "Elizabeth Kula",
+                            "children":[{"name":""}]
+                        }
+     ]
+    },
+                {
+                    "name": "OpenStudio",
+                    "children": [
+                        {
+                            "name": "Kyle Benne",
+                            "children":[{"name":""}]
+                        }
+     ]
+    },
+                {
+                    "name": "CONTAM",
+                    
+                    "children": [
+                        {
+                            "name": "Andrew Persily",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Steven Emmerich",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "William Dols",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Jason W DeGraw",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "William Bahnfleth",
+                            "children":[{"name":""}]
+                        }
+     ]
+    },
+                {
+                    "name": "Retrofit Manager",
+                    
+                    "children": [
+                        {
+                            "name": "Zahira Alhafi",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Ibrahim Alanqar",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Yan Liusheng",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Matthew G. Dahlhausen",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Mohammad Heidarinejad",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Yang-Seon Kim",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Jin Bin Li",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Muijing Wang",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Josh Kuiros",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Jelena Srebric",
+                            "children":[{"name":""}]
+                        }
+     ]
+    }
+   ]
+  },
+        {
+            "name": "2.4 Simulation Platform",
+            
+            "children": [
+                {
+                    "name": "Portfolio Inverse Modeling",
+                    "depth": "150",
+                    "children": [
+                        {
+                            "name": "Rui Zhang",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Steve Estepan Meliksetian",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "William Dols",
+                            "children":[{"name":""}]
+                        }
+     ]
+    },
+                {
+                    "name": "Parametric Analysis Toolkit",
+                    
+                    "children": [
+                        {
+                            "name": "Ali Malkawi",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Bin Yan",
+                            "children":[{"name":""}]
+                        }
+     ]
+    },
+                {
+                    "name": "Fast Fluid Dynamics",
+                    "depth": "150",
+                    "children": [
+                        {
+                            "name": "Qingyan Chen",
+                            "children":[{"name":""}]
+                        }
+     ]
+    },
+    
+                {
+                    "name": "Software Integration",
+                    
+                    "children": [
+                        {
+                            "name": "Joshua R. Wentz",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Ying Sun",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Payam Delgoshaei",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Ke Xu",
+                            "children":[{"name":""}]
+                        },
+                        {
+                            "name": "Nicholas W. Mattise",
+                            "children":[{"name":""}]
+                        }
+     ]
+    },
+                            {
+                    "name": "Sponsor",
+                    "children": [
+                        {
+                            "name": "Amir Roth",
+                            "children":[{"name":""}]
+                        }
+     ]
+    }
+   ]
+  }
+ ]
+}

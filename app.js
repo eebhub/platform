@@ -202,6 +202,9 @@ app.get('/presentation', routes.getPresentation);
 app.get('/casestudies',routes.getCaseStudies);
 app.get('/engines',routes.getEngines);
 app.get('/casestudy',routes.getCaseStudies);
+app.get('/visits', routes.getVisits);
+app.get('/visitors', routes.getVisits);
+app.get('/views', routes.getVisits);
 app.get("/signup", function (req, res) {
     res.render("signup");
 });
@@ -1423,13 +1426,7 @@ app.get("/software5", function (req, res) {
 });
 
 // Google Analytics
-app.get("/visits", function (req, res) {
-    res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
-});
-app.get("/visitors", function (req, res) {
-    res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
-});
-app.get("/views", function (req, res) {
+app.get("/geckboard", function (req, res) {
     res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
 });
 

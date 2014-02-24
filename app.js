@@ -229,10 +229,20 @@ app.get('/', routes.getHome);
 app.get('/team', routes.getTeam);
 app.get('/news', routes.getNews);
 app.get('/presentation', routes.getPresentation);
+<<<<<<< HEAD
 app.get('/casestudies', routes.getCaseStudies);
 app.get('/engines', routes.getEngines);
 app.get('/casestudy', routes.getCaseStudies);
 app.get("/signup", function(req, res) {
+=======
+app.get('/casestudies',routes.getCaseStudies);
+app.get('/engines',routes.getEngines);
+app.get('/casestudy',routes.getCaseStudies);
+app.get('/visits', routes.getVisits);
+app.get('/visitors', routes.getVisits);
+app.get('/views', routes.getVisits);
+app.get("/signup", function (req, res) {
+>>>>>>> 534f25d7041c0f96705392bf2e06785fd344f5a1
     res.render("signup");
 });
 app.get("/signin", function(req, res) {
@@ -1546,6 +1556,7 @@ app.get("/software5", function(req, res) {
 });
 
 // Google Analytics
+<<<<<<< HEAD
 app.get("/visits", function(req, res) {
     res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
 });
@@ -1553,6 +1564,9 @@ app.get("/visitors", function(req, res) {
     res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
 });
 app.get("/views", function(req, res) {
+=======
+app.get("/geckoboard", function (req, res) {
+>>>>>>> 534f25d7041c0f96705392bf2e06785fd344f5a1
     res.redirect("https://eebhub.geckoboard.com/dashboards/7D68F4410328D3FB");
 });
 

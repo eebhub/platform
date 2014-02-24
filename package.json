@@ -17,6 +17,7 @@
     "node-xlsx": "0.2.2",
     "mongoose": "*",
     "sqlite3": "*",
-    "request": "*"
+    "request": "*",
+    "nodealytics":"*"
   }
 }

@@ -15,7 +15,7 @@ var express = require('express'),
 
 var app = express();
 
-//mongoose.connect("mongodb://128.118.67.242/test");
+mongoose.connect("mongodb://128.118.67.242/test");
 var UserSchema = new mongoose.Schema({
     username: String,
     password: String,

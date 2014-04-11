@@ -15,6 +15,13 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.7.0.js"></script>
     <script src="js/modal.js"></script>
+     <script type="text/ng-template" id="ModalWorkflow.html">
+        <div class="modal" style="width:600px;">
+            <div class="modal-body" style="max-height:480px;">
+                <iframe src='https://skydrive.live.com/embed?cid=16B20B2C9752FBFF&resid=16B20B2C9752FBFF%21214&authkey=ALtCkkH41pF9YQY&em=2&wdAr=1.3333333333333333' width='570px' height='450px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a>presentation, powered by <a target='_blank' href="http://office.com/webapps">Office Web Apps</a>.</iframe>
+            </div>
+        </div>
+    </script>
 </head>
 
 <body style="background:url('../img/wood1.jpg') fixed;">
@@ -134,24 +141,14 @@
         <h4 class="text-center">the Energy Efficient Buildings Hub is pioneering the tools to make this possible, proven, &amp; easy</h4>
     </div>
     <div class="learn row-fluid">
-        <div class="span12 pagination-centered no-margin"><a href="/engines"><img src="img/platform2.png" width="193" height="86" alt="eebhub" style="margin-bottom:10px;"/></a>
-        <h3 class="text-center">4 web tools &#9679; <a href="engines" style="color:inherit;text-decoration: none;">4 levels of complexity</a></h3></div>
+        <div class="span12 pagination-centered no-margin">
+        <div ng-controller="ModalWorkflow"><img src="img/platform2.png" width="193" height="86" alt="eebhub" style="margin-bottom:10px;cursor:pointer;" ng-click="open()"/></div>
+            <h3 class="text-center">4 web tools &#9679; <a href="engines" style="color:inherit;text-decoration: none;">4 levels of complexity</a></h3>
+        </div>
         <br>
         <div class="span12 pagination-centered no-margin" style="margin-left:0px;">
-            <div ng-controller="ModalWorkflow">
-                <script type="text/ng-template" id="ModalWorkflow.html">
-                    <div class="modal" style="width:600px;">
-                    <div class="modal-body" style="max-height:480px;">
-                        <iframe src='https://skydrive.live.com/embed?cid=16B20B2C9752FBFF&resid=16B20B2C9752FBFF%21214&authkey=ALtCkkH41pF9YQY&em=2&wdAr=1.3333333333333333'
-                    width='570px' height='450px' frameborder='0'>This is an embedded
-                        <a target='_blank' href='http://office.com'>Microsoft Office</a>presentation, powered by
-                        <a target='_blank' href='http://office.com/webapps'>Office Web Apps</a>.</iframe>
-                    </div>
-                    </div>
-                </script>
-                <div class="span8 offset2 pagination-centered">
-                <img src="img/home/workflow2.png" style="cursor:pointer;" ng-click="open()">
-                </div>
+            <div class="span8 offset2 pagination-centered">
+            <a href="engines"><img src="img/home/workflow2.png" style="cursor:pointer;" ng-click="open()"></a>
             </div>
         </div>
         <div class="span12 no-margin" style="margin-left:0px;"><h3 class="text-center" style="padding-top:15px;padding-bottom:25px;">powered by 10+ building simulation software packages</h3></div>

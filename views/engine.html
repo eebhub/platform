@@ -14,12 +14,15 @@
         <style type="text/css">
 .table th {
     font-size: 20px;     
-   text-align: center;   
+   text-align: center; 
+   padding-bottom:30px;
+   border-color:transparent;
 }
 .table td {
     font-weight:bold;
    text-align: center;   
    vertical-align:middle;
+   padding:10px;
 }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
@@ -51,6 +54,9 @@
                                 <a href="/comprehensive">COMPREHENSIVE</a>
                             </li>
                         </ul>
+                         <ul class="nav pull-right">
+                        <li><a href="team">by Simulation & Modeling Team</a></li>
+						</ul>
                     </div>
                     <!--/.nav-collapse -->
                 </div>
@@ -84,36 +90,30 @@
     <a href="/comprehensive">
         <img src="img/comprehensive-house.svg" alt="comprehensive simulation" width="80" height="80" />
     </a>
+
 </th>
 <th style='width: 10%;'></th>
-</tr>
-<tr>
-<td style='width: 45px; color: grey; text-align:left !important;'>Engine Name</td>
-<td>Inverse Modeling</td>
-<td>Design Advisor</td>
-<td>Energy Audit Tool</td>
-<td>Retrofit Manager</td>
 </tr>
 <tr>
 <td style='width: 45px; color: grey; text-align:left !important;'>User Group</td>
 <td>Building Owners</td>
 <td>Building Designers</td>
-<td>Building Audits</td>
+<td>Building Auditors</td>
 <td>Facility Managers</td>
 </tr>
 <tr>
 <td style='width: 45px; color: grey; text-align:left !important;'>Simulation Scope</td>
-<td>Recovers values and key building energy performance data</td>
-<td>Predict building energy usage</td>
+<td>Benchmarks building energy use intensity with respect to neighbors & temperature</td>
+<td>Predict whole building annual heating & cooling energy usage</td>
 <td>Support the initial evaluation of deep retrofit options in early retrofit stage</td>
-<td>Identify and compare EEMs for several energy retrofit scenarios</td>
+<td>Identify & compare EEMs for several energy retrofit scenarios</td>
 </tr>
 <tr>
 <td style='width: 45px; color: grey; text-align:left !important;'>Key Inputs</td>
-<td>utility data</td>
-<td>typical room, occupancy schedules</td>
-<td>specific building activities, HVAC system type</td>
-<td>energy usage, airflow, daylighting</td>
+<td>Utility Data,<br>Weather</td>
+<td>Typical Room,<br>Occupancy Schedules</td>
+<td>Specific Building Activities,<br>HVAC System Type</td>
+<td>Daylighting, Airflow,<br>Energy Efficiency Measures</td>
 </tr>
 <td style='width: 45px; color: grey; text-align:left !important;'>Model Type</td>
 <td>Inverse Model</td>
@@ -131,23 +131,41 @@
 <tr>
 <td style='width: 45px; color: grey;text-align:left !important;'>Powered by</td>
 <td>
-<img src="img/ibm-full.png" height="50%" width="50%">
+<a target="_blank" href="http://domino.research.ibm.com/library/cyberdig.nsf/papers/7A83DFDC8478F8D285257BA200550772/$File/rc25393.pdf">
+<img src="img/ibm-full.png" width="110" height="44">
+    
+</a>
 </td>
 <td>
-<a target="_blank" href="">
-    <img src="http://tools.eebhub.org/img/mit-full.png">
+<a target="_blank" href="http://designadvisor.mit.edu/design/">
+    <img src="http://tools.eebhub.org/img/mit-full.png" width="180" height="46">
     </a>
 </td>
-<td><a target="_blank" href="">
-    <img src="http://tools.eebhub.org/img/utrc-long.png">
+<td><a target="_blank" href="http://estcp.org/Program-Areas/Energy-and-Water/Energy/Conservation-and-Efficiency/EW-201257/EW-201257/">
+    <img src="http://tools.eebhub.org/img/utrc-long.png" width="180" height="33">
     </a></td>
 <td>
-<a target="_blank" href="">
-    <img src="http://tools.eebhub.org/img/psu-light2.png">
+<a target="_blank" href="http://openstudio.nrel.gov/">
+    <img src="http://tools.eebhub.org/img/psu-light2.png" width="150" height="69">
     </a></td>
+</tr>
+<tr>
+<td style='width: 45px; color: grey; text-align:left !important;'>Engine Name</td>
+<td>Inverse Modeling</td>
+<td>Design Advisor</td>
+<td>Energy Audit Tool</td>
+<td>Retrofit Manager</td>
 </tr>
 </table>
 
+<br>
+<div class="row-fluid text-center">
+<div class="pagination-center">
+
+<a href="presentation"><img src="img/powerpoint.png"></a>&nbsp;&nbsp;&nbsp;
+<a href="http://developer.eebhub.org/archives/presentations/EEB_HUB_Simulation_Platform_Workflow_9-25-2013.pdf"><img src="img/pdf.png"></a>
+<h4>Learn More about the 4 Tools & Engines</h4>
+</div>
 </div>
             <!-- Javascript -->
             <script src="js/ui-bootstrap.js"></script>

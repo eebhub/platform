@@ -231,6 +231,7 @@ app.get('/news', routes.getNews);
 app.get('/presentation', routes.getPresentation);
 app.get('/casestudies', routes.getCaseStudies);
 app.get('/engines',routes.getEngines);
+app.get('/compare',routes.getEngines);
 app.get('/casestudy',routes.getCaseStudies);
 app.get('/visits', routes.getVisits);
 app.get('/visitors', routes.getVisits);

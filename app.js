@@ -1449,7 +1449,7 @@ app.get("/game", function(req, res) {
     res.redirect("http://rmt.eebhub.org/game/");
 });
 app.get("/vision", function(req, res) {
-    res.redirect("http://simulation.eebhub.org");
+    res.redirect("http://developer.eebhub.org/eebhub/task2.html");
 });
 app.get("/license", function(req, res) {
     res.redirect("https://github.com/eebhub/platform/blob/master/LICENSE");

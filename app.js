@@ -236,6 +236,8 @@ app.get('/casestudy',routes.getCaseStudies);
 app.get('/visits', routes.getVisits);
 app.get('/visitors', routes.getVisits);
 app.get('/views', routes.getVisits);
+app.get('/accomplishments', routes.getAccomplishments);
+app.get('/infographic', routes.getAccomplishments);
 app.get("/signup", function (req, res) {
     res.render("signup");
 });

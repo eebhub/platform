@@ -50,6 +50,9 @@ module.exports = {
     },
     getEngines: function(request, response){
         response.sendfile('./views/engine.html');
+    },
+    getAccomplishments: function(request, response){
+        response.sendfile('./views/accomplishments.html');
     }
     
 };

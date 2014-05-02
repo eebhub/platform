@@ -1553,6 +1553,12 @@ app.get("/software5", function(req, res) {
 app.get("/deliverable", function(req, res) {
     res.redirect("http://developer.eebhub.org/archives/reports/Task2-DeliverablesReport-BetaReleaseSimulationTools-toNETL.pdf");
 });
+app.get("/statistics", function(req, res) {
+    res.redirect("https://www.ohloh.net/p/simulationplatform");
+});
+app.get("/stats", function(req, res) {
+    res.redirect("https://www.ohloh.net/p/simulationplatform");
+});
 
 // Google Analytics
 app.get("/geckoboard", function (req, res) {

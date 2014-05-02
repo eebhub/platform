@@ -1550,6 +1550,15 @@ app.get("/software4", function(req, res) {
 app.get("/software5", function(req, res) {
     res.redirect("https://skydrive.live.com/view.aspx?resid=16B20B2C9752FBFF!202&app=PowerPoint");
 });
+app.get("/deliverable", function(req, res) {
+    res.redirect("http://developer.eebhub.org/archives/reports/Task2-DeliverablesReport-BetaReleaseSimulationTools-toNETL.pdf");
+});
+app.get("/statistics", function(req, res) {
+    res.redirect("https://www.ohloh.net/p/simulationplatform");
+});
+app.get("/stats", function(req, res) {
+    res.redirect("https://www.ohloh.net/p/simulationplatform");
+});
 
 // Google Analytics
 app.get("/geckoboard", function (req, res) {

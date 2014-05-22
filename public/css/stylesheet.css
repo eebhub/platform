@@ -56,8 +56,8 @@
     /*box-shadow: 0 4px 4px #999;*/
 }
 .contact {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    /*padding-top: 50px;*/
+    padding-bottom: 25px;
     color:rgb(51, 51, 51);
     /*-moz-box-shadow: 0 4px 4px #999;*/
     /*-webkit-box-shadow: 0 4px 4px #999;*/
@@ -95,7 +95,7 @@
 .institutions {
     background: rgb(51, 51, 51);
     padding-top: 25px;
-    padding-bottom: 25px;
+    padding-bottom: 50px;
     color: rgb(160, 160, 160);
     /*-moz-box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);*/
     /*-webkit-box-shadow:inset 0 4px 4px rgba(0, 0, 0, 0.4);*/

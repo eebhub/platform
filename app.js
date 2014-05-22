@@ -238,6 +238,7 @@ app.get('/visitors', routes.getVisits);
 app.get('/views', routes.getVisits);
 app.get('/accomplishments', routes.getAccomplishments);
 app.get('/infographic', routes.getAccomplishments);
+app.get('/summary', routes.getAccomplishments);
 app.get("/signup", function (req, res) {
     res.render("signup");
 });
@@ -1553,11 +1554,17 @@ app.get("/software5", function(req, res) {
 app.get("/deliverable", function(req, res) {
     res.redirect("http://developer.eebhub.org/archives/reports/Task2-DeliverablesReport-BetaReleaseSimulationTools-toNETL.pdf");
 });
+app.get("/deliverables", function(req, res) {
+    res.redirect("http://developer.eebhub.org/archives/reports/Task2-DeliverablesReport-BetaReleaseSimulationTools-toNETL.pdf");
+});
 app.get("/statistics", function(req, res) {
     res.redirect("https://www.ohloh.net/p/simulationplatform");
 });
 app.get("/stats", function(req, res) {
     res.redirect("https://www.ohloh.net/p/simulationplatform");
+});
+app.get("/objectives", function(req, res) {
+    res.redirect("http://developer.eebhub.org/archives/reports/2013DeliverablesObjectivesEEBHubSimulationModeling.pdf");
 });
 
 // Google Analytics

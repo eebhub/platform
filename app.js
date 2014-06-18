@@ -1566,6 +1566,9 @@ app.get("/stats", function(req, res) {
 app.get("/objectives", function(req, res) {
     res.redirect("http://developer.eebhub.org/archives/reports/2013DeliverablesObjectivesEEBHubSimulationModeling.pdf");
 });
+app.get("/sensors", function(req, res) {
+    res.redirect("https://realtimeboard.com/app/5204832/Building101/");
+});
 
 // Google Analytics
 app.get("/geckoboard", function (req, res) {

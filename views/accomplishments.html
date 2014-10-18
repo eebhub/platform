@@ -1,302 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
   
-  <head>
+<head>
     <meta charset="utf-8">
-    <title>
-      Bootstrap, from Twitter
-    </title>
+    <title>EEB Hub Simulation Platform Accomplishments</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Le styles -->
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap.min.css"
-    rel="stylesheet">
-  </head>
+    <link rel="shortcut icon" href="http://tools.eebhub.org/img/favicon.ico" type="image/x-icon">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            padding:0;
+        }
+        .intro{
+            background-color:#B8DBFF;
+        }
+        .title{
+            position: relative; 
+            z-index: 2;
+        }
+        h1{
+            margin-top:0;
+            padding-top:20px;
+            padding-bottom:20px;
+        }
+        .rooftop{
+            border-left: 60px solid #d9ecff;
+            border-right: 60px solid #d9ecff;
+            border-bottom: 150px solid rgb(79,83,86);
+        }
+        #tools{
+            background-color:rgb(79,83,86);
+            color:rgb(190, 190, 190);
+            /*color: rgb(160, 160, 160);*/
+            padding-bottom:1px;
+        }
+        .roof{
+            background-color:rgb(51, 51, 51);
+            height:6px;
+        }
+        #website{
+            background-color: rgb(230,230,230)  ;
+            color: rgb(160, 160, 160);
+            padding:1px;
+            box-shadow: inset 0px 4px 10px 0px rgba(140,140,140,1);
+        }
+        .site{
+            color: rgb(51, 51, 51);
+        }
+        .house{
+            background:url('https://s3.amazonaws.com/media.jetstrap.com/sgiicQsdRhSbMPbxKS3F_woodside.jpg'); 
+            border-style:solid;
+            border-color:rgb(82, 48, 39);
+            border-width:12px;
+            border-bottom:0px;
+        }
+        #features, #visits{
+            padding-top:40px;
+            padding-bottom:25px;
+        }
+        #collaborations{
+            padding-top:25px;
+            padding-bottom:25px;
+        }
+        #casestudies, #reports, #focusgroups, #presentations, #screenshots, #database, #code{
+            padding-top:20px;
+            padding-bottom:20px;
+        }
+        .beam{
+            background-color:rgb(82, 48, 39);
+            height:12px;
+        }
+        #lessons{
+            /*background: url(brick.png);*/
+            background-color:rgb(210, 210, 210);
+            padding-top:25px;
+            border-left-style: dotted;
+            border-right-style: dotted;
+            border-color: rgb(220, 220, 220);
+            border-width:20px;
+        }
+        .grass{
+            background:url('https://s3.amazonaws.com/media.jetstrap.com/GrO3aMtARsWw1dixXh7p_grass 2.png');
+            height:40px;
+        }
+        #news{
+            background-color:rgb(99, 173, 94);
+            
+            padding-top:15px;
+            padding-bottom:25px;
+        }
+        #footer{
+            padding-top:25px;
+            background-color:rgb(165, 125, 101);
+        }
+        .alink{
+            color:inherit;
+            text-decoration: underline;
+        }
+        
+        @media (min-width: 1200px){
+        .row-fluid .offset1:first-child {
+        margin-left: 11.8%;
+        }
+        }
+    </style>
+    
+    <style>
+        /*CLOUDS ANIMATION--  Credits: http://thecodeplayer.com/walkthrough/pure-css3-animated-clouds-background --*/
+        
+        
+        #clouds{
+        	overflow-x:hidden;
+        	background: #B8DBFF;
+        	background: -webkit-linear-gradient(top, #B8DBFF 0%, #d9ecff 100%);
+        	background: -linear-gradient(top, #B8DBFF 0%, #d9ecff 100%);
+        	background: -moz-linear-gradient(top, #B8DBFF 0%, #d9ecff 100%);
+        }
+        
+        /*Time to finalise the cloud shape*/
+        .cloud {
+        	width: 200px; height: 60px;
+        	background: #fff;
+        	
+        	border-radius: 200px;
+        	-moz-border-radius: 200px;
+        	-webkit-border-radius: 200px;
+        	
+        	position: relative; 
+        }
+        
+        .cloud:before, .cloud:after {
+        	content: '';
+        	position: absolute; 
+        	background: #fff;
+        	width: 100px; height: 80px;
+        	position: absolute; top: -15px; left: 10px;
+        	
+        	border-radius: 100px;
+        	-moz-border-radius: 100px;
+        	-webkit-border-radius: 100px;
+        	
+        	-webkit-transform: rotate(30deg);
+        	transform: rotate(30deg);
+        	-moz-transform: rotate(30deg);
+        }
+        
+        .cloud:after {
+        	width: 120px; height: 120px;
+        	top: -55px; left: auto; right: 15px;
+        }
+        
+        /*Time to animate*/
+        .x1 {
+        	-webkit-animation: moveclouds 15s linear infinite;
+        	-moz-animation: moveclouds 15s linear infinite;
+        	-o-animation: moveclouds 15s linear infinite;
+        }
+        
+        /*variable speed, opacity, and position of clouds for realistic effect*/
+        .x2 {
+        	left: 200px;
+        	
+        	-webkit-transform: scale(0.6);
+        	-moz-transform: scale(0.6);
+        	transform: scale(0.6);
+        	opacity: 0.6; /*opacity proportional to the size*/
+        	
+        	/*Speed will also be proportional to the size and opacity*/
+        	/*More the speed. Less the time in 's' = seconds*/
+        	-webkit-animation: moveclouds 25s linear infinite;
+        	-moz-animation: moveclouds 25s linear infinite;
+        	-o-animation: moveclouds 25s linear infinite;
+        }
+        
+        .x3 {
+        	left: -250px; top: -200px;
+        	
+        	-webkit-transform: scale(0.8);
+        	-moz-transform: scale(0.8);
+        	transform: scale(0.8);
+        	opacity: 0.8; /*opacity proportional to the size*/
+        	
+        	-webkit-animation: moveclouds 20s linear infinite;
+        	-moz-animation: moveclouds 20s linear infinite;
+        	-o-animation: moveclouds 20s linear infinite;
+        }
+        
+        .x4 {
+        	left: 470px; top: -250px;
+        	
+        	-webkit-transform: scale(0.75);
+        	-moz-transform: scale(0.75);
+        	transform: scale(0.75);
+        	opacity: 0.75; /*opacity proportional to the size*/
+        	
+        	-webkit-animation: moveclouds 18s linear infinite;
+        	-moz-animation: moveclouds 18s linear infinite;
+        	-o-animation: moveclouds 18s linear infinite;
+        }
+        
+        .x5 {
+        	left: -150px; top: -150px;
+        	
+        	-webkit-transform: scale(0.8);
+        	-moz-transform: scale(0.8);
+        	transform: scale(0.8);
+        	opacity: 0.8; /*opacity proportional to the size*/
+        	
+        	-webkit-animation: moveclouds 20s linear infinite;
+        	-moz-animation: moveclouds 20s linear infinite;
+        	-o-animation: moveclouds 20s linear infinite;
+        }
+        
+        @-webkit-keyframes moveclouds {
+        	0% {margin-left: 1000px;}
+        	100% {margin-left: -1000px;}
+        }
+        @-moz-keyframes moveclouds {
+        	0% {margin-left: 1000px;}
+        	100% {margin-left: -1000px;}
+        }
+        @-o-keyframes moveclouds {
+        	0% {margin-left: 1000px;}
+        	100% {margin-left: -1000px;}
+        }
+        
+        /*CLOUDS ANIMATION--  Credits: http://thecodeplayer.com/walkthrough/pure-css3-animated-clouds-background --*/
+        
+    </style>
+    
+    <script>
+        
+        function offHover()
+        {
+            $("#hub").attr('src', 'https://s3.amazonaws.com/media.jetstrap.com/CoJ6NrQATWakHvM0hpkg_hub-venn2.png');
+        }
+        function onHover()
+        {
+            $("#hub").attr('src', 'https://s3.amazonaws.com/media.jetstrap.com/wdLhX2gOSSOM7SPHvZUj_hub-venn-logos3.png');
+        }
+        
+       
+    </script>
+</head>
   
-  <body>
-    <!-- /container -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-    </script>
-    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js">
-    </script>
-    <div class="container" id="title">
-      <h1 class="text-center">
-        EEB Hub Simulation Platform
-      </h1>
-    </div>
-    <div class="container pagination-center text-center" id="vision">
-      <h4>
-        web software to support decision making in building retrofit projects
-      </h4>
-      <h5 class="text-center">
-        Sponsored by the U.S. Department of Energy | February 2013 - January 2014
-      </h5>
-    </div>
-    <hr>
-    <div class="container pagination-center text-center" id="team">
-      <h2>
-        13 organizations &amp; 53 people
-      </h2>
-      <h6 class="text-center">
-      </h6>
-      <img src="https://s3.amazonaws.com/media.jetstrap.com/GOQnjGZSdmlZdW8knPoh_Screen Shot 2014-05-08 at 12.32.53 AM.png"
-      width="350">
-      <h5>
-        <span style="font-weight: normal;">
-    from 12 different cities around the nation</span>
-      </h5>
-      <div class="container pagination-centered">
+<body>
+  <div class="intro">
+
+    <div class="pagination-center text-center" id="clouds">
+      <div class="title">
+          <h1 class="text-center">Energy Efficient Buildings Hub Simulation Platform</h1>
+          <h4>web software to support decision making in building retrofit projects</h4>
+          <h5 class="text-center">Sponsored by the U.S. Department of Energy in 2013</h5>
       </div>
+    	<div class="cloud x1"></div>
+    	<div class="cloud x2"></div>
+    	<div class="cloud x3"></div>
+    	<div class="cloud x4"></div>
+	<div
+    
+    <div class="pagination-center text-center" id="team" style="position:relative; top:-110px;">
+      <a href="http://tools.eebhub.org/team">
+        <img id="hub" src="https://s3.amazonaws.com/media.jetstrap.com/CoJ6NrQATWakHvM0hpkg_hub-venn2.png" width="450" onmouseover="onHover();" onmouseout="offHover();">
+      </a>
+      <h2>53 people from 13 organizations</h2>
+      <h5>in 12 different U.S. cities</h5>
     </div>
-    <div class="container pagination-center text-center" id="integration">
-      <h3>
-        set out to integrate 10+ building energy software packages
-      </h3>
-      <img src="https://s3.amazonaws.com/media.jetstrap.com/qhawD9fTQcqD7iZc4kkQ_software2.png"
-      id="" class="span9 offset1">
-      <div class="container pagination-centered">
+    
+    <div class="container pagination-center text-center" id="integration" style="position:relative; top:-30px;">
+      <div class="row-fluid">
+      <a href="http://tools.eebhub.org/integration">
+        <img src="https://s3.amazonaws.com/media.jetstrap.com/qhawD9fTQcqD7iZc4kkQ_software2.png" class="span9 offset1">
+      </a>
       </div>
+
+      <h2 >set out to integrate 10+ building energy software packages</h2>
     </div>
-    <div class="container pagination-center text-center" id="infrastructure">
-      <h3 class="text-center">
-        into 1 user-friendly interface
-      </h3>
-      <span style="font-weight: normal;">with building expert knowledge throughout</span>
-      <h5>
-      </h5>
-      <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-      <h3 class="text-center">
-        on 1 web platform
-      </h3>
-      <h5>
-        <span style="font-weight: normal;">available to <a href="http://www.itu.int/net/pressoffice/press_releases/2014/23.aspx#.U3Pw561dUtM">billions</a> of people</span>
-      </h5>
-      <img src="https://s3.amazonaws.com/media.jetstrap.com/RcWz7vqpT5y8kloTjzF9_cloud.png"
-      width="120">
-      <div class="container pagination-centered">
-      </div>
-      <h5>
-        <span style="font-weight: normal;">
-    built with a cloud infrastructure of 4 Dell Servers, VMware vSphere+vCenter, &amp; 20 virtual machines
-  <h3><div><br></div>
-    ...11 months later...
-  </h3></span>
-      </h5>
+    
+    <div class="pagination-center text-center" id="infrastructure">
+      <br>
+      <br>
+      
+      <a href="http://tools.eebhub.org/vision">
+        <img src="https://s3.amazonaws.com/media.jetstrap.com/yKsP6sTTjKzYtARaJMpj_iconmonstr-window-2-icon-256.png" width="135">
+      </a>
+      <h2>into 1 user-friendly interface</h2>
+      <span style="font-weight: normal;">with building expert knowledge embedded throughout</span>
+      <br>
+      <br>
+      <br>
+      
+      <a href="http://tools.eebhub.org/infrastructure">
+        <img src="https://s3.amazonaws.com/media.jetstrap.com/5esCKnMFTd2etx19t4xJ_iconmonstr-globe-4-icon-256.png" width="110">
+      </a>
+      <h2>on 1 web platform</h2>
+      <h5><span style="font-weight: normal;">publicly available to <a href="http://www.itu.int/net/pressoffice/press_releases/2014/23.aspx#.U3Pw561dUtM">billions</a> of people</span></h5>
+      <br>
+      <br>
+      
+      <a href="http://tools.eebhub.org/infrastructure">
+        <img src="https://s3.amazonaws.com/media.jetstrap.com/1Y3bmy5ISW2T6ZucFyxI_iconmonstr-server-4-icon-256.png" width="90">
+      </a>
+      <h5><span style="font-weight: normal;">built with a cloud infrastructure of <br>4 Dell Servers, VMware vSphere+vCenter, <br>&amp; 20 virtual machines</h5>
+      <br>
+      <h4>. &nbsp;. &nbsp;. &nbsp;11 months later &nbsp;. &nbsp;. &nbsp;.</h4></span>
+      <br>
     </div>
-    <hr>
-    <div class="container pagination-center text-center" id="tools">
-      <img src="https://s3.amazonaws.com/media.jetstrap.com/EsdTJShhR3CqKwD8Shul_EEBHubSimulationPlatform4.png"
-      width="350">
-      <h2>
-        4 web tools - 4 levels of complexity
-        <div>
+    </div>
+    
+    <div class="rooftop"></div>
+    <div class="pagination-center text-center" id="tools">
+      
+      <div style="position:relative; top:-70px;">
+          <a href="http://tools.eebhub.org"><img src="https://s3.amazonaws.com/media.jetstrap.com/EsdTJShhR3CqKwD8Shul_EEBHubSimulationPlatform4.png" width="350"></a>
+          <h2 style="padding-bottom:35px;">4 web tools ● 4 levels of complexity</h2>
           <br>
-        </div>
-      </h2>
-      <div class="container pagination-centered">
-      </div>
+
+      <div class="container">
       <div class="row-fluid">
         <div class="span3">
-          <img src="https://s3.amazonaws.com/media.jetstrap.com/98JZ49pSVDEH22mXRr8Q_lite.png">
-          <h3>
-            Lite
-          </h3>
+          <a href="http://tools.eebhub.org/lite"><img src="https://s3.amazonaws.com/media.jetstrap.com/98JZ49pSVDEH22mXRr8Q_lite.png"></a>
+          <h3>Lite</h3>
+         <a href="http://tools.eebhub.org/literesults">
+             <img src="https://s3.amazonaws.com/media.jetstrap.com/U7utTF1RLadbcqzenERs_ashrae-e.png"
+              width="125">
+         </a>
           <br>
-          <br>
-          <img src="https://s3.amazonaws.com/media.jetstrap.com/flzi9nt2SsSlLPhVu2sn_ashrae-clear.png">
-          <br>
-          <img src="https://s3.amazonaws.com/media.jetstrap.com/zTtXvRyMTiuXIuQHGqP3_ibm-home.png">
+          <a href="http://ibm.eebhub.org:8080/EEBHubND/Main.html">
+          <img src="https://s3.amazonaws.com/media.jetstrap.com/FrliKvTfirJrK2VMexAE_ibm-e.png"
+          width="125">
+          </a>
           <br>
         </div>
+       
+       <div class="span3">
+          <a href="http://tools.eebhub.org/partial"><img src="https://s3.amazonaws.com/media.jetstrap.com/zidYzIYxRsa1aeP1JYC0_partial.png"></a>
+          <h3>Partial</h3>
+         <a href="http://designadvisor.mit.edu/design/">
+             <img src="https://s3.amazonaws.com/media.jetstrap.com/f5p6YK6BQzafhsMWP9Mk_mit-e.png"
+              width="125">
+         </a>
+          <br>
+         <a href="http://developer.eebhub.org/cmu/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/r0glAPpgQka2iCIr1248_cmu-m.png"
+              width="125">
+          </a>
+          <br>
+        </div>
+        
         <div class="span3">
-          <img src="https://s3.amazonaws.com/media.jetstrap.com/zidYzIYxRsa1aeP1JYC0_partial.png">
-          <h3>
-            Partial
-          </h3>
-          <img src="https://s3.amazonaws.com/media.jetstrap.com/7iPXYxnQpqUK42B6Gx01_mit-home.png">
+          <a href="http://tools.eebhub.org/substantial"><img src="https://s3.amazonaws.com/media.jetstrap.com/8lF9kEprRXXnyLVF0j1D_substantial.png"></a>
+          <h3>Substantial</h3>
+         <a href="https://www.fbo.gov/index?s=opportunity&mode=form&tab=core&id=df9b34845c53f188928d3e97581c8d67">
+             <img src="https://s3.amazonaws.com/media.jetstrap.com/flhd6aTJaeOHmb4A5W8w_utrc-e.png"
+              width="125">
+         </a>
           <br>
-          <img src="https://s3.amazonaws.com/media.jetstrap.com/Pgr2NVqT3y8GrYlGfNXW_cmu-home.png">
-          <br>
+         <a href="http://tools.eebhub.org/substantial">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/2rUXJ5LSEb7hzcVyl9mA_upenn-psu.png"
+              width="125">
+          </a>
           <br>
         </div>
+        
         <div class="span3">
-          <img src="https://s3.amazonaws.com/media.jetstrap.com/8lF9kEprRXXnyLVF0j1D_substantial.png">
-          <h3>
-            Substantial
-          </h3>
-          <img src="https://s3.amazonaws.com/media.jetstrap.com/SGSahMWpRxyHoh421MzL_utrc-home.png">
+          <a href="http://tools.eebhub.org/comprehensive"><img src="https://s3.amazonaws.com/media.jetstrap.com/7P38ZWmwR4KVSy1nUJhu_comprehensive.png"></a>
+          <h3>Comprehensive</h3>
+          <a href="http://tools.eebhub.org/game">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/5I8kX8DkSq6OI9YpkYPa_psu-g.png"
+              width="125">
+          </a>
           <br>
+          <a href="http://tools.eebhub.org/comprehensive#conservation">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/RlCC8m1LRAm5Y2y59gzL_doe-engines.png"
+              width="125">
+          </a>
           <br>
-          <img src="https://s3.amazonaws.com/media.jetstrap.com/m9lPiueXShmxGSAj8kkg_upenn-home.png">
         </div>
-        <div class="span3">
-          <img src="https://s3.amazonaws.com/media.jetstrap.com/7P38ZWmwR4KVSy1nUJhu_comprehensive.png">
-          <h3>
-            Comprehensive
-          </h3>
-          <img src="https://s3.amazonaws.com/media.jetstrap.com/zd2g2yTRdCWyqgo0fmDF_psu-home.png">
-          <br>
-          <br>
-          <br>
-          <img src="https://s3.amazonaws.com/media.jetstrap.com/Qkm7C3KhSSSuZygt1kMM_openstudio.png"
-          width="80">
-        </div>
+
       </div>
-      <h4>
-        <div>
-          <div>
-            <div>
-            </div>
-          </div>
-        </div>
-      </h4>
+      </div>
+      <br>
+      <br>
+      <h4>1 interface simplifies the best parts of 8 engines<sup>E</sup>, 3 mockups<sup>M</sup>, 5 external resources<sup>R</sup>, and 1 retrofit game<sup>G</sup>, online at:</h4>
+      </div><!--push up roof top -100-->
+        
+    </div><!--#tools-->
+    
+    <div class="roof"></div>
+    <div class="pagination-center text-center" id="website">
+    <h1><a class="site" href="http://tools.eebhub.org">tools.eebhub.org</a></h1>
     </div>
+    
+
+  <div class="house">
     <div class="container pagination-center text-center" id="features">
-      <h4>
-        1 interface simplifies the best parts of 8 engines
-        <sup>
-          E
-        </sup>
-        , 3 mockups
-        <sup>
-          M
-        </sup>
-        , 5 external resources
-        <sup>
-          R
-        </sup>
-        , and 1 retrofit game, online at:
-        <div>
-          <br>
-        </div>
-      </h4>
-      <h1>
-        <a href="http://tools.eebhub.org">
-    tools.eebhub.org
-  </a>
-      </h1>
-      <p>
-        features include
-      </p>
       <div class="row-fluid">
+        
         <div class="span3">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h4>
-            My Buildings&nbsp;
-            <div>
-              Dashboard
-            </div>
-          </h4>
+          <a href="http://research.cbei.psu.edu//research-digest-reports/simulation-platform/#prettyPhoto/0/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/Fos01icfTcGgRE6gez4j_dashboard.png"
+              width="125">
+          </a>
+          <h4>My Buildings&nbsp;<br>Dashboard</h4>
         </div>
+        
         <div class="span3">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h4>
-            Run Simulations&nbsp;
-            <div>
-              in Cloud
-            </div>
-          </h4>
+          <a href="http://research.cbei.psu.edu//research-digest-reports/simulation-platform/#prettyPhoto/4/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/KXoUAl50QDKHnSkeggd2_cloud.png"
+              width="125">
+          </a>
+          <h4>Run Simulations&nbsp;<br>in Cloud</h4>
         </div>
+        
         <div class="span3">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h4>
-            User/Company&nbsp;
-            <div>
-              Login
-            </div>
-          </h4>
+          <a href="http://developer.eebhub.org/mit/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/6EaKDC8AS6SrGUTGgzhb_save.png"
+              width="125">
+          </a>
+          <h4>Save Inputs &amp; Outputs<br>in Cloud</h4>
         </div>
+        
         <div class="span3">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h4>
-            Save Inputs &amp; Outputs
-            <div>
-              in Cloud
-            </div>
-          </h4>
+         <a href="http://tools.eebhub.org/signin">
+             <img src="https://s3.amazonaws.com/media.jetstrap.com/WJkkI7MBSBavuWlth04j_login.png"
+              width="125">
+          </a>
+          <h4>User/Company&nbsp;<br>Login</h4>
         </div>
+        
       </div>
+      
       <div class="row-fluid">
+        
         <div class="span3">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h4>
-            Data Flow
-            <div>
-              across tools
-            </div>
-          </h4>
+          <a href="http://tools.eebhub.org/lite#utilities">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/nWMVtiTtQp6QQyrOvzIV_excel.png"
+              width="125">
+          </a>
+          <h4>Upload Utility Data&nbsp;<br>Portfolio Manager / Excel</h4>
         </div>
+        
         <div class="span3">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h4>
-            Dual Units
-            <div>
-              English + Metric
-            </div>
-          </h4>
+          <a href="http://tools.eebhub.org/signin">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/1LTeQWVbSMWuaNypEYBa_flow.png"
+              width="125">
+          </a>
+          <h4>Data Flow<br>across Tools</h4>
         </div>
+        
         <div class="span3">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h4>
-            Weather Support
-            <div>
-              for 18 Cities
-            </div>
-          </h4>
+          <a href="http://tools.eebhub.org/weather">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/dtxxEmLQrmiN7Fj98PAx_weather.png"
+              width="125">
+          </a>
+          <h4>Weather Support<br>for 18 Cities</h4>
         </div>
+        
         <div class="span3">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h4>
-            Upload Utility Data&nbsp;
-            <div>
-              Portfolio Manager / Excel
-            </div>
-          </h4>
+         <a href="http://tools.eebhub.org/comprehensive">
+             <img src="https://s3.amazonaws.com/media.jetstrap.com/vVuAXIFDQBicFFWxQzfT_units.png"
+              width="125">
+          </a>
+          <h4>Dual Units<br>English + Metric</h4>
         </div>
+        
       </div>
-      <h4>
-        <div>
-          <br>
-          <div>
-            <br>
-          </div>
-        </div>
-        all designed to ENGAGE owners &amp; SUPPORT decision making in building
-        retrofit projects
-      </h4>
-      <h5>
-        <span style="font-weight: normal;">
-    The EEB Hub Simulation Platform features were developed with a focus on (1) user experience, (2) stakeholder engagement, and (3) data accessibility.
-    &nbsp;Features not shown above include an ASHRAE Accuracy Assessment, Feedback
-    Pop-up, and Visitors Dashboard.
-  </span>
-      </h5>
+      <br>
+      <br>
+      <h4>all designed to ENGAGE owners &amp; SUPPORT decision making in building retrofit projects</h4>
+      
+      <h5><span style="font-weight: normal;">The EEB Hub Simulation Platform features were developed with a focus on (1) user experience, (2) <a href="http://tools.eebhub.org/comments">stakeholder engagement</a>, and (3) data accessibility. 
+      &nbsp;Features not shown above include an ASHRAE Accuracy Assessment, <a href="https://eebhub.uservoice.com/clients/widgets/classic_widget?mode=support&locale=en&forum_id=224458&support_tab_name=Contact%20EEB%20Hub%20Software%20Support&contact_us=true&custom_template_id=16740&context=site2&embed_type=lightbox&contact_enabled=true&feedback_enabled=false&smartvote=true&default_mode=support&referrer=http%3A%2F%2Feebhub.uservoice.com%2F#contact_us">Feedback Pop-up</a>, and <a href="http://tools.eebhub.org/visits">Visitors Dashboard</a>.</span></h5>
+      
     </div>
-    <hr>
-    <div class="container pagincation-center text-center" id="visits">
-      <h5>
-        September 2013 - February 2014
-      </h5>
-      <h2>
-        721 unique visitors
-        <div>
-          <div>
-            15,751 pageviews
-          </div>
-        </div>
-      </h2>
-      <img src="https://s3.amazonaws.com/media.jetstrap.com/6n61ZZRgQlWk2gmVXotf_map.png"
-      width="400">
-      <h3>
-        426 visits/month
-      </h3>
-      <h5>
-        <span style="font-weight: normal;">tracked with Google Analytics and Geckoboard</span>
-      </h5>
+
+    <div class="beam"></div>
+    <div class="container pagination-center text-center" id="visits">
+      <h2>VISITORS</h2>
+      <h5><span style="font-weight: normal;">tracked with Google Analytics &amp; Geckoboard from Sept 2013 - Feb 2014</span></h5>
+      <br>
+      <a href="http://tools.eebhub.org/visits">
+        <img src="https://s3.amazonaws.com/media.jetstrap.com/kMOl25xTvi8lrio6NdQM_pageviews.png" width="420">
+      </a>
+      <h3>pageviews</h3>
+      <br>
+      
+      <a href="http://tools.eebhub.org/visits">
+          <img src="https://s3.amazonaws.com/media.jetstrap.com/VwdE7AxeRCiogjzKy8ga_month.png"
+          width="400">
+      </a>
+      <br>
+     
+      <h3>visits/month</h3>
+      
+      <a href="http://tools.eebhub.org/visits">
+      <img src="https://s3.amazonaws.com/media.jetstrap.com/5ajxSitQSqeRhDDDJ3wu_visitors.png" width="350">
+      </a>
+      <h3>unique visitors</h3>
+      <br>
+      <br>
       <div class="row-fluid">
         <div class="span4">
-          <h4>
-            Top Entrances
-          </h4>
+          
+          <h4>Top Entrances</h4>
+          
           <div class="row-fluid">
             <div class="span4">
               <span class="badge pull-right">1</span>
@@ -307,6 +517,7 @@
               </p>
             </div>
           </div>
+          
           <div class="row-fluid">
             <div class="span4">
               <span class="badge pull-right">2</span>
@@ -317,6 +528,7 @@
               </p>
             </div>
           </div>
+          
           <div class="row-fluid">
             <div class="span4">
               <span class="badge pull-right">3</span>
@@ -327,16 +539,18 @@
               </p>
             </div>
           </div>
+          
           <p class="pull-left">
             <font color="#ffffff">
               <span style="font-size: 12px; line-height: 14px; white-space: nowrap; background-color: rgb(153, 153, 153);"></span>
             </font>
           </p>
         </div>
+        
         <div class="span4">
-          <h4>
-            Top Operating Systems
-          </h4>
+          
+          <h4>Top Operating Systems</h4>
+          
           <div class="row-fluid">
             <div class="span4">
               <span class="badge pull-right">1</span>
@@ -347,6 +561,7 @@
               </p>
             </div>
           </div>
+          
           <div class="row-fluid">
             <div class="span4">
               <span class="badge pull-right"></span>
@@ -358,6 +573,7 @@
               </p>
             </div>
           </div>
+          
           <div class="row-fluid">
             <div class="span4">
               <span class="badge pull-right">3</span>
@@ -368,16 +584,12 @@
               </p>
             </div>
           </div>
-          <p class="pull-left">
-            <font color="#ffffff">
-              <span style="font-size: 12px; line-height: 14px; white-space: nowrap; background-color: rgb(153, 153, 153);"></span>
-            </font>
-          </p>
+          
         </div>
+        
         <div class="span4">
-          <h4>
-            Top Web Browsers
-          </h4>
+          <h4>Top Web Browsers</h4>
+          
           <div class="row-fluid">
             <div class="span4">
               <span class="badge pull-right">1</span>
@@ -388,6 +600,7 @@
               </p>
             </div>
           </div>
+          
           <div class="row-fluid">
             <div class="span4">
               <span class="badge pull-right">2</span>
@@ -398,6 +611,7 @@
               </p>
             </div>
           </div>
+          
           <div class="row-fluid">
             <div class="span4">
               <span class="badge pull-right">3</span>
@@ -408,433 +622,344 @@
               </p>
             </div>
           </div>
-          <p class="pull-left">
-            <font color="#ffffff">
-              <span style="font-size: 12px; line-height: 14px; white-space: nowrap; background-color: rgb(153, 153, 153);"></span>
-            </font>
-          </p>
+          
         </div>
       </div>
     </div>
-    <hr>
-    <div class="container pagincation-center text-center" id="collaborations">
-      <h2>
-        COLLABORATIONS
-      </h2>
-      <h5>
-      </h5>
-      <h5>
-        <span style="font-weight: normal;">
-    include
-  </span>
-      </h5>
+    
+    <div class="beam"></div>
+    <div class="pagination-center text-center" id="collaborations">
+      <h2>COLLABORATIONS</h2>
+
+    <div id="casestudies">
+      <a href="http://tools.eebhub.org/casestudies">
+          <img src="https://s3.amazonaws.com/media.jetstrap.com/TlFj9f2SGmnfSF1igzdg_casestudies.png"
+          width="375">
+      </a>
+      <h3>case studies</h3>
+      <p>x 6 Institutions = 18 Energy Models of Building Retrofits</p>
     </div>
-    <div class="container pagincation-center text-center" id="casestudies">
-      <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-      <h3>
-        3 case studies
-        <div>
-        </div>
-      </h3>
-      <h5>
-        x 6 Institutions = 18 Energy Models of Building Retrofits
-      </h5>
+    
+    <div id="reports">
+      <a href="http://tools.eebhub.org/reports">
+          <img src="https://s3.amazonaws.com/media.jetstrap.com/V6KXjyM5RUqDWzzG9U1A_reports.png"
+          width="550">
+      </a>
+      <h3>reports to U.S. DOE</h3>
     </div>
-    <div class="container pagincation-center text-center" id="casestudies">
-      <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-      <h3>
-        4 reports to U.S. DOE
-        <div>
-        </div>
-      </h3>
+    <br>
+    
+    <div class="beam"></div>
+    
+    <div id="presentations">
+      <br>
+      <a href="http://tools.eebhub.org/presentations">
+          <img src="https://s3.amazonaws.com/media.jetstrap.com/BSpqrb4bRdmGc3LxcDDY_presentations.png"
+          width="550">
+      </a>
+      <h3>team presentations</h3>
     </div>
-    <div class="container pagincation-center text-center" id="casestudies">
-      <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-      <h3>
-        2 focus groups
-        <div>
-        </div>
-      </h3>
-      <p>
-        which generated
-      </p>
+    
+    <div id="focusgroups">
+      <a href="http://tools.eebhub.org/focusgroup">
+          <img src="https://s3.amazonaws.com/media.jetstrap.com/waTyBNfkSmSx9m0TxOxv_focusgroups.png"
+          width="375">
+      </a>
+      <h3>focus groups</h3>
+      <p>which generated</p>
+      
       <div class="row-fluid">
-        <div class="span4">
-          <h3>
-            70+
-          </h3>
-          <p>
-            Functional Ideas
-          </p>
+       <div class="span3"></div>
+        <div class="span2">
+          <h3>70+</h3>
+          <p>Functional Ideas</p>
         </div>
-        <div class="span4">
-          <h3>
-            15
-          </h3>
-          <p>
-            Software Ideas
-          </p>
+        <div class="span2">
+          <h3>15</h3>
+          <p><a href="http://eebhub.uservoice.com/forums/224458-general/filters/top">Software Ideas</a></p>
         </div>
-        <div class="span4">
-          <h3>
-            52
-          </h3>
-          <p>
-            Votes
-          </p>
+        <div class="span2">
+          <h3>52</h3>
+          <p>Votes</p>
         </div>
+        <div class="span3"></div>
+        <br>
       </div>
     </div>
-    <div class="container pagincation-center text-center" id="casestudies">
-      <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-      <h3>
-        5 team presentations
-        <div>
-        </div>
-      </h3>
+    
+    
+    <div class="beam"></div>
+    <div id="screenshots">
+      <a href="http://tools.eebhub.org/inspiration">
+          <img src="https://s3.amazonaws.com/media.jetstrap.com/DFp8ytTiQPiS7PDgHrfH_screenshots.png"
+          width="550">
+      </a>
+      <h3>screenshots of inspiration</h3>
+      <p>a Graphical User Interface (GUI) Library of Building Energy Software for us and the world</p>
     </div>
-    <div class="container pagincation-center text-center" id="casestudies">
-      <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-      <h3>
-        270 screenshots
-        <div>
-        </div>
-      </h3>
+    
+    <div id="database">
+      <a href="http://tools.eebhub.org/database">
+          <img src="https://s3.amazonaws.com/media.jetstrap.com/uFWkTGfeTbKJf3YuHTtj_database.png"
+          width="300">
+      </a>
+      <h3>shared database</h3>
       <h5>
-        of Building Energy Software GUI's&nbsp;
-        <span style="font-weight: normal; color: inherit; font-family: inherit;"><br>...a Graphical User Interface library of inspiration for us and the world</span>
+      <span style="font-weight: normal;">SimDB (Simulation Database) supports features such as user login, data flow across tools, my buildings dashboard, &amp; saving inputs in the cloud. &nbsp;We used a NoSQL, Document Based, Database built with MongoDB. &nbsp;The documents are made up of JavaScript Object Notation (JSON) files with attributes based off of the <a href="http://tools.eebhub.org/datastandard">DOE's Building Energy Data Exchange Specification (BEDES)</a>. &nbsp;For disk space reference, each complex simulation produces <a href="http://developer.eebhub.org/archives/diskspace/">20MB (for EnergyPlus outputs)</a>.&nbsp;As of January 2014, there were:</span>
       </h5>
-    </div>
-    <div class="container pagincation-center text-center" id="casestudies">
-      <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-      <h3>
-        1 shared database
-        <div>
-        </div>
-      </h3>
-      <h5>
-        <span style="font-weight: normal;">SimDB (Simulation Database) supports features such as user login, data flow across tools, my buildings dashboard, &amp; saving inputs in the cloud. &nbsp;We used a Document Based Database built with MongoDB. &nbsp;The documents are made up of JavaScript Object Notation (JSON) files with attributes based off of the&nbsp;DOE's Building Energy Data Exchange Specification (BEDES). &nbsp;As of January 2014, there are:</span>
-      </h5>
+      
       <div class="row-fluid">
+
         <div class="span6">
-          <h4>
-            22
-          </h4>
-          <p>
-            Users / Companies
-          </p>
+          <h4>22</h4>
+          <p> Users / Companies</p>
         </div>
+        
         <div class="span6">
-          <h4>
-            24
-          </h4>
-          <p>
-            Saved Buildings
-          </p>
+          <h4>24</h4>
+          <p>Saved Buildings</p>
         </div>
+        
       </div>
+      
     </div>
-    <div class="container pagincation-center text-center" id="casestudies">
-      <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-      <h3>
-        90,431 lines of code
-      </h3>
-      <h4>
-        = 23,229 lines of team created code + 67,202 lines of open source code
-      </h4>
+    
+    <div class="beam"></div>
+    
+    <div id="code">
+      <br>
+      <a href="https://www.openhub.net/p/simulationplatform/analyses/latest/languages_summary">
+      <img src="https://s3.amazonaws.com/media.jetstrap.com/ciX4ynqsT9yGAOZ63LQa_code.png" width="300"></a>
+      <h3>lines of code</h3>
+      <h4>= 23,229 lines of team created code + 67,202 lines of open source code</h4>
       <h5>
-        <span style="font-weight: normal;"><b><span style="font-weight: normal;">includes comments, 4,539 files, 143 images; estimated lines of code per project weekday = 105<br>all available at <a href="http://www.github.com/eebhub/platform">github.com/eebhub/platform</a></span>
-        </b>
-        </span>
+      <span style="font-weight: normal;"><b><span style="font-weight: normal;">includes comments, 4,539 files, 143 images; estimated lines of code per project weekday = 105<br>all available at <a href="http://www.github.com/eebhub/platform">github.com/eebhub/platform</a></span></b></span>
       </h5>
-      <h3>
-        built with
-      </h3>
-      <h4>
-        software comprised of over 20 million lines of open source code
-      </h4>
+      <h3>built with</h3>
+      <h4>software comprised of over 20 million lines of open source code</h4>
+      
       <div class="row-fluid">
-        <div class="span1" style="display: block;">
-        </div>
+        <div class="span1"></div>
+        
         <div class="span2" style="display: block;">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h5>
-            Ubuntu Linux
-          </h5>
-          <p>
-            Operating System
-          </p>
-          <p>
-            1M
-          </p>
+          <a href="http://www.ubuntu.com/server">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/SNlULfPHRmSn7gvXsZgw_ubuntu.png"
+              width="100">
+          </a>
+          <h5>Ubuntu Linux</h5>
+          <p>Operating System</p>
+           <a href="https://www.openhub.net/p/ubuntu/analyses/latest/languages_summary"><p>1M</p></a>
         </div>
+        
         <div class="span2">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h5>
-            Node.js
-          </h5>
-          <p>
-            Server Language
-          </p>
-          <p>
-            1.8M
-          </p>
+          <a href="http://nodejs.org/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/zMvU2gcjQ46QbiFXxCE1_nodejs.png"
+              width="100">
+          </a>
+          <h5>Node.js</h5>
+          <p>Server Language</p>
+          <a href="https://www.openhub.net/p/node/analyses/latest/languages_summary"><p>1.8M</p></a>
         </div>
+        
+         <div class="span2">
+          <a href="http://getbootstrap.com/2.3.2/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/LkotZoZKSt2nn7HK3okO_bootstrap.png"
+              width="100">
+          </a>
+          <h5>Bootstrap</h5>
+          <p>Front-End Styling</p>
+          <a href="https://www.openhub.net/p/bootstrap-from-twitter/analyses/latest/languages_summary"><p>47K*</p></a>
+        </div>
+        
         <div class="span2">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h5>
-            MongoDB
-          </h5>
-          <p>
-            Document Database
-          </p>
-          <p>
-          </p>
-          <p>
-          </p>
-          <p>
-            0.5M
-          </p>
-          <p>
-          </p>
+          <a href="http://expressjs.com/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/2EKMuS0lS1C9yzWOO7Kx_express.png"
+              width="100">
+          </a>
+          <h5>Express</h5>
+          <p>Web Framework</p>
+          <a href="https://www.openhub.net/p/express/analyses/latest/languages_summary"><p>7K*</p></a>
         </div>
+        
         <div class="span2">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h5>
-            Express
-          </h5>
-          <p>
-            Web Framework
-          </p>
-          <p>
-            7K*
-          </p>
+          <a href="http://www.mongodb.org/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/J8Pnq0idREi1BJ8RiV92_mongodb.png"
+              width="100">
+          </a>
+          <h5>MongoDB</h5>
+          <p>Document Database</p>
+          <a href="https://www.openhub.net/p/mongodb/analyses/latest/languages_summary"><p>0.5M</p></a>
         </div>
-        <div class="span2">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h5>
-            Bootstrap
-          </h5>
-          <p>
-            Front-End Styling
-          </p>
-          <p>
-            47K*
-          </p>
-        </div>
-        <div class="span1">
-        </div>
+        
+        <div class="span1"></div>
       </div>
+      
       <div class="row-fluid">
-        <div class="span1" style="display: block;">
-        </div>
+        <div class="span1"></div>
         <div class="span2" style="display: block;">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h5>
-            Linux Kernel
-          </h5>
-          <p>
-            Hardware Management
-          </p>
-          <p>
-            16M
-          </p>
+          <a href="https://www.kernel.org/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/gkS48o5lThqzI1N2aKBu_linux.png"
+              width="100">
+          </a>
+          <h5>Linux Kernel</h5>
+          <p>Hardware Management</p>
+          <a href="https://www.openhub.net/p/linux/analyses/latest/languages_summary"><p>16M</p></a>
         </div>
+        
         <div class="span2">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h5>
-            npm
-          </h5>
-          <p>
-            Package Manager
-          </p>
-          <p>
-            74K
-          </p>
+          <a href="https://www.npmjs.org/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/Gm2yh7o3Q7KEg5pSqNDC_npm.png"
+              width="100">
+          </a>
+          <h5>npm</h5>
+          <p>Package Manager</p>
+          <a href="https://www.openhub.net/p/isaacss_npm/analyses/latest/languages_summary"><p>74K</p></a>
         </div>
+        
         <div class="span2">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h5>
-            Github
-          </h5>
-          <p>
-            Versioning
-          </p>
-          <p>
-          </p>
-          <p>
-            0.3M
-          </p>
+          <a href="https://github.com/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/JySyS3uTRPaSMW9UISsR_github.png"
+              width="100">
+          </a>
+          <h5>Github</h5>
+          <p>Software Versioning</p>
+          <a href="https://www.openhub.net/p/git/analyses/latest/languages_summary"><p>0.3M</p></a>
         </div>
+        
         <div class="span2">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h5>
-            Apache
-          </h5>
-          <p>
-            Web Server
-          </p>
-          <p>
-          </p>
-          <p>
-            2.2M
-          </p>
+          <a href="http://httpd.apache.org/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/h2yGxsgQEKyzNivy7IQ2_apache.png"
+              width="100">
+          </a>
+          <h5>Apache</h5>
+          <p>Web Server</p>
+          <a href="https://www.openhub.net/p/apache/analyses/latest/languages_summary"><p>2.2M</p></a>
         </div>
+        
         <div class="span2">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h5>
-            Cloud9IDE
-          </h5>
-          <p>
-            Online Coding Environment
-          </p>
-          <p>
-            4K
-          </p>
+          <a href="https://c9.io/">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/XOvGRJCTQOmvM0vKJYs8_cloud9.png"
+              width="100">
+          </a>
+          <h5>Cloud9 IDE</h5>
+          <p>Online Coding Environment</p>
+          <a href="https://www.openhub.net/p/cloud9ide/analyses/latest/languages_summary"><p>4K</p></a>
         </div>
-        <div class="span1">
-        </div>
+        <div class="span1"></div>
+
       </div>
-      <h5>
-        <div>
-          <span style="font-weight: normal;"><b><span style="font-weight: normal;">KEY &nbsp; | &nbsp; Number = Lines of Open Source Code &nbsp; | &nbsp; M = Million &nbsp; | &nbsp; K = Thousand</span>
-          </b>
-          </span>
-          <div>
-            <br>
-          </div>
-        </div>
-        <span style="font-weight: normal;">The EEB Hub Simulation Platform could not have been built in 11 months without the use of open source software tools. &nbsp;While all software listed above supported the creation of tools.eebhub.org, only frameworks with an asteriks* were included in the code base. &nbsp;Honorable mentions of open source software also used include Cyberduck (server file transfer), Brackets.io (offline coding environment), &amp; ASHRAE Inverse Modeling Toolkit.</span>
-        &nbsp;
+      
+      <h5 style="font-weight: normal;"><b>KEY &nbsp; | &nbsp; Number = Lines of Open Source Code in 2013 &nbsp; | &nbsp; M = Million &nbsp; | &nbsp; K = Thousand</b>
+      <br>
+      The EEB Hub Simulation Platform could not have been built in 11 months without the use of open source software tools. &nbsp;
+      While all software listed above supported the creation of tools.eebhub.org, only frameworks with an asteriks* were included in the <a href="http://tools.eebhub.org/code">code base</a>. &nbsp;
+      Honorable mentions of open source software also used include <a href="https://www.openhub.net/p/ejs/analyses/latest/languages_summary">Embedded JavaScript</a> (html templates), <a href="https://www.openhub.net/p/cyberduck/analyses/latest/languages_summary">Cyberduck</a> (server file transfer), <a href="https://www.openhub.net/p/codebrackets/analyses/latest/languages_summary">Brackets.io</a> (offline coding environment), &amp; 
+      <a href="http://repository.tamu.edu/handle/1969.1/2847">ASHRAE Inverse Modeling Toolkit</a>, and <a href="https://www.openhub.net/p/v8-js/analyses/latest/languages_summary">Google's V8 JavaScript Engine</a> (which powers Node.js).&nbsp;
+      Open source icons are credited to <a href="http://iconmonstr.com/">Iconmonstr</a>, <a href="http://getbootstrap.com/2.3.2/base-css.html#icons">Glyphicons</a>, <a href="http://fortawesome.github.io/Font-Awesome/icons/">FontAwesome</a>, and <a href="http://thenounproject.com/">TheNounProject</a>.&nbsp;
       </h5>
     </div>
-    <hr>
-    <div class="container pagincation-center text-center" id="lessons">
-      <h3 class="text-center">
-        LESSONS LEARNED
-      </h3>
-      <h4>
-        1. &nbsp;To enable effective national collaboration use:
-      </h4>
+    
+    </div><!--#collaborations-->
+    
+  </div><!--#intro-->
+  <div class="beam"></div>
+    <div class="pagination-center text-center" id="lessons">
+      <h2>LESSONS LEARNED</h2>
+      <br>
+      <h4>1. &nbsp;To enable effective national collaboration use:</h4>
       <div class="row-fluid">
+      
+        <div class="span3"></div>
+        
         <div class="span3">
+          <h4>Video Conferencing</h4>
+          <a href="https://www.ciscomeetingonus.com/learn.php">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/ARLLlPP4QUiSmXAoEdkb_video.png"
+              width="250">
+          </a>
+          <p>to make virtual meetings more natural with Telepresence or Hangouts</p>
+          <br>
         </div>
+        
         <div class="span3">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h4>
-            Video Conferencing
-          </h4>
-          <p>
-            to make virtual meetings more natural with Telepresence or Hangouts
-          </p>
+          <h4>Google Apps</h4>
+          <a href="http://www.google.com/enterprise/apps/business/products.html">
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/pHzlBhMmSui63kAalLqI_googleapps.png"
+              width="250">
+          </a>
+          <p>to co-create documents in realtime, use a list-serv email address, &amp; generate easy links</p>
         </div>
-        <div class="span3">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-          <h4>
-            Google Apps
-          </h4>
-          <p>
-            to co-create documents in realtime, use a list-serv email address, &amp;
-            generate easy links
-          </p>
-        </div>
-        <div class="span3">
-        </div>
+        
+        <div class="span3"></div>
+        
       </div>
-      <h4>
-        2. &nbsp;To support software integration, standarize an operating system
-        early in project.
-      </h4>
-      <span style="font-weight: normal;">We used Ubuntu Linux because it's free, open source, extremely well documented, &amp; proven for live production web apps.&nbsp;</span>
       <div>
         <br>
         <h4>
-          3. &nbsp;To allow a small team of developers to build a web application
-          as fast as possible use:
+          2. &nbsp;To build a web application with a small team of developers as fast as possible use:
         </h4>
         <div class="row-fluid">
           <div class="span3">
           </div>
           <div class="span3">
-            <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-            <h4>
-              Node.js
-            </h4>
-            <p>
-              to speak 1 Language [JavaScript] for coding in the browser, server, &amp;
-              database
-            </p>
+            <h4>Node.js</h4>
+            <a href="http://www.buildsci.us/openstudio-nodejs.html">
+                <img src="https://s3.amazonaws.com/media.jetstrap.com/muzB6gLSVizxgbKQMmwG_node-lesson.png"
+                width="250">
+            </a>
+            <p>to speak 1 Language [JavaScript] for coding in the browser, server, &amp; database</p>
+            <br>
           </div>
           <div class="span3">
-            <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-            <h4>
-              JSON Document Database
-            </h4>
-            <p>
-              to allow for a flexible data structure that can be read/critiqued by entire
-              team
-            </p>
+            <h4>Document Database</h4>
+            <a href="http://node.eebhub.org/data-structure">
+                <img src="https://s3.amazonaws.com/media.jetstrap.com/CFDLIqYBR5C2wWnaU10d_json-lesson.png"
+                width="250">
+            </a>
+            <p>to allow for a flexible JSON data structure that can be read/critiqued by entire team</p>
           </div>
           <div class="span3">
           </div>
         </div>
+        <br>
+        <h4>
+          3. &nbsp;To support software integration, standardize an operating system
+          early in project.
+        </h4>
+        <p style="font-weight: normal; padding-bottom:25px;">We used <a href="http://www.ubuntu.com/server">Ubuntu Linux</a> because it's free, open source, extremely well documented, &amp; proven for live production web apps.&nbsp; Read full <a href="http://tools.eebhub.org/deliverable">lessons learned deliverable reports here</a>.</p>
       </div>
+    <div class="grass"></div>
     </div>
-    <hr>
-    <div class="container pagincation-center text-center" id="news">
-      <h3 class="text-center">
-      </h3>
-      <h3>
-        to learn even more
-      </h3>
-      <h5>
-        <span style="font-weight: normal;">
-    check out the <a href="http://tools.eebhub.org/news">8 news articles</a> published throughout 2013, especially the culminating research digest summary:</span>
-      </h5>
-      <img src="https://s3.amazonaws.com/media.jetstrap.com/wOXpQZg4RHqHZllDWaD4_logo-eebhub-research-digest.jpg">
-      <h5>
-        <span style="font-weight: normal;">
-    The above article highlights the free and user-friendly building energy simulation web tools created throughout 2013 as well as this positive example of collaboration across research universities (PSU, MIT, CMU, UPenn), national labs (NREL, NIST), and industrial firms (IBM, UTRC).</span>
+
+    <div class="pagination-center text-center" id="news">
+      <br>
+      <h3>to learn even more</h3>
+      <h5><span style="font-weight: normal;">check out the <a class="alink" href="http://tools.eebhub.org/news">8 news articles</a> published throughout 2013, especially the culminating research digest summary:</span></h5>
+      <a href="http://research.cbei.psu.edu//research-digest-reports/simulation-platform/"><img src="https://s3.amazonaws.com/media.jetstrap.com/BJAGWsERfeZLfy9y2l7Q_digest.png"></a>
+      <h5 class="container"><span style="font-weight: normal;">
+      The above article highlights the free and user-friendly building energy simulation web tools created throughout 2013 as well as this positive example of collaboration across research universities (PSU, MIT, CMU, UPenn), national labs (NREL, NIST), and industrial firms (IBM, UTRC).</span>
       </h5>
     </div>
-    <hr>
-    <div class="container pagincation-center text-center" id="footer">
-      <h1>
-        EEB Hub Simulation Platform
-      </h1>
-      <h5>
-        Built by the
-        <a href="http://www.eebhub.org">Energy Efficient Buildings Hub</a>
-        , a
-        <a href="http://developer.eebhub.org/eebhub/doe-hubs.html">U.S. Department of Energy
-    Innovation Hub</a>
-        , in 2013
-        <div>
-          <br>
-          <div>
-            Project led by
-            <a href="http://www.buildsci.us/people">Dr. Jelena Srebric</a>
-            &nbsp;|&nbsp;Software Integration by&nbsp;
-            <a href="http://www.joshwentz.net/">Josh Wentz</a>
-            , Ying Sun, Nick Mattise, Payam Delgoshaei
-            <div>
-              <a href="http://tools.eebhub.org/team"><span style="font-weight: normal;">Entire 53 Person Simulation &amp; Modeling Team here</span></a>
-              &nbsp;|&nbsp;
-              <span style="font-weight: normal; color: inherit; font-family: inherit;">Infographic Webpage above designed &amp; developed by </span>
-              <a href="http://www.joshwentz.net" style="font-weight: normal; font-family: inherit;">Josh Wentz</a>
-              <span style="font-weight: normal;"></span>
-            </div>
-            <div>
-              <span style="font-weight: normal;">References embedded into web links above</span>
-              |&nbsp;
-              <span style="font-weight: normal;"><a href="https://raw.githubusercontent.com/eebhub/platform/master/ACKNOWLEDGEMENT_DISCLAIMER">DOE Acknowledgement &amp; Disclaimer</a></span>
-            </div>
-          </div>
-          <div>
-          </div>
-        </div>
+
+    <div class="pagination-center text-center" id="footer">
+      <h1>Energy Efficient Buildings Hub Simulation Platform</h1>
+     
+      <span style="font-weight: normal;">Built by the&nbsp;<a class="alink" href="http://www.eebhub.org">Energy Efficient Buildings Hub</a>,&nbsp;a
+      <a class="alink" href="http://developer.eebhub.org/eebhub/doe-hubs.html">U.S. Department of Energy Innovation Hub</a>, Feb 2013 - Jan 2014</span>
+      
+      <h5>Project led by <a class="alink" href="http://www.buildsci.us/people">Dr. Jelena Srebric</a>;&nbsp;
+          Software Integration by <a class="alink" href="http://www.joshwentz.net">Josh Wentz</a>, Ying Sun, Nick Mattise, Jin Sung An, Payam Delgoshaei;&nbsp;
+          <a class="alink" href="team">Simulation &amp; Modeling Full Team</a>&nbsp;
       </h5>
+      
+      <h5 style="font-weight: normal; color: inherit; font-family: inherit;">
+      Infographic Webpage above designed &amp; developed by <a class="alink" href="http://www.joshwentz.net">Josh Wentz</a><br>
+      References Embedded in Links Above</span> |&nbsp;
+      <a class="alink" href="https://raw.githubusercontent.com/eebhub/platform/master/ACKNOWLEDGEMENT_DISCLAIMER">DOE Acknowledgement &amp; Disclaimer</a>
+      </h5>
+      <br>
     </div>
-  </body>
+    
+</body>
 
 </html>

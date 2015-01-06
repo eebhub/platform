@@ -2,7 +2,7 @@ Energy Efficient Buildings Hub Simulation Platform
 --------------------------------------------------
 web software to support decision making in building retrofit projects
 
-http://tools.eebhub.org
+http://tools.buildsci.us
 
 
 Objective
@@ -20,7 +20,7 @@ to reduce energy consumption in buildings. The interconnected aspect of tools in
 platform should also facilitate negotiations among different stakeholders in the efforts 
 to improve the overall building performance.
 
-Learn More at http://simulation.eebhub.org
+Learn More at http://tools.buildsci.us/vision
 
 Software Stack
 --------------
